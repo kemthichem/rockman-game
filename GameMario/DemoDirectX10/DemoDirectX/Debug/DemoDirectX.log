@@ -1,0 +1,43 @@
+﻿Build started 08/10/2013 00:34:54.
+     1>Project "E:\Dropbox\GameMario\DemoDirectX10\DemoDirectX\DemoDirectX.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt MarioGame.cpp
+         MarioGame.cpp
+         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\Dropbox\GameMario\DemoDirectX10\Debug\DemoDirectX.exe" /INCREMENTAL /NOLOGO dinput8.lib d3dx9.lib d3d9.lib kernel32.lib user32.lib dxguid.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib gdiplus.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\Dropbox\GameMario\DemoDirectX10\Debug\DemoDirectX.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\Dropbox\GameMario\DemoDirectX10\Debug\DemoDirectX.lib" /MACHINE:X86 Debug\Block.obj
+         Debug\Brick.obj
+         Debug\Bullet.obj
+         Debug\Coin.obj
+         Debug\Coin1.obj
+         Debug\Eato.obj
+         Debug\Enemy.obj
+         Debug\Flag.obj
+         Debug\House.obj
+         Debug\Land.obj
+         Debug\MapIO.obj
+         Debug\MushLife.obj
+         Debug\MushRoom.obj
+         Debug\Pipe1.obj
+         Debug\PipeHor.obj
+         Debug\PipeVer.obj
+         Debug\Scenery.obj
+         Debug\Star.obj
+         Debug\Turtle.obj
+         Debug\CusRect.obj
+         Debug\FragBrick.obj
+         Debug\Game.obj
+         Debug\Mario.obj
+         Debug\MarioGame.obj
+         Debug\QuadTree.obj
+         Debug\QuadTreeNode.obj
+         Debug\StaticObject.obj
+         Debug\utils.obj
+         Debug\winman.obj
+         Debug\Sprite.obj
+         DemoDirectX.vcxproj -> E:\Dropbox\GameMario\DemoDirectX10\Debug\DemoDirectX.exe
+     1>Done Building Project "E:\Dropbox\GameMario\DemoDirectX10\DemoDirectX\DemoDirectX.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:09.87
