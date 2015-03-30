@@ -1,0 +1,65 @@
+﻿Build started 3/21/2015 8:41:34 PM.
+     1>Project "D:\Project\final\game\GameMario\DemoDirectX11\DemoDirectX\DemoDirectX.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Sprite.cpp
+         Sprite.cpp
+         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+     1>d:\project\final\game\gamemario\demodirectx11\demodirectx\sprite.cpp(67): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>d:\project\final\game\gamemario\demodirectx11\demodirectx\sprite.cpp(129): warning C4244: 'argument' : conversion from 'LONG' to 'FLOAT', possible loss of data
+     1>d:\project\final\game\gamemario\demodirectx11\demodirectx\sprite.cpp(139): warning C4244: 'argument' : conversion from 'LONG' to 'FLOAT', possible loss of data
+     1>d:\project\final\game\gamemario\demodirectx11\demodirectx\sprite.cpp(141): warning C4244: 'argument' : conversion from 'LONG' to 'FLOAT', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Project\final\game\GameMario\DemoDirectX11\Debug\DemoDirectX.exe" /INCREMENTAL /NOLOGO dxerr.lib dsound.lib winmm.lib gdi32.lib dinput8.lib d3dx9.lib d3d9.lib kernel32.lib user32.lib dxguid.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib gdiplus.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Project\final\game\GameMario\DemoDirectX11\Debug\DemoDirectX.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Project\final\game\GameMario\DemoDirectX11\Debug\DemoDirectX.lib" /MACHINE:X86 Debug\BackgroundScreen.obj
+         Debug\Block.obj
+         Debug\Brick.obj
+         Debug\Bullet.obj
+         Debug\ButtonGame.obj
+         Debug\Coin.obj
+         Debug\Coin1.obj
+         Debug\dsutil.obj
+         Debug\Eato.obj
+         Debug\Enemy.obj
+         Debug\Flag.obj
+         Debug\GamePlayScreen.obj
+         Debug\GameScreen.obj
+         Debug\House.obj
+         Debug\Land.obj
+         Debug\LoadingScreen.obj
+         Debug\MainMenuScreen.obj
+         Debug\MapIO.obj
+         Debug\MenuScreen.obj
+         Debug\MushLife.obj
+         Debug\MushRoom.obj
+         Debug\PauseScreen.obj
+         Debug\Pipe1.obj
+         Debug\PipeHor.obj
+         Debug\PipeVer.obj
+         Debug\Rescource.obj
+         Debug\LoadScreen.obj
+         Debug\SaveScreen.obj
+         Debug\Scenery.obj
+         Debug\Score.obj
+         Debug\ScoreEff.obj
+         Debug\ScreenManager.obj
+         Debug\SoundDev.obj
+         Debug\SoundManager.obj
+         Debug\Star.obj
+         Debug\StateScreen.obj
+         Debug\Turtle.obj
+         Debug\CusRect.obj
+         Debug\FragBrick.obj
+         Debug\Game.obj
+         Debug\Mario.obj
+         Debug\MarioGame.obj
+         Debug\QuadTree.obj
+         Debug\QuadTreeNode.obj
+         Debug\StaticObject.obj
+         Debug\utils.obj
+         Debug\winman.obj
+         Debug\Sprite.obj
+         DemoDirectX.vcxproj -> D:\Project\final\game\GameMario\DemoDirectX11\Debug\DemoDirectX.exe
+     1>Done Building Project "D:\Project\final\game\GameMario\DemoDirectX11\DemoDirectX\DemoDirectX.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.40

@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Window">
+      <UniqueIdentifier>{114fe2bf-7a23-40a8-b8dd-3dcbb7399e7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameApp">
+      <UniqueIdentifier>{db6a9070-8b06-4b73-b929-314a1272665d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Directx">
+      <UniqueIdentifier>{f336810e-2f19-46ad-b55d-93136ca4ac7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object">
+      <UniqueIdentifier>{f61aee5d-d3f7-4b0a-8f14-13cde8f45e4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Manager">
+      <UniqueIdentifier>{9a58d069-e23c-4aea-b44c-77a5bd514f7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{9c47fed8-7414-4cd7-a122-8caec51d8fb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Collison">
+      <UniqueIdentifier>{61406a85-46d8-4fed-a8fa-ccd52d6604e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map">
+      <UniqueIdentifier>{3a1cdd54-e714-41d1-ad26-74b02567599f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Timer">
+      <UniqueIdentifier>{52b8108b-8d55-4c34-b915-9d46387711a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="QuadTree">
+      <UniqueIdentifier>{ca356c29-7366-4035-a27f-2b9f10c450e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game State">
+      <UniqueIdentifier>{a8168664-b58e-4e69-9ade-e06e5b46f4b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrawText">
+      <UniqueIdentifier>{e3cc2cf9-e155-4fcb-8bfa-c7e9708763ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sound">
+      <UniqueIdentifier>{25c5dbc1-36de-4ac6-ae75-ae293f6843ec}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameApp.h">
+      <Filter>GameApp</Filter>
+    </ClInclude>
+    <ClInclude Include="DxGraPhic.h">
+      <Filter>Directx</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Directx</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Directx</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Resource Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Directx</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario.h">
+      <Filter>Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Brick.h">
+      <Filter>Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Question.h">
+      <Filter>Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadMap.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="pipe.h">
+      <Filter>Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectStatic.h">
+      <Filter>Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="BrickExplosions.h">
+      <Filter>Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Flower.h">
+      <Filter>Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Coin.h">
+      <Filter>Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Mushroom.h">
+      <Filter>Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Turtle.h">
+      <Filter>Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Star.h">
+      <Filter>Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="MushroomLife.h">
+      <Filter>Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="MushroomBig.h">
+      <Filter>Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="BrickBreak.h">
+      <Filter>Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CWindown.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="QNode.h">
+      <Filter>QuadTree</Filter>
+    </ClInclude>
+    <ClInclude Include="TreeObject.h">
+      <Filter>QuadTree</Filter>
+    </ClInclude>
+    <ClInclude Include="AABBCollisionDetected.h">
+      <Filter>Collison</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Game State</Filter>
+    </ClInclude>
+    <ClInclude Include="GamestateManager.h">
+      <Filter>Game State</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadingState.h">
+      <Filter>Game State</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuState.h">
+      <Filter>Game State</Filter>
+    </ClInclude>
+    <ClInclude Include="PLayingGameState.h">
+      <Filter>Game State</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>DrawText</Filter>
+    </ClInclude>
+    <ClInclude Include="AboutState.h">
+      <Filter>Game State</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionState.h">
+      <Filter>Game State</Filter>
+    </ClInclude>
+    <ClInclude Include="ContinueState.h">
+      <Filter>Game State</Filter>
+    </ClInclude>
+    <ClInclude Include="WinState.h">
+      <Filter>Game State</Filter>
+    </ClInclude>
+    <ClInclude Include="Score.h">
+      <Filter>DrawText</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOver.h">
+      <Filter>Game State</Filter>
+    </ClInclude>
+    <ClInclude Include="CAudio.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="dsutil.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="dxutil.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="FireBoss.h">
+      <Filter>Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Flag.h">
+      <Filter>Game Object</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GameApp.cpp">
+      <Filter>GameApp</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DxGraPhic.cpp">
+      <Filter>Directx</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Directx</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Directx</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Mario.cpp">
+      <Filter>Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManage.cpp">
+      <Filter>Resource Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Directx</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Brick.cpp">
+      <Filter>Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Question.cpp">
+      <Filter>Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadMap.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Pipe.cpp">
+      <Filter>Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectStatic.cpp">
+      <Filter>Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="BrickExplosions.cpp">
+      <Filter>Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Flower.cpp">
+      <Filter>Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Coin.cpp">
+      <Filter>Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Mushroom.cpp">
+      <Filter>Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Turtle.cpp">
+      <Filter>Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Star.cpp">
+      <Filter>Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="MushroomLife.cpp">
+      <Filter>Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="MushroomBig.cpp">
+      <Filter>Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="BrickBreak.cpp">
+      <Filter>Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CWindown.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="QNode.cpp">
+      <Filter>QuadTree</Filter>
+    </ClCompile>
+    <ClCompile Include="TreeObject.cpp">
+      <Filter>QuadTree</Filter>
+    </ClCompile>
+    <ClCompile Include="AABBCollisionDetected.cpp">
+      <Filter>Collison</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>Game State</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStateManager.cpp">
+      <Filter>Game State</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadingState.cpp">
+      <Filter>Game State</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuState.cpp">
+      <Filter>Game State</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayingGameState.cpp">
+      <Filter>Game State</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>DrawText</Filter>
+    </ClCompile>
+    <ClCompile Include="Aboutstatecpp.cpp">
+      <Filter>Game State</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionState.cpp">
+      <Filter>Game State</Filter>
+    </ClCompile>
+    <ClCompile Include="ContinueState.cpp">
+      <Filter>Game State</Filter>
+    </ClCompile>
+    <ClCompile Include="WinState.cpp">
+      <Filter>Game State</Filter>
+    </ClCompile>
+    <ClCompile Include="Score.cpp">
+      <Filter>DrawText</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOver.cpp">
+      <Filter>Game State</Filter>
+    </ClCompile>
+    <ClCompile Include="CAudio.cpp">
+      <Filter>Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="dsutil.cpp">
+      <Filter>Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="FireBoss.cpp">
+      <Filter>Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Flag.cpp">
+      <Filter>Game Object</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

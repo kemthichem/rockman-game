@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1869C2FD-9F3E-4367-9F89-34241C1F6C1B}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>DemoDirectX</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>E:\Lap trinh\Projects\DirectX\MariO_nam2\DemoDirectX11\DemoDirectX\dirent;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>dxerr.lib;dsound.lib;winmm.lib;gdi32.lib;dinput8.lib;d3dx9.lib;d3d9.lib;kernel32.lib;user32.lib;dxguid.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;gdiplus.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="BackgroundScreen.cpp" />
+    <ClCompile Include="Block.cpp" />
+    <ClCompile Include="Brick.cpp" />
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="ButtonGame.cpp" />
+    <ClCompile Include="Coin.cpp" />
+    <ClCompile Include="Coin1.cpp" />
+    <ClCompile Include="dsutil.cpp" />
+    <ClCompile Include="Eato.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Flag.cpp" />
+    <ClCompile Include="GamePlayScreen.cpp" />
+    <ClCompile Include="GameScreen.cpp" />
+    <ClCompile Include="House.cpp" />
+    <ClCompile Include="Land.cpp" />
+    <ClCompile Include="LoadingScreen.cpp" />
+    <ClCompile Include="MainMenuScreen.cpp" />
+    <ClCompile Include="MapIO.cpp" />
+    <ClCompile Include="MenuScreen.cpp" />
+    <ClCompile Include="MushLife.cpp" />
+    <ClCompile Include="MushRoom.cpp" />
+    <ClCompile Include="PauseScreen.cpp" />
+    <ClCompile Include="Pipe1.cpp" />
+    <ClCompile Include="PipeHor.cpp" />
+    <ClCompile Include="PipeVer.cpp" />
+    <ClCompile Include="Rescource.cpp" />
+    <ClCompile Include="LoadScreen.cpp" />
+    <ClCompile Include="SaveScreen.cpp" />
+    <ClCompile Include="Scenery.cpp" />
+    <ClCompile Include="Score.cpp" />
+    <ClCompile Include="ScoreEff.cpp" />
+    <ClCompile Include="ScreenManager.cpp" />
+    <ClCompile Include="SoundDev.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="Star.cpp" />
+    <ClCompile Include="StateScreen.cpp" />
+    <ClCompile Include="Turtle.cpp" />
+    <ClCompile Include="CusRect.cpp" />
+    <ClCompile Include="FragBrick.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Mario.cpp" />
+    <ClCompile Include="MarioGame.cpp" />
+    <ClCompile Include="QuadTree.cpp" />
+    <ClCompile Include="QuadTreeNode.cpp" />
+    <ClCompile Include="StaticObject.cpp" />
+    <ClCompile Include="utils.cpp" />
+    <ClCompile Include="winman.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BackgroundScreen.h" />
+    <ClInclude Include="Block.h" />
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="ButtonGame.h" />
+    <ClInclude Include="Coin.h" />
+    <ClInclude Include="Coin1.h" />
+    <ClInclude Include="dirent\dirent.h" />
+    <ClInclude Include="dsutil.h" />
+    <ClInclude Include="dxutil.h" />
+    <ClInclude Include="Eato.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Flag.h" />
+    <ClInclude Include="GamePlayScreen.h" />
+    <ClInclude Include="GameScreen.h" />
+    <ClInclude Include="House.h" />
+    <ClInclude Include="Land.h" />
+    <ClInclude Include="LoadingScreen.h" />
+    <ClInclude Include="MainMenuScreen.h" />
+    <ClInclude Include="MapIO.h" />
+    <ClInclude Include="MenuScreen.h" />
+    <ClInclude Include="MushLife.h" />
+    <ClInclude Include="MushRoom.h" />
+    <ClInclude Include="PauseScreen.h" />
+    <ClInclude Include="Pipe1.h" />
+    <ClInclude Include="PipeHor.h" />
+    <ClInclude Include="PipeVer.h" />
+    <ClInclude Include="Rescource.h" />
+    <ClInclude Include="LoadScreen.h" />
+    <ClInclude Include="SaveScreen.h" />
+    <ClInclude Include="Scenery.h" />
+    <ClInclude Include="Score.h" />
+    <ClInclude Include="ScoreEff.h" />
+    <ClInclude Include="ScreenManager.h" />
+    <ClInclude Include="SoundDev.h" />
+    <ClInclude Include="SoundManager.h" />
+    <ClInclude Include="Star.h" />
+    <ClInclude Include="StateScreen.h" />
+    <ClInclude Include="Turtle.h" />
+    <ClInclude Include="Brick.h" />
+    <ClInclude Include="CusRect.h" />
+    <ClInclude Include="FragBrick.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="Mario.h" />
+    <ClInclude Include="MarioGame.h" />
+    <ClInclude Include="QuadTree.h" />
+    <ClInclude Include="QuadTreeNode.h" />
+    <ClInclude Include="StaticObject.h" />
+    <ClInclude Include="utils.h" />
+    <ClInclude Include="Sprite.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
