@@ -1,56 +1,16 @@
-#include "RockmanGame.h"
-#ifndef	_MARIO_H
-#define  _MARIO_H
-#define  ACCLE 0.000005f
-#define  GRAVITY 0.15f;
-class CBullet;
-class CRockman: public CMotionObject
-{
-private:
-	
-	CSprite* sprite;
-	float lastvx;
-	float lastvy;
-	float maxSpeedvx;
-	int numberBullet;	
-	int powerJumb;
-	int state;//0-stand; 1-turn; 2-jumb; 3-brake; 4-sitting; 5-die
-	float vxCreep, vyCreep;
-	int distanceCreep;
-	int distance;
-	int timesCreep;
-	//-----
-	bool isShooted;
-	bool isBounce;	
-	bool isSmall;	
-	bool isSitting;
-	//bool isWin;
-	//-----
-	CBullet* bullet[3];
-	DWORD timeStartConvert;
-	DWORD timeStartSuper;
-	DWORD timeSuper;
+#ifndef	_ROCKMAN_H
+#define  _ROCKMAN_H
+#include "ResourceManager.h"
+#include "Entity.h"
 
-	//---function
-	void Bounce();
-	void Converting();
-	void Flashing();
-	void SetConvertGun();
-	void SetCreep(CStaticObject* ob,float _vyCreep=-1);
+class CRockman: public CEntity
+{
 public:
-	CRockman(void);
+	static D3DXVECTOR2 posInMap;
+
+	CRockman();
 	CRockman(D3DXVECTOR3 _pos);
-	~CRockman(void);
-	//--
-	void TurnRight(int time);
-	void TurnLeft(int time);
-	void Sitting(int time);
-	void Stop(int time);
-	void Jump();
-	void Shoot();
-	void NoShoot();
-	//---
-	void _Update(CQuadTreeNode* root,DWORD deltaTime);
-	void Render();
+	~CRockman();
+	void Update(DWORD , CCamera *, CInput *);
 };
 #endif

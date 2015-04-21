@@ -1,8 +1,7 @@
-﻿#include "RockmanGame.h"
-#ifndef  _SPRITE_H
+﻿#ifndef  _SPRITE_H
 #define  _SPRITE_H
-
-#define  timePerFrame (20)
+#include <d3d9.h>
+#include <d3dx9.h>
 class CSprite
 {
 private:
@@ -15,9 +14,8 @@ private:
 	int numImagePerCol;
 	int count;
 	LPDIRECT3DTEXTURE9 image;
-	void SetSpriteHandleDefault();
-	void SetTransform(float x,float dir);
-	LPD3DXSPRITE _spriteHandler;
+	void SetSpriteHandleDefault(LPD3DXSPRITE);
+	void SetTransform(LPD3DXSPRITE, float x, float y, float dir);
 //	void SetSpriteHandleDefault();
 public:
 
@@ -26,7 +24,7 @@ public:
 	int heightOfSprite;
 	CSprite(void);
 	CSprite(LPDIRECT3DTEXTURE9 _image, int _widthOfImage, int _heightOfImage, int _imagePerRow, int _imagePerCol);
-	void Render(int x , int y, float direction, float z = 0);
+	void Render(LPD3DXSPRITE _spriteHandler, D3DXVECTOR3 _pos, int _dir);
 	void Next();
 	void NextOf(int indexStart, int indexEnd);
 	void NextAt(int, int);

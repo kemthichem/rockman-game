@@ -7,9 +7,6 @@ CStaticObject::CStaticObject(void)
 	visible = true;
 }
 
-
-
-
 CStaticObject::~CStaticObject(void)
 {
 }
@@ -30,8 +27,6 @@ CMotionObject::~CMotionObject()
 
 void CMotionObject::Gravity(int deltaTime, int _floor)
 {
-	if(pos.y >= 1440)
-		int k = 0;
 	int floor = _floor- rectagle.height;
 	if(pos.y<floor)
 	{
@@ -44,10 +39,10 @@ void CMotionObject::Gravity(int deltaTime, int _floor)
 	}
 }
 
-void CMotionObject::Update( CQuadTreeNode* root,DWORD t )
+void CMotionObject::Update(DWORD t )
 {
 	Gravity(t, 0);//rockmanGame->quadTree->GetHeight());
-	_Update(root,t);
+	_Update(t);
 }
 
 void CMotionObject::SetPosX( CStaticObject* obIntersect )
@@ -80,5 +75,3 @@ void CMotionObject::SetPosY( CStaticObject* obIntersect )
 	vy = 0;
 	rectagle.UpdateRect(pos.x, pos.y);
 }
-
-

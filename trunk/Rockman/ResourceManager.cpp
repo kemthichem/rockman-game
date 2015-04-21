@@ -1,18 +1,18 @@
 #include "ResourceManager.h"
 
 CResourceManager* CResourceManager::instance = NULL;
-string CResourceManager::bgFileFath = "Resource/background1.png";
-string CResourceManager::mapFilePath = "Map/map1.txt";
+string CResourceManager::mPathFileBg = "Resource/background1.png";
+string CResourceManager::mPathFileMap = "Map/map1.txt";
+
 CResourceManager::CResourceManager(void)
 {
-	d3ddv = rockmanGame->GetDevice3d();
-	LoadResource();
+
 }
 
 CResourceManager::~CResourceManager(void)
 {
-	mapSprite.clear();
-	mapSurface.clear();
+	mMapTexture.clear();
+	mMapSurface.clear();
 }
 
 CResourceManager* CResourceManager::GetInstance()
@@ -22,26 +22,29 @@ CResourceManager* CResourceManager::GetInstance()
 	return instance;
 }
 
-void CResourceManager::LoadResource()
+void CResourceManager::LoadResource(LPDIRECT3DDEVICE9 _d3ddv)
 {	
-	mapSprite[IMAGE_ROCKMAN] = LoadTexture(d3ddv,IMAGE_ROCKMAN);
-	mapSurface["Resource/background1.png"] = LoadSurface(d3ddv,"Resource/background1.png");
+	mD3ddv = _d3ddv;
+
+	mMapTexture[IMAGE_ROCKMAN] = CUtils::LoadTexture(mD3ddv,IMAGE_ROCKMAN);
+	mMapSurface["Resource/background1.png"] = CUtils::LoadSurface(mD3ddv,"Resource/background1.png");
 }
 
 LPDIRECT3DTEXTURE9 CResourceManager::GetSprite( string spriteName )
 {
-	return mapSprite.at(spriteName);
+	return mMapTexture.at(spriteName);
 }
 
 LPDIRECT3DSURFACE9 CResourceManager::GetSurface( string surfaceName )
 {
-	return mapSurface.at(surfaceName);
+	return mMapSurface.at(surfaceName);
 }
 
 char* CResourceManager::GetFilePathBG()
 {
-	char *cstr = new char[bgFileFath.length() + 1];
-	strcpy_s(cstr, bgFileFath.size(), bgFileFath.c_str());
-	cstr[bgFileFath.size()] = '\0';
+	char *cstr = new char[mPathFileBg.length() + 1];
+	strcpy_s(cstr, mPathFileBg.size(), mPathFileBg.c_str());
+	cstr[mPathFileBg.size()] = '\0';
 	return cstr;
 }
+

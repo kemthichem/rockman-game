@@ -1,25 +1,32 @@
-#include "RockmanGame.h"
+
 #ifndef	_RESOURCE_MANAGER_H
 #define _RESOURCE_MANAGER_H
+#include <d3d9.h>
+#include <d3dx9.h>
+#include <list>
+#include <string>
+#include <map>
+
+#include "utils.h"
 
 #define  IMAGE_ROCKMAN "Resource/rockman.png"
 using namespace std;
 class CResourceManager
 {
 private:
-	LPDIRECT3DDEVICE9 d3ddv;
+	LPDIRECT3DDEVICE9 mD3ddv;
 	static CResourceManager* instance;
-	map<string, LPDIRECT3DTEXTURE9> mapSprite;
-	map<string, LPDIRECT3DSURFACE9> mapSurface;
-	void LoadResource();
+	map<string, LPDIRECT3DTEXTURE9> mMapTexture;
+	map<string, LPDIRECT3DSURFACE9> mMapSurface;
 	CResourceManager(void);
 public:
-	static string bgFileFath;
-	static string mapFilePath;
+	static string mPathFileBg;
+	static string mPathFileMap;
 	static char* GetFilePathBG();
 	static CResourceManager* GetInstance();
-	LPDIRECT3DTEXTURE9 GetSprite(string spriteName);
-	LPDIRECT3DSURFACE9 GetSurface(string surfaceName);
+	void LoadResource(LPDIRECT3DDEVICE9);
+	LPDIRECT3DTEXTURE9 GetSprite(string);
+	LPDIRECT3DSURFACE9 GetSurface(string);
 	~CResourceManager(void);
 };
 #endif
