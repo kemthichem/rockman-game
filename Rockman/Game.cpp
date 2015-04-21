@@ -1,4 +1,5 @@
 ﻿#include "Game.h"
+#include "ResourceManager.h"
 
 CGame::CGame(HINSTANCE hInstance)
 {
@@ -13,6 +14,12 @@ CGame::CGame()
 
 void CGame::Init()
 {
+
+	mTime = new CTimer();
+	mTime->SetMaxFps(60.0f);
+
+	mCamera = new CCamera();
+
 	_InitWindow();
 	_InitDirectX();
 	_InitInput();
@@ -71,7 +78,7 @@ bool CGame::_InitWindow()
 
 	_hWnd    = CreateWindow( 
 		"CGame", 
-		"Demo DirectX", 
+		"Rockman", 
 		WS_OVERLAPPEDWINDOW, 
 		250,//x 
 		100, //y
@@ -126,59 +133,70 @@ bool CGame::_InitDirectX()
 			D3DXCreateSprite(_d3ddv, &_spriteHandler);
 			_d3ddv->GetBackBuffer(0,0,D3DBACKBUFFER_TYPE_MONO,&_backbuffer);//chỉ thị vùng nhớ đệm để vẽ lên
 
+			//set device to resource manager
+			CResourceManager::GetInstance()->LoadResource(_d3ddv);
 
 			return true; 
 }
 bool CGame::_InitInput()
 {
-	HRESULT hresult;
-	//Khoi tao direct input
-	hresult=DirectInput8Create(GetModuleHandle(NULL),  //HINSTANCE : hinstance ha
-		DIRECTINPUT_VERSION,  //Direct input version
-		IID_IDirectInput8,  //a reference identifier
-		(void**)&_input,  //Con tro tro toi doi tuong	
-		NULL);  //always pass NULL						
-	if(FAILED(hresult))//Kiem tra xem Khoi tao Direct input co duoc hay khong
+	//	HRESULT hresult;
+	//	//Khoi tao direct input
+	//	hresult=DirectInput8Create(GetModuleHandle(NULL),  //HINSTANCE : hinstance ha
+	//		DIRECTINPUT_VERSION,  //Direct input version
+	//		IID_IDirectInput8,  //a reference identifier
+	//		(void**)&_input,  //Con tro tro toi doi tuong	
+	//		NULL);  //always pass NULL						
+	//	if(FAILED(hresult))//Kiem tra xem Khoi tao Direct input co duoc hay khong
+	//	{
+	//		MessageBox(0,"Loi xay ra " ,0,0);
+	//		return false;
+	//	}
+	//	//init keyboard
+	//	hresult=_input->CreateDevice(GUID_SysKeyboard,&_keyboardDevice,NULL);
+	//	if(FAILED(hresult))
+	//	{
+	//		return false;
+	//		MessageBox(_hWnd, "Error create Input", "Error", MB_OK);
+	//	}
+	//
+	//	//--Init KeyBoard
+	//
+	//	hresult=_keyboardDevice->SetDataFormat(&c_dfDIKeyboard);
+	//	if(FAILED(hresult))
+	//		return false;
+	//	hresult=_keyboardDevice->SetCooperativeLevel(_hWnd,DISCL_BACKGROUND | DISCL_NONEXCLUSIVE);
+	//	if(FAILED(hresult))
+	//		return false;
+	//
+	//	//--
+	//	DIPROPDWORD dipdw;
+	//	dipdw.diph.dwSize  = sizeof(DIPROPDWORD);
+	//	dipdw.diph.dwHeaderSize = sizeof(DIPROPHEADER);
+	//	dipdw.diph.dwObj  = 0;
+	//	dipdw.diph.dwHow  = DIPH_DEVICE;
+	//	dipdw.dwData  = 256; // Arbitary buffer size
+	//
+	//
+	//	hresult = _keyboardDevice->SetProperty( DIPROP_BUFFERSIZE, &dipdw.diph );
+	//	if (hresult!=DI_OK)
+	//	{
+	//		MessageBox(_hWnd, "Error set Propety key board divice", "Error", MB_OK);
+	//		return false;
+	//	}
+	//	hresult=_keyboardDevice->Acquire();
+	//	if(FAILED(hresult)) return false;
+	//
+	//	return true;
+
+
+	mInput = new CInput(); 
+	if (!mInput->InitKeyboard(_hInstance,_hWnd))
 	{
-		MessageBox(0,"Loi xay ra " ,0,0);
-		return false;
+		MessageBox(_hWnd, "Can't create input", "Error", MB_OK );
+
 	}
-	//init keyboard
-	hresult=_input->CreateDevice(GUID_SysKeyboard,&_keyboardDevice,NULL);
-	if(FAILED(hresult))
-	{
-		return false;
-		MessageBox(_hWnd, "Error create Input", "Error", MB_OK);
-	}
-
-	//--Init KeyBoard
-
-	hresult=_keyboardDevice->SetDataFormat(&c_dfDIKeyboard);
-	if(FAILED(hresult))
-		return false;
-	hresult=_keyboardDevice->SetCooperativeLevel(_hWnd,DISCL_BACKGROUND | DISCL_NONEXCLUSIVE);
-	if(FAILED(hresult))
-		return false;
-
-	//--
-	DIPROPDWORD dipdw;
-	dipdw.diph.dwSize  = sizeof(DIPROPDWORD);
-	dipdw.diph.dwHeaderSize = sizeof(DIPROPHEADER);
-	dipdw.diph.dwObj  = 0;
-	dipdw.diph.dwHow  = DIPH_DEVICE;
-	dipdw.dwData  = 256; // Arbitary buffer size
-
-
-	hresult = _keyboardDevice->SetProperty( DIPROP_BUFFERSIZE, &dipdw.diph );
-	if (hresult!=DI_OK)
-	{
-		MessageBox(_hWnd, "Error set Propety key board divice", "Error", MB_OK);
-		return false;
-	}
-	hresult=_keyboardDevice->Acquire();
-	if(FAILED(hresult)) return false;
-
-	return true;
+	return 0;
 }
 void CGame::_ProcessKeyBoard()
 {
@@ -204,7 +222,7 @@ void CGame::_Render()
 {
 
 	HRESULT re = _d3ddv->BeginScene();
-	_d3ddv->StretchRect(CResourceManager::GetInstance()->GetSurface(CResourceManager::bgFileFath),NULL,_backbuffer, NULL,D3DTEXF_NONE);
+	_d3ddv->StretchRect(CResourceManager::GetInstance()->GetSurface(CResourceManager::mPathFileBg),NULL,_backbuffer, NULL,D3DTEXF_NONE);
 	if (re) 
 	{
 		//_d3ddv->StretchRect(CResourceManager::GetInstance()->GetSurface(IMAGE_BG1), NULL,_backbuffer, NULL,D3DTEXF_NONE);
@@ -240,43 +258,44 @@ void CGame::Release()
 		_backbuffer->Release();
 		_backbuffer = NULL;
 	}
+
+	if (mInput!=NULL)
+	{
+		mInput->Kill_Keyboard();
+		delete mInput;
+	}
 }
 int CGame::RunGame()
 {
-	MSG message;
-	ZeroMemory(&message, sizeof(message));
-
-	DWORD timeStart = GetTickCount();
-	DWORD tick_per_frame = 1000/30;
-	while (1)
+	mTime->StartCount();
+	MSG msg;
+	ZeroMemory(&msg,sizeof(msg));
+	int done=0;
+	while(!done)
 	{
-		if(PeekMessage(&message, NULL, 0, 0, PM_REMOVE))
+		if (PeekMessage(&msg,NULL,0,0,PM_REMOVE))
 		{
-			if(message.message == WM_QUIT)
-				break;
-
-			TranslateMessage(&message);
-			DispatchMessage(&message);
+			if (msg.message==WM_QUIT)
+			{
+				done = 1;
+			}
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
 		}
 		else
 		{
-			DWORD timeNow = GetTickCount();
-			deltaTime = timeNow - timeStart;
-			if(deltaTime > tick_per_frame)
+			if (mTime->GetTime () < 1.0f)
 			{
-				if(deltaTime > 47)
-					deltaTime = 47;
-				timeStart = GetTickCount();
+				mTime->EndCount();
+				mInput->ProcessKeyBoard();
 				_Update();
 				_Render();
-
 			}
 
-			_Process();
-		}
+		}	
 	}
-	Release();
-	return 0;
+	//
+	return (int) msg.wParam;
 }
 void CGame::_Process()
 {
@@ -289,7 +308,7 @@ void CGame::_Process()
 }
 void CGame::_Update()
 {
-	UpdateWorld(deltaTime);
+	UpdateWorld(mTime->GetDeltaTime(), mCamera, mInput);
 }
 //------------------------
 void CGame::InitGame()
@@ -298,7 +317,7 @@ void CGame::InitGame()
 void CGame::RenderTextAndSurface()
 {
 }
-void CGame::UpdateWorld(DWORD deltaTime)
+void CGame::UpdateWorld(DWORD deltaTime, CCamera *_camera, CInput *mInput)
 {
 }
 void CGame::Render()

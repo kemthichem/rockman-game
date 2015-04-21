@@ -1,5 +1,8 @@
 ﻿#include "Sprite.h"
 
+#define  timePerFrame (4.0f)
+
+
 CSprite::CSprite(void)
 {
 }
@@ -14,7 +17,6 @@ CSprite::CSprite(LPDIRECT3DTEXTURE9 _image, int _width, int _height, int _numIma
 	index = 0;
 	waitNextImage = 0;
 	timePerImage = 30;
-	_spriteHandler = rockmanGame->GetSpriteHandle();
 	widthOfSprite = width/ numImagePerRow;
 	heightOfSprite = height/numImagePerCol;
 }
@@ -37,7 +39,7 @@ void CSprite::NextOf(int indexStart, int indexEnd)
 	if(index<indexStart)
 		index = indexStart;
 	waitNextImage+=timePerFrame;
-	if(waitNextImage>=timePerImage)  //Chờ đến khi quá thời gian quy định thì chuyển framekế tiếp
+	if(waitNextImage>=timePerImage)  //Chờ đến khi quá thời gian quy định thì chuyển frame kế tiếp
 	{
 		/*index =(index<indexStart)?indexStart:index;
 		index++;
@@ -52,7 +54,7 @@ void CSprite::NextOf(int indexStart, int indexEnd)
 		waitNextImage=0;
 	}
 }
-void CSprite::Render(int x, int y, float dir,float z)
+void CSprite::Render(LPD3DXSPRITE _spriteHandler, D3DXVECTOR3 _pos, int _dir)
 {
 	RECT srect;
 	srect.left = (index % numImagePerRow)*(widthOfSprite)+1;
@@ -60,28 +62,19 @@ void CSprite::Render(int x, int y, float dir,float z)
 	srect.right = srect.left + widthOfSprite ;
 	srect.bottom = srect.top + heightOfSprite +1;
 
-	D3DXVECTOR3 position((float)x, (float)y, z);
-
 	//---
 	//SetFlipImage(dir, (float)x);
-	SetTransform(x,dir);
+	//SetTransform(_spriteHandler, x,y,dir);
 	_spriteHandler->Draw(
 		image,
 		&srect,
 		NULL,
-		&position,
+		&_pos,
 		D3DCOLOR_XRGB(255,255,255)
 		);
-	SetSpriteHandleDefault();
-
-
-	///cập nhật lại RECT
-	rect.top = y;
-	rect.left = x;
-	rect.bottom = y+height;
-	rect.right = x+width;
+	//SetSpriteHandleDefault(_spriteHandler);
 }
-void CSprite::SetSpriteHandleDefault()
+void CSprite::SetSpriteHandleDefault(LPD3DXSPRITE _spriteHandler)
 {
 	D3DXMATRIX matrix;
 	D3DXMatrixTransformation2D(&matrix
@@ -116,11 +109,11 @@ void CSprite::NextAt( int index1, int index2)
 CSprite::~CSprite(void)
 {
 	image->Release();
-	_spriteHandler->Release();
-
 }
-void CSprite::SetTransform(float x, float dir)
+void CSprite::SetTransform(LPD3DXSPRITE _spriteHandler, float x,float y, float dir)
 {
+	const int HEIGHT_SCREEN = 600;
+
 	//--set camera
 	LONG x0 = 0;//rockmanGame->rectScreen.left;
 	LONG y0 =  0;//rockmanGame->rectScreen.top;
@@ -131,21 +124,26 @@ void CSprite::SetTransform(float x, float dir)
 	//_spriteHandler->SetTransform(&matrixCamera);
 
 
-	//--set flip image
 
-	if(dir>=0)
-		return;
-	D3DXMATRIX matrixFlip;
-	D3DXVECTOR2 trans(2*x+widthOfSprite,-y0);
-	if(x0>0)
-		trans = D3DXVECTOR2(2*x-(x0-widthOfSprite),-y0);
-	D3DXMatrixTransformation2D(&matrixFlip
+	//flip coor
+	D3DXMATRIX matrixFlipCoor;
+	//D3DXVECTOR2 trans(0,-y0);
+	D3DXVECTOR2 transCoor(0, HEIGHT_SCREEN -2 * y - height/numImagePerCol);
+	D3DXVECTOR2 *vectorCoor = new D3DXVECTOR2(1,1);
+
+	if(dir<0) {
+		transCoor.x = 2*x+widthOfSprite;
+		vectorCoor->x=-1;
+	}
+
+	D3DXMatrixTransformation2D(&matrixFlipCoor
 		,NULL//tâm của hình
 		,0.0f
-		,new D3DXVECTOR2(-1,1)//trục chéo của ma trận--phóng to, thu nhỏ, lật ngược hình theo truc Ox, Oy
+		,vectorCoor//trục chéo của ma trận--phóng to, thu nhỏ, lật ngược hình theo truc Ox, Oy
 		,NULL
 		,0
-		,&trans//khoang dich chuyen toa do x,y theo vector2
+		,&transCoor//khoang dich chuyen toa do x,y theo vector2
 		);
-	_spriteHandler->SetTransform(&matrixFlip);
+
+	_spriteHandler->SetTransform(&matrixFlipCoor);
 }

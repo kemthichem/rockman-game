@@ -19,6 +19,24 @@
     <Filter Include="Base">
       <UniqueIdentifier>{90f3fbb2-d440-4067-90b0-8ad288340231}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{ff3b8daa-31fe-4319-a888-c5db29608c9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ResourceManager">
+      <UniqueIdentifier>{625a186f-a40f-44e0-9af7-18e30ccce7cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{52267b15-966b-4c98-a8a0-411e26ef1f1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input">
+      <UniqueIdentifier>{a42f16b4-03d2-49b2-8de1-e903a61913f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameState">
+      <UniqueIdentifier>{502829ae-d5ad-4473-ad29-0c7cad23b55c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ObjectGame">
+      <UniqueIdentifier>{ee672a0f-5124-4021-af8e-a0714cc41ae8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="winmain.cpp">
@@ -33,19 +51,31 @@
     <ClCompile Include="Rockman.cpp">
       <Filter>Player</Filter>
     </ClCompile>
-    <ClCompile Include="ResourceManager.cpp">
-      <Filter>Base</Filter>
-    </ClCompile>
-    <ClCompile Include="utils.cpp">
-      <Filter>Base</Filter>
-    </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="StaticObject.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>ResourceManager</Filter>
     </ClCompile>
     <ClCompile Include="CusRect.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="utils.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticObject.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,19 +89,31 @@
     <ClInclude Include="Rockman.h">
       <Filter>Player</Filter>
     </ClInclude>
-    <ClInclude Include="ResourceManager.h">
-      <Filter>Base</Filter>
-    </ClInclude>
-    <ClInclude Include="utils.h">
-      <Filter>Base</Filter>
-    </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="StaticObject.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Camera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>ResourceManager</Filter>
     </ClInclude>
     <ClInclude Include="CusRect.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="utils.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticObject.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

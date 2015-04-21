@@ -1,12 +1,16 @@
 ﻿
 //#pragma once
 
-#include "RockmanGame.h"
-
 #ifndef _GAME_H	
 #define _GAME_H
 
-//class CGame;
+#include <d3d9.h>
+#include <d3dx9.h>
+#include "Windows.h"
+#include "Input.h"
+#include "Time.h"
+#include "Camera.h"
+
 
 #define KEYBOARD_BUFFER_SIZE	1024
 
@@ -17,8 +21,6 @@ private:
 
 	HINSTANCE _hInstance;
 	LPDIRECT3D9 _d3d;
-
-	
 
 	LPDIRECTINPUT8 _input;
 	LPDIRECTINPUTDEVICE8  _keyboardDevice;
@@ -33,7 +35,14 @@ private:
 	////--------
 	DWORD deltaTime;
 
+	
+	
+
 protected:
+	CInput *mInput;
+	CTimer *mTime;
+	CCamera *mCamera;
+
 	DWORD deltaTimePress;
 	DWORD timePressStart;
 	LPD3DXSPRITE _spriteHandler;
@@ -49,7 +58,7 @@ protected:
 
 	virtual void OnKeyUp(int keycode);
 	virtual void OnKeyDown(int keycode);
-	virtual void UpdateWorld(DWORD deltaTime);
+	virtual void UpdateWorld(DWORD, CCamera *, CInput*);
 	virtual void Render();
 	virtual void RenderTextAndSurface();
 	virtual void ProcessInput(DWORD deltaTime);
@@ -64,6 +73,6 @@ public:
 	int RunGame();
 	bool IsKeyDown(int keycode);	
 	~CGame(void);
-	
+
 };
 #endif

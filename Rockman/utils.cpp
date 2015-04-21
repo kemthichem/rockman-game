@@ -1,6 +1,6 @@
 ﻿#include "utils.h"
 
-LPDIRECT3DSURFACE9 LoadSurface(LPDIRECT3DDEVICE9 _d3ddv, LPCSTR filepath)
+LPDIRECT3DSURFACE9 CUtils::LoadSurface(LPDIRECT3DDEVICE9 _d3ddv, LPCSTR filepath)
 {
 	LPDIRECT3DSURFACE9 surface = NULL;
 	HRESULT re;
@@ -15,7 +15,7 @@ LPDIRECT3DSURFACE9 LoadSurface(LPDIRECT3DDEVICE9 _d3ddv, LPCSTR filepath)
 	re = D3DXLoadSurfaceFromFile(surface, NULL, NULL, filepath, NULL, D3DX_DEFAULT, 0, NULL);//load ảnh vào surface
 	return surface;
 }
-LPDIRECT3DTEXTURE9 LoadTexture(LPDIRECT3DDEVICE9 _d3ddv,LPCSTR filepath)
+LPDIRECT3DTEXTURE9 CUtils::LoadTexture(LPDIRECT3DDEVICE9 _d3ddv,LPCSTR filepath)
 {
 	HRESULT result;  
 	LPDIRECT3DTEXTURE9 texture;  
@@ -55,18 +55,18 @@ LPDIRECT3DTEXTURE9 LoadTexture(LPDIRECT3DDEVICE9 _d3ddv,LPCSTR filepath)
 	return texture;
 }
 
-float Max( float n1, float n2 )
+float CUtils::Max( float n1, float n2 )
 {
 	if(n1>n2) return n1;
 	return n2;
 }
  
- float Min( float n1, float n2 )
+ float CUtils::Min( float n1, float n2 )
  {
  	if(n1<n2) return n1;
  	return n2;
  }
-  float Lerp(float value1, float value2, float amount)
+  float CUtils::Lerp(float value1, float value2, float amount)
  {
 	return value1 + (value2 - value1) * amount;
 }

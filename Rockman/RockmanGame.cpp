@@ -9,17 +9,11 @@ CRockmanGame::CRockmanGame( HINSTANCE hInstance ):CGame(hInstance)
 CRockmanGame::~CRockmanGame(void)
 {
 	//delete rockman;
-	delete rockman;
-	/*	spriterockmanSmall->Release();*/
-	// 	spriteBullet->Release();
-	// 	spriteTurtle->Release();
-	// 	spriteBlocks->Release();
-	// 	spriteEnemy->Release();
-	// 	spriteItems->Release();
-	// 	spriterockmanConvert->Release();
-	// 	spriterockmanGun->Release();
-	// 	spriterockmanLarge->Release();
-	//spriteScenery->Release();
+	for(list<CEntity*>::const_iterator it = listObject.begin(); it != listObject.end(); it++)
+	{
+		delete *it;
+	} 
+	listObject.clear();
 }
 LPD3DXSPRITE CRockmanGame::GetSpriteHandle()
 {
@@ -31,11 +25,14 @@ LPDIRECT3DDEVICE9 CRockmanGame::GetDevice3d()
 }
 void CRockmanGame::Render()
 {
-	rockman->Render();
+	for(list<CEntity*>::const_iterator it = listObject.begin(); it != listObject.end(); it++)
+	{
+		(*it)->Render(GetSpriteHandle(), mCamera);
+	} 
 }
 void CRockmanGame::ProcessInput( DWORD deltaTime )
 {
-	if(IsKeyDown(DIK_RIGHT))
+	/*if(IsKeyDown(DIK_RIGHT))
 		rockman->TurnRight(deltaTime);
 	else
 		if(IsKeyDown(DIK_LEFT))
@@ -44,12 +41,14 @@ void CRockmanGame::ProcessInput( DWORD deltaTime )
 			if(IsKeyDown(DIK_DOWN))
 				rockman->Sitting(deltaTime);	
 			else
-				rockman->Stop(deltaTime);
+				rockman->Stop(deltaTime);*/
 }
-void CRockmanGame::UpdateWorld( DWORD deltaTime )
+void CRockmanGame::UpdateWorld(DWORD deltaTime, CCamera *_camera, CInput *_input)
 {
-	rockman->_Update(NULL, deltaTime);
-
+	for(list<CEntity*>::const_iterator it = listObject.begin(); it != listObject.end(); it++)
+	{
+		(*it)->Update(deltaTime, _camera, _input);
+	} 
 }
 void CRockmanGame::RenderTextAndSurface()
 {
@@ -57,31 +56,31 @@ void CRockmanGame::RenderTextAndSurface()
 }
 void CRockmanGame::OnKeyDown( int keyCode )
 {
-	switch (keyCode)
-	{
-	case DIK_LEFT:
-		//	SoundManager::GetInst()->PlayEffSound(SOUND_E_JUMP,false);
-		break;
-	case  DIK_RIGHT:
-		timePressStart = GetTickCount();
-		break;
-	case DIK_SPACE:
-		rockman->Jump();
-		break;
-	case DIK_A:
-		rockman->Shoot();
-		break;
-		//case DIK_P:
-		//if(!isPause)
-		//isPause = true;
-		//else isPause = false;
+	//switch (keyCode)
+	//{
+	//case DIK_LEFT:
+	//	//	SoundManager::GetInst()->PlayEffSound(SOUND_E_JUMP,false);
+	//	break;
+	//case  DIK_RIGHT:
+	//	timePressStart = GetTickCount();
+	//	break;
+	//case DIK_SPACE:
+	//	rockman->Jump();
+	//	break;
+	//case DIK_A:
+	//	rockman->Shoot();
+	//	break;
+	//	//case DIK_P:
+	//	//if(!isPause)
+	//	//isPause = true;
+	//	//else isPause = false;
 
-	}
+	//}
 	//screenManager->OnKeyDown(keyCode);
 }
 void CRockmanGame::OnKeyUp( int keycode )
 {
-	switch (keycode)
+	/*switch (keycode)
 	{
 	case DIK_LEFT:
 		deltaTimePress = (GetTickCount() - timePressStart)/100;
@@ -92,7 +91,7 @@ void CRockmanGame::OnKeyUp( int keycode )
 	case  DIK_A:
 		rockman->NoShoot();
 		break;
-	}
+	}*/
 	//screenManager->OnKeyUp(keycode);
 }
 void CRockmanGame::UpdateRectScreen()
@@ -154,12 +153,15 @@ void CRockmanGame::UpdateRectScreen()
 	//  	rectScreen.bottom = rectScreen.top+HEIGHTSCREEN;
 }
 void CRockmanGame::InitGame()
-{	//
-	rockman = new CRockman(D3DXVECTOR3(0,0,0));
-
+{	
+	//
+	rockman = new CRockman(D3DXVECTOR3(100,100,0));
+	CRockman::posInMap = D3DXVECTOR2(1000,600);
+	listObject.push_back(rockman);
 }
 LPD3DXFONT CRockmanGame::GetLPFont()
 {
 	return g_Font;
 }
+
 
