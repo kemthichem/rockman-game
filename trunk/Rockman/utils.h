@@ -3,7 +3,7 @@
 #include <d3dx9.h>
 #include "conio.h"
 
-static class CUtils
+class CUtils
 {
 public:
 	static LPDIRECT3DSURFACE9 LoadSurface(LPDIRECT3DDEVICE9 _d3ddv, LPCSTR filepath);
@@ -11,5 +11,4 @@ public:
 	static float Max(float n1, float n2);
 	static float Min(float n1, float n2);
 	static float Lerp(float value1, float value2, float amount);
-
 };

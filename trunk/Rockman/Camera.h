@@ -5,6 +5,8 @@
 #include <d3dx9.h>
 #include <windows.h>
 
+#include "Define.h"
+
 class CCamera
 {
 private:
@@ -13,13 +15,11 @@ private:
 	D3DXMATRIX mViewPort;
 	RECT mRectCamera;
 
-	bool mIsMoveRight;
-
 public:
 	void Update(D3DXVECTOR2);
 
 	CCamera(void);
-	CCamera(D3DXVECTOR2, bool);
+	CCamera(D3DXVECTOR2);
 
 	D3DXMATRIX GetMatrixCamera();
 	D3DXVECTOR2 GetPosCamera();

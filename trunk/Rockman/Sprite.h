@@ -13,7 +13,7 @@ private:
 	int numImagePerRow;
 	int numImagePerCol;
 	int count;
-	LPDIRECT3DTEXTURE9 image;
+	LPDIRECT3DTEXTURE9 mTexture;
 	void SetSpriteHandleDefault(LPD3DXSPRITE);
 	void SetTransform(LPD3DXSPRITE, float x, float y, float dir);
 //	void SetSpriteHandleDefault();

@@ -82,8 +82,8 @@ bool CGame::_InitWindow()
 		WS_OVERLAPPEDWINDOW, 
 		250,//x 
 		100, //y
-		800, 
-		600,
+		WIDTH_SCREEN, 
+		HEIGHT_SCREEN,
 		NULL, 
 		NULL, 
 		_hInstance, 
@@ -317,14 +317,14 @@ void CGame::InitGame()
 void CGame::RenderTextAndSurface()
 {
 }
-void CGame::UpdateWorld(DWORD deltaTime, CCamera *_camera, CInput *mInput)
+void CGame::UpdateWorld(float deltaTime, CCamera *_camera, CInput *mInput)
 {
 }
 void CGame::Render()
 {
 
 }
-void CGame::ProcessInput(DWORD _deltaTimePress)
+void CGame::ProcessInput(float _deltaTimePress)
 {
 }
 void CGame::OnKeyDown(int keycode)

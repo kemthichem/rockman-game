@@ -9,6 +9,8 @@ class CEntity
 {
 private:
 	bool mIsTurnLeft;
+	void UpdatePosition(float);
+	 
 protected:
 	D3DXVECTOR2 mVeloc;
 	D3DXVECTOR2 mAccel;
@@ -16,7 +18,7 @@ protected:
 	RECT mRect;
 	CSprite *mSprite;
 public:
-	virtual void Update(DWORD , CCamera *, CInput *);
+	virtual void Update(float , CCamera *, CInput *);
 	virtual void Render(LPD3DXSPRITE, CCamera*);
 	CEntity(void);
 	~CEntity(void);
