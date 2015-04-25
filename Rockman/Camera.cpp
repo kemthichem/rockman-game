@@ -1,5 +1,4 @@
 ﻿#include "Camera.h"
-
 #include "Rockman.h"
 
 CCamera::CCamera(void)
@@ -7,10 +6,9 @@ CCamera::CCamera(void)
 	mPos = D3DXVECTOR2(0,600);
 }
 
-CCamera::CCamera(D3DXVECTOR2 _pos, bool _isMoveRight)
+CCamera::CCamera(D3DXVECTOR2 _pos)
 {
 	mPos = _pos;
-	mIsMoveRight = _isMoveRight;
 }
 
 D3DXMATRIX CCamera::GetMatrixCamera()
@@ -29,11 +27,10 @@ CCamera::~CCamera(void)
 
 void CCamera::Update(D3DXVECTOR2 _pos)
 {
-	//if (_pos.x < CRockman::posInMap.x - 400)
-	//{
-		mPos.x = (float)_pos.x - 400;
-
-	//}
+	if (_pos.x < CRockman::posInMap.x - WIDTH_SCREEN/2)
+	{
+		//mPos.x = (float)_pos.x - WIDTH_SCREEN/2;
+	}
 
 	if (mPos.x < 0)
 	{

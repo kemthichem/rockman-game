@@ -11,8 +11,8 @@ class CRockmanGame : public CGame
 {	
 private:
 	void Render();
-	void UpdateWorld(DWORD, CCamera*, CInput*);
-	void ProcessInput(DWORD deltaTime);
+	void UpdateWorld(float, CCamera*, CInput*);
+	void ProcessInput(float deltaTime);
 	void RenderTextAndSurface();
 	void OnKeyDown(int keyCode);
 	void OnKeyUp(int keycode);

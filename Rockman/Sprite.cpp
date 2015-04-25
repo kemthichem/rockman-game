@@ -1,14 +1,14 @@
 ﻿#include "Sprite.h"
 
-#define  timePerFrame (4.0f)
+#define  TIME_PER_ANIMATION (4.0f)
 
 
 CSprite::CSprite(void)
 {
 }
-CSprite::CSprite(LPDIRECT3DTEXTURE9 _image, int _width, int _height, int _numImagePerCol, int _numImagePerRow)
+CSprite::CSprite(LPDIRECT3DTEXTURE9 _texture, int _width, int _height, int _numImagePerCol, int _numImagePerRow)
 {
-	image = _image;
+	mTexture = _texture;
 	width = _width;
 	height = _height;
 	numImagePerCol = _numImagePerRow;
@@ -22,7 +22,7 @@ CSprite::CSprite(LPDIRECT3DTEXTURE9 _image, int _width, int _height, int _numIma
 }
 void CSprite::Next()
 {
-	waitNextImage+=timePerFrame;
+	waitNextImage += TIME_PER_ANIMATION;
 	if(waitNextImage>=timePerImage)  //Chờ đến khi quá thời gian quy định thì chuyển frame kế tiếp
 	{
 		//	index = (index + count-1)% count;
@@ -38,19 +38,14 @@ void CSprite::NextOf(int indexStart, int indexEnd)
 {
 	if(index<indexStart)
 		index = indexStart;
-	waitNextImage+=timePerFrame;
-	if(waitNextImage>=timePerImage)  //Chờ đến khi quá thời gian quy định thì chuyển frame kế tiếp
-	{
-		/*index =(index<indexStart)?indexStart:index;
-		index++;
-		if(index ==indexEnd+1)
-		index = indexStart;*/
+	waitNextImage+=TIME_PER_ANIMATION;
+	if(waitNextImage>=timePerImage)  
+	{		
 		index++;
 		if (index>indexEnd)
 		{
 			index = indexStart;
 		}
-
 		waitNextImage=0;
 	}
 }
@@ -66,7 +61,7 @@ void CSprite::Render(LPD3DXSPRITE _spriteHandler, D3DXVECTOR3 _pos, int _dir)
 	//SetFlipImage(dir, (float)x);
 	//SetTransform(_spriteHandler, x,y,dir);
 	_spriteHandler->Draw(
-		image,
+		mTexture,
 		&srect,
 		NULL,
 		&_pos,
@@ -96,7 +91,7 @@ void CSprite::NextAt( int index1, int index2)
 	}
 	else if(index<index1)
 		index = index1;
-	waitNextImage+=timePerFrame;
+	waitNextImage+=TIME_PER_ANIMATION;
 	if(waitNextImage>=timePerImage)  //Chờ đến khi quá thời gian quy định thì chuyển framekế tiếp
 	{
 		if(index==index1)
@@ -108,7 +103,7 @@ void CSprite::NextAt( int index1, int index2)
 }
 CSprite::~CSprite(void)
 {
-	image->Release();
+	mTexture->Release();
 }
 void CSprite::SetTransform(LPD3DXSPRITE _spriteHandler, float x,float y, float dir)
 {

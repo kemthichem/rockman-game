@@ -1,4 +1,6 @@
 #include "Entity.h"
+#include <windows.h>
+#include <stdio.h>
 
 
 CEntity::CEntity(void)
@@ -8,9 +10,15 @@ CEntity::CEntity(void)
 	mAccel = D3DXVECTOR2(0,0);
 }
 
-void CEntity::Update(DWORD deltaTime, CCamera *_camera, CInput *_input){
+void CEntity::Update(float deltaTime, CCamera *_camera, CInput *_input){
+	//set is turn left
 	if (mVeloc.x < 0) mIsTurnLeft = true;
 	else if (mVeloc.x > 0) mIsTurnLeft = false;
+
+	//set position
+	UpdatePosition(deltaTime);
+
+
 
 	if (1/*is rockman*/)
 	{
@@ -46,6 +54,12 @@ void CEntity::Render(LPD3DXSPRITE _spriteHandler, CCamera* _camera){
 	mSprite->Render(_spriteHandler, D3DXVECTOR3(mPos.x,mPos.y,0), 1);
 }
 
+void CEntity::UpdatePosition(float _time)
+{
+	mVeloc += mAccel * _time;
+	mPos.x += mVeloc.x * _time + 1.0f/2 *mAccel.x*_time*_time;
+	mPos.y += mVeloc.y * _time + 1.0f/2 *mAccel.y*_time*_time;
+}
 
 CEntity::~CEntity(void)
 {

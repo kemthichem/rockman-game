@@ -58,10 +58,10 @@ protected:
 
 	virtual void OnKeyUp(int keycode);
 	virtual void OnKeyDown(int keycode);
-	virtual void UpdateWorld(DWORD, CCamera *, CInput*);
+	virtual void UpdateWorld(float, CCamera *, CInput*);
 	virtual void Render();
 	virtual void RenderTextAndSurface();
-	virtual void ProcessInput(DWORD deltaTime);
+	virtual void ProcessInput(float deltaTime);
 	virtual void InitGame();
 
 public:

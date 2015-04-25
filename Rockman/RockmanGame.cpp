@@ -30,7 +30,7 @@ void CRockmanGame::Render()
 		(*it)->Render(GetSpriteHandle(), mCamera);
 	} 
 }
-void CRockmanGame::ProcessInput( DWORD deltaTime )
+void CRockmanGame::ProcessInput( float deltaTime )
 {
 	/*if(IsKeyDown(DIK_RIGHT))
 		rockman->TurnRight(deltaTime);
@@ -43,7 +43,7 @@ void CRockmanGame::ProcessInput( DWORD deltaTime )
 			else
 				rockman->Stop(deltaTime);*/
 }
-void CRockmanGame::UpdateWorld(DWORD deltaTime, CCamera *_camera, CInput *_input)
+void CRockmanGame::UpdateWorld(float deltaTime, CCamera *_camera, CInput *_input)
 {
 	for(list<CEntity*>::const_iterator it = listObject.begin(); it != listObject.end(); it++)
 	{
@@ -155,8 +155,8 @@ void CRockmanGame::UpdateRectScreen()
 void CRockmanGame::InitGame()
 {	
 	//
-	rockman = new CRockman(D3DXVECTOR3(100,100,0));
-	CRockman::posInMap = D3DXVECTOR2(1000,600);
+	rockman = new CRockman(D3DXVECTOR3(100,600,0));
+	CRockman::posInMap = D3DXVECTOR2(2000,600);
 	listObject.push_back(rockman);
 }
 LPD3DXFONT CRockmanGame::GetLPFont()
