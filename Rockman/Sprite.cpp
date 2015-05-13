@@ -6,13 +6,13 @@
 CSprite::CSprite(void)
 {
 }
-CSprite::CSprite(LPDIRECT3DTEXTURE9 _texture, int _width, int _height, int _numImagePerCol, int _numImagePerRow)
+CSprite::CSprite(LPDIRECT3DTEXTURE9 _texture, int _width, int _height, int _countCol, int _countRow)
 {
 	mTexture = _texture;
 	width = _width;
 	height = _height;
-	numImagePerCol = _numImagePerRow;
-	numImagePerRow = _numImagePerCol;
+	numImagePerCol = _countRow;
+	numImagePerRow = _countCol;
 	count = numImagePerCol*numImagePerRow;
 	index = 0;
 	waitNextImage = 0;

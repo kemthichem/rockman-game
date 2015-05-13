@@ -5,15 +5,15 @@
 
 CEntity::CEntity(void)
 {
-	mIsTurnLeft = false;
-	mVeloc = D3DXVECTOR2(0,0);
-	mAccel = D3DXVECTOR2(0,0);
+	m_isTurnLeft = false;
+	m_veloc = D3DXVECTOR2(0,0);
+	m_accel = D3DXVECTOR2(0,0);
 }
 
 void CEntity::Update(float deltaTime, CCamera *_camera, CInput *_input){
 	//set is turn left
-	if (mVeloc.x < 0) mIsTurnLeft = true;
-	else if (mVeloc.x > 0) mIsTurnLeft = false;
+	if (m_veloc.x < 0) m_isTurnLeft = true;
+	else if (m_veloc.x > 0) m_isTurnLeft = false;
 
 	//set position
 	UpdatePosition(deltaTime);
@@ -22,7 +22,7 @@ void CEntity::Update(float deltaTime, CCamera *_camera, CInput *_input){
 
 	if (1/*is rockman*/)
 	{
-		_camera->Update(D3DXVECTOR2(mPos.x, mPos.y));
+		_camera->Update(D3DXVECTOR2(m_pos.x, m_pos.y));
 	}
 }
 
@@ -30,13 +30,13 @@ void CEntity::Render(LPD3DXSPRITE _spriteHandler, CCamera* _camera){
 
 	D3DXMATRIX Scale;
 	D3DXMatrixIdentity(&Scale);
-	D3DXMatrixTransformation2D(&Scale, &D3DXVECTOR2(mPos.x, mPos.y), 0.0f, &D3DXVECTOR2(1.f, -1.f),NULL, 0.f, NULL);
+	D3DXMatrixTransformation2D(&Scale, &D3DXVECTOR2(m_pos.x, m_pos.y), 0.0f, &D3DXVECTOR2(1.f, -1.f),NULL, 0.f, NULL);
 	D3DXMatrixMultiply(&Scale,&Scale, &_camera->GetMatrixCamera());
 
 	//flip sprite when move left
 	D3DXMATRIX matrixFlip;
-	D3DXVECTOR2 trans(2*(mPos.x - _camera->GetPosCamera().x ) + mSprite->widthOfSprite, 0);
-	if (mIsTurnLeft) {
+	D3DXVECTOR2 trans(2*(m_pos.x - _camera->GetPosCamera().x ) + m_sprite->widthOfSprite, 0);
+	if (m_isTurnLeft) {
 		D3DXMatrixTransformation2D(&matrixFlip
 			,NULL//center of sprite
 			,0.0f
@@ -51,17 +51,17 @@ void CEntity::Render(LPD3DXSPRITE _spriteHandler, CCamera* _camera){
 
 	_spriteHandler->SetTransform(&Scale);
 
-	mSprite->Render(_spriteHandler, D3DXVECTOR3(mPos.x,mPos.y,0), 1);
+	m_sprite->Render(_spriteHandler, D3DXVECTOR3(m_pos.x,m_pos.y,0), 1);
 }
 
 void CEntity::UpdatePosition(float _time)
 {
-	mVeloc += mAccel * _time;
-	mPos.x += mVeloc.x * _time + 1.0f/2 *mAccel.x*_time*_time;
-	mPos.y += mVeloc.y * _time + 1.0f/2 *mAccel.y*_time*_time;
+	m_veloc += m_accel * _time;
+	m_pos.x += m_veloc.x * _time + 1.0f/2 *m_accel.x*_time*_time;
+	m_pos.y += m_veloc.y * _time + 1.0f/2 *m_accel.y*_time*_time;
 }
 
 CEntity::~CEntity(void)
 {
-	delete mSprite;
+	delete m_sprite;
 }

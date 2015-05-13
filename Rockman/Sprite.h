@@ -23,7 +23,7 @@ public:
 	int widthOfSprite;
 	int heightOfSprite;
 	CSprite(void);
-	CSprite(LPDIRECT3DTEXTURE9 _image, int _widthOfImage, int _heightOfImage, int _imagePerRow, int _imagePerCol);
+	CSprite(LPDIRECT3DTEXTURE9 _image, int _widthOfImage, int _heightOfImage, int _countCol, int _countRow);
 	void Render(LPD3DXSPRITE _spriteHandler, D3DXVECTOR3 _pos, int _dir);
 	void Next();
 	void NextOf(int indexStart, int indexEnd);

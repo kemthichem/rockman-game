@@ -14,11 +14,7 @@ private:
 	void UpdateWorld(float, CCamera*, CInput*);
 	void ProcessInput(float deltaTime);
 	void RenderTextAndSurface();
-	void OnKeyDown(int keyCode);
-	void OnKeyUp(int keycode);
 	void InitGame();
-	void UpdateRectScreen();
-
 public:
 	LPD3DXSPRITE GetSpriteHandle();
 	LPDIRECT3DDEVICE9 GetDevice3d();

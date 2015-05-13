@@ -81,32 +81,36 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BigEye.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="CusRect.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="Land.cpp" />
+    <ClCompile Include="QuadTree.cpp" />
+    <ClCompile Include="QuadtreeNode.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Rockman.cpp" />
     <ClCompile Include="RockmanGame.cpp" />
     <ClCompile Include="Sprite.cpp" />
-    <ClCompile Include="StaticObject.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="utils.cpp" />
     <ClCompile Include="winmain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BigEye.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="CusRect.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="Land.h" />
+    <ClInclude Include="QuadTree.h" />
+    <ClInclude Include="QuadtreeNode.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Rockman.h" />
     <ClInclude Include="RockmanGame.h" />
     <ClInclude Include="Sprite.h" />
-    <ClInclude Include="StaticObject.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>

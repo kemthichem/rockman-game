@@ -3,21 +3,21 @@
 
 CCamera::CCamera(void)
 {
-	mPos = D3DXVECTOR2(0,600);
+	m_pos = D3DXVECTOR2(0,600);
 }
 
 CCamera::CCamera(D3DXVECTOR2 _pos)
 {
-	mPos = _pos;
+	m_pos = _pos;
 }
 
 D3DXMATRIX CCamera::GetMatrixCamera()
 {
-	D3DXMatrixIdentity(&mViewPort);
-	D3DXMatrixAffineTransformation(&mViewPort , 1, &D3DXVECTOR3(0,0,0), &D3DXQUATERNION(0,0,0,0), &D3DXVECTOR3((float)-mPos.x, (float) mPos.y, 0));
-	mViewPort._22 = -1;
+	D3DXMatrixIdentity(&m_viewPort);
+	D3DXMatrixAffineTransformation(&m_viewPort , 1, &D3DXVECTOR3(0,0,0), &D3DXQUATERNION(0,0,0,0), &D3DXVECTOR3((float)-m_pos.x, (float) m_pos.y, 0));
+	m_viewPort._22 = -1;
 
-	return mViewPort;
+	return m_viewPort;
 }
 
 
@@ -32,18 +32,18 @@ void CCamera::Update(D3DXVECTOR2 _pos)
 		//mPos.x = (float)_pos.x - WIDTH_SCREEN/2;
 	}
 
-	if (mPos.x < 0)
+	if (m_pos.x < 0)
 	{
-		mPos.x =  0;
+		m_pos.x =  0;
 	}
 
-	mRectCamera.left = mPos.x;
-	mRectCamera.right = mRectCamera.left + 900;
-	mRectCamera.top = 1200;
-	mRectCamera.bottom =0;
+	m_rectCamera.left = m_pos.x;
+	m_rectCamera.right = m_rectCamera.left + 900;
+	m_rectCamera.top = 1200;
+	m_rectCamera.bottom =0;
 }
 
 D3DXVECTOR2 CCamera::GetPosCamera()
 {
-	return mPos;
+	return m_pos;
 }
