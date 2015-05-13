@@ -1,4 +1,6 @@
 #include "RockmanGame.h"
+#include "BigEye.h"
+#include "Land.h"
 
 CRockmanGame::CRockmanGame(void)
 {
@@ -27,7 +29,7 @@ void CRockmanGame::Render()
 {
 	for(list<CEntity*>::const_iterator it = listObject.begin(); it != listObject.end(); it++)
 	{
-		(*it)->Render(GetSpriteHandle(), mCamera);
+		(*it)->Render(GetSpriteHandle(), m_camera);
 	} 
 }
 void CRockmanGame::ProcessInput( float deltaTime )
@@ -54,110 +56,37 @@ void CRockmanGame::RenderTextAndSurface()
 {
 	//screenManager->Render();
 }
-void CRockmanGame::OnKeyDown( int keyCode )
-{
-	//switch (keyCode)
-	//{
-	//case DIK_LEFT:
-	//	//	SoundManager::GetInst()->PlayEffSound(SOUND_E_JUMP,false);
-	//	break;
-	//case  DIK_RIGHT:
-	//	timePressStart = GetTickCount();
-	//	break;
-	//case DIK_SPACE:
-	//	rockman->Jump();
-	//	break;
-	//case DIK_A:
-	//	rockman->Shoot();
-	//	break;
-	//	//case DIK_P:
-	//	//if(!isPause)
-	//	//isPause = true;
-	//	//else isPause = false;
-
-	//}
-	//screenManager->OnKeyDown(keyCode);
-}
-void CRockmanGame::OnKeyUp( int keycode )
-{
-	/*switch (keycode)
-	{
-	case DIK_LEFT:
-		deltaTimePress = (GetTickCount() - timePressStart)/100;
-		break;
-	case DIK_RIGHT:
-		deltaTimePress = (GetTickCount() - timePressStart)/100;
-		break;
-	case  DIK_A:
-		rockman->NoShoot();
-		break;
-	}*/
-	//screenManager->OnKeyUp(keycode);
-}
-void CRockmanGame::UpdateRectScreen()
-{
-	// 	LONG centerX = rockman->rectagle.left-(WIDTHSCREEN/2);
-	// 	int distance = 100;
-	// 	if(rockman->rectagle.left>WIDTHSCREEN/2)
-	// 	{
-	// 		if(rockman->IsTurn())
-	// 		{
-	// 			stand = false;
-	// 			if(rockman->rectagle.left>(rectScreen.left+WIDTHSCREEN)-(WIDTHSCREEN/2-distance))
-	// 			{
-	// 				rectScreen.left = rockman->rectagle.left-(WIDTHSCREEN/2+distance);
-	// 				transXLeft = true;
-	// 			}
-	// 			else if(rockman->rectagle.left<rectScreen.left+(WIDTHSCREEN/2-distance))
-	// 			{
-	// 				rectScreen.left = rockman->rectagle.left-(WIDTHSCREEN/2-distance);
-	// 				transXLeft = false;
-	// 			}
-	// 		}
-	// 		else
-	// 		{
-	// 			if(!stand){timeStartStand = GetTickCount();stand = true;}
-	// 			if(GetTickCount()-timeStartStand>300)
-	// 			{
-	// 
-	// 				if(!transXLeft)
-	// 				{
-	// 					if(rectScreen.left > centerX)
-	// 					{
-	// 						rectScreen.left-=8;
-	// 						if(rectScreen.left<centerX) rectScreen.left = centerX;					 
-	// 					}
-	// 				}
-	// 				else
-	// 					if(rectScreen.left < centerX)
-	// 					{
-	// 						rectScreen.left+=8;
-	// 						if(rectScreen.left>centerX) rectScreen.left = centerX;					 
-	// 					}
-	// 	
-	// 			}
-	// 		}		
-	// 	}
-	// 	else
-	// 		if(rectScreen.left>0)
-	// 		{
-	// 			rectScreen.left-=8;
-	// 		}
-	// 	rectScreen.right = rectScreen.left+WIDTHSCREEN;
-	// 	if(rockman->rectagle.top>HEIGHTSCREEN/2+200)
-	// 	rectScreen.top = rockman->rectagle.top - (HEIGHTSCREEN/2);
-	// 	else
-	// 		rectScreen.top = 0;
-	// 
-	// 	// rectScreen.top = rectScreen.top>0?rectScreen.top:0;
-	//  	rectScreen.bottom = rectScreen.top+HEIGHTSCREEN;
-}
 void CRockmanGame::InitGame()
 {	
 	//
 	rockman = new CRockman(D3DXVECTOR3(100,600,0));
 	CRockman::posInMap = D3DXVECTOR2(2000,600);
+
+	CLand *land[15];
+	land[0] = new CLand(D3DXVECTOR3(000,30,0));
+	land[1] = new CLand(D3DXVECTOR3(70,30,0));
+	land[2] = new CLand(D3DXVECTOR3(140,30,0));
+	land[3] = new CLand(D3DXVECTOR3(210,30,0));
+	land[4] = new CLand(D3DXVECTOR3(280,30,0));
+	land[5] = new CLand(D3DXVECTOR3(350,30,0));
+	land[6] = new CLand(D3DXVECTOR3(420,30,0));
+	land[7] = new CLand(D3DXVECTOR3(490,30,0));
+	land[8] = new CLand(D3DXVECTOR3(560,30,0));
+	land[9] = new CLand(D3DXVECTOR3(630,30,0));
+	land[10] = new CLand(D3DXVECTOR3(700,30,0));
+	land[11] = new CLand(D3DXVECTOR3(770,30,0));
+	land[12] = new CLand(D3DXVECTOR3(840,30,0));
+	land[13] = new CLand(D3DXVECTOR3(910,30,0));
+	land[14] = new CLand(D3DXVECTOR3(980,30,0));
+
+	CBigEye *bigEye = new CBigEye(D3DXVECTOR3(300,135,0));
+
 	listObject.push_back(rockman);
+	for (int i = 0; i < 15; i++) {
+		if (land[i] != NULL)
+			listObject.push_back(land[i]);
+	}
+	listObject.push_back(bigEye);
 }
 LPD3DXFONT CRockmanGame::GetLPFont()
 {

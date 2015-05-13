@@ -10,10 +10,10 @@
 class CCamera
 {
 private:
-	D3DXVECTOR2 mPos;
-	D3DXVECTOR2 mSize;
-	D3DXMATRIX mViewPort;
-	RECT mRectCamera;
+	D3DXVECTOR2 m_pos;
+	D3DXVECTOR2 m_size;
+	D3DXMATRIX m_viewPort;
+	RECT m_rectCamera;
 
 public:
 	void Update(D3DXVECTOR2);

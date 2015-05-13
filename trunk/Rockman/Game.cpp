@@ -4,7 +4,7 @@
 CGame::CGame(HINSTANCE hInstance)
 {
 	_hInstance = hInstance;
-	deltaTime = deltaTimePress = 0;
+	m_deltaTime = deltaTimePress = 0;
 }
 
 CGame::CGame()
@@ -15,10 +15,10 @@ CGame::CGame()
 void CGame::Init()
 {
 
-	mTime = new CTimer();
-	mTime->SetMaxFps(60.0f);
+	m_time = new CTimer();
+	m_time->SetMaxFps(60.0f);
 
-	mCamera = new CCamera();
+	m_camera = new CCamera();
 
 	_InitWindow();
 	_InitDirectX();
@@ -190,8 +190,8 @@ bool CGame::_InitInput()
 	//	return true;
 
 
-	mInput = new CInput(); 
-	if (!mInput->InitKeyboard(_hInstance,_hWnd))
+	m_input = new CInput(); 
+	if (!m_input->InitKeyboard(_hInstance,_hWnd))
 	{
 		MessageBox(_hWnd, "Can't create input", "Error", MB_OK );
 
@@ -259,15 +259,15 @@ void CGame::Release()
 		_backbuffer = NULL;
 	}
 
-	if (mInput!=NULL)
+	if (m_input!=NULL)
 	{
-		mInput->Kill_Keyboard();
-		delete mInput;
+		m_input->Kill_Keyboard();
+		delete m_input;
 	}
 }
 int CGame::RunGame()
 {
-	mTime->StartCount();
+	m_time->StartCount();
 	MSG msg;
 	ZeroMemory(&msg,sizeof(msg));
 	int done=0;
@@ -284,10 +284,10 @@ int CGame::RunGame()
 		}
 		else
 		{
-			if (mTime->GetTime () < 1.0f)
+			if (m_time->GetTime () < 1.0f)
 			{
-				mTime->EndCount();
-				mInput->ProcessKeyBoard();
+				m_time->EndCount();
+				m_input->ProcessKeyBoard();
 				_Update();
 				_Render();
 			}
@@ -308,7 +308,7 @@ void CGame::_Process()
 }
 void CGame::_Update()
 {
-	UpdateWorld(mTime->GetDeltaTime(), mCamera, mInput);
+	UpdateWorld(m_time->GetDeltaTime(), m_camera, m_input);
 }
 //------------------------
 void CGame::InitGame()

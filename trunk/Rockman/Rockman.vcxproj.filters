@@ -37,6 +37,9 @@
     <Filter Include="ObjectGame">
       <UniqueIdentifier>{ee672a0f-5124-4021-af8e-a0714cc41ae8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Quadtree">
+      <UniqueIdentifier>{f5e2a387-66bd-4f3c-a389-3281ae76e8c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="winmain.cpp">
@@ -60,23 +63,29 @@
     <ClCompile Include="ResourceManager.cpp">
       <Filter>ResourceManager</Filter>
     </ClCompile>
-    <ClCompile Include="CusRect.cpp">
-      <Filter>Base</Filter>
-    </ClCompile>
     <ClCompile Include="Input.cpp">
       <Filter>Input</Filter>
     </ClCompile>
     <ClCompile Include="utils.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="StaticObject.cpp">
-      <Filter>Base</Filter>
-    </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Time.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>ObjectGame</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadTree.cpp">
+      <Filter>Quadtree</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadtreeNode.cpp">
+      <Filter>Quadtree</Filter>
+    </ClCompile>
+    <ClCompile Include="BigEye.cpp">
+      <Filter>ObjectGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Land.cpp">
+      <Filter>ObjectGame</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -89,17 +98,11 @@
     <ClInclude Include="Rockman.h">
       <Filter>Player</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Camera</Filter>
     </ClInclude>
     <ClInclude Include="ResourceManager.h">
       <Filter>ResourceManager</Filter>
-    </ClInclude>
-    <ClInclude Include="CusRect.h">
-      <Filter>Base</Filter>
     </ClInclude>
     <ClInclude Include="Input.h">
       <Filter>Input</Filter>
@@ -107,17 +110,29 @@
     <ClInclude Include="utils.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="StaticObject.h">
-      <Filter>Base</Filter>
-    </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Time.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Define.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="QuadtreeNode.h">
+      <Filter>Quadtree</Filter>
+    </ClInclude>
+    <ClInclude Include="QuadTree.h">
+      <Filter>Quadtree</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>ObjectGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Land.h">
+      <Filter>ObjectGame</Filter>
+    </ClInclude>
+    <ClInclude Include="BigEye.h">
+      <Filter>ObjectGame</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

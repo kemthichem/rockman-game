@@ -27,6 +27,8 @@ void CResourceManager::LoadResource(LPDIRECT3DDEVICE9 _d3ddv)
 	mD3ddv = _d3ddv;
 
 	mMapTexture[IMAGE_ROCKMAN] = CUtils::LoadTexture(mD3ddv,IMAGE_ROCKMAN);
+	mMapTexture[IMAGE_TILES] = CUtils::LoadTexture(mD3ddv,IMAGE_TILES);
+	mMapTexture[IMAGE_ENEMIES] = CUtils::LoadTexture(mD3ddv,IMAGE_ENEMIES);
 	mMapSurface["Resource/background1.png"] = CUtils::LoadSurface(mD3ddv,"Resource/background1.png");
 }
 

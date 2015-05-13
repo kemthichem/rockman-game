@@ -24,7 +24,7 @@ private:
 
 	bool m_isCollisionBottom;
 
-	ActionRockman mAction;
+	ActionRockman m_action;
 	void UpdateSprite();
 
 	void Stand();

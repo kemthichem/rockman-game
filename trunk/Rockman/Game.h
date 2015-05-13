@@ -33,15 +33,15 @@ private:
 	void _ProcessKeyBoard();//
 
 	////--------
-	DWORD deltaTime;
+	DWORD m_deltaTime;
 
 	
 	
 
 protected:
-	CInput *mInput;
-	CTimer *mTime;
-	CCamera *mCamera;
+	CInput *m_input;
+	CTimer *m_time;
+	CCamera *m_camera;
 
 	DWORD deltaTimePress;
 	DWORD timePressStart;
