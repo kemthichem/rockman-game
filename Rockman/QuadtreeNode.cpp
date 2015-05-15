@@ -1,4 +1,4 @@
-#include "QuadtreeNode.h"
+#include "QuadTreeNode.h"
 
 
 CQuadTreeNode::CQuadTreeNode(void)

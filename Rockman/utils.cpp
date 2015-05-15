@@ -55,6 +55,23 @@ LPDIRECT3DTEXTURE9 CUtils::LoadTexture(LPDIRECT3DDEVICE9 _d3ddv,LPCSTR filepath)
 	return texture;
 }
 
+vector<string> CUtils::SplitString(std::string str, char ch)
+{
+	vector<string> result;
+	int n = str.size();
+	string line = "";
+	for(int i = 0; i < n; i++){
+		while((i<n)&&(str.at(i)!=ch))
+		{
+			line.push_back(str.at(i));
+			i++;
+		}
+		result.push_back(line);
+		line.clear();		
+	}
+	return result;
+}
+
 float CUtils::Max( float n1, float n2 )
 {
 	if(n1>n2) return n1;

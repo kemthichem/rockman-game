@@ -28,6 +28,7 @@ public:
 	static string mPathFileMap;
 	static char* GetFilePathBG();
 	static CResourceManager* GetInstance();
+	static void Release();
 	void LoadResource(LPDIRECT3DDEVICE9);
 	LPDIRECT3DTEXTURE9 GetSprite(string);
 	LPDIRECT3DSURFACE9 GetSurface(string);

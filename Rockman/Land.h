@@ -8,7 +8,7 @@ private:
 protected:
 
 public:
-	CLand(D3DXVECTOR3 _pos);
+	CLand(int _id, D3DXVECTOR3 _pos);
 	~CLand(void);
 
 	//method

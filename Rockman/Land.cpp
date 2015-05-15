@@ -1,8 +1,10 @@
 #include "Land.h"
 
 
-CLand::CLand(D3DXVECTOR3 _pos)
+CLand::CLand(int _id, D3DXVECTOR3 _pos)
 {
+	m_Id = _id;
+	m_Type = ObjectType::LANDTYPE;
 	m_sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES), 70, 30, 1, 1);
 	m_pos = _pos;
 	m_accel = D3DXVECTOR2(0,0);	
