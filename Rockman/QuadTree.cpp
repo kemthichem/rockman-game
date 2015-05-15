@@ -62,21 +62,23 @@ void CQuadTree::LoadNodeInFile(char* _pathFileTree)
 vector<CEntity*> CQuadTree::GetListObjectInRect(RECT _rect)
 {
 	vector<CQuadTreeNode*> listnode;
-	vector<CEntity*> ListObjects;
+	vector<CEntity*> listObjects;
 	m_listObjectInViewport.clear();
 	m_listNodeInViewPort.clear();
 	listnode = GetListNodeIntersectRect(m_nodeRoot,_rect);
 	for (int i = 0; i < listnode.size(); i++)
 	{
+		vector<CEntity*> listObjectInNode = listnode[i]->GetListObjectInNode();
+		listObjects.insert(listObjects.begin(), listObjectInNode.begin(), listObjectInNode.end());/*
 		if(listnode[i]->m_ListObject.size() !=0){
 			for (int j = 0; j < listnode[i]->m_ListObject.size(); j++)
 			{
-				ListObjects.push_back(listnode[i]->m_ListObject[j]);
+				listObjects.push_back(listnode[i]->m_ListObject[j]);
 			}
-		}
+		}*/
 	}
 
-	return ListObjects;
+	return listObjects;
 }
 
 void CQuadTree::Update(CCamera* _camera, float _time)
@@ -157,12 +159,12 @@ void CQuadTree::CreateTree(CQuadTreeNode *_nodeParent,map<int,CQuadTreeNode*> _m
 
 vector<CQuadTreeNode*> CQuadTree::GetListNodeIntersectRect(CQuadTreeNode* _nodeParent,RECT _rect)
 {
-	if(isBound(_rect,_nodeParent->m_Rect) && _nodeParent->m_ListIdObject.size()!=0)
+	if(IsBound(_rect,_nodeParent->m_Rect) && _nodeParent->m_ListIdObject.size()!=0)
 	{
 		m_listNodeInViewPort.push_back(_nodeParent);
 	}
 	
-	if(_nodeParent->m_ListIdObject.size()==0 && isBound(_nodeParent->m_Rect,_rect))
+	if(_nodeParent->m_ListIdObject.size()==0 && IsBound(_nodeParent->m_Rect,_rect))
 	{
 		if(_nodeParent->ChildTopLeft != NULL)
 		{
@@ -185,7 +187,7 @@ vector<CQuadTreeNode*> CQuadTree::GetListNodeIntersectRect(CQuadTreeNode* _nodeP
 	return m_listNodeInViewPort;
 }
 
-bool CQuadTree::isBound(RECT _rect1,RECT _rect2)
+bool CQuadTree::IsBound(RECT _rect1,RECT _rect2)
 {
 	if (_rect1.right <= _rect2.left)
 		return false;
