@@ -103,7 +103,6 @@ void CSprite::NextAt( int index1, int index2)
 }
 CSprite::~CSprite(void)
 {
-	mTexture->Release();
 }
 void CSprite::SetTransform(LPD3DXSPRITE _spriteHandler, float x,float y, float dir)
 {

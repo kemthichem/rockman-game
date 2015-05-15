@@ -5,11 +5,14 @@
 #include "Game.h"
 #include "Entity.h"
 #include "Rockman.h"
+#include "QuadTree.h"
 
 
 class CRockmanGame : public CGame
 {	
 private:
+	CQuadTree *quadTree;
+
 	void Render();
 	void UpdateWorld(float, CCamera*, CInput*);
 	void ProcessInput(float deltaTime);
@@ -23,7 +26,7 @@ public:
 	CRockmanGame(HINSTANCE hInstance);
 	CRockman *rockman;
 
-	list<CEntity*> listObject;
+	list<CEntity*> m_listObject;
 	~CRockmanGame(void);
 };
 

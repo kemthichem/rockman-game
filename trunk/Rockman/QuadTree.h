@@ -10,6 +10,12 @@ class CQuadTree
 private:
 	map<int,CQuadTreeNode*> m_mapNode ;
 	vector<CQuadTreeNode*> m_listNodeInViewPort;
+	vector<CEntity*> m_listObjectInViewport;
+
+
+	vector<CQuadTreeNode*> GetListNodeIntersectRect(CQuadTreeNode*,RECT );
+	bool isBound(RECT ,RECT);
+
 public:
 	CQuadTree(void);
 	~CQuadTree(void);
@@ -17,10 +23,11 @@ public:
 	CQuadTreeNode* m_nodeRoot;
 
 	void LoadNodeInFile(char*);
-	void MapIdToObjectInTree(vector<CEntity*> _listobject);
+	void MapIdToObjectInTree(CQuadTreeNode* _nodeParent, vector<CEntity*> _listobject);
 	vector<CEntity*> GetListObjectInRect(RECT _rect);
 	void Update(CCamera* _camera, float _time);
-	void Draw (LPD3DXSPRITE _spriteHandle);
+	void Draw (LPD3DXSPRITE _spriteHandle, CCamera* _camera);
+	void CreateTree(CQuadTreeNode *_NodeParent,map<int,CQuadTreeNode*> _map);
 };
 
 #endif//_QUADTREE_H_

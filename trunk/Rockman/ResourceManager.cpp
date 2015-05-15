@@ -11,8 +11,18 @@ CResourceManager::CResourceManager(void)
 
 CResourceManager::~CResourceManager(void)
 {
-	mMapTexture.clear();
+	
+	for (map<string, LPDIRECT3DTEXTURE9>::iterator it = mMapTexture.begin(); it != mMapTexture.end(); ++it)
+	{
+			it->second->Release();
+	}
+	for (map<string, LPDIRECT3DSURFACE9>::iterator it = mMapSurface.begin(); it != mMapSurface.end(); ++it)
+	{
+			it->second->Release();
+	}
+
 	mMapSurface.clear();
+	mMapTexture.clear();
 }
 
 CResourceManager* CResourceManager::GetInstance()
@@ -48,5 +58,11 @@ char* CResourceManager::GetFilePathBG()
 	strcpy_s(cstr, mPathFileBg.size(), mPathFileBg.c_str());
 	cstr[mPathFileBg.size()] = '\0';
 	return cstr;
+}
+
+void CResourceManager::Release()
+{
+	if(CResourceManager::instance!=NULL)
+		delete instance;
 }
 

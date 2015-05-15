@@ -2,6 +2,11 @@
 #include <d3d9.h>
 #include <d3dx9.h>
 #include "conio.h"
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
 
 class CUtils
 {
@@ -11,4 +16,5 @@ public:
 	static float Max(float n1, float n2);
 	static float Min(float n1, float n2);
 	static float Lerp(float value1, float value2, float amount);
+	static vector<string> SplitString(std::string str, char ch);
 };
