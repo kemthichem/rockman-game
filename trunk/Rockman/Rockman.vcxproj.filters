@@ -40,6 +40,9 @@
     <Filter Include="Quadtree">
       <UniqueIdentifier>{f5e2a387-66bd-4f3c-a389-3281ae76e8c0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Map">
+      <UniqueIdentifier>{c7ce1a98-3377-49f8-97e3-ad29d58cce35}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="winmain.cpp">
@@ -78,14 +81,17 @@
     <ClCompile Include="QuadTree.cpp">
       <Filter>Quadtree</Filter>
     </ClCompile>
-    <ClCompile Include="QuadtreeNode.cpp">
-      <Filter>Quadtree</Filter>
-    </ClCompile>
     <ClCompile Include="BigEye.cpp">
       <Filter>ObjectGame</Filter>
     </ClCompile>
     <ClCompile Include="Land.cpp">
       <Filter>ObjectGame</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadTreeNode.cpp">
+      <Filter>Quadtree</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Map</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -116,9 +122,6 @@
     <ClInclude Include="Define.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="QuadtreeNode.h">
-      <Filter>Quadtree</Filter>
-    </ClInclude>
     <ClInclude Include="QuadTree.h">
       <Filter>Quadtree</Filter>
     </ClInclude>
@@ -133,6 +136,12 @@
     </ClInclude>
     <ClInclude Include="BigEye.h">
       <Filter>ObjectGame</Filter>
+    </ClInclude>
+    <ClInclude Include="QuadTreeNode.h">
+      <Filter>Quadtree</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Map</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

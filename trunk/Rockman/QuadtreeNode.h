@@ -24,6 +24,9 @@ public:
 	CQuadTreeNode* ChildTopRight;
 	CQuadTreeNode* ChildBottomLeft;
 	CQuadTreeNode* ChildBottomRight;
+
+	//Method
+	vector<CEntity*> GetListObjectInNode();
 };
 
 #endif//_QUADTREE_NODE_H_

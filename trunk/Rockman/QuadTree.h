@@ -14,7 +14,7 @@ private:
 
 
 	vector<CQuadTreeNode*> GetListNodeIntersectRect(CQuadTreeNode*,RECT );
-	bool isBound(RECT ,RECT);
+	bool IsBound(RECT ,RECT);
 
 public:
 	CQuadTree(void);

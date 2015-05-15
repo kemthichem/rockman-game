@@ -6,7 +6,6 @@
 #include <fstream>
 #include <string>
 #include <vector>
-//
 
 #include"Rockman.h"
 #include"BigEye.h"
