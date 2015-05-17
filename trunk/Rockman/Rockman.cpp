@@ -11,27 +11,24 @@ CRockman::CRockman(void)
 }
 CRockman::CRockman(D3DXVECTOR3 _pos)
 {
+	m_Type = ROCKMANTYPE;
 	m_sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), 960, 320, 12, 4);
 	m_pos = _pos;
 	m_pos.y = HEIGHT_SCREEN;
 	m_action = Action_Start;
 	m_veloc.y = -250.0f;
 	m_accel = mAccelOfRockman;
+
+	m_collision = new CAABBCollision();
 }
 CRockman::~CRockman()
 {
 
 }
 
-void CRockman::Update(float _deltaTime, CCamera *_camera, CInput *_input){
-	CEntity::Update(_deltaTime, _camera, _input);
-	m_isCollisionBottom = false;
-	if (m_pos.y <= 100) {
-		m_pos.y = 100;
-		CollisionBottom();
-	}
-
-
+void CRockman::Update(float _deltaTime, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewPort){
+	CEntity::Update(_deltaTime, _camera, _input, _listObjectInViewPort);
+	m_accel.y = -30.0f;
 
 	//turn left and right
 	if (_input->KeyDown(DIK_RIGHT)) {		
@@ -56,10 +53,6 @@ void CRockman::Update(float _deltaTime, CCamera *_camera, CInput *_input){
 	if (keyUp == DIK_A) {
 		m_action = (ActionRockman)((int)m_action - 1);
 	}
-
-	/*if (mVeloc.y != 0 && mAction != Action_Start)  {
-		mAction = Action_Jump;
-	}*/
 
 	//Update sprite	
 	UpdateSprite();
@@ -108,7 +101,8 @@ void CRockman::UpdateSprite()
 
 void CRockman::Stand()
 {
-	if (m_isCollisionBottom) {
+	if (1)//m_isCollisionBottom) {
+	{
 		m_veloc.x = 0;
 		m_action = Action_Stand;
 	}
@@ -116,7 +110,8 @@ void CRockman::Stand()
 
 void CRockman::TurnLeft()
 {
-	if (m_isCollisionBottom) {
+	if (1)//m_isCollisionBottom) {
+	{
 		m_veloc.x = -50;
 		m_action = Action_Go;
 	}
@@ -124,7 +119,8 @@ void CRockman::TurnLeft()
 
 void CRockman::TurnRight()
 {
-	if (m_isCollisionBottom) {
+	if (1)//m_isCollisionBottom) 
+	{
 		m_veloc.x = 50;
 		m_action = Action_Go;
 	}
@@ -142,8 +138,41 @@ void CRockman::Jump()
 void CRockman::CollisionBottom()
 {
 	m_veloc.y = 0;
-	m_accel.y = 0;
 	m_action = Action_Stand;
 	m_isCollisionBottom = true;
 }
 
+void CRockman::UpdateCollison(CEntity* _orther, float _time) {
+	if (_orther->GetType()!= ROCKMANTYPE)
+	{
+		float timeEntry = m_collision->SweptAABB(this,_orther,_time);
+		m_directCollision = m_collision->GetDirectCollision();
+		if (timeEntry < 1.0f)
+		{
+			ExecuteCollision(_orther,m_directCollision,timeEntry);
+		}
+	}
+}
+
+void CRockman::ExecuteCollision(CEntity* _orther,DirectCollision m_directCollion,float _timeEntry)
+{
+		//ListObjectColision
+		switch (_orther->GetType())
+		{
+		case LANDTYPE:
+			{
+				if( m_directCollion == BOTTOM)
+				{
+					m_pos.y = _orther->GetRect().top + m_sprite->heightOfSprite + 2;
+					m_veloc.y += m_accel.y*_timeEntry*_timeEntry;
+					m_pos.y += m_veloc.y * _timeEntry;
+
+					m_pos.y = _orther->GetRect().top + m_sprite->heightOfSprite + 2;
+					CollisionBottom();
+				}
+			}
+			break;
+		default:
+			break;
+		}
+}

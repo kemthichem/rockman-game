@@ -62,14 +62,15 @@ void CQuadTree::LoadNodeInFile(char* _pathFileTree)
 vector<CEntity*> CQuadTree::GetListObjectInRect(RECT _rect)
 {
 	vector<CQuadTreeNode*> listnode;
-	vector<CEntity*> listObjects;
+
 	m_listObjectInViewport.clear();
 	m_listNodeInViewPort.clear();
+
 	listnode = GetListNodeIntersectRect(m_nodeRoot,_rect);
 	for (int i = 0; i < listnode.size(); i++)
 	{
 		vector<CEntity*> listObjectInNode = listnode[i]->GetListObjectInNode();
-		listObjects.insert(listObjects.begin(), listObjectInNode.begin(), listObjectInNode.end());/*
+		m_listObjectInViewport.insert(m_listObjectInViewport.begin(), listObjectInNode.begin(), listObjectInNode.end());/*
 		if(listnode[i]->m_ListObject.size() !=0){
 			for (int j = 0; j < listnode[i]->m_ListObject.size(); j++)
 			{
@@ -78,16 +79,16 @@ vector<CEntity*> CQuadTree::GetListObjectInRect(RECT _rect)
 		}*/
 	}
 
-	return listObjects;
+	return m_listObjectInViewport;
 }
 
 void CQuadTree::Update(CCamera* _camera, float _time)
 {
-	m_listObjectInViewport = GetListObjectInRect(_camera->m_viewPort);
+	//m_listObjectInViewport = GetListObjectInRect(_camera->m_viewPort);
 
 	for (int i = 0; i < m_listObjectInViewport.size(); i++)
 	{
-		m_listObjectInViewport[i]->Update(_time, _camera, NULL);
+		m_listObjectInViewport[i]->Update(_time, _camera, NULL, m_listObjectInViewport);
 	}
 }
 

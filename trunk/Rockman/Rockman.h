@@ -2,6 +2,7 @@
 #define  _ROCKMAN_H
 #include "ResourceManager.h"
 #include "Entity.h"
+#include "AABBCollisionDetected.h"
 enum ActionRockman
 {
 	Action_Stand = 0,
@@ -23,6 +24,7 @@ private:
 	static const D3DXVECTOR2 mAccelOfRockman;
 
 	bool m_isCollisionBottom;
+	DirectCollision m_directCollision;
 
 	ActionRockman m_action;
 	void UpdateSprite();
@@ -40,6 +42,8 @@ public:
 	CRockman();
 	CRockman(D3DXVECTOR3 _pos);
 	~CRockman();
-	void Update(float , CCamera *, CInput *);
+	void Update(float , CCamera *, CInput *, vector<CEntity*> );
+	virtual void UpdateCollison(CEntity* _orther, float _time);
+	void ExecuteCollision(CEntity* _orther,DirectCollision m_directCollion,float _timeEntry);
 };
 #endif

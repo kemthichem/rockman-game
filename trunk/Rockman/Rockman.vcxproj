@@ -81,6 +81,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AABBCollisionDetected.cpp" />
     <ClCompile Include="BigEye.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Entity.cpp" />
@@ -99,6 +100,7 @@
     <ClCompile Include="winmain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AABBCollisionDetected.h" />
     <ClInclude Include="BigEye.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Define.h" />

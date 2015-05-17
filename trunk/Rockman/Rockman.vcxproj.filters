@@ -43,6 +43,9 @@
     <Filter Include="Map">
       <UniqueIdentifier>{c7ce1a98-3377-49f8-97e3-ad29d58cce35}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AABB">
+      <UniqueIdentifier>{268870cf-3672-4b8e-9289-79ca1a7e5232}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="winmain.cpp">
@@ -93,6 +96,9 @@
     <ClCompile Include="Map.cpp">
       <Filter>Map</Filter>
     </ClCompile>
+    <ClCompile Include="AABBCollisionDetected.cpp">
+      <Filter>AABB</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RockmanGame.h">
@@ -142,6 +148,9 @@
     </ClInclude>
     <ClInclude Include="Map.h">
       <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="AABBCollisionDetected.h">
+      <Filter>AABB</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
