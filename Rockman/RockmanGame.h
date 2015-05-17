@@ -5,6 +5,7 @@
 #include "Game.h"
 #include "Entity.h"
 #include "Rockman.h"
+#include "BigEye.h"
 #include "QuadTree.h"
 
 
@@ -16,7 +17,6 @@ private:
 	void Render();
 	void UpdateWorld(float, CCamera*, CInput*);
 	void ProcessInput(float deltaTime);
-	void RenderTextAndSurface();
 	void InitGame();
 public:
 	LPD3DXSPRITE GetSpriteHandle();
@@ -25,6 +25,7 @@ public:
 	CRockmanGame(void);
 	CRockmanGame(HINSTANCE hInstance);
 	CRockman *rockman;
+	CBigEye *bigEye;
 
 	list<CEntity*> m_listObject;
 	~CRockmanGame(void);

@@ -11,7 +11,7 @@ public:
 	~CBigEye(void);
 
 	//method
-	virtual void Update(float , CCamera *, CInput *);
+	virtual void Update(float , CCamera *, CInput *,  vector<CEntity* >);
 	virtual void Draw();
 	virtual void Collision();
 };

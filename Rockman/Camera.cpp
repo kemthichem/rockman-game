@@ -29,7 +29,7 @@ void CCamera::Update(D3DXVECTOR2 _pos)
 {
 	if (_pos.x < CRockman::posInMap.x - WIDTH_SCREEN/2)
 	{
-		//mPos.x = (float)_pos.x - WIDTH_SCREEN/2;
+		m_pos.x = (float)_pos.x - WIDTH_SCREEN/2;
 	}
 
 	if (m_pos.x < 0)

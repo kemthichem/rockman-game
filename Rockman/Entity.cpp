@@ -8,22 +8,41 @@ CEntity::CEntity(void)
 	m_isTurnLeft = false;
 	m_veloc = D3DXVECTOR2(0,0);
 	m_accel = D3DXVECTOR2(0,0);
+
+	m_collision = NULL;
 }
 
-void CEntity::Update(float deltaTime, CCamera *_camera, CInput *_input){
+void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewPort) {
 	//set is turn left
 	if (m_veloc.x < 0) m_isTurnLeft = true;
 	else if (m_veloc.x > 0) m_isTurnLeft = false;
 
+
 	//set position
-	UpdatePosition(deltaTime);
+	UpdatePosition(_time);
 
-
-
-	if (1/*is rockman*/)
+	if (m_Type==ROCKMANTYPE)
 	{
 		_camera->Update(D3DXVECTOR2(m_pos.x, m_pos.y));
 	}
+
+	vector<CEntity*> listObjectCollision;
+	for (int i = 0; i < _listObjectInViewPort.size(); i++)
+	{
+		if(_listObjectInViewPort[i]->GetType() != OBJECTTYPE)
+		{
+			if (m_collision->IsCollision(this,_listObjectInViewPort[i],_time)) {
+				listObjectCollision.push_back(_listObjectInViewPort[i]);
+			}
+		}
+	}
+
+	for (int i = 0; i < listObjectCollision.size(); i++)
+	{
+		UpdateCollison(listObjectCollision[i],_time);
+	}
+
+
 }
 
 void CEntity::Render(LPD3DXSPRITE _spriteHandler, CCamera* _camera){
@@ -64,4 +83,32 @@ void CEntity::UpdatePosition(float _time)
 CEntity::~CEntity(void)
 {
 	delete m_sprite;
+
+	if (m_collision != NULL)
+		delete m_collision;
+}
+
+D3DXVECTOR2 CEntity::GetVelocity()
+{
+	return m_veloc;
+}
+
+RECT CEntity::GetRect()
+{
+	m_Rect.left = m_pos.x;
+	m_Rect.top = m_pos.y;
+	m_Rect.right = m_Rect.left + m_sprite->widthOfSprite;
+	m_Rect.bottom = m_Rect.top - m_sprite->heightOfSprite;
+
+	return m_Rect;
+}
+
+D3DXVECTOR2 CEntity::GetAccleration()
+{
+	return m_accel;
+}
+
+void CEntity::UpdateCollison(CEntity* _orther , float _time)
+{
+
 }
