@@ -17,14 +17,11 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 	if (m_veloc.x < 0) m_isTurnLeft = true;
 	else if (m_veloc.x > 0) m_isTurnLeft = false;
 
-
+	
 	//set position
 	UpdatePosition(_time);
 
-	if (m_Type==ROCKMANTYPE)
-	{
-		_camera->Update(D3DXVECTOR2(m_pos.x, m_pos.y));
-	}
+
 
 	vector<CEntity*> listObjectCollision;
 	for (int i = 0; i < _listObjectInViewPort.size(); i++)
@@ -42,6 +39,11 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 		UpdateCollison(listObjectCollision[i],_time);
 	}
 
+	UpdateRect();
+	if (m_Type==ROCKMANTYPE)
+	{
+		_camera->Update(D3DXVECTOR2(m_pos.x, m_pos.y));
+	}
 
 }
 
@@ -95,11 +97,6 @@ D3DXVECTOR2 CEntity::GetVelocity()
 
 RECT CEntity::GetRect()
 {
-	m_Rect.left = m_pos.x;
-	m_Rect.top = m_pos.y;
-	m_Rect.right = m_Rect.left + m_sprite->widthOfSprite;
-	m_Rect.bottom = m_Rect.top - m_sprite->heightOfSprite;
-
 	return m_Rect;
 }
 
@@ -111,4 +108,12 @@ D3DXVECTOR2 CEntity::GetAccleration()
 void CEntity::UpdateCollison(CEntity* _orther , float _time)
 {
 
+}
+
+void CEntity::UpdateRect()
+{
+	m_Rect.left = m_pos.x;
+	m_Rect.top = m_pos.y;
+	m_Rect.right = m_Rect.left + m_sprite->widthOfSprite;
+	m_Rect.bottom = m_Rect.top - m_sprite->heightOfSprite;
 }

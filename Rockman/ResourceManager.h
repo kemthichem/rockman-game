@@ -12,6 +12,7 @@
 #define  IMAGE_ROCKMAN "Resource/rockman.png"
 #define  IMAGE_TILES "Resource/tiles.png"
 #define  IMAGE_ENEMIES "Resource/enemies.png"
+#define  IMAGE_ITEMS "Resource/items.png"
 
 
 using namespace std;

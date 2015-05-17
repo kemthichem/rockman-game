@@ -23,12 +23,20 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 }
 CRockman::~CRockman()
 {
+	for(int i = 0; i < m_listBullet.size(); ++i)
+		delete m_listBullet[i];
 
+	m_listBullet.clear();
 }
 
 void CRockman::Update(float _deltaTime, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewPort){
 	CEntity::Update(_deltaTime, _camera, _input, _listObjectInViewPort);
 	m_accel.y = -30.0f;
+
+	if (m_pos.y < 80) {
+		m_pos.y = 80;
+		m_veloc.y = 0;
+	}
 
 	//turn left and right
 	if (_input->KeyDown(DIK_RIGHT)) {		
@@ -46,16 +54,28 @@ void CRockman::Update(float _deltaTime, CCamera *_camera, CInput *_input, vector
 	} else {
 		if (keyDown == DIK_A) {
 			m_action = (ActionRockman)((int)m_action + 1);
+			Gun();
 		}
 	}
 
 	int keyUp = _input->GetKeyUp();
 	if (keyUp == DIK_A) {
 		m_action = (ActionRockman)((int)m_action - 1);
+		
 	}
 
 	//Update sprite	
 	UpdateSprite();
+
+	//Update bullet
+	for(vector<CBullet*>::const_iterator it = m_listBullet.begin(); it != m_listBullet.end(); it++)
+	{
+		(*it)->Update(_deltaTime, _camera, _input, _listObjectInViewPort);
+		if((*it)->GetRect().left<0 || (*it)->GetRect().right>800||(*it)->GetRect().top>600||(*it)->GetRect().bottom<0)
+		{
+			//m_listBullet.erase(it);
+		}
+	} 
 }
 
 void CRockman::UpdateSprite()
@@ -163,16 +183,48 @@ void CRockman::ExecuteCollision(CEntity* _orther,DirectCollision m_directCollion
 			{
 				if( m_directCollion == BOTTOM)
 				{
-					m_pos.y = _orther->GetRect().top + m_sprite->heightOfSprite + 2;
-					m_veloc.y += m_accel.y*_timeEntry*_timeEntry;
-					m_pos.y += m_veloc.y * _timeEntry;
-
-					m_pos.y = _orther->GetRect().top + m_sprite->heightOfSprite + 2;
+					m_pos.y = _orther->GetRect().top + m_sprite->heightOfSprite + 1;
 					CollisionBottom();
+				}
+
+				if( m_directCollion == LEFT)
+				{
+					m_veloc.x = 0;
+					m_accel.x = 0;
+					m_pos.x = _orther->GetRect().right ;
+				}
+
+				if( m_directCollion == RIGHT)
+				{
+					m_veloc.x = 0;
+					m_accel.x = 0;
+					m_pos.x = _orther->GetRect().left - m_sprite->widthOfSprite;
 				}
 			}
 			break;
 		default:
 			break;
 		}
+}
+
+void CRockman::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
+{
+	CEntity::Render(_spriteHandle, _camera);
+
+	//Update bullet
+	for (int i = 0; i < m_listBullet.size(); i++)
+	{
+		m_listBullet[i]->Render(_spriteHandle, _camera);
+	}
+}
+
+void CRockman::Gun()
+{
+	CBullet *bullet = new CBullet(D3DXVECTOR3(m_pos.x, m_pos.y - 20, 0));
+	if (m_isTurnLeft)
+		bullet->SetVelloc(D3DXVECTOR2(-60,0));
+	else
+		bullet->SetVelloc(D3DXVECTOR2(60,0));
+
+	m_listBullet.push_back(bullet);
 }
