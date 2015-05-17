@@ -22,10 +22,11 @@ enum ObjectType
 class CEntity
 {
 private:
-	bool m_isTurnLeft;
+	
 	void UpdatePosition(float);	
 	 
 protected:
+	bool m_isTurnLeft;
 	int m_Id;
 	CAABBCollision *m_collision;
 	ObjectType m_Type;
@@ -47,6 +48,7 @@ public:
 	}
 	D3DXVECTOR2 GetVelocity();
 	D3DXVECTOR2 GetAccleration();
+	void UpdateRect();
 	RECT GetRect();
 
 	virtual void Update(float , CCamera *, CInput *, vector<CEntity*>);
