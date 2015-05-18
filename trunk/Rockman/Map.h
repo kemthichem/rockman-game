@@ -10,19 +10,17 @@
 #include"Rockman.h"
 #include"BigEye.h"
 #include"Land.h"
+
 using std::vector;
 using namespace std;
 class CMap{
 public:
-	int m_widthmap,m_heightmap;
-public:
+		static int g_widthMap, g_heightMap;
 	CMap();
 	~CMap();
 	vector<string> SplitString(string str, char ch);
 	vector<CEntity*> ObjectFromFile(char* filePath);
 	vector<CEntity*> GetObjectFromFile(char* filePath);
-	int GetWidthMap(){return m_widthmap;};
-	int GetHeightMap(){return m_heightmap;}
 };
 
 

@@ -37,14 +37,12 @@ private:
 	void TurnLeft();
 	void TurnRight();
 	void Jump();
-	void Gun();
+	void Shot();
 
 
 	//collision
 	void CollisionBottom();
 public:
-	static D3DXVECTOR2 posInMap;
-
 	CRockman();
 	CRockman(D3DXVECTOR3 _pos);
 	~CRockman();
