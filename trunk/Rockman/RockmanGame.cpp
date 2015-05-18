@@ -42,19 +42,7 @@ void CRockmanGame::Render()
 		(*it)->Render(GetSpriteHandle(), m_camera);
 	}*/
 }
-void CRockmanGame::ProcessInput( float deltaTime )
-{
-	/*if(IsKeyDown(DIK_RIGHT))
-	rockman->TurnRight(deltaTime);
-	else
-	if(IsKeyDown(DIK_LEFT))
-	rockman->TurnLeft(deltaTime);
-	else
-	if(IsKeyDown(DIK_DOWN))
-	rockman->Sitting(deltaTime);	
-	else
-	rockman->Stop(deltaTime);*/
-}
+
 void CRockmanGame::UpdateWorld(float deltaTime, CCamera *_camera, CInput *_input)
 {
 	vector<CEntity*> listOb = quadTree->GetListObjectInRect(_camera->m_viewPort);

@@ -16,7 +16,6 @@ private:
 
 	void Render();
 	void UpdateWorld(float, CCamera*, CInput*);
-	void ProcessInput(float deltaTime);
 	void InitGame();
 public:
 	LPD3DXSPRITE GetSpriteHandle();
