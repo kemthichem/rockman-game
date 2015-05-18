@@ -31,10 +31,10 @@ void CRockman::Update(float _deltaTime, CCamera *_camera, CInput *_input, vector
 	CEntity::Update(_deltaTime, _camera, _input, _listObjectInViewPort);
 	m_accel.y = -30.0f;
 
-	if (m_pos.y < 80) {
-		m_pos.y = 80;
-		m_veloc.y = 0;
-	}
+	//if (m_pos.y < 80) {
+	//	m_pos.y = 80;
+	//	m_veloc.y = 0;
+	//}
 
 	//turn left and right
 	if (_input->KeyDown(DIK_RIGHT)) {		
