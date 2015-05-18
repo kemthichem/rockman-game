@@ -1,11 +1,12 @@
 #include "RockmanGame.h"
 #include "BigEye.h"
 #include "Land.h"
+#include "MoveMap.h"
 #include "Map.h"
 
 CRockmanGame::CRockmanGame(void)
 {
-	
+
 }
 CRockmanGame::CRockmanGame( HINSTANCE hInstance ):CGame(hInstance)
 {	
@@ -57,16 +58,20 @@ void CRockmanGame::ProcessInput( float deltaTime )
 void CRockmanGame::UpdateWorld(float deltaTime, CCamera *_camera, CInput *_input)
 {
 	vector<CEntity*> listOb = quadTree->GetListObjectInRect(_camera->m_viewPort);
-	rockman->Update(deltaTime, _camera, _input, listOb);
-	quadTree->Update(_camera, deltaTime);
+
+	if (!CMoveMap::g_IsMovingMap) {
+		rockman->Update(deltaTime, _camera, _input, listOb);
+		quadTree->Update(_camera, deltaTime);
+	} else
+		_camera->Move(CMoveMap::g_DistanceMoveCameraY);
 
 	//TODO
-	//listOb.clear();
-	//for(list<CEntity*>::const_iterator it = m_listObject.begin(); it != m_listObject.end(); it++)
-	//{
-	//	(*it)->Update(deltaTime, _camera, _input,listOb);
-	//}
-	
+	/*listOb.clear();
+	for(list<CEntity*>::const_iterator it = m_listObject.begin(); it != m_listObject.end(); it++)
+	{
+		(*it)->Update(deltaTime, _camera, _input,listOb);
+	}*/
+
 }
 void CRockmanGame::InitGame()
 {	
@@ -80,11 +85,10 @@ void CRockmanGame::InitGame()
 
 	quadTree->MapIdToObjectInTree(quadTree->m_nodeRoot, listObject);
 	//
-	rockman = new CRockman(D3DXVECTOR3(100,600,0));
-	CRockman::posInMap = D3DXVECTOR2(2000,600);
-	m_listObject.push_back(rockman);
-	bigEye = new CBigEye(D3DXVECTOR3(300,135,0));
-	m_listObject.push_back(bigEye);
+	rockman = new CRockman(D3DXVECTOR3(130,1000,0));
+	//m_listObject.push_back(rockman);
+	//bigEye = new CBigEye(D3DXVECTOR3(300,1000,0));
+	//m_listObject.push_back(bigEye);
 }
 LPD3DXFONT CRockmanGame::GetLPFont()
 {

@@ -1,7 +1,5 @@
 ﻿#include "Rockman.h"
-
-
-D3DXVECTOR2 CRockman::posInMap;
+#include "MoveMap.h"
 
 const D3DXVECTOR2 CRockman::mAccelOfRockman = D3DXVECTOR2(0.0f,-30.0f);
 
@@ -14,7 +12,7 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 	m_Type = ROCKMANTYPE;
 	m_sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), 960, 320, 12, 4);
 	m_pos = _pos;
-	m_pos.y = HEIGHT_SCREEN;
+	m_pos.y = 1000;
 	m_action = Action_Start;
 	m_veloc.y = -250.0f;
 	m_accel = mAccelOfRockman;
@@ -54,7 +52,7 @@ void CRockman::Update(float _deltaTime, CCamera *_camera, CInput *_input, vector
 	} else {
 		if (keyDown == DIK_A) {
 			m_action = (ActionRockman)((int)m_action + 1);
-			Gun();
+			Shot();
 		}
 	}
 
@@ -200,6 +198,23 @@ void CRockman::ExecuteCollision(CEntity* _orther,DirectCollision m_directCollion
 					m_accel.x = 0;
 					m_pos.x = _orther->GetRect().left - m_sprite->widthOfSprite;
 				}
+
+				if( m_directCollion == TOP)
+				{
+					m_pos.y = _orther->GetRect().bottom;
+					m_veloc.y = 0;
+				}
+			}
+			break;
+		case MOVEMAPTYPE:
+ 			CMoveMap::g_IsMovingMap = true;
+			if( m_directCollion == TOP)
+			{
+				CMoveMap::g_DistanceMoveCameraY = 600;
+			}
+			if( m_directCollion == BOTTOM)
+			{
+				CMoveMap::g_DistanceMoveCameraY = -600;
 			}
 			break;
 		default:
@@ -218,7 +233,7 @@ void CRockman::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 	}
 }
 
-void CRockman::Gun()
+void CRockman::Shot()
 {
 	CBullet *bullet = new CBullet(D3DXVECTOR3(m_pos.x, m_pos.y - 20, 0));
 	if (m_isTurnLeft)

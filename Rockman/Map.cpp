@@ -1,4 +1,8 @@
 #include"Map.h"
+#include "MoveMap.h"
+
+int CMap::g_widthMap = 0;
+int CMap::g_heightMap = 0;
 
 CMap::CMap(){}
 vector<string> CMap::SplitString(std::string str, char ch)
@@ -30,8 +34,8 @@ vector<CEntity*> CMap::ObjectFromFile(char* _pathFileMap)
 		int _idObject;
 		getline(f,line);
 		itemsInfo = SplitString(line,' ');
-		m_widthmap = atoi(itemsInfo.at(0).c_str());
-		m_heightmap = atoi(itemsInfo.at(1).c_str());
+		g_widthMap = atoi(itemsInfo.at(0).c_str());
+		g_heightMap = atoi(itemsInfo.at(1).c_str());
 
 		while(1){
 			getline(f,line);
@@ -45,8 +49,11 @@ vector<CEntity*> CMap::ObjectFromFile(char* _pathFileMap)
 			if(_objecttype=="LAND"){
 				CLand *_brick = new CLand(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
 				object.push_back(_brick);
-			}
-			
+			} else 
+				if(_objecttype=="MOVEMAP"){
+					CMoveMap *moveMap = new CMoveMap(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
+					object.push_back(moveMap);
+				}
 
 		}
 	}
@@ -83,3 +90,5 @@ vector<CEntity*> CMap::GetObjectFromFile(char* filePath)
 	return object;
 }
 CMap::~CMap(){}
+
+
