@@ -89,6 +89,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Land.cpp" />
+    <ClCompile Include="Land1.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MoveMap.cpp" />
     <ClCompile Include="QuadTree.cpp" />
@@ -111,6 +112,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Land.h" />
+    <ClInclude Include="Land1.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MoveMap.h" />
     <ClInclude Include="QuadTree.h" />

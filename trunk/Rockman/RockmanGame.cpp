@@ -74,9 +74,6 @@ void CRockmanGame::InitGame()
 	quadTree->MapIdToObjectInTree(quadTree->m_nodeRoot, listObject);
 	//
 	rockman = new CRockman(D3DXVECTOR3(130,1000,0));
-	//m_listObject.push_back(rockman);
-	//bigEye = new CBigEye(D3DXVECTOR3(300,1000,0));
-	//m_listObject.push_back(bigEye);
 }
 LPD3DXFONT CRockmanGame::GetLPFont()
 {
