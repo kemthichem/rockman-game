@@ -24,7 +24,6 @@ public:
 	CRockmanGame(void);
 	CRockmanGame(HINSTANCE hInstance);
 	CRockman *rockman;
-	CBigEye *bigEye;
 
 	list<CEntity*> m_listObject;
 	~CRockmanGame(void);
