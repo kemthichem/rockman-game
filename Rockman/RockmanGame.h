@@ -7,6 +7,7 @@
 #include "Rockman.h"
 #include "BigEye.h"
 #include "QuadTree.h"
+#include "BigEye.h"
 
 
 class CRockmanGame : public CGame
@@ -24,6 +25,7 @@ public:
 	CRockmanGame(void);
 	CRockmanGame(HINSTANCE hInstance);
 	CRockman *rockman;
+
 
 	list<CEntity*> m_listObject;
 	~CRockmanGame(void);
