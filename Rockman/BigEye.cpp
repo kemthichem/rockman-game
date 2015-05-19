@@ -2,9 +2,10 @@
 
 
 
-CBigEye::CBigEye(D3DXVECTOR3 _pos)
+CBigEye::CBigEye(int _id, D3DXVECTOR3 _pos)
 {
-	m_Type = ObjectType::BIGEYE;
+	m_Id = _id;
+	m_Type = BIGEYE;
 	m_sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), 160, 630, 2, 6);
 	m_pos = _pos;
 	m_accel = D3DXVECTOR2(0,0);
