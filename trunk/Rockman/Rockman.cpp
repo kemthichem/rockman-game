@@ -130,7 +130,7 @@ void CRockman::TurnLeft()
 {
 	if (1)//m_isCollisionBottom) {
 	{
-		m_veloc.x = -50;
+		m_veloc.x = -30;
 		m_action = Action_Go;
 	}
 }
@@ -139,7 +139,7 @@ void CRockman::TurnRight()
 {
 	if (1)//m_isCollisionBottom) 
 	{
-		m_veloc.x = 50;
+		m_veloc.x = 30;
 		m_action = Action_Go;
 	}
 }

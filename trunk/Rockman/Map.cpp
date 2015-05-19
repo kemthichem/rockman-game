@@ -46,14 +46,20 @@ vector<CEntity*> CMap::ObjectFromFile(char* _pathFileMap)
 			_objecttype=itemsInfo.at(1).c_str();
 			_pos.x = atoi(itemsInfo.at(2).c_str());
 			_pos.y=atoi(itemsInfo.at(3).c_str());
+
+
+
 			if(_objecttype=="LAND"){
 				CLand *_brick = new CLand(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
 				object.push_back(_brick);
-			} else 
-				if(_objecttype=="MOVEMAP"){
-					CMoveMap *moveMap = new CMoveMap(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
-					object.push_back(moveMap);
-				}
+			} else if(_objecttype=="MOVEMAP"){
+				CMoveMap *moveMap = new CMoveMap(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
+				object.push_back(moveMap);
+			} else if(_objecttype == "BIGEYE"){
+				CBigEye *bigEye = new CBigEye(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
+				object.push_back(bigEye);
+			}
+
 
 		}
 	}

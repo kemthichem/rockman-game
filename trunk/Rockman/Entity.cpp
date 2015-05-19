@@ -16,7 +16,6 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 	//set is turn left
 	if (m_veloc.x < 0) m_isTurnLeft = true;
 	else if (m_veloc.x > 0) m_isTurnLeft = false;
-
 	
 	//set position
 	UpdatePosition(_time);
@@ -48,6 +47,12 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 }
 
 void CEntity::Render(LPD3DXSPRITE _spriteHandler, CCamera* _camera){
+
+		if (m_Type==BIGEYE && m_pos.y<135)
+	{
+		int k = 0;
+	}
+
 
 	D3DXMATRIX Scale;
 	D3DXMatrixIdentity(&Scale);
