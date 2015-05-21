@@ -17,6 +17,7 @@ enum ObjectType
 	LANDTYPE,
 	LAND1TYPE,
 	BIGEYE,
+	BLADER,
 	MOVEMAPTYPE
 };
 
@@ -36,7 +37,7 @@ protected:
 	D3DXVECTOR2 m_accel;
 	D3DXVECTOR3 m_pos;
 	RECT m_Rect;
-	CSprite *m_sprite;
+	CSprite *m_Sprite;
 
 	virtual void UpdateCollison(CEntity* _orther,float _time);
 public:

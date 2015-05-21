@@ -6,10 +6,10 @@ CBigEye::CBigEye(int _id, D3DXVECTOR3 _pos)
 {
 	m_Id = _id;
 	m_Type = BIGEYE;
-	m_sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), 800, 630, 10, 6);
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), D3DXVECTOR2(641,626) , 1, 2, D3DXVECTOR2(575,372), D3DXVECTOR2(0,30), D3DXVECTOR2(0,0));
 	m_pos = _pos;
 	m_accel = D3DXVECTOR2(0,0);
-	m_veloc.x = -5;
+	m_veloc.x = -10;
 	m_accel.y = -20.0f;
 }
 
@@ -32,9 +32,9 @@ void CBigEye::Update(float _deltaTime, CCamera *_camera, CInput *_input,vector<C
 	}
 
 	if(m_pos.y > 135){
-		m_sprite ->IndexOf(49);
+		m_Sprite ->IndexOf(1);
 	}else{
-		m_sprite ->IndexOf(59);
+		m_Sprite ->IndexOf(0);
 	}
 
 	

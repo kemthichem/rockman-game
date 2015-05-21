@@ -20,8 +20,6 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 	//set position
 	UpdatePosition(_time);
 
-
-
 	vector<CEntity*> listObjectCollision;
 	for (int i = 0; i < _listObjectInViewPort.size(); i++)
 	{
@@ -46,13 +44,12 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 
 }
 
-void CEntity::Render(LPD3DXSPRITE _spriteHandler, CCamera* _camera){
+void CEntity::Render(LPD3DXSPRITE _spriteHandler, CCamera* _camera) {
 
-		if (m_Type==BIGEYE && m_pos.y<135)
+	if (m_Type==BIGEYE && m_pos.y<135)
 	{
 		int k = 0;
 	}
-
 
 	D3DXMATRIX Scale;
 	D3DXMatrixIdentity(&Scale);
@@ -61,7 +58,7 @@ void CEntity::Render(LPD3DXSPRITE _spriteHandler, CCamera* _camera){
 
 	//flip sprite when move left
 	D3DXMATRIX matrixFlip;
-	D3DXVECTOR2 trans(2*(m_pos.x - _camera->GetPosCamera().x ) + m_sprite->widthOfSprite, 0);
+	D3DXVECTOR2 trans(2*(m_pos.x - _camera->GetPosCamera().x ) + m_Sprite->GetWidthRectSprite(), 0);
 	if (m_isTurnLeft) {
 		D3DXMatrixTransformation2D(&matrixFlip
 			,NULL//center of sprite
@@ -77,7 +74,7 @@ void CEntity::Render(LPD3DXSPRITE _spriteHandler, CCamera* _camera){
 
 	_spriteHandler->SetTransform(&Scale);
 
-	m_sprite->Render(_spriteHandler, D3DXVECTOR3(m_pos.x,m_pos.y,0), 1);
+	m_Sprite->Render(_spriteHandler, D3DXVECTOR3(m_pos.x,m_pos.y,0), 1);
 }
 
 void CEntity::UpdatePosition(float _time)
@@ -89,7 +86,7 @@ void CEntity::UpdatePosition(float _time)
 
 CEntity::~CEntity(void)
 {
-	delete m_sprite;
+	delete m_Sprite;
 
 	if (m_collision != NULL)
 		delete m_collision;
@@ -119,6 +116,6 @@ void CEntity::UpdateRect()
 {
 	m_Rect.left = m_pos.x;
 	m_Rect.top = m_pos.y;
-	m_Rect.right = m_Rect.left + m_sprite->widthOfSprite;
-	m_Rect.bottom = m_Rect.top - m_sprite->heightOfSprite;
+	m_Rect.right = m_Rect.left + m_Sprite->GetWidthRectSprite();
+	m_Rect.bottom = m_Rect.top - m_Sprite->GetHeightRectSprite();
 }

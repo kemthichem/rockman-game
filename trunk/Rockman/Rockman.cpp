@@ -10,7 +10,8 @@ CRockman::CRockman(void)
 CRockman::CRockman(D3DXVECTOR3 _pos)
 {
 	m_Type = ROCKMANTYPE;
-	m_sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), 960, 320, 12, 4);
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(960,320), 12, 4, 
+		D3DXVECTOR2(0,0), D3DXVECTOR2(11,8), D3DXVECTOR2(28,14));
 	m_pos = _pos;
 	m_pos.y = 1000;
 	m_action = Action_Start;
@@ -27,13 +28,13 @@ CRockman::~CRockman()
 	m_listBullet.clear();
 }
 
-void CRockman::Update(float _deltaTime, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewPort){
-	CEntity::Update(_deltaTime, _camera, _input, _listObjectInViewPort);
+void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewPort){
+	CEntity::Update(_time, _camera, _input, _listObjectInViewPort);
 
-	//if (m_pos.y < 80) {
-	//	m_pos.y = 80;
-	//	m_veloc.y = 0;
-	//}
+	if (m_pos.y < 80) {
+		m_pos.y = 80;
+		m_veloc.y = 0;
+	}
 
 	//turn left and right
 	if (_input->KeyDown(DIK_RIGHT)) {		
@@ -62,12 +63,12 @@ void CRockman::Update(float _deltaTime, CCamera *_camera, CInput *_input, vector
 	}
 
 	//Update sprite	
-	UpdateSprite();
+	UpdateSprite(_time);
 
 	//Update bullet
 	for(vector<CBullet*>::const_iterator it = m_listBullet.begin(); it != m_listBullet.end(); it++)
 	{
-		(*it)->Update(_deltaTime, _camera, _input, _listObjectInViewPort);
+		(*it)->Update(_time, _camera, _input, _listObjectInViewPort);
 		if((*it)->GetRect().left<0 || (*it)->GetRect().right>800||(*it)->GetRect().top>600||(*it)->GetRect().bottom<0)
 		{
 			//m_listBullet.erase(it);
@@ -75,43 +76,43 @@ void CRockman::Update(float _deltaTime, CCamera *_camera, CInput *_input, vector
 	} 
 }
 
-void CRockman::UpdateSprite()
+void CRockman::UpdateSprite(float _time)
 {
 	switch (m_action)
 	{
 	case Action_Stand:
-		m_sprite->NextOf(12,15);
+		m_Sprite->NextOf(_time, 12,15);
 		break;
 	case Action_Stand_Gun:
-		m_sprite->IndexOf(16);
+		m_Sprite->IndexOf(16);
 		OutputDebugString("Stand gun \n");
 		break;
 	case Action_Go:
-		m_sprite->NextOf(24,28);
+		m_Sprite->NextOf(_time, 24,28);
 		break;
 	case Action_Go_Gun:
-		m_sprite->NextOf(30,35);
+		m_Sprite->NextOf(_time, 30,35);
 		OutputDebugString("Go gun \n");
 		break;
 	case Action_Jump:
-		m_sprite->IndexOf(36);
+		m_Sprite->IndexOf(36);
 		break;
 	case Action_Jump_Gun:
-		m_sprite->IndexOf(37);
+		m_Sprite->IndexOf(37);
 		break;
 	case Action_Climb:
 		break;
 	case Action_Climb_Gun:
 		break;
 	case Action_Start:
-		m_sprite->NextOf(0,7);
+		m_Sprite->NextOf(_time,0,7);
 		break;
 	case Action_Injured:
 		break;
 	case Action_Fainting:
 		break;
 	default:
-		m_sprite->NextOf(12,15);
+		m_Sprite->NextOf(_time, 12,15);
 		break;
 	}
 }
@@ -180,7 +181,7 @@ void CRockman::ExecuteCollision(CEntity* _orther,DirectCollision m_directCollion
 			{
 				if( m_directCollion == BOTTOM)
 				{
-					m_pos.y = _orther->GetRect().top + m_sprite->heightOfSprite + 1;
+					m_pos.y = _orther->GetRect().top + m_Sprite->GetHeightRectSprite() + 1;
 					CollisionBottom();
 				}
 
@@ -195,7 +196,7 @@ void CRockman::ExecuteCollision(CEntity* _orther,DirectCollision m_directCollion
 				{
 					m_veloc.x = 0;
 					m_accel.x = 0;
-					m_pos.x = _orther->GetRect().left - m_sprite->widthOfSprite;
+					m_pos.x = _orther->GetRect().left - m_Sprite->GetWidthRectSprite();
 				}
 
 				if( m_directCollion == TOP)

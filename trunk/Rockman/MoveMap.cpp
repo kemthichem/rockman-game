@@ -10,7 +10,7 @@ CMoveMap::CMoveMap(int _id, D3DXVECTOR3 _pos)
 	m_Id = _id;
 	m_Type = MOVEMAPTYPE;
 	m_pos = _pos;
-	m_sprite = NULL;
+	m_Sprite = NULL;
 	m_Rect.top = m_pos.y;
 	m_Rect.left = m_pos.x;
 	m_Rect.bottom = m_Rect.top - 1;
