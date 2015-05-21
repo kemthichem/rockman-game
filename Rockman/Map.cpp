@@ -1,5 +1,6 @@
 #include"Map.h"
 #include "MoveMap.h"
+#include "Blader.h"
 
 int CMap::g_widthMap = 0;
 int CMap::g_heightMap = 0;
@@ -58,8 +59,11 @@ vector<CEntity*> CMap::ObjectFromFile(char* _pathFileMap)
 			} else if(_objecttype == "BIGEYE"){
 				CBigEye *bigEye = new CBigEye(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
 				object.push_back(bigEye);
+			} else if(_objecttype == "BLADER"){
+				CBlader *ob = new CBlader(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
+				object.push_back(ob);
 			}
-
+			
 
 		}
 	}

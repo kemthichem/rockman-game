@@ -3,7 +3,7 @@
 
 CBullet::CBullet(D3DXVECTOR3 _pos)
 {
-	m_sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ITEMS), 32, 12, 1, 1);
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ITEMS), D3DXVECTOR2(32,12), 1, 1);
 	m_pos = _pos;
 
 	m_collision = new CAABBCollision();

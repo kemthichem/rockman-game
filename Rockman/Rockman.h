@@ -31,7 +31,7 @@ private:
 	DirectCollision m_directCollision;
 
 	ActionRockman m_action;
-	void UpdateSprite();
+	void UpdateSprite(float _time);
 
 	void Stand();
 	void TurnLeft();

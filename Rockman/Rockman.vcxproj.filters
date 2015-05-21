@@ -108,6 +108,9 @@
     <ClCompile Include="Land1.cpp">
       <Filter>ObjectGame</Filter>
     </ClCompile>
+    <ClCompile Include="Blader.cpp">
+      <Filter>ObjectGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RockmanGame.h">
@@ -168,6 +171,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Land1.h">
+      <Filter>ObjectGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Blader.h">
       <Filter>ObjectGame</Filter>
     </ClInclude>
   </ItemGroup>

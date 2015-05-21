@@ -83,6 +83,7 @@
   <ItemGroup>
     <ClCompile Include="AABBCollisionDetected.cpp" />
     <ClCompile Include="BigEye.cpp" />
+    <ClCompile Include="Blader.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Entity.cpp" />
@@ -105,6 +106,7 @@
   <ItemGroup>
     <ClInclude Include="AABBCollisionDetected.h" />
     <ClInclude Include="BigEye.h" />
+    <ClInclude Include="Blader.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Define.h" />

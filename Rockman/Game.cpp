@@ -223,15 +223,15 @@ void CGame::_Render()
 
 	HRESULT re = _d3ddv->BeginScene();
 	_d3ddv->StretchRect(CResourceManager::GetInstance()->GetSurface(CResourceManager::mPathFileBg),NULL,_backbuffer, NULL,D3DTEXF_NONE);
-	if (re) 
-	{
+	//if (re) 
+	//{
 		//_d3ddv->StretchRect(CResourceManager::GetInstance()->GetSurface(IMAGE_BG1), NULL,_backbuffer, NULL,D3DTEXF_NONE);
 		_spriteHandler->Begin(D3DXSPRITE_ALPHABLEND|D3DXSPRITE_SORT_DEPTH_FRONTTOBACK);	
 		Render();		
 		_spriteHandler->End();
 		RenderTextAndSurface();
 		_d3ddv->EndScene();	
-	}
+	//}
 	_d3ddv->Present(NULL,NULL,NULL,NULL);
 }
 //------------------------
