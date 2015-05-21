@@ -66,7 +66,7 @@ void CSprite::Render(LPD3DXSPRITE _spriteHandler, D3DXVECTOR3 _pos, int _dir)
 		&srect,
 		NULL,
 		&_pos,
-		D3DCOLOR_XRGB(255,255,255)
+		D3DCOLOR_XRGB(0,255,255)
 		);
 }
 
