@@ -8,13 +8,13 @@ using std::map;
 class CQuadTree
 {
 private:
-	map<int,CQuadTreeNode*> m_mapNode ;
+	map<int, CQuadTreeNode*> m_mapNode ;
 	vector<CQuadTreeNode*> m_listNodeInViewPort;
 	vector<CEntity*> m_listObjectInViewport;
 
 
-	vector<CQuadTreeNode*> GetListNodeIntersectRect(CQuadTreeNode*,RECT );
-	bool IsBound(RECT ,RECT);
+	vector<CQuadTreeNode*> GetListNodeIntersectRect(CQuadTreeNode*, RECT );
+	bool IsBound(RECT, RECT);
 
 public:
 	CQuadTree(void);

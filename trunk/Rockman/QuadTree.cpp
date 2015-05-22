@@ -66,7 +66,7 @@ vector<CEntity*> CQuadTree::GetListObjectInRect(RECT _rect)
 	m_listObjectInViewport.clear();
 	m_listNodeInViewPort.clear();
 
-	listnode = GetListNodeIntersectRect(m_nodeRoot,_rect);
+	listnode = GetListNodeIntersectRect(m_nodeRoot, _rect);
 	for (int i = 0; i < listnode.size(); i++)
 	{
 		vector<CEntity*> listObjectInNode = listnode[i]->GetListObjectInNode();
@@ -118,19 +118,19 @@ void CQuadTree::MapIdToObjectInTree(CQuadTreeNode* _nodeParent, vector<CEntity*>
 	//
 	if(_nodeParent->ChildTopLeft != NULL)
 	{
-		MapIdToObjectInTree(_nodeParent->ChildTopLeft,_listobject);
+		MapIdToObjectInTree(_nodeParent->ChildTopLeft, _listobject);
 	}
 	if(_nodeParent->ChildBottomLeft != NULL)
 	{
-		MapIdToObjectInTree(_nodeParent->ChildBottomLeft,_listobject);
+		MapIdToObjectInTree(_nodeParent->ChildBottomLeft, _listobject);
 	}
 	if(_nodeParent->ChildBottomRight != NULL)
 	{
-		MapIdToObjectInTree(_nodeParent->ChildBottomRight,_listobject);
+		MapIdToObjectInTree(_nodeParent->ChildBottomRight, _listobject);
 	}
 	if(_nodeParent->ChildTopRight != NULL)
 	{
-		MapIdToObjectInTree(_nodeParent->ChildTopRight,_listobject);
+		MapIdToObjectInTree(_nodeParent->ChildTopRight, _listobject);
 	}
 }
 
@@ -139,56 +139,56 @@ void CQuadTree::CreateTree(CQuadTreeNode *_nodeParent,map<int,CQuadTreeNode*> _m
 	if(_map.find(_nodeParent->m_IdNode * 4 + 1) != _map.end())
 	{
 		_nodeParent->ChildTopLeft = _map.find(_nodeParent->m_IdNode * 4  + 1)->second;
-		CreateTree(_nodeParent->ChildTopLeft,_map);
+		CreateTree(_nodeParent->ChildTopLeft, _map);
 	}
 	if(_map.find(_nodeParent->m_IdNode * 4  + 2) != _map.end())
 	{
 		_nodeParent->ChildTopRight = _map.find(_nodeParent->m_IdNode * 4  + 2)->second;
-		CreateTree(_nodeParent->ChildTopRight,_map);
+		CreateTree(_nodeParent->ChildTopRight, _map);
 	}
 	if(_map.find(_nodeParent->m_IdNode * 4  + 3) != _map.end())
 	{
 		_nodeParent->ChildBottomLeft = _map.find(_nodeParent->m_IdNode * 4  + 3)->second;
-		CreateTree(_nodeParent->ChildBottomLeft,_map);
+		CreateTree(_nodeParent->ChildBottomLeft, _map);
 	}
 	if(_map.find(_nodeParent->m_IdNode * 4  + 4) != _map.end())
 	{
 		_nodeParent->ChildBottomRight = _map.find(_nodeParent->m_IdNode * 4  + 4)->second;
-		CreateTree(_nodeParent->ChildBottomRight,_map);
+		CreateTree(_nodeParent->ChildBottomRight, _map);
 	}
 }
 
-vector<CQuadTreeNode*> CQuadTree::GetListNodeIntersectRect(CQuadTreeNode* _nodeParent,RECT _rect)
+vector<CQuadTreeNode*> CQuadTree::GetListNodeIntersectRect(CQuadTreeNode* _nodeParent, RECT _rect)
 {
-	if(IsBound(_rect,_nodeParent->m_Rect) && _nodeParent->m_ListIdObject.size()!=0)
+	if(IsBound(_rect, _nodeParent->m_Rect) && _nodeParent->m_ListIdObject.size()!=0)
 	{
 		m_listNodeInViewPort.push_back(_nodeParent);
 	}
 	
-	if(_nodeParent->m_ListIdObject.size()==0 && IsBound(_nodeParent->m_Rect,_rect))
+	if(_nodeParent->m_ListIdObject.size()==0 && IsBound(_nodeParent->m_Rect, _rect))
 	{
 		if(_nodeParent->ChildTopLeft != NULL)
 		{
-			GetListNodeIntersectRect(_nodeParent->ChildTopLeft,_rect);
+			GetListNodeIntersectRect(_nodeParent->ChildTopLeft, _rect);
 		}
 		if(_nodeParent->ChildBottomLeft != NULL)
 		{
-			GetListNodeIntersectRect(_nodeParent->ChildBottomLeft,_rect);
+			GetListNodeIntersectRect(_nodeParent->ChildBottomLeft, _rect);
 		}
 		if(_nodeParent->ChildBottomRight != NULL)
 		{
-			GetListNodeIntersectRect(_nodeParent->ChildBottomRight,_rect);
+			GetListNodeIntersectRect(_nodeParent->ChildBottomRight, _rect);
 		}
 		if(_nodeParent->ChildTopRight != NULL)
 		{
-			GetListNodeIntersectRect(_nodeParent->ChildTopRight,_rect);
+			GetListNodeIntersectRect(_nodeParent->ChildTopRight, _rect);
 		}
 	}
 
 	return m_listNodeInViewPort;
 }
 
-bool CQuadTree::IsBound(RECT _rect1,RECT _rect2)
+bool CQuadTree::IsBound(RECT _rect1, RECT _rect2)
 {
 	if (_rect1.right <= _rect2.left)
 		return false;
