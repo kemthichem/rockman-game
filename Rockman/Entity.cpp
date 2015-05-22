@@ -25,7 +25,7 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 	{
 		if(_listObjectInViewPort[i]->GetId() != this->GetId())
 		{
-			if (m_collision->IsCollision(this,_listObjectInViewPort[i],_time)) {
+			if (m_collision->IsCollision(this, _listObjectInViewPort[i], _time)) {
 				listObjectCollision.push_back(_listObjectInViewPort[i]);
 			}
 		}
@@ -70,19 +70,19 @@ void CEntity::Render(LPD3DXSPRITE _spriteHandler, CCamera* _camera) {
 			,&trans//distance transform
 			);
 
-		D3DXMatrixMultiply(&Scale,&Scale,&matrixFlip);
+		D3DXMatrixMultiply(&Scale, &Scale, &matrixFlip);
 	}
 
 	_spriteHandler->SetTransform(&Scale);
 
-	m_Sprite->Render(_spriteHandler, D3DXVECTOR3(m_pos.x,m_pos.y,0), 1);
+	m_Sprite->Render(_spriteHandler, D3DXVECTOR3(m_pos.x, m_pos.y, 0), 1);
 }
 
 void CEntity::UpdatePosition(float _time)
 {
 	m_veloc += m_accel * _time;
-	m_pos.x += m_veloc.x * _time + 1.0f/2 *m_accel.x*_time*_time;
-	m_pos.y += m_veloc.y * _time + 1.0f/2 *m_accel.y*_time*_time;
+	m_pos.x += m_veloc.x * _time + 1.0f/2 * m_accel.x *_time * _time;
+	m_pos.y += m_veloc.y * _time + 1.0f/2 * m_accel.y *_time * _time;
 }
 
 CEntity::~CEntity(void)

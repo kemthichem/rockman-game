@@ -15,8 +15,8 @@ CSprite::CSprite(LPDIRECT3DTEXTURE9 _texture, D3DXVECTOR2 _sizeTexture, int _cou
 	m_CountSprite = _countRow * _countCol;
 	m_CountPerRow = _countCol;
 	m_PosSrc = _posSrc;
-	m_SizeSprite.x = (_sizeTexture.x - _posSrc.x)/ _countCol;
-	m_SizeSprite.y = (_sizeTexture.y - _posSrc.y)/_countRow;
+	m_SizeSprite.x = (_sizeTexture.x - _posSrc.x) / _countCol;
+	m_SizeSprite.y = (_sizeTexture.y - _posSrc.y) / _countRow;
 
 	m_OffsetLeftTop = _offsetLeftTop;
 	m_OffsetRightBottom = _offsetRightBottom;
@@ -40,13 +40,13 @@ void CSprite::IndexOf(int _index)
 }
 void CSprite::NextOf(float _time, int indexStart, int indexEnd)
 {
-	if(m_CurrentIndex<indexStart)
+	if(m_CurrentIndex < indexStart)
 		m_CurrentIndex = indexStart;
 	m_TimeWait += _time;
 	if(m_TimeWait >= TIME_PER_ANIMATION)  
 	{		
 		m_CurrentIndex++;
-		if (m_CurrentIndex>indexEnd)
+		if (m_CurrentIndex > indexEnd)
 		{
 			m_CurrentIndex = indexStart;
 		}
@@ -56,7 +56,7 @@ void CSprite::NextOf(float _time, int indexStart, int indexEnd)
 void CSprite::Render(LPD3DXSPRITE _spriteHandler, D3DXVECTOR3 _pos, int _dir)
 {
 	RECT srect;
-	srect.left = (m_CurrentIndex % m_CountPerRow)*(m_SizeSprite.x) + m_PosSrc.x + m_OffsetLeftTop.x;
+	srect.left = (m_CurrentIndex % m_CountPerRow) * (m_SizeSprite.x) + m_PosSrc.x + m_OffsetLeftTop.x;
 	srect.top = (m_CurrentIndex / m_CountPerRow)*(m_SizeSprite.y) + m_PosSrc.y + m_OffsetLeftTop.y;
 	srect.right = srect.left + m_SizeSprite.x - m_OffsetRightBottom.x - m_OffsetLeftTop.x;
 	srect.bottom = srect.top + m_SizeSprite.y - m_OffsetRightBottom.y - m_OffsetLeftTop.y;

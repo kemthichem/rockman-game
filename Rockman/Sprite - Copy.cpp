@@ -23,11 +23,11 @@ CSprite::CSprite(LPDIRECT3DTEXTURE9 _texture, int _width, int _height, int _coun
 void CSprite::Next()
 {
 	waitNextImage += TIME_PER_ANIMATION;
-	if(waitNextImage>=timePerImage)  //Chờ đến khi quá thời gian quy định thì chuyển frame kế tiếp
+	if(waitNextImage >= timePerImage)  //Chờ đến khi quá thời gian quy định thì chuyển frame kế tiếp
 	{
 		//	index = (index + count-1)% count;
-		index = (index +1)%count;
-		waitNextImage=0;
+		index = (index +1) % count;
+		waitNextImage = 0;
 	}
 }
 void CSprite::IndexOf(int _index)
@@ -36,25 +36,25 @@ void CSprite::IndexOf(int _index)
 }
 void CSprite::NextOf(int indexStart, int indexEnd)
 {
-	if(index<indexStart)
+	if(index < indexStart)
 		index = indexStart;
-	waitNextImage+=TIME_PER_ANIMATION;
-	if(waitNextImage>=timePerImage)  
+	waitNextImage += TIME_PER_ANIMATION;
+	if(waitNextImage >= timePerImage)  
 	{		
 		index++;
-		if (index>indexEnd)
+		if (index > indexEnd)
 		{
 			index = indexStart;
 		}
-		waitNextImage=0;
+		waitNextImage = 0;
 	}
 }
 void CSprite::Render(LPD3DXSPRITE _spriteHandler, D3DXVECTOR3 _pos, int _dir)
 {
 	RECT srect;
-	srect.left = (index % numImagePerRow)*(widthOfSprite)+1;
-	srect.top = (index / numImagePerRow)*(heightOfSprite)+1;
-	srect.right = srect.left + widthOfSprite ;
+	srect.left = (index % numImagePerRow) * (widthOfSprite) + 1;
+	srect.top = (index / numImagePerRow) * (heightOfSprite) + 1;
+	srect.right = srect.left + widthOfSprite;
 	srect.bottom = srect.top + heightOfSprite +1;
 
 	//---
@@ -82,19 +82,19 @@ void CSprite::SetSpriteHandleDefault(LPD3DXSPRITE _spriteHandler)
 		);
 	_spriteHandler->SetTransform(&matrix);
 }
-void CSprite::NextAt( int index1, int index2)
+void CSprite::NextAt(int index1, int index2)
 {
 	if(index1 == index2)
 	{
 		index = index1;
 		return;
 	}
-	else if(index<index1)
+	else if(index < index1)
 		index = index1;
-	waitNextImage+=TIME_PER_ANIMATION;
-	if(waitNextImage>=timePerImage)  //Chờ đến khi quá thời gian quy định thì chuyển framekế tiếp
+	waitNextImage += TIME_PER_ANIMATION;
+	if(waitNextImage >= timePerImage)  //Chờ đến khi quá thời gian quy định thì chuyển framekế tiếp
 	{
-		if(index==index1)
+		if(index == index1)
 			index = index2;
 		else
 			index = index1;
@@ -104,7 +104,7 @@ void CSprite::NextAt( int index1, int index2)
 CSprite::~CSprite(void)
 {
 }
-void CSprite::SetTransform(LPD3DXSPRITE _spriteHandler, float x,float y, float dir)
+void CSprite::SetTransform(LPD3DXSPRITE _spriteHandler, float x, float y, float dir)
 {
 	const int HEIGHT_SCREEN = 600;
 
@@ -122,12 +122,12 @@ void CSprite::SetTransform(LPD3DXSPRITE _spriteHandler, float x,float y, float d
 	//flip coor
 	D3DXMATRIX matrixFlipCoor;
 	//D3DXVECTOR2 trans(0,-y0);
-	D3DXVECTOR2 transCoor(0, HEIGHT_SCREEN -2 * y - height/numImagePerCol);
+	D3DXVECTOR2 transCoor(0, HEIGHT_SCREEN -2 * y - height / numImagePerCol);
 	D3DXVECTOR2 *vectorCoor = new D3DXVECTOR2(1,1);
 
-	if(dir<0) {
-		transCoor.x = 2*x+widthOfSprite;
-		vectorCoor->x=-1;
+	if(dir < 0) {
+		transCoor.x = 2 * x + widthOfSprite;
+		vectorCoor->x = -1;
 	}
 
 	D3DXMatrixTransformation2D(&matrixFlipCoor
