@@ -42,7 +42,8 @@ LPDIRECT3DTEXTURE9 CUtils::LoadTexture(LPDIRECT3DDEVICE9 _d3ddv,LPCSTR filepath)
 
 		D3DX_DEFAULT,            // DWORD Filter  
 		D3DX_DEFAULT,            // DWORD MipFilter  
-		NULL,    // D3DCOLOR ColorKey  
+		NULL,
+		//D3DCOLOR_XRGB(255,255,255),    // D3DCOLOR ColorKey  
 		&info,                // D3DXIMAGE_INFO *pSrcInfo  
 		NULL,                // PALETTEENTRY *pPalette  
 		&texture);                // LPDIRECT3DTEXTURE9 *ppTexture  

@@ -11,6 +11,8 @@ CBigEye::CBigEye(int _id, D3DXVECTOR3 _pos)
 	m_accel = D3DXVECTOR2(0,0);
 	m_veloc.x = -10;
 	m_accel.y = -20.0f;
+
+	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 }
 
 

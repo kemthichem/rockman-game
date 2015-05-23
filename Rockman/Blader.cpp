@@ -8,7 +8,7 @@ CBlader::CBlader(int _id, D3DXVECTOR3 _pos)
 	m_pos = _pos;
 	m_accel = D3DXVECTOR2(0,0);
 	m_veloc.x = 10;
-	//m_accel.y = -20.0f;
+	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 }
 
 
@@ -23,7 +23,6 @@ void CBlader::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntit
 	if (m_pos.x < 0 || m_pos.x > 800) {
 		m_veloc.x *= -1;
 	}
-
 
 	m_Sprite->NextOf(_time, 0, 1);	 
 }

@@ -19,9 +19,6 @@ private:
 	D3DXVECTOR2 m_PosSrc;
 	LPDIRECT3DTEXTURE9 m_Texture;	
 public:
-
-
-
 	CSprite(void);
 	CSprite(LPDIRECT3DTEXTURE9 _texture, D3DXVECTOR2 _sizeTexture,
 		int _countCol, int _countRow,
@@ -29,10 +26,11 @@ public:
 		D3DXVECTOR2 _offsetLeftTop = D3DXVECTOR2(0,0),
 		D3DXVECTOR2 _offsetRightBottom = D3DXVECTOR2(0,0));
 
-	void Render(LPD3DXSPRITE _spriteHandler, D3DXVECTOR3 _pos, int _dir);
+	void Render(LPD3DXSPRITE _spriteHandler, D3DXVECTOR3 _pos);
 	void Next(float _time);
-	void NextOf(float _time, int indexStart, int indexEnd);
-	void NextAt(float _time, int, int);
+	void OneOf(int, int);
+	void NextOf(float _time, int _indexStart, int indexEnd);
+	void NextAt(float _time, int _indexStart, int indexEnd);
 	void IndexOf(int _index);
 
 	int GetWidthRectSprite();
