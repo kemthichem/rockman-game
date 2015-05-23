@@ -14,7 +14,7 @@ CMoveMap::CMoveMap(int _id, D3DXVECTOR3 _pos)
 	m_Rect.top = m_pos.y;
 	m_Rect.left = m_pos.x;
 	m_Rect.bottom = m_Rect.top - 1;
-	m_Rect.right = m_Rect.left + 100;
+	m_Rect.right = m_Rect.left + 32;
 }
 
 

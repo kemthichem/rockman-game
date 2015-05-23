@@ -10,6 +10,7 @@ CEntity::CEntity(void)
 	m_accel = D3DXVECTOR2(0,0);
 
 	m_collision = NULL;
+	m_Size = D3DXVECTOR2(0,0);
 }
 
 void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewPort) {
@@ -33,6 +34,8 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 
 	for (int i = 0; i < listObjectCollision.size(); i++)
 	{
+		if (listObjectCollision[i]->GetType() == MOVEMAPTYPE && this->GetType() == ROCKMANTYPE)
+			int k = 0;
 		UpdateCollison(listObjectCollision[i],_time);
 	}
 
@@ -46,20 +49,19 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 }
 
 void CEntity::Render(LPD3DXSPRITE _spriteHandler, CCamera* _camera) {
+	RenderEachSprite(_spriteHandler, _camera, m_pos);
+}
 
-	if (m_Type==BIGEYE && m_pos.y<135)
-	{
-		int k = 0;
-	}
-
+void CEntity::RenderEachSprite(LPD3DXSPRITE _spriteHandler, CCamera* _camera, D3DXVECTOR3 _posRender)
+{
 	D3DXMATRIX Scale;
 	D3DXMatrixIdentity(&Scale);
-	D3DXMatrixTransformation2D(&Scale, &D3DXVECTOR2(m_pos.x, m_pos.y), 0.0f, &D3DXVECTOR2(1.f, -1.f),NULL, 0.f, NULL);
+	D3DXMatrixTransformation2D(&Scale, &D3DXVECTOR2(_posRender.x, _posRender.y), 0.0f, &D3DXVECTOR2(1.f, -1.f),NULL, 0.f, NULL);
 	D3DXMatrixMultiply(&Scale,&Scale, &_camera->GetMatrixCamera());
 
 	//flip sprite when move left
 	D3DXMATRIX matrixFlip;
-	D3DXVECTOR2 trans(2*(m_pos.x - _camera->GetPosCamera().x ) + m_Sprite->GetWidthRectSprite(), 0);
+	D3DXVECTOR2 trans(2*(_posRender.x - _camera->GetPosCamera().x ) + m_Sprite->GetWidthRectSprite(), 0);
 	if (m_isTurnLeft) {
 		D3DXMatrixTransformation2D(&matrixFlip
 			,NULL//center of sprite
@@ -75,7 +77,7 @@ void CEntity::Render(LPD3DXSPRITE _spriteHandler, CCamera* _camera) {
 
 	_spriteHandler->SetTransform(&Scale);
 
-	m_Sprite->Render(_spriteHandler, D3DXVECTOR3(m_pos.x, m_pos.y, 0), 1);
+	m_Sprite->Render(_spriteHandler, _posRender);
 }
 
 void CEntity::UpdatePosition(float _time)
@@ -117,6 +119,6 @@ void CEntity::UpdateRect()
 {
 	m_Rect.left = m_pos.x;
 	m_Rect.top = m_pos.y;
-	m_Rect.right = m_Rect.left + m_Sprite->GetWidthRectSprite();
-	m_Rect.bottom = m_Rect.top - m_Sprite->GetHeightRectSprite();
+	m_Rect.right = m_Rect.left + m_Size.x;
+	m_Rect.bottom = m_Rect.top - m_Size.y;
 }

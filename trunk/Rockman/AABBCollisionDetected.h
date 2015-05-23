@@ -17,17 +17,14 @@ class CAABBCollision
 {
 private:
 	DirectCollision m_directCollision;
+	bool CheckCollision(RECT ,RECT);
+	float intersectX(CEntity* ,CEntity*,float);
 public:
 	CAABBCollision();
 	~CAABBCollision();
-	bool CheckCollision(RECT ,RECT);
-	float CheckAABBCollision(CEntity*,CEntity*,float);
+	
 	DirectCollision GetDirectCollision(){return m_directCollision;}
-	void SetDirectCollsion(DirectCollision Direct){m_directCollision = Direct; }
 	static bool SortObject(CEntity* a,CEntity* b);
-	float intersectX(CEntity* ,CEntity*,float);
-	RECT CLip(CEntity*,CEntity*);
-
 	float SweptAABB(CEntity* _ob1, CEntity* _ob2, float _time);
 	bool IsCollision(CEntity* _ob1, CEntity* _ob2, float _time);
 };

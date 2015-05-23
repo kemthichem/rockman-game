@@ -16,6 +16,7 @@ enum ObjectType
 	ROCKMANTYPE,
 	LANDTYPE,
 	LAND1TYPE,
+	LADDERTYPE,
 	BIGEYE,
 	BLADER,
 	MOVEMAPTYPE
@@ -24,10 +25,8 @@ enum ObjectType
 
 class CEntity
 {
-private:
-	
-	void UpdatePosition(float);	
-	 
+private:	
+	void UpdatePosition(float);		 
 protected:
 	bool m_isTurnLeft;
 	int m_Id;
@@ -37,9 +36,11 @@ protected:
 	D3DXVECTOR2 m_accel;
 	D3DXVECTOR3 m_pos;
 	RECT m_Rect;
+	D3DXVECTOR2 m_Size;
 	CSprite *m_Sprite;
 
 	virtual void UpdateCollison(CEntity* _orther,float _time);
+	void RenderEachSprite(LPD3DXSPRITE, CCamera*, D3DXVECTOR3 _posRender);
 public:
 
 	float m_TimeCollision;

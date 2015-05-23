@@ -14,6 +14,7 @@ enum ActionRockman
 	Action_Go_Gun,
 	Action_Jump,
 	Action_Jump_Gun,
+	Action_Climb_Stand,
 	Action_Climb,
 	Action_Climb_Gun,
 	Action_Start,
@@ -26,18 +27,18 @@ class CRockman: public CEntity
 private:
 	static const D3DXVECTOR2 mAccelOfRockman;
 	vector<CBullet*> m_listBullet;
-
+	float m_PosXClimb;
 	bool m_isCollisionBottom;
 	DirectCollision m_directCollision;
 
 	ActionRockman m_action;
 	void UpdateSprite(float _time);
-
 	void Stand();
 	void TurnLeft();
 	void TurnRight();
 	void Jump();
 	void Shot();
+	void Climb();
 
 
 	//collision

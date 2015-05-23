@@ -111,6 +111,9 @@
     <ClCompile Include="Blader.cpp">
       <Filter>ObjectGame</Filter>
     </ClCompile>
+    <ClCompile Include="Ladder.cpp">
+      <Filter>ObjectGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RockmanGame.h">
@@ -174,6 +177,9 @@
       <Filter>ObjectGame</Filter>
     </ClInclude>
     <ClInclude Include="Blader.h">
+      <Filter>ObjectGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Ladder.h">
       <Filter>ObjectGame</Filter>
     </ClInclude>
   </ItemGroup>

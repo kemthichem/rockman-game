@@ -1,6 +1,7 @@
 #include"Map.h"
 #include "MoveMap.h"
 #include "Blader.h"
+#include "Ladder.h"
 
 int CMap::g_widthMap = 0;
 int CMap::g_heightMap = 0;
@@ -48,8 +49,6 @@ vector<CEntity*> CMap::ObjectFromFile(char* _pathFileMap)
 			_pos.x = atoi(itemsInfo.at(2).c_str());
 			_pos.y= atoi(itemsInfo.at(3).c_str());
 
-
-
 			if(_objecttype == "LAND"){
 				CLand *_brick = new CLand(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
 				object.push_back(_brick);
@@ -63,8 +62,11 @@ vector<CEntity*> CMap::ObjectFromFile(char* _pathFileMap)
 				CBlader *ob = new CBlader(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
 				object.push_back(ob);
 			}
-			
 
+			else if(_objecttype == "LADDER"){
+				CLadder *ob = new CLadder(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
+				object.push_back(ob);
+			}
 		}
 	}
 

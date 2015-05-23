@@ -1,6 +1,6 @@
 ﻿#include "Sprite.h"
 
-#define  TIME_PER_ANIMATION (3.0f)
+#define  TIME_PER_ANIMATION (2.0f)
 
 
 CSprite::CSprite(void)
@@ -38,6 +38,14 @@ void CSprite::IndexOf(int _index)
 {
 	m_CurrentIndex = _index;
 }
+
+void CSprite::OneOf(int indexStart, int indexEnd)
+{
+	if (m_CurrentIndex < indexStart || m_CurrentIndex > indexEnd)
+	{
+		m_CurrentIndex = indexStart;
+	}
+}
 void CSprite::NextOf(float _time, int indexStart, int indexEnd)
 {
 	if(m_CurrentIndex < indexStart)
@@ -53,7 +61,7 @@ void CSprite::NextOf(float _time, int indexStart, int indexEnd)
 		m_TimeWait=0;
 	}
 }
-void CSprite::Render(LPD3DXSPRITE _spriteHandler, D3DXVECTOR3 _pos, int _dir)
+void CSprite::Render(LPD3DXSPRITE _spriteHandler, D3DXVECTOR3 _pos)
 {
 	RECT srect;
 	srect.left = (m_CurrentIndex % m_CountPerRow) * (m_SizeSprite.x) + m_PosSrc.x + m_OffsetLeftTop.x;
@@ -66,7 +74,7 @@ void CSprite::Render(LPD3DXSPRITE _spriteHandler, D3DXVECTOR3 _pos, int _dir)
 		&srect,
 		NULL,
 		&_pos,
-		D3DCOLOR_XRGB(0,255,255)
+		D3DCOLOR_XRGB(255,255,255)
 		);
 }
 
