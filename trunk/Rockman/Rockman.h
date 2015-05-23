@@ -28,7 +28,9 @@ private:
 	static const D3DXVECTOR2 mAccelOfRockman;
 	vector<CBullet*> m_listBullet;
 	float m_PosXClimb;
+	int m_IsInjuring;
 	bool m_isCollisionBottom;
+	float m_TimeInjured;
 	DirectCollision m_directCollision;
 
 	ActionRockman m_action;
@@ -38,7 +40,8 @@ private:
 	void TurnRight();
 	void Jump();
 	void Shot();
-	void Climb();
+	void Climb(bool _isTurnUp);
+	void Injunred(bool _isDirectX, float _time);
 
 
 	//collision

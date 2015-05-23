@@ -17,11 +17,10 @@ enum ObjectType
 	LANDTYPE,
 	LAND1TYPE,
 	LADDERTYPE,
-	BIGEYE,
+	BIGEYETYPE,
 	BLADER,
 	MOVEMAPTYPE
 };
-
 
 class CEntity
 {

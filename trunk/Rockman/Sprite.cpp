@@ -1,7 +1,5 @@
 ﻿#include "Sprite.h"
 
-#define  TIME_PER_ANIMATION (2.0f)
-
 
 CSprite::CSprite(void)
 {
