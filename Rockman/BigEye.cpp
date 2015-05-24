@@ -10,7 +10,7 @@ CBigEye::CBigEye(int _id, D3DXVECTOR3 _pos)
 	m_pos = _pos;
 	m_accel = D3DXVECTOR2(0,0);
 	m_veloc.x = -10;
-	m_accel.y = -20.0f;
+	m_accel.y = -5.0f;
 
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 }
@@ -29,11 +29,11 @@ void CBigEye::Update(float _deltaTime, CCamera *_camera, CInput *_input,vector<C
 		m_veloc.x *= -1;
 	}
 
-	if( m_pos.y <= 135){
-		m_veloc.y = 80.0f;
+	if( m_pos.y < 135){
+		m_veloc.y = 35.0f;
 	}
 
-	if(m_pos.y > 135){
+	if(m_pos.y > 160){
 		m_Sprite ->IndexOf(1);
 	}else{
 		m_Sprite ->IndexOf(0);
