@@ -29,10 +29,10 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 }
 CRockman::~CRockman()
 {
-	for(int i = 0; i < m_listBullet.size(); ++i)
-		delete m_listBullet[i];
+	for(int i = 0; i < m_ListBullet.size(); ++i)
+		delete m_ListBullet[i];
 
-	m_listBullet.clear();
+	m_ListBullet.clear();
 }
 
 void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewPort) {
@@ -40,6 +40,7 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 
 	if (m_pos.y < 80) {
 		m_pos.y = 80;
+		m_isCollisionBottom = true;
 		m_veloc.y = 0;
 	}
 
@@ -55,6 +56,12 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	} else {
 		Stand();
 	}
+	
+	if (m_veloc.y != 0 && m_action != Action_Start && m_PosXClimb == -1)
+		m_action = Action_Jump;
+	if (m_IsInjuring != 0)
+		Injunred(m_IsInjuring > 0, _time);
+
 	int keyDown = _input ->GetKeyDown();
 	switch (keyDown)
 	{
@@ -74,13 +81,9 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 		m_action = (ActionRockman)((int)m_action - 1);		
 	}
 
-	if (m_veloc.y != 0 && m_action != Action_Start && m_PosXClimb == -1)
-		m_action = Action_Jump;
-	if (m_IsInjuring != 0)
-		Injunred(m_IsInjuring > 0, _time);
-
 	//reset	
 	m_PosXClimb = -1;
+	m_isCollisionBottom = false;
 	CEntity::Update(_time, _camera, _input, _listObjectInViewPort);
 
 	m_isTurnLeft = m_IsInjuring !=0 ? !m_isTurnLeft: m_isTurnLeft;
@@ -89,12 +92,12 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	UpdateSprite(_time);
 
 	//Update bullet
-	for(vector<CBullet*>::const_iterator it = m_listBullet.begin(); it != m_listBullet.end(); it++)
+	for(vector<CBullet*>::const_iterator it = m_ListBullet.begin(); it != m_ListBullet.end(); it++)
 	{
 		(*it)->Update(_time, _camera, _input, _listObjectInViewPort);
 		if((*it)->GetRect().left<0 || (*it)->GetRect().right>800||(*it)->GetRect().top>600||(*it)->GetRect().bottom<0)
 		{
-			//m_listBullet.erase(it);
+			//m_ListBullet.erase(it);
 		}
 	} 
 }
@@ -151,7 +154,7 @@ void CRockman::Stand()
 		m_veloc.y = 0;
 		m_accel.y = 0;
 	}
-	if (1)//m_isCollisionBottom) {
+	if (m_isCollisionBottom) 
 	{
 		m_veloc.x = 0;
 		m_action = Action_Stand;
@@ -160,7 +163,7 @@ void CRockman::Stand()
 
 void CRockman::TurnLeft()
 {
-	if (1)//m_isCollisionBottom) {
+	if (m_isCollisionBottom) 
 	{
 		m_veloc.x = -30;
 		m_action = Action_Go;
@@ -169,7 +172,7 @@ void CRockman::TurnLeft()
 
 void CRockman::TurnRight()
 {
-	if (1)//m_isCollisionBottom) 
+	if (m_isCollisionBottom) 
 	{
 		m_veloc.x = 30;
 		m_action = Action_Go;
@@ -198,9 +201,12 @@ void CRockman::UpdateCollison(CEntity* _orther, float _time) {
 		if (m_veloc.y == 0)
 			m_action = Action_Climb_Stand;
 		m_PosXClimb = _orther->GetRect().left + 16;
+		m_isCollisionBottom = true;
 		break;
 	case BIGEYETYPE:
+	case BLADER:
 		m_IsInjuring = _orther->GetVelocity().x > 0 ? 1 : -1;
+		
 		break;
 	default:
 		break;
@@ -264,22 +270,6 @@ void CRockman::ExecuteCollision(CEntity* _orther,DirectCollision m_directCollion
 				m_pos.y -= 1;
 			}
 			break;
-		/*case BIGEYETYPE:
-			switch (m_directCollion)
-			{
-			case LEFT:
-				m_IsInjuring = 1;
-				break;
-			case TOP:
-				break;
-			case RIGHT:
-				m_IsInjuring = -1;
-				break;
-			case BOTTOM:
-				break;
-			default:
-				break;
-			}*/
 		}
 }
 
@@ -287,10 +277,10 @@ void CRockman::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 {
 	CEntity::Render(_spriteHandle, _camera);
 
-	//Update bullet
-	for (int i = 0; i < m_listBullet.size(); i++)
+	//Render bullet
+	for (int i = 0; i < m_ListBullet.size(); i++)
 	{
-		m_listBullet[i]->Render(_spriteHandle, _camera);
+		m_ListBullet[i]->Render(_spriteHandle, _camera);
 	}
 }
 
@@ -302,7 +292,7 @@ void CRockman::Shot()
 	else
 		bullet->SetVelloc(D3DXVECTOR2(60,0));
 
-	m_listBullet.push_back(bullet);
+	m_ListBullet.push_back(bullet);
 }
 
 void CRockman::Climb(bool _isTurnUp)

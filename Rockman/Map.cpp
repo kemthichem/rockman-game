@@ -2,6 +2,8 @@
 #include "MoveMap.h"
 #include "Blader.h"
 #include "Ladder.h"
+#include "Cutman.h"
+#include "ScrewBomber.h"
 
 int CMap::g_widthMap = 0;
 int CMap::g_heightMap = 0;
@@ -58,13 +60,17 @@ vector<CEntity*> CMap::ObjectFromFile(char* _pathFileMap)
 			} else if(_objecttype == "BIGEYE"){
 				CBigEye *bigEye = new CBigEye(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
 				object.push_back(bigEye);
+			} else if(_objecttype == "CUTMAN"){
+				CCutMan *ob = new CCutMan(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
+				object.push_back(ob);
 			} else if(_objecttype == "BLADER"){
 				CBlader *ob = new CBlader(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
 				object.push_back(ob);
-			}
-
-			else if(_objecttype == "LADDER"){
+			}else if(_objecttype == "LADDER"){
 				CLadder *ob = new CLadder(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
+				object.push_back(ob);
+			}else if(_objecttype == "SCREW_BOMBER"){
+				CScrewBomber *ob = new CScrewBomber(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
 				object.push_back(ob);
 			}
 		}

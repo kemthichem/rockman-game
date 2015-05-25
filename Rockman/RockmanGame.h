@@ -27,7 +27,7 @@ public:
 	CRockman *rockman;
 
 
-	list<CEntity*> m_listObject;
+	vector<CEntity*> m_listObject;
 	~CRockmanGame(void);
 };
 

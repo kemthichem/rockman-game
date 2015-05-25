@@ -13,11 +13,10 @@ CRockmanGame::CRockmanGame( HINSTANCE hInstance ):CGame(hInstance)
 }
 CRockmanGame::~CRockmanGame(void)
 {
-	//delete rockman;
-	for(list<CEntity*>::const_iterator it = m_listObject.begin(); it != m_listObject.end(); it++)
-	{
-		delete *it;
-	} 
+	//delete list object
+	for(int i = 0; i < m_listObject.size(); ++i)
+		delete m_listObject[i];
+
 	m_listObject.clear();
 
 	delete quadTree;
@@ -64,14 +63,14 @@ void CRockmanGame::UpdateWorld(float deltaTime, CCamera *_camera, CInput *_input
 void CRockmanGame::InitGame()
 {	
 	CMap map;
-	vector<CEntity*> listObject = map.GetObjectFromFile("Resource//map//Map1.txt");	
+	m_listObject = map.GetObjectFromFile("Resource//map//Map1.txt");	
 
 	//Load tree
 	quadTree = new CQuadTree();
 	quadTree->LoadNodeInFile("Resource//map//Map1Tree.txt");
 	//quadTree->CreateTree(quadTree->m_nodeRoot, quadTree->m_mapNode);
 
-	quadTree->MapIdToObjectInTree(quadTree->m_nodeRoot, listObject);
+	quadTree->MapIdToObjectInTree(quadTree->m_nodeRoot, m_listObject);
 	//
 	rockman = new CRockman(D3DXVECTOR3(200,1000,0));
 }

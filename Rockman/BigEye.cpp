@@ -1,7 +1,5 @@
 #include "BigEye.h"
 
-
-
 CBigEye::CBigEye(int _id, D3DXVECTOR3 _pos)
 {
 	m_Id = _id;
