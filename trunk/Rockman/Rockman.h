@@ -26,7 +26,7 @@ class CRockman: public CEntity
 {
 private:
 	static const D3DXVECTOR2 mAccelOfRockman;
-	vector<CBullet*> m_listBullet;
+	vector<CBullet*> m_ListBullet;
 	float m_PosXClimb;
 	int m_IsInjuring;
 	bool m_isCollisionBottom;

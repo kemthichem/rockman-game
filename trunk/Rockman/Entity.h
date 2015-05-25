@@ -19,6 +19,8 @@ enum ObjectType
 	LADDERTYPE,
 	BIGEYETYPE,
 	BLADER,
+	CUTMAN,
+	SCREW_BOMBER,
 	MOVEMAPTYPE
 };
 
@@ -57,7 +59,7 @@ public:
 	virtual void Update(float , CCamera *, CInput *, vector<CEntity*>);
 	virtual void Render(LPD3DXSPRITE, CCamera*);
 	CEntity(void);
-	~CEntity(void);
+	virtual ~CEntity(void);
 };
 
 #endif
