@@ -230,6 +230,7 @@ void CRockman::ExecuteCollision(CEntity* _orther,DirectCollision m_directCollion
 		{
 		case LANDTYPE:
 		case LAND1TYPE:
+		case LANDWHITE:
 			{
 				if( m_directCollion == BOTTOM)
 				{
