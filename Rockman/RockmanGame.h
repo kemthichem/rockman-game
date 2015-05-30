@@ -26,7 +26,6 @@ public:
 	CRockmanGame(HINSTANCE hInstance);
 	CRockman *rockman;
 
-
 	vector<CEntity*> m_listObject;
 	~CRockmanGame(void);
 };

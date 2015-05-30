@@ -26,9 +26,9 @@ class CRockman: public CEntity
 {
 private:
 	static const D3DXVECTOR2 mAccelOfRockman;
-	vector<CBullet*> m_ListBullet;
+	CBullet* m_ListBullet[5];
 	float m_PosXClimb;
-	int m_IsInjuring;
+	void Injunred(bool _isDirectX, float _time);
 	bool m_isCollisionBottom;
 	float m_TimeInjured;
 	DirectCollision m_directCollision;
@@ -41,8 +41,6 @@ private:
 	void Jump();
 	void Shot();
 	void Climb(bool _isTurnUp);
-	void Injunred(bool _isDirectX, float _time);
-
 
 	//collision
 	void CollisionBottom();
@@ -54,5 +52,9 @@ public:
 	virtual void Render(LPD3DXSPRITE, CCamera*);
 	virtual void UpdateCollison(CEntity* _orther, float _time);
 	void ExecuteCollision(CEntity* _orther,DirectCollision m_directCollion,float _timeEntry);
+
+	/*rockman*/
+	int m_Injuring;//0: not Injuring - 1:right - -1:left
+	
 };
 #endif

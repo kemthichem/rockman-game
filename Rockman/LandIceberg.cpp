@@ -1,13 +1,13 @@
-#include "LandWhite.h"
+#include "LandIceberg.h"
 
-#define  NUMB_SPRITE 3
+#define  NUMB_SPRITE 2
 
-CLandWhite::CLandWhite(int _id, D3DXVECTOR3 _pos)
+CLandIceberg::CLandIceberg(int _id, D3DXVECTOR3 _pos)
 {
 	m_Id = _id;
-	m_Type = LANDWHITE;
+	m_Type = LANDICEBERG;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES),
-		D3DXVECTOR2(857, 35), 3, 1, D3DXVECTOR2(755, 1), 
+		D3DXVECTOR2(277, 162), 2, 1, D3DXVECTOR2(209,128), 
 		D3DXVECTOR2(1,1),  D3DXVECTOR2(1,1));
 	m_pos = _pos;
 	m_accel = D3DXVECTOR2(0,0);	
@@ -16,22 +16,22 @@ CLandWhite::CLandWhite(int _id, D3DXVECTOR3 _pos)
 }
 
 
-CLandWhite::~CLandWhite(void)
+CLandIceberg::~CLandIceberg(void)
 {
 }
 
-void CLandWhite::Update(float _time, CCamera *_camera, CInput *_input)
+void CLandIceberg::Update(float _time, CCamera *_camera, CInput *_input)
 {
 	
 }
 
 
-void CLandWhite::Collision()
+void CLandIceberg::Collision()
 {
 
 }
 
-void CLandWhite::Render(LPD3DXSPRITE _sp, CCamera* _camera)
+void CLandIceberg::Render(LPD3DXSPRITE _sp, CCamera* _camera)
 {
 	D3DXVECTOR3 pos = m_pos;
 	for (int i = 0; i < NUMB_SPRITE; i++)

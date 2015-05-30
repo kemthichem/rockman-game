@@ -1,6 +1,7 @@
 #include"Map.h"
 #include "Land1.h"
 #include "LandWhite.h"
+#include "LandIceberg.h"
 #include "MoveMap.h"
 #include "Blader.h"
 #include "Ladder.h"
@@ -61,6 +62,9 @@ vector<CEntity*> CMap::ObjectFromFile(char* _pathFileMap)
 				object.push_back(ob);
 			}  else if(_objecttype == "LANDWHITE"){
 				CLandWhite *ob = new CLandWhite(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
+				object.push_back(ob);
+			} else if(_objecttype == "LANDICEBERG"){
+				CLandIceberg *ob = new CLandIceberg(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
 				object.push_back(ob);
 			}  else if(_objecttype == "MOVEMAP"){
 				CMoveMap *moveMap = new CMoveMap(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
