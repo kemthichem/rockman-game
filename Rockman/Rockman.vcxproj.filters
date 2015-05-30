@@ -123,6 +123,9 @@
     <ClCompile Include="CutMan.cpp">
       <Filter>ObjectGame</Filter>
     </ClCompile>
+    <ClCompile Include="IceMan.cpp">
+      <Filter>ObjectGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RockmanGame.h">
@@ -195,6 +198,9 @@
       <Filter>Bullet</Filter>
     </ClInclude>
     <ClInclude Include="CutMan.h">
+      <Filter>ObjectGame</Filter>
+    </ClInclude>
+    <ClInclude Include="IceMan.h">
       <Filter>ObjectGame</Filter>
     </ClInclude>
   </ItemGroup>
