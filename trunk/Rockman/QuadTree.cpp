@@ -5,6 +5,8 @@
 
 CQuadTree::CQuadTree(void)
 {
+	m_listObjectViewportToUpdate.clear();
+	m_listObjectViewportToRender.clear();
 }
 
 
@@ -62,41 +64,43 @@ void CQuadTree::LoadNodeInFile(char* _pathFileTree)
 vector<CEntity*> CQuadTree::GetListObjectInRect(RECT _rect)
 {
 	vector<CQuadTreeNode*> listnode;
-
-	m_listObjectInViewport.clear();
+	m_listObjectViewportToRender.clear();
+	m_listObjectViewportToUpdate.clear();
 	m_listNodeInViewPort.clear();
 
 	listnode = GetListNodeIntersectRect(m_nodeRoot, _rect);
 	for (int i = 0; i < listnode.size(); i++)
 	{
 		vector<CEntity*> listObjectInNode = listnode[i]->GetListObjectInNode();
-		m_listObjectInViewport.insert(m_listObjectInViewport.begin(), listObjectInNode.begin(), listObjectInNode.end());/*
-		if(listnode[i]->m_ListObject.size() !=0){
-			for (int j = 0; j < listnode[i]->m_ListObject.size(); j++)
-			{
-				listObjects.push_back(listnode[i]->m_ListObject[j]);
+		//m_listObjectViewportToUpdate.insert(m_listObjectViewportToUpdate.begin(), listObjectInNode.begin(), listObjectInNode.end());
+
+			for (int j = 0; j < listObjectInNode.size(); j++) {
+				if (listObjectInNode[j]->IsShow()) {
+					m_listObjectViewportToRender.push_back(listObjectInNode[j]);
+				}
+				if ((int)listObjectInNode[j]->GetType() > -10) {
+					m_listObjectViewportToUpdate.push_back(listObjectInNode[j]);
+				}
 			}
-		}*/
+
 	}
 
-	return m_listObjectInViewport;
+	return m_listObjectViewportToUpdate;
 }
 
 void CQuadTree::Update(CCamera* _camera, float _time)
 {
-	//m_listObjectInViewport = GetListObjectInRect(_camera->m_viewPort);
-
-	for (int i = 0; i < m_listObjectInViewport.size(); i++)
+	for (int i = 0; i < m_listObjectViewportToUpdate.size(); i++)
 	{
-		m_listObjectInViewport[i]->Update(_time, _camera, NULL, m_listObjectInViewport);
+		m_listObjectViewportToUpdate[i]->Update(_time, _camera, NULL, m_listObjectViewportToUpdate);
 	}
 }
 
-void CQuadTree::Draw(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
+void CQuadTree::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 {
-	for (int i = 0; i < m_listObjectInViewport.size(); i++)
+	for (int i = 0; i < m_listObjectViewportToRender.size(); i++)
 	{
-		m_listObjectInViewport[i]->Render(_spriteHandle, _camera);
+		m_listObjectViewportToRender[i]->Render(_spriteHandle, _camera);
 	}
 }
 

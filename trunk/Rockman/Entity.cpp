@@ -5,6 +5,7 @@
 
 CEntity::CEntity(void)
 {
+	m_IsShow = true;
 	m_isTurnLeft = false;
 	m_veloc = D3DXVECTOR2(0,0);
 	m_accel = D3DXVECTOR2(0,0);
@@ -121,4 +122,9 @@ void CEntity::UpdateRect()
 	m_Rect.top = m_pos.y;
 	m_Rect.right = m_Rect.left + m_Size.x;
 	m_Rect.bottom = m_Rect.top - m_Size.y;
+}
+
+bool CEntity::IsShow()
+{
+	return m_IsShow;
 }

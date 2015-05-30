@@ -49,6 +49,9 @@
     <Filter Include="Bullet">
       <UniqueIdentifier>{411d03a8-83d5-44aa-b1c1-9da9e09117a3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scenery">
+      <UniqueIdentifier>{bbd7d59a-6365-485d-a1b0-0a93bf026a4d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="winmain.cpp">
@@ -126,6 +129,9 @@
     <ClCompile Include="IceMan.cpp">
       <Filter>ObjectGame</Filter>
     </ClCompile>
+    <ClCompile Include="LandWhite.cpp">
+      <Filter>ObjectGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RockmanGame.h">
@@ -201,6 +207,9 @@
       <Filter>ObjectGame</Filter>
     </ClInclude>
     <ClInclude Include="IceMan.h">
+      <Filter>ObjectGame</Filter>
+    </ClInclude>
+    <ClInclude Include="LandWhite.h">
       <Filter>ObjectGame</Filter>
     </ClInclude>
   </ItemGroup>

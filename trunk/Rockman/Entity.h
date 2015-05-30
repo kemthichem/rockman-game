@@ -12,10 +12,11 @@ using std::vector;
 
 enum ObjectType
 {
-	OBJECTTYPE,
-	ROCKMANTYPE,
+	SCENERY = -10,
 	LANDTYPE,
 	LAND1TYPE,
+	LANDWHITE,
+	ROCKMANTYPE = 0,
 	LADDERTYPE,
 	BIGEYETYPE,
 	BLADER,
@@ -39,11 +40,11 @@ protected:
 	RECT m_Rect;
 	D3DXVECTOR2 m_Size;
 	CSprite *m_Sprite;
+	bool m_IsShow;
 
 	virtual void UpdateCollison(CEntity* _orther,float _time);
 	void RenderEachSprite(LPD3DXSPRITE, CCamera*, D3DXVECTOR3 _posRender);
 public:
-
 	float m_TimeCollision;
 	int GetId(){
 		return m_Id;//ID
@@ -55,6 +56,7 @@ public:
 	D3DXVECTOR2 GetAccleration();
 	void UpdateRect();
 	RECT GetRect();
+	bool IsShow();
 
 	virtual void Update(float , CCamera *, CInput *, vector<CEntity*>);
 	virtual void Render(LPD3DXSPRITE, CCamera*);

@@ -1,15 +1,15 @@
-#ifndef _LAND1_H_
-#define _LAND1_H_
+#ifndef _LAND_WHITE_H_
+#define _LAND_WHITE_H_
 #include "ResourceManager.h"
 #include "Entity.h"
-class CLand1 : public CEntity
+class CLandWhite : public CEntity
 {
 private:
 protected:
 
 public:
-	CLand1(int _id, D3DXVECTOR3 _pos);
-	~CLand1(void);
+	CLandWhite(int _id, D3DXVECTOR3 _pos);
+	~CLandWhite(void);
 
 	//method
 	virtual void Update(float , CCamera *, CInput *);

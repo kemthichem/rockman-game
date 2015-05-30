@@ -34,7 +34,7 @@ LPDIRECT3DDEVICE9 CRockmanGame::GetDevice3d()
 void CRockmanGame::Render()
 {	
 	rockman->Render(GetSpriteHandle(), m_camera);
-	quadTree->Draw(GetSpriteHandle(), m_camera);
+	quadTree->Render(GetSpriteHandle(), m_camera);
 
 	/*for(list<CEntity*>::const_iterator it = m_listObject.begin(); it != m_listObject.end(); it++)
 	{
@@ -52,23 +52,14 @@ void CRockmanGame::UpdateWorld(float deltaTime, CCamera *_camera, CInput *_input
 	} else
 		_camera->Move(CMoveMap::g_DistanceMoveCameraY);
 
-	//TODO
-	/*listOb.clear();
-	for(list<CEntity*>::const_iterator it = m_listObject.begin(); it != m_listObject.end(); it++)
-	{
-		(*it)->Update(deltaTime, _camera, _input,listOb);
-	}*/
-
 }
 void CRockmanGame::InitGame()
 {	
 	CMap map;
 	m_listObject = map.GetObjectFromFile("Resource//map//Map1.txt");	
-
 	//Load tree
 	quadTree = new CQuadTree();
 	quadTree->LoadNodeInFile("Resource//map//Map1Tree.txt");
-	//quadTree->CreateTree(quadTree->m_nodeRoot, quadTree->m_mapNode);
 
 	quadTree->MapIdToObjectInTree(quadTree->m_nodeRoot, m_listObject);
 	//
