@@ -89,6 +89,7 @@
     <ClCompile Include="CutMan.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="IceMan.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Ladder.cpp" />
     <ClCompile Include="Land.cpp" />
@@ -116,6 +117,7 @@
     <ClInclude Include="Define.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="IceMan.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Ladder.h" />
     <ClInclude Include="Land.h" />
