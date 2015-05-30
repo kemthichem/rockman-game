@@ -4,6 +4,8 @@
 #include "Entity.h"
 #include "Bullet.h"
 
+#define NUM_BULLET (10)
+
 enum ScrewBomberStatus {
 	Wait,
 	Rotate
@@ -13,8 +15,10 @@ class CScrewBomber : public CEntity
 {
 private:
 	ScrewBomberStatus m_Status;
-	CBullet *m_ListBullet[10];
+	CBullet *m_ListBullet[NUM_BULLET];
 	float  m_TimeSpend;
+
+	void Shot(int _n);
 public:
 	CScrewBomber(int _id, D3DXVECTOR3 _pos);
 	~CScrewBomber(void);

@@ -1,5 +1,5 @@
 #include "ScrewBomber.h"
-#define TIME_CONVERT (30.0f)
+#define TIME_CONVERT (20.0f)
 #define V_BULLET (50.0f)
 
 CScrewBomber::CScrewBomber(int _id, D3DXVECTOR3 _pos)
@@ -22,10 +22,10 @@ CScrewBomber::CScrewBomber(int _id, D3DXVECTOR3 _pos)
 	//Create list bullet
 	int vx = -V_BULLET;
 	int vy = 0;
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < NUM_BULLET; i++)
 	{
 		CBullet *bullet = new CBullet(D3DXVECTOR3(_pos.x + m_Size.x/2 - 10, _pos.y - m_Size.y/2 + 10, _pos.z));
-		switch (i%5)
+		switch (i % (NUM_BULLET/2))
 		{
 		case 0:
 			vx = -V_BULLET;
@@ -59,7 +59,7 @@ CScrewBomber::CScrewBomber(int _id, D3DXVECTOR3 _pos)
 
 CScrewBomber::~CScrewBomber(void)
 {
-	for(int i = 0; i < 10; ++i)
+	for(int i = 0; i < NUM_BULLET; ++i)
 		delete m_ListBullet[i];
 	//delete []m_ListBullet;
 }
@@ -69,23 +69,18 @@ void CScrewBomber::Update(float _time, CCamera *_camera, CInput *_input, vector<
 {
 	if (m_TimeSpend < TIME_CONVERT) {
 		m_TimeSpend += _time;
+		if ((int)m_TimeSpend == (int)TIME_CONVERT/2 && m_Status == Rotate) {
+			Shot(2);
+		}
 	} else {
-
 		m_TimeSpend = 0;
 		if (m_Status == Wait) {
-			m_Status = Rotate;
-			for(int i = 0; i < 5; ++i) {
-				m_ListBullet[i]->SetActive(true);
-			}
-		} else
-		{
-			for(int i = 5; i < 10; ++i) {
-				m_ListBullet[i]->SetActive(true);
-			}
+			m_Status = Rotate;			
+			Shot(1);
+		} else //ROTATE
+		{			
 			m_Status = Wait;
 		}
-
-		
 	}
 
 	switch (m_Status)
@@ -100,14 +95,8 @@ void CScrewBomber::Update(float _time, CCamera *_camera, CInput *_input, vector<
 		break;
 	}
 
-	if (m_Status == Rotate) {
-	//	CBullet *bullet = new CBullet(m_pos);
-		//m_ListBullet.push_back(bullet);
-	}
-
-
 	//Update bullet
-	for(int i = 0; i < 10; ++i) {
+	for(int i = 0; i < NUM_BULLET; ++i) {
 		m_ListBullet[i]->Update(_time,_camera,_input,_listObjectInViewPort);
 	}		
 }
@@ -117,8 +106,15 @@ void CScrewBomber::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 	CEntity::Render(_spriteHandle, _camera);
 
 	//Render bullet
-	for (int i = 0; i < 10; ++i)
+	for (int i = 0; i < NUM_BULLET; ++i)
 	{
 		m_ListBullet[i]->Render(_spriteHandle, _camera);
+	}
+}
+
+void CScrewBomber::Shot(int _n)
+{
+	for(int i = (_n-1) * NUM_BULLET/2; i < _n * NUM_BULLET/2; ++i) {
+		m_ListBullet[i]->SetActive(true);
 	}
 }
