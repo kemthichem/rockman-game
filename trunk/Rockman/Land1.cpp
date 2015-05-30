@@ -1,5 +1,6 @@
 #include "Land1.h"
 
+#define  NUMB_SPRITE 2
 
 CLand1::CLand1(int _id, D3DXVECTOR3 _pos)
 {
@@ -11,7 +12,7 @@ CLand1::CLand1(int _id, D3DXVECTOR3 _pos)
 	m_pos = _pos;
 	m_accel = D3DXVECTOR2(0,0);	
 
-	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite() * 2, m_Sprite->GetHeightRectSprite());
+	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite() * NUMB_SPRITE, m_Sprite->GetHeightRectSprite());
 }
 
 
@@ -33,10 +34,10 @@ void CLand1::Collision()
 void CLand1::Render(LPD3DXSPRITE _sp, CCamera* _camera)
 {
 	D3DXVECTOR3 pos = m_pos;
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < NUMB_SPRITE; i++)
 	{
 		m_Sprite->IndexOf(i);
-		pos.x += i * m_Sprite->GetWidthRectSprite();
+		pos.x = m_pos.x + i * m_Sprite->GetWidthRectSprite();
 		CEntity::RenderEachSprite(_sp, _camera, pos);
 	}
 }

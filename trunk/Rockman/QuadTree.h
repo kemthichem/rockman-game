@@ -10,7 +10,7 @@ class CQuadTree
 private:
 	map<int, CQuadTreeNode*> m_mapNode ;
 	vector<CQuadTreeNode*> m_listNodeInViewPort;
-	vector<CEntity*> m_listObjectViewportToUpdate;
+	
 	vector<CEntity*> m_listObjectViewportToRender;
 
 	vector<CQuadTreeNode*> GetListNodeIntersectRect(CQuadTreeNode*, RECT );
@@ -19,6 +19,8 @@ private:
 public:
 	CQuadTree(void);
 	~CQuadTree(void);
+
+	vector<CEntity*> m_listObjectViewportToUpdate;
 
 	CQuadTreeNode* m_nodeRoot;
 

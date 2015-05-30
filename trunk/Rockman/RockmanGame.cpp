@@ -16,8 +16,9 @@ CRockmanGame::~CRockmanGame(void)
 	//delete list object
 	for(int i = 0; i < m_listObject.size(); ++i)
 		delete m_listObject[i];
-
 	m_listObject.clear();
+
+	delete rockman;
 
 	delete quadTree;
 	//Release resource
@@ -36,15 +37,12 @@ void CRockmanGame::Render()
 	rockman->Render(GetSpriteHandle(), m_camera);
 	quadTree->Render(GetSpriteHandle(), m_camera);
 
-	/*for(list<CEntity*>::const_iterator it = m_listObject.begin(); it != m_listObject.end(); it++)
-	{
-		(*it)->Render(GetSpriteHandle(), m_camera);
-	}*/
 }
 
 void CRockmanGame::UpdateWorld(float deltaTime, CCamera *_camera, CInput *_input)
 {
 	vector<CEntity*> listOb = quadTree->GetListObjectInRect(_camera->m_viewPort);
+	quadTree->m_listObjectViewportToUpdate.push_back(rockman);
 
 	if (!CMoveMap::g_IsMovingMap) {
 		rockman->Update(deltaTime, _camera, _input, listOb);

@@ -22,9 +22,16 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 	//set position
 	UpdatePosition(_time);
 
+	if (this->GetType() == BULLET)
+	{
+		int k = 0;
+	}
 	vector<CEntity*> listObjectCollision;
 	for (int i = 0; i < _listObjectInViewPort.size(); i++)
 	{
+		if (_listObjectInViewPort[i]->GetType() == ROCKMANTYPE && this->GetType() == BULLET) {
+			int k = 0;
+		}
 		if(_listObjectInViewPort[i]->GetId() != this->GetId())
 		{
 			if (m_collision->IsCollision(this, _listObjectInViewPort[i], _time)) {

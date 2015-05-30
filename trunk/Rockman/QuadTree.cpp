@@ -82,7 +82,6 @@ vector<CEntity*> CQuadTree::GetListObjectInRect(RECT _rect)
 					m_listObjectViewportToUpdate.push_back(listObjectInNode[j]);
 				}
 			}
-
 	}
 
 	return m_listObjectViewportToUpdate;
@@ -92,7 +91,8 @@ void CQuadTree::Update(CCamera* _camera, float _time)
 {
 	for (int i = 0; i < m_listObjectViewportToUpdate.size(); i++)
 	{
-		m_listObjectViewportToUpdate[i]->Update(_time, _camera, NULL, m_listObjectViewportToUpdate);
+		if (m_listObjectViewportToUpdate[i]->GetType() != ROCKMANTYPE)
+			m_listObjectViewportToUpdate[i]->Update(_time, _camera, NULL, m_listObjectViewportToUpdate);
 	}
 }
 

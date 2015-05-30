@@ -1,8 +1,10 @@
 #include "Bullet.h"
 #include "ResourceManager.h"
+#include "Rockman.h"
 
 CBullet::CBullet(D3DXVECTOR3 _pos)
 {
+	m_Type = BULLET;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), D3DXVECTOR2(335,205), 1, 1, D3DXVECTOR2(320,190));
 	m_pos = _pos;
 	m_posInit = _pos;
@@ -19,9 +21,17 @@ CBullet::~CBullet(void)
 {
 }
 
-void CBullet::UpdateCollison(CEntity* ,float)
+void CBullet::UpdateCollison(CEntity* _other,float _time)
 {
-
+	switch (_other->GetType())
+	{
+	case ROCKMANTYPE:
+		this->m_IsActive = false;
+		(dynamic_cast<CRockman*>(_other))->m_Injuring = this->GetVelocity().x > 0 ? 1 : -1;
+		break;
+	default:
+		break;
+	}
 }
 
 void CBullet::SetVelloc(D3DXVECTOR2 _velloc)
@@ -37,7 +47,8 @@ void CBullet::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 		m_pos = m_posInit;
 	}
 
-	if(m_Rect.left<0 || m_Rect.right>800||m_Rect.top>600||m_Rect.bottom<0)
+	if(m_Rect.left < _camera->m_viewPort.left || m_Rect.right > _camera->m_viewPort.right 
+		|| m_Rect.top > _camera->m_viewPort.top || m_Rect.bottom < _camera->m_viewPort.bottom)
 	{
 		m_IsActive = false;
 	}
@@ -53,4 +64,10 @@ void CBullet::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 	if (m_IsActive) {
 		CEntity::Render(_spriteHandle, _camera);
 	}
+}
+
+void CBullet::SetPos(D3DXVECTOR3 _pos)
+{
+	m_posInit = _pos;
+	m_pos = _pos;
 }

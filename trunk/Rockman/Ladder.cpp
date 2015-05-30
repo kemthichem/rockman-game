@@ -1,5 +1,7 @@
 #include "Ladder.h"
 
+#define  NUMB_SPRITE 10
+
 CLadder::CLadder(int _id, D3DXVECTOR3 _pos)
 {
 	m_Id = _id;
@@ -9,7 +11,7 @@ CLadder::CLadder(int _id, D3DXVECTOR3 _pos)
 	m_pos.z = DEPTH_BLOCK;
 	m_accel = D3DXVECTOR2(0,0);
 
-	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite()*10);
+	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite() * NUMB_SPRITE);
 }
 
 
@@ -24,7 +26,7 @@ void CLadder::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntit
 
 void CLadder::Render(LPD3DXSPRITE _spriteHandler, CCamera* _camera) {
 	D3DXVECTOR3 posRender = m_pos;
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < NUMB_SPRITE; i++)
 	{
 		posRender.y = m_pos.y - i * m_Sprite->GetHeightRectSprite();
 		RenderEachSprite(_spriteHandler, _camera, posRender);
