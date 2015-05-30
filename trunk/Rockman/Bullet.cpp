@@ -27,7 +27,7 @@ void CBullet::UpdateCollison(CEntity* _other,float _time)
 	{
 	case ROCKMANTYPE:
 		this->m_IsActive = false;
-		(dynamic_cast<CRockman*>(_other))->m_Injuring = this->GetVelocity().x > 0 ? 1 : -1;
+		//(dynamic_cast<CRockman*>(_other))->SetInjured(this);
 		break;
 	default:
 		break;

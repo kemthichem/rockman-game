@@ -55,15 +55,15 @@ int CInput::KeyDown(int KeyCode){
 }
 int CInput::GetKeyDown()
 { 
-	int	tam = m_keydown;
+	int	temp = m_keydown;
 	m_keydown = 0;
-	return tam;
+	return temp;
 }
 int CInput::GetKeyUp()
 {
-	int	tam = m_keyup;
+	int	temp = m_keyup;
 	m_keydown = 0;
-	return tam;
+	return temp;
 }
 CInput::~CInput()
 {

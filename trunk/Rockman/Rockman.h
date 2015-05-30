@@ -15,6 +15,7 @@ enum ActionRockman
 	Action_Jump,
 	Action_Jump_Gun,
 	Action_Climb_Stand,
+	Action_Climb_Stand_Gun,
 	Action_Climb,
 	Action_Climb_Gun,
 	Action_Start,
@@ -32,7 +33,7 @@ private:
 	bool m_isCollisionBottom;
 	float m_TimeInjured;
 	DirectCollision m_directCollision;
-
+	int m_Injuring;//0: not Injuring - 1:right - -1:left
 	ActionRockman m_action;
 	void UpdateSprite(float _time);
 	void Stand();
@@ -54,7 +55,7 @@ public:
 	void ExecuteCollision(CEntity* _orther,DirectCollision m_directCollion,float _timeEntry);
 
 	/*rockman*/
-	int m_Injuring;//0: not Injuring - 1:right - -1:left
+	void SetInjured(CEntity* _other);
 	
 };
 #endif
