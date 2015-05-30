@@ -79,6 +79,7 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 		break;
 	case DIK_A:
 		m_action = (ActionRockman)((int)m_action + 1);
+		OutputDebugString("down gun \n");
 		Shot();
 		break;
 	default:
@@ -86,16 +87,30 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	}
 
 	int keyUp = _input->GetKeyUp();
-	if (keyUp == DIK_A) {
+	if (0){//keyUp == DIK_A) {
 		m_action = (ActionRockman)((int)m_action - 1);		
+		OutputDebugString("UP gun \n");
 	}
-
 	//reset	
 	m_PosXClimb = -1;
 	m_isCollisionBottom = false;
 	CEntity::Update(_time, _camera, _input, _listObjectInViewPort);
 
 	m_isTurnLeft = m_Injuring !=0 ? !m_isTurnLeft: m_isTurnLeft;
+
+
+	switch (keyDown)
+	{
+	case DIK_A:
+		m_action = (ActionRockman)((int)m_action + 1);
+		OutputDebugString("down gun \n");
+		Shot();
+		break;
+	default:
+		break;
+	}
+	OutputDebugString(std::to_string((int)m_action).c_str());
+	OutputDebugString("\n");
 
 	//Update sprite	
 	UpdateSprite(_time);
@@ -116,7 +131,7 @@ void CRockman::UpdateSprite(float _time)
 		break;
 	case Action_Stand_Gun:
 		m_Sprite->IndexOf(16);
-		OutputDebugString("Stand gun \n");
+		
 		break;
 	case Action_Go:
 		m_Sprite->NextOf(_time, 24,28);
@@ -133,6 +148,9 @@ void CRockman::UpdateSprite(float _time)
 		break;
 	case Action_Climb_Stand:
 		m_Sprite->OneOf(48,51);
+		break;
+	case Action_Climb_Stand_Gun:
+		m_Sprite->OneOf(52,53);
 		break;
 	case Action_Climb:
 		m_Sprite->NextOf(_time,48,51);
@@ -168,7 +186,7 @@ void CRockman::Stand()
 
 void CRockman::TurnLeft()
 {
-	if (m_isCollisionBottom) 
+	if (m_isCollisionBottom /*&& m_action != */) 
 	{
 		m_veloc.x = -30;
 		m_action = Action_Go;
@@ -299,7 +317,7 @@ void CRockman::Shot()
 		if (!m_ListBullet[i]->GetActive()) {
 			m_ListBullet[i]->SetActive(true);
 			m_ListBullet[i]->SetPos(D3DXVECTOR3(m_pos.x + m_Size.x/2 - 10, m_pos.y - m_Size.y/2 + 10, m_pos.z));
-			m_ListBullet[i]->SetVelloc(D3DXVECTOR2(m_isTurnLeft ? -40 : 40, 0));
+			m_ListBullet[i]->SetVelloc(D3DXVECTOR2(m_isTurnLeft ? -80 : 80, 0));
 			break;
 		}
 	}
@@ -326,4 +344,9 @@ void CRockman::Injunred(bool _isImpactLeft, float _time)
 	m_TimeInjured += _time;
 	m_veloc.x = _isImpactLeft ? 10: -10;
 	m_action = Action_Injured;
+}
+
+void CRockman::SetInjured(CEntity* _other)
+{
+	m_Injuring = _other->GetVelocity().x > 0 ? 1 : -1;
 }

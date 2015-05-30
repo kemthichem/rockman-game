@@ -5,7 +5,7 @@
 
 CCamera::CCamera(void)
 {
-	m_pos = D3DXVECTOR2(0,HEIGHT_SCREEN*2);
+	m_pos = D3DXVECTOR2(0, HEIGHT_SCREEN*2);
 }
 
 CCamera::CCamera(D3DXVECTOR2 _pos)
