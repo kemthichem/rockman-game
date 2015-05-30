@@ -94,6 +94,7 @@
     <ClCompile Include="Ladder.cpp" />
     <ClCompile Include="Land.cpp" />
     <ClCompile Include="Land1.cpp" />
+    <ClCompile Include="LandWhite.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MoveMap.cpp" />
     <ClCompile Include="QuadTree.cpp" />
@@ -122,6 +123,7 @@
     <ClInclude Include="Ladder.h" />
     <ClInclude Include="Land.h" />
     <ClInclude Include="Land1.h" />
+    <ClInclude Include="LandWhite.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MoveMap.h" />
     <ClInclude Include="QuadTree.h" />

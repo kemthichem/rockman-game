@@ -1,4 +1,6 @@
 #include"Map.h"
+#include "Land1.h"
+#include "LandWhite.h"
 #include "MoveMap.h"
 #include "Blader.h"
 #include "Ladder.h"
@@ -54,7 +56,13 @@ vector<CEntity*> CMap::ObjectFromFile(char* _pathFileMap)
 			if(_objecttype == "LAND"){
 				CLand *_brick = new CLand(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
 				object.push_back(_brick);
-			} else if(_objecttype == "MOVEMAP"){
+			}  else if(_objecttype == "LAND1"){
+				CLand1 *ob = new CLand1(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
+				object.push_back(ob);
+			}  else if(_objecttype == "LANDWHITE"){
+				CLandWhite *ob = new CLandWhite(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
+				object.push_back(ob);
+			}  else if(_objecttype == "MOVEMAP"){
 				CMoveMap *moveMap = new CMoveMap(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
 				object.push_back(moveMap);
 			} else if(_objecttype == "BIGEYE"){
@@ -66,10 +74,10 @@ vector<CEntity*> CMap::ObjectFromFile(char* _pathFileMap)
 			} else if(_objecttype == "BLADER"){
 				CBlader *ob = new CBlader(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
 				object.push_back(ob);
-			}else if(_objecttype == "LADDER"){
+			} else if(_objecttype == "LADDER"){
 				CLadder *ob = new CLadder(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
 				object.push_back(ob);
-			}else if(_objecttype == "SCREW_BOMBER"){
+			} else if(_objecttype == "SCREW_BOMBER"){
 				CScrewBomber *ob = new CScrewBomber(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
 				object.push_back(ob);
 			}
@@ -83,7 +91,7 @@ vector<CEntity*> CMap::GetObjectFromFile(char* filePath)
 	//doi background ve truoc cac doi tuong game
 	vector<CEntity*> object;
 	object = ObjectFromFile(filePath);
-	vector<CEntity*> listBackground;
+	/*vector<CEntity*> listBackground;
 	vector<CEntity*> listObject;
 	for (int i = 0; i < object.size(); i++)
 	{
@@ -104,7 +112,7 @@ vector<CEntity*> CMap::GetObjectFromFile(char* filePath)
 	for (int i = 0; i < listObject.size(); i++)
 	{
 		object.push_back(listObject[i]);
-	}
+	}*/
 	return object;
 }
 CMap::~CMap(){}

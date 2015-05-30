@@ -15,7 +15,7 @@ using std::vector;
 using namespace std;
 class CMap{
 public:
-		static int g_widthMap, g_heightMap;
+	static int g_widthMap, g_heightMap;
 	CMap();
 	~CMap();
 	vector<string> SplitString(string str, char ch);
