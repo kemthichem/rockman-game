@@ -88,7 +88,7 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 
 	int keyUp = _input->GetKeyUp();
 	if (0){//keyUp == DIK_A) {
-		m_action = (ActionRockman)((int)m_action - 1);		
+		m_action = (ActionRockman)((int)m_action - 1);
 		OutputDebugString("UP gun \n");
 	}
 	//reset	
@@ -97,7 +97,6 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	CEntity::Update(_time, _camera, _input, _listObjectInViewPort);
 
 	m_isTurnLeft = m_Injuring !=0 ? !m_isTurnLeft: m_isTurnLeft;
-
 
 	switch (keyDown)
 	{
@@ -276,7 +275,7 @@ void CRockman::ExecuteCollision(CEntity* _orther,DirectCollision m_directCollion
 					m_pos.x = _orther->GetRect().left - m_Size.x;
 				}
 
-				if( m_directCollion == TOP)
+				if (m_directCollion == TOP)
 				{
 					m_pos.y = _orther->GetRect().bottom;
 					m_veloc.y = 0;
@@ -284,16 +283,23 @@ void CRockman::ExecuteCollision(CEntity* _orther,DirectCollision m_directCollion
 			}
 			break;
 		case MOVEMAPTYPE:
- 			CMoveMap::g_IsMovingMap = true;
-			if( m_directCollion == TOP)
+			CMoveMap *moveMap = dynamic_cast<CMoveMap*> (_orther);
+ 			
+			if (m_directCollion == TOP)
 			{
-				CMoveMap::g_DistanceMoveCameraY = HEIGHT_SCREEN;
-				m_pos.y += 1;
+				if (moveMap->IsCanWithDirect(true)) {
+					CMoveMap::g_DistanceMoveCameraY = HEIGHT_SCREEN;
+					m_pos.y += 1;
+					CMoveMap::g_IsMovingMap = true;
+				}
 			}
-			if( m_directCollion == BOTTOM)
+			if (m_directCollion == BOTTOM)
 			{
-				CMoveMap::g_DistanceMoveCameraY = -HEIGHT_SCREEN;
-				m_pos.y -= 1;
+				if (moveMap->IsCanWithDirect(false)) {
+					CMoveMap::g_DistanceMoveCameraY = -HEIGHT_SCREEN;
+					m_pos.y -= 1;
+					CMoveMap::g_IsMovingMap = true;
+				}
 			}
 			break;
 		}
