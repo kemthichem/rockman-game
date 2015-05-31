@@ -7,6 +7,7 @@
 #include "Ladder.h"
 #include "Cutman.h"
 #include "ScrewBomber.h"
+#include "Octopus.h"
 
 int CMap::g_widthMap = 0;
 int CMap::g_heightMap = 0;
@@ -83,6 +84,9 @@ vector<CEntity*> CMap::ObjectFromFile(char* _pathFileMap)
 				object.push_back(ob);
 			} else if(_objecttype == "SCREW_BOMBER"){
 				CScrewBomber *ob = new CScrewBomber(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
+				object.push_back(ob);
+			} else if(_objecttype == "OCTOPUS") {
+				COctopus *ob = new COctopus(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
 				object.push_back(ob);
 			}
 		}

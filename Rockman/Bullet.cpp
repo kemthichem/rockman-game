@@ -42,7 +42,7 @@ void CBullet::UpdateCollison(CEntity* _other,float _time)
 
 void CBullet::SetVelloc(D3DXVECTOR2 _velloc)
 {
-	m_veloc = _velloc;
+	m_velloc = _velloc;
 }
 
 void CBullet::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewport)

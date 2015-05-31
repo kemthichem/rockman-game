@@ -18,7 +18,7 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 	m_pos.z = DEPTH_MOTION;
 	m_pos.y = 1000;
 	m_action = Action_Start;
-	m_veloc.y = -250.0f;
+	m_velloc.y = -250.0f;
 	m_accel = mAccelOfRockman;
 
 	m_collision = new CAABBCollision();
@@ -50,7 +50,7 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	if (m_pos.y < 80) {
 		m_pos.y = 80;
 		m_isCollisionBottom = true;
-		m_veloc.y = 0;
+		m_velloc.y = 0;
 	}
 
 	//turn left and right
@@ -66,7 +66,7 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 		Stand();
 	}
 	
-	if (m_veloc.y != 0 && m_action != Action_Start && m_PosXClimb == -1)
+	if (m_velloc.y != 0 && m_action != Action_Start && m_PosXClimb == -1)
 		m_action = Action_Jump;
 	if (m_Injuring != 0)
 		Injunred(m_Injuring > 0, _time);
@@ -173,12 +173,12 @@ void CRockman::UpdateSprite(float _time)
 void CRockman::Stand()
 {
 	if (m_PosXClimb > -1) {
-		m_veloc.y = 0;
+		m_velloc.y = 0;
 		m_accel.y = 0;
 	}
 	if (m_isCollisionBottom) 
 	{
-		m_veloc.x = 0;
+		m_velloc.x = 0;
 		m_action = Action_Stand;
 	}
 }
@@ -187,7 +187,7 @@ void CRockman::TurnLeft()
 {
 	if (m_isCollisionBottom /*&& m_action != */) 
 	{
-		m_veloc.x = -30;
+		m_velloc.x = -30;
 		m_action = Action_Go;
 	}
 }
@@ -196,23 +196,23 @@ void CRockman::TurnRight()
 {
 	if (m_isCollisionBottom) 
 	{
-		m_veloc.x = 30;
+		m_velloc.x = 30;
 		m_action = Action_Go;
 	}
 }
 
 void CRockman::Jump()
 {
-	if (m_veloc.y == 0) {
+	if (m_velloc.y == 0) {
 		m_accel = mAccelOfRockman;
-		m_veloc.y = 120.0f;
+		m_velloc.y = 120.0f;
 		m_action = Action_Jump;
 	}
 }
 
 void CRockman::CollisionBottom()
 {
-	m_veloc.y = 0;
+	m_velloc.y = 0;
 	m_isCollisionBottom = true;
 }
 
@@ -220,7 +220,7 @@ void CRockman::UpdateCollison(CEntity* _other, float _time) {
 	switch (_other->GetType())
 	{
 	case LADDERTYPE:
-		if (m_veloc.y == 0)
+		if (m_velloc.y == 0)
 			m_action = Action_Climb_Stand;
 		m_PosXClimb = _other->GetRect().left + 16;
 		m_isCollisionBottom = true;
@@ -263,14 +263,14 @@ void CRockman::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,
 
 				if( m_directCollion == LEFT)
 				{
-					m_veloc.x = 0;
+					m_velloc.x = 0;
 					m_accel.x = 0;
 					m_pos.x = _other->GetRect().right ;
 				}
 
 				if( m_directCollion == RIGHT)
 				{
-					m_veloc.x = 0;
+					m_velloc.x = 0;
 					m_accel.x = 0;
 					m_pos.x = _other->GetRect().left - m_Size.x;
 				}
@@ -278,7 +278,7 @@ void CRockman::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,
 				if (m_directCollion == TOP)
 				{
 					m_pos.y = _other->GetRect().bottom;
-					m_veloc.y = 0;
+					m_velloc.y = 0;
 				}
 			}
 			break;
@@ -331,7 +331,7 @@ void CRockman::Shot()
 void CRockman::Climb(bool _isTurnUp)
 {
 	if (m_PosXClimb > -1) {
-		m_veloc.y = _isTurnUp ? 10: -10;
+		m_velloc.y = _isTurnUp ? 10: -10;
 		m_accel.y = 0;
 		m_pos.x = m_PosXClimb - m_Size.x/2;
 		m_action = Action_Climb;
@@ -347,7 +347,7 @@ void CRockman::Injunred(bool _isImpactLeft, float _time)
 	}
 
 	m_TimeInjured += _time;
-	m_veloc.x = _isImpactLeft ? 10: -10;
+	m_velloc.x = _isImpactLeft ? 10: -10;
 	m_action = Action_Injured;
 }
 

@@ -141,6 +141,9 @@
     <ClCompile Include="Item.cpp">
       <Filter>Item</Filter>
     </ClCompile>
+    <ClCompile Include="Octopus.cpp">
+      <Filter>ObjectGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RockmanGame.h">
@@ -229,6 +232,9 @@
     </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Octopus.h">
+      <Filter>ObjectGame</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

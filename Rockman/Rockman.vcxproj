@@ -100,6 +100,7 @@
     <ClCompile Include="LandWhite.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MoveMap.cpp" />
+    <ClCompile Include="Octopus.cpp" />
     <ClCompile Include="QuadTree.cpp" />
     <ClCompile Include="QuadTreeNode.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
@@ -132,6 +133,7 @@
     <ClInclude Include="LandWhite.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MoveMap.h" />
+    <ClInclude Include="Octopus.h" />
     <ClInclude Include="QuadTree.h" />
     <ClInclude Include="QuadTreeNode.h" />
     <ClInclude Include="ResourceManager.h" />

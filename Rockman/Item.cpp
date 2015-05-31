@@ -14,7 +14,7 @@ CItem::CItem(D3DXVECTOR3 _pos)
 
 	m_collision = new CAABBCollision();
 	m_accel = D3DXVECTOR2(0,-20.0f);
-	m_veloc = D3DXVECTOR2(5, 10.0f);
+	m_velloc = D3DXVECTOR2(5, 10.0f);
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 
 	//Item
@@ -45,7 +45,7 @@ void CItem::UpdateCollison(CEntity* _other,float _time)
 	case LANDWHITE:
 	case LANDICEBERG:
 		break;
-		m_veloc = m_accel = D3DXVECTOR2(0,0);
+		m_velloc = m_accel = D3DXVECTOR2(0,0);
 	default:
 		break;
 	}
@@ -60,7 +60,7 @@ void CItem::UpdateCollison(CEntity* _other,float _time)
 
 void CItem::SetVelloc(D3DXVECTOR2 _velloc)
 {
-	m_veloc = _velloc;
+	m_velloc = _velloc;
 }
 
 void CItem::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewport)
@@ -105,19 +105,19 @@ void CItem::ExecuteCollision(CEntity* _other, DirectCollision m_directCollision,
 			if( m_directCollision == BOTTOM)
 			{
 				m_pos.y = _other->GetRect().top + m_Size.y + 1;
-				m_veloc.y = 0;
+				m_velloc.y = 0;
 			}
 
 			if( m_directCollision == LEFT)
 			{
-				m_veloc.x = 0;
+				m_velloc.x = 0;
 				m_accel.x = 0;
 				m_pos.x = _other->GetRect().right ;
 			}
 
 			if( m_directCollision == RIGHT)
 			{
-				m_veloc.x = 0;
+				m_velloc.x = 0;
 				m_accel.x = 0;
 				m_pos.x = _other->GetRect().left - m_Size.x;
 			}
@@ -125,9 +125,9 @@ void CItem::ExecuteCollision(CEntity* _other, DirectCollision m_directCollision,
 			if (m_directCollision == TOP)
 			{
 				m_pos.y = _other->GetRect().bottom;
-				m_veloc.y = 0;
+				m_velloc.y = 0;
 			}
-			m_veloc.x = 0;
+			m_velloc.x = 0;
 		}
 		break;
 	default:
