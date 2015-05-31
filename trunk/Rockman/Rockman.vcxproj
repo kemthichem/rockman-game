@@ -85,12 +85,14 @@
     <ClCompile Include="BigEye.cpp" />
     <ClCompile Include="Blader.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="BulletRockman.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CutMan.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="IceMan.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="Ladder.cpp" />
     <ClCompile Include="Land.cpp" />
     <ClCompile Include="Land1.cpp" />
@@ -114,6 +116,7 @@
     <ClInclude Include="BigEye.h" />
     <ClInclude Include="Blader.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletRockman.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CutMan.h" />
     <ClInclude Include="Define.h" />
@@ -121,6 +124,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="IceMan.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="Ladder.h" />
     <ClInclude Include="Land.h" />
     <ClInclude Include="Land1.h" />

@@ -11,15 +11,15 @@ CAABBCollision::CAABBCollision()
 CAABBCollision::~CAABBCollision()
 {
 }
-bool CAABBCollision::CheckCollision(RECT _nodeRect,RECT _ortherRect)
+bool CAABBCollision::CheckCollision(RECT _nodeRect,RECT _otherRect)
 {
-	if (_ortherRect.right < _nodeRect.left)
+	if (_otherRect.right < _nodeRect.left)
 		return false;
-	else if (_ortherRect.left > _nodeRect.right)
+	else if (_otherRect.left > _nodeRect.right)
 		return false;
-	else if (_ortherRect.top < _nodeRect.bottom)
+	else if (_otherRect.top < _nodeRect.bottom)
 		return false;
-	else if (_ortherRect.bottom > _nodeRect.top)
+	else if (_otherRect.bottom > _nodeRect.top)
 		return false;
 	else
 		return true;

@@ -11,7 +11,7 @@ public:
 	~CBlader(void);
 	//method
 	virtual void Update(float , CCamera *, CInput *,  vector<CEntity* >);
-	void UpdateCollison(CEntity* _orther, float _time);
+	void UpdateCollison(CEntity* _other, float _time);
 };
 
 #endif

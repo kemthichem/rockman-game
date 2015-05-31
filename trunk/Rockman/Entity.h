@@ -24,17 +24,20 @@ enum ObjectType
 	CUTMAN,
 	SCREW_BOMBER,
 	MOVEMAPTYPE,
-	BULLET
+	BULLET,
+	ITEM
 };
 
 class CEntity
 {
 private:	
-	void UpdatePosition(float);		 
+	void UpdatePosition(float);		
+	
 protected:
 	bool m_isTurnLeft;
 	int m_Id;
 	CAABBCollision *m_collision;
+	DirectCollision m_directCollision;
 	ObjectType m_Type;
 	D3DXVECTOR2 m_veloc;
 	D3DXVECTOR2 m_accel;
@@ -42,10 +45,12 @@ protected:
 	RECT m_Rect;
 	D3DXVECTOR2 m_Size;
 	CSprite *m_Sprite;
-	bool m_IsShow;
+	bool m_IsShowed;
+	bool m_IsCheckCollision;
 
-	virtual void UpdateCollison(CEntity* _orther,float _time);
+	virtual void UpdateCollison(CEntity* _other,float _time);
 	void RenderEachSprite(LPD3DXSPRITE, CCamera*, D3DXVECTOR3 _posRender);
+	void UpdateRect();
 public:
 	float m_TimeCollision;
 	int GetId(){
@@ -56,10 +61,9 @@ public:
 	}
 	D3DXVECTOR2 GetVelocity();
 	D3DXVECTOR2 GetAccleration();
-	void UpdateRect();
 	RECT GetRect();
-	bool IsShow();
-
+	bool IsShowed();
+	bool IsCheckCollision();
 	virtual void Update(float , CCamera *, CInput *, vector<CEntity*>);
 	virtual void Render(LPD3DXSPRITE, CCamera*);
 	CEntity(void);

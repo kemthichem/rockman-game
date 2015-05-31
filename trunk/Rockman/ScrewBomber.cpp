@@ -1,4 +1,5 @@
 #include "ScrewBomber.h"
+#include "BulletRockman.h"
 #define TIME_CONVERT (20.0f)
 #define V_BULLET (50.0f)
 
@@ -13,13 +14,16 @@ CScrewBomber::CScrewBomber(int _id, D3DXVECTOR3 _pos)
 		D3DXVECTOR2(45,0));
 	m_pos = _pos;
 	m_accel = D3DXVECTOR2(0,0);
+	m_veloc = D3DXVECTOR2(0,0);
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 
 	/**Attribute ScrewBomber**/
 	m_Status = Wait;
 	m_TimeSpend = 0;
+	UpdateRect();
 
-	//Create list bullet
+#pragma region create list bullet
+
 	int vx = -V_BULLET;
 	int vy = 0;
 	for (int i = 0; i < NUM_BULLET; i++)
@@ -51,9 +55,12 @@ CScrewBomber::CScrewBomber(int _id, D3DXVECTOR3 _pos)
 			break;
 		}
 		bullet->SetVelloc(D3DXVECTOR2(vx, vy));
-
 		m_ListBullet[i] = bullet;
 	}
+
+#pragma endregion 
+	//create item
+	m_Item = new CItem(m_pos);
 }
 
 
@@ -61,53 +68,71 @@ CScrewBomber::~CScrewBomber(void)
 {
 	for(int i = 0; i < NUM_BULLET; ++i)
 		delete m_ListBullet[i];
+
+	if (m_Item)
+		delete m_Item;
 }
 
 
 void CScrewBomber::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity* >_listObjectInViewPort)
 {
-	if (m_TimeSpend < TIME_CONVERT) {
-		m_TimeSpend += _time;
-		if ((int)m_TimeSpend == (int)TIME_CONVERT/2 && m_Status == Rotate) {
-			Shot(2);
+	if (m_IsLife) {
+		if (m_TimeSpend < TIME_CONVERT) {
+			m_TimeSpend += _time;
+			if ((int)m_TimeSpend == (int)TIME_CONVERT/2 && m_Status == Rotate) {
+				Shot(2);
+			}
+		} else {
+			m_TimeSpend = 0;
+			if (m_Status == Wait) {
+				m_Status = Rotate;			
+				Shot(1);
+			} else //ROTATE
+			{			
+				m_Status = Wait;
+			}
 		}
+
+		switch (m_Status)
+		{
+		case Wait:
+			m_Sprite->IndexOf(0);	
+			break;
+		case Rotate:
+			m_Sprite->NextOf(_time, 1, 3);	
+			break;
+		default:
+			break;
+		}
+
+		// Not call update base class
+		//CEntity::Update(_time, _camera, _input,_listObjectInViewPort);
+
+		//Update bullet
+		for(int i = 0; i < NUM_BULLET; ++i) {
+			m_ListBullet[i]->Update(_time,_camera,_input,_listObjectInViewPort);
+		}		
 	} else {
-		m_TimeSpend = 0;
-		if (m_Status == Wait) {
-			m_Status = Rotate;			
-			Shot(1);
-		} else //ROTATE
-		{			
-			m_Status = Wait;
-		}
+		//Update item
+		m_Item->Update(_time,_camera,_input,_listObjectInViewPort);
 	}
-
-	switch (m_Status)
-	{
-	case Wait:
-		m_Sprite->IndexOf(0);	
-		break;
-	case Rotate:
-		m_Sprite->NextOf(_time, 1, 3);	
-		break;
-	default:
-		break;
-	}
-
-	//Update bullet
-	for(int i = 0; i < NUM_BULLET; ++i) {
-		m_ListBullet[i]->Update(_time,_camera,_input,_listObjectInViewPort);
-	}		
 }
 
 void CScrewBomber::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 {
-	CEntity::Render(_spriteHandle, _camera);
+	if (m_IsLife) {
+		CEntity::Render(_spriteHandle, _camera);
 
-	//Render bullet
-	for (int i = 0; i < NUM_BULLET; ++i)
-	{
-		m_ListBullet[i]->Render(_spriteHandle, _camera);
+		//Render bullet
+		for (int i = 0; i < NUM_BULLET; ++i)
+		{
+			m_ListBullet[i]->Render(_spriteHandle, _camera);
+		}
+	} else {
+		//Render item
+		m_Item->Render(_spriteHandle, _camera);
+		if (!m_Item->GetActive())
+			m_IsShowed = false;
 	}
 }
 
@@ -115,5 +140,18 @@ void CScrewBomber::Shot(int _n)
 {
 	for(int i = (_n-1) * NUM_BULLET/2; i < _n * NUM_BULLET/2; ++i) {
 		m_ListBullet[i]->SetActive(true);
+	}
+}
+
+void CScrewBomber::SetInjured(CEntity* _other)
+{
+	if (m_Status == Rotate) {
+		m_IsCheckCollision = false;
+		m_Item->SetActive(true);
+		m_IsLife = false;
+
+		//update bullet
+		CBulletRockman* bullet = dynamic_cast<CBulletRockman*> (_other);
+		bullet->SetActive(false);
 	}
 }

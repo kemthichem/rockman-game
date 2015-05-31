@@ -5,13 +5,15 @@
 
 CEntity::CEntity(void)
 {
-	m_IsShow = true;
+	m_IsShowed = true;
+	m_IsCheckCollision = true;
 	m_isTurnLeft = false;
 	m_veloc = D3DXVECTOR2(0,0);
 	m_accel = D3DXVECTOR2(0,0);
 
 	m_collision = NULL;
 	m_Size = D3DXVECTOR2(0,0);
+	m_directCollision = NONE;
 }
 
 void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewPort) {
@@ -34,7 +36,7 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 		}
 		if(_listObjectInViewPort[i]->GetId() != this->GetId())
 		{
-			if (m_collision->IsCollision(this, _listObjectInViewPort[i], _time)) {
+			if (_listObjectInViewPort[i]->IsCheckCollision() && m_collision->IsCollision(this, _listObjectInViewPort[i], _time)) {
 				listObjectCollision.push_back(_listObjectInViewPort[i]);
 			}
 		}
@@ -42,8 +44,6 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 
 	for (int i = 0; i < listObjectCollision.size(); i++)
 	{
-		if (listObjectCollision[i]->GetType() == MOVEMAPTYPE && this->GetType() == ROCKMANTYPE)
-			int k = 0;
 		UpdateCollison(listObjectCollision[i],_time);
 	}
 
@@ -118,7 +118,7 @@ D3DXVECTOR2 CEntity::GetAccleration()
 	return m_accel;
 }
 
-void CEntity::UpdateCollison(CEntity* _orther , float _time)
+void CEntity::UpdateCollison(CEntity* _other , float _time)
 {
 
 }
@@ -131,7 +131,12 @@ void CEntity::UpdateRect()
 	m_Rect.bottom = m_Rect.top - m_Size.y;
 }
 
-bool CEntity::IsShow()
+bool CEntity::IsShowed()
 {
-	return m_IsShow;
+	return m_IsShowed;
+}
+
+bool CEntity::IsCheckCollision()
+{
+	return m_IsCheckCollision;
 }

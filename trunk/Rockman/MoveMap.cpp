@@ -35,10 +35,6 @@ void CMoveMap::Render(LPD3DXSPRITE, CCamera*)
 	/*Not Render*/
 }
 
-void CMoveMap::SetDirect(bool _isUp)
-{
-	m_MoveDirect = _isUp ? 1 : -1;
-}
 
 bool CMoveMap::IsCanWithDirect(bool _isUp)
 {

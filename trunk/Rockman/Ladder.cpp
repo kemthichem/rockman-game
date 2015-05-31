@@ -34,5 +34,5 @@ void CLadder::Render(LPD3DXSPRITE _spriteHandler, CCamera* _camera) {
 	
 }
 
-void CLadder::UpdateCollison(CEntity* _orther, float _time) {
+void CLadder::UpdateCollison(CEntity* _other, float _time) {
 }

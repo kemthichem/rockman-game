@@ -17,7 +17,6 @@ public:
 	virtual void Update(float , CCamera *, CInput *, vector<CEntity*>);
 	virtual void Render(LPD3DXSPRITE, CCamera*);
 
-	void SetDirect(bool _isUp);
 	bool IsCanWithDirect(bool _isUp);
 };
 

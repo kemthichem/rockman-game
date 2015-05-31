@@ -75,7 +75,7 @@ vector<CEntity*> CQuadTree::GetListObjectInRect(RECT _rect)
 		//m_listObjectViewportToUpdate.insert(m_listObjectViewportToUpdate.begin(), listObjectInNode.begin(), listObjectInNode.end());
 
 			for (int j = 0; j < listObjectInNode.size(); j++) {
-				if (listObjectInNode[j]->IsShow()) {
+				if (listObjectInNode[j]->IsShowed()) {
 					m_listObjectViewportToRender.push_back(listObjectInNode[j]);
 				}
 				if ((int)listObjectInNode[j]->GetType() > -10) {
