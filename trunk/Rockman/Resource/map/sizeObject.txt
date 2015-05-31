@@ -13,6 +13,35 @@ des:350,215
 Land1:
 32x32
 src:653, 343
-des: 687, 377
+des: 721, 377
 left-top:1,1
 right-bottom:1,1
+
+LandWhite:
+32x32
+src:755, 1
+des: 857, 35
+left-top:1,1
+right-bottom:1,1
+
+LandIceberg:
+32x32
+src:209,128
+des: 277, 162
+left-top:1,1
+right-bottom:1,1
+
+Item,
+38x80
+src:390,741
+des:428,901
+left-top:0,0
+right-bottom:0,32
+
+COctopus
+80x36
+src:670,260
+des:910,296
+left-top:0,0
+right-bottom:47,0
+

@@ -8,7 +8,7 @@ CEntity::CEntity(void)
 	m_IsShowed = true;
 	m_IsCheckCollision = true;
 	m_isTurnLeft = false;
-	m_veloc = D3DXVECTOR2(0,0);
+	m_velloc = D3DXVECTOR2(0,0);
 	m_accel = D3DXVECTOR2(0,0);
 
 	m_collision = NULL;
@@ -18,8 +18,8 @@ CEntity::CEntity(void)
 
 void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewPort) {
 	//set is turn left
-	if (m_veloc.x < 0) m_isTurnLeft = true;
-	else if (m_veloc.x > 0) m_isTurnLeft = false;
+	if (m_velloc.x < 0) m_isTurnLeft = true;
+	else if (m_velloc.x > 0) m_isTurnLeft = false;
 	
 	//set position
 	UpdatePosition(_time);
@@ -90,9 +90,9 @@ void CEntity::RenderEachSprite(LPD3DXSPRITE _spriteHandler, CCamera* _camera, D3
 
 void CEntity::UpdatePosition(float _time)
 {
-	m_veloc += m_accel * _time;
-	m_pos.x += m_veloc.x * _time + 1.0f/2 * m_accel.x *_time * _time;
-	m_pos.y += m_veloc.y * _time + 1.0f/2 * m_accel.y *_time * _time;
+	m_velloc += m_accel * _time;
+	m_pos.x += m_velloc.x * _time + 1.0f/2 * m_accel.x *_time * _time;
+	m_pos.y += m_velloc.y * _time + 1.0f/2 * m_accel.y *_time * _time;
 }
 
 CEntity::~CEntity(void)
@@ -105,7 +105,7 @@ CEntity::~CEntity(void)
 
 D3DXVECTOR2 CEntity::GetVelocity()
 {
-	return m_veloc;
+	return m_velloc;
 }
 
 RECT CEntity::GetRect()

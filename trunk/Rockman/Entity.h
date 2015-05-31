@@ -23,6 +23,7 @@ enum ObjectType
 	BLADER,
 	CUTMAN,
 	SCREW_BOMBER,
+	OCTOPUS,
 	MOVEMAPTYPE,
 	BULLET,
 	ITEM
@@ -39,7 +40,7 @@ protected:
 	CAABBCollision *m_collision;
 	DirectCollision m_directCollision;
 	ObjectType m_Type;
-	D3DXVECTOR2 m_veloc;
+	D3DXVECTOR2 m_velloc;
 	D3DXVECTOR2 m_accel;
 	D3DXVECTOR3 m_pos;
 	RECT m_Rect;
