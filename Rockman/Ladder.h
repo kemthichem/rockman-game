@@ -6,7 +6,7 @@ class CLadder : public CEntity
 {
 private:
 protected:
-	void UpdateCollison(CEntity* _orther, float _time);
+	void UpdateCollison(CEntity* _other, float _time);
 public:
 	CLadder(int _id, D3DXVECTOR3 _pos);
 	~CLadder(void);

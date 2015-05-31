@@ -31,7 +31,7 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 	//create list bullet
 	for (int i = 0; i < 5; i++)
 	{
-		CBullet *bullet = new CBullet(D3DXVECTOR3(_pos.x + m_Size.x/2 - 10, _pos.y - m_Size.y/2 + 10, _pos.z));
+		CBulletRockman *bullet = new CBulletRockman(D3DXVECTOR3(_pos.x + m_Size.x/2 - 10, _pos.y - m_Size.y/2 + 10, _pos.z));
 		m_ListBullet[i] = bullet;
 	}
 
@@ -216,39 +216,39 @@ void CRockman::CollisionBottom()
 	m_isCollisionBottom = true;
 }
 
-void CRockman::UpdateCollison(CEntity* _orther, float _time) {
-	switch (_orther->GetType())
+void CRockman::UpdateCollison(CEntity* _other, float _time) {
+	switch (_other->GetType())
 	{
 	case LADDERTYPE:
 		if (m_veloc.y == 0)
 			m_action = Action_Climb_Stand;
-		m_PosXClimb = _orther->GetRect().left + 16;
+		m_PosXClimb = _other->GetRect().left + 16;
 		m_isCollisionBottom = true;
 		break;
 	case BIGEYETYPE:
 	case BLADER:
-		m_Injuring = _orther->GetVelocity().x > 0 ? 1 : -1;
+		m_Injuring = _other->GetVelocity().x > 0 ? 1 : -1;
 		
 		break;
 	default:
 		break;
 	}
 
-	if (_orther->GetType()!= ROCKMANTYPE)
+	if (_other->GetType()!= ROCKMANTYPE)
 	{
-		float timeEntry = m_collision->SweptAABB(this,_orther,_time);
+		float timeEntry = m_collision->SweptAABB(this,_other,_time);
 		m_directCollision = m_collision->GetDirectCollision();
 		if (timeEntry < 1.0f)
 		{
-			ExecuteCollision(_orther,m_directCollision,timeEntry);
+			ExecuteCollision(_other,m_directCollision,timeEntry);
 		}
 	}
 }
 
-void CRockman::ExecuteCollision(CEntity* _orther,DirectCollision m_directCollion,float _timeEntry)
+void CRockman::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,float _timeEntry)
 {
 		//ListObjectColision
-		switch (_orther->GetType())
+		switch (_other->GetType())
 		{
 		case LANDTYPE:
 		case LAND1TYPE:
@@ -257,7 +257,7 @@ void CRockman::ExecuteCollision(CEntity* _orther,DirectCollision m_directCollion
 			{
 				if( m_directCollion == BOTTOM)
 				{
-					m_pos.y = _orther->GetRect().top + m_Size.y + 1;
+					m_pos.y = _other->GetRect().top + m_Size.y + 1;
 					CollisionBottom();
 				}
 
@@ -265,26 +265,25 @@ void CRockman::ExecuteCollision(CEntity* _orther,DirectCollision m_directCollion
 				{
 					m_veloc.x = 0;
 					m_accel.x = 0;
-					m_pos.x = _orther->GetRect().right ;
+					m_pos.x = _other->GetRect().right ;
 				}
 
 				if( m_directCollion == RIGHT)
 				{
 					m_veloc.x = 0;
 					m_accel.x = 0;
-					m_pos.x = _orther->GetRect().left - m_Size.x;
+					m_pos.x = _other->GetRect().left - m_Size.x;
 				}
 
 				if (m_directCollion == TOP)
 				{
-					m_pos.y = _orther->GetRect().bottom;
+					m_pos.y = _other->GetRect().bottom;
 					m_veloc.y = 0;
 				}
 			}
 			break;
 		case MOVEMAPTYPE:
-			CMoveMap *moveMap = dynamic_cast<CMoveMap*> (_orther);
- 			
+			CMoveMap *moveMap = dynamic_cast<CMoveMap*> (_other);
 			if (m_directCollion == TOP)
 			{
 				if (moveMap->IsCanWithDirect(true)) {

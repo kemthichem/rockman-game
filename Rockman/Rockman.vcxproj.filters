@@ -46,11 +46,11 @@
     <Filter Include="AABB">
       <UniqueIdentifier>{268870cf-3672-4b8e-9289-79ca1a7e5232}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Bullet">
-      <UniqueIdentifier>{411d03a8-83d5-44aa-b1c1-9da9e09117a3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scenery">
       <UniqueIdentifier>{bbd7d59a-6365-485d-a1b0-0a93bf026a4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item">
+      <UniqueIdentifier>{411d03a8-83d5-44aa-b1c1-9da9e09117a3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -121,7 +121,7 @@
       <Filter>ObjectGame</Filter>
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
-      <Filter>Bullet</Filter>
+      <Filter>Item</Filter>
     </ClCompile>
     <ClCompile Include="CutMan.cpp">
       <Filter>ObjectGame</Filter>
@@ -134,6 +134,12 @@
     </ClCompile>
     <ClCompile Include="LandIceberg.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletRockman.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -204,7 +210,7 @@
       <Filter>ObjectGame</Filter>
     </ClInclude>
     <ClInclude Include="Bullet.h">
-      <Filter>Bullet</Filter>
+      <Filter>Item</Filter>
     </ClInclude>
     <ClInclude Include="CutMan.h">
       <Filter>ObjectGame</Filter>
@@ -217,6 +223,12 @@
     </ClInclude>
     <ClInclude Include="LandIceberg.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletRockman.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Item</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

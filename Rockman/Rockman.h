@@ -3,7 +3,7 @@
 #include "ResourceManager.h"
 #include "Entity.h"
 #include "AABBCollisionDetected.h"
-#include "Bullet.h"
+#include "BulletRockman.h"
 
 
 enum ActionRockman
@@ -27,12 +27,11 @@ class CRockman: public CEntity
 {
 private:
 	static const D3DXVECTOR2 mAccelOfRockman;
-	CBullet* m_ListBullet[5];
+	CBulletRockman* m_ListBullet[5];
 	float m_PosXClimb;
 	void Injunred(bool _isDirectX, float _time);
 	bool m_isCollisionBottom;
 	float m_TimeInjured;
-	DirectCollision m_directCollision;
 	int m_Injuring;//0: not Injuring - 1:right - -1:left
 	ActionRockman m_action;
 	void UpdateSprite(float _time);
@@ -51,8 +50,8 @@ public:
 	~CRockman();
 	virtual void Update(float , CCamera *, CInput *, vector<CEntity*> );
 	virtual void Render(LPD3DXSPRITE, CCamera*);
-	virtual void UpdateCollison(CEntity* _orther, float _time);
-	void ExecuteCollision(CEntity* _orther,DirectCollision m_directCollion,float _timeEntry);
+	virtual void UpdateCollison(CEntity* _other, float _time);
+	void ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,float _timeEntry);
 
 	/*rockman*/
 	void SetInjured(CEntity* _other);

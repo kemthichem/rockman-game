@@ -13,7 +13,13 @@ CBullet::CBullet(D3DXVECTOR3 _pos)
 	m_accel = D3DXVECTOR2(0,0);
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 
+	//bullet
 	m_IsActive = false;
+}
+
+CBullet::CBullet()
+{
+
 }
 
 
@@ -64,10 +70,4 @@ void CBullet::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 	if (m_IsActive) {
 		CEntity::Render(_spriteHandle, _camera);
 	}
-}
-
-void CBullet::SetPos(D3DXVECTOR3 _pos)
-{
-	m_posInit = _pos;
-	m_pos = _pos;
 }

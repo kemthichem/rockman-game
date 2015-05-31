@@ -1,10 +1,10 @@
-#ifndef	_BULLET_H
-#define  _BULLET_H
+#ifndef	_ITEM_H_
+#define _ITEM_H_
 
 #include "Entity.h"
 
-//Bullet for enemies
-class CBullet : public CEntity
+//Item for enemies
+class CItem : public CEntity
 {
 private:	
 	D3DXVECTOR3 m_posInit;
@@ -14,19 +14,20 @@ protected:
 	virtual void UpdateCollison(CEntity* ,float);
 
 public:
-	CBullet();
-	CBullet(D3DXVECTOR3 _pos);
-	~CBullet(void);
+	CItem();
+	CItem(D3DXVECTOR3 _pos);
+	~CItem(void);
 
 	virtual void Update(float , CCamera *, CInput *, vector<CEntity*>);
 	virtual void Render(LPD3DXSPRITE, CCamera*);
 
-	//Bullet
+	//Item
 	void SetVelloc(D3DXVECTOR2 _velloc);
 	void SetActive(bool _isActive);
 	bool GetActive() {
 		return m_IsActive;
 	}
+	void ExecuteCollision(CEntity* _other, DirectCollision m_directCollision, float timeEntry);
 };
 
 #endif
