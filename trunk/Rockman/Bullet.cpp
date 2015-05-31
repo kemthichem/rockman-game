@@ -33,7 +33,7 @@ void CBullet::UpdateCollison(CEntity* _other,float _time)
 	{
 	case ROCKMANTYPE:
 		this->m_IsActive = false;
-		//(dynamic_cast<CRockman*>(_other))->SetInjured(this);
+		(dynamic_cast<CRockman*>(_other))->SetInjured(this);
 		break;
 	default:
 		break;
