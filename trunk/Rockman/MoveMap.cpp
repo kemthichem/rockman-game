@@ -1,4 +1,5 @@
 #include "MoveMap.h"
+#include "Map.h"
 
 
 int CMoveMap::g_DistanceMoveCameraY = HEIGHT_SCREEN;
@@ -15,6 +16,8 @@ CMoveMap::CMoveMap(int _id, D3DXVECTOR3 _pos)
 	m_Rect.left = m_pos.x;
 	m_Rect.bottom = m_Rect.top - 1;
 	m_Rect.right = m_Rect.left + 32;
+
+	m_MoveDirect = 0;
 }
 
 
@@ -30,5 +33,27 @@ void CMoveMap::Update(float , CCamera *, CInput *, vector<CEntity*>)
 void CMoveMap::Render(LPD3DXSPRITE, CCamera*)
 {
 	/*Not Render*/
+}
+
+void CMoveMap::SetDirect(bool _isUp)
+{
+	m_MoveDirect = _isUp ? 1 : -1;
+}
+
+bool CMoveMap::IsCanWithDirect(bool _isUp)
+{
+	if (_isUp) {
+		if (!(m_MoveDirect > 0)) {
+			m_MoveDirect = 1;
+			return true;
+		}
+	} else {
+		if (!(m_MoveDirect < 0)) {
+			m_MoveDirect = -1;
+			return true;
+		}
+	}
+
+	return false;
 }
 
