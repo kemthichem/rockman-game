@@ -10,6 +10,8 @@ CLand::CLand(int _id, D3DXVECTOR3 _pos)
 	m_accel = D3DXVECTOR2(0,0);	
 
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
+	
+	UpdateRect();
 }
 
 

@@ -3,6 +3,8 @@
 #include "Land.h"
 #include "MoveMap.h"
 #include "Map.h"
+#include "PLayingGameState.h"
+#include "MenuState.h"
 
 CRockmanGame::CRockmanGame(void)
 {
@@ -13,55 +15,30 @@ CRockmanGame::CRockmanGame( HINSTANCE hInstance ):CGame(hInstance)
 }
 CRockmanGame::~CRockmanGame(void)
 {
-	//delete list object
-	for(int i = 0; i < m_listObject.size(); ++i)
-		delete m_listObject[i];
-	m_listObject.clear();
-
-	delete rockman;
-
-	delete quadTree;
 	//Release resource
 	CResourceManager::Release();
 }
 LPD3DXSPRITE CRockmanGame::GetSpriteHandle()
 {
-	return _spriteHandler;
+	return m_SpriteHandler;
 }
 LPDIRECT3DDEVICE9 CRockmanGame::GetDevice3d()
 {
 	return _d3ddv;
 }
-void CRockmanGame::Render()
+void CRockmanGame::RenderWorld()
 {	
-	rockman->Render(GetSpriteHandle(), m_camera);
-	quadTree->Render(GetSpriteHandle(), m_camera);
-
+	m_StateManager->Draw(GetSpriteHandle(), m_camera);
 }
 
-void CRockmanGame::UpdateWorld(float deltaTime, CCamera *_camera, CInput *_input)
+void CRockmanGame::UpdateWorld()
 {
-	vector<CEntity*> listOb = quadTree->GetListObjectInRect(_camera->m_viewPort);
-	quadTree->m_listObjectViewportToUpdate.push_back(rockman);
-
-	if (!CMoveMap::g_IsMovingMap) {
-		rockman->Update(deltaTime, _camera, _input, listOb);
-		quadTree->Update(_camera, deltaTime);
-	} else
-		_camera->Move(CMoveMap::g_DistanceMoveCameraY);
-
+	m_StateManager->Update(m_time->GetDeltaTime(), m_camera, m_input);
 }
 void CRockmanGame::InitGame()
-{	
-	CMap map;
-	m_listObject = map.GetObjectFromFile("Resource//map//Map1.txt");	
-	//Load tree
-	quadTree = new CQuadTree();
-	quadTree->LoadNodeInFile("Resource//map//Map1Tree.txt");
-
-	quadTree->MapIdToObjectInTree(quadTree->m_nodeRoot, m_listObject);
-	//
-	rockman = new CRockman(D3DXVECTOR3(200,1000,0));
+{
+	CGame::InitGame();
+	m_StateManager->InitFirstState(new CMenuState(m_StateManager));
 }
 LPD3DXFONT CRockmanGame::GetLPFont()
 {

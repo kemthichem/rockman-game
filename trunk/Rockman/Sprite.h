@@ -8,8 +8,6 @@ class CSprite
 {
 private:
 	float  m_TimeWait;  //Chờ chuyển hình
-	int m_WidthTexture;
-	int m_HeightTexture;
 	int m_CurrentIndex;
 	int m_CountPerRow;
 	int m_CountPerCol;

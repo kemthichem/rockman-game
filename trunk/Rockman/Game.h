@@ -1,7 +1,4 @@
-﻿
-//#pragma once
-
-#ifndef _GAME_H	
+﻿#ifndef _GAME_H	
 #define _GAME_H
 
 #include <d3d9.h>
@@ -10,69 +7,44 @@
 #include "Input.h"
 #include "Time.h"
 #include "Camera.h"
-
-
-#define KEYBOARD_BUFFER_SIZE	1024
+#include "GameStateManager.h"
 
 class CGame
 {
-
 private:
-
 	HINSTANCE _hInstance;
 	LPDIRECT3D9 _d3d;
-
-	LPDIRECTINPUT8 _input;
-	LPDIRECTINPUTDEVICE8  _keyboardDevice;
-	char keys[256];
-	DIDEVICEOBJECTDATA  _KeyEvents[KEYBOARD_BUFFER_SIZE];
 	bool _InitWindow();
 	bool _InitDirectX();
 	bool _InitInput();
 	bool _InitFont();
-	void _ProcessKeyBoard();//
 
 	////--------
 	DWORD m_deltaTime;
-
-	
-	
-
+	void Render();
+	void Release();
 protected:
 	CInput *m_input;
 	CTimer *m_time;
 	CCamera *m_camera;
+	CGameStateManager *m_StateManager;
 
-	DWORD deltaTimePress;
-	DWORD timePressStart;
-	LPD3DXSPRITE _spriteHandler;
+	LPD3DXSPRITE m_SpriteHandler;
 	LPDIRECT3DDEVICE9 _d3ddv;
 	LPD3DXFONT g_Font;
 	static LRESULT CALLBACK _WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
-	void _Render();
-	void _Process();
-	void _Update();
-	void Release();
-	//-----------
-	//--các hàm tương tác
 
-	virtual void OnKeyUp(int keycode);
-	virtual void OnKeyDown(int keycode);
-	virtual void UpdateWorld(float, CCamera *, CInput*);
-	virtual void Render();
+	virtual void UpdateWorld();
+	virtual void RenderWorld();
 	virtual void RenderTextAndSurface();
-	virtual void ProcessInput(float deltaTime);
-	virtual void InitGame();
-
+	
 public:
-	HWND _hWnd;
+	HWND m_hWnd;
 	LPDIRECT3DSURFACE9 _backbuffer;
 	CGame();
 	CGame(HINSTANCE hInstance);
-	void Init();
 	int RunGame();
-	bool IsKeyDown(int keycode);	
+	virtual void InitGame();
 	~CGame(void);
-
 };
 #endif

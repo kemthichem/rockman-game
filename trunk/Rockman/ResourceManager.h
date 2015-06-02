@@ -9,11 +9,16 @@
 
 #include "utils.h"
 
+//resource menu
+#define  IMAGE_MENU "Resource/menu.png"
+
+//resource object
 #define  IMAGE_ROCKMAN "Resource/rockman.png"
 #define  IMAGE_TILES "Resource/tiles.png"
 #define  IMAGE_ENEMIES "Resource/enemies.png"
 #define  IMAGE_ITEMS "Resource/items.png"
 #define  IMAGE_MASTER "Resource/master.png"
+
 
 using namespace std;
 class CResourceManager

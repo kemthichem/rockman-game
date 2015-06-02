@@ -4,7 +4,6 @@
 CGame::CGame(HINSTANCE hInstance)
 {
 	_hInstance = hInstance;
-	m_deltaTime = deltaTimePress = 0;
 }
 
 CGame::CGame()
@@ -12,9 +11,8 @@ CGame::CGame()
 
 }
 
-void CGame::Init()
+void CGame::InitGame()
 {
-
 	m_time = new CTimer();
 	m_time->SetMaxFps(60.0f);
 
@@ -24,9 +22,9 @@ void CGame::Init()
 	_InitDirectX();
 	_InitInput();
 	_InitFont();
-	//RenderTextAndSurface();
-	InitGame();
-
+	
+	 m_StateManager = new CGameStateManager();
+	 m_StateManager->Init(m_hWnd, m_SpriteHandler);
 }
 
 LRESULT CALLBACK CGame::_WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
@@ -43,21 +41,9 @@ LRESULT CALLBACK CGame::_WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
 }  
 CGame::~CGame(void)
 {
-	if (_d3ddv!=NULL) _d3ddv->Release();
-	if (_d3d!=NULL) _d3d->Release();
-
-	if( _keyboardDevice )  
-	{
-		_keyboardDevice->Unacquire();
-		_keyboardDevice->Release();
-	}
-
-	if (_input) _input->Release();
-	_backbuffer->Release();
 }
 bool CGame::_InitWindow()
 {
-
 	WNDCLASS    wndc; 
 	ZeroMemory(&wndc, sizeof(wndc)); 
 
@@ -76,7 +62,7 @@ bool CGame::_InitWindow()
 		return false; 
 	} 
 
-	_hWnd    = CreateWindow( 
+	m_hWnd    = CreateWindow( 
 		"CGame", 
 		"Rockman", 
 		WS_OVERLAPPEDWINDOW, 
@@ -89,14 +75,14 @@ bool CGame::_InitWindow()
 		_hInstance, 
 		NULL); 
 
-	if (!_hWnd) 
+	if (!m_hWnd) 
 	{ 
 		MessageBox(0, "Can not Create Window", "Error", MB_OK); 
 		return false; 
 	} 
 
-	ShowWindow(_hWnd,SW_SHOWNORMAL); 
-	UpdateWindow(_hWnd); 
+	ShowWindow(m_hWnd,SW_SHOWNORMAL); 
+	UpdateWindow(m_hWnd); 
 
 	return true; 
 
@@ -117,21 +103,21 @@ bool CGame::_InitDirectX()
 	d3dpp.Windowed            = true; 
 	d3dpp.BackBufferCount    = 1; 
 	d3dpp.BackBufferFormat    = D3DFMT_X8R8G8B8;//D3DFMT_UNKNOWN; 
-	d3dpp.BackBufferHeight    = 600; 
-	d3dpp.BackBufferWidth    = 800; 
-	d3dpp.hDeviceWindow        = _hWnd; 
+	d3dpp.BackBufferHeight    = HEIGHT_SCREEN; 
+	d3dpp.BackBufferWidth    = WIDTH_SCREEN; 
+	d3dpp.hDeviceWindow        = m_hWnd; 
 	d3dpp.SwapEffect        = D3DSWAPEFFECT_DISCARD; 
 
-	if(FAILED(_d3d->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, _hWnd,  D3DCREATE_HARDWARE_VERTEXPROCESSING,  &d3dpp, &_d3ddv))) 
-		if(FAILED(_d3d->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_REF, _hWnd, D3DCREATE_HARDWARE_VERTEXPROCESSING, &d3dpp, &_d3ddv))) 
-			if(FAILED(_d3d->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_REF, _hWnd, D3DCREATE_SOFTWARE_VERTEXPROCESSING, &d3dpp, &_d3ddv))) 
+	if(FAILED(_d3d->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, m_hWnd,  D3DCREATE_HARDWARE_VERTEXPROCESSING,  &d3dpp, &_d3ddv))) 
+		if(FAILED(_d3d->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_REF, m_hWnd, D3DCREATE_HARDWARE_VERTEXPROCESSING, &d3dpp, &_d3ddv))) 
+			if(FAILED(_d3d->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_REF, m_hWnd, D3DCREATE_SOFTWARE_VERTEXPROCESSING, &d3dpp, &_d3ddv))) 
 			{ 
 				MessageBox(0, "Can not create device","Error", MB_OK); 
 				return false; 
 			} 
 
-			D3DXCreateSprite(_d3ddv, &_spriteHandler);
-			_d3ddv->GetBackBuffer(0,0,D3DBACKBUFFER_TYPE_MONO,&_backbuffer);//chỉ thị vùng nhớ đệm để vẽ lên
+			D3DXCreateSprite(_d3ddv, &m_SpriteHandler);
+			_d3ddv->GetBackBuffer(0,0,D3DBACKBUFFER_TYPE_MONO,&_backbuffer);
 
 			//set device to resource manager
 			CResourceManager::GetInstance()->LoadResource(_d3ddv);
@@ -140,109 +126,32 @@ bool CGame::_InitDirectX()
 }
 bool CGame::_InitInput()
 {
-	//	HRESULT hresult;
-	//	//Khoi tao direct input
-	//	hresult=DirectInput8Create(GetModuleHandle(NULL),  //HINSTANCE : hinstance ha
-	//		DIRECTINPUT_VERSION,  //Direct input version
-	//		IID_IDirectInput8,  //a reference identifier
-	//		(void**)&_input,  //Con tro tro toi doi tuong	
-	//		NULL);  //always pass NULL						
-	//	if(FAILED(hresult))//Kiem tra xem Khoi tao Direct input co duoc hay khong
-	//	{
-	//		MessageBox(0,"Loi xay ra " ,0,0);
-	//		return false;
-	//	}
-	//	//init keyboard
-	//	hresult=_input->CreateDevice(GUID_SysKeyboard,&_keyboardDevice,NULL);
-	//	if(FAILED(hresult))
-	//	{
-	//		return false;
-	//		MessageBox(_hWnd, "Error create Input", "Error", MB_OK);
-	//	}
-	//
-	//	//--Init KeyBoard
-	//
-	//	hresult=_keyboardDevice->SetDataFormat(&c_dfDIKeyboard);
-	//	if(FAILED(hresult))
-	//		return false;
-	//	hresult=_keyboardDevice->SetCooperativeLevel(_hWnd,DISCL_BACKGROUND | DISCL_NONEXCLUSIVE);
-	//	if(FAILED(hresult))
-	//		return false;
-	//
-	//	//--
-	//	DIPROPDWORD dipdw;
-	//	dipdw.diph.dwSize  = sizeof(DIPROPDWORD);
-	//	dipdw.diph.dwHeaderSize = sizeof(DIPROPHEADER);
-	//	dipdw.diph.dwObj  = 0;
-	//	dipdw.diph.dwHow  = DIPH_DEVICE;
-	//	dipdw.dwData  = 256; // Arbitary buffer size
-	//
-	//
-	//	hresult = _keyboardDevice->SetProperty( DIPROP_BUFFERSIZE, &dipdw.diph );
-	//	if (hresult!=DI_OK)
-	//	{
-	//		MessageBox(_hWnd, "Error set Propety key board divice", "Error", MB_OK);
-	//		return false;
-	//	}
-	//	hresult=_keyboardDevice->Acquire();
-	//	if(FAILED(hresult)) return false;
-	//
-	//	return true;
-
-
 	m_input = new CInput(); 
-	if (!m_input->InitKeyboard(_hInstance,_hWnd))
+	if (!m_input->InitKeyboard(_hInstance,m_hWnd))
 	{
-		MessageBox(_hWnd, "Can't create input", "Error", MB_OK );
+		MessageBox(m_hWnd, "Can't create input", "Error", MB_OK );
 
 	}
 	return 0;
 }
-void CGame::_ProcessKeyBoard()
+
+void CGame::Render()
 {
-	_keyboardDevice->GetDeviceState( sizeof(keys), (LPVOID)&keys); // Fill bo dem
-	//Tham so dau la size cua bo dem
-	//Tham so thu hai la con tro tro toi bo dem
-
-
-	DWORD dwElements = KEYBOARD_BUFFER_SIZE;
-	HRESULT hr = _keyboardDevice->GetDeviceData( sizeof(DIDEVICEOBJECTDATA), _KeyEvents, &dwElements, 0 );
-	// Scan through all data, check if the key is pressed or released
-	for( DWORD i = 0; i < dwElements; i++ ) //cho phep dung stack
-	{
-		int KeyCode = _KeyEvents[i].dwOfs;
-		int KeyState = _KeyEvents[i].dwData;
-		if ( (KeyState & 0x80) > 0)
-			OnKeyDown(KeyCode);// event press key
-		else 
-			OnKeyUp(KeyCode);//event release key`
-	}
-}
-void CGame::_Render()
-{
-
 	HRESULT re = _d3ddv->BeginScene();
 	_d3ddv->StretchRect(CResourceManager::GetInstance()->GetSurface(CResourceManager::mPathFileBg),NULL,_backbuffer, NULL,D3DTEXF_NONE);
 	//if (re) 
 	//{
 		//_d3ddv->StretchRect(CResourceManager::GetInstance()->GetSurface(IMAGE_BG1), NULL,_backbuffer, NULL,D3DTEXF_NONE);
-		_spriteHandler->Begin(D3DXSPRITE_ALPHABLEND|D3DXSPRITE_SORT_DEPTH_FRONTTOBACK);	
-		Render();		
-		_spriteHandler->End();
+		m_SpriteHandler->Begin(D3DXSPRITE_ALPHABLEND|D3DXSPRITE_SORT_DEPTH_FRONTTOBACK);	
+		RenderWorld();		
+		m_SpriteHandler->End();
 		RenderTextAndSurface();
 		_d3ddv->EndScene();	
 	//}
 	_d3ddv->Present(NULL,NULL,NULL,NULL);
 }
-//------------------------
-bool CGame::IsKeyDown(int keycode)
-{
-	if(keys[keycode] & 0x80)
-		return true;
-	return false;
-}
-void CGame::Release()
-{
+
+void CGame::Release() {
 	if (_d3d != NULL)
 	{
 		_d3d->Release();
@@ -263,6 +172,10 @@ void CGame::Release()
 	{
 		m_input->Kill_Keyboard();
 		delete m_input;
+	}
+
+	if (m_StateManager) {
+		delete m_StateManager;
 	}
 }
 int CGame::RunGame()
@@ -288,52 +201,25 @@ int CGame::RunGame()
 			{
 				m_time->EndCount();
 				m_input->ProcessKeyBoard();
-				_Update();
-				_Render();
+				UpdateWorld();
+				Render();
 			}
 
 		}	
 	}
-	//
+	Release();
 	return (int) msg.wParam;
 }
-void CGame::_Process()
-{
-	//deltaTimePress = GetTickCount()-timePressStart;
-	_ProcessKeyBoard();
-	if(IsKeyDown(DIK_LEFT)||IsKeyDown(DIK_RIGHT))
-		deltaTimePress = (GetTickCount()-timePressStart)/100;
 
-	ProcessInput(deltaTimePress);	
-}
-void CGame::_Update()
-{
-	UpdateWorld(m_time->GetDeltaTime(), m_camera, m_input);
-}
-//------------------------
-void CGame::InitGame()
-{
-}
-void CGame::RenderTextAndSurface()
-{
-}
-void CGame::UpdateWorld(float deltaTime, CCamera *_camera, CInput *mInput)
-{
-}
-void CGame::Render()
-{
-
-}
-void CGame::ProcessInput(float _deltaTimePress)
-{
-}
-void CGame::OnKeyDown(int keycode)
-{
-}
-void CGame::OnKeyUp(int keycode)
+void CGame::UpdateWorld()
 {
 }
 
+
+void CGame::RenderWorld()
+{
+
+}
 bool CGame::_InitFont()
 {
 
@@ -350,4 +236,9 @@ bool CGame::_InitFont()
 
 	HRESULT hre = D3DXCreateFontIndirect(_d3ddv,&FontDesc,&g_Font);
 	return true;
+}
+
+void CGame::RenderTextAndSurface()
+{
+
 }
