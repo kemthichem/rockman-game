@@ -132,9 +132,6 @@
     <ClCompile Include="LandWhite.cpp">
       <Filter>ObjectGame</Filter>
     </ClCompile>
-    <ClCompile Include="LandIceberg.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="BulletRockman.cpp">
       <Filter>Item</Filter>
     </ClCompile>
@@ -142,6 +139,21 @@
       <Filter>Item</Filter>
     </ClCompile>
     <ClCompile Include="Octopus.cpp">
+      <Filter>ObjectGame</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStateManager.cpp">
+      <Filter>GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayingGameState.cpp">
+      <Filter>GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuState.cpp">
+      <Filter>GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="LandIceberg.cpp">
       <Filter>ObjectGame</Filter>
     </ClCompile>
   </ItemGroup>
@@ -224,9 +236,6 @@
     <ClInclude Include="LandWhite.h">
       <Filter>ObjectGame</Filter>
     </ClInclude>
-    <ClInclude Include="LandIceberg.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="BulletRockman.h">
       <Filter>Item</Filter>
     </ClInclude>
@@ -234,6 +243,21 @@
       <Filter>Item</Filter>
     </ClInclude>
     <ClInclude Include="Octopus.h">
+      <Filter>ObjectGame</Filter>
+    </ClInclude>
+    <ClInclude Include="GamestateManager.h">
+      <Filter>GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="PLayingGameState.h">
+      <Filter>GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuState.h">
+      <Filter>GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="LandIceberg.h">
       <Filter>ObjectGame</Filter>
     </ClInclude>
   </ItemGroup>

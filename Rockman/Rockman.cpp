@@ -27,6 +27,7 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 	m_Injuring = 0;
 	m_TimeInjured = 0;
 	m_accel = mAccelOfRockman;
+	m_KeyDown = 0;
 
 	//create list bullet
 	for (int i = 0; i < 5; i++)
@@ -71,8 +72,8 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	if (m_Injuring != 0)
 		Injunred(m_Injuring > 0, _time);
 
-	int keyDown = _input ->GetKeyDown();
-	switch (keyDown)
+	m_KeyDown = _input ->GetKeyDown();
+	switch (m_KeyDown)
 	{
 	case DIK_SPACE:
 		Jump();
@@ -98,7 +99,7 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 
 	m_isTurnLeft = m_Injuring !=0 ? !m_isTurnLeft: m_isTurnLeft;
 
-	switch (keyDown)
+	switch (m_KeyDown)
 	{
 	case DIK_A:
 		m_action = (ActionRockman)((int)m_action + 1);
@@ -354,4 +355,9 @@ void CRockman::Injunred(bool _isImpactLeft, float _time)
 void CRockman::SetInjured(CEntity* _other)
 {
 	m_Injuring = _other->GetVelocity().x > 0 ? 1 : -1;
+}
+
+int CRockman::GetKeyDown()
+{
+	return m_KeyDown;
 }

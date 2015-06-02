@@ -33,6 +33,7 @@ private:
 	bool m_isCollisionBottom;
 	float m_TimeInjured;
 	int m_Injuring;//0: not Injuring - 1:right - -1:left
+	int m_KeyDown;
 	ActionRockman m_action;
 	void UpdateSprite(float _time);
 	void Stand();
@@ -55,6 +56,7 @@ public:
 
 	/*rockman*/
 	void SetInjured(CEntity* _other);
-	
+	int GetKeyDown();
+
 };
 #endif

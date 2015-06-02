@@ -90,6 +90,8 @@
     <ClCompile Include="CutMan.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="GameStateManager.cpp" />
     <ClCompile Include="IceMan.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Item.cpp" />
@@ -99,8 +101,10 @@
     <ClCompile Include="LandIceberg.cpp" />
     <ClCompile Include="LandWhite.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="MoveMap.cpp" />
     <ClCompile Include="Octopus.cpp" />
+    <ClCompile Include="PlayingGameState.cpp" />
     <ClCompile Include="QuadTree.cpp" />
     <ClCompile Include="QuadTreeNode.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
@@ -123,6 +127,8 @@
     <ClInclude Include="Define.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameState.h" />
+    <ClInclude Include="GamestateManager.h" />
     <ClInclude Include="IceMan.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Item.h" />
@@ -132,8 +138,10 @@
     <ClInclude Include="LandIceberg.h" />
     <ClInclude Include="LandWhite.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="MenuState.h" />
     <ClInclude Include="MoveMap.h" />
     <ClInclude Include="Octopus.h" />
+    <ClInclude Include="PLayingGameState.h" />
     <ClInclude Include="QuadTree.h" />
     <ClInclude Include="QuadTreeNode.h" />
     <ClInclude Include="ResourceManager.h" />

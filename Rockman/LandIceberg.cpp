@@ -13,6 +13,7 @@ CLandIceberg::CLandIceberg(int _id, D3DXVECTOR3 _pos)
 	m_accel = D3DXVECTOR2(0,0);	
 
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite() * NUMB_SPRITE, m_Sprite->GetHeightRectSprite());
+	UpdateRect();
 }
 
 

@@ -3,21 +3,18 @@
 //---
 #include "utils.h"
 #include "Game.h"
-#include "Entity.h"
 #include "Rockman.h"
-#include "BigEye.h"
 #include "QuadTree.h"
-#include "BigEye.h"
-
 
 class CRockmanGame : public CGame
 {	
 private:
 	CQuadTree *quadTree;
 
-	void Render();
-	void UpdateWorld(float, CCamera*, CInput*);
-	void InitGame();
+protected:
+	virtual void RenderWorld();
+	virtual void UpdateWorld();
+	
 public:
 	LPD3DXSPRITE GetSpriteHandle();
 	LPDIRECT3DDEVICE9 GetDevice3d();
@@ -25,7 +22,7 @@ public:
 	CRockmanGame(void);
 	CRockmanGame(HINSTANCE hInstance);
 	CRockman *rockman;
-
+	virtual void InitGame();
 	vector<CEntity*> m_listObject;
 	~CRockmanGame(void);
 };

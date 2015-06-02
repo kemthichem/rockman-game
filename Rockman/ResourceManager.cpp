@@ -10,8 +10,7 @@ CResourceManager::CResourceManager(void)
 }
 
 CResourceManager::~CResourceManager(void)
-{
-	
+{	
 	for (map<string, LPDIRECT3DTEXTURE9>::iterator it = mMapTexture.begin(); it != mMapTexture.end(); ++it)
 	{
 			it->second->Release();
@@ -41,6 +40,7 @@ void CResourceManager::LoadResource(LPDIRECT3DDEVICE9 _d3ddv)
 	mMapTexture[IMAGE_ENEMIES] = CUtils::LoadTexture(mD3ddv,IMAGE_ENEMIES);
 	mMapTexture[IMAGE_ITEMS] = CUtils::LoadTexture(mD3ddv,IMAGE_ITEMS);
 	mMapTexture[IMAGE_MASTER] = CUtils::LoadTexture(mD3ddv,IMAGE_MASTER);
+	mMapTexture[IMAGE_MENU] = CUtils::LoadTexture(mD3ddv,IMAGE_MENU);
 	mMapSurface["Resource/background1.png"] = CUtils::LoadSurface(mD3ddv,"Resource/background1.png");
 }
 
