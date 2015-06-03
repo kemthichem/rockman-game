@@ -8,6 +8,7 @@
 #include "Cutman.h"
 #include "ScrewBomber.h"
 #include "Octopus.h"
+#include "IceMan.h"
 
 int CMap::g_widthMap = 0;
 int CMap::g_heightMap = 0;
@@ -88,6 +89,16 @@ vector<CEntity*> CMap::ObjectFromFile(char* _pathFileMap)
 			} else if(_objecttype == "OCTOPUS") {
 				COctopus *ob = new COctopus(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
 				object.push_back(ob);
+			}else if(_objecttype == "MET") {
+				COctopus *ob = new COctopus(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
+				object.push_back(ob);
+			}else if(_objecttype == "BEAK") {
+				COctopus *ob = new COctopus(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
+				object.push_back(ob);
+			}	else if(_objecttype == "ICEMAN"){				
+				CIceMan *ob = new CIceMan(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
+				object.push_back(ob);
+
 			}
 		}
 	}

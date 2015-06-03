@@ -3,20 +3,18 @@
 #include "ResourceManager.h"
 #include "Entity.h"
 
-enum Status {
-	StandNormal,
-	StandHaveCut,
-	MoveNormal,
-	MoveHaveCut,
-	JumpNormal,
-	JumpHaveCut
+enum IceManStatus {
+	HELLO,
+	STAND,
+	MOVE,
+	JUMP
 };
 
 class CIceMan : public CEntity
 {
 private:
-	Status m_Status;
-	float m_timeSpend;
+	IceManStatus m_Status;
+	float m_TimeSpend;
 protected:
 public:
 	CIceMan(int _id, D3DXVECTOR3 _pos);
