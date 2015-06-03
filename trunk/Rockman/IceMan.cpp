@@ -1,16 +1,18 @@
 #include "IceMan.h"
+#define WAITING_TIME (20.0f)
+
+
 
 CIceMan::CIceMan(int _id, D3DXVECTOR3 _pos)
 {
 	m_Id = _id;
-	m_Type = CUTMAN;
-	m_Status = StandHaveCut;
-	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MASTER), D3DXVECTOR2(870, 140) , 9, 2, D3DXVECTOR2(430, 10));
+	m_Type = ICEMAN;
+	m_Status = HELLO;
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MASTER), D3DXVECTOR2(870, 480) , 8, 1, D3DXVECTOR2(420, 420));
 	m_pos = _pos;
 	m_accel = D3DXVECTOR2(0,0);
-	m_velloc.x = -10;
+	m_velloc.x = 0.0f;
 	m_accel.y = 0.0f;
-
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 }
 
@@ -31,31 +33,31 @@ void CIceMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntit
 	//	m_veloc.y = 80.0f;
 	//}
 
+	if (m_TimeSpend < WAITING_TIME) {
+			m_TimeSpend += _time;
+			if ((int)m_TimeSpend == (int)WAITING_TIME && m_Status == HELLO) {
+				m_Status = STAND;
+			}
+	}
+
+
 
 
 	switch (m_Status)
 	{
-	case StandNormal:
+	case HELLO:
 		// stand normal
-		m_Sprite->NextOf(_time, 16, 17);
+		m_Sprite->NextOf(_time, 4, 5);
 		break;
-	case MoveNormal:
+	case STAND:
 		// move normal
-		m_Sprite->NextOf(_time, 11, 14);
+		m_Sprite->IndexOf(7);
 		break;
-	case StandHaveCut:
+	case MOVE:
 		// Stand have cut
-		m_Sprite->NextOf(_time, 7, 8);
+		m_Sprite->NextOf(_time, 2, 3);
 		break;
-	case MoveHaveCut:
-		// Stand have cut
-		m_Sprite->NextOf(_time, 2, 5);
-		break;
-	case JumpNormal:
-		// Stand have cut
-		m_Sprite->IndexOf(15);
-		break;
-	case JumpHaveCut:
+	case JUMP:
 		// Stand have cut
 		m_Sprite->IndexOf(6);
 		break;

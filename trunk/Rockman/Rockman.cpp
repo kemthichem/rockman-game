@@ -16,7 +16,7 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 		D3DXVECTOR2(0,0), D3DXVECTOR2(11,8), D3DXVECTOR2(28,14));
 	m_pos = _pos;
 	m_pos.z = DEPTH_MOTION;
-	m_pos.y = 1000;
+	m_pos.y = 100;
 	m_action = Action_Start;
 	m_velloc.y = -250.0f;
 	m_accel = mAccelOfRockman;
