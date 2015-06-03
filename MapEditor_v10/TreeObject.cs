@@ -105,10 +105,10 @@ namespace MapEditor_v10
                     //tinh toa do giua theo 2 chieu
                     float MidleWidthNode = widthnode / 2 + Node.GetBound().GetLeft();
                     float MidleHeightNode = heightnode / 2 + Node.GetBound().GetBottom();
-                    Node.NodeLeftTop = new QNode(Node.m_IdNode * 8 + 1, Node.GetBound().GetLeft(), Node.GetBound().GetTop(), MidleWidthNode, MidleHeightNode);
-                    Node.NodeLeftBottom = new QNode(Node.m_IdNode * 8 + 3, Node.GetBound().GetLeft(), MidleHeightNode, MidleWidthNode, Node.GetBound().GetBottom());
-                    Node.NodeRightTop = new QNode(Node.m_IdNode * 8 + 2, MidleWidthNode, Node.GetBound().GetTop(), Node.GetBound().GetRight(), MidleHeightNode);
-                    Node.NodeRightBottom = new QNode(Node.m_IdNode * 8 + 4, MidleWidthNode, MidleHeightNode, Node.GetBound().GetRight(), Node.GetBound().GetBottom());
+                    Node.NodeLeftTop = new QNode(Node.m_IdNode * 4 + 1, Node.GetBound().GetLeft(), Node.GetBound().GetTop(), MidleWidthNode, MidleHeightNode);
+                    Node.NodeLeftBottom = new QNode(Node.m_IdNode * 4 + 3, Node.GetBound().GetLeft(), MidleHeightNode, MidleWidthNode, Node.GetBound().GetBottom());
+                    Node.NodeRightTop = new QNode(Node.m_IdNode * 4 + 2, MidleWidthNode, Node.GetBound().GetTop(), Node.GetBound().GetRight(), MidleHeightNode);
+                    Node.NodeRightBottom = new QNode(Node.m_IdNode * 4 + 4, MidleWidthNode, MidleHeightNode, Node.GetBound().GetRight(), Node.GetBound().GetBottom());
                     // xen tung doi tuong nam trog node Cha vao cac node con vua tao
                     for (int i = 0; i < Node.GetTreeObjectInNode().Count; i++)
                     {
