@@ -1,213 +1,29 @@
-﻿Build started 3/29/2015 10:19:43 PM.
-     1>Project "D:\Project\final\game\ngocduong-mario\GameMario\GameMario\GameMario.vcxproj" on node 2 (Rebuild target(s)).
+﻿Build started 5/30/2015 5:28:05 PM.
+     1>Project "D:\Project\final\game\ngocduong-mario\GameMario\GameMario\GameMario.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Aboutstatecpp.cpp Boss.cpp Brick.cpp BrickBreak.cpp BrickExplosions.cpp Bullet.cpp Camera.cpp CAudio.cpp Coin.cpp AABBCollisionDetected.cpp ContinueState.cpp dsutil.cpp DxGraPhic.cpp FireBoss.cpp Flag.cpp Flower.cpp GameApp.cpp GameOver.cpp GameState.cpp GameStateManager.cpp Input.cpp LoadingState.cpp MenuState.cpp MushroomBig.cpp MushroomLife.cpp LoadMap.cpp MainGame.cpp Mario.cpp Mushroom.cpp Object.cpp ObjectStatic.cpp OptionState.cpp Pipe.cpp PlayingGameState.cpp QNode.cpp Question.cpp CWindown.cpp ResourceManage.cpp Score.cpp Sprite.cpp Star.cpp Text.cpp Texture.cpp Time.cpp TreeObject.cpp Turtle.cpp WinState.cpp
-         WinState.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\dxgraphic.h(8): warning C4005: 'SCREEN_HEIGHT' : macro redefinition
-                 d:\project\final\game\ngocduong-mario\gamemario\gamemario\cwindown.h(8) : see previous definition of 'SCREEN_HEIGHT'
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\winstate.cpp(54): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(909) : see declaration of 'itoa'
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\winstate.cpp(60): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(909) : see declaration of 'itoa'
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\winstate.cpp(66): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(909) : see declaration of 'itoa'
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\winstate.cpp(75): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(909) : see declaration of 'itoa'
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\winstate.cpp(81): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(909) : see declaration of 'itoa'
-         Turtle.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\turtle.cpp(140): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\turtle.cpp(195): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-         TreeObject.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\treeobject.cpp(48): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\treeobject.cpp(78): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\treeobject.cpp(80): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\treeobject.cpp(180): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\treeobject.cpp(183): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\treeobject.cpp(213): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\treeobject.cpp(221): warning C4018: '<' : signed/unsigned mismatch
-         Time.cpp
-         Texture.cpp
-         Text.cpp
-         Star.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\star.cpp(73): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-         Sprite.cpp
-         Score.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-         ResourceManage.cpp
-         CWindown.cpp
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\cwindown.cpp(51): warning C4800: 'BOOL' : forcing value to bool 'true' or 'false' (performance warning)
-         Question.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-         QNode.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-         PlayingGameState.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\dxgraphic.h(8): warning C4005: 'SCREEN_HEIGHT' : macro redefinition
-                 d:\project\final\game\ngocduong-mario\gamemario\gamemario\cwindown.h(8) : see previous definition of 'SCREEN_HEIGHT'
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\playinggamestate.cpp(271): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(909) : see declaration of 'itoa'
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\playinggamestate.cpp(274): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(909) : see declaration of 'itoa'
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\playinggamestate.cpp(282): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(909) : see declaration of 'itoa'
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\playinggamestate.cpp(288): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(909) : see declaration of 'itoa'
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\playinggamestate.cpp(294): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(909) : see declaration of 'itoa'
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\playinggamestate.cpp(306): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(909) : see declaration of 'itoa'
-         Pipe.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-         OptionState.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\dxgraphic.h(8): warning C4005: 'SCREEN_HEIGHT' : macro redefinition
-                 d:\project\final\game\ngocduong-mario\gamemario\gamemario\cwindown.h(8) : see previous definition of 'SCREEN_HEIGHT'
-         ObjectStatic.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-         Object.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\object.cpp(57): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\object.cpp(76): warning C4018: '<' : signed/unsigned mismatch
-         Mushroom.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mushroom.cpp(108): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mushroom.cpp(138): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Mario.cpp
          Mario.cpp
          c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(240): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(300): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(460): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(512): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(528): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(535): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(545): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(559): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(567): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(590): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(599): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(611): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(619): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(655): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(664): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(678): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(755): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(930): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(985): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(997): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-         Generating Code...
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\resourcemanage.cpp(493): warning C4715: 'CResourceManager::GetSound' : not all control paths return a value
-         Compiling...
-         MainGame.cpp
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\dxgraphic.h(8): warning C4005: 'SCREEN_HEIGHT' : macro redefinition
-                 d:\project\final\game\ngocduong-mario\gamemario\gamemario\cwindown.h(8) : see previous definition of 'SCREEN_HEIGHT'
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-         LoadMap.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\loadmap.cpp(43): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\loadmap.cpp(44): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\loadmap.cpp(153): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\loadmap.cpp(165): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\loadmap.cpp(169): warning C4018: '<' : signed/unsigned mismatch
-         MushroomLife.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mushroomlife.cpp(73): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-         MushroomBig.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mushroombig.cpp(77): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-         MenuState.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\dxgraphic.h(8): warning C4005: 'SCREEN_HEIGHT' : macro redefinition
-                 d:\project\final\game\ngocduong-mario\gamemario\gamemario\cwindown.h(8) : see previous definition of 'SCREEN_HEIGHT'
-         LoadingState.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\dxgraphic.h(8): warning C4005: 'SCREEN_HEIGHT' : macro redefinition
-                 d:\project\final\game\ngocduong-mario\gamemario\gamemario\cwindown.h(8) : see previous definition of 'SCREEN_HEIGHT'
-         Input.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\input.cpp(33): warning C4390: ';' : empty controlled statement found; is this the intent?
-         GameStateManager.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\cwindown.h(8): warning C4005: 'SCREEN_HEIGHT' : macro redefinition
-                 d:\project\final\game\ngocduong-mario\gamemario\gamemario\dxgraphic.h(8) : see previous definition of 'SCREEN_HEIGHT'
-         GameState.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\dxgraphic.h(8): warning C4005: 'SCREEN_HEIGHT' : macro redefinition
-                 d:\project\final\game\ngocduong-mario\gamemario\gamemario\cwindown.h(8) : see previous definition of 'SCREEN_HEIGHT'
-         GameOver.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\dxgraphic.h(8): warning C4005: 'SCREEN_HEIGHT' : macro redefinition
-                 d:\project\final\game\ngocduong-mario\gamemario\gamemario\cwindown.h(8) : see previous definition of 'SCREEN_HEIGHT'
-         GameApp.cpp
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\dxgraphic.h(8): warning C4005: 'SCREEN_HEIGHT' : macro redefinition
-                 d:\project\final\game\ngocduong-mario\gamemario\gamemario\cwindown.h(8) : see previous definition of 'SCREEN_HEIGHT'
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-         Flower.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\flower.cpp(70): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-         Flag.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-         FireBoss.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-         DxGraPhic.cpp
-         dsutil.cpp
-         ContinueState.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\dxgraphic.h(8): warning C4005: 'SCREEN_HEIGHT' : macro redefinition
-                 d:\project\final\game\ngocduong-mario\gamemario\gamemario\cwindown.h(8) : see previous definition of 'SCREEN_HEIGHT'
-         AABBCollisionDetected.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\aabbcollisiondetected.cpp(37): warning C4244: '=' : conversion from 'FLOAT' to 'LONG', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\aabbcollisiondetected.cpp(42): warning C4244: '=' : conversion from 'FLOAT' to 'LONG', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\aabbcollisiondetected.cpp(48): warning C4244: '=' : conversion from 'FLOAT' to 'LONG', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\aabbcollisiondetected.cpp(53): warning C4244: '=' : conversion from 'FLOAT' to 'LONG', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\aabbcollisiondetected.cpp(67): warning C4244: '=' : conversion from 'LONG' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\aabbcollisiondetected.cpp(68): warning C4244: '=' : conversion from 'LONG' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\aabbcollisiondetected.cpp(72): warning C4244: '=' : conversion from 'LONG' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\aabbcollisiondetected.cpp(73): warning C4244: '=' : conversion from 'LONG' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\aabbcollisiondetected.cpp(78): warning C4244: '=' : conversion from 'LONG' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\aabbcollisiondetected.cpp(79): warning C4244: '=' : conversion from 'LONG' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\aabbcollisiondetected.cpp(83): warning C4244: '=' : conversion from 'LONG' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\aabbcollisiondetected.cpp(84): warning C4244: '=' : conversion from 'LONG' to 'FLOAT', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\aabbcollisiondetected.cpp(157): warning C4244: 'return' : conversion from 'LONG' to 'float', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\aabbcollisiondetected.cpp(161): warning C4244: 'return' : conversion from 'LONG' to 'float', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\aabbcollisiondetected.cpp(165): warning C4244: 'return' : conversion from 'LONG' to 'float', possible loss of data
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\aabbcollisiondetected.cpp(169): warning C4244: 'return' : conversion from 'LONG' to 'float', possible loss of data
-         Coin.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-         CAudio.cpp
-         Generating Code...
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\aabbcollisiondetected.cpp(171): warning C4715: 'CAABBCollision::intersectX' : not all control paths return a value
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\gameapp.cpp(37): warning C4715: 'CGameApp::GameInit' : not all control paths return a value
-         Compiling...
-         Camera.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\camera.cpp(28): warning C4244: '=' : conversion from 'FLOAT' to 'LONG', possible loss of data
-         Bullet.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\bullet.cpp(92): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-         BrickExplosions.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\brickexplosions.cpp(38): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\brickexplosions.cpp(57): warning C4018: '<' : signed/unsigned mismatch
-         BrickBreak.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-         Brick.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-         Boss.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\boss.cpp(38): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\boss.cpp(95): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\boss.cpp(125): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
-         Aboutstatecpp.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\dxgraphic.h(8): warning C4005: 'SCREEN_HEIGHT' : macro redefinition
-                 d:\project\final\game\ngocduong-mario\gamemario\gamemario\cwindown.h(8) : see previous definition of 'SCREEN_HEIGHT'
-         Generating Code...
+     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(241): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(301): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(461): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(513): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
+     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(529): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
+     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(536): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
+     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(546): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
+     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(560): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
+     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(568): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
+     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(591): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
+     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(600): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
+     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(612): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
+     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(620): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
+     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(656): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
+     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(665): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
+     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(679): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
+     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(756): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
+     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(931): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
+     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(986): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
+     1>d:\project\final\game\ngocduong-mario\gamemario\gamemario\mario.cpp(998): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Project\final\game\ngocduong-mario\GameMario\Debug\GameMario.exe" /INCREMENTAL /NOLOGO d3d9.lib d3dx9.lib dxguid.lib dinput8.lib dxerr.lib winmm.lib dsound.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Project\final\game\ngocduong-mario\GameMario\Debug\GameMario.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Project\final\game\ngocduong-mario\GameMario\Debug\GameMario.lib" /MACHINE:X86 Debug\Aboutstatecpp.obj
          Debug\Boss.obj
@@ -257,8 +73,8 @@
          Debug\Turtle.obj
          Debug\WinState.obj
          GameMario.vcxproj -> D:\Project\final\game\ngocduong-mario\GameMario\Debug\GameMario.exe
-     1>Done Building Project "D:\Project\final\game\ngocduong-mario\GameMario\GameMario\GameMario.vcxproj" (Rebuild target(s)).
+     1>Done Building Project "D:\Project\final\game\ngocduong-mario\GameMario\GameMario\GameMario.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:02:37.89
+Time Elapsed 00:00:02.10

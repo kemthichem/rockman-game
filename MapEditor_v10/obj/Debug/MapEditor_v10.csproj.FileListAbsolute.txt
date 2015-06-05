@@ -60,3 +60,12 @@ D:\Map\MapEditor_v10\MapEditor_v10\MapEditor_v10\obj\Debug\MapEditor_v10.csprojR
 D:\Map\MapEditor_v10\MapEditor_v10\MapEditor_v10\obj\Debug\MapEditor_v10.MapEditor.resources
 D:\Map\MapEditor_v10\MapEditor_v10\MapEditor_v10\obj\Debug\MapEditor_v10.Properties.Resources.resources
 D:\Map\MapEditor_v10\MapEditor_v10\MapEditor_v10\obj\Debug\MapEditor_v10.csproj.GenerateResource.Cache
+D:\Project\final\game\MapEditor_v10\bin\Debug\MapEditor_v10.exe.config
+D:\Project\final\game\MapEditor_v10\obj\Debug\MapEditor_v10.exe
+D:\Project\final\game\MapEditor_v10\obj\Debug\MapEditor_v10.pdb
+D:\Project\final\game\MapEditor_v10\bin\Debug\MapEditor_v10.exe
+D:\Project\final\game\MapEditor_v10\bin\Debug\MapEditor_v10.pdb
+D:\Project\final\game\MapEditor_v10\obj\Debug\MapEditor_v10.csprojResolveAssemblyReference.cache
+D:\Project\final\game\MapEditor_v10\obj\Debug\MapEditor_v10.MapEditor.resources
+D:\Project\final\game\MapEditor_v10\obj\Debug\MapEditor_v10.Properties.Resources.resources
+D:\Project\final\game\MapEditor_v10\obj\Debug\MapEditor_v10.csproj.GenerateResource.Cache

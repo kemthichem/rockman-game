@@ -210,6 +210,7 @@ void CMario::Update(CInput *m_input,float _time,CCamera * _camera,vector<CGameOb
 
 		/**********************************KEY DOWN**************************************************/
 		keydown = m_input ->GetKeyDown();
+		int keyup = m_input ->GetKeyUp();
 		//mario ban
 		if(keydown == DIK_C && m_action!=down && m_status == mariogun){
 
