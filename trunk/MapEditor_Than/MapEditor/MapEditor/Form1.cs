@@ -15,7 +15,8 @@ namespace MapEditor
     {
         int numWidth;
         int numHeight;
-        static int HeightPictureBox;
+        public static int HeightOfMap;
+        public static int SizeWithMap;
         int size;
         int id, idTemp;
         ObjectType TypeCurrent;
@@ -86,61 +87,61 @@ namespace MapEditor
         }
         private void LoadResources()
         {
-            BgFilePath = "Resource/background1.png";
+            BgFilePath = "Resources/background1.png";
             background = Image.FromFile(BgFilePath);
-            ScrewImage = Image.FromFile("Resources/enemy/enemy_screwbomber.png");
-            Land1Image = Image.FromFile("Resources/ground/Land1.png");
-            MoveMapImage = Image.FromFile("Resources/item/movemap.png");
-            BigEyeImage = Image.FromFile("Resources/enemy/enemy_bigeye.png");
-            mush = Image.FromFile("Resources/mush.png");
-            mush1 = Image.FromFile("Resources/mush1.png");
-            mush2 = Image.FromFile("Resources/mush2.png");
-            mushlife = Image.FromFile("Resources/mushlife.png");
-            mushlife1 = Image.FromFile("Resources/mushlife1.png");
-            mushlife2 = Image.FromFile("Resources/mushlife2.png");
-            flag = Image.FromFile("Resources/flag.png");
-            house = Image.FromFile("Resources/house.png");
-            star = Image.FromFile("Resources/star.png");
-            turtle = Image.FromFile("Resources/turtle.png");
-            eato = Image.FromFile("Resources/eato.png");
-            enemy = Image.FromFile("Resources/enemy.png");
-            land1 = Image.FromFile("Resources/land1.png");
-            land2 = Image.FromFile("Resources/land2.png");
-            block1 = Image.FromFile("Resources/block1.png");
-            coin = Image.FromFile("Resources/coin.png");
-            coin1 = Image.FromFile("Resources/coin1.png");
-            coin1c = Image.FromFile("Resources/coin1c.png");
-            coin10c = Image.FromFile("Resources/coin10c.png");
-            bushbig = Image.FromFile("Resources/Scenery/bushbig.png");
-            pine = Image.FromFile("Resources/Scenery/pine.png");
-            cloud2 = Image.FromFile("Resources/Scenery/cloud2.png");
-            sign = Image.FromFile("Resources/Scenery/sign.png");
-            //  [10/1/2013 TheRise]
-            castus1 = Image.FromFile("Resources/Scenery/castus1.png");
-            tree = Image.FromFile("Resources/Scenery/tree.png");
-            bushsmall = Image.FromFile("Resources/Scenery/bushsmall.png");
-            crass = Image.FromFile("Resources/Scenery/crass.png");
-            bud = Image.FromFile("Resources/Scenery/bud.png");
-            cloud1 = Image.FromFile("Resources/Scenery/cloud1.png");
-            cloud3 = Image.FromFile("Resources/Scenery/cloud3.png");
-            castus2 = Image.FromFile("Resources/Scenery/castus2.png");
-            hill = Image.FromFile("Resources/Scenery/hill.png");
-            castus3 = Image.FromFile("Resources/Scenery/castus3.png");
-            block2 = Image.FromFile("Resources/block2.png");
-            block3 = Image.FromFile("Resources/block3.png");
-            block4 = Image.FromFile("Resources/block4.png");
-            block5 = Image.FromFile("Resources/block5.png");
-            mario = Image.FromFile("Resources/mario.png");
+            ScrewImage = Image.FromFile(Application.StartupPath + "\\Resources\\enemy\\enemy_screwbomber.png");
+            Land1Image = Image.FromFile(Application.StartupPath + "\\Resources\\ground\\Land1.png");
+            MoveMapImage = Image.FromFile(Application.StartupPath + "\\Resources\\item\\movemap.png");
+            BigEyeImage = Image.FromFile(Application.StartupPath + "\\Resources\\enemy\\enemy_bigeye.png");
+            mush = Image.FromFile(Application.StartupPath + "\\Resources\\mush.png");
+            mush1 = Image.FromFile(Application.StartupPath + "\\Resources\\mush1.png");
+            mush2 = Image.FromFile(Application.StartupPath + "\\Resources\\mush2.png");
+            mushlife = Image.FromFile(Application.StartupPath + "\\Resources\\mushlife.png");
+            mushlife1 = Image.FromFile(Application.StartupPath + "\\Resources\\mushlife1.png");
+            mushlife2 = Image.FromFile(Application.StartupPath + "\\Resources\\mushlife2.png");
+            flag = Image.FromFile(Application.StartupPath + "\\Resources\\flag.png");
+            house = Image.FromFile(Application.StartupPath + "\\Resources\\house.png");
+            star = Image.FromFile(Application.StartupPath + "\\Resources\\star.png");
+            turtle = Image.FromFile(Application.StartupPath + "\\Resources\\turtle.png");
+            eato = Image.FromFile(Application.StartupPath + "\\Resources\\eato.png");
+            enemy = Image.FromFile(Application.StartupPath + "\\Resources\\enemy.png");
+            land1 = Image.FromFile(Application.StartupPath + "\\Resources\\land1.png");
+            land2 = Image.FromFile(Application.StartupPath + "\\Resources\\land2.png");
+            block1 = Image.FromFile(Application.StartupPath + "\\Resources\\block1.png");
+            coin = Image.FromFile(Application.StartupPath + "\\Resources\\coin.png");
+            coin1 = Image.FromFile(Application.StartupPath + "\\Resources\\coin1.png");
+            coin1c = Image.FromFile(Application.StartupPath + "\\Resources\\coin1c.png");
+            coin10c = Image.FromFile(Application.StartupPath + "\\Resources\\coin10c.png");
+            bushbig = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\bushbig.png");
+            pine = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\pine.png");
+            cloud2 = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\cloud2.png");
+            sign = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\sign.png");
+            ///\\\\  [10\\1\\2013 TheRise]
+            castus1 = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\castus1.png");
+            tree = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\tree.png");
+            bushsmall = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\bushsmall.png");
+            crass = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\crass.png");
+            bud = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\bud.png");
+            cloud1 = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\cloud1.png");
+            cloud3 = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\cloud3.png");
+            castus2 = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\castus2.png");
+            hill = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\hill.png");
+            castus3 = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\castus3.png");
+            block2 = Image.FromFile(Application.StartupPath + "\\Resources\\block2.png");
+            block3 = Image.FromFile(Application.StartupPath + "\\Resources\\block3.png");
+            block4 = Image.FromFile(Application.StartupPath + "\\Resources\\block4.png");
+            block5 = Image.FromFile(Application.StartupPath + "\\Resources\\block5.png");
+            mario = Image.FromFile(Application.StartupPath + "\\Resources\\mario.png");
 
            
         }
 
         private void LoadTypeObject()
         {
-            rdBigEye.AccessibleName = ObjectType.BIGEYETYPE.ToString();
-            rdMoveMap.AccessibleName = ObjectType.MOVEMAPTYPE.ToString();
+            rdBigEye.AccessibleName = ObjectType.BIGEYE.ToString();
+            rdMoveMap.AccessibleName = ObjectType.MOVEMAP.ToString();
             rdScrewBomber.AccessibleName = ObjectType.SCREW_BOMBER.ToString();
-            rdLand1.AccessibleName = ObjectType.LAND1TYPE.ToString();
+            rdLand1.AccessibleName = ObjectType.LAND1.ToString();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -161,13 +162,16 @@ namespace MapEditor
             {
                 if (c is RadioButton)
                 {
-                    c.Click += pnObjects_Controls_Click;
-                    nameObjects.Add(c.Text.ToString());
+                    if (c.Enabled)
+                    {
+                        c.Click += pnObjects_Controls_Click;
+                        nameObjects.Add(c.AccessibleName);
+                    }
                 }
               
             }
 
-            pnGrid.VerticalScroll.Value = pnGrid.VerticalScroll.Maximum;
+            
         }
         private void pbGridMap_Paint(object sender, PaintEventArgs e)
         {
@@ -179,7 +183,7 @@ namespace MapEditor
             #region DrawGrid
             for (int i = 0; i < numWidth; i++)
             {
-                g.DrawString(i.ToString(), font, brush, new PointF(size + i * size + size / 2 - 5, (numHeight + 1) * size + size / 2));
+                g.DrawString((i*32).ToString(), font, brush, new PointF(size + i * size + size / 2 - 5, (numHeight + 1) * size + size / 2));
                 g.DrawLine(pen, new Point(size + i * size, size), new Point(size + i * size, (numHeight + 1) * size));
                 if (i == numWidth - 1)//draw final line
                 {
@@ -190,7 +194,7 @@ namespace MapEditor
             }
             for (int i = numHeight; i > 0; --i)
             {
-                g.DrawString(i.ToString(), font, brush, new PointF(size / 2, size + (numHeight - i) * size + size / 2));
+                g.DrawString((i*32).ToString(), font, brush, new PointF(size / 2, size + (numHeight - i) * size + size / 2));
                 g.DrawLine(pen, new Point(size, size + i * size), new Point((numWidth + 1) * size, size + i * size));
                 //if (i == numHeight - 1)//draw final line
                 //{
@@ -243,12 +247,14 @@ namespace MapEditor
             pbGridMap.Refresh();
             numWidth = Convert.ToInt32(tbWidth.Text.ToString());
             numHeight = Convert.ToInt32(tbHeight.Text.ToString());
-            HeightPictureBox = (numHeight + 2) *size;
             size = Convert.ToInt32(tbSize.Text.ToString());
+            HeightOfMap = (numHeight) * size;
+            SizeWithMap = numWidth;
             RectGrid = new Rectangle(size, size, numWidth * size, numHeight * size);
             Tree.SetSizeQuadTree(RectGrid);
             pbGridMap.SetBounds(0, 0, numWidth * size + 2 * size, numHeight * size + 2 * size);
             pbGridMap.Update();
+            pnGrid.VerticalScroll.Value = pnGrid.VerticalScroll.Maximum;
         }
         private void btCAll_Click(object sender, EventArgs e)
         {
@@ -271,10 +277,14 @@ namespace MapEditor
         {
             if (e.Button == MouseButtons.Right)
             {
-                //ObjectGame ob = new ObjectGame(e.Location, id);
-                //int index = IndexObject(ob.Pos);
-                //if (index != -1)
-                //    listContents.RemoveAt(index);
+
+                Point p = new Point(e.Location.X - 32, e.Location.Y - 32);
+                int index = IndexObject(p);
+                if (index != -1)
+                {
+                    ObjectGame.ListIdJustDeleted.Add(listContents[index].Id);
+                    listContents.RemoveAt(index);                    
+                }
             }
 
             else
@@ -284,7 +294,8 @@ namespace MapEditor
                     {
                         if (ObjectGame.ListIdJustDeleted.Count > 0)
                         {
-                            id = ObjectGame.ListIdJustDeleted.IndexOf(0);
+                            id = ObjectGame.ListIdJustDeleted[0];
+                            ObjectGame.ListIdJustDeleted.RemoveAt(0);
                         }
                         else
                             id = ++ObjectGame.CurrentId;
@@ -346,7 +357,7 @@ namespace MapEditor
         {
             int index = listContents.FindIndex(delegate(ObjectGame ob)
             {
-                return (ob.Pos.X == p.X && ob.Pos.Y == p.Y);
+                return ob.Bound.Contains(p);
               //  return true;
             });
             return index;
@@ -416,8 +427,8 @@ namespace MapEditor
             {
                 writer.Write(item.Id + " ");
                 writer.Write(item.TypeOb.ToString() + " ");
-                writer.Write(item.Pos.X + " ");
-                writer.Write(item.Pos.Y + " ");
+                writer.Write(item.PosToSave.X + " ");
+                writer.Write(item.PosToSave.Y + " ");
                 writer.Write("\n");
             }
             
@@ -428,10 +439,36 @@ namespace MapEditor
         }
         private void ReadFile(StreamReader reader)
         {
-           String strMap = reader.ReadToEnd();
+            string line;
+            String[] arrString;
+            line = reader.ReadLine();
+            arrString = line.Split(new char[] { ' ', '\t', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+
+            size = 32;
+            numWidth = Int32.Parse(arrString[0]) / size;
+            numHeight = Int32.Parse(arrString[1]) / size;
+            HeightOfMap = numHeight * size;
+
+            while ((line = reader.ReadLine()) != null && line != "<End>")
+            {
+                arrString = line.Split(new char[] { ' ', '\t', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                int mapId = Int32.Parse(arrString[0]);
+                string mapTypeStr = arrString[1];
+                ObjectType typeMap = (ObjectType)Enum.Parse(typeof(ObjectType), mapTypeStr);
+                int mapX = Int32.Parse(arrString[2]) + 32;
+                int mapY = HeightOfMap - Int32.Parse(arrString[3]) + size;
+
+                ObjectGame ob = new ObjectGame(new Point(mapX, mapY), mapId, typeMap);
+                listContents.Add(ob);
+            }
+
             reader.Dispose();
             reader.Close();
-            AddListFromArray(strMap);
+            
+            pbGridMap.Invalidate();
+            tbHeight.Text = numHeight.ToString();
+            tbWidth.Text = numWidth.ToString();
+            btCreate.PerformClick();
         }
         private int[,] CreateArrayFromList() {
 
@@ -449,28 +486,28 @@ namespace MapEditor
         }
         private void AddListFromArray(String strMap)
         {
-         
+
             //String[] arrString = strMap.Split(new char[] { ' ', '\t', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-            
+
             //int[] values = new int[arrString.Length];
             //for (int i = 0; i < arrString.Length; i++)
             //{
-            //    if (i == 7){continue;}
+            //    if (i == 7) { continue; }
             //    values[i] = int.Parse(arrString[i]);
             //}
             //width = values[1];
             //height = values[0];
             //time = values[2];
             //level = values[6];
-             
+
             //listContents.Clear();
             //for (int i = 0; i < height; i++)
             //{
             //    for (int j = 0; j < width; j++)
             //    {
             //        int id = values[i * width + j + 8];
-            //        if(id==0) continue;
-            //        ObjectGame ob = new ObjectGame(new Point(j*size+size, i*size+size),id);
+            //        if (id == 0) continue;
+            //        ObjectGame ob = new ObjectGame(new Point(j * size + size, i * size + size), id);
             //        listContents.Add(ob);
             //    }
             //}
@@ -481,7 +518,7 @@ namespace MapEditor
             //}
             //catch (System.Exception ex)
             //{
-            //    MessageBox.Show("Find not background: "+ex);
+            //    MessageBox.Show("Find not background: " + ex);
             //}
             //pbGridMap.Invalidate();
             //tbHeight.Text = height.ToString();
@@ -493,15 +530,25 @@ namespace MapEditor
         //---------add range
         public static void AddRange(int from, int to, string name)
         {
-            //int id = ObjectGame.GetIdFromText(name);
-            //for (int i = from; i < to; i++)
-            //{
-            //    for (int j = 0; j < _width; j++)
-            //    {
-            //        ObjectGame ob = new ObjectGame(new Point(j * 50+50, i * 50+50), id);
-            //       listContents.Add(ob);
-            //    }
-            //}
+            int id;    
+
+
+            ObjectType _type = (ObjectType)Enum.Parse(typeof(ObjectType), name);
+            for (int i = from; i < to; i++)
+            {
+                for (int j = 0; j < SizeWithMap; j++)
+                {
+                    if (ObjectGame.ListIdJustDeleted.Count > 0)
+                    {
+                        id = ObjectGame.ListIdJustDeleted[0];
+                        ObjectGame.ListIdJustDeleted.RemoveAt(0);
+                    }
+                    else
+                        id = ++ObjectGame.CurrentId;
+                    ObjectGame ob = new ObjectGame(new Point((j+1) * 32, (i + 1) * 32), id, _type);
+                    listContents.Add(ob);
+                }
+            }
         }
         private void button1_Click(object sender, EventArgs e)
         {

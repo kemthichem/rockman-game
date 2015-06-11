@@ -32,9 +32,9 @@ namespace MapEditor
 
         public void AddObjectToNode(ObjectGame ob)
         {
-            if(!Bound.Contains(ob.Bound))
+            if(!Bound.IntersectsWith(ob.BoundInQuadTree))
 		        return;
-            if (ListObject.Count == 0 && LeftTop == null && Width > 32)
+            if (LeftTop == null && Width > 512)
                 CreateSubNode();
             if (LeftTop != null)
             {
@@ -44,6 +44,17 @@ namespace MapEditor
                     CanAddToNode(LeftBottom, ob) ||
                     CanAddToNode(RightBottom, ob))
                     return;
+                //else
+                //{
+                //    if (LeftBottom.ListObject.Count == 0)
+                //        LeftBottom = null;
+                //    if (LeftTop.ListObject.Count == 0)
+                //        LeftTop = null;
+                //    if (RightTop.ListObject.Count == 0)
+                //        RightTop = null;
+                //    if (RightBottom.ListObject.Count == 0)
+                //        RightBottom = null;
+                //}
             }
 
 	        ListObject.Add(ob);
@@ -51,7 +62,7 @@ namespace MapEditor
 
         private bool CanAddToNode(Node _node, ObjectGame ob)
         {
-            if (_node.Bound.Contains(ob.Bound))
+            if (_node.Bound.IntersectsWith(ob.BoundInQuadTree))
             {
                 _node.AddObjectToNode(ob);
                 return true;
@@ -93,9 +104,9 @@ namespace MapEditor
         {
             writer.Write(Id + " ");
             writer.Write( Bound.Left + " ");
-            writer.Write(4096 -Bound.Top + " ");
+            writer.Write(QuadTree.HeightQuadTree - Bound.Top + " ");
             writer.Write(Bound.Right + " ");
-            writer.Write(4096 - Bound.Bottom + " ");
+            writer.Write(QuadTree.HeightQuadTree - Bound.Bottom + " ");
 
             foreach (ObjectGame item in ListObject)
             {
