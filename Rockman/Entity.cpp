@@ -31,7 +31,7 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 	vector<CEntity*> listObjectCollision;
 	for (int i = 0; i < _listObjectInViewPort.size(); i++)
 	{
-		if (_listObjectInViewPort[i]->GetType() == ROCKMANTYPE && this->GetType() == BULLET) {
+		if (_listObjectInViewPort[i]->GetType() == ROCKMAN && this->GetType() == BULLET) {
 			int k = 0;
 		}
 		if(_listObjectInViewPort[i]->GetId() != this->GetId())
@@ -49,7 +49,7 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 
 	UpdateRect();
 
-	if (m_Type==ROCKMANTYPE)
+	if (m_Type==ROCKMAN)
 	{
 		_camera->Update(D3DXVECTOR2(m_pos.x, m_pos.y));
 	}

@@ -19,6 +19,8 @@
 #define  IMAGE_ITEMS "Resource/items.png"
 #define  IMAGE_MASTER "Resource/master.png"
 
+//background
+#define  IMAGE_BG_MENU "Resource/bg_menu.jpg"
 
 using namespace std;
 class CResourceManager

@@ -41,7 +41,9 @@ void CResourceManager::LoadResource(LPDIRECT3DDEVICE9 _d3ddv)
 	mMapTexture[IMAGE_ITEMS] = CUtils::LoadTexture(mD3ddv,IMAGE_ITEMS);
 	mMapTexture[IMAGE_MASTER] = CUtils::LoadTexture(mD3ddv,IMAGE_MASTER);
 	mMapTexture[IMAGE_MENU] = CUtils::LoadTexture(mD3ddv,IMAGE_MENU);
-	mMapSurface["Resource/background1.png"] = CUtils::LoadSurface(mD3ddv,"Resource/background1.png");
+
+	//load background
+	mMapSurface[IMAGE_BG_MENU] = CUtils::LoadSurface(mD3ddv,IMAGE_BG_MENU);
 }
 
 LPDIRECT3DTEXTURE9 CResourceManager::GetSprite( string spriteName )

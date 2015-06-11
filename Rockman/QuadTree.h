@@ -14,7 +14,7 @@ private:
 	vector<CEntity*> m_listObjectViewportToRender;
 
 	vector<CQuadTreeNode*> GetListNodeIntersectRect(CQuadTreeNode*, RECT );
-	bool IsBound(RECT, RECT);
+	bool IsIntersect(RECT, RECT);
 
 public:
 	CQuadTree(void);
@@ -30,6 +30,7 @@ public:
 	void Update(CCamera* _camera, float _time);
 	void Render (LPD3DXSPRITE _spriteHandle, CCamera* _camera);
 	void CreateTree(CQuadTreeNode *_NodeParent,map<int,CQuadTreeNode*> _map);
+	vector<CEntity*>ClearDuplicate(vector<CEntity*> list);
 };
 
 #endif//_QUADTREE_H_

@@ -30,7 +30,7 @@ void CBlader::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntit
 
 void CBlader::UpdateCollison(CEntity* _other, float _time) {
 
-	if (_other->GetType() == LANDTYPE) {
+	if (_other->GetType() == LAND) {
 		m_pos.x = GetRect().left - 1;
 		m_velloc.x *= -1;
 	}

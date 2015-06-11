@@ -5,7 +5,7 @@
 CLadder::CLadder(int _id, D3DXVECTOR3 _pos)
 {
 	m_Id = _id;
-	m_Type = LADDERTYPE;	
+	m_Type = LADDER;	
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES), D3DXVECTOR2(618,410), 1, 1, D3DXVECTOR2(586,378), D3DXVECTOR2(0,0), D3DXVECTOR2(0,0));
 	m_pos = _pos;
 	m_pos.z = DEPTH_BLOCK;

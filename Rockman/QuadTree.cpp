@@ -61,6 +61,25 @@ void CQuadTree::LoadNodeInFile(char* _pathFileTree)
 	CreateTree(m_nodeRoot, m_mapNode);
 }
 
+vector<CEntity*>CQuadTree::ClearDuplicate(vector<CEntity*> list)
+{
+	vector<CEntity*> Listkq;
+	int size =  list.size();
+	for (int i=0;i<size - 1;i++) 
+		for (int j=i+1;j<size;j++) 
+		{ 
+			if (list[i]->GetId()==list[j]->GetId()) 
+				list[j--]=list[--size];   
+		}
+
+		for (int i = 0; i < size; i++)
+		{
+			Listkq.push_back(list[i]);
+		}
+		return Listkq;
+}
+
+
 vector<CEntity*> CQuadTree::GetListObjectInRect(RECT _rect)
 {
 	vector<CQuadTreeNode*> listnode;
@@ -71,7 +90,7 @@ vector<CEntity*> CQuadTree::GetListObjectInRect(RECT _rect)
 	listnode = GetListNodeIntersectRect(m_nodeRoot, _rect);
 	for (int i = 0; i < listnode.size(); i++)
 	{
-		vector<CEntity*> listObjectInNode = listnode[i]->GetListObjectInNode();
+		vector<CEntity*> listObjectInNode = listnode[i]->GetListObjectInNode(_rect);//ClearDuplicate(listnode[i]->GetListObjectInNode());
 		//m_listObjectViewportToUpdate.insert(m_listObjectViewportToUpdate.begin(), listObjectInNode.begin(), listObjectInNode.end());
 
 			for (int j = 0; j < listObjectInNode.size(); j++) {
@@ -91,7 +110,7 @@ void CQuadTree::Update(CCamera* _camera, float _time)
 {
 	for (int i = 0; i < m_listObjectViewportToUpdate.size(); i++)
 	{
-		if (m_listObjectViewportToUpdate[i]->GetType() != ROCKMANTYPE)
+		if (m_listObjectViewportToUpdate[i]->GetType() != ROCKMAN)
 			m_listObjectViewportToUpdate[i]->Update(_time, _camera, NULL, m_listObjectViewportToUpdate);
 	}
 }
@@ -164,12 +183,12 @@ void CQuadTree::CreateTree(CQuadTreeNode *_nodeParent,map<int,CQuadTreeNode*> _m
 
 vector<CQuadTreeNode*> CQuadTree::GetListNodeIntersectRect(CQuadTreeNode* _nodeParent, RECT _rect)
 {
-	if(IsBound(_rect, _nodeParent->m_Rect) && _nodeParent->m_ListIdObject.size()!=0)
+	if(IsIntersect(_rect, _nodeParent->m_Rect) && _nodeParent->m_ListIdObject.size()!=0)
 	{
 		m_listNodeInViewPort.push_back(_nodeParent);
 	}
 	
-	if(_nodeParent->m_ListIdObject.size()==0 && IsBound(_nodeParent->m_Rect, _rect))
+	if(_nodeParent->m_ListIdObject.size()==0 && IsIntersect(_nodeParent->m_Rect, _rect))
 	{
 		if(_nodeParent->ChildTopLeft != NULL)
 		{
@@ -192,7 +211,7 @@ vector<CQuadTreeNode*> CQuadTree::GetListNodeIntersectRect(CQuadTreeNode* _nodeP
 	return m_listNodeInViewPort;
 }
 
-bool CQuadTree::IsBound(RECT _rect1, RECT _rect2)
+bool CQuadTree::IsIntersect(RECT _rect1, RECT _rect2)
 {
 	if (_rect1.right <= _rect2.left)
 		return false;
