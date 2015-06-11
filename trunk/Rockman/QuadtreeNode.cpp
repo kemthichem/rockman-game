@@ -12,10 +12,19 @@ CQuadTreeNode::~CQuadTreeNode(void)
 	//Delete child node
 }
 
-vector<CEntity*> CQuadTreeNode::GetListObjectInNode()
+vector<CEntity*> CQuadTreeNode::GetListObjectInNode(RECT _rect)
 {
-	vector<CEntity*> listObjects = m_ListObject;
+	vector<CEntity*> listObjects;
 
+	int size = m_ListObject.size();
+	for (int i = 0; i < size; i++)
+	{
+		if (Intersect(m_ListObject[i]->GetRect(), _rect))
+			listObjects.push_back(m_ListObject[i]);
+	}
+
+	return listObjects;
+/*
 	if(this->ChildTopLeft != NULL)
 	{
 		vector<CEntity*> listObjectsOfChild = ChildTopLeft->GetListObjectInNode();
@@ -37,5 +46,21 @@ vector<CEntity*> CQuadTreeNode::GetListObjectInNode()
 		listObjects.insert( listObjects.end(), listObjectsOfChild.begin(), listObjectsOfChild.end());
 	}
 
-	return listObjects;
+	return listObjects;*/
 }
+
+bool CQuadTreeNode::Intersect(RECT _rect1, RECT _rect2)
+{
+	if (_rect1.right <= _rect2.left)
+		return false;
+	else if (_rect1.left >= _rect2.right)
+		return false;
+	else if (_rect1.top <= _rect2.bottom)
+		return false;
+	else if (_rect1.bottom >= _rect2.top)
+		return false;
+	return true;
+}
+
+
+

@@ -12,8 +12,6 @@ class CPLayingGameState : public CGameState
 {
 private:
 	CQuadTree *quadTree;
-
-
 protected:
 	//virtual void CleanUp();
 	virtual void Render(LPD3DXSPRITE _spriteHandle,CCamera* _camera);

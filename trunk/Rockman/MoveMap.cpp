@@ -9,7 +9,7 @@ bool CMoveMap::g_IsMovingMap = false;
 CMoveMap::CMoveMap(int _id, D3DXVECTOR3 _pos)
 {
 	m_Id = _id;
-	m_Type = MOVEMAPTYPE;
+	m_Type = MOVEMAP;
 	m_pos = _pos;
 	m_Sprite = NULL;
 	m_Rect.top = m_pos.y;

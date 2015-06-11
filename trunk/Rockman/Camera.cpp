@@ -22,7 +22,6 @@ D3DXMATRIX CCamera::GetMatrixCamera()
 	return m_matrixCamera;
 }
 
-
 CCamera::~CCamera(void)
 {
 }

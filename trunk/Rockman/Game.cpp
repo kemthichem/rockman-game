@@ -138,10 +138,9 @@ bool CGame::_InitInput()
 void CGame::Render()
 {
 	HRESULT re = _d3ddv->BeginScene();
-	_d3ddv->StretchRect(CResourceManager::GetInstance()->GetSurface(CResourceManager::mPathFileBg),NULL,_backbuffer, NULL,D3DTEXF_NONE);
 	//if (re) 
 	//{
-		//_d3ddv->StretchRect(CResourceManager::GetInstance()->GetSurface(IMAGE_BG1), NULL,_backbuffer, NULL,D3DTEXF_NONE);
+		_d3ddv->StretchRect(CResourceManager::GetInstance()->GetSurface(IMAGE_BG_MENU), NULL,_backbuffer, NULL,D3DTEXF_NONE);
 		m_SpriteHandler->Begin(D3DXSPRITE_ALPHABLEND|D3DXSPRITE_SORT_DEPTH_FRONTTOBACK);	
 		RenderWorld();		
 		m_SpriteHandler->End();
@@ -150,7 +149,6 @@ void CGame::Render()
 	//}
 	_d3ddv->Present(NULL,NULL,NULL,NULL);
 }
-
 void CGame::Release() {
 	if (_d3d != NULL)
 	{
@@ -176,6 +174,11 @@ void CGame::Release() {
 
 	if (m_StateManager) {
 		delete m_StateManager;
+	}
+
+	if (m_camera) {
+		delete m_camera;
+		m_camera = NULL;
 	}
 }
 int CGame::RunGame()
@@ -215,7 +218,6 @@ void CGame::UpdateWorld()
 {
 }
 
-
 void CGame::RenderWorld()
 {
 
@@ -240,5 +242,5 @@ bool CGame::_InitFont()
 
 void CGame::RenderTextAndSurface()
 {
-
+	//_d3ddv->StretchRect(CResourceManager::GetInstance()->GetSurface(IMAGE_BG_MENU), NULL,_backbuffer, NULL,D3DTEXF_NONE);
 }

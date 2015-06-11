@@ -11,7 +11,7 @@ CRockman::CRockman(void)
 CRockman::CRockman(D3DXVECTOR3 _pos)
 {
 	m_Id = -1;
-	m_Type = ROCKMANTYPE;
+	m_Type = ROCKMAN;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(960,320), 12, 4, 
 		D3DXVECTOR2(0,0), D3DXVECTOR2(11,8), D3DXVECTOR2(28,14));
 	m_pos = _pos;
@@ -220,13 +220,13 @@ void CRockman::CollisionBottom()
 void CRockman::UpdateCollison(CEntity* _other, float _time) {
 	switch (_other->GetType())
 	{
-	case LADDERTYPE:
+	case LADDER:
 		if (m_velloc.y == 0)
 			m_action = Action_Climb_Stand;
 		m_PosXClimb = _other->GetRect().left + 16;
 		m_isCollisionBottom = true;
 		break;
-	case BIGEYETYPE:
+	case BIGEYE:
 	case BLADER:
 		m_Injuring = _other->GetVelocity().x > 0 ? 1 : -1;
 		
@@ -235,7 +235,7 @@ void CRockman::UpdateCollison(CEntity* _other, float _time) {
 		break;
 	}
 
-	if (_other->GetType()!= ROCKMANTYPE)
+	if (_other->GetType()!= ROCKMAN)
 	{
 		float timeEntry = m_collision->SweptAABB(this,_other,_time);
 		m_directCollision = m_collision->GetDirectCollision();
@@ -251,8 +251,8 @@ void CRockman::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,
 		//ListObjectColision
 		switch (_other->GetType())
 		{
-		case LANDTYPE:
-		case LAND1TYPE:
+		case LAND:
+		case LAND1:
 		case LANDWHITE:
 		case LANDICEBERG:
 			{
@@ -283,7 +283,7 @@ void CRockman::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,
 				}
 			}
 			break;
-		case MOVEMAPTYPE:
+		case MOVEMAP:
 			CMoveMap *moveMap = dynamic_cast<CMoveMap*> (_other);
 			if (m_directCollion == TOP)
 			{

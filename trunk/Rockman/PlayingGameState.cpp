@@ -8,6 +8,9 @@
 CPLayingGameState::CPLayingGameState(CGameStateManager *_gameState)
 {
 	m_StateManager = _gameState;
+
+	rockman = NULL;
+	quadTree = NULL;
 }
 
 CPLayingGameState::CPLayingGameState(void)
@@ -22,8 +25,15 @@ CPLayingGameState::~CPLayingGameState(void)
 		delete m_listObject[i];
 	m_listObject.clear();
 
-	delete rockman;
-	delete quadTree;
+	if (rockman) {
+		delete rockman;
+		rockman = NULL;
+	}
+
+	if (quadTree) {
+		delete quadTree;
+		quadTree = NULL;
+	}
 }
 
 void CPLayingGameState::Render(LPD3DXSPRITE _spriteHandle,CCamera* _camera)

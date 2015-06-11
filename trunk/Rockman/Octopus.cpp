@@ -96,8 +96,8 @@ void COctopus::ExecuteCollision(CEntity* _other, DirectCollision m_directCollisi
 	//ListObjectColision
 	switch (_other->GetType())
 	{
-	case LANDTYPE:
-	case LAND1TYPE:
+	case LAND:
+	case LAND1:
 	case LANDWHITE:
 	case LANDICEBERG:
 		{

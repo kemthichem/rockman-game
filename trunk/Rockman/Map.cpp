@@ -1,3 +1,5 @@
+#include <ctime>
+
 #include"Map.h"
 #include "Land1.h"
 #include "LandWhite.h"
@@ -103,6 +105,8 @@ vector<CEntity*> CMap::ObjectFromFile(char* _pathFileMap)
 		}
 	}
 
+	
+	OutputDebugString("End ReadMap");
 	return object;
 }
 vector<CEntity*> CMap::GetObjectFromFile(char* filePath)
@@ -135,5 +139,3 @@ vector<CEntity*> CMap::GetObjectFromFile(char* filePath)
 	return object;
 }
 CMap::~CMap(){}
-
-
