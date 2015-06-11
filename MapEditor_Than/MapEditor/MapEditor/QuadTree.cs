@@ -13,6 +13,7 @@ namespace MapEditor
         public QuadTree()
         {
         }
+        public static int HeightQuadTree;
         public int Width, Height;
         public Node NodeRoot;
         public void AddObject(ObjectGame ob)
@@ -32,7 +33,7 @@ namespace MapEditor
             {
                 n++;
             }
-            Width = Height = (int)Math.Pow(2, n);
+            Width = Height = HeightQuadTree = (int)Math.Pow(2, n);
             CreateNodeRoot();
         }
         private void CreateNodeRoot()

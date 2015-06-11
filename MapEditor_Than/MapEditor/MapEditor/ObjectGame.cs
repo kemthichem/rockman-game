@@ -10,13 +10,13 @@ namespace MapEditor
     enum ObjectType
     {
         SCENERY = -10,
-        LANDTYPE,
-        LAND1TYPE,
+        LAND,
+        LAND1,
         LANDWHITE,
         LANDICEBERG,
-        ROCKMANTYPE = 0,
-        LADDERTYPE,
-        BIGEYETYPE,
+        ROCKMAN = 0,
+        LADDER,
+        BIGEYE,
         BLADER,
         CUTMAN,
         ICEMAN,
@@ -24,7 +24,7 @@ namespace MapEditor
         OCTOPUS,
         BEAK,
         FLEA,
-        MOVEMAPTYPE,
+        MOVEMAP,
         BULLET,
         ITEM
     };
@@ -41,6 +41,16 @@ namespace MapEditor
         public Point Pos
         {
             get { return pos; }
+        }
+
+        public Point PosInQuadTree
+        {
+            get { return new Point(pos.X, pos.Y + (QuadTree.HeightQuadTree - Form1.HeightOfMap)); }
+        }
+
+        public Point PosToSave
+        {
+            get { return new Point(pos.X, Form1.HeightOfMap - pos.Y);}
         }
 
         private int width, height;
@@ -76,9 +86,9 @@ namespace MapEditor
             {
                 case ObjectType.SCENERY:
                     break;
-                case ObjectType.LANDTYPE:
+                case ObjectType.LAND:
                     break;
-                case ObjectType.LAND1TYPE:
+                case ObjectType.LAND1:
                     width = 64;
                     height = 32;
                     image = Form1.Land1Image;
@@ -87,11 +97,11 @@ namespace MapEditor
                     break;
                 case ObjectType.LANDICEBERG:
                     break;
-                case ObjectType.ROCKMANTYPE:
+                case ObjectType.ROCKMAN:
                     break;
-                case ObjectType.LADDERTYPE:
+                case ObjectType.LADDER:
                     break;
-                case ObjectType.BIGEYETYPE:
+                case ObjectType.BIGEYE:
                     width = 65;
                     height = 97;
                     image = Form1.BigEyeImage;
@@ -113,7 +123,7 @@ namespace MapEditor
                     break;
                 case ObjectType.FLEA:
                     break;
-                case ObjectType.MOVEMAPTYPE:
+                case ObjectType.MOVEMAP:
                      width = 32;
                     height = 1;
                     image = Form1.MoveMapImage;
@@ -126,6 +136,9 @@ namespace MapEditor
                     break;
             }
             Bound = new Rectangle(pos, new Size(width, height));
+            BoundInQuadTree = new Rectangle(PosInQuadTree, new Size(width, height));
         }
+    
+    public  Rectangle BoundInQuadTree;
     }
 }
