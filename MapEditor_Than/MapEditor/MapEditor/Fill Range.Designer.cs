@@ -28,48 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dmFrom = new System.Windows.Forms.DomainUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dmTo = new System.Windows.Forms.DomainUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.cbbNameOb = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbRowFrom = new System.Windows.Forms.ComboBox();
+            this.cbRowTo = new System.Windows.Forms.ComboBox();
+            this.cbColumnFrom = new System.Windows.Forms.ComboBox();
+            this.cbColumnTo = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
-            // 
-            // dmFrom
-            // 
-            this.dmFrom.Location = new System.Drawing.Point(111, 22);
-            this.dmFrom.Name = "dmFrom";
-            this.dmFrom.Size = new System.Drawing.Size(46, 20);
-            this.dmFrom.TabIndex = 0;
-            this.dmFrom.Text = "0";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 24);
+            this.label1.Location = new System.Drawing.Point(23, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "From Row";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 67);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "To Row";
-            // 
-            // dmTo
-            // 
-            this.dmTo.Location = new System.Drawing.Point(111, 65);
-            this.dmTo.Name = "dmTo";
-            this.dmTo.Size = new System.Drawing.Size(46, 20);
-            this.dmTo.TabIndex = 2;
-            this.dmTo.Text = "0";
+            this.label1.Text = "Row";
             // 
             // label3
             // 
@@ -98,20 +75,62 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(23, 73);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Column";
+            // 
+            // cbRowFrom
+            // 
+            this.cbRowFrom.FormattingEnabled = true;
+            this.cbRowFrom.Location = new System.Drawing.Point(80, 25);
+            this.cbRowFrom.Name = "cbRowFrom";
+            this.cbRowFrom.Size = new System.Drawing.Size(64, 21);
+            this.cbRowFrom.TabIndex = 9;
+            // 
+            // cbRowTo
+            // 
+            this.cbRowTo.FormattingEnabled = true;
+            this.cbRowTo.Location = new System.Drawing.Point(172, 25);
+            this.cbRowTo.Name = "cbRowTo";
+            this.cbRowTo.Size = new System.Drawing.Size(64, 21);
+            this.cbRowTo.TabIndex = 10;
+            // 
+            // cbColumnFrom
+            // 
+            this.cbColumnFrom.FormattingEnabled = true;
+            this.cbColumnFrom.Location = new System.Drawing.Point(80, 69);
+            this.cbColumnFrom.Name = "cbColumnFrom";
+            this.cbColumnFrom.Size = new System.Drawing.Size(64, 21);
+            this.cbColumnFrom.TabIndex = 11;
+            // 
+            // cbColumnTo
+            // 
+            this.cbColumnTo.FormattingEnabled = true;
+            this.cbColumnTo.Location = new System.Drawing.Point(172, 69);
+            this.cbColumnTo.Name = "cbColumnTo";
+            this.cbColumnTo.Size = new System.Drawing.Size(64, 21);
+            this.cbColumnTo.TabIndex = 12;
+            // 
             // Fill_Range
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(234, 197);
+            this.ClientSize = new System.Drawing.Size(277, 231);
+            this.Controls.Add(this.cbColumnTo);
+            this.Controls.Add(this.cbColumnFrom);
+            this.Controls.Add(this.cbRowTo);
+            this.Controls.Add(this.cbRowFrom);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cbbNameOb);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.dmTo);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dmFrom);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Name = "Fill_Range";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Fill_Range";
@@ -123,12 +142,14 @@
 
         #endregion
 
-        private System.Windows.Forms.DomainUpDown dmFrom;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DomainUpDown dmTo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbbNameOb;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbRowFrom;
+        private System.Windows.Forms.ComboBox cbRowTo;
+        private System.Windows.Forms.ComboBox cbColumnFrom;
+        private System.Windows.Forms.ComboBox cbColumnTo;
     }
 }

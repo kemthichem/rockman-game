@@ -61,9 +61,9 @@ namespace MapEditor
             pos.X = p.X - 32;
             pos.Y = p.Y - 32;
             TypeOb = type;
-            //pos.X = 50 * (p.X / 50);
-            //pos.Y = 50 * (p.Y / 50);
-            SetKind(type);
+            SetKind(type, true, ref width, ref height, ref image);
+            Bound = new Rectangle(pos, new Size(width, height));
+            BoundInQuadTree = new Rectangle(PosInQuadTree, new Size(width, height));
         }
         public void Draw(Graphics g)
         {
@@ -80,7 +80,7 @@ namespace MapEditor
             catch { }
             return re;
         }
-        private void SetKind(ObjectType kind)
+        public static void SetKind(ObjectType kind, bool isGetImage,  ref int width, ref int height, ref Image image)
         {
             switch (kind)
             {
@@ -91,7 +91,8 @@ namespace MapEditor
                 case ObjectType.LAND1:
                     width = 64;
                     height = 32;
-                    image = Form1.Land1Image;
+                    if (isGetImage)
+                        image = Form1.Land1Image;
                     break;
                 case ObjectType.LANDWHITE:
                     break;
@@ -104,7 +105,8 @@ namespace MapEditor
                 case ObjectType.BIGEYE:
                     width = 65;
                     height = 97;
-                    image = Form1.BigEyeImage;
+                    if (isGetImage)
+                        image = Form1.BigEyeImage;
                     break;
                 case ObjectType.BLADER:
                     break;
@@ -113,9 +115,10 @@ namespace MapEditor
                 case ObjectType.ICEMAN:
                     break;
                 case ObjectType.SCREW_BOMBER:
-                     width = 35;
+                    width = 35;
                     height = 35;
-                    image = Form1.ScrewImage;
+                    if (isGetImage)
+                        image = Form1.ScrewImage;
                     break;
                 case ObjectType.OCTOPUS:
                     break;
@@ -124,9 +127,10 @@ namespace MapEditor
                 case ObjectType.FLEA:
                     break;
                 case ObjectType.MOVEMAP:
-                     width = 32;
+                    width = 32;
                     height = 1;
-                    image = Form1.MoveMapImage;
+                    if (isGetImage)
+                        image = Form1.MoveMapImage;
                     break;
                 case ObjectType.BULLET:
                     break;
@@ -135,10 +139,8 @@ namespace MapEditor
                 default:
                     break;
             }
-            Bound = new Rectangle(pos, new Size(width, height));
-            BoundInQuadTree = new Rectangle(PosInQuadTree, new Size(width, height));
         }
-    
-    public  Rectangle BoundInQuadTree;
+
+        public Rectangle BoundInQuadTree;
     }
 }
