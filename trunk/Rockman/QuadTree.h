@@ -31,6 +31,7 @@ public:
 	void Render (LPD3DXSPRITE _spriteHandle, CCamera* _camera);
 	void CreateTree(CQuadTreeNode *_NodeParent,map<int,CQuadTreeNode*> _map);
 	vector<CEntity*>ClearDuplicate(vector<CEntity*> list);
+	bool IsContains(RECT _rectBig, RECT _rectSmall);
 };
 
 #endif//_QUADTREE_H_

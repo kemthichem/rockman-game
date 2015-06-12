@@ -223,3 +223,13 @@ bool CQuadTree::IsIntersect(RECT _rect1, RECT _rect2)
 		return false;
 	return true;
 }
+
+bool CQuadTree::IsContains(RECT _rectBig, RECT _rectSmall)
+{
+	if (_rectSmall.left < _rectBig.left || _rectSmall.right > _rectBig.right)
+		return false;
+	else if (_rectSmall.top < _rectBig.top || _rectSmall.bottom > _rectBig.bottom)
+		return false;
+	return true;
+}
+
