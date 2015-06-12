@@ -55,7 +55,7 @@ void CPLayingGameState::Update(CInput* _input,float _time,CCamera* _camera)
 
 	if (rockman->GetKeyDown()==DIK_ESCAPE)
 	{
-		m_StateManager->ChangeState( new CMenuState(m_StateManager));
+		m_StateManager->ChangeState(new CMenuState(m_StateManager));
 		return;
 	}
 }

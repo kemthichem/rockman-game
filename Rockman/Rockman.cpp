@@ -266,14 +266,14 @@ void CRockman::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,
 				{
 					m_velloc.x = 0;
 					m_accel.x = 0;
-					m_pos.x = _other->GetRect().right ;
+					m_pos.x = _other->GetRect().right + 1 ;
 				}
 
 				if( m_directCollion == RIGHT)
 				{
 					m_velloc.x = 0;
 					m_accel.x = 0;
-					m_pos.x = _other->GetRect().left - m_Size.x;
+					m_pos.x = _other->GetRect().left - m_Size.x -1;
 				}
 
 				if (m_directCollion == TOP)
