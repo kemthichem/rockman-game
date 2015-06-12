@@ -133,14 +133,14 @@
   <data name="mushlife1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\mushlife1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="castus3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Resources\Scenery\castus3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="house" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\house.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="brick" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\brick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="enemy_screwbomber" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Resources\enemy\enemy_screwbomber.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="star1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\star.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,26 +148,23 @@
   <data name="pipe11" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\pipe1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="coin3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Resources\coin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="mushlife21" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\mushlife2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="coin10c" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\coin10c.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="mushlife11" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Resources\mushlife1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="brick1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\brick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cloud1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Resources\Scenery\cloud1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="coin1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\coin1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cloud21" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Resources\Scenery\cloud2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="bushsmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Resources\Scenery\bushsmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="turtle1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\turtle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -187,11 +184,17 @@
   <data name="coin10c1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\coin10c.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="mush1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Resources\mush1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="block1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\block1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bushbig1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\Scenery\bushbig.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cloud2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Resources\Scenery\cloud2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="block2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\block2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,9 +229,6 @@
   <data name="bushbig" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\Scenery\bushbig.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="star" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Resources\star.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="enemy1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\enemy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -253,6 +253,9 @@
   <data name="block3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\block3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="mush11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Resources\mush1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="sign" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\Scenery\sign.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -274,17 +277,14 @@
   <data name="land11" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\land1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="block4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Resources\block4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="land21" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\land2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pipeHor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\pipeHor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="coin1c" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Resources\coin1c.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="block4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Resources\block4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tree" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\Scenery\tree.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -292,8 +292,8 @@
   <data name="Eato" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\Eato.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cloud2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Resources\Scenery\cloud2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="mushlife11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Resources\mushlife1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pipeVer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\pipeVer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -301,8 +301,11 @@
   <data name="mushlife" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\mushlife.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="mush2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Resources\mush2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="coin1c" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Resources\coin1c.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cloud21" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Resources\Scenery\cloud2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="turtle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\turtle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -319,8 +322,8 @@
   <data name="enemy_bigeye" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\enemy\enemy_bigeye.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="coin3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Resources\coin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="mush2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Resources\mush2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pipeHor1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\pipeHor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -328,11 +331,11 @@
   <data name="enemy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\enemy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cloud1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Resources\Scenery\cloud1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="castus3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Resources\Scenery\castus3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="mush11" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Resources\mush1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bushsmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Resources\Scenery\bushsmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="movemap" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\item\movemap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -340,13 +343,22 @@
   <data name="block5" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\block5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="mush1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Resources\mush1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="star" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Resources\star.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pipe1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Resources\pipe1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="enemy_screwbomber" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Resources\enemy\enemy_screwbomber.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="enemy_blader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemy\enemy_blader.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="enemy_break" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemy\enemy_break.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="enemy_peng" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemy\enemy_peng.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="enemy_octopusbattery" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemy\enemy_octopusbattery.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

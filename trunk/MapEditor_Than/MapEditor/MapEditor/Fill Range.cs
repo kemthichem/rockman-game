@@ -16,27 +16,42 @@ namespace MapEditor
         {
             InitializeComponent();
         }
-        public Fill_Range(int height, List<String> nameObject)
+        public Fill_Range(int width, int height, List<String> nameObject, string name)
             : this()
         {
-
             for (int i = 0; i < height; i++)
             {
-                dmFrom.Items.Add(i);
-                dmTo.Items.Add(i);
-           }
-            cbbNameOb.DataSource = nameObject;     
+                cbRowFrom.Items.Add(i);
+                cbRowTo.Items.Add(i);
+            }
+
+            cbRowFrom.SelectedIndex = 0;
+            cbRowTo.SelectedIndex = 1;
+
+            for (int i = 0; i < width; i++)
+            {
+                cbColumnFrom.Items.Add(i);
+                cbColumnTo.Items.Add(i);
+            }
+            cbColumnFrom.SelectedIndex = 0;
+            cbColumnTo.SelectedIndex = width - 1;
+
+            cbbNameOb.DataSource = nameObject;
+            cbbNameOb.SelectedItem = name;
         }
         private void Fill_Range_Load(object sender, EventArgs e)
         {
-           
+
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            int from = int.Parse(dmFrom.Text.ToString());
-            int to = int.Parse(dmTo.Text.ToString());
+            int fromR = int.Parse(cbRowFrom.Text.ToString());
+            int toR = int.Parse(cbRowTo.Text.ToString());
+            int fromC = int.Parse(cbColumnFrom.Text.ToString());
+            int toC = int.Parse(cbColumnTo.Text.ToString());
             string text = cbbNameOb.Text.ToString();
-            Form1.AddRange(from, to, text);
+            Form1.AddRange(
+                fromR, toR, fromC, toC, text);
             this.Close();
         }
 

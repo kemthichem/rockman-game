@@ -16,9 +16,10 @@ namespace MapEditor
         int numWidth;
         int numHeight;
         public static int HeightOfMap;
-        public static int SizeWithMap;
+        public static int SizeHeightMap;
         int size;
-        int id, idTemp;
+        int id;
+        string textTypeTemp;
         ObjectType TypeCurrent;
         string BgFilePath;
         Rectangle RectGrid;
@@ -183,7 +184,7 @@ namespace MapEditor
             #region DrawGrid
             for (int i = 0; i < numWidth; i++)
             {
-                g.DrawString((i*32).ToString(), font, brush, new PointF(size + i * size + size / 2 - 5, (numHeight + 1) * size + size / 2));
+                g.DrawString((i).ToString(), font, brush, new PointF(size + i * size + size / 2 - 5, (numHeight + 1) * size + size / 2));
                 g.DrawLine(pen, new Point(size + i * size, size), new Point(size + i * size, (numHeight + 1) * size));
                 if (i == numWidth - 1)//draw final line
                 {
@@ -192,9 +193,9 @@ namespace MapEditor
                     break;
                 }
             }
-            for (int i = numHeight; i > 0; --i)
+            for (int i = numHeight-1; i >= 0; --i)
             {
-                g.DrawString((i*32).ToString(), font, brush, new PointF(size / 2, size + (numHeight - i) * size + size / 2));
+                g.DrawString((i).ToString(), font, brush, new PointF(size / 2, (numHeight - i) * size + size / 2));
                 g.DrawLine(pen, new Point(size, size + i * size), new Point((numWidth + 1) * size, size + i * size));
                 //if (i == numHeight - 1)//draw final line
                 //{
@@ -249,7 +250,7 @@ namespace MapEditor
             numHeight = Convert.ToInt32(tbHeight.Text.ToString());
             size = Convert.ToInt32(tbSize.Text.ToString());
             HeightOfMap = (numHeight) * size;
-            SizeWithMap = numWidth;
+            SizeHeightMap = numHeight;
             RectGrid = new Rectangle(size, size, numWidth * size, numHeight * size);
             Tree.SetSizeQuadTree(RectGrid);
             pbGridMap.SetBounds(0, 0, numWidth * size + 2 * size, numHeight * size + 2 * size);
@@ -258,18 +259,18 @@ namespace MapEditor
         }
         private void btCAll_Click(object sender, EventArgs e)
         {
+            Tree = null;
+            Tree = new QuadTree();
+            listContents.Clear();
+            pbGridMap.Invalidate();
+            btCreate.PerformClick();
 
-            if (listContents.Count == 0) return;
-            DialogResult re = MessageBox.Show("Are you sure?", "Wanning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            if (re == DialogResult.OK)
-            {
-                listContents.Clear();
-                pbGridMap.Invalidate();
-            }
+            ObjectGame.ListIdJustDeleted.Clear();
+            ObjectGame.CurrentId = 0;
         }
         private void btFRange_Click(object sender, EventArgs e)
         {
-            Form f = new Fill_Range(numHeight, nameObjects);
+            Form f = new Fill_Range(numWidth, numHeight, nameObjects, controlSelected.AccessibleName);
             f.ShowDialog();
         }
         //------event pbGridMap----------
@@ -319,40 +320,7 @@ namespace MapEditor
         {
             pnGrid.Focus();
         }
-        private void btERange_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void GetId(object sender, EventArgs e)
-        {
-            foreach (Control c in pnObjects.Controls)
-            {
-                if (c is RadioButton)
-                    if (ObjectGame.GetIdFromText(c.Text.ToString()) == idTemp)
-                    {
-                        c.Select();
-                        break;
-                    }
-            }
-        }
-        private void pbGridMap_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            ObjectGame ob;
-            ob = listContents.Find(delegate(ObjectGame _ob)
-            {
-                Rectangle r = new Rectangle(_ob.Pos, new Size(size, size));
-                return r.Contains(e.Location);
-            });
-            if (/*e.Button == MouseButtons.Middle &&*/ ob != null)
-            {
-                idTemp = ob.Id;
-                ContextMenu cm = new ContextMenu();
-                var item = new MenuItem("Get Id");
-                item.Click += GetId;
-                cm.MenuItems.Add(item);
-                cm.Show(pbGridMap, e.Location);
-            }
-        }       
+       
         private int IndexObject(Point p)
         {
             int index = listContents.FindIndex(delegate(ObjectGame ob)
@@ -528,15 +496,22 @@ namespace MapEditor
             //btCreate.PerformClick();
          }
         //---------add range
-        public static void AddRange(int from, int to, string name)
+        public static void AddRange(int fromR, int toR, int fromC, int toC, string name)
         {
-            int id;    
-
-
+            int id; 
             ObjectType _type = (ObjectType)Enum.Parse(typeof(ObjectType), name);
-            for (int i = from; i < to; i++)
+
+            int widthType = 0;
+            int heightType = 0;
+            Image image = null;
+            ObjectGame.SetKind(_type, false, ref widthType, ref heightType, ref image);
+            Point currentPosObject = new Point(0,0);
+
+            for (int i = fromR; i < toR ; i++)
             {
-                for (int j = 0; j < SizeWithMap; j++)
+                currentPosObject.X = 0;
+                currentPosObject.Y = 0;
+                for (int j = fromC; j < toC && currentPosObject.X < toC * 32; j++)
                 {
                     if (ObjectGame.ListIdJustDeleted.Count > 0)
                     {
@@ -545,12 +520,14 @@ namespace MapEditor
                     }
                     else
                         id = ++ObjectGame.CurrentId;
-                    ObjectGame ob = new ObjectGame(new Point((j+1) * 32, (i + 1) * 32), id, _type);
+
+                    ObjectGame ob = new ObjectGame(new Point(j * widthType + 32, (SizeHeightMap - i) * 32 ), id, _type);
+                    currentPosObject = ob.Pos;
                     listContents.Add(ob);
                 }
             }
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void btBackground_Click(object sender, EventArgs e)
         {
             string FullFilePath = "";
             OpenFileDialog bgOpenFile = new OpenFileDialog();
@@ -569,5 +546,35 @@ namespace MapEditor
             }
         }
 
+        private void pbGridMap_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            ObjectGame ob = listContents.Find(delegate(ObjectGame _ob)
+            {
+                Point p = new Point(e.Location.X - 32, e.Location.Y - 32);
+                return _ob.Bound.Contains(p);
+            });
+
+            if (/*e.Button == MouseButtons.Middle &&*/ ob != null)
+            {
+                textTypeTemp = ob.TypeOb.ToString();
+                ContextMenu cm = new ContextMenu();
+                var item = new MenuItem("Get Type");
+                item.Click += GetId;
+                cm.MenuItems.Add(item);
+                cm.Show(pbGridMap, e.Location);
+            }
+        }
+        private void GetId(object sender, EventArgs e)
+        {
+            foreach (Control c in pnObjects.Controls)
+            {
+                if (c is RadioButton)
+                    if (c.AccessibleName == textTypeTemp)
+                    {
+                        c.Select();
+                        break;
+                    }
+            }
+        }
      }
 }

@@ -413,6 +413,46 @@ namespace MapEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap enemy_blader {
+            get {
+                object obj = ResourceManager.GetObject("enemy_blader", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap enemy_break {
+            get {
+                object obj = ResourceManager.GetObject("enemy_break", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap enemy_octopusbattery {
+            get {
+                object obj = ResourceManager.GetObject("enemy_octopusbattery", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap enemy_peng {
+            get {
+                object obj = ResourceManager.GetObject("enemy_peng", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap enemy_screwbomber {
             get {
                 object obj = ResourceManager.GetObject("enemy_screwbomber", resourceCulture);
