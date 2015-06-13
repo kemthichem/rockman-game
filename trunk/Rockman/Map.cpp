@@ -1,5 +1,3 @@
-#include <ctime>
-
 #include"Map.h"
 #include "Land1.h"
 #include "LandWhite.h"
@@ -11,11 +9,24 @@
 #include "ScrewBomber.h"
 #include "Octopus.h"
 #include "IceMan.h"
+#include "GutsMan.h"
+#include "Flea.h"
+#include "Beak.h"
+#include "Met.h"
+#include "Spine.h"
 
 int CMap::g_widthMap = 0;
 int CMap::g_heightMap = 0;
 
 CMap::CMap(){}
+CMap::~CMap()
+{
+	//delete list object
+	for(int i = 0; i < m_ListObjects.size(); ++i)
+		delete m_ListObjects[i];
+	m_ListObjects.clear();
+}
+
 vector<string> CMap::SplitString(std::string str, char ch)
 {
 	vector<string> result;
@@ -32,10 +43,10 @@ vector<string> CMap::SplitString(std::string str, char ch)
 	}
 	return result;
 }
-vector<CEntity*> CMap::ObjectFromFile(char* _pathFileMap)
-{
-	vector<CEntity*> object;
-	ifstream f(_pathFileMap);
+
+void  CMap::LoadObjectFromFile(char* filePath)
+{	
+	ifstream f(filePath);
 	vector<string> itemsInfo;
 	if(f.is_open())
 	{
@@ -58,84 +69,74 @@ vector<CEntity*> CMap::ObjectFromFile(char* _pathFileMap)
 			_pos.x = atoi(itemsInfo.at(2).c_str());
 			_pos.y= atoi(itemsInfo.at(3).c_str());
 
+			//*************SCENERY****************//
+
+			//*************BLOCK****************//
 			if(_objecttype == "LAND"){
 				CLand *_brick = new CLand(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
-				object.push_back(_brick);
+				m_ListObjects.push_back(_brick);
 			}  else if(_objecttype == "LAND1"){
 				CLand1 *ob = new CLand1(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
-				object.push_back(ob);
+				m_ListObjects.push_back(ob);
+			}  else if(_objecttype == "_LAND1"){
+				CLand1 *ob = new CLand1(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0), false);
+				m_ListObjects.push_back(ob);
 			}  else if(_objecttype == "LANDWHITE"){
 				CLandWhite *ob = new CLandWhite(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
-				object.push_back(ob);
+				m_ListObjects.push_back(ob);
 			} else if(_objecttype == "LANDICEBERG"){
 				CLandIceberg *ob = new CLandIceberg(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
-				object.push_back(ob);
+				m_ListObjects.push_back(ob);
 			}  else if(_objecttype == "MOVEMAP"){
 				CMoveMap *moveMap = new CMoveMap(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
-				object.push_back(moveMap);
-			} else if(_objecttype == "BIGEYE"){
-				CBigEye *bigEye = new CBigEye(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
-				object.push_back(bigEye);
-			} else if(_objecttype == "CUTMAN"){
-				CCutMan *ob = new CCutMan(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
-				object.push_back(ob);
-			} else if(_objecttype == "BLADER"){
+				m_ListObjects.push_back(moveMap);
+			}else if(_objecttype == "BLADER"){
 				CBlader *ob = new CBlader(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
-				object.push_back(ob);
+				m_ListObjects.push_back(ob);
 			} else if(_objecttype == "LADDER"){
 				CLadder *ob = new CLadder(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
-				object.push_back(ob);
-			} else if(_objecttype == "SCREW_BOMBER"){
+				m_ListObjects.push_back(ob);
+			} 			
+			
+			//*************ENEMIES****************//
+			
+			else if(_objecttype == "SCREW_BOMBER"){
 				CScrewBomber *ob = new CScrewBomber(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
-				object.push_back(ob);
+				m_ListObjects.push_back(ob);
 			} else if(_objecttype == "OCTOPUS") {
 				COctopus *ob = new COctopus(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
-				object.push_back(ob);
+				m_ListObjects.push_back(ob);
 			}else if(_objecttype == "MET") {
-				COctopus *ob = new COctopus(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
-				object.push_back(ob);
-			}else if(_objecttype == "BEAK") {
-				COctopus *ob = new COctopus(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
-				object.push_back(ob);
-			}	else if(_objecttype == "ICEMAN"){				
+				CMet *ob = new CMet(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
+				m_ListObjects.push_back(ob);
+			} else if(_objecttype == "BEAK") {
+				CBeak *ob = new CBeak(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
+				m_ListObjects.push_back(ob);
+			}	else if(_objecttype == "FLEA") {
+				CFlea *ob = new CFlea(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
+				m_ListObjects.push_back(ob);
+			}	else if(_objecttype == "SPINE") {
+				CSpine *ob = new CSpine(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
+				m_ListObjects.push_back(ob);
+			}	else if(_objecttype == "BEAK") {
+				CBeak *ob = new CBeak(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
+				m_ListObjects.push_back(ob);
+			}	 else if(_objecttype == "BIGEYE"){
+				CBigEye *bigEye = new CBigEye(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
+				m_ListObjects.push_back(bigEye);
+			} 
+			//*************BOSS****************//
+			
+			else if(_objecttype == "ICEMAN"){				
 				CIceMan *ob = new CIceMan(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
-				object.push_back(ob);
-
-			}
+				m_ListObjects.push_back(ob);
+			} else if(_objecttype == "CUTMAN"){
+				CCutMan *ob = new CCutMan(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
+				m_ListObjects.push_back(ob);
+			} else if(_objecttype == "GUTSMAN"){
+				CGutsMan *ob = new CGutsMan(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
+				m_ListObjects.push_back(ob);
+			} 
 		}
 	}
-
-	
-	OutputDebugString("End ReadMap");
-	return object;
 }
-vector<CEntity*> CMap::GetObjectFromFile(char* filePath)
-{	
-	//doi background ve truoc cac doi tuong game
-	vector<CEntity*> object;
-	object = ObjectFromFile(filePath);
-	/*vector<CEntity*> listBackground;
-	vector<CEntity*> listObject;
-	for (int i = 0; i < object.size(); i++)
-	{
-		if (object[i]->GetType()==OBJECTTYPE)
-		{
-			listBackground.push_back(object[i]);
-		}
-		else
-		{		
-			listObject.push_back(object[i]);
-		}
-	}
-	object.clear();
-	for (int i = 0; i < listBackground.size(); i++)
-	{
-		object.push_back(listBackground[i]);
-	}
-	for (int i = 0; i < listObject.size(); i++)
-	{
-		object.push_back(listObject[i]);
-	}*/
-	return object;
-}
-CMap::~CMap(){}

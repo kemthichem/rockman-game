@@ -18,9 +18,12 @@ public:
 	static int g_widthMap, g_heightMap;
 	CMap();
 	~CMap();
+
+	vector<CEntity*> m_ListObjects;
+
 	vector<string> SplitString(string str, char ch);
-	vector<CEntity*> ObjectFromFile(char* filePath);
-	vector<CEntity*> GetObjectFromFile(char* filePath);
+	void LoadObjectFromFile(char* filePath);
+
 };
 
 
