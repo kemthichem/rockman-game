@@ -11,10 +11,13 @@ namespace MapEditor
     {
         SCENERY = -10,
         LAND,
+        _LAND,
         LAND1,
         _LAND1,
         LANDWHITE,
         LANDICEBERG,
+        _LANDWHITE,
+        _LANDICEBERG,
         ROCKMAN = 0,
         LADDER,
         BIGEYE,
@@ -93,13 +96,13 @@ namespace MapEditor
                 case ObjectType.SCENERY:
                     break;
                 case ObjectType.LAND:
-                    break;
-                case ObjectType.LAND1:
-                    width = 64;
+                case ObjectType._LAND:
+                     width = 128;
                     height = 32;
                     if (isGetImage)
-                        image = global::MapEditor.Properties.Resources.land13;
+                        image = global::MapEditor.Properties.Resources.land;
                     break;
+                case ObjectType.LAND1:
                 case ObjectType._LAND1:
                     width = 64;
                     height = 32;
@@ -107,8 +110,18 @@ namespace MapEditor
                         image = global::MapEditor.Properties.Resources.land13;
                     break;
                 case ObjectType.LANDWHITE:
+                case ObjectType._LANDWHITE:
+                    width = 96;
+                    height = 32;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.landwhite;
                     break;
                 case ObjectType.LANDICEBERG:
+                case ObjectType._LANDICEBERG:
+                    width = 64;
+                    height = 32;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.LandIceberg;
                     break;
                 case ObjectType.ROCKMAN:
                     break;
