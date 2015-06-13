@@ -128,6 +128,12 @@ namespace MapEditor
                     if (isGetImage)
                         image = global::MapEditor.Properties.Resources.enemy_met;
                     break;
+                case ObjectType.SCREW_BOMBER:
+                    width = 35;
+                    height = 35;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.enemy_screwbomber;
+                    break;
                 case ObjectType.FLEA:
                     width = 32;
                     height = 38;
