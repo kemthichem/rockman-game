@@ -2,10 +2,10 @@
 
 #define  NUMB_SPRITE 2
 
-CLandIceberg::CLandIceberg(int _id, D3DXVECTOR3 _pos)
+CLandIceberg::CLandIceberg(int _id, D3DXVECTOR3 _pos, bool _isCheckCollison)
 {
 	m_Id = _id;
-	m_Type = LANDICEBERG;
+	m_Type = _isCheckCollison ? LANDICEBERG : SCENERY;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES),
 		D3DXVECTOR2(277, 162), 2, 1, D3DXVECTOR2(209,128), 
 		D3DXVECTOR2(1,1),  D3DXVECTOR2(1,1));

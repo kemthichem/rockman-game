@@ -47,7 +47,7 @@ CChangeState::~CChangeState()
 
 void CChangeState::DrawTextChangeState()
 {
-	RECT r = {300, 250, 800, 600};
+	RECT r = {310, 250, 800, 600};
 
 	string textToDraw = "Stage ";
 	textToDraw.append(std::to_string(CPLayingGameState::g_Stage));

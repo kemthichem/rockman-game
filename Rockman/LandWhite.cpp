@@ -2,10 +2,10 @@
 
 #define  NUMB_SPRITE 3
 
-CLandWhite::CLandWhite(int _id, D3DXVECTOR3 _pos)
+CLandWhite::CLandWhite(int _id, D3DXVECTOR3 _pos, bool _isCheckCollison)
 {
 	m_Id = _id;
-	m_Type = LANDWHITE;
+	m_Type = _isCheckCollison ? LANDWHITE : SCENERY;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES),
 		D3DXVECTOR2(857, 35), 3, 1, D3DXVECTOR2(755, 1), 
 		D3DXVECTOR2(1,1),  D3DXVECTOR2(1,1));
