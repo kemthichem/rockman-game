@@ -1,10 +1,11 @@
 #include"MenuState.h"
 #include"GamestateManager.h"
 #include"PLayingGameState.h"
+#include "About.h"
+#include "HelpState.h"
 
 CMenuState::CMenuState()
 {
-	Init();
 }
 CMenuState::CMenuState(CGameStateManager* _game):CGameState(_game)
 {
@@ -19,7 +20,7 @@ CMenuState::CMenuState(CGameStateManager* _game):CGameState(_game)
 void CMenuState::Init()
 {
 	CGameState::Init();
-	m_background = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MENU), D3DXVECTOR2(380,0), 2, 1);
+	m_background = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_BG_MENU), D3DXVECTOR2(800,600), 1, 1);
 	
 	m_menuoption = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MENU), D3DXVECTOR2(380,40), 2, 1, D3DXVECTOR2(0,0));
 	m_menuexit = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MENU), D3DXVECTOR2(200,90), 2, 1, D3DXVECTOR2(0,50));
@@ -92,27 +93,25 @@ void CMenuState::Update(CInput* _input,float _time,CCamera* _camera)
 		{
 		case 1:
 			{
-				m_StateManager->ChangeState( new CPLayingGameState(this->m_StateManager));
+				m_StateManager->ChangeState(new CPLayingGameState(this->m_StateManager));
 				break;
-			}/*
-		case 2:
+			}
+	/*	case 2:
 			{
 				m_game->ChangeState( new CContinueState(this->m_game));
 				m_sound->StopSound(CResourceManager::GetInstance()->GetSound(SOUND_MENU_ID));
 				break;
-			}
+			}*/
 		case 3:
 			{
-				m_game->ChangeState( new COptionState(this->m_game));
-				m_sound->StopSound(CResourceManager::GetInstance()->GetSound(SOUND_MENU_ID));
+				m_StateManager->ChangeState(new CHelpState(this->m_StateManager));
 				break;
 			}
 		case 4:
 			{
-				m_game->ChangeState( new CAboutState(this->m_game));
-				m_sound->StopSound(CResourceManager::GetInstance()->GetSound(SOUND_MENU_ID));
+				m_StateManager->ChangeState(new CAboutState(this->m_StateManager));
 				break;
-			}*/
+			}
 		case 5:
 			{
 				PostQuitMessage(0);
@@ -125,7 +124,7 @@ void CMenuState::Update(CInput* _input,float _time,CCamera* _camera)
 }
 void CMenuState::Render(LPD3DXSPRITE _spriteHandle,CCamera* _camera)
 {
-	m_background->Render(_spriteHandle,D3DXVECTOR3(400 - m_background->GetWidthRectSprite()/2,400,0));
+	m_background->Render(_spriteHandle,D3DXVECTOR3(0,0,0));
 	m_menunewgame->Render(_spriteHandle,D3DXVECTOR3(400 - m_menunewgame->GetWidthRectSprite()/2,100,0));
 	m_menucontinue->Render(_spriteHandle,D3DXVECTOR3(400 - m_menucontinue->GetWidthRectSprite()/2,180,0));
 	m_menuoption->Render(_spriteHandle,D3DXVECTOR3(400 - m_menuoption->GetWidthRectSprite()/2,260,0));

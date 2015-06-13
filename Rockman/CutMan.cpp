@@ -13,11 +13,16 @@ CCutMan::CCutMan(int _id, D3DXVECTOR3 _pos)
 
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 	UpdateRect();
+
+	//create blood
+	m_Blood = new CBlood(D3DXVECTOR2(740, 30), 100);
 }
 
 
 CCutMan::~CCutMan(void)
 {
+	if (m_Blood)
+		delete m_Blood;
 }
 
 void CCutMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntity* > _listObjectInViewPort)
@@ -63,19 +68,12 @@ void CCutMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntit
 		break;
 	default:
 		break;
-	}
-
-
-
-	
+	}	
 }
 
-void CCutMan::Draw()
+void CCutMan::Render(LPD3DXSPRITE _sp, CCamera* _cam)
 {
+	CEntity::RenderEachSprite(_sp, _cam, m_Sprite, m_pos);
 
-}
-
-void CCutMan::Collision()
-{
-
+	m_Blood->Render(_sp, _cam);
 }

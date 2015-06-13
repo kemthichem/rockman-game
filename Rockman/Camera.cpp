@@ -3,14 +3,17 @@
 #include "MoveMap.h"
 #include "Map.h"
 
+D3DXVECTOR2 CCamera::g_PosCamera = D3DXVECTOR2(0,0);
 CCamera::CCamera(void)
 {
 	m_pos = D3DXVECTOR2(0, HEIGHT_SCREEN*1);
+	g_PosCamera = m_pos;
 }
 
 CCamera::CCamera(D3DXVECTOR2 _pos)
 {
 	m_pos = _pos;
+	g_PosCamera = m_pos;
 }
 
 D3DXMATRIX CCamera::GetMatrixCamera()
@@ -44,6 +47,7 @@ void CCamera::Update(D3DXVECTOR2 _pos)
 	m_viewPort.bottom =m_viewPort.top - HEIGHT_SCREEN;
 
 	m_posInit = m_pos;
+	g_PosCamera = m_pos;
 }
 
 D3DXVECTOR2 CCamera::GetPosCamera()
@@ -60,15 +64,6 @@ void CCamera::SetPosCamera(D3DXVECTOR2 _posRockMan)
 void CCamera::Move(int _distanceY)
 { 
 	int desY =  m_posInit.y + _distanceY;
-
-	//int dir = _distanceY/(abs(_distanceY));
-	//if (1)
-	//	m_pos.y += 5*dir;
-	//else
-	//{
-	//	m_pos.y = desY;
-	//	CMoveMap::g_IsMovingMap = false;
-	//	}
 
 	if (_distanceY < 0)
 		if (m_pos.y > desY) {
@@ -92,4 +87,7 @@ void CCamera::Move(int _distanceY)
 	m_viewPort.right = m_viewPort.left + WIDTH_SCREEN;
 	m_viewPort.top = m_pos.y;
 	m_viewPort.bottom =m_viewPort.top - HEIGHT_SCREEN;
+
+	g_PosCamera = m_pos;
 }
+

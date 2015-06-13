@@ -10,10 +10,11 @@ void CGameStateManager::InitFirstState(CGameState* _state)
 	m_ListState.push_back(_state);
 	m_ListState.back()->Init();
 }
-void CGameStateManager::Init(HWND _wndHandle,LPD3DXSPRITE _spriteHandler)
+void CGameStateManager::Init(HWND _wndHandle,LPD3DXSPRITE _spriteHandler, LPD3DXFONT _font)
 {
 	this->m_wndHandle = _wndHandle;
 	m_spriteHandle = _spriteHandler;
+	m_GraphicText = _font;
 }
 void CGameStateManager::CleanUp()
 {

@@ -12,13 +12,14 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 {
 	m_Id = 0;
 	m_Type = ROCKMAN;
-	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(960,320), 12, 4, 
-		D3DXVECTOR2(0,0), D3DXVECTOR2(11,8), D3DXVECTOR2(28,14));
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), 
+	D3DXVECTOR2(960,320), 12, 4, 
+	D3DXVECTOR2(0,0), D3DXVECTOR2(11,8), D3DXVECTOR2(28,14));
 	m_pos = _pos;
 	m_pos.z = DEPTH_MOTION;
-	m_pos.y = 100;
+	m_pos.y = CCamera::g_PosCamera.y;
 	m_action = Action_Start;
-	m_velloc.y = -250.0f;
+	m_velloc.y = -50.0f;
 	m_accel = mAccelOfRockman;
 
 	m_collision = new CAABBCollision();
@@ -37,6 +38,8 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 		m_ListBullet[i] = bullet;
 	}
 
+	//create blood
+	m_Blood = new CBlood(D3DXVECTOR2(30, 30), 100);
 }
 CRockman::~CRockman()
 {
@@ -44,9 +47,13 @@ CRockman::~CRockman()
 	{
 		delete m_ListBullet[i];
 	}
+
+	if (m_Blood)
+		delete m_Blood;
 }
 
 void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewPort) {
+	UpdateState();
 	m_accel.y = mAccelOfRockman.y;
 
 	if (m_pos.y < 80) {
@@ -229,7 +236,7 @@ void CRockman::UpdateCollison(CEntity* _other, float _time) {
 		break;
 	case BIGEYE:
 	case BLADER:
-		m_Injuring = _other->GetVelocity().x > 0 ? 1 : -1;		
+		SetInjured(_other);
 		break;
 	default:
 		break;
@@ -311,6 +318,8 @@ void CRockman::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 	{
 		m_ListBullet[i]->Render(_spriteHandle, _camera);
 	}
+	//Render blood
+	m_Blood->Render(_spriteHandle, _camera);
 }
 
 void CRockman::Shot()
@@ -343,18 +352,30 @@ void CRockman::Injunred(bool _isImpactLeft, float _time)
 		m_Injuring = 0;
 		return;
 	}
-
 	m_TimeInjured += _time;
 	m_velloc.x = _isImpactLeft ? 10: -10;
+	
 	m_action = Action_Injured;
 }
 
 void CRockman::SetInjured(CEntity* _other)
 {
+	if (m_Injuring != 0) return;
 	m_Injuring = _other->GetVelocity().x > 0 ? 1 : -1;
+	m_Blood->ChangeBlood(-40);
 }
 
 int CRockman::GetKeyDown()
 {
 	return m_KeyDown;
+}
+
+void CRockman::UpdateState()
+{
+	
+}
+
+bool CRockman::IsDie()
+{
+	return m_Blood->IsOver();
 }

@@ -14,6 +14,7 @@ private:
 	D3DXVECTOR2 m_pos;
 	D3DXMATRIX m_matrixCamera;
 public:
+	static D3DXVECTOR2 g_PosCamera;
 	RECT m_viewPort;
 	void Update(D3DXVECTOR2);
 

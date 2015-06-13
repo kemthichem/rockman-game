@@ -2,6 +2,7 @@
 #define _CUTMAN_H_
 #include "ResourceManager.h"
 #include "Entity.h"
+#include "Blood.h"
 
 enum Status {
 	StandNormal,
@@ -16,6 +17,7 @@ class CCutMan : public CEntity
 {
 private:
 	Status m_Status;
+	CBlood* m_Blood;
 	float m_timeSpend;
 protected:
 public:
@@ -24,8 +26,8 @@ public:
 
 	//method
 	virtual void Update(float , CCamera *, CInput *,  vector<CEntity* >);
-	virtual void Draw();
-	virtual void Collision();
+	void Render(LPD3DXSPRITE _sp, CCamera* _cam);
+
 };
 
 #endif

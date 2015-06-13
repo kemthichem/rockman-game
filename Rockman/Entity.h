@@ -56,7 +56,7 @@ protected:
 	bool m_IsCheckCollision;
 
 	virtual void UpdateCollison(CEntity* _other,float _time);
-	void RenderEachSprite(LPD3DXSPRITE, CCamera*, D3DXVECTOR3 _posRender);
+	void RenderEachSprite(LPD3DXSPRITE, CCamera*,CSprite*, D3DXVECTOR3 _posRender);
 	void UpdateRect();
 public:
 	float m_TimeCollision;

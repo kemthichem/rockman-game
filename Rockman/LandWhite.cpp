@@ -39,6 +39,6 @@ void CLandWhite::Render(LPD3DXSPRITE _sp, CCamera* _camera)
 	{
 		m_Sprite->IndexOf(i);
 		pos.x = m_pos.x + i * m_Sprite->GetWidthRectSprite();
-		CEntity::RenderEachSprite(_sp, _camera, pos);
+		CEntity::RenderEachSprite(_sp, _camera,m_Sprite, pos);
 	}
 }

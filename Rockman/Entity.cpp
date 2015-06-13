@@ -54,10 +54,10 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 }
 
 void CEntity::Render(LPD3DXSPRITE _spriteHandler, CCamera* _camera) {
-	RenderEachSprite(_spriteHandler, _camera, m_pos);
+	RenderEachSprite(_spriteHandler, _camera,m_Sprite, m_pos);
 }
 
-void CEntity::RenderEachSprite(LPD3DXSPRITE _spriteHandler, CCamera* _camera, D3DXVECTOR3 _posRender)
+void CEntity::RenderEachSprite(LPD3DXSPRITE _spriteHandler, CCamera* _camera,CSprite * _sprite, D3DXVECTOR3 _posRender)
 {
 	D3DXMATRIX Scale;
 	D3DXMatrixIdentity(&Scale);
@@ -66,7 +66,7 @@ void CEntity::RenderEachSprite(LPD3DXSPRITE _spriteHandler, CCamera* _camera, D3
 
 	//flip sprite when move left
 	D3DXMATRIX matrixFlip;
-	D3DXVECTOR2 trans(2*(_posRender.x - _camera->GetPosCamera().x ) + m_Sprite->GetWidthRectSprite(), 0);
+	D3DXVECTOR2 trans(2*(_posRender.x - _camera->GetPosCamera().x ) + _sprite->GetWidthRectSprite(), 0);
 	if (m_isTurnLeft) {
 		D3DXMatrixTransformation2D(&matrixFlip
 			,NULL//center of sprite
@@ -82,7 +82,7 @@ void CEntity::RenderEachSprite(LPD3DXSPRITE _spriteHandler, CCamera* _camera, D3
 
 	_spriteHandler->SetTransform(&Scale);
 
-	m_Sprite->Render(_spriteHandler, _posRender);
+	_sprite->Render(_spriteHandler, _posRender);
 }
 
 void CEntity::UpdatePosition(float _time)

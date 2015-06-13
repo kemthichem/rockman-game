@@ -16,11 +16,15 @@
 #define  IMAGE_ROCKMAN "Resource/rockman.png"
 #define  IMAGE_TILES "Resource/tiles.png"
 #define  IMAGE_ENEMIES "Resource/enemies.png"
-#define  IMAGE_ITEMS "Resource/items.png"
 #define  IMAGE_MASTER "Resource/master.png"
-
+#define  IMAGE_BG_MENU "Resource/State/bg_menu.jpg"
+#define  IMAGE_BG_CHANGE_STATE "Resource/State/bg_change_state.jpg"
+#define  IMAGE_BG_ABOUT "Resource/State/bg_about.jpg"
+#define  IMAGE_BG_GAMEOVER "Resource/State/bg_gameover.jpg"
+#define  IMAGE_BG_HELP "Resource/State/bg_help.jpg"
+#define  IMAGE_BG_WIN "Resource/State/bg_win.jpg"
 //background
-#define  IMAGE_BG_MENU "Resource/bg_menu.jpg"
+#define  IMAGE_BG "Resource/bg.jpg"
 
 using namespace std;
 class CResourceManager
