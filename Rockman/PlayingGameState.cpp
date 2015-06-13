@@ -3,7 +3,6 @@
 #include "BigEye.h"
 #include "Land.h"
 #include "MoveMap.h"
-#include "Map.h"
 
 CPLayingGameState::CPLayingGameState(CGameStateManager *_gameState)
 {
@@ -20,11 +19,6 @@ CPLayingGameState::CPLayingGameState(void)
 
 CPLayingGameState::~CPLayingGameState(void)
 {
-	//delete list object
-	for(int i = 0; i < m_listObject.size(); ++i)
-		delete m_listObject[i];
-	m_listObject.clear();
-
 	if (rockman) {
 		delete rockman;
 		rockman = NULL;
@@ -62,13 +56,12 @@ void CPLayingGameState::Update(CInput* _input,float _time,CCamera* _camera)
 
 void CPLayingGameState::Init()
 {
-	CMap map;
-	m_listObject = map.GetObjectFromFile("Resource//map//Map1.txt");	
+	m_Map.LoadObjectFromFile("Resource//map//Map1.txt");	
 	//Load tree
 	quadTree = new CQuadTree();
 	quadTree->LoadNodeInFile("Resource//map//Map1Tree.txt");
 
-	quadTree->MapIdToObjectInTree(quadTree->m_nodeRoot, m_listObject);
+	quadTree->MapIdToObjectInTree(quadTree->m_nodeRoot, m_Map.m_ListObjects);
 	//
 	rockman = new CRockman(D3DXVECTOR3(200,1000,0));
 }

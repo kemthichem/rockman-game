@@ -14,6 +14,8 @@ CIceMan::CIceMan(int _id, D3DXVECTOR3 _pos)
 	m_velloc.x = 0.0f;
 	m_accel.y = 0.0f;
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
+
+	UpdateRect();
 }
 
 
@@ -23,7 +25,7 @@ CIceMan::~CIceMan(void)
 
 void CIceMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntity* > _listObjectInViewPort)
 {
-	CEntity::Update(_time, _camera, _input, _listObjectInViewPort);
+	//CEntity::Update(_time, _camera, _input, _listObjectInViewPort);
 
 	if (m_pos.x < 0 || m_pos.x > 800) {
 		m_velloc.x *= -1;
@@ -41,7 +43,8 @@ void CIceMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntit
 	}
 
 
-
+	m_velloc.x = 0;
+	m_velloc.y = 0;
 
 	switch (m_Status)
 	{

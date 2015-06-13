@@ -2,6 +2,7 @@ Ladder:
 32x32
 586,377
 618,409
+
 ScrewBomber
 35x35
 src:30,180
@@ -11,14 +12,16 @@ des:350,215
 45,0
 
 Land1:
-32x32
+sizeSprite:32x32
+sizeObject:64x32
 src:653, 343
 des: 721, 377
 left-top:1,1
 right-bottom:1,1
 
 LandWhite:
-32x32
+sizeSprite:32x32
+sizeObject:96x32
 src:755, 1
 des: 857, 35
 left-top:1,1
@@ -38,10 +41,73 @@ des:428,901
 left-top:0,0
 right-bottom:0,32
 
-COctopus
+Octopus
 80x36
 src:670,260
 des:910,296
 left-top:0,0
 right-bottom:47,0
+
+Beak
+src:40,420
+sizeSprite: 80x35
+sizeObject: 30x35
+des:360, 455
+left-top:0,0
+right-bottom:50,0
+num:4
+
+Met
+src:670,20
+sizeSprite: 80x30
+sizeObject: 40x30
+des:830, 50
+left-top:0,0
+right-bottom:40,0
+num:2
+
+Spine
+src:352,192
+sizeSprite: 76x18
+sizeObject: 32x18
+des:504, 208
+left-top:0,0
+right-bottom:46,0
+num:2
+
+Flea
+src:513,258
+sizeSprite: 75x38
+sizeObject: 32x38
+des:663, 296
+left-top:0,0
+right-bottom:43,0
+num:2
+
+Gutsman
+src:250,140
+sizeSprite: 70x70
+sizeObject: 70x70
+des:880, 210
+left-top:0,0
+right-bottom:0,0
+num:9
+
+ice man
+src:250,140
+sizeSprite: 70x70
+sizeObject: 56x60
+des:880, 210
+left-top:0,0
+right-bottom:0,0
+num:9
+
+cutman
+src:250,140
+sizeSprite: 70x70
+sizeObject: 48x65
+des:880, 210
+left-top:0,0
+right-bottom:0,0
+num:9
 

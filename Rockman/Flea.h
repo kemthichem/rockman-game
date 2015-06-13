@@ -12,8 +12,6 @@ public:
 
 	//method
 	virtual void Update(float , CCamera *, CInput *,  vector<CEntity* >);
-	virtual void Draw();
-	virtual void Collision();
 };
 
 #endif

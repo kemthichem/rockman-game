@@ -26,7 +26,7 @@ public:
 	CQuadTreeNode* ChildBottomRight;
 
 	//Method
-	vector<CEntity*> GetListObjectInNode(RECT _rect);
+	void GetListObjectInNode(RECT _rect, vector<CEntity*>& _outListObjects);
 	bool Intersect(RECT _rect1, RECT _rect2);
 };
 

@@ -12,41 +12,14 @@ CQuadTreeNode::~CQuadTreeNode(void)
 	//Delete child node
 }
 
-vector<CEntity*> CQuadTreeNode::GetListObjectInNode(RECT _rect)
+void CQuadTreeNode::GetListObjectInNode(RECT _rect, vector<CEntity*>& _listObjects)
 {
-	vector<CEntity*> listObjects;
-
 	int size = m_ListObject.size();
 	for (int i = 0; i < size; i++)
 	{
 		if (Intersect(m_ListObject[i]->GetRect(), _rect))
-			listObjects.push_back(m_ListObject[i]);
+			_listObjects.push_back(m_ListObject[i]);
 	}
-
-	return listObjects;
-/*
-	if(this->ChildTopLeft != NULL)
-	{
-		vector<CEntity*> listObjectsOfChild = ChildTopLeft->GetListObjectInNode();
-		listObjects.insert( listObjects.end(), listObjectsOfChild.begin(), listObjectsOfChild.end());
-	}
-	if(ChildBottomLeft != NULL)
-	{
-		vector<CEntity*> listObjectsOfChild = ChildBottomLeft->GetListObjectInNode();
-		listObjects.insert( listObjects.end(), listObjectsOfChild.begin(), listObjectsOfChild.end());
-	}
-	if(ChildBottomRight != NULL)
-	{
-		vector<CEntity*> listObjectsOfChild = ChildBottomRight->GetListObjectInNode();
-		listObjects.insert( listObjects.end(), listObjectsOfChild.begin(), listObjectsOfChild.end());
-	}
-	if(ChildTopRight != NULL)
-	{
-		vector<CEntity*> listObjectsOfChild = ChildTopRight->GetListObjectInNode();
-		listObjects.insert( listObjects.end(), listObjectsOfChild.begin(), listObjectsOfChild.end());
-	}
-
-	return listObjects;*/
 }
 
 bool CQuadTreeNode::Intersect(RECT _rect1, RECT _rect2)

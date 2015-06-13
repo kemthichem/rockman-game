@@ -82,6 +82,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AABBCollisionDetected.cpp" />
+    <ClCompile Include="Beak.cpp" />
     <ClCompile Include="BigEye.cpp" />
     <ClCompile Include="Blader.cpp" />
     <ClCompile Include="Bullet.cpp" />
@@ -89,9 +90,11 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CutMan.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Flea.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
+    <ClCompile Include="GutsMan.cpp" />
     <ClCompile Include="IceMan.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Item.cpp" />
@@ -102,6 +105,7 @@
     <ClCompile Include="LandWhite.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="Met.cpp" />
     <ClCompile Include="MoveMap.cpp" />
     <ClCompile Include="Octopus.cpp" />
     <ClCompile Include="PlayingGameState.cpp" />
@@ -111,6 +115,7 @@
     <ClCompile Include="Rockman.cpp" />
     <ClCompile Include="RockmanGame.cpp" />
     <ClCompile Include="ScrewBomber.cpp" />
+    <ClCompile Include="Spine.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="utils.cpp" />
@@ -118,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AABBCollisionDetected.h" />
+    <ClInclude Include="Beak.h" />
     <ClInclude Include="BigEye.h" />
     <ClInclude Include="Blader.h" />
     <ClInclude Include="Bullet.h" />
@@ -126,9 +132,11 @@
     <ClInclude Include="CutMan.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="Flea.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GamestateManager.h" />
+    <ClInclude Include="GutsMan.h" />
     <ClInclude Include="IceMan.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Item.h" />
@@ -139,6 +147,7 @@
     <ClInclude Include="LandWhite.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MenuState.h" />
+    <ClInclude Include="Met.h" />
     <ClInclude Include="MoveMap.h" />
     <ClInclude Include="Octopus.h" />
     <ClInclude Include="PLayingGameState.h" />
@@ -148,6 +157,7 @@
     <ClInclude Include="Rockman.h" />
     <ClInclude Include="RockmanGame.h" />
     <ClInclude Include="ScrewBomber.h" />
+    <ClInclude Include="Spine.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="utils.h" />

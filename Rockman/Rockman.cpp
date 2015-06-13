@@ -10,7 +10,7 @@ CRockman::CRockman(void)
 }
 CRockman::CRockman(D3DXVECTOR3 _pos)
 {
-	m_Id = -1;
+	m_Id = 0;
 	m_Type = ROCKMAN;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(960,320), 12, 4, 
 		D3DXVECTOR2(0,0), D3DXVECTOR2(11,8), D3DXVECTOR2(28,14));
@@ -23,6 +23,7 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 
 	m_collision = new CAABBCollision();
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
+	UpdateRect();
 	m_PosXClimb = -1;
 	m_Injuring = 0;
 	m_TimeInjured = 0;
@@ -228,22 +229,18 @@ void CRockman::UpdateCollison(CEntity* _other, float _time) {
 		break;
 	case BIGEYE:
 	case BLADER:
-		m_Injuring = _other->GetVelocity().x > 0 ? 1 : -1;
-		
+		m_Injuring = _other->GetVelocity().x > 0 ? 1 : -1;		
 		break;
 	default:
 		break;
 	}
 
-	if (_other->GetType()!= ROCKMAN)
-	{
 		float timeEntry = m_collision->SweptAABB(this,_other,_time);
 		m_directCollision = m_collision->GetDirectCollision();
 		if (timeEntry < 1.0f)
 		{
 			ExecuteCollision(_other,m_directCollision,timeEntry);
 		}
-	}
 }
 
 void CRockman::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,float _timeEntry)

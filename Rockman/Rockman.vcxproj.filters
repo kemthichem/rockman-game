@@ -52,6 +52,18 @@
     <Filter Include="Item">
       <UniqueIdentifier>{411d03a8-83d5-44aa-b1c1-9da9e09117a3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ObjectGame\Boss">
+      <UniqueIdentifier>{f36d081a-0de4-451f-a98c-8dd72e6516b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ObjectGame\Block">
+      <UniqueIdentifier>{ceaaecfe-062d-4f83-a384-52f6bf5b7f76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ObjectGame\Enemies">
+      <UniqueIdentifier>{47be2e8a-90f0-4046-80b2-f7177bb7933e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ObjectGame\Scenery">
+      <UniqueIdentifier>{d2113617-6d78-4496-8e17-e6b4617f2163}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="winmain.cpp">
@@ -90,12 +102,6 @@
     <ClCompile Include="QuadTree.cpp">
       <Filter>Quadtree</Filter>
     </ClCompile>
-    <ClCompile Include="BigEye.cpp">
-      <Filter>ObjectGame</Filter>
-    </ClCompile>
-    <ClCompile Include="Land.cpp">
-      <Filter>ObjectGame</Filter>
-    </ClCompile>
     <ClCompile Include="QuadTreeNode.cpp">
       <Filter>Quadtree</Filter>
     </ClCompile>
@@ -105,41 +111,14 @@
     <ClCompile Include="AABBCollisionDetected.cpp">
       <Filter>AABB</Filter>
     </ClCompile>
-    <ClCompile Include="MoveMap.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Land1.cpp">
-      <Filter>ObjectGame</Filter>
-    </ClCompile>
-    <ClCompile Include="Blader.cpp">
-      <Filter>ObjectGame</Filter>
-    </ClCompile>
-    <ClCompile Include="Ladder.cpp">
-      <Filter>ObjectGame</Filter>
-    </ClCompile>
-    <ClCompile Include="ScrewBomber.cpp">
-      <Filter>ObjectGame</Filter>
-    </ClCompile>
     <ClCompile Include="Bullet.cpp">
       <Filter>Item</Filter>
-    </ClCompile>
-    <ClCompile Include="CutMan.cpp">
-      <Filter>ObjectGame</Filter>
-    </ClCompile>
-    <ClCompile Include="IceMan.cpp">
-      <Filter>ObjectGame</Filter>
-    </ClCompile>
-    <ClCompile Include="LandWhite.cpp">
-      <Filter>ObjectGame</Filter>
     </ClCompile>
     <ClCompile Include="BulletRockman.cpp">
       <Filter>Item</Filter>
     </ClCompile>
     <ClCompile Include="Item.cpp">
       <Filter>Item</Filter>
-    </ClCompile>
-    <ClCompile Include="Octopus.cpp">
-      <Filter>ObjectGame</Filter>
     </ClCompile>
     <ClCompile Include="GameStateManager.cpp">
       <Filter>GameState</Filter>
@@ -153,8 +132,56 @@
     <ClCompile Include="MenuState.cpp">
       <Filter>GameState</Filter>
     </ClCompile>
+    <ClCompile Include="Beak.cpp">
+      <Filter>ObjectGame\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="BigEye.cpp">
+      <Filter>ObjectGame\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Blader.cpp">
+      <Filter>ObjectGame\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Flea.cpp">
+      <Filter>ObjectGame\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Met.cpp">
+      <Filter>ObjectGame\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Octopus.cpp">
+      <Filter>ObjectGame\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ScrewBomber.cpp">
+      <Filter>ObjectGame\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Spine.cpp">
+      <Filter>ObjectGame\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="IceMan.cpp">
+      <Filter>ObjectGame\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="CutMan.cpp">
+      <Filter>ObjectGame\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="GutsMan.cpp">
+      <Filter>ObjectGame\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveMap.cpp">
+      <Filter>ObjectGame\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="Ladder.cpp">
+      <Filter>ObjectGame\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="Land.cpp">
+      <Filter>ObjectGame\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="Land1.cpp">
+      <Filter>ObjectGame\Block</Filter>
+    </ClCompile>
     <ClCompile Include="LandIceberg.cpp">
-      <Filter>ObjectGame</Filter>
+      <Filter>ObjectGame\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="LandWhite.cpp">
+      <Filter>ObjectGame\Block</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -194,12 +221,6 @@
     <ClInclude Include="Game.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Land.h">
-      <Filter>ObjectGame</Filter>
-    </ClInclude>
-    <ClInclude Include="BigEye.h">
-      <Filter>ObjectGame</Filter>
-    </ClInclude>
     <ClInclude Include="QuadTreeNode.h">
       <Filter>Quadtree</Filter>
     </ClInclude>
@@ -209,41 +230,14 @@
     <ClInclude Include="AABBCollisionDetected.h">
       <Filter>AABB</Filter>
     </ClInclude>
-    <ClInclude Include="MoveMap.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Land1.h">
-      <Filter>ObjectGame</Filter>
-    </ClInclude>
-    <ClInclude Include="Blader.h">
-      <Filter>ObjectGame</Filter>
-    </ClInclude>
-    <ClInclude Include="Ladder.h">
-      <Filter>ObjectGame</Filter>
-    </ClInclude>
-    <ClInclude Include="ScrewBomber.h">
-      <Filter>ObjectGame</Filter>
-    </ClInclude>
     <ClInclude Include="Bullet.h">
       <Filter>Item</Filter>
-    </ClInclude>
-    <ClInclude Include="CutMan.h">
-      <Filter>ObjectGame</Filter>
-    </ClInclude>
-    <ClInclude Include="IceMan.h">
-      <Filter>ObjectGame</Filter>
-    </ClInclude>
-    <ClInclude Include="LandWhite.h">
-      <Filter>ObjectGame</Filter>
     </ClInclude>
     <ClInclude Include="BulletRockman.h">
       <Filter>Item</Filter>
     </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>Item</Filter>
-    </ClInclude>
-    <ClInclude Include="Octopus.h">
-      <Filter>ObjectGame</Filter>
     </ClInclude>
     <ClInclude Include="GamestateManager.h">
       <Filter>GameState</Filter>
@@ -257,8 +251,56 @@
     <ClInclude Include="MenuState.h">
       <Filter>GameState</Filter>
     </ClInclude>
+    <ClInclude Include="Beak.h">
+      <Filter>ObjectGame\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="BigEye.h">
+      <Filter>ObjectGame\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Blader.h">
+      <Filter>ObjectGame\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Flea.h">
+      <Filter>ObjectGame\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Met.h">
+      <Filter>ObjectGame\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Octopus.h">
+      <Filter>ObjectGame\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ScrewBomber.h">
+      <Filter>ObjectGame\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Spine.h">
+      <Filter>ObjectGame\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="IceMan.h">
+      <Filter>ObjectGame\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="CutMan.h">
+      <Filter>ObjectGame\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="GutsMan.h">
+      <Filter>ObjectGame\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="Ladder.h">
+      <Filter>ObjectGame\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="Land.h">
+      <Filter>ObjectGame\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="Land1.h">
+      <Filter>ObjectGame\Block</Filter>
+    </ClInclude>
     <ClInclude Include="LandIceberg.h">
-      <Filter>ObjectGame</Filter>
+      <Filter>ObjectGame\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="LandWhite.h">
+      <Filter>ObjectGame\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveMap.h">
+      <Filter>ObjectGame\Block</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -16,7 +16,6 @@ CQuadTree::~CQuadTree(void)
 	{
 		delete it->second;
 	} 
-
 	m_mapNode.clear();
 
 	if (m_nodeRoot != NULL)
@@ -82,15 +81,17 @@ vector<CEntity*>CQuadTree::ClearDuplicate(vector<CEntity*> list)
 
 vector<CEntity*> CQuadTree::GetListObjectInRect(RECT _rect)
 {
-	vector<CQuadTreeNode*> listnode;
 	m_listObjectViewportToRender.clear();
 	m_listObjectViewportToUpdate.clear();
 	m_listNodeInViewPort.clear();
 
-	listnode = GetListNodeIntersectRect(m_nodeRoot, _rect);
-	for (int i = 0; i < listnode.size(); i++)
+	GetListNodeIntersectRect(m_nodeRoot, _rect);
+	for (int i = 0; i < m_listNodeInViewPort.size(); i++)
 	{
-		vector<CEntity*> listObjectInNode = listnode[i]->GetListObjectInNode(_rect);//ClearDuplicate(listnode[i]->GetListObjectInNode());
+		vector<CEntity*> listObjectInNode;
+		m_listNodeInViewPort[i]->GetListObjectInNode(_rect, listObjectInNode);
+		listObjectInNode = ClearDuplicate(listObjectInNode);		
+		
 		//m_listObjectViewportToUpdate.insert(m_listObjectViewportToUpdate.begin(), listObjectInNode.begin(), listObjectInNode.end());
 
 			for (int j = 0; j < listObjectInNode.size(); j++) {

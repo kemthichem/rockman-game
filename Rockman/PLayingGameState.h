@@ -7,11 +7,13 @@
 #include "QuadTree.h"
 #include "GameState.h"
 #include"GameStateManager.h"
+#include "Map.h"
 
 class CPLayingGameState : public CGameState
 {
 private:
 	CQuadTree *quadTree;
+	CMap m_Map;
 protected:
 	//virtual void CleanUp();
 	virtual void Render(LPD3DXSPRITE _spriteHandle,CCamera* _camera);
@@ -19,10 +21,10 @@ protected:
 	virtual void Init();
 public:
 	CPLayingGameState(void);
+	~CPLayingGameState(void);
 	CPLayingGameState(CGameStateManager *_gameState);
 	CRockman *rockman;
 
-	vector<CEntity*> m_listObject;
-	~CPLayingGameState(void);
+
 };
 #endif
