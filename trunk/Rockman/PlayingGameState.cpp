@@ -104,12 +104,14 @@ void CPLayingGameState::UpdateState()
 {
 	if (rockman->IsDie()) {
 		g_LifeOfRockman--;
+
 		if (g_LifeOfRockman >= 0) {
 			m_StateManager->ChangeState(new CChangeState(m_StateManager));
 		} else
 		{
-			g_Stage = 1;
-			g_Score = 0;
+			CPLayingGameState::g_LifeOfRockman = 3;
+			CPLayingGameState::g_Score = 0;
+			CPLayingGameState::g_Stage = 1;
 			m_StateManager->ChangeState(new CGameOverState(m_StateManager));
 		}
 	}

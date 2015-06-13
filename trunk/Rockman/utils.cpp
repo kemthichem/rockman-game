@@ -25,7 +25,8 @@ LPDIRECT3DTEXTURE9 CUtils::LoadTexture(LPDIRECT3DDEVICE9 _d3ddv,LPCSTR filepath)
 	result = D3DXGetImageInfoFromFile(filepath,&info)  ;
 	if (result!=D3D_OK) 
 	{
-		MessageBox(NULL, "Not specify file path ", "Error", MB_OK); 
+		
+		MessageBox(NULL, filepath, "Error", MB_OK); 
 		return NULL;  
 	}
 	/*Load texture resource*/  
