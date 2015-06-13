@@ -18,7 +18,8 @@ namespace MapEditor
         public Node NodeRoot;
         public void AddObject(ObjectGame ob)
         {
-            NodeRoot.AddObjectToNode(ob);
+            if (NodeRoot.Bound.Contains (ob.BoundInQuadTree))
+                NodeRoot.AddObjectToNode(ob);
         }
         public List<ObjectGame> GetAllObject()
         {
