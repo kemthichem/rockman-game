@@ -16,8 +16,7 @@ namespace MapEditor
         {
             InitializeComponent();
         }
-        public Fill_Range(int width, int height, List<String> nameObject, string name)
-            : this()
+        public Fill_Range(int width, int height, List<String> nameObject): this()
         {
             for (int i = 0; i < height; i++)
             {
@@ -37,8 +36,14 @@ namespace MapEditor
             cbColumnTo.SelectedIndex = width - 1;
 
             cbbNameOb.DataSource = nameObject;
-            cbbNameOb.SelectedItem = name;
+            
         }
+
+        public void SetObjectNameSelect(string name)
+        {
+            cbbNameOb.SelectedItem = name;
+        } 
+
         private void Fill_Range_Load(object sender, EventArgs e)
         {
 

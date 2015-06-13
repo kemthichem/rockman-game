@@ -30,6 +30,7 @@ namespace MapEditor
 
         //------
         QuadTree Tree;
+        Fill_Range f;
 
 
         #region Recource Image
@@ -253,12 +254,16 @@ namespace MapEditor
             SizeHeightMap = numHeight;
             RectGrid = new Rectangle(size, size, numWidth * size, numHeight * size);
             Tree.SetSizeQuadTree(RectGrid);
-            pbGridMap.SetBounds(0, 0, numWidth * size + 2 * size, numHeight * size + 2 * size);
+
+            pbGridMap.Width = numWidth * size + 2 * size;
+            pbGridMap.Height = numHeight * size + 2 * size;
+            
             pbGridMap.Update();
             pnGrid.VerticalScroll.Value = pnGrid.VerticalScroll.Maximum;
         }
         private void btCAll_Click(object sender, EventArgs e)
         {
+            f = null;
             Tree = null;
             Tree = new QuadTree();
             listContents.Clear();
@@ -270,8 +275,19 @@ namespace MapEditor
         }
         private void btFRange_Click(object sender, EventArgs e)
         {
-            Form f = new Fill_Range(numWidth, numHeight, nameObjects, controlSelected.AccessibleName);
+            if (f == null)
+            {
+                f = new Fill_Range(numWidth, numHeight, nameObjects);
+                f.FormClosed += f_FormClosed;
+            }
+            f.SetObjectNameSelect(controlSelected.AccessibleName);
             f.ShowDialog();
+
+        }
+
+        void f_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            pbGridMap.Invalidate();
         }
         //------event pbGridMap----------
         private void pbGridMap_MouseMove(object sender, MouseEventArgs e)
@@ -293,16 +309,26 @@ namespace MapEditor
                 {
                     if (RectGrid.Contains(e.Location))
                     {
-                        if (ObjectGame.ListIdJustDeleted.Count > 0)
+                         ObjectGame ob = null;
+                        Point p = new Point(e.Location.X - 32, e.Location.Y - 32);
+                        int index = IndexObject(p);
+                        if (index != -1)
                         {
-                            id = ObjectGame.ListIdJustDeleted[0];
-                            ObjectGame.ListIdJustDeleted.RemoveAt(0);
+                            ob = listContents[index];
                         }
-                        else
-                            id = ++ObjectGame.CurrentId;
-                        ObjectGame ob = new ObjectGame(e.Location, id, TypeCurrent);
-                        if (IndexObject(ob.Pos) == -1)
-                            listContents.Add(ob);
+                        if (ob == null || ob.TypeOb != TypeCurrent)
+                        {
+                            if (ObjectGame.ListIdJustDeleted.Count > 0)
+                            {
+                                id = ObjectGame.ListIdJustDeleted[0];
+                                ObjectGame.ListIdJustDeleted.RemoveAt(0);
+                            }
+                            else
+                                id = ++ObjectGame.CurrentId;
+                            ObjectGame _ob = new ObjectGame(e.Location, id, TypeCurrent);
+                            if (IndexObject(_ob.Pos) == -1)
+                                listContents.Add(_ob);
+                        }
                     }
                 }
             pbGridMap.Invalidate();
@@ -438,63 +464,6 @@ namespace MapEditor
             tbWidth.Text = numWidth.ToString();
             btCreate.PerformClick();
         }
-        private int[,] CreateArrayFromList() {
-
-            int col =  numWidth;
-            int row = numHeight;
-
-            int[,] arr = new int[row, col];
-            foreach (ObjectGame ob in listContents)
-            {
-               arr[(ob.Pos.Y-size)/size,(ob.Pos.X-size)/size] = ob.Id;
-            }
-
-            return arr;
-        
-        }
-        private void AddListFromArray(String strMap)
-        {
-
-            //String[] arrString = strMap.Split(new char[] { ' ', '\t', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-
-            //int[] values = new int[arrString.Length];
-            //for (int i = 0; i < arrString.Length; i++)
-            //{
-            //    if (i == 7) { continue; }
-            //    values[i] = int.Parse(arrString[i]);
-            //}
-            //width = values[1];
-            //height = values[0];
-            //time = values[2];
-            //level = values[6];
-
-            //listContents.Clear();
-            //for (int i = 0; i < height; i++)
-            //{
-            //    for (int j = 0; j < width; j++)
-            //    {
-            //        int id = values[i * width + j + 8];
-            //        if (id == 0) continue;
-            //        ObjectGame ob = new ObjectGame(new Point(j * size + size, i * size + size), id);
-            //        listContents.Add(ob);
-            //    }
-            //}
-            //try
-            //{
-            //    background = Image.FromFile(arrString[7]);
-            //    BgFilePath = arrString[7];
-            //}
-            //catch (System.Exception ex)
-            //{
-            //    MessageBox.Show("Find not background: " + ex);
-            //}
-            //pbGridMap.Invalidate();
-            //tbHeight.Text = height.ToString();
-            //tbWidth.Text = width.ToString();
-            //tbTime.Text = time.ToString();
-            //tbLevel.Text = level.ToString();
-            //btCreate.PerformClick();
-         }
         //---------add range
         public static void AddRange(int fromR, int toR, int fromC, int toC, string name)
         {
@@ -505,13 +474,15 @@ namespace MapEditor
             int heightType = 0;
             Image image = null;
             ObjectGame.SetKind(_type, false, ref widthType, ref heightType, ref image);
-            Point currentPosObject = new Point(0,0);
+            int nextXObject;
+            if (toR <= fromR) toR = fromR + 1;
+            if (toC <= fromC) toC = fromC + 1;
+
 
             for (int i = fromR; i < toR ; i++)
             {
-                currentPosObject.X = 0;
-                currentPosObject.Y = 0;
-                for (int j = fromC; j < toC && currentPosObject.X < toC * 32; j++)
+                nextXObject = 0;
+                for (int j = fromC; j < toC && nextXObject < toC * 32; j++)
                 {
                     if (ObjectGame.ListIdJustDeleted.Count > 0)
                     {
@@ -522,8 +493,9 @@ namespace MapEditor
                         id = ++ObjectGame.CurrentId;
 
                     ObjectGame ob = new ObjectGame(new Point(j * widthType + 32, (SizeHeightMap - i) * 32 ), id, _type);
-                    currentPosObject = ob.Pos;
                     listContents.Add(ob);
+                    nextXObject = ob.Pos.X + widthType;
+                   
                 }
             }
         }

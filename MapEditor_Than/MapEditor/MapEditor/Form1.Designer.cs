@@ -40,7 +40,6 @@
             this.tbSize = new System.Windows.Forms.TextBox();
             this.Size = new System.Windows.Forms.Label();
             this.btCAll = new System.Windows.Forms.Button();
-            this.btERange = new System.Windows.Forms.Button();
             this.btFRange = new System.Windows.Forms.Button();
             this.btCreate = new System.Windows.Forms.Button();
             this.tbWidth = new System.Windows.Forms.TextBox();
@@ -149,6 +148,7 @@
             // pnGrid
             // 
             this.pnGrid.AutoScroll = true;
+            this.pnGrid.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.pnGrid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnGrid.Controls.Add(this.pbGridMap);
             this.pnGrid.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -159,16 +159,17 @@
             // 
             // pbGridMap
             // 
-            this.pbGridMap.Location = new System.Drawing.Point(-1, -1);
+            this.pbGridMap.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pbGridMap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbGridMap.Location = new System.Drawing.Point(0, 0);
             this.pbGridMap.Name = "pbGridMap";
-            this.pbGridMap.Size = new System.Drawing.Size(111, 88);
+            this.pbGridMap.Size = new System.Drawing.Size(318, 184);
             this.pbGridMap.TabIndex = 4;
             this.pbGridMap.TabStop = false;
             this.pbGridMap.Paint += new System.Windows.Forms.PaintEventHandler(this.pbGridMap_Paint);
             this.pbGridMap.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pbGridMap_MouseDoubleClick);
             this.pbGridMap.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbGridMap_MouseMove);
             this.pbGridMap.MouseEnter += new System.EventHandler(this.pbGridMap_MouseEnter);
-            this.pbGridMap.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbGridMap_MouseMove);
             // 
             // paButton
             // 
@@ -178,7 +179,6 @@
             this.paButton.Controls.Add(this.tbSize);
             this.paButton.Controls.Add(this.Size);
             this.paButton.Controls.Add(this.btCAll);
-            this.paButton.Controls.Add(this.btERange);
             this.paButton.Controls.Add(this.btFRange);
             this.paButton.Controls.Add(this.btCreate);
             this.paButton.Controls.Add(this.tbWidth);
@@ -222,23 +222,13 @@
             // btCAll
             // 
             this.btCAll.AutoSize = true;
-            this.btCAll.Location = new System.Drawing.Point(32, 305);
+            this.btCAll.Location = new System.Drawing.Point(32, 258);
             this.btCAll.Name = "btCAll";
             this.btCAll.Size = new System.Drawing.Size(74, 23);
             this.btCAll.TabIndex = 16;
             this.btCAll.Text = "Clear all";
             this.btCAll.UseVisualStyleBackColor = true;
             this.btCAll.Click += new System.EventHandler(this.btCAll_Click);
-            // 
-            // btERange
-            // 
-            this.btERange.AutoSize = true;
-            this.btERange.Location = new System.Drawing.Point(32, 255);
-            this.btERange.Name = "btERange";
-            this.btERange.Size = new System.Drawing.Size(74, 23);
-            this.btERange.TabIndex = 15;
-            this.btERange.Text = "Erase range";
-            this.btERange.UseVisualStyleBackColor = true;
             // 
             // btFRange
             // 
@@ -1232,7 +1222,6 @@
         private System.Windows.Forms.PictureBox pbGridMap;
         private System.Windows.Forms.Panel paButton;
         private System.Windows.Forms.Button btCAll;
-        private System.Windows.Forms.Button btERange;
         private System.Windows.Forms.Button btFRange;
         private System.Windows.Forms.Button btCreate;
         private System.Windows.Forms.TextBox tbWidth;
