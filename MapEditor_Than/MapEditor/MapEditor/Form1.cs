@@ -33,55 +33,7 @@ namespace MapEditor
         Fill_Range f;
 
 
-        #region Recource Image
         private Image background;
-        public static Image ScrewImage;
-
-        //--
-        public static Image BigEyeImage;
-        public static Image MoveMapImage;
-        public static Image Land1Image;
-        public static Image mush;
-        public static Image mush1;
-        public static Image mush2;
-        public static Image mushlife;
-        public static Image mushlife1;
-        public static Image mushlife2;
-        public static Image flag;
-        public static Image house;
-        public static Image star;
-        public static Image turtle;
-        public static Image eato;
-        public static Image enemy;
-        public static Image land1;
-        public static Image land2;
-        public static Image block1;
-        public static Image coin;
-        public static Image coin1;
-        public static Image coin1c;
-        public static Image coin10c;
-        public static Image bushbig;
-        public static Image pine;
-        public static Image cloud2;
-        public static Image sign;
-        public static Image block2;
-        public static Image block3;
-        public static Image block4;
-        public static Image block5;
-        //  [10/1/2013 TheRise]
-        public static Image castus1;
-        public static Image tree;
-        public static Image bushsmall;
-        public static Image crass;
-        public static Image bud;
-        public static Image cloud1;
-        public static Image cloud3;
-        public static Image castus2;
-        public static Image hill;
-        public static Image castus3;
-        public static Image mario;
-      
-        #endregion
 
         public Form1()
         {
@@ -91,51 +43,6 @@ namespace MapEditor
         {
             BgFilePath = "Resources/background1.png";
             background = Image.FromFile(BgFilePath);
-            ScrewImage = Image.FromFile(Application.StartupPath + "\\Resources\\enemy\\enemy_screwbomber.png");
-            Land1Image = Image.FromFile(Application.StartupPath + "\\Resources\\ground\\Land1.png");
-            MoveMapImage = Image.FromFile(Application.StartupPath + "\\Resources\\item\\movemap.png");
-            BigEyeImage = Image.FromFile(Application.StartupPath + "\\Resources\\enemy\\enemy_bigeye.png");
-            mush = Image.FromFile(Application.StartupPath + "\\Resources\\mush.png");
-            mush1 = Image.FromFile(Application.StartupPath + "\\Resources\\mush1.png");
-            mush2 = Image.FromFile(Application.StartupPath + "\\Resources\\mush2.png");
-            mushlife = Image.FromFile(Application.StartupPath + "\\Resources\\mushlife.png");
-            mushlife1 = Image.FromFile(Application.StartupPath + "\\Resources\\mushlife1.png");
-            mushlife2 = Image.FromFile(Application.StartupPath + "\\Resources\\mushlife2.png");
-            flag = Image.FromFile(Application.StartupPath + "\\Resources\\flag.png");
-            house = Image.FromFile(Application.StartupPath + "\\Resources\\house.png");
-            star = Image.FromFile(Application.StartupPath + "\\Resources\\star.png");
-            turtle = Image.FromFile(Application.StartupPath + "\\Resources\\turtle.png");
-            eato = Image.FromFile(Application.StartupPath + "\\Resources\\eato.png");
-            enemy = Image.FromFile(Application.StartupPath + "\\Resources\\enemy.png");
-            land1 = Image.FromFile(Application.StartupPath + "\\Resources\\land1.png");
-            land2 = Image.FromFile(Application.StartupPath + "\\Resources\\land2.png");
-            block1 = Image.FromFile(Application.StartupPath + "\\Resources\\block1.png");
-            coin = Image.FromFile(Application.StartupPath + "\\Resources\\coin.png");
-            coin1 = Image.FromFile(Application.StartupPath + "\\Resources\\coin1.png");
-            coin1c = Image.FromFile(Application.StartupPath + "\\Resources\\coin1c.png");
-            coin10c = Image.FromFile(Application.StartupPath + "\\Resources\\coin10c.png");
-            bushbig = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\bushbig.png");
-            pine = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\pine.png");
-            cloud2 = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\cloud2.png");
-            sign = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\sign.png");
-            ///\\\\  [10\\1\\2013 TheRise]
-            castus1 = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\castus1.png");
-            tree = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\tree.png");
-            bushsmall = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\bushsmall.png");
-            crass = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\crass.png");
-            bud = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\bud.png");
-            cloud1 = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\cloud1.png");
-            cloud3 = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\cloud3.png");
-            castus2 = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\castus2.png");
-            hill = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\hill.png");
-            castus3 = Image.FromFile(Application.StartupPath + "\\Resources\\Scenery\\castus3.png");
-            block2 = Image.FromFile(Application.StartupPath + "\\Resources\\block2.png");
-            block3 = Image.FromFile(Application.StartupPath + "\\Resources\\block3.png");
-            block4 = Image.FromFile(Application.StartupPath + "\\Resources\\block4.png");
-            block5 = Image.FromFile(Application.StartupPath + "\\Resources\\block5.png");
-            mario = Image.FromFile(Application.StartupPath + "\\Resources\\mario.png");
-
-           
         }
 
         private void LoadTypeObject()
@@ -144,6 +51,14 @@ namespace MapEditor
             rdMoveMap.AccessibleName = ObjectType.MOVEMAP.ToString();
             rdScrewBomber.AccessibleName = ObjectType.SCREW_BOMBER.ToString();
             rdLand1.AccessibleName = ObjectType.LAND1.ToString();
+            rdLand1_n.AccessibleName = ObjectType._LAND1.ToString();
+            rdBeak.AccessibleName = ObjectType.BEAK.ToString();
+            rdMet.AccessibleName = ObjectType.MET.ToString();
+            rdFlea.AccessibleName = ObjectType.FLEA.ToString();
+            rdSpine.AccessibleName = ObjectType.SPINE.ToString();
+            rdCuman.AccessibleName = ObjectType.CUTMAN.ToString();
+            rdGusman.AccessibleName = ObjectType.GUTSMAN.ToString();
+            rdIceMan.AccessibleName = ObjectType.ICEMAN.ToString();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -223,7 +138,7 @@ namespace MapEditor
             {
                 if (c is RadioButton)
                     c.Click += pnObjects_Controls_Click;
-                c.MouseEnter += pnObjects_MouseEnter;
+                
             }
         }
         void pnObjects_Controls_Click(object sender, EventArgs e)
@@ -233,17 +148,9 @@ namespace MapEditor
                 TypeCurrent = (ObjectType)Enum.Parse(typeof(ObjectType), controlSelected.AccessibleName);
 
         }
-        private void pnObjects_MouseEnter(object sender, EventArgs e)
-        {
-            pnObjects.Focus();
-        }
+
+
         //-----event button-----
-
-        public static int GetHeightPb() {
-            
-            return 1;
-        }
-
         private void btCreate_Click(object sender, EventArgs e)
         {
             pbGridMap.Refresh();
@@ -273,6 +180,8 @@ namespace MapEditor
             ObjectGame.ListIdJustDeleted.Clear();
             ObjectGame.CurrentId = 0;
         }
+
+        //-----------Fill range
         private void btFRange_Click(object sender, EventArgs e)
         {
             if (f == null)
@@ -371,16 +280,17 @@ namespace MapEditor
                 {
                     StreamWriter writer = new StreamWriter(myStream);
                     WriteFile(writer);
-                    
+
                     myStream.Close();
+
+                    string str = saveFileDialog1.FileName.Replace(".txt", "Tree.txt");
+                    StreamWriter wr = new StreamWriter(str);
+                    Tree.WriteFile(wr);
+                    wr.Write("<End>");
+                    wr.Dispose();
+                    wr.Close();
                 }
             }
-            string str = saveFileDialog1.FileName.Replace(".txt", "Tree.txt");
-            StreamWriter wr = new StreamWriter(str);
-            Tree.WriteFile(wr);
-            wr.Write("<End>");
-            wr.Dispose();
-            wr.Close();
         }
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -475,11 +385,11 @@ namespace MapEditor
             Image image = null;
             ObjectGame.SetKind(_type, false, ref widthType, ref heightType, ref image);
             int nextXObject;
-            if (toR <= fromR) toR = fromR + 1;
+            if (toR <= fromR) toR = fromR;
             if (toC <= fromC) toC = fromC + 1;
 
 
-            for (int i = fromR; i < toR ; i++)
+            for (int i = fromR; i <= toR ; i++)
             {
                 nextXObject = 0;
                 for (int j = fromC; j < toC && nextXObject < toC * 32; j++)

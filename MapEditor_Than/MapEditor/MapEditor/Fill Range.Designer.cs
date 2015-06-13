@@ -37,6 +37,7 @@
             this.cbRowTo = new System.Windows.Forms.ComboBox();
             this.cbColumnFrom = new System.Windows.Forms.ComboBox();
             this.cbColumnTo = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -67,7 +68,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(82, 155);
+            this.button1.Location = new System.Drawing.Point(69, 165);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 6;
@@ -116,11 +117,22 @@
             this.cbColumnTo.Size = new System.Drawing.Size(64, 21);
             this.cbColumnTo.TabIndex = 12;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(161, 165);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "Cancel";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Fill_Range
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(277, 231);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.cbColumnTo);
             this.Controls.Add(this.cbColumnFrom);
             this.Controls.Add(this.cbRowTo);
@@ -151,5 +163,6 @@
         private System.Windows.Forms.ComboBox cbRowTo;
         private System.Windows.Forms.ComboBox cbColumnFrom;
         private System.Windows.Forms.ComboBox cbColumnTo;
+        private System.Windows.Forms.Button button2;
     }
 }
