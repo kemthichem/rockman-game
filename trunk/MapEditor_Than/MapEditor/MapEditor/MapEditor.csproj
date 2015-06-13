@@ -60,6 +60,11 @@
     <Compile Include="ObjectGame.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="QuadTree.cs" />
     <EmbeddedResource Include="Fill Range.resx">
       <DependentUpon>Fill Range.cs</DependentUpon>
@@ -77,11 +82,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -91,9 +91,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="bin\Debug\Resources\brick.png" />
   </ItemGroup>
@@ -243,6 +241,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\Resources\enemy\enemy_screwbomber.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Resources\enemy\enemy_break.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Resources\enemy\enemy_met.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Resources\enemy\enemy_flea.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Resources\enemy\enemy_spine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boss\cutman.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boss\gutsman.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boss\iceman.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

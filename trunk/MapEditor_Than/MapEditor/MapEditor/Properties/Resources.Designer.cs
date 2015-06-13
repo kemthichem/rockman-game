@@ -123,6 +123,16 @@ namespace MapEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap break_left {
+            get {
+                object obj = ResourceManager.GetObject("break_left", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap brick {
             get {
                 object obj = ResourceManager.GetObject("brick", resourceCulture);
@@ -363,6 +373,16 @@ namespace MapEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cutman {
+            get {
+                object obj = ResourceManager.GetObject("cutman", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Eato {
             get {
                 object obj = ResourceManager.GetObject("Eato", resourceCulture);
@@ -423,9 +443,9 @@ namespace MapEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap enemy_break {
+        internal static System.Drawing.Bitmap enemy_flea {
             get {
-                object obj = ResourceManager.GetObject("enemy_break", resourceCulture);
+                object obj = ResourceManager.GetObject("enemy_flea", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -433,9 +453,9 @@ namespace MapEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap enemy_octopusbattery {
+        internal static System.Drawing.Bitmap enemy_met {
             get {
-                object obj = ResourceManager.GetObject("enemy_octopusbattery", resourceCulture);
+                object obj = ResourceManager.GetObject("enemy_met", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -456,6 +476,16 @@ namespace MapEditor.Properties {
         internal static System.Drawing.Bitmap enemy_screwbomber {
             get {
                 object obj = ResourceManager.GetObject("enemy_screwbomber", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap enemy_spine {
+            get {
+                object obj = ResourceManager.GetObject("enemy_spine", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -493,6 +523,16 @@ namespace MapEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap gutsman {
+            get {
+                object obj = ResourceManager.GetObject("gutsman", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap hill {
             get {
                 object obj = ResourceManager.GetObject("hill", resourceCulture);
@@ -516,6 +556,16 @@ namespace MapEditor.Properties {
         internal static System.Drawing.Bitmap house1 {
             get {
                 object obj = ResourceManager.GetObject("house1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iceman {
+            get {
+                object obj = ResourceManager.GetObject("iceman", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -856,16 +906,6 @@ namespace MapEditor.Properties {
         internal static System.Drawing.Bitmap turtle {
             get {
                 object obj = ResourceManager.GetObject("turtle", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap turtle1 {
-            get {
-                object obj = ResourceManager.GetObject("turtle1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

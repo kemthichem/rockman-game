@@ -12,19 +12,25 @@ namespace MapEditor
         SCENERY = -10,
         LAND,
         LAND1,
+        _LAND1,
         LANDWHITE,
         LANDICEBERG,
         ROCKMAN = 0,
         LADDER,
         BIGEYE,
         BLADER,
-        CUTMAN,
-        ICEMAN,
+        MET,
         SCREW_BOMBER,
         OCTOPUS,
+        OCTOPUS_D,
         BEAK,
+        BEAK_R,
         FLEA,
+        SPINE,
         MOVEMAP,
+        CUTMAN,
+        GUTSMAN,
+        ICEMAN,
         BULLET,
         ITEM
     };
@@ -92,7 +98,13 @@ namespace MapEditor
                     width = 64;
                     height = 32;
                     if (isGetImage)
-                        image = Form1.Land1Image;
+                        image = global::MapEditor.Properties.Resources.land13;
+                    break;
+                case ObjectType._LAND1:
+                    width = 64;
+                    height = 32;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.land13;
                     break;
                 case ObjectType.LANDWHITE:
                     break;
@@ -106,32 +118,63 @@ namespace MapEditor
                     width = 65;
                     height = 97;
                     if (isGetImage)
-                        image = Form1.BigEyeImage;
+                        image = global::MapEditor.Properties.Resources.enemy_bigeye;
                     break;
                 case ObjectType.BLADER:
                     break;
-                case ObjectType.CUTMAN:
-                    break;
-                case ObjectType.ICEMAN:
-                    break;
-                case ObjectType.SCREW_BOMBER:
-                    width = 35;
-                    height = 35;
+                case ObjectType.MET:
+                    width = 40;
+                    height = 30;
                     if (isGetImage)
-                        image = Form1.ScrewImage;
+                        image = global::MapEditor.Properties.Resources.enemy_met;
+                    break;
+                case ObjectType.FLEA:
+                    width = 32;
+                    height = 38;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.enemy_flea;
+                    break;
+                case ObjectType.SPINE:
+                    width = 32;
+                    height = 18;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.enemy_spine;
                     break;
                 case ObjectType.OCTOPUS:
                     break;
                 case ObjectType.BEAK:
-                    break;
-                case ObjectType.FLEA:
+                    width = 30;
+                    height = 35;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.break_left;
                     break;
                 case ObjectType.MOVEMAP:
                     width = 32;
                     height = 1;
                     if (isGetImage)
-                        image = Form1.MoveMapImage;
+                        image = global::MapEditor.Properties.Resources.movemap;
                     break;
+
+                //***********BOSS***************//
+                case ObjectType.CUTMAN:
+                    width = 48;
+                    height = 65;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.cutman;
+                    break;
+                case ObjectType.ICEMAN:
+                    width = 56;
+                    height = 60;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.iceman;
+                    break;
+                case ObjectType.GUTSMAN:
+                    width = 70;
+                    height = 70;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.gutsman;
+                    break;
+
                 case ObjectType.BULLET:
                     break;
                 case ObjectType.ITEM:
