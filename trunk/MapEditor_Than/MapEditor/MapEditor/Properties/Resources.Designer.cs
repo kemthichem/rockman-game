@@ -573,6 +573,16 @@ namespace MapEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap land {
+            get {
+                object obj = ResourceManager.GetObject("land", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap land1 {
             get {
                 object obj = ResourceManager.GetObject("land1", resourceCulture);
@@ -626,6 +636,26 @@ namespace MapEditor.Properties {
         internal static System.Drawing.Bitmap land21 {
             get {
                 object obj = ResourceManager.GetObject("land21", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LandIceberg {
+            get {
+                object obj = ResourceManager.GetObject("LandIceberg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap landwhite {
+            get {
+                object obj = ResourceManager.GetObject("landwhite", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

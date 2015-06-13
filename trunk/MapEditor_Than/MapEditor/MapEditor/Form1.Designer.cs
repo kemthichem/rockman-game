@@ -65,10 +65,10 @@
             this.radioButton24 = new System.Windows.Forms.RadioButton();
             this.radioButton39 = new System.Windows.Forms.RadioButton();
             this.radioButton38 = new System.Windows.Forms.RadioButton();
-            this.radioButton23 = new System.Windows.Forms.RadioButton();
+            this.rdLandIceberg_n = new System.Windows.Forms.RadioButton();
             this.radioButton37 = new System.Windows.Forms.RadioButton();
-            this.radioButton21 = new System.Windows.Forms.RadioButton();
-            this.radioButton22 = new System.Windows.Forms.RadioButton();
+            this.rdLand_n = new System.Windows.Forms.RadioButton();
+            this.rdLandWhite_n = new System.Windows.Forms.RadioButton();
             this.radioButton36 = new System.Windows.Forms.RadioButton();
             this.radioButton35 = new System.Windows.Forms.RadioButton();
             this.radioButton34 = new System.Windows.Forms.RadioButton();
@@ -89,9 +89,9 @@
             this.radioButton13 = new System.Windows.Forms.RadioButton();
             this.radioButton12 = new System.Windows.Forms.RadioButton();
             this.radioButton11 = new System.Windows.Forms.RadioButton();
-            this.radioButton10 = new System.Windows.Forms.RadioButton();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
+            this.rdLandIceberg = new System.Windows.Forms.RadioButton();
+            this.rdLandWhite = new System.Windows.Forms.RadioButton();
+            this.rdLand = new System.Windows.Forms.RadioButton();
             this.rdIceMan = new System.Windows.Forms.RadioButton();
             this.rdSpine = new System.Windows.Forms.RadioButton();
             this.rdLand1_n = new System.Windows.Forms.RadioButton();
@@ -289,10 +289,10 @@
             this.pnObjects.Controls.Add(this.radioButton24);
             this.pnObjects.Controls.Add(this.radioButton39);
             this.pnObjects.Controls.Add(this.radioButton38);
-            this.pnObjects.Controls.Add(this.radioButton23);
+            this.pnObjects.Controls.Add(this.rdLandIceberg_n);
             this.pnObjects.Controls.Add(this.radioButton37);
-            this.pnObjects.Controls.Add(this.radioButton21);
-            this.pnObjects.Controls.Add(this.radioButton22);
+            this.pnObjects.Controls.Add(this.rdLand_n);
+            this.pnObjects.Controls.Add(this.rdLandWhite_n);
             this.pnObjects.Controls.Add(this.radioButton36);
             this.pnObjects.Controls.Add(this.radioButton35);
             this.pnObjects.Controls.Add(this.radioButton34);
@@ -313,9 +313,9 @@
             this.pnObjects.Controls.Add(this.radioButton13);
             this.pnObjects.Controls.Add(this.radioButton12);
             this.pnObjects.Controls.Add(this.radioButton11);
-            this.pnObjects.Controls.Add(this.radioButton10);
-            this.pnObjects.Controls.Add(this.radioButton9);
-            this.pnObjects.Controls.Add(this.radioButton8);
+            this.pnObjects.Controls.Add(this.rdLandIceberg);
+            this.pnObjects.Controls.Add(this.rdLandWhite);
+            this.pnObjects.Controls.Add(this.rdLand);
             this.pnObjects.Controls.Add(this.rdIceMan);
             this.pnObjects.Controls.Add(this.rdSpine);
             this.pnObjects.Controls.Add(this.rdLand1_n);
@@ -363,7 +363,7 @@
             this.rdMet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdMet.Image = global::MapEditor.Properties.Resources.enemy_met;
             this.rdMet.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdMet.Location = new System.Drawing.Point(23, 287);
+            this.rdMet.Location = new System.Drawing.Point(23, 301);
             this.rdMet.Name = "rdMet";
             this.rdMet.Size = new System.Drawing.Size(95, 92);
             this.rdMet.TabIndex = 66;
@@ -380,7 +380,7 @@
             this.radioButton47.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton47.Image = global::MapEditor.Properties.Resources.block5;
             this.radioButton47.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton47.Location = new System.Drawing.Point(11, 2384);
+            this.radioButton47.Location = new System.Drawing.Point(11, 3691);
             this.radioButton47.Name = "radioButton47";
             this.radioButton47.Size = new System.Drawing.Size(95, 88);
             this.radioButton47.TabIndex = 64;
@@ -397,7 +397,7 @@
             this.radioButton48.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton48.Image = global::MapEditor.Properties.Resources.block4;
             this.radioButton48.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton48.Location = new System.Drawing.Point(11, 2293);
+            this.radioButton48.Location = new System.Drawing.Point(11, 3600);
             this.radioButton48.Name = "radioButton48";
             this.radioButton48.Size = new System.Drawing.Size(95, 88);
             this.radioButton48.TabIndex = 63;
@@ -414,7 +414,7 @@
             this.radioButton46.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton46.Image = global::MapEditor.Properties.Resources.cloud1;
             this.radioButton46.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton46.Location = new System.Drawing.Point(137, 2288);
+            this.radioButton46.Location = new System.Drawing.Point(137, 3595);
             this.radioButton46.Name = "radioButton46";
             this.radioButton46.Size = new System.Drawing.Size(95, 88);
             this.radioButton46.TabIndex = 62;
@@ -431,7 +431,7 @@
             this.radioButton45.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton45.Image = global::MapEditor.Properties.Resources.cloud3;
             this.radioButton45.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton45.Location = new System.Drawing.Point(137, 2382);
+            this.radioButton45.Location = new System.Drawing.Point(137, 3689);
             this.radioButton45.Name = "radioButton45";
             this.radioButton45.Size = new System.Drawing.Size(95, 88);
             this.radioButton45.TabIndex = 61;
@@ -448,7 +448,7 @@
             this.radioButton44.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton44.Image = global::MapEditor.Properties.Resources.tree;
             this.radioButton44.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton44.Location = new System.Drawing.Point(137, 2194);
+            this.radioButton44.Location = new System.Drawing.Point(137, 3501);
             this.radioButton44.Name = "radioButton44";
             this.radioButton44.Size = new System.Drawing.Size(95, 88);
             this.radioButton44.TabIndex = 60;
@@ -465,7 +465,7 @@
             this.radioButton43.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton43.Image = global::MapEditor.Properties.Resources.block3;
             this.radioButton43.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton43.Location = new System.Drawing.Point(11, 2194);
+            this.radioButton43.Location = new System.Drawing.Point(11, 3501);
             this.radioButton43.Name = "radioButton43";
             this.radioButton43.Size = new System.Drawing.Size(95, 88);
             this.radioButton43.TabIndex = 59;
@@ -482,7 +482,7 @@
             this.radioButton42.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton42.Image = global::MapEditor.Properties.Resources.block2;
             this.radioButton42.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton42.Location = new System.Drawing.Point(11, 2103);
+            this.radioButton42.Location = new System.Drawing.Point(11, 3410);
             this.radioButton42.Name = "radioButton42";
             this.radioButton42.Size = new System.Drawing.Size(95, 88);
             this.radioButton42.TabIndex = 58;
@@ -499,7 +499,7 @@
             this.radioButton41.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton41.Image = global::MapEditor.Properties.Resources.hill;
             this.radioButton41.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton41.Location = new System.Drawing.Point(137, 2103);
+            this.radioButton41.Location = new System.Drawing.Point(137, 3410);
             this.radioButton41.Name = "radioButton41";
             this.radioButton41.Size = new System.Drawing.Size(95, 88);
             this.radioButton41.TabIndex = 57;
@@ -516,7 +516,7 @@
             this.radioButton40.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton40.Image = global::MapEditor.Properties.Resources.crass;
             this.radioButton40.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton40.Location = new System.Drawing.Point(137, 2009);
+            this.radioButton40.Location = new System.Drawing.Point(137, 3316);
             this.radioButton40.Name = "radioButton40";
             this.radioButton40.Size = new System.Drawing.Size(95, 88);
             this.radioButton40.TabIndex = 56;
@@ -533,7 +533,7 @@
             this.radioButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton1.Image = global::MapEditor.Properties.Resources.brick;
             this.radioButton1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton1.Location = new System.Drawing.Point(11, 1807);
+            this.radioButton1.Location = new System.Drawing.Point(11, 3114);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(95, 88);
             this.radioButton1.TabIndex = 5;
@@ -550,7 +550,7 @@
             this.radioButton16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton16.Image = global::MapEditor.Properties.Resources.flag;
             this.radioButton16.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton16.Location = new System.Drawing.Point(11, 1914);
+            this.radioButton16.Location = new System.Drawing.Point(11, 3221);
             this.radioButton16.Name = "radioButton16";
             this.radioButton16.Size = new System.Drawing.Size(95, 89);
             this.radioButton16.TabIndex = 28;
@@ -567,7 +567,7 @@
             this.radioButton17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton17.Image = global::MapEditor.Properties.Resources.house;
             this.radioButton17.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton17.Location = new System.Drawing.Point(11, 2009);
+            this.radioButton17.Location = new System.Drawing.Point(11, 3316);
             this.radioButton17.Name = "radioButton17";
             this.radioButton17.Size = new System.Drawing.Size(95, 89);
             this.radioButton17.TabIndex = 29;
@@ -584,7 +584,7 @@
             this.radioButton24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton24.Image = global::MapEditor.Properties.Resources.coin10c;
             this.radioButton24.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton24.Location = new System.Drawing.Point(137, 1039);
+            this.radioButton24.Location = new System.Drawing.Point(137, 2346);
             this.radioButton24.Name = "radioButton24";
             this.radioButton24.Size = new System.Drawing.Size(95, 88);
             this.radioButton24.TabIndex = 55;
@@ -601,7 +601,7 @@
             this.radioButton39.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton39.Image = global::MapEditor.Properties.Resources.castus3;
             this.radioButton39.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton39.Location = new System.Drawing.Point(137, 1915);
+            this.radioButton39.Location = new System.Drawing.Point(137, 3222);
             this.radioButton39.Name = "radioButton39";
             this.radioButton39.Size = new System.Drawing.Size(95, 88);
             this.radioButton39.TabIndex = 51;
@@ -618,7 +618,7 @@
             this.radioButton38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton38.Image = global::MapEditor.Properties.Resources.castus2;
             this.radioButton38.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton38.Location = new System.Drawing.Point(137, 1809);
+            this.radioButton38.Location = new System.Drawing.Point(137, 3116);
             this.radioButton38.Name = "radioButton38";
             this.radioButton38.Size = new System.Drawing.Size(95, 88);
             this.radioButton38.TabIndex = 50;
@@ -626,22 +626,21 @@
             this.radioButton38.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.radioButton38.UseVisualStyleBackColor = true;
             // 
-            // radioButton23
+            // rdLandIceberg_n
             // 
-            this.radioButton23.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton23.Enabled = false;
-            this.radioButton23.FlatAppearance.BorderSize = 0;
-            this.radioButton23.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.radioButton23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton23.Image = global::MapEditor.Properties.Resources.coin1c;
-            this.radioButton23.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton23.Location = new System.Drawing.Point(137, 944);
-            this.radioButton23.Name = "radioButton23";
-            this.radioButton23.Size = new System.Drawing.Size(95, 88);
-            this.radioButton23.TabIndex = 54;
-            this.radioButton23.Text = "ob(23)(50x50)";
-            this.radioButton23.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.radioButton23.UseVisualStyleBackColor = true;
+            this.rdLandIceberg_n.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdLandIceberg_n.FlatAppearance.BorderSize = 0;
+            this.rdLandIceberg_n.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdLandIceberg_n.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdLandIceberg_n.Image = global::MapEditor.Properties.Resources.LandIceberg;
+            this.rdLandIceberg_n.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rdLandIceberg_n.Location = new System.Drawing.Point(137, 781);
+            this.rdLandIceberg_n.Name = "rdLandIceberg_n";
+            this.rdLandIceberg_n.Size = new System.Drawing.Size(95, 88);
+            this.rdLandIceberg_n.TabIndex = 54;
+            this.rdLandIceberg_n.Text = "Land Iceberg (Not collision)";
+            this.rdLandIceberg_n.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdLandIceberg_n.UseVisualStyleBackColor = true;
             // 
             // radioButton37
             // 
@@ -652,7 +651,7 @@
             this.radioButton37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton37.Image = global::MapEditor.Properties.Resources.castus1;
             this.radioButton37.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton37.Location = new System.Drawing.Point(137, 1712);
+            this.radioButton37.Location = new System.Drawing.Point(137, 3019);
             this.radioButton37.Name = "radioButton37";
             this.radioButton37.Size = new System.Drawing.Size(95, 88);
             this.radioButton37.TabIndex = 49;
@@ -660,39 +659,37 @@
             this.radioButton37.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.radioButton37.UseVisualStyleBackColor = true;
             // 
-            // radioButton21
+            // rdLand_n
             // 
-            this.radioButton21.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton21.Enabled = false;
-            this.radioButton21.FlatAppearance.BorderSize = 0;
-            this.radioButton21.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.radioButton21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton21.Image = global::MapEditor.Properties.Resources.coin;
-            this.radioButton21.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton21.Location = new System.Drawing.Point(137, 749);
-            this.radioButton21.Name = "radioButton21";
-            this.radioButton21.Size = new System.Drawing.Size(95, 88);
-            this.radioButton21.TabIndex = 52;
-            this.radioButton21.Text = "ob(11)(50x50)";
-            this.radioButton21.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.radioButton21.UseVisualStyleBackColor = true;
+            this.rdLand_n.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdLand_n.FlatAppearance.BorderSize = 0;
+            this.rdLand_n.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdLand_n.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdLand_n.Image = global::MapEditor.Properties.Resources.land;
+            this.rdLand_n.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rdLand_n.Location = new System.Drawing.Point(137, 592);
+            this.rdLand_n.Name = "rdLand_n";
+            this.rdLand_n.Size = new System.Drawing.Size(95, 88);
+            this.rdLand_n.TabIndex = 52;
+            this.rdLand_n.Text = "Land (not collision)";
+            this.rdLand_n.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdLand_n.UseVisualStyleBackColor = true;
             // 
-            // radioButton22
+            // rdLandWhite_n
             // 
-            this.radioButton22.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton22.Enabled = false;
-            this.radioButton22.FlatAppearance.BorderSize = 0;
-            this.radioButton22.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.radioButton22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton22.Image = global::MapEditor.Properties.Resources.coin1;
-            this.radioButton22.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton22.Location = new System.Drawing.Point(137, 855);
-            this.radioButton22.Name = "radioButton22";
-            this.radioButton22.Size = new System.Drawing.Size(95, 77);
-            this.radioButton22.TabIndex = 53;
-            this.radioButton22.Text = "ob(21)(50x50)";
-            this.radioButton22.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.radioButton22.UseVisualStyleBackColor = true;
+            this.rdLandWhite_n.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdLandWhite_n.FlatAppearance.BorderSize = 0;
+            this.rdLandWhite_n.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdLandWhite_n.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdLandWhite_n.Image = global::MapEditor.Properties.Resources.landwhite;
+            this.rdLandWhite_n.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rdLandWhite_n.Location = new System.Drawing.Point(137, 698);
+            this.rdLandWhite_n.Name = "rdLandWhite_n";
+            this.rdLandWhite_n.Size = new System.Drawing.Size(95, 77);
+            this.rdLandWhite_n.TabIndex = 53;
+            this.rdLandWhite_n.Text = "Land white(not collsion)";
+            this.rdLandWhite_n.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdLandWhite_n.UseVisualStyleBackColor = true;
             // 
             // radioButton36
             // 
@@ -703,7 +700,7 @@
             this.radioButton36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton36.Image = global::MapEditor.Properties.Resources.bud;
             this.radioButton36.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton36.Location = new System.Drawing.Point(137, 1618);
+            this.radioButton36.Location = new System.Drawing.Point(137, 2925);
             this.radioButton36.Name = "radioButton36";
             this.radioButton36.Size = new System.Drawing.Size(95, 88);
             this.radioButton36.TabIndex = 48;
@@ -720,7 +717,7 @@
             this.radioButton35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton35.Image = global::MapEditor.Properties.Resources.sign;
             this.radioButton35.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton35.Location = new System.Drawing.Point(137, 1524);
+            this.radioButton35.Location = new System.Drawing.Point(137, 2831);
             this.radioButton35.Name = "radioButton35";
             this.radioButton35.Size = new System.Drawing.Size(95, 88);
             this.radioButton35.TabIndex = 47;
@@ -737,7 +734,7 @@
             this.radioButton34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton34.Image = global::MapEditor.Properties.Resources.cloud2;
             this.radioButton34.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton34.Location = new System.Drawing.Point(137, 1430);
+            this.radioButton34.Location = new System.Drawing.Point(137, 2737);
             this.radioButton34.Name = "radioButton34";
             this.radioButton34.Size = new System.Drawing.Size(95, 88);
             this.radioButton34.TabIndex = 46;
@@ -754,7 +751,7 @@
             this.radioButton33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton33.Image = global::MapEditor.Properties.Resources.pine;
             this.radioButton33.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton33.Location = new System.Drawing.Point(137, 1335);
+            this.radioButton33.Location = new System.Drawing.Point(137, 2642);
             this.radioButton33.Name = "radioButton33";
             this.radioButton33.Size = new System.Drawing.Size(95, 88);
             this.radioButton33.TabIndex = 45;
@@ -771,7 +768,7 @@
             this.radioButton32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton32.Image = global::MapEditor.Properties.Resources.bushbig;
             this.radioButton32.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton32.Location = new System.Drawing.Point(137, 1239);
+            this.radioButton32.Location = new System.Drawing.Point(137, 2546);
             this.radioButton32.Name = "radioButton32";
             this.radioButton32.Size = new System.Drawing.Size(95, 88);
             this.radioButton32.TabIndex = 44;
@@ -788,7 +785,7 @@
             this.radioButton31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton31.Image = global::MapEditor.Properties.Resources.bushsmall;
             this.radioButton31.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton31.Location = new System.Drawing.Point(137, 1144);
+            this.radioButton31.Location = new System.Drawing.Point(137, 2451);
             this.radioButton31.Name = "radioButton31";
             this.radioButton31.Size = new System.Drawing.Size(95, 88);
             this.radioButton31.TabIndex = 43;
@@ -804,7 +801,7 @@
             this.rdGusman.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdGusman.Image = global::MapEditor.Properties.Resources.gutsman;
             this.rdGusman.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdGusman.Location = new System.Drawing.Point(137, 479);
+            this.rdGusman.Location = new System.Drawing.Point(137, 493);
             this.rdGusman.Name = "rdGusman";
             this.rdGusman.Size = new System.Drawing.Size(95, 92);
             this.rdGusman.TabIndex = 42;
@@ -820,7 +817,7 @@
             this.rdCuman.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdCuman.Image = global::MapEditor.Properties.Resources.cutman;
             this.rdCuman.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdCuman.Location = new System.Drawing.Point(137, 381);
+            this.rdCuman.Location = new System.Drawing.Point(137, 395);
             this.rdCuman.Name = "rdCuman";
             this.rdCuman.Size = new System.Drawing.Size(95, 92);
             this.rdCuman.TabIndex = 41;
@@ -836,7 +833,7 @@
             this.rdFlea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdFlea.Image = global::MapEditor.Properties.Resources.enemy_flea;
             this.rdFlea.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdFlea.Location = new System.Drawing.Point(137, 287);
+            this.rdFlea.Location = new System.Drawing.Point(137, 301);
             this.rdFlea.Name = "rdFlea";
             this.rdFlea.Size = new System.Drawing.Size(95, 92);
             this.rdFlea.TabIndex = 40;
@@ -852,7 +849,7 @@
             this.rdBeak.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdBeak.Image = global::MapEditor.Properties.Resources.break_left;
             this.rdBeak.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdBeak.Location = new System.Drawing.Point(137, 193);
+            this.rdBeak.Location = new System.Drawing.Point(137, 207);
             this.rdBeak.Name = "rdBeak";
             this.rdBeak.Size = new System.Drawing.Size(95, 92);
             this.rdBeak.TabIndex = 39;
@@ -868,7 +865,7 @@
             this.rdMoveMap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdMoveMap.Image = global::MapEditor.Properties.Resources.movemap;
             this.rdMoveMap.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdMoveMap.Location = new System.Drawing.Point(137, 96);
+            this.rdMoveMap.Location = new System.Drawing.Point(137, 110);
             this.rdMoveMap.Name = "rdMoveMap";
             this.rdMoveMap.Size = new System.Drawing.Size(95, 92);
             this.rdMoveMap.TabIndex = 38;
@@ -884,7 +881,7 @@
             this.rdLand1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdLand1.Image = global::MapEditor.Properties.Resources.land13;
             this.rdLand1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLand1.Location = new System.Drawing.Point(137, 2);
+            this.rdLand1.Location = new System.Drawing.Point(137, 16);
             this.rdLand1.Name = "rdLand1";
             this.rdLand1.Size = new System.Drawing.Size(95, 92);
             this.rdLand1.TabIndex = 37;
@@ -901,7 +898,7 @@
             this.radioButton20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton20.Image = global::MapEditor.Properties.Resources.block1;
             this.radioButton20.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton20.Location = new System.Drawing.Point(11, 1712);
+            this.radioButton20.Location = new System.Drawing.Point(11, 3019);
             this.radioButton20.Name = "radioButton20";
             this.radioButton20.Size = new System.Drawing.Size(95, 89);
             this.radioButton20.TabIndex = 32;
@@ -918,7 +915,7 @@
             this.radioButton19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton19.Image = global::MapEditor.Properties.Resources.land2;
             this.radioButton19.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton19.Location = new System.Drawing.Point(11, 1614);
+            this.radioButton19.Location = new System.Drawing.Point(11, 2921);
             this.radioButton19.Name = "radioButton19";
             this.radioButton19.Size = new System.Drawing.Size(95, 89);
             this.radioButton19.TabIndex = 31;
@@ -935,7 +932,7 @@
             this.radioButton18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton18.Image = global::MapEditor.Properties.Resources.land1;
             this.radioButton18.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton18.Location = new System.Drawing.Point(11, 1523);
+            this.radioButton18.Location = new System.Drawing.Point(11, 2830);
             this.radioButton18.Name = "radioButton18";
             this.radioButton18.Size = new System.Drawing.Size(95, 89);
             this.radioButton18.TabIndex = 30;
@@ -952,7 +949,7 @@
             this.radioButton15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton15.Image = global::MapEditor.Properties.Resources.Eato1;
             this.radioButton15.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton15.Location = new System.Drawing.Point(11, 1429);
+            this.radioButton15.Location = new System.Drawing.Point(11, 2736);
             this.radioButton15.Name = "radioButton15";
             this.radioButton15.Size = new System.Drawing.Size(95, 89);
             this.radioButton15.TabIndex = 27;
@@ -969,7 +966,7 @@
             this.radioButton14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton14.Image = global::MapEditor.Properties.Resources.turtle;
             this.radioButton14.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton14.Location = new System.Drawing.Point(11, 1335);
+            this.radioButton14.Location = new System.Drawing.Point(11, 2642);
             this.radioButton14.Name = "radioButton14";
             this.radioButton14.Size = new System.Drawing.Size(95, 89);
             this.radioButton14.TabIndex = 26;
@@ -986,7 +983,7 @@
             this.radioButton13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton13.Image = global::MapEditor.Properties.Resources.enemy;
             this.radioButton13.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton13.Location = new System.Drawing.Point(11, 1239);
+            this.radioButton13.Location = new System.Drawing.Point(11, 2546);
             this.radioButton13.Name = "radioButton13";
             this.radioButton13.Size = new System.Drawing.Size(95, 89);
             this.radioButton13.TabIndex = 25;
@@ -1003,7 +1000,7 @@
             this.radioButton12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton12.Image = global::MapEditor.Properties.Resources.star;
             this.radioButton12.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton12.Location = new System.Drawing.Point(11, 1139);
+            this.radioButton12.Location = new System.Drawing.Point(11, 2446);
             this.radioButton12.Name = "radioButton12";
             this.radioButton12.Size = new System.Drawing.Size(95, 89);
             this.radioButton12.TabIndex = 24;
@@ -1020,7 +1017,7 @@
             this.radioButton11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton11.Image = global::MapEditor.Properties.Resources.mushlife2;
             this.radioButton11.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton11.Location = new System.Drawing.Point(11, 1044);
+            this.radioButton11.Location = new System.Drawing.Point(11, 2351);
             this.radioButton11.Name = "radioButton11";
             this.radioButton11.Size = new System.Drawing.Size(95, 89);
             this.radioButton11.TabIndex = 23;
@@ -1028,56 +1025,53 @@
             this.radioButton11.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.radioButton11.UseVisualStyleBackColor = true;
             // 
-            // radioButton10
+            // rdLandIceberg
             // 
-            this.radioButton10.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton10.Enabled = false;
-            this.radioButton10.FlatAppearance.BorderSize = 0;
-            this.radioButton10.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.radioButton10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton10.Image = global::MapEditor.Properties.Resources.mushlife1;
-            this.radioButton10.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton10.Location = new System.Drawing.Point(11, 949);
-            this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(95, 89);
-            this.radioButton10.TabIndex = 22;
-            this.radioButton10.Text = "ob(25)(50x50)";
-            this.radioButton10.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.radioButton10.UseVisualStyleBackColor = true;
+            this.rdLandIceberg.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdLandIceberg.FlatAppearance.BorderSize = 0;
+            this.rdLandIceberg.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdLandIceberg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdLandIceberg.Image = global::MapEditor.Properties.Resources.LandIceberg;
+            this.rdLandIceberg.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rdLandIceberg.Location = new System.Drawing.Point(11, 781);
+            this.rdLandIceberg.Name = "rdLandIceberg";
+            this.rdLandIceberg.Size = new System.Drawing.Size(95, 89);
+            this.rdLandIceberg.TabIndex = 22;
+            this.rdLandIceberg.Text = "LandIceberg";
+            this.rdLandIceberg.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdLandIceberg.UseVisualStyleBackColor = true;
             // 
-            // radioButton9
+            // rdLandWhite
             // 
-            this.radioButton9.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton9.Enabled = false;
-            this.radioButton9.FlatAppearance.BorderSize = 0;
-            this.radioButton9.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.radioButton9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton9.Image = global::MapEditor.Properties.Resources.mushlife;
-            this.radioButton9.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton9.Location = new System.Drawing.Point(11, 843);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(95, 89);
-            this.radioButton9.TabIndex = 21;
-            this.radioButton9.Text = "ob(12)(50x50)";
-            this.radioButton9.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.radioButton9.UseVisualStyleBackColor = true;
+            this.rdLandWhite.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdLandWhite.FlatAppearance.BorderSize = 0;
+            this.rdLandWhite.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdLandWhite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdLandWhite.Image = global::MapEditor.Properties.Resources.landwhite;
+            this.rdLandWhite.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rdLandWhite.Location = new System.Drawing.Point(11, 692);
+            this.rdLandWhite.Name = "rdLandWhite";
+            this.rdLandWhite.Size = new System.Drawing.Size(95, 89);
+            this.rdLandWhite.TabIndex = 21;
+            this.rdLandWhite.Text = "Land White";
+            this.rdLandWhite.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdLandWhite.UseVisualStyleBackColor = true;
             // 
-            // radioButton8
+            // rdLand
             // 
-            this.radioButton8.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton8.Enabled = false;
-            this.radioButton8.FlatAppearance.BorderSize = 0;
-            this.radioButton8.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.radioButton8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton8.Image = global::MapEditor.Properties.Resources.mush2;
-            this.radioButton8.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton8.Location = new System.Drawing.Point(11, 748);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(95, 89);
-            this.radioButton8.TabIndex = 20;
-            this.radioButton8.Text = "ob(28)(50x50)";
-            this.radioButton8.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.radioButton8.UseVisualStyleBackColor = true;
+            this.rdLand.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdLand.FlatAppearance.BorderSize = 0;
+            this.rdLand.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdLand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdLand.Image = global::MapEditor.Properties.Resources.land;
+            this.rdLand.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rdLand.Location = new System.Drawing.Point(11, 591);
+            this.rdLand.Name = "rdLand";
+            this.rdLand.Size = new System.Drawing.Size(95, 89);
+            this.rdLand.TabIndex = 20;
+            this.rdLand.Text = "Land";
+            this.rdLand.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdLand.UseVisualStyleBackColor = true;
             // 
             // rdIceMan
             // 
@@ -1087,7 +1081,7 @@
             this.rdIceMan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdIceMan.Image = global::MapEditor.Properties.Resources.iceman;
             this.rdIceMan.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdIceMan.Location = new System.Drawing.Point(11, 478);
+            this.rdIceMan.Location = new System.Drawing.Point(11, 492);
             this.rdIceMan.Name = "rdIceMan";
             this.rdIceMan.Size = new System.Drawing.Size(95, 93);
             this.rdIceMan.TabIndex = 19;
@@ -1103,7 +1097,7 @@
             this.rdSpine.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdSpine.Image = global::MapEditor.Properties.Resources.enemy_spine;
             this.rdSpine.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdSpine.Location = new System.Drawing.Point(11, 383);
+            this.rdSpine.Location = new System.Drawing.Point(11, 397);
             this.rdSpine.Name = "rdSpine";
             this.rdSpine.Size = new System.Drawing.Size(95, 93);
             this.rdSpine.TabIndex = 7;
@@ -1120,7 +1114,7 @@
             this.rdLand1_n.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdLand1_n.Image = global::MapEditor.Properties.Resources.land13;
             this.rdLand1_n.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLand1_n.Location = new System.Drawing.Point(11, 193);
+            this.rdLand1_n.Location = new System.Drawing.Point(11, 207);
             this.rdLand1_n.Name = "rdLand1_n";
             this.rdLand1_n.Size = new System.Drawing.Size(95, 93);
             this.rdLand1_n.TabIndex = 6;
@@ -1136,7 +1130,7 @@
             this.rdScrewBomber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdScrewBomber.Image = global::MapEditor.Properties.Resources.enemy_screwbomber;
             this.rdScrewBomber.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdScrewBomber.Location = new System.Drawing.Point(11, 93);
+            this.rdScrewBomber.Location = new System.Drawing.Point(11, 107);
             this.rdScrewBomber.Name = "rdScrewBomber";
             this.rdScrewBomber.Size = new System.Drawing.Size(95, 98);
             this.rdScrewBomber.TabIndex = 5;
@@ -1153,7 +1147,7 @@
             this.rdBigEye.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdBigEye.Image = global::MapEditor.Properties.Resources.enemy_bigeye;
             this.rdBigEye.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdBigEye.Location = new System.Drawing.Point(11, 5);
+            this.rdBigEye.Location = new System.Drawing.Point(11, 19);
             this.rdBigEye.Name = "rdBigEye";
             this.rdBigEye.Size = new System.Drawing.Size(95, 86);
             this.rdBigEye.TabIndex = 4;
@@ -1229,10 +1223,10 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.RadioButton rdSpine;
-        private System.Windows.Forms.RadioButton radioButton8;
+        private System.Windows.Forms.RadioButton rdLand;
         private System.Windows.Forms.RadioButton rdIceMan;
-        private System.Windows.Forms.RadioButton radioButton10;
-        private System.Windows.Forms.RadioButton radioButton9;
+        private System.Windows.Forms.RadioButton rdLandIceberg;
+        private System.Windows.Forms.RadioButton rdLandWhite;
         private System.Windows.Forms.RadioButton radioButton15;
         private System.Windows.Forms.RadioButton radioButton14;
         private System.Windows.Forms.RadioButton radioButton13;
@@ -1260,9 +1254,9 @@
         private System.Windows.Forms.RadioButton rdLand1;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton24;
-        private System.Windows.Forms.RadioButton radioButton23;
-        private System.Windows.Forms.RadioButton radioButton21;
-        private System.Windows.Forms.RadioButton radioButton22;
+        private System.Windows.Forms.RadioButton rdLandIceberg_n;
+        private System.Windows.Forms.RadioButton rdLand_n;
+        private System.Windows.Forms.RadioButton rdLandWhite_n;
         private System.Windows.Forms.RadioButton radioButton45;
         private System.Windows.Forms.RadioButton radioButton44;
         private System.Windows.Forms.RadioButton radioButton43;

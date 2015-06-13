@@ -52,6 +52,12 @@ namespace MapEditor
             rdScrewBomber.AccessibleName = ObjectType.SCREW_BOMBER.ToString();
             rdLand1.AccessibleName = ObjectType.LAND1.ToString();
             rdLand1_n.AccessibleName = ObjectType._LAND1.ToString();
+            rdLand.AccessibleName = ObjectType.LAND.ToString();
+            rdLand_n.AccessibleName = ObjectType._LAND.ToString();
+            rdLandWhite.AccessibleName = ObjectType.LANDWHITE.ToString();
+            rdLandWhite_n.AccessibleName = ObjectType._LANDWHITE.ToString();
+            rdLandIceberg.AccessibleName = ObjectType.LANDICEBERG.ToString();
+            rdLandIceberg_n.AccessibleName = ObjectType._LANDICEBERG.ToString();
             rdBeak.AccessibleName = ObjectType.BEAK.ToString();
             rdMet.AccessibleName = ObjectType.MET.ToString();
             rdFlea.AccessibleName = ObjectType.FLEA.ToString();
@@ -203,7 +209,6 @@ namespace MapEditor
         {
             if (e.Button == MouseButtons.Right)
             {
-
                 Point p = new Point(e.Location.X - 32, e.Location.Y - 32);
                 int index = IndexObject(p);
                 if (index != -1)
