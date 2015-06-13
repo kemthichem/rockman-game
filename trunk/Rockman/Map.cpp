@@ -75,7 +75,10 @@ void  CMap::LoadObjectFromFile(char* filePath)
 			if(_objecttype == "LAND"){
 				CLand *_brick = new CLand(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
 				m_ListObjects.push_back(_brick);
-			}  else if(_objecttype == "LAND1"){
+			}  else if(_objecttype == "_LAND"){
+				CLand *ob = new CLand(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0), false);
+				m_ListObjects.push_back(ob);
+			} else if(_objecttype == "LAND1"){
 				CLand1 *ob = new CLand1(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
 				m_ListObjects.push_back(ob);
 			}  else if(_objecttype == "_LAND1"){
@@ -84,10 +87,16 @@ void  CMap::LoadObjectFromFile(char* filePath)
 			}  else if(_objecttype == "LANDWHITE"){
 				CLandWhite *ob = new CLandWhite(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
 				m_ListObjects.push_back(ob);
-			} else if(_objecttype == "LANDICEBERG"){
+			} else if(_objecttype == "_LANDWHITE"){
+				CLandWhite *ob = new CLandWhite(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0), false);
+				m_ListObjects.push_back(ob);
+			}else if(_objecttype == "LANDICEBERG"){
 				CLandIceberg *ob = new CLandIceberg(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
 				m_ListObjects.push_back(ob);
-			}  else if(_objecttype == "MOVEMAP"){
+			} else if(_objecttype == "_LANDICEBERG"){
+				CLandIceberg *ob = new CLandIceberg(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0), false);
+				m_ListObjects.push_back(ob);
+			}   else if(_objecttype == "MOVEMAP"){
 				CMoveMap *moveMap = new CMoveMap(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
 				m_ListObjects.push_back(moveMap);
 			}else if(_objecttype == "BLADER"){

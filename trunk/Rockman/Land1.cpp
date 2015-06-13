@@ -27,11 +27,6 @@ void CLand1::Update(float _time, CCamera *_camera, CInput *_input)
 }
 
 
-void CLand1::Collision()
-{
-
-}
-
 void CLand1::Render(LPD3DXSPRITE _sp, CCamera* _camera)
 {
 	D3DXVECTOR3 pos = m_pos;

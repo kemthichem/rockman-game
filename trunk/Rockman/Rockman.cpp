@@ -362,7 +362,7 @@ void CRockman::SetInjured(CEntity* _other)
 {
 	if (m_Injuring != 0) return;
 	m_Injuring = _other->GetVelocity().x > 0 ? 1 : -1;
-	m_Blood->ChangeBlood(-40);
+	m_Blood->ChangeBlood(-10);
 }
 
 int CRockman::GetKeyDown()

@@ -8,13 +8,12 @@ private:
 protected:
 
 public:
-	CLand(int _id, D3DXVECTOR3 _pos);
+	CLand(int _id, D3DXVECTOR3 _pos, bool _isCheckCollison = true);
 	~CLand(void);
 
 	//method
 	virtual void Update(float , CCamera *, CInput *);
-	virtual void Draw();
-	virtual void Collision();
+	void Render(LPD3DXSPRITE _sp, CCamera* _camera);
 };
 
 #endif

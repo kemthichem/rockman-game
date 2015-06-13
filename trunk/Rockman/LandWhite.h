@@ -8,7 +8,7 @@ private:
 protected:
 
 public:
-	CLandWhite(int _id, D3DXVECTOR3 _pos);
+	CLandWhite(int _id, D3DXVECTOR3 _pos, bool _isCheckCollison = true);
 	~CLandWhite(void);
 
 	//method

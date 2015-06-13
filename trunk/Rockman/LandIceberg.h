@@ -8,7 +8,7 @@ private:
 protected:
 
 public:
-	CLandIceberg(int _id, D3DXVECTOR3 _pos);
+	CLandIceberg(int _id, D3DXVECTOR3 _pos, bool _isCheckCollison = true);
 	~CLandIceberg(void);
 
 	//method
