@@ -14,6 +14,9 @@ class CPLayingGameState : public CGameState
 private:
 	CQuadTree *quadTree;
 	CMap m_Map;
+
+	void DrawText();
+	void UpdateState();
 protected:
 	//virtual void CleanUp();
 	virtual void Render(LPD3DXSPRITE _spriteHandle,CCamera* _camera);
@@ -25,6 +28,10 @@ public:
 	CPLayingGameState(CGameStateManager *_gameState);
 	CRockman *rockman;
 
+	/**Score, Life of Rockman, Stage**/
+	static int g_Score;
+	static int g_Stage;
+	static int g_LifeOfRockman;
 
 };
 #endif

@@ -19,11 +19,11 @@ private:
 	vector<CGameState*> m_ListState;
 public:
 	HWND m_wndHandle;
-	//CGraphic*m_graphic;
+	LPD3DXFONT m_GraphicText;
 	CGameState* m_nextState;
 	CGameStateManager(void);
 	~CGameStateManager(void);
-	void Init(HWND, LPD3DXSPRITE); 
+	void Init(HWND, LPD3DXSPRITE, LPD3DXFONT); 
 	void CleanUp();
 	void InitFirstState(CGameState*);
 	void ChangeState(CGameState*);

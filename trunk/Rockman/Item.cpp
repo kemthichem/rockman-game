@@ -29,6 +29,7 @@ CItem::CItem()
 
 CItem::~CItem(void)
 {
+;
 }
 
 void CItem::UpdateCollison(CEntity* _other,float _time)

@@ -4,7 +4,7 @@
 #include "Entity.h"
 #include "AABBCollisionDetected.h"
 #include "BulletRockman.h"
-
+#include "Blood.h"
 
 enum ActionRockman
 {
@@ -28,6 +28,7 @@ class CRockman: public CEntity
 private:
 	static const D3DXVECTOR2 mAccelOfRockman;
 	CBulletRockman* m_ListBullet[5];
+	CBlood* m_Blood;
 	float m_PosXClimb;
 	void Injunred(bool _isDirectX, float _time);
 	bool m_isCollisionBottom;
@@ -42,7 +43,7 @@ private:
 	void Jump();
 	void Shot();
 	void Climb(bool _isTurnUp);
-
+	void UpdateState();
 	//collision
 	void CollisionBottom();
 public:
@@ -57,6 +58,6 @@ public:
 	/*rockman*/
 	void SetInjured(CEntity* _other);
 	int GetKeyDown();
-
+	bool IsDie();
 };
 #endif

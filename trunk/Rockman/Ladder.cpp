@@ -29,7 +29,7 @@ void CLadder::Render(LPD3DXSPRITE _spriteHandler, CCamera* _camera) {
 	for (int i = 0; i < NUMB_SPRITE; i++)
 	{
 		posRender.y = m_pos.y - i * m_Sprite->GetHeightRectSprite();
-		RenderEachSprite(_spriteHandler, _camera, posRender);
+		RenderEachSprite(_spriteHandler, _camera,m_Sprite, posRender);
 	}
 	
 }

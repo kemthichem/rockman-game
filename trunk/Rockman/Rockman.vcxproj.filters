@@ -183,6 +183,24 @@
     <ClCompile Include="LandWhite.cpp">
       <Filter>ObjectGame\Block</Filter>
     </ClCompile>
+    <ClCompile Include="Blood.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ChangeState.cpp">
+      <Filter>GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="HelpState.cpp">
+      <Filter>GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverState.cpp">
+      <Filter>GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="About.cpp">
+      <Filter>GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="WinState.cpp">
+      <Filter>GameState</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RockmanGame.h">
@@ -301,6 +319,24 @@
     </ClInclude>
     <ClInclude Include="MoveMap.h">
       <Filter>ObjectGame\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="Blood.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeState.h">
+      <Filter>GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="HelpState.h">
+      <Filter>GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverState.h">
+      <Filter>GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="About.h">
+      <Filter>GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="WinState.h">
+      <Filter>GameState</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -31,7 +31,7 @@ protected:
 
 	LPD3DXSPRITE m_SpriteHandler;
 	LPDIRECT3DDEVICE9 _d3ddv;
-	LPD3DXFONT g_Font;
+	LPD3DXFONT m_GraphicText;
 	static LRESULT CALLBACK _WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
 	virtual void UpdateWorld();

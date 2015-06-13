@@ -24,7 +24,7 @@ void CGame::InitGame()
 	_InitFont();
 	
 	 m_StateManager = new CGameStateManager();
-	 m_StateManager->Init(m_hWnd, m_SpriteHandler);
+	 m_StateManager->Init(m_hWnd, m_SpriteHandler, m_GraphicText);
 }
 
 LRESULT CALLBACK CGame::_WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
@@ -140,7 +140,7 @@ void CGame::Render()
 	HRESULT re = _d3ddv->BeginScene();
 	//if (re) 
 	//{
-		_d3ddv->StretchRect(CResourceManager::GetInstance()->GetSurface(IMAGE_BG_MENU), NULL,_backbuffer, NULL,D3DTEXF_NONE);
+		_d3ddv->StretchRect(CResourceManager::GetInstance()->GetSurface(IMAGE_BG), NULL,_backbuffer, NULL,D3DTEXF_NONE);
 		m_SpriteHandler->Begin(D3DXSPRITE_ALPHABLEND|D3DXSPRITE_SORT_DEPTH_FRONTTOBACK);	
 		RenderWorld();		
 		m_SpriteHandler->End();
@@ -236,7 +236,7 @@ bool CGame::_InitFont()
 		DEFAULT_PITCH,
 		"Broadway"};
 
-	HRESULT hre = D3DXCreateFontIndirect(_d3ddv,&FontDesc,&g_Font);
+	HRESULT hre = D3DXCreateFontIndirect(_d3ddv,&FontDesc,&m_GraphicText);
 	return true;
 }
 

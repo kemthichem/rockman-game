@@ -38,12 +38,17 @@ void CResourceManager::LoadResource(LPDIRECT3DDEVICE9 _d3ddv)
 	mMapTexture[IMAGE_ROCKMAN] = CUtils::LoadTexture(mD3ddv,IMAGE_ROCKMAN);
 	mMapTexture[IMAGE_TILES] = CUtils::LoadTexture(mD3ddv,IMAGE_TILES);
 	mMapTexture[IMAGE_ENEMIES] = CUtils::LoadTexture(mD3ddv,IMAGE_ENEMIES);
-	mMapTexture[IMAGE_ITEMS] = CUtils::LoadTexture(mD3ddv,IMAGE_ITEMS);
 	mMapTexture[IMAGE_MASTER] = CUtils::LoadTexture(mD3ddv,IMAGE_MASTER);
 	mMapTexture[IMAGE_MENU] = CUtils::LoadTexture(mD3ddv,IMAGE_MENU);
+	mMapTexture[IMAGE_BG_MENU] = CUtils::LoadTexture(mD3ddv,IMAGE_BG_MENU);
+	mMapTexture[IMAGE_BG_CHANGE_STATE] = CUtils::LoadTexture(mD3ddv,IMAGE_BG_CHANGE_STATE);
+	mMapTexture[IMAGE_BG_ABOUT] = CUtils::LoadTexture(mD3ddv,IMAGE_BG_ABOUT);
+	mMapTexture[IMAGE_BG_GAMEOVER] = CUtils::LoadTexture(mD3ddv,IMAGE_BG_GAMEOVER);
+	mMapTexture[IMAGE_BG_HELP] = CUtils::LoadTexture(mD3ddv,IMAGE_BG_HELP);
+	mMapTexture[IMAGE_BG_WIN] = CUtils::LoadTexture(mD3ddv,IMAGE_BG_WIN);
 
 	//load background
-	mMapSurface[IMAGE_BG_MENU] = CUtils::LoadSurface(mD3ddv,IMAGE_BG_MENU);
+	mMapSurface[IMAGE_BG] = CUtils::LoadSurface(mD3ddv,IMAGE_BG);
 }
 
 LPDIRECT3DTEXTURE9 CResourceManager::GetSprite( string spriteName )
