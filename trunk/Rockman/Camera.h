@@ -7,6 +7,8 @@
 
 #include "Define.h"
 
+
+
 class CCamera
 {
 private:
@@ -25,7 +27,7 @@ public:
 	D3DXVECTOR2 GetPosCamera();
 	void SetPosCamera(D3DXVECTOR2 _pos);
 	~CCamera(void);
-	void Move(int);
+	void MoveY(int);
 	void MoveX(int);
 };
 
