@@ -425,7 +425,7 @@
             this.rdLand_n.FlatAppearance.BorderSize = 0;
             this.rdLand_n.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
             this.rdLand_n.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdLand_n.Image = global::MapEditor.Properties.Resources.ladder_full;
+            this.rdLand_n.Image = global::MapEditor.Properties.Resources.land;
             this.rdLand_n.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.rdLand_n.Location = new System.Drawing.Point(128, 576);
             this.rdLand_n.Name = "rdLand_n";
