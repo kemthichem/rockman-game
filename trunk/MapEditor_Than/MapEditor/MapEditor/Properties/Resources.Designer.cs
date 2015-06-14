@@ -173,6 +173,16 @@ namespace MapEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap enemy_screwbomber__down {
+            get {
+                object obj = ResourceManager.GetObject("enemy_screwbomber -down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap enemy_spine {
             get {
                 object obj = ResourceManager.GetObject("enemy_spine", resourceCulture);

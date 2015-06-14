@@ -133,9 +133,6 @@
   <data name="land1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ground\land1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="movemap" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\item\movemap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="enemy_break -right" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\enemy\enemy_break -right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -148,11 +145,11 @@
   <data name="enemy_flea" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\enemy\enemy_flea.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="enemy_blader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\enemy\enemy_blader.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="enemy_bigeye" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemy\enemy_bigeye.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iceman" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\boss\iceman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cutman" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\boss\cutman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ladder" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ground\ladder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,14 +163,20 @@
   <data name="enemy_met" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\enemy\enemy_met.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="enemy_bigeye" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\enemy\enemy_bigeye.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="iceman" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\boss\iceman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cutman" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\boss\cutman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="gutsman" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\boss\gutsman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="break_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\enemy\enemy_break.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ladder-full" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ground\ladder-full.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="enemy_blader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemy\enemy_blader.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="movemap" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\item\movemap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="land" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ground\land.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,10 +184,10 @@
   <data name="octopus_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\enemy\octopus_left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="gutsman" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\boss\gutsman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="break_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemy\enemy_break.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ladder-full" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ground\ladder-full.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="enemy_screwbomber -down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemy\enemy_screwbomber -down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
