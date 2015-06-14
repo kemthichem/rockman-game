@@ -124,7 +124,7 @@ namespace MapEditor
                 case ObjectType.ROCKMAN:
                     break;
                 case ObjectType.LADDER:
-                     width = 32;
+                    width = 32;
                     height = 320;
                     if (isGetImage)
                         image = global::MapEditor.Properties.Resources.ladder;
@@ -136,6 +136,10 @@ namespace MapEditor
                         image = global::MapEditor.Properties.Resources.enemy_bigeye;
                     break;
                 case ObjectType.BLADER:
+                    width = 32;
+                    height = 32;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.enemy_blader;
                     break;
                 case ObjectType.MET:
                     width = 40;
@@ -162,7 +166,16 @@ namespace MapEditor
                         image = global::MapEditor.Properties.Resources.enemy_spine;
                     break;
                 case ObjectType.OCTOPUS:
+                     width = 32;
+                    height = 32;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.octopus_left;
+                    break;
                 case ObjectType.OCTOPUS_D:
+                    width = 32;
+                    height = 32;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.octopus_up;
                     break;
                 case ObjectType.BEAK:
                 case ObjectType.BEAK_R:
