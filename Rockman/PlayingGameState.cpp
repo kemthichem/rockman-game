@@ -54,8 +54,10 @@ void CPLayingGameState::Update(CInput* _input,float _time,CCamera* _camera)
 	if (!CMoveMap::g_IsMovingMap) {
 		rockman->Update(_time, _camera, _input, listOb);
 		quadTree->Update(_camera, _time);
-	} else
-		_camera->Move(CMoveMap::g_DistanceMoveCameraY);
+	}
+	else {
+		_camera->MoveX(CMoveMap::g_DistanceMoveCameraY);
+	}
 	
 	if (rockman->GetKeyDown()==DIK_ESCAPE)
 	{
