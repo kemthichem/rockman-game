@@ -25,7 +25,7 @@ namespace MapEditor
             }
 
             cbRowFrom.SelectedIndex = 0;
-            cbRowTo.SelectedIndex = 1;
+            cbRowTo.SelectedIndex = 0;
 
             for (int i = 0; i < width; i++)
             {
