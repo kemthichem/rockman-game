@@ -33,7 +33,6 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnGrid = new System.Windows.Forms.Panel();
-            this.pbGridMap = new System.Windows.Forms.PictureBox();
             this.paButton = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.tbSize = new System.Windows.Forms.TextBox();
@@ -46,10 +45,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnObjects = new System.Windows.Forms.Panel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.bgOpenFile = new System.Windows.Forms.OpenFileDialog();
+            this.rdBlader = new System.Windows.Forms.RadioButton();
             this.rdOctopus_d = new System.Windows.Forms.RadioButton();
             this.rdLadder = new System.Windows.Forms.RadioButton();
             this.rdOctopus = new System.Windows.Forms.RadioButton();
-            this.rdBeak_r = new System.Windows.Forms.RadioButton();
             this.rdMet = new System.Windows.Forms.RadioButton();
             this.rdLandIceberg_n = new System.Windows.Forms.RadioButton();
             this.rdLand_n = new System.Windows.Forms.RadioButton();
@@ -68,20 +71,17 @@
             this.rdLand1_n = new System.Windows.Forms.RadioButton();
             this.rdScrewBomber = new System.Windows.Forms.RadioButton();
             this.rdBigEye = new System.Windows.Forms.RadioButton();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.bgOpenFile = new System.Windows.Forms.OpenFileDialog();
-            this.rdBlader = new System.Windows.Forms.RadioButton();
+            this.pbGridMap = new System.Windows.Forms.PictureBox();
+            this.rdBeak_r = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             this.pnGrid.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbGridMap)).BeginInit();
             this.paButton.SuspendLayout();
             this.pnObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbGridMap)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -130,20 +130,6 @@
             this.pnGrid.Name = "pnGrid";
             this.pnGrid.Size = new System.Drawing.Size(421, 457);
             this.pnGrid.TabIndex = 0;
-            // 
-            // pbGridMap
-            // 
-            this.pbGridMap.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.pbGridMap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbGridMap.Location = new System.Drawing.Point(0, 0);
-            this.pbGridMap.Name = "pbGridMap";
-            this.pbGridMap.Size = new System.Drawing.Size(318, 184);
-            this.pbGridMap.TabIndex = 4;
-            this.pbGridMap.TabStop = false;
-            this.pbGridMap.Paint += new System.Windows.Forms.PaintEventHandler(this.pbGridMap_Paint);
-            this.pbGridMap.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pbGridMap_MouseDoubleClick);
-            this.pbGridMap.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbGridMap_MouseMove);
-            this.pbGridMap.MouseEnter += new System.EventHandler(this.pbGridMap_MouseEnter);
             // 
             // paButton
             // 
@@ -262,11 +248,11 @@
             // pnObjects
             // 
             this.pnObjects.AutoScroll = true;
+            this.pnObjects.Controls.Add(this.rdBeak_r);
             this.pnObjects.Controls.Add(this.rdBlader);
             this.pnObjects.Controls.Add(this.rdOctopus_d);
             this.pnObjects.Controls.Add(this.rdLadder);
             this.pnObjects.Controls.Add(this.rdOctopus);
-            this.pnObjects.Controls.Add(this.rdBeak_r);
             this.pnObjects.Controls.Add(this.rdMet);
             this.pnObjects.Controls.Add(this.rdLandIceberg_n);
             this.pnObjects.Controls.Add(this.rdLand_n);
@@ -291,6 +277,49 @@
             this.pnObjects.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.pnObjects.Size = new System.Drawing.Size(252, 457);
             this.pnObjects.TabIndex = 1;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 24);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.pnObjects);
+            this.splitContainer1.Panel1.Controls.Add(this.paButton);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.pnGrid);
+            this.splitContainer1.Size = new System.Drawing.Size(827, 459);
+            this.splitContainer1.SplitterDistance = 400;
+            this.splitContainer1.TabIndex = 4;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // bgOpenFile
+            // 
+            this.bgOpenFile.FileName = "bgOpenFile";
+            // 
+            // rdBlader
+            // 
+            this.rdBlader.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdBlader.FlatAppearance.BorderSize = 0;
+            this.rdBlader.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdBlader.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdBlader.Image = global::MapEditor.Properties.Resources.enemy_blader;
+            this.rdBlader.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rdBlader.Location = new System.Drawing.Point(137, 20);
+            this.rdBlader.Name = "rdBlader";
+            this.rdBlader.Size = new System.Drawing.Size(95, 86);
+            this.rdBlader.TabIndex = 71;
+            this.rdBlader.Text = "Blader";
+            this.rdBlader.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdBlader.UseVisualStyleBackColor = true;
             // 
             // rdOctopus_d
             // 
@@ -339,23 +368,6 @@
             this.rdOctopus.Text = "Octopus";
             this.rdOctopus.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.rdOctopus.UseVisualStyleBackColor = true;
-            // 
-            // rdBeak_r
-            // 
-            this.rdBeak_r.AccessibleName = "_LAND1";
-            this.rdBeak_r.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rdBeak_r.FlatAppearance.BorderSize = 0;
-            this.rdBeak_r.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.rdBeak_r.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdBeak_r.Image = global::MapEditor.Properties.Resources.enemy_break__right;
-            this.rdBeak_r.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdBeak_r.Location = new System.Drawing.Point(7, 1067);
-            this.rdBeak_r.Name = "rdBeak_r";
-            this.rdBeak_r.Size = new System.Drawing.Size(95, 93);
-            this.rdBeak_r.TabIndex = 67;
-            this.rdBeak_r.Text = "Beak (right)";
-            this.rdBeak_r.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.rdBeak_r.UseVisualStyleBackColor = true;
             // 
             // rdMet
             // 
@@ -492,8 +504,7 @@
             this.rdMoveMap.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
             this.rdMoveMap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdMoveMap.Image = global::MapEditor.Properties.Resources.movemap;
-            this.rdMoveMap.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdMoveMap.Location = new System.Drawing.Point(137, 110);
+            this.rdMoveMap.Location = new System.Drawing.Point(137, 107);
             this.rdMoveMap.Name = "rdMoveMap";
             this.rdMoveMap.Size = new System.Drawing.Size(95, 92);
             this.rdMoveMap.TabIndex = 38;
@@ -648,48 +659,36 @@
             this.rdBigEye.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.rdBigEye.UseVisualStyleBackColor = true;
             // 
-            // splitContainer1
+            // pbGridMap
             // 
-            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 24);
-            this.splitContainer1.Name = "splitContainer1";
+            this.pbGridMap.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pbGridMap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbGridMap.Location = new System.Drawing.Point(0, 0);
+            this.pbGridMap.Name = "pbGridMap";
+            this.pbGridMap.Size = new System.Drawing.Size(318, 184);
+            this.pbGridMap.TabIndex = 4;
+            this.pbGridMap.TabStop = false;
+            this.pbGridMap.Paint += new System.Windows.Forms.PaintEventHandler(this.pbGridMap_Paint);
+            this.pbGridMap.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pbGridMap_MouseDoubleClick);
+            this.pbGridMap.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbGridMap_MouseMove);
+            this.pbGridMap.MouseEnter += new System.EventHandler(this.pbGridMap_MouseEnter);
             // 
-            // splitContainer1.Panel1
+            // rdBeak_r
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.pnObjects);
-            this.splitContainer1.Panel1.Controls.Add(this.paButton);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.pnGrid);
-            this.splitContainer1.Size = new System.Drawing.Size(827, 459);
-            this.splitContainer1.SplitterDistance = 400;
-            this.splitContainer1.TabIndex = 4;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // bgOpenFile
-            // 
-            this.bgOpenFile.FileName = "bgOpenFile";
-            // 
-            // rdBlader
-            // 
-            this.rdBlader.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rdBlader.FlatAppearance.BorderSize = 0;
-            this.rdBlader.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.rdBlader.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdBlader.Image = global::MapEditor.Properties.Resources.enemy_blader;
-            this.rdBlader.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdBlader.Location = new System.Drawing.Point(137, 20);
-            this.rdBlader.Name = "rdBlader";
-            this.rdBlader.Size = new System.Drawing.Size(95, 86);
-            this.rdBlader.TabIndex = 71;
-            this.rdBlader.Text = "Blader";
-            this.rdBlader.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.rdBlader.UseVisualStyleBackColor = true;
+            this.rdBeak_r.AccessibleName = "_LAND1";
+            this.rdBeak_r.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdBeak_r.FlatAppearance.BorderSize = 0;
+            this.rdBeak_r.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdBeak_r.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdBeak_r.Image = global::MapEditor.Properties.Resources.enemy_break__right;
+            this.rdBeak_r.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rdBeak_r.Location = new System.Drawing.Point(137, 202);
+            this.rdBeak_r.Name = "rdBeak_r";
+            this.rdBeak_r.Size = new System.Drawing.Size(95, 93);
+            this.rdBeak_r.TabIndex = 72;
+            this.rdBeak_r.Text = "Beak (right)";
+            this.rdBeak_r.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdBeak_r.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -705,7 +704,6 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.pnGrid.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbGridMap)).EndInit();
             this.paButton.ResumeLayout(false);
             this.paButton.PerformLayout();
             this.pnObjects.ResumeLayout(false);
@@ -713,6 +711,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbGridMap)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -763,8 +762,8 @@
         private System.Windows.Forms.RadioButton rdOctopus_d;
         private System.Windows.Forms.RadioButton rdLadder;
         private System.Windows.Forms.RadioButton rdOctopus;
-        private System.Windows.Forms.RadioButton rdBeak_r;
         private System.Windows.Forms.RadioButton rdBlader;
+        private System.Windows.Forms.RadioButton rdBeak_r;
     }
 }
 
