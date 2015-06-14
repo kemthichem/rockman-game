@@ -28,7 +28,11 @@ CMoveMap::~CMoveMap(void)
 
 void CMoveMap::Update(float , CCamera *, CInput *, vector<CEntity*>)
 {
-	/*Not Update*/
+	if (m_pos.y > CCamera::g_PosCamera.y - HEIGHT_SCREEN/2) {
+		m_pos.y = CCamera::g_PosCamera.y;
+	} else {
+		m_pos.y = CCamera::g_PosCamera.y;
+	}
 }
 
 void CMoveMap::Render(LPD3DXSPRITE, CCamera*)

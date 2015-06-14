@@ -3,13 +3,14 @@
 #define TIME_CONVERT (20.0f)
 #define V_BULLET (50.0f)
 
-CScrewBomber::CScrewBomber(int _id, D3DXVECTOR3 _pos)
+CScrewBomber::CScrewBomber(int _id, D3DXVECTOR3 _pos, bool _isUp)
 {
 	m_Id = _id;
 	m_Type = SCREW_BOMBER;
+	int k = _isUp ? 73 : 0;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES),
-		D3DXVECTOR2(350,215), 4, 1,
-		D3DXVECTOR2(30,180),
+		D3DXVECTOR2(350,215 + k), 4, 1,
+		D3DXVECTOR2(30,180 + k),
 		D3DXVECTOR2(0,0),
 		D3DXVECTOR2(45,0));
 	m_pos = _pos;
@@ -26,6 +27,7 @@ CScrewBomber::CScrewBomber(int _id, D3DXVECTOR3 _pos)
 
 	int vx = -V_BULLET;
 	int vy = 0;
+	int dir = _isUp ? -1 : 1;
 	for (int i = 0; i < NUM_BULLET; i++)
 	{
 		CBullet *bullet = new CBullet(D3DXVECTOR3(_pos.x + m_Size.x/2 - 10, _pos.y - m_Size.y/2 + 10, _pos.z));
@@ -37,15 +39,15 @@ CScrewBomber::CScrewBomber(int _id, D3DXVECTOR3 _pos)
 			break;
 		case 1:
 			vx = -V_BULLET;
-			vy = -V_BULLET;
+			vy = -V_BULLET * dir;
 			break;
 		case 2:
 			vx = -0;
-			vy = -V_BULLET;
+			vy = -V_BULLET *dir;
 			break;
 		case 3:
 			vx = V_BULLET;
-			vy = -V_BULLET;
+			vy = -V_BULLET * dir;
 			break;
 		case 4:
 			vx = V_BULLET;

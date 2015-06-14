@@ -23,7 +23,7 @@ private:
 
 	void Shot(int _n);
 public:
-	CScrewBomber(int _id, D3DXVECTOR3 _pos);
+	CScrewBomber(int _id, D3DXVECTOR3 _pos, bool _isUp = true);
 	~CScrewBomber(void);
 
 	virtual void Update(float , CCamera *, CInput *,  vector<CEntity* >);
