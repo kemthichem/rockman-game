@@ -18,6 +18,7 @@ namespace MapEditor
         }
         public Fill_Range(int width, int height, List<String> nameObject): this()
         {
+            nameObject.Sort();
             for (int i = 0; i < height; i++)
             {
                 cbRowFrom.Items.Add(i);

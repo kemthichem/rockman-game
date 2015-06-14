@@ -253,6 +253,10 @@ namespace MapEditor
             {
                 Tree.AddObject(listContents[i]);
             }
+
+            if (listContents.Count == 0) {
+                btCAll.PerformClick();
+            }
         }
 
         private void pbGridMap_MouseEnter(object sender, EventArgs e)
@@ -351,6 +355,7 @@ namespace MapEditor
         }
         private void ReadFile(StreamReader reader)
         {
+            btCAll.PerformClick();
             string line;
             String[] arrString;
             line = reader.ReadLine();
