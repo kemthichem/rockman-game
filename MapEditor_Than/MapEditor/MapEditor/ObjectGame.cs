@@ -127,7 +127,7 @@ namespace MapEditor
                     width = 32;
                     height = 320;
                     if (isGetImage)
-                        image = global::MapEditor.Properties.Resources.;
+                        image = global::MapEditor.Properties.Resources.ladder_full;
                     break;
                 case ObjectType.BIGEYE:
                     width = 65;
