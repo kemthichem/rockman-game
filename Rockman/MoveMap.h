@@ -2,6 +2,12 @@
 #define  _MOVEMAP_H
 
 #include "Entity.h"
+enum TypeMove
+{
+	MOVEX,
+	MOVEY,
+	MOVENONE
+};
 
 class CMoveMap : public CEntity
 {
@@ -9,7 +15,8 @@ private:
 	int m_MoveDirect;
 public:
 	static int g_DistanceMoveCameraY;
-	static bool g_IsMovingMap;
+	static int g_DistanceMoveCameraX;
+	static TypeMove g_TypeMove;
 
 	CMoveMap(int, D3DXVECTOR3);
 	~CMoveMap(void);

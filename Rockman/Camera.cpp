@@ -46,7 +46,7 @@ void CCamera::Update(D3DXVECTOR2 _pos)
 	}
 
 	if (_pos.x >= CMap::g_widthMap - WIDTH_SCREEN - 14 && m_pos.x <= CMap::g_widthMap - 2 * WIDTH_SCREEN) {
-		CMoveMap::g_IsMovingMap = true;
+		CMoveMap::g_TypeMove = TypeMove::MOVEX;
 		//MoveX(WIDTH_SCREEN);
 	}
 
@@ -70,7 +70,7 @@ void CCamera::SetPosCamera(D3DXVECTOR2 _posRockMan)
 	m_pos.x = ((int)(_posRockMan.x/WIDTH_SCREEN)) * WIDTH_SCREEN;
 }
 
-void CCamera::Move(int _distanceY)
+void CCamera::MoveY(int _distanceY)
 { 
 	int desY =  m_posInit.y + _distanceY;
 
@@ -80,7 +80,7 @@ void CCamera::Move(int _distanceY)
 		} else
 		{
 			m_pos.y = desY;
-			CMoveMap::g_IsMovingMap = false;
+			CMoveMap::g_TypeMove = TypeMove::MOVENONE;
 		}
 	else {
 		if (m_pos.y < desY) {
@@ -88,7 +88,7 @@ void CCamera::Move(int _distanceY)
 		} else
 		{
 			m_pos.y = desY;
-			CMoveMap::g_IsMovingMap = false;
+			CMoveMap::g_TypeMove = TypeMove::MOVENONE;
 		}
 	}
 	
@@ -110,7 +110,8 @@ void CCamera::MoveX(int _distanceX)
 	else
 	{
 		m_pos.x = desX;
-		CMoveMap::g_IsMovingMap = false;
+		CMoveMap::g_TypeMove = TypeMove::MOVENONE;
+;
 	}
 	
 	m_viewPort.left = m_pos.x;

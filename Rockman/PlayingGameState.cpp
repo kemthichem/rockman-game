@@ -51,12 +51,26 @@ void CPLayingGameState::Update(CInput* _input,float _time,CCamera* _camera)
 	vector<CEntity*> listOb = quadTree->GetListObjectInRect(_camera->m_viewPort);
 	quadTree->m_listObjectViewportToUpdate.push_back(rockman);
 
-	if (!CMoveMap::g_IsMovingMap) {
+
+	switch (CMoveMap::g_TypeMove)
+	{
+	case TypeMove::MOVEX:
+		_camera->MoveX(CMoveMap::g_DistanceMoveCameraX);
+		break;
+	case TypeMove::MOVEY:
+		_camera->MoveY(CMoveMap::g_DistanceMoveCameraY);
+		break;
+	case TypeMove::MOVENONE:
+	default:
 		rockman->Update(_time, _camera, _input, listOb);
 		quadTree->Update(_camera, _time);
+		break;
+	}
+	if (TypeMove::MOVENONE == CMoveMap::g_TypeMove) {
+		
 	}
 	else {
-		_camera->MoveX(CMoveMap::g_DistanceMoveCameraY);
+		
 	}
 	
 	if (rockman->GetKeyDown()==DIK_ESCAPE)

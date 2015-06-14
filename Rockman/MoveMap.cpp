@@ -3,7 +3,8 @@
 
 
 int CMoveMap::g_DistanceMoveCameraY = HEIGHT_SCREEN;
-bool CMoveMap::g_IsMovingMap = false;
+int CMoveMap::g_DistanceMoveCameraX = WIDTH_SCREEN;
+TypeMove CMoveMap::g_TypeMove = TypeMove::MOVENONE;
 
 
 CMoveMap::CMoveMap(int _id, D3DXVECTOR3 _pos)

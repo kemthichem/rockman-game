@@ -294,7 +294,7 @@ void CRockman::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,
 				if (moveMap->IsCanWithDirect(true)) {
 					CMoveMap::g_DistanceMoveCameraY = HEIGHT_SCREEN;
 					m_pos.y += 1;
-					CMoveMap::g_IsMovingMap = true;
+					CMoveMap::g_TypeMove = TypeMove::MOVEY;
 				}
 			}
 			if (m_directCollion == BOTTOM)
@@ -302,7 +302,7 @@ void CRockman::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,
 				if (moveMap->IsCanWithDirect(false)) {
 					CMoveMap::g_DistanceMoveCameraY = -HEIGHT_SCREEN;
 					m_pos.y -= 1;
-					CMoveMap::g_IsMovingMap = true;
+					CMoveMap::g_TypeMove = TypeMove::MOVEY;
 				}
 			}
 			break;
