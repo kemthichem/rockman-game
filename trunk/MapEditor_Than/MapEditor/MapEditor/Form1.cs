@@ -68,6 +68,7 @@ namespace MapEditor
             rdSpine.AccessibleName = ObjectType.SPINE.ToString();
             rdBigEye.AccessibleName = ObjectType.BIGEYE.ToString();
             rdScrewBomber.AccessibleName = ObjectType.SCREW_BOMBER.ToString();
+            rdScrewBomber_D.AccessibleName = ObjectType.SCREW_BOMBER_D.ToString();
 
             /*Boss*/
             rdCuman.AccessibleName = ObjectType.CUTMAN.ToString();

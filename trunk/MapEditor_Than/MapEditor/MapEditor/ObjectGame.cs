@@ -24,6 +24,7 @@ namespace MapEditor
         BLADER,
         MET,
         SCREW_BOMBER,
+        SCREW_BOMBER_D,
         OCTOPUS,
         OCTOPUS_D,
         BEAK,
@@ -148,6 +149,12 @@ namespace MapEditor
                         image = global::MapEditor.Properties.Resources.enemy_met;
                     break;
                 case ObjectType.SCREW_BOMBER:
+                    width = 35;
+                    height = 35;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.enemy_screwbomber;
+                    break;
+                case ObjectType.SCREW_BOMBER_D:
                     width = 35;
                     height = 35;
                     if (isGetImage)

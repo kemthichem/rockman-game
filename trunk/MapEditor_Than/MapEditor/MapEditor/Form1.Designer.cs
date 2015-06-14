@@ -52,7 +52,6 @@
             this.rdBeak_r = new System.Windows.Forms.RadioButton();
             this.rdBlader = new System.Windows.Forms.RadioButton();
             this.rdOctopus_v = new System.Windows.Forms.RadioButton();
-            this.rdLadder = new System.Windows.Forms.RadioButton();
             this.rdOctopus = new System.Windows.Forms.RadioButton();
             this.rdMet = new System.Windows.Forms.RadioButton();
             this.rdLandIceberg_n = new System.Windows.Forms.RadioButton();
@@ -70,9 +69,11 @@
             this.rdIceMan = new System.Windows.Forms.RadioButton();
             this.rdSpine = new System.Windows.Forms.RadioButton();
             this.rdLand1_n = new System.Windows.Forms.RadioButton();
-            this.rdScrewBomber = new System.Windows.Forms.RadioButton();
             this.rdBigEye = new System.Windows.Forms.RadioButton();
             this.pbGridMap = new System.Windows.Forms.PictureBox();
+            this.rdScrewBomber = new System.Windows.Forms.RadioButton();
+            this.rdLadder = new System.Windows.Forms.RadioButton();
+            this.rdScrewBomber_D = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             this.pnGrid.SuspendLayout();
             this.paButton.SuspendLayout();
@@ -248,10 +249,12 @@
             // pnObjects
             // 
             this.pnObjects.AutoScroll = true;
+            this.pnObjects.Controls.Add(this.rdScrewBomber_D);
+            this.pnObjects.Controls.Add(this.rdLadder);
+            this.pnObjects.Controls.Add(this.rdScrewBomber);
             this.pnObjects.Controls.Add(this.rdBeak_r);
             this.pnObjects.Controls.Add(this.rdBlader);
             this.pnObjects.Controls.Add(this.rdOctopus_v);
-            this.pnObjects.Controls.Add(this.rdLadder);
             this.pnObjects.Controls.Add(this.rdOctopus);
             this.pnObjects.Controls.Add(this.rdMet);
             this.pnObjects.Controls.Add(this.rdLandIceberg_n);
@@ -269,7 +272,6 @@
             this.pnObjects.Controls.Add(this.rdIceMan);
             this.pnObjects.Controls.Add(this.rdSpine);
             this.pnObjects.Controls.Add(this.rdLand1_n);
-            this.pnObjects.Controls.Add(this.rdScrewBomber);
             this.pnObjects.Controls.Add(this.rdBigEye);
             this.pnObjects.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnObjects.Location = new System.Drawing.Point(0, 0);
@@ -354,22 +356,6 @@
             this.rdOctopus_v.Text = "Octopus (vertical)";
             this.rdOctopus_v.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.rdOctopus_v.UseVisualStyleBackColor = true;
-            // 
-            // rdLadder
-            // 
-            this.rdLadder.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rdLadder.FlatAppearance.BorderSize = 0;
-            this.rdLadder.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.rdLadder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdLadder.Image = global::MapEditor.Properties.Resources.ladder;
-            this.rdLadder.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLadder.Location = new System.Drawing.Point(124, 1051);
-            this.rdLadder.Name = "rdLadder";
-            this.rdLadder.Size = new System.Drawing.Size(95, 92);
-            this.rdLadder.TabIndex = 69;
-            this.rdLadder.Text = "Ladder";
-            this.rdLadder.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.rdLadder.UseVisualStyleBackColor = true;
             // 
             // rdOctopus
             // 
@@ -645,22 +631,6 @@
             this.rdLand1_n.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.rdLand1_n.UseVisualStyleBackColor = true;
             // 
-            // rdScrewBomber
-            // 
-            this.rdScrewBomber.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rdScrewBomber.FlatAppearance.BorderSize = 0;
-            this.rdScrewBomber.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.rdScrewBomber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdScrewBomber.Image = global::MapEditor.Properties.Resources.enemy_screwbomber;
-            this.rdScrewBomber.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdScrewBomber.Location = new System.Drawing.Point(2, 91);
-            this.rdScrewBomber.Name = "rdScrewBomber";
-            this.rdScrewBomber.Size = new System.Drawing.Size(95, 98);
-            this.rdScrewBomber.TabIndex = 5;
-            this.rdScrewBomber.Text = "Screw Bomber";
-            this.rdScrewBomber.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.rdScrewBomber.UseVisualStyleBackColor = true;
-            // 
             // rdBigEye
             // 
             this.rdBigEye.Appearance = System.Windows.Forms.Appearance.Button;
@@ -690,6 +660,54 @@
             this.pbGridMap.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pbGridMap_MouseDoubleClick);
             this.pbGridMap.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbGridMap_MouseMove);
             this.pbGridMap.MouseEnter += new System.EventHandler(this.pbGridMap_MouseEnter);
+            // 
+            // rdScrewBomber
+            // 
+            this.rdScrewBomber.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdScrewBomber.FlatAppearance.BorderSize = 0;
+            this.rdScrewBomber.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdScrewBomber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdScrewBomber.Image = global::MapEditor.Properties.Resources.enemy_screwbomber;
+            this.rdScrewBomber.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rdScrewBomber.Location = new System.Drawing.Point(11, 1061);
+            this.rdScrewBomber.Name = "rdScrewBomber";
+            this.rdScrewBomber.Size = new System.Drawing.Size(95, 98);
+            this.rdScrewBomber.TabIndex = 73;
+            this.rdScrewBomber.Text = "Screw Bomber";
+            this.rdScrewBomber.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdScrewBomber.UseVisualStyleBackColor = true;
+            // 
+            // rdLadder
+            // 
+            this.rdLadder.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdLadder.FlatAppearance.BorderSize = 0;
+            this.rdLadder.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdLadder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdLadder.Image = global::MapEditor.Properties.Resources.ladder;
+            this.rdLadder.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rdLadder.Location = new System.Drawing.Point(14, 95);
+            this.rdLadder.Name = "rdLadder";
+            this.rdLadder.Size = new System.Drawing.Size(95, 92);
+            this.rdLadder.TabIndex = 74;
+            this.rdLadder.Text = "Ladder";
+            this.rdLadder.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdLadder.UseVisualStyleBackColor = true;
+            // 
+            // rdScrewBomber_D
+            // 
+            this.rdScrewBomber_D.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdScrewBomber_D.FlatAppearance.BorderSize = 0;
+            this.rdScrewBomber_D.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdScrewBomber_D.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdScrewBomber_D.Image = global::MapEditor.Properties.Resources.enemy_screwbomber;
+            this.rdScrewBomber_D.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rdScrewBomber_D.Location = new System.Drawing.Point(124, 1062);
+            this.rdScrewBomber_D.Name = "rdScrewBomber_D";
+            this.rdScrewBomber_D.Size = new System.Drawing.Size(95, 98);
+            this.rdScrewBomber_D.TabIndex = 75;
+            this.rdScrewBomber_D.Text = "Screw Bomber (down)";
+            this.rdScrewBomber_D.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdScrewBomber_D.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -739,7 +757,6 @@
         private System.Windows.Forms.TextBox tbSize;
         private System.Windows.Forms.Label Size;
         private System.Windows.Forms.RadioButton rdLand1_n;
-        private System.Windows.Forms.RadioButton rdScrewBomber;
         private System.Windows.Forms.RadioButton rdBigEye;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
@@ -761,10 +778,12 @@
         private System.Windows.Forms.OpenFileDialog bgOpenFile;
         private System.Windows.Forms.RadioButton rdMet;
         private System.Windows.Forms.RadioButton rdOctopus_v;
-        private System.Windows.Forms.RadioButton rdLadder;
         private System.Windows.Forms.RadioButton rdOctopus;
         private System.Windows.Forms.RadioButton rdBlader;
         private System.Windows.Forms.RadioButton rdBeak_r;
+        private System.Windows.Forms.RadioButton rdScrewBomber_D;
+        private System.Windows.Forms.RadioButton rdLadder;
+        private System.Windows.Forms.RadioButton rdScrewBomber;
     }
 }
 
