@@ -127,7 +127,7 @@ namespace MapEditor
                     width = 32;
                     height = 320;
                     if (isGetImage)
-                        image = global::MapEditor.Properties.Resources.ladder;
+                        image = global::MapEditor.Properties.Resources.;
                     break;
                 case ObjectType.BIGEYE:
                     width = 65;
@@ -136,8 +136,8 @@ namespace MapEditor
                         image = global::MapEditor.Properties.Resources.enemy_bigeye;
                     break;
                 case ObjectType.BLADER:
-                    width = 32;
-                    height = 32;
+                    width = 35;
+                    height = 45;
                     if (isGetImage)
                         image = global::MapEditor.Properties.Resources.enemy_blader;
                     break;
@@ -178,11 +178,16 @@ namespace MapEditor
                         image = global::MapEditor.Properties.Resources.octopus_up;
                     break;
                 case ObjectType.BEAK:
-                case ObjectType.BEAK_R:
                     width = 30;
                     height = 35;
                     if (isGetImage)
                         image = global::MapEditor.Properties.Resources.break_left;
+                    break;
+                case ObjectType.BEAK_R:
+                    width = 30;
+                    height = 35;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.enemy_break__right;
                     break;
                 case ObjectType.MOVEMAP:
                     width = 32;

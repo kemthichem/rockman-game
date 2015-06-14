@@ -49,8 +49,9 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.bgOpenFile = new System.Windows.Forms.OpenFileDialog();
+            this.rdBeak_r = new System.Windows.Forms.RadioButton();
             this.rdBlader = new System.Windows.Forms.RadioButton();
-            this.rdOctopus_d = new System.Windows.Forms.RadioButton();
+            this.rdOctopus_v = new System.Windows.Forms.RadioButton();
             this.rdLadder = new System.Windows.Forms.RadioButton();
             this.rdOctopus = new System.Windows.Forms.RadioButton();
             this.rdMet = new System.Windows.Forms.RadioButton();
@@ -72,7 +73,6 @@
             this.rdScrewBomber = new System.Windows.Forms.RadioButton();
             this.rdBigEye = new System.Windows.Forms.RadioButton();
             this.pbGridMap = new System.Windows.Forms.PictureBox();
-            this.rdBeak_r = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             this.pnGrid.SuspendLayout();
             this.paButton.SuspendLayout();
@@ -250,7 +250,7 @@
             this.pnObjects.AutoScroll = true;
             this.pnObjects.Controls.Add(this.rdBeak_r);
             this.pnObjects.Controls.Add(this.rdBlader);
-            this.pnObjects.Controls.Add(this.rdOctopus_d);
+            this.pnObjects.Controls.Add(this.rdOctopus_v);
             this.pnObjects.Controls.Add(this.rdLadder);
             this.pnObjects.Controls.Add(this.rdOctopus);
             this.pnObjects.Controls.Add(this.rdMet);
@@ -306,6 +306,23 @@
             // 
             this.bgOpenFile.FileName = "bgOpenFile";
             // 
+            // rdBeak_r
+            // 
+            this.rdBeak_r.AccessibleName = "_LAND1";
+            this.rdBeak_r.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdBeak_r.FlatAppearance.BorderSize = 0;
+            this.rdBeak_r.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdBeak_r.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdBeak_r.Image = global::MapEditor.Properties.Resources.enemy_break__right;
+            this.rdBeak_r.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rdBeak_r.Location = new System.Drawing.Point(128, 189);
+            this.rdBeak_r.Name = "rdBeak_r";
+            this.rdBeak_r.Size = new System.Drawing.Size(95, 93);
+            this.rdBeak_r.TabIndex = 72;
+            this.rdBeak_r.Text = "Beak (right)";
+            this.rdBeak_r.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdBeak_r.UseVisualStyleBackColor = true;
+            // 
             // rdBlader
             // 
             this.rdBlader.Appearance = System.Windows.Forms.Appearance.Button;
@@ -314,7 +331,7 @@
             this.rdBlader.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdBlader.Image = global::MapEditor.Properties.Resources.enemy_blader;
             this.rdBlader.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdBlader.Location = new System.Drawing.Point(137, 20);
+            this.rdBlader.Location = new System.Drawing.Point(128, 4);
             this.rdBlader.Name = "rdBlader";
             this.rdBlader.Size = new System.Drawing.Size(95, 86);
             this.rdBlader.TabIndex = 71;
@@ -322,21 +339,21 @@
             this.rdBlader.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.rdBlader.UseVisualStyleBackColor = true;
             // 
-            // rdOctopus_d
+            // rdOctopus_v
             // 
-            this.rdOctopus_d.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rdOctopus_d.FlatAppearance.BorderSize = 0;
-            this.rdOctopus_d.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.rdOctopus_d.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdOctopus_d.Image = global::MapEditor.Properties.Resources.octopus_up;
-            this.rdOctopus_d.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdOctopus_d.Location = new System.Drawing.Point(133, 973);
-            this.rdOctopus_d.Name = "rdOctopus_d";
-            this.rdOctopus_d.Size = new System.Drawing.Size(95, 88);
-            this.rdOctopus_d.TabIndex = 70;
-            this.rdOctopus_d.Text = "Octopus (down)";
-            this.rdOctopus_d.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.rdOctopus_d.UseVisualStyleBackColor = true;
+            this.rdOctopus_v.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdOctopus_v.FlatAppearance.BorderSize = 0;
+            this.rdOctopus_v.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdOctopus_v.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdOctopus_v.Image = global::MapEditor.Properties.Resources.octopus_up;
+            this.rdOctopus_v.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rdOctopus_v.Location = new System.Drawing.Point(124, 957);
+            this.rdOctopus_v.Name = "rdOctopus_v";
+            this.rdOctopus_v.Size = new System.Drawing.Size(95, 88);
+            this.rdOctopus_v.TabIndex = 70;
+            this.rdOctopus_v.Text = "Octopus (vertical)";
+            this.rdOctopus_v.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdOctopus_v.UseVisualStyleBackColor = true;
             // 
             // rdLadder
             // 
@@ -346,7 +363,7 @@
             this.rdLadder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdLadder.Image = global::MapEditor.Properties.Resources.ladder;
             this.rdLadder.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLadder.Location = new System.Drawing.Point(133, 1067);
+            this.rdLadder.Location = new System.Drawing.Point(124, 1051);
             this.rdLadder.Name = "rdLadder";
             this.rdLadder.Size = new System.Drawing.Size(95, 92);
             this.rdLadder.TabIndex = 69;
@@ -362,7 +379,7 @@
             this.rdOctopus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdOctopus.Image = global::MapEditor.Properties.Resources.octopus_left;
             this.rdOctopus.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdOctopus.Location = new System.Drawing.Point(7, 973);
+            this.rdOctopus.Location = new System.Drawing.Point(-2, 957);
             this.rdOctopus.Name = "rdOctopus";
             this.rdOctopus.Size = new System.Drawing.Size(95, 89);
             this.rdOctopus.TabIndex = 68;
@@ -378,7 +395,7 @@
             this.rdMet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdMet.Image = global::MapEditor.Properties.Resources.enemy_met;
             this.rdMet.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdMet.Location = new System.Drawing.Point(23, 301);
+            this.rdMet.Location = new System.Drawing.Point(14, 285);
             this.rdMet.Name = "rdMet";
             this.rdMet.Size = new System.Drawing.Size(95, 92);
             this.rdMet.TabIndex = 66;
@@ -394,7 +411,7 @@
             this.rdLandIceberg_n.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdLandIceberg_n.Image = global::MapEditor.Properties.Resources.LandIceberg;
             this.rdLandIceberg_n.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLandIceberg_n.Location = new System.Drawing.Point(137, 781);
+            this.rdLandIceberg_n.Location = new System.Drawing.Point(128, 765);
             this.rdLandIceberg_n.Name = "rdLandIceberg_n";
             this.rdLandIceberg_n.Size = new System.Drawing.Size(95, 88);
             this.rdLandIceberg_n.TabIndex = 54;
@@ -408,9 +425,9 @@
             this.rdLand_n.FlatAppearance.BorderSize = 0;
             this.rdLand_n.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
             this.rdLand_n.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdLand_n.Image = global::MapEditor.Properties.Resources.land;
+            this.rdLand_n.Image = global::MapEditor.Properties.Resources.ladder_full;
             this.rdLand_n.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLand_n.Location = new System.Drawing.Point(137, 592);
+            this.rdLand_n.Location = new System.Drawing.Point(128, 576);
             this.rdLand_n.Name = "rdLand_n";
             this.rdLand_n.Size = new System.Drawing.Size(95, 88);
             this.rdLand_n.TabIndex = 52;
@@ -426,7 +443,7 @@
             this.rdLandWhite_n.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdLandWhite_n.Image = global::MapEditor.Properties.Resources.landwhite;
             this.rdLandWhite_n.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLandWhite_n.Location = new System.Drawing.Point(137, 698);
+            this.rdLandWhite_n.Location = new System.Drawing.Point(128, 682);
             this.rdLandWhite_n.Name = "rdLandWhite_n";
             this.rdLandWhite_n.Size = new System.Drawing.Size(95, 77);
             this.rdLandWhite_n.TabIndex = 53;
@@ -442,7 +459,7 @@
             this.rdGusman.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdGusman.Image = global::MapEditor.Properties.Resources.gutsman;
             this.rdGusman.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdGusman.Location = new System.Drawing.Point(137, 493);
+            this.rdGusman.Location = new System.Drawing.Point(128, 477);
             this.rdGusman.Name = "rdGusman";
             this.rdGusman.Size = new System.Drawing.Size(95, 92);
             this.rdGusman.TabIndex = 42;
@@ -458,7 +475,7 @@
             this.rdCuman.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdCuman.Image = global::MapEditor.Properties.Resources.cutman;
             this.rdCuman.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdCuman.Location = new System.Drawing.Point(137, 395);
+            this.rdCuman.Location = new System.Drawing.Point(128, 379);
             this.rdCuman.Name = "rdCuman";
             this.rdCuman.Size = new System.Drawing.Size(95, 92);
             this.rdCuman.TabIndex = 41;
@@ -474,7 +491,7 @@
             this.rdFlea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdFlea.Image = global::MapEditor.Properties.Resources.enemy_flea;
             this.rdFlea.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdFlea.Location = new System.Drawing.Point(137, 301);
+            this.rdFlea.Location = new System.Drawing.Point(128, 285);
             this.rdFlea.Name = "rdFlea";
             this.rdFlea.Size = new System.Drawing.Size(95, 92);
             this.rdFlea.TabIndex = 40;
@@ -490,7 +507,7 @@
             this.rdBeak.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdBeak.Image = global::MapEditor.Properties.Resources.break_left;
             this.rdBeak.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdBeak.Location = new System.Drawing.Point(23, 206);
+            this.rdBeak.Location = new System.Drawing.Point(14, 190);
             this.rdBeak.Name = "rdBeak";
             this.rdBeak.Size = new System.Drawing.Size(95, 92);
             this.rdBeak.TabIndex = 39;
@@ -505,7 +522,7 @@
             this.rdMoveMap.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
             this.rdMoveMap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdMoveMap.Image = global::MapEditor.Properties.Resources.movemap;
-            this.rdMoveMap.Location = new System.Drawing.Point(137, 107);
+            this.rdMoveMap.Location = new System.Drawing.Point(128, 91);
             this.rdMoveMap.Name = "rdMoveMap";
             this.rdMoveMap.Size = new System.Drawing.Size(95, 92);
             this.rdMoveMap.TabIndex = 38;
@@ -521,7 +538,7 @@
             this.rdLand1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdLand1.Image = global::MapEditor.Properties.Resources.land1;
             this.rdLand1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLand1.Location = new System.Drawing.Point(137, 875);
+            this.rdLand1.Location = new System.Drawing.Point(2, 863);
             this.rdLand1.Name = "rdLand1";
             this.rdLand1.Size = new System.Drawing.Size(95, 92);
             this.rdLand1.TabIndex = 37;
@@ -537,7 +554,7 @@
             this.rdLandIceberg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdLandIceberg.Image = global::MapEditor.Properties.Resources.LandIceberg;
             this.rdLandIceberg.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLandIceberg.Location = new System.Drawing.Point(11, 781);
+            this.rdLandIceberg.Location = new System.Drawing.Point(2, 765);
             this.rdLandIceberg.Name = "rdLandIceberg";
             this.rdLandIceberg.Size = new System.Drawing.Size(95, 89);
             this.rdLandIceberg.TabIndex = 22;
@@ -553,7 +570,7 @@
             this.rdLandWhite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdLandWhite.Image = global::MapEditor.Properties.Resources.landwhite;
             this.rdLandWhite.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLandWhite.Location = new System.Drawing.Point(11, 692);
+            this.rdLandWhite.Location = new System.Drawing.Point(2, 676);
             this.rdLandWhite.Name = "rdLandWhite";
             this.rdLandWhite.Size = new System.Drawing.Size(95, 89);
             this.rdLandWhite.TabIndex = 21;
@@ -570,7 +587,7 @@
             this.rdLand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdLand.Image = global::MapEditor.Properties.Resources.land;
             this.rdLand.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLand.Location = new System.Drawing.Point(11, 591);
+            this.rdLand.Location = new System.Drawing.Point(2, 575);
             this.rdLand.Name = "rdLand";
             this.rdLand.Size = new System.Drawing.Size(95, 89);
             this.rdLand.TabIndex = 20;
@@ -587,7 +604,7 @@
             this.rdIceMan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdIceMan.Image = global::MapEditor.Properties.Resources.iceman;
             this.rdIceMan.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdIceMan.Location = new System.Drawing.Point(11, 492);
+            this.rdIceMan.Location = new System.Drawing.Point(2, 476);
             this.rdIceMan.Name = "rdIceMan";
             this.rdIceMan.Size = new System.Drawing.Size(95, 93);
             this.rdIceMan.TabIndex = 19;
@@ -603,7 +620,7 @@
             this.rdSpine.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdSpine.Image = global::MapEditor.Properties.Resources.enemy_spine;
             this.rdSpine.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdSpine.Location = new System.Drawing.Point(11, 397);
+            this.rdSpine.Location = new System.Drawing.Point(2, 381);
             this.rdSpine.Name = "rdSpine";
             this.rdSpine.Size = new System.Drawing.Size(95, 93);
             this.rdSpine.TabIndex = 7;
@@ -620,7 +637,7 @@
             this.rdLand1_n.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdLand1_n.Image = global::MapEditor.Properties.Resources.land1;
             this.rdLand1_n.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLand1_n.Location = new System.Drawing.Point(11, 875);
+            this.rdLand1_n.Location = new System.Drawing.Point(124, 863);
             this.rdLand1_n.Name = "rdLand1_n";
             this.rdLand1_n.Size = new System.Drawing.Size(95, 93);
             this.rdLand1_n.TabIndex = 6;
@@ -636,7 +653,7 @@
             this.rdScrewBomber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdScrewBomber.Image = global::MapEditor.Properties.Resources.enemy_screwbomber;
             this.rdScrewBomber.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdScrewBomber.Location = new System.Drawing.Point(11, 107);
+            this.rdScrewBomber.Location = new System.Drawing.Point(2, 91);
             this.rdScrewBomber.Name = "rdScrewBomber";
             this.rdScrewBomber.Size = new System.Drawing.Size(95, 98);
             this.rdScrewBomber.TabIndex = 5;
@@ -652,7 +669,7 @@
             this.rdBigEye.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdBigEye.Image = global::MapEditor.Properties.Resources.enemy_bigeye;
             this.rdBigEye.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdBigEye.Location = new System.Drawing.Point(11, 19);
+            this.rdBigEye.Location = new System.Drawing.Point(2, 3);
             this.rdBigEye.Name = "rdBigEye";
             this.rdBigEye.Size = new System.Drawing.Size(95, 86);
             this.rdBigEye.TabIndex = 4;
@@ -673,23 +690,6 @@
             this.pbGridMap.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pbGridMap_MouseDoubleClick);
             this.pbGridMap.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbGridMap_MouseMove);
             this.pbGridMap.MouseEnter += new System.EventHandler(this.pbGridMap_MouseEnter);
-            // 
-            // rdBeak_r
-            // 
-            this.rdBeak_r.AccessibleName = "_LAND1";
-            this.rdBeak_r.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rdBeak_r.FlatAppearance.BorderSize = 0;
-            this.rdBeak_r.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.rdBeak_r.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdBeak_r.Image = global::MapEditor.Properties.Resources.enemy_break__right;
-            this.rdBeak_r.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdBeak_r.Location = new System.Drawing.Point(137, 202);
-            this.rdBeak_r.Name = "rdBeak_r";
-            this.rdBeak_r.Size = new System.Drawing.Size(95, 93);
-            this.rdBeak_r.TabIndex = 72;
-            this.rdBeak_r.Text = "Beak (right)";
-            this.rdBeak_r.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.rdBeak_r.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -760,7 +760,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.OpenFileDialog bgOpenFile;
         private System.Windows.Forms.RadioButton rdMet;
-        private System.Windows.Forms.RadioButton rdOctopus_d;
+        private System.Windows.Forms.RadioButton rdOctopus_v;
         private System.Windows.Forms.RadioButton rdLadder;
         private System.Windows.Forms.RadioButton rdOctopus;
         private System.Windows.Forms.RadioButton rdBlader;
