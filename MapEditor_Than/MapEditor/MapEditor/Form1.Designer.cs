@@ -33,6 +33,7 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnGrid = new System.Windows.Forms.Panel();
+            this.pbGridMap = new System.Windows.Forms.PictureBox();
             this.paButton = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.tbSize = new System.Windows.Forms.TextBox();
@@ -45,10 +46,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnObjects = new System.Windows.Forms.Panel();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.bgOpenFile = new System.Windows.Forms.OpenFileDialog();
+            this.rdScrewBomber_D = new System.Windows.Forms.RadioButton();
+            this.rdLadder = new System.Windows.Forms.RadioButton();
+            this.rdScrewBomber = new System.Windows.Forms.RadioButton();
             this.rdBeak_r = new System.Windows.Forms.RadioButton();
             this.rdBlader = new System.Windows.Forms.RadioButton();
             this.rdOctopus_v = new System.Windows.Forms.RadioButton();
@@ -70,19 +70,19 @@
             this.rdSpine = new System.Windows.Forms.RadioButton();
             this.rdLand1_n = new System.Windows.Forms.RadioButton();
             this.rdBigEye = new System.Windows.Forms.RadioButton();
-            this.pbGridMap = new System.Windows.Forms.PictureBox();
-            this.rdScrewBomber = new System.Windows.Forms.RadioButton();
-            this.rdLadder = new System.Windows.Forms.RadioButton();
-            this.rdScrewBomber_D = new System.Windows.Forms.RadioButton();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.bgOpenFile = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             this.pnGrid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbGridMap)).BeginInit();
             this.paButton.SuspendLayout();
             this.pnObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbGridMap)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -131,6 +131,20 @@
             this.pnGrid.Name = "pnGrid";
             this.pnGrid.Size = new System.Drawing.Size(421, 457);
             this.pnGrid.TabIndex = 0;
+            // 
+            // pbGridMap
+            // 
+            this.pbGridMap.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pbGridMap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbGridMap.Location = new System.Drawing.Point(0, 0);
+            this.pbGridMap.Name = "pbGridMap";
+            this.pbGridMap.Size = new System.Drawing.Size(318, 184);
+            this.pbGridMap.TabIndex = 4;
+            this.pbGridMap.TabStop = false;
+            this.pbGridMap.Paint += new System.Windows.Forms.PaintEventHandler(this.pbGridMap_Paint);
+            this.pbGridMap.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pbGridMap_MouseDoubleClick);
+            this.pbGridMap.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbGridMap_MouseMove);
+            this.pbGridMap.MouseEnter += new System.EventHandler(this.pbGridMap_MouseEnter);
             // 
             // paButton
             // 
@@ -281,32 +295,53 @@
             this.pnObjects.TabIndex = 1;
             this.pnObjects.MouseEnter += new System.EventHandler(this.pnObjects_MouseEnter);
             // 
-            // splitContainer1
+            // rdScrewBomber_D
             // 
-            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 24);
-            this.splitContainer1.Name = "splitContainer1";
+            this.rdScrewBomber_D.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdScrewBomber_D.FlatAppearance.BorderSize = 0;
+            this.rdScrewBomber_D.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdScrewBomber_D.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdScrewBomber_D.Image = global::MapEditor.Properties.Resources.enemy_screwbomber__down;
+            this.rdScrewBomber_D.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rdScrewBomber_D.Location = new System.Drawing.Point(124, 1062);
+            this.rdScrewBomber_D.Name = "rdScrewBomber_D";
+            this.rdScrewBomber_D.Size = new System.Drawing.Size(95, 98);
+            this.rdScrewBomber_D.TabIndex = 75;
+            this.rdScrewBomber_D.Text = "Screw Bomber (down)";
+            this.rdScrewBomber_D.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdScrewBomber_D.UseVisualStyleBackColor = true;
             // 
-            // splitContainer1.Panel1
+            // rdLadder
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.pnObjects);
-            this.splitContainer1.Panel1.Controls.Add(this.paButton);
+            this.rdLadder.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdLadder.FlatAppearance.BorderSize = 0;
+            this.rdLadder.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdLadder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdLadder.Image = global::MapEditor.Properties.Resources.ladder;
+            this.rdLadder.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rdLadder.Location = new System.Drawing.Point(14, 95);
+            this.rdLadder.Name = "rdLadder";
+            this.rdLadder.Size = new System.Drawing.Size(95, 92);
+            this.rdLadder.TabIndex = 74;
+            this.rdLadder.Text = "Ladder";
+            this.rdLadder.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdLadder.UseVisualStyleBackColor = true;
             // 
-            // splitContainer1.Panel2
+            // rdScrewBomber
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.pnGrid);
-            this.splitContainer1.Size = new System.Drawing.Size(827, 459);
-            this.splitContainer1.SplitterDistance = 400;
-            this.splitContainer1.TabIndex = 4;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // bgOpenFile
-            // 
-            this.bgOpenFile.FileName = "bgOpenFile";
+            this.rdScrewBomber.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdScrewBomber.FlatAppearance.BorderSize = 0;
+            this.rdScrewBomber.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdScrewBomber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdScrewBomber.Image = global::MapEditor.Properties.Resources.enemy_screwbomber;
+            this.rdScrewBomber.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rdScrewBomber.Location = new System.Drawing.Point(11, 1061);
+            this.rdScrewBomber.Name = "rdScrewBomber";
+            this.rdScrewBomber.Size = new System.Drawing.Size(95, 98);
+            this.rdScrewBomber.TabIndex = 73;
+            this.rdScrewBomber.Text = "Screw Bomber";
+            this.rdScrewBomber.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdScrewBomber.UseVisualStyleBackColor = true;
             // 
             // rdBeak_r
             // 
@@ -647,67 +682,32 @@
             this.rdBigEye.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.rdBigEye.UseVisualStyleBackColor = true;
             // 
-            // pbGridMap
+            // splitContainer1
             // 
-            this.pbGridMap.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.pbGridMap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbGridMap.Location = new System.Drawing.Point(0, 0);
-            this.pbGridMap.Name = "pbGridMap";
-            this.pbGridMap.Size = new System.Drawing.Size(318, 184);
-            this.pbGridMap.TabIndex = 4;
-            this.pbGridMap.TabStop = false;
-            this.pbGridMap.Paint += new System.Windows.Forms.PaintEventHandler(this.pbGridMap_Paint);
-            this.pbGridMap.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pbGridMap_MouseDoubleClick);
-            this.pbGridMap.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbGridMap_MouseMove);
-            this.pbGridMap.MouseEnter += new System.EventHandler(this.pbGridMap_MouseEnter);
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 24);
+            this.splitContainer1.Name = "splitContainer1";
             // 
-            // rdScrewBomber
+            // splitContainer1.Panel1
             // 
-            this.rdScrewBomber.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rdScrewBomber.FlatAppearance.BorderSize = 0;
-            this.rdScrewBomber.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.rdScrewBomber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdScrewBomber.Image = global::MapEditor.Properties.Resources.enemy_screwbomber;
-            this.rdScrewBomber.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdScrewBomber.Location = new System.Drawing.Point(11, 1061);
-            this.rdScrewBomber.Name = "rdScrewBomber";
-            this.rdScrewBomber.Size = new System.Drawing.Size(95, 98);
-            this.rdScrewBomber.TabIndex = 73;
-            this.rdScrewBomber.Text = "Screw Bomber";
-            this.rdScrewBomber.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.rdScrewBomber.UseVisualStyleBackColor = true;
+            this.splitContainer1.Panel1.Controls.Add(this.pnObjects);
+            this.splitContainer1.Panel1.Controls.Add(this.paButton);
             // 
-            // rdLadder
+            // splitContainer1.Panel2
             // 
-            this.rdLadder.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rdLadder.FlatAppearance.BorderSize = 0;
-            this.rdLadder.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.rdLadder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdLadder.Image = global::MapEditor.Properties.Resources.ladder;
-            this.rdLadder.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLadder.Location = new System.Drawing.Point(14, 95);
-            this.rdLadder.Name = "rdLadder";
-            this.rdLadder.Size = new System.Drawing.Size(95, 92);
-            this.rdLadder.TabIndex = 74;
-            this.rdLadder.Text = "Ladder";
-            this.rdLadder.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.rdLadder.UseVisualStyleBackColor = true;
+            this.splitContainer1.Panel2.Controls.Add(this.pnGrid);
+            this.splitContainer1.Size = new System.Drawing.Size(827, 459);
+            this.splitContainer1.SplitterDistance = 400;
+            this.splitContainer1.TabIndex = 4;
             // 
-            // rdScrewBomber_D
+            // openFileDialog1
             // 
-            this.rdScrewBomber_D.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rdScrewBomber_D.FlatAppearance.BorderSize = 0;
-            this.rdScrewBomber_D.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.rdScrewBomber_D.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdScrewBomber_D.Image = global::MapEditor.Properties.Resources.enemy_screwbomber;
-            this.rdScrewBomber_D.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdScrewBomber_D.Location = new System.Drawing.Point(124, 1062);
-            this.rdScrewBomber_D.Name = "rdScrewBomber_D";
-            this.rdScrewBomber_D.Size = new System.Drawing.Size(95, 98);
-            this.rdScrewBomber_D.TabIndex = 75;
-            this.rdScrewBomber_D.Text = "Screw Bomber (down)";
-            this.rdScrewBomber_D.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.rdScrewBomber_D.UseVisualStyleBackColor = true;
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // bgOpenFile
+            // 
+            this.bgOpenFile.FileName = "bgOpenFile";
             // 
             // Form1
             // 
@@ -723,6 +723,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.pnGrid.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbGridMap)).EndInit();
             this.paButton.ResumeLayout(false);
             this.paButton.PerformLayout();
             this.pnObjects.ResumeLayout(false);
@@ -730,7 +731,6 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbGridMap)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
