@@ -277,6 +277,7 @@
             this.pnObjects.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.pnObjects.Size = new System.Drawing.Size(252, 457);
             this.pnObjects.TabIndex = 1;
+            this.pnObjects.MouseEnter += new System.EventHandler(this.pnObjects_MouseEnter);
             // 
             // splitContainer1
             // 
