@@ -2,7 +2,7 @@
 #include"GamestateManager.h"
 #include"PLayingGameState.h"
 
-#define TIME_IN_STATE (25.0f)
+#define TIME_IN_STATE (15.0f)
 
 CChangeState::CChangeState()
 {
@@ -47,14 +47,14 @@ CChangeState::~CChangeState()
 
 void CChangeState::DrawTextChangeState()
 {
-	RECT r = {310, 250, 800, 600};
+	RECT r = {325, 250, 800, 600};
 
 	string textToDraw = "Stage ";
 	textToDraw.append(std::to_string(CPLayingGameState::g_Stage));
 	m_StateManager->m_GraphicText->DrawText(NULL, textToDraw.c_str(), -1, &r, NULL, D3DCOLOR_XRGB(255,255,255));
 
+	r.left = 365;
 	r.top = 315;
-	r.left = 350;
 	textToDraw = " x    ";
 	textToDraw.append(std::to_string(CPLayingGameState::g_LifeOfRockman));
 	m_StateManager->m_GraphicText->DrawText(NULL, textToDraw.c_str(), -1, &r, NULL, D3DCOLOR_XRGB(255,255,255));

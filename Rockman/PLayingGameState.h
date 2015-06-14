@@ -9,6 +9,13 @@
 #include"GameStateManager.h"
 #include "Map.h"
 
+enum ChangeState
+{
+	CHANGE_NONE,
+	CHANGE_NEXT,
+	CHANGE_FAIL
+};
+
 class CPLayingGameState : public CGameState
 {
 private:
@@ -32,6 +39,6 @@ public:
 	static int g_Score;
 	static int g_Stage;
 	static int g_LifeOfRockman;
-
+	static ChangeState g_ChangeState;
 };
 #endif

@@ -201,6 +201,9 @@
     <ClCompile Include="WinState.cpp">
       <Filter>GameState</Filter>
     </ClCompile>
+    <ClCompile Include="BulletIceman.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RockmanGame.h">
@@ -337,6 +340,9 @@
     </ClInclude>
     <ClInclude Include="WinState.h">
       <Filter>GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletIceman.h">
+      <Filter>Item</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

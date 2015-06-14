@@ -43,7 +43,6 @@ private:
 	void Jump();
 	void Shot();
 	void Climb(bool _isTurnUp);
-	void UpdateState();
 	//collision
 	void CollisionBottom();
 public:
@@ -58,6 +57,6 @@ public:
 	/*rockman*/
 	void SetInjured(CEntity* _other);
 	int GetKeyDown();
-	bool IsDie();
+	static D3DXVECTOR2 g_PosRockman;
 };
 #endif

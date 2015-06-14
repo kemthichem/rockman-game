@@ -137,3 +137,8 @@ bool CEntity::IsCheckCollision()
 {
 	return m_IsCheckCollision;
 }
+
+void CEntity::SetInjured(CEntity* _other)
+{
+
+}
