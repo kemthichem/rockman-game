@@ -40,10 +40,8 @@ namespace MapEditor
 
     class ObjectGame
     {
-        public int Id; //Auto increase
+        public int Id;
         public ObjectType TypeOb;
-        public static List<int> ListIdJustDeleted = new List<int>();
-        public static int CurrentId = 0;
         private Image image;
         public Rectangle Bound;
         private Point pos;
@@ -64,9 +62,9 @@ namespace MapEditor
 
         private int width, height;
         //-----------
-        public ObjectGame(Point p, int _id, ObjectType type)
+        public ObjectGame(Point p, ObjectType type)
         {
-            Id = _id;
+            Id = -1;
             pos.X = p.X - 32;
             pos.Y = p.Y - 32;
             TypeOb = type;
@@ -107,7 +105,7 @@ namespace MapEditor
                     width = 64;
                     height = 32;
                     if (isGetImage)
-                        image = global::MapEditor.Properties.Resources.land13;
+                        image = global::MapEditor.Properties.Resources.land1;
                     break;
                 case ObjectType.LANDWHITE:
                 case ObjectType._LANDWHITE:
@@ -202,7 +200,10 @@ namespace MapEditor
                     break;
             }
         }
-
+        public void SetId(int _id)
+        {
+            Id = _id;
+        }
         public Rectangle BoundInQuadTree;
     }
 }

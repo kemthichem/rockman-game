@@ -182,9 +182,6 @@ namespace MapEditor
             listContents.Clear();
             pbGridMap.Invalidate();
             btCreate.PerformClick();
-
-            ObjectGame.ListIdJustDeleted.Clear();
-            ObjectGame.CurrentId = 0;
         }
 
         //-----------Fill range
@@ -213,7 +210,6 @@ namespace MapEditor
                 int index = IndexObject(p);
                 if (index != -1)
                 {
-                    ObjectGame.ListIdJustDeleted.Add(listContents[index].Id);
                     listContents.RemoveAt(index);                    
                 }
             }
@@ -232,14 +228,7 @@ namespace MapEditor
                         }
                         if (ob == null || ob.TypeOb != TypeCurrent)
                         {
-                            if (ObjectGame.ListIdJustDeleted.Count > 0)
-                            {
-                                id = ObjectGame.ListIdJustDeleted[0];
-                                ObjectGame.ListIdJustDeleted.RemoveAt(0);
-                            }
-                            else
-                                id = ++ObjectGame.CurrentId;
-                            ObjectGame _ob = new ObjectGame(e.Location, id, TypeCurrent);
+                            ObjectGame _ob = new ObjectGame(e.Location, TypeCurrent);
                             if (IndexObject(_ob.Pos) == -1)
                                 listContents.Add(_ob);
                         }
@@ -283,9 +272,15 @@ namespace MapEditor
             {
                 if ((myStream = saveFileDialog1.OpenFile()) != null)
                 {
+                    //Add id to object in list objects
+                    for (int i = 0; i < listContents.Count; i++)
+                    {
+                        listContents[i].SetId(i + 1);
+                    }
+
+
                     StreamWriter writer = new StreamWriter(myStream);
                     WriteFile(writer);
-
                     myStream.Close();
 
                     string str = saveFileDialog1.FileName.Replace(".txt", "Tree.txt");
@@ -340,8 +335,6 @@ namespace MapEditor
                 writer.Write(item.PosToSave.Y + " ");
                 writer.Write("\n");
             }
-            
-           
             writer.Write("<End>");
             writer.Dispose();
             writer.Close();
@@ -367,7 +360,7 @@ namespace MapEditor
                 int mapX = Int32.Parse(arrString[2]) + 32;
                 int mapY = HeightOfMap - Int32.Parse(arrString[3]) + size;
 
-                ObjectGame ob = new ObjectGame(new Point(mapX, mapY), mapId, typeMap);
+                ObjectGame ob = new ObjectGame(new Point(mapX, mapY), typeMap);
                 listContents.Add(ob);
             }
 
@@ -399,15 +392,7 @@ namespace MapEditor
                 nextXObject = 0;
                 for (int j = fromC; j < toC && nextXObject < toC * 32; j++)
                 {
-                    if (ObjectGame.ListIdJustDeleted.Count > 0)
-                    {
-                        id = ObjectGame.ListIdJustDeleted[0];
-                        ObjectGame.ListIdJustDeleted.RemoveAt(0);
-                    }
-                    else
-                        id = ++ObjectGame.CurrentId;
-
-                    ObjectGame ob = new ObjectGame(new Point(j * widthType + 32, (SizeHeightMap - i) * 32 ), id, _type);
+                    ObjectGame ob = new ObjectGame(new Point(j * widthType + 32, (SizeHeightMap - i) * 32 ), _type);
                     listContents.Add(ob);
                     nextXObject = ob.Pos.X + widthType;
                    
