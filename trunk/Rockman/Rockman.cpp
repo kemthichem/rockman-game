@@ -1,7 +1,11 @@
 ﻿#include "Rockman.h"
 #include "MoveMap.h"
+#include "PLayingGameState.h"
 
 const D3DXVECTOR2 CRockman::mAccelOfRockman = D3DXVECTOR2(0.0f,-30.0f);
+
+D3DXVECTOR2 CRockman::g_PosRockman = D3DXVECTOR2(0, 100);
+
 #define TIME_INJUNRED 3.0f;
 
 CRockman::CRockman(void)
@@ -53,7 +57,6 @@ CRockman::~CRockman()
 }
 
 void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewPort) {
-	UpdateState();
 	m_accel.y = mAccelOfRockman.y;
 
 	if (m_pos.y < 80) {
@@ -111,14 +114,16 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	{
 	case DIK_A:
 		m_action = (ActionRockman)((int)m_action + 1);
-		OutputDebugString("down gun \n");
 		Shot();
 		break;
 	default:
 		break;
 	}
-	OutputDebugString(std::to_string((int)m_action).c_str());
-	OutputDebugString("\n");
+
+	//Update pos global
+	g_PosRockman = D3DXVECTOR2(m_pos.x, m_pos.y);
+	if (m_Blood->IsOver())
+		CPLayingGameState::g_ChangeState = ChangeState::CHANGE_FAIL;
 
 	//Update sprite	
 	UpdateSprite(_time);
@@ -368,14 +373,4 @@ void CRockman::SetInjured(CEntity* _other)
 int CRockman::GetKeyDown()
 {
 	return m_KeyDown;
-}
-
-void CRockman::UpdateState()
-{
-	
-}
-
-bool CRockman::IsDie()
-{
-	return m_Blood->IsOver();
 }

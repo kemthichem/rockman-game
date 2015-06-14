@@ -2,9 +2,6 @@
 #include "ResourceManager.h"
 #include "ScrewBomber.h"
 #include "Rockman.h"
-#include "CutMan.h"
-#include "GutsMan.h"
-#include "IceMan.h"
 
 CBulletRockman::CBulletRockman(D3DXVECTOR3 _pos)
 {
@@ -31,14 +28,8 @@ void CBulletRockman::UpdateCollison(CEntity* _other,float _time)
 	if (m_IsActive) {
 		switch (_other->GetType())
 		{
-			
 		case SCREW_BOMBER:
-			//(dynamic_cast<CScrewBomber*>(_other))->SetInjured(this);
-			_other->SetInjured(this);
-			break;
-		case ICEMAN:
-			//(dynamic_cast<CIceMan*>(_other))->SetInjured(this);
-			_other->SetInjured(this);
+			(dynamic_cast<CScrewBomber*>(_other))->SetInjured(this);
 			break;
 		default:
 			break;

@@ -73,6 +73,7 @@ public:
 	bool IsCheckCollision();
 	virtual void Update(float , CCamera *, CInput *, vector<CEntity*>);
 	virtual void Render(LPD3DXSPRITE, CCamera*);
+	virtual void SetInjured(CEntity* _other);
 	CEntity(void);
 	virtual ~CEntity(void);
 };

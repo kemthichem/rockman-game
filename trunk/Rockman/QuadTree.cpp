@@ -90,7 +90,7 @@ vector<CEntity*> CQuadTree::GetListObjectInRect(RECT _rect)
 	{
 		vector<CEntity*> listObjectInNode;
 		m_listNodeInViewPort[i]->GetListObjectInNode(_rect, listObjectInNode);
-		listObjectInNode = ClearDuplicate(listObjectInNode);		
+				
 		
 		//m_listObjectViewportToUpdate.insert(m_listObjectViewportToUpdate.begin(), listObjectInNode.begin(), listObjectInNode.end());
 
@@ -103,7 +103,7 @@ vector<CEntity*> CQuadTree::GetListObjectInRect(RECT _rect)
 				}
 			}
 	}
-
+	m_listObjectViewportToUpdate = ClearDuplicate(m_listObjectViewportToUpdate);
 	return m_listObjectViewportToUpdate;
 }
 

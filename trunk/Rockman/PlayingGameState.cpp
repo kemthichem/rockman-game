@@ -5,8 +5,12 @@
 #include "MoveMap.h"
 #include "ChangeState.h"
 #include "GameOverState.h"
+#include "WinState.h"
 
-int CPLayingGameState::g_LifeOfRockman = 3;
+
+ChangeState CPLayingGameState::g_ChangeState = CHANGE_NONE;
+
+int CPLayingGameState::g_LifeOfRockman = 2;
 
 int CPLayingGameState::g_Stage = 1;
 
@@ -83,10 +87,30 @@ void CPLayingGameState::Update(CInput* _input,float _time,CCamera* _camera)
 
 void CPLayingGameState::Init()
 {
-	m_Map.LoadObjectFromFile("Resource//map//Map1.txt");	
+	char* pathMap = "";
+	char* pathTree = "";
+	switch (g_Stage)
+	{
+	case 1:
+		pathMap = "Resource//map//Map1.txt";
+		pathTree = "Resource//map//Map1Tree.txt";
+		break;
+	case 2:
+		pathMap = "Resource//map//Map2.txt";
+		pathTree = "Resource//map//Map2Tree.txt";
+		break;
+	case 3:
+		pathMap = "Resource//map//Map3.txt";
+		pathTree = "Resource//map//Map3Tree.txt";
+		break;
+	default:
+		break;
+	}
+
+	m_Map.LoadObjectFromFile(pathMap);	
 	//Load tree
 	quadTree = new CQuadTree();
-	quadTree->LoadNodeInFile("Resource//map//Map1Tree.txt");
+	quadTree->LoadNodeInFile(pathTree);
 
 	quadTree->MapIdToObjectInTree(quadTree->m_nodeRoot, m_Map.m_ListObjects);
 	//
@@ -118,18 +142,33 @@ void CPLayingGameState::DrawText()
 
 void CPLayingGameState::UpdateState()
 {
-	if (rockman->IsDie()) {
+	switch (g_ChangeState)
+	{
+	case CHANGE_NONE:
+		break;
+	case CHANGE_NEXT:
+		g_Stage++;
+		if (g_Stage > 3) {
+			m_StateManager->ChangeState(new CWinState(m_StateManager));
+		} else {
+			m_StateManager->ChangeState(new CChangeState(m_StateManager));
+		}
+		break;
+	case CHANGE_FAIL:
 		g_LifeOfRockman--;
-
 		if (g_LifeOfRockman >= 0) {
 			m_StateManager->ChangeState(new CChangeState(m_StateManager));
 		} else
 		{
-			CPLayingGameState::g_LifeOfRockman = 3;
+			CPLayingGameState::g_LifeOfRockman = 2;
 			CPLayingGameState::g_Score = 0;
 			CPLayingGameState::g_Stage = 1;
 			m_StateManager->ChangeState(new CGameOverState(m_StateManager));
 		}
+		break;
+	default:
+		break;
 	}
+	g_ChangeState = CHANGE_NONE;
 }
 
