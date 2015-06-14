@@ -124,6 +124,10 @@ namespace MapEditor
                 case ObjectType.ROCKMAN:
                     break;
                 case ObjectType.LADDER:
+                     width = 32;
+                    height = 320;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.ladder;
                     break;
                 case ObjectType.BIGEYE:
                     width = 65;
@@ -158,8 +162,10 @@ namespace MapEditor
                         image = global::MapEditor.Properties.Resources.enemy_spine;
                     break;
                 case ObjectType.OCTOPUS:
+                case ObjectType.OCTOPUS_D:
                     break;
                 case ObjectType.BEAK:
+                case ObjectType.BEAK_R:
                     width = 30;
                     height = 35;
                     if (isGetImage)

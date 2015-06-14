@@ -21,7 +21,6 @@ namespace MapEditor
         int id;
         string textTypeTemp;
         ObjectType TypeCurrent;
-        string BgFilePath;
         Rectangle RectGrid;
         Control controlSelected;
         //------
@@ -41,15 +40,13 @@ namespace MapEditor
         }
         private void LoadResources()
         {
-            BgFilePath = "Resources/background1.png";
-            background = Image.FromFile(BgFilePath);
+            background = global::MapEditor.Properties.Resources.background1;
         }
 
         private void LoadTypeObject()
         {
-            rdBigEye.AccessibleName = ObjectType.BIGEYE.ToString();
+            /*Blocks*/
             rdMoveMap.AccessibleName = ObjectType.MOVEMAP.ToString();
-            rdScrewBomber.AccessibleName = ObjectType.SCREW_BOMBER.ToString();
             rdLand1.AccessibleName = ObjectType.LAND1.ToString();
             rdLand1_n.AccessibleName = ObjectType._LAND1.ToString();
             rdLand.AccessibleName = ObjectType.LAND.ToString();
@@ -58,10 +55,21 @@ namespace MapEditor
             rdLandWhite_n.AccessibleName = ObjectType._LANDWHITE.ToString();
             rdLandIceberg.AccessibleName = ObjectType.LANDICEBERG.ToString();
             rdLandIceberg_n.AccessibleName = ObjectType._LANDICEBERG.ToString();
+            rdLadder.AccessibleName = ObjectType.LADDER.ToString();
+
+            /*Enemies*/
             rdBeak.AccessibleName = ObjectType.BEAK.ToString();
+            rdBeak_r.AccessibleName = ObjectType.BEAK_R.ToString();
+            rdOctopus.AccessibleName = ObjectType.OCTOPUS.ToString();
+            rdOctopus_d.AccessibleName = ObjectType.OCTOPUS_D.ToString();
+            rdBlader.AccessibleName = ObjectType.BLADER.ToString();
             rdMet.AccessibleName = ObjectType.MET.ToString();
             rdFlea.AccessibleName = ObjectType.FLEA.ToString();
             rdSpine.AccessibleName = ObjectType.SPINE.ToString();
+            rdBigEye.AccessibleName = ObjectType.BIGEYE.ToString();
+            rdScrewBomber.AccessibleName = ObjectType.SCREW_BOMBER.ToString();
+
+            /*Boss*/
             rdCuman.AccessibleName = ObjectType.CUTMAN.ToString();
             rdGusman.AccessibleName = ObjectType.GUTSMAN.ToString();
             rdIceMan.AccessibleName = ObjectType.ICEMAN.ToString();
@@ -154,7 +162,10 @@ namespace MapEditor
                 TypeCurrent = (ObjectType)Enum.Parse(typeof(ObjectType), controlSelected.AccessibleName);
 
         }
-
+        private void pnObjects_MouseEnter(object sender, EventArgs e)
+        {
+            pnObjects.Focus();
+        }
 
         //-----event button-----
         private void btCreate_Click(object sender, EventArgs e)
@@ -412,8 +423,6 @@ namespace MapEditor
                 FullFilePath = bgOpenFile.FileName;
                 string[] filePath = FullFilePath.Split('\\');
                 int n = filePath.Length;
-                BgFilePath = filePath[n - 2] + "\\" + filePath[n - 1];
-                background = Image.FromFile(BgFilePath);
                 pbGridMap.Invalidate();
             }
         }

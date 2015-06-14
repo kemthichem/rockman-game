@@ -72,6 +72,7 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.bgOpenFile = new System.Windows.Forms.OpenFileDialog();
+            this.rdBlader = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             this.pnGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbGridMap)).BeginInit();
@@ -261,6 +262,7 @@
             // pnObjects
             // 
             this.pnObjects.AutoScroll = true;
+            this.pnObjects.Controls.Add(this.rdBlader);
             this.pnObjects.Controls.Add(this.rdOctopus_d);
             this.pnObjects.Controls.Add(this.rdLadder);
             this.pnObjects.Controls.Add(this.rdOctopus);
@@ -312,7 +314,7 @@
             this.rdLadder.FlatAppearance.BorderSize = 0;
             this.rdLadder.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
             this.rdLadder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdLadder.Image = global::MapEditor.Properties.Resources.land1;
+            this.rdLadder.Image = global::MapEditor.Properties.Resources.ladder;
             this.rdLadder.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.rdLadder.Location = new System.Drawing.Point(133, 1067);
             this.rdLadder.Name = "rdLadder";
@@ -673,6 +675,22 @@
             // 
             this.bgOpenFile.FileName = "bgOpenFile";
             // 
+            // rdBlader
+            // 
+            this.rdBlader.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdBlader.FlatAppearance.BorderSize = 0;
+            this.rdBlader.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdBlader.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdBlader.Image = global::MapEditor.Properties.Resources.enemy_blader;
+            this.rdBlader.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rdBlader.Location = new System.Drawing.Point(137, 20);
+            this.rdBlader.Name = "rdBlader";
+            this.rdBlader.Size = new System.Drawing.Size(95, 86);
+            this.rdBlader.TabIndex = 71;
+            this.rdBlader.Text = "Blader";
+            this.rdBlader.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdBlader.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -746,6 +764,7 @@
         private System.Windows.Forms.RadioButton rdLadder;
         private System.Windows.Forms.RadioButton rdOctopus;
         private System.Windows.Forms.RadioButton rdBeak_r;
+        private System.Windows.Forms.RadioButton rdBlader;
     }
 }
 
