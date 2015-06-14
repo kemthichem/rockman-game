@@ -60,6 +60,7 @@
             // 
             // cbbNameOb
             // 
+            this.cbbNameOb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbNameOb.FormattingEnabled = true;
             this.cbbNameOb.Location = new System.Drawing.Point(82, 110);
             this.cbbNameOb.Name = "cbbNameOb";
