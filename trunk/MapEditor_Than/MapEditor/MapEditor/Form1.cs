@@ -61,7 +61,7 @@ namespace MapEditor
             rdBeak.AccessibleName = ObjectType.BEAK.ToString();
             rdBeak_r.AccessibleName = ObjectType.BEAK_R.ToString();
             rdOctopus.AccessibleName = ObjectType.OCTOPUS.ToString();
-            rdOctopus_d.AccessibleName = ObjectType.OCTOPUS_D.ToString();
+            rdOctopus_v.AccessibleName = ObjectType.OCTOPUS_D.ToString();
             rdBlader.AccessibleName = ObjectType.BLADER.ToString();
             rdMet.AccessibleName = ObjectType.MET.ToString();
             rdFlea.AccessibleName = ObjectType.FLEA.ToString();
@@ -237,11 +237,10 @@ namespace MapEditor
                         {
                             ob = listContents[index];
                         }
-                        if (ob == null || ob.TypeOb != TypeCurrent)
+                        if (ob == null || (ob != null && ob.TypeOb != TypeCurrent))
                         {
                             ObjectGame _ob = new ObjectGame(e.Location, TypeCurrent);
-                            if (IndexObject(_ob.Pos) == -1)
-                                listContents.Add(_ob);
+                            listContents.Add(_ob);
                         }
                     }
                 }
