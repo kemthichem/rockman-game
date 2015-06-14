@@ -31,14 +31,23 @@ CCamera::~CCamera(void)
 
 void CCamera::Update(D3DXVECTOR2 _pos)
 {
-	if (_pos.x < CMap::g_widthMap - WIDTH_SCREEN/2)
+	
+	if (_pos.x < CMap::g_widthMap - WIDTH_SCREEN - WIDTH_SCREEN/2)
 	{
 		m_pos.x = (float)_pos.x - WIDTH_SCREEN/2;
 	}
+	/*else {
+		m_pos.x = CMap::g_widthMap - 2 * WIDTH_SCREEN;
+	}*/
 
 	if (m_pos.x < 0)
 	{
 		m_pos.x =  0;
+	}
+
+	if (_pos.x >= CMap::g_widthMap - WIDTH_SCREEN - 14 && m_pos.x <= CMap::g_widthMap - 2 * WIDTH_SCREEN) {
+		CMoveMap::g_IsMovingMap = true;
+		//MoveX(WIDTH_SCREEN);
 	}
 
 	m_viewPort.left = m_pos.x;
@@ -91,3 +100,23 @@ void CCamera::Move(int _distanceY)
 	g_PosCamera = m_pos;
 }
 
+void CCamera::MoveX(int _distanceX) 
+{
+	int desX =  m_posInit.x + _distanceX;
+
+	if (m_pos.x < desX) {
+		m_pos.x += 5;
+	}
+	else
+	{
+		m_pos.x = desX;
+		CMoveMap::g_IsMovingMap = false;
+	}
+	
+	m_viewPort.left = m_pos.x;
+	m_viewPort.right = m_viewPort.left + WIDTH_SCREEN;
+	m_viewPort.top = m_pos.y;
+	m_viewPort.bottom = m_viewPort.top - HEIGHT_SCREEN;
+
+	g_PosCamera = m_pos;
+}

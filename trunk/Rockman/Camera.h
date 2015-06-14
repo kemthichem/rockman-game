@@ -26,6 +26,7 @@ public:
 	void SetPosCamera(D3DXVECTOR2 _pos);
 	~CCamera(void);
 	void Move(int);
+	void MoveX(int);
 };
 
 #endif
