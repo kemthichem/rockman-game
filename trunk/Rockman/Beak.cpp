@@ -12,7 +12,6 @@ CBeak::CBeak(int _id, D3DXVECTOR3 _pos, bool _isLeft)
 
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 	UpdateRect();
-
 }
 
 

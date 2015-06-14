@@ -13,10 +13,10 @@ private:
 	CItem *m_Item;
 	float  m_TimeSpend;
 	bool m_IsLife;
-	float m_vellocTemp;
+	D3DXVECTOR2 m_vellocTemp;
 
 public:
-	COctopus(int _id, D3DXVECTOR3 _pos);
+	COctopus(int _id, D3DXVECTOR3 _pos, bool _isTurnHor = true);
 	~COctopus(void);
 
 	virtual void Update(float , CCamera *, CInput *,  vector<CEntity* >);

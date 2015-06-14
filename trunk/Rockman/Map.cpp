@@ -112,10 +112,16 @@ void  CMap::LoadObjectFromFile(char* filePath)
 			else if(_objecttype == "SCREW_BOMBER"){
 				CScrewBomber *ob = new CScrewBomber(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
 				m_ListObjects.push_back(ob);
-			} else if(_objecttype == "OCTOPUS") {
+			} else if(_objecttype == "SCREW_BOMBER_D"){
+				CScrewBomber *ob = new CScrewBomber(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0), false);
+				m_ListObjects.push_back(ob);
+			}else if(_objecttype == "OCTOPUS") {
 				COctopus *ob = new COctopus(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
 				m_ListObjects.push_back(ob);
-			}else if(_objecttype == "MET") {
+			} else if(_objecttype == "OCTOPUS_D") {
+				COctopus *ob = new COctopus(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0), false);
+				m_ListObjects.push_back(ob);
+			} else if(_objecttype == "MET") {
 				CMet *ob = new CMet(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
 				m_ListObjects.push_back(ob);
 			} else if(_objecttype == "BEAK") {
@@ -130,7 +136,10 @@ void  CMap::LoadObjectFromFile(char* filePath)
 			}	else if(_objecttype == "BEAK") {
 				CBeak *ob = new CBeak(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
 				m_ListObjects.push_back(ob);
-			}	 else if(_objecttype == "BIGEYE"){
+			}	 else if(_objecttype == "BEAK_R") {
+				CBeak *ob = new CBeak(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0), false);
+				m_ListObjects.push_back(ob);
+			}else if(_objecttype == "BIGEYE"){
 				CBigEye *bigEye = new CBigEye(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
 				m_ListObjects.push_back(bigEye);
 			} 

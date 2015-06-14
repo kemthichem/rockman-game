@@ -2,7 +2,7 @@
 #include "BulletRockman.h"
 #define TIME_CONVERT (20.0f)
 
-COctopus::COctopus(int _id, D3DXVECTOR3 _pos)
+COctopus::COctopus(int _id, D3DXVECTOR3 _pos, bool _isTurnHor)
 {
 	m_Id = _id;
 	m_Type = OCTOPUS;
@@ -14,14 +14,15 @@ COctopus::COctopus(int _id, D3DXVECTOR3 _pos)
 		D3DXVECTOR2(47,0));
 	m_pos = _pos;
 	m_accel = D3DXVECTOR2(0,0);
-	m_velloc = D3DXVECTOR2(0,10);
+	m_velloc.x = _isTurnHor ? -10 : 0;
+	m_velloc.y = _isTurnHor ? 0 : 10;
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
+	UpdateRect();
 
 	/**Attribute Octopus**/
 	m_TimeSpend = 0;
-	UpdateRect();
 	m_IsLife = true;
-	m_vellocTemp = 0;
+	m_vellocTemp = D3DXVECTOR2(0,0);
 
 	//create item
 	m_Item = new CItem(m_pos);
@@ -38,11 +39,11 @@ COctopus::~COctopus(void)
 void COctopus::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity* >_listObjectInViewPort)
 {
 	if (m_IsLife) {
-		if (m_velloc.y == 0) {
+		if (m_velloc.x == 0 && m_velloc.y == 0) {
 			if (m_TimeSpend < TIME_CONVERT) {
 				m_TimeSpend += _time;				
 			} else {
-				m_velloc.y = m_vellocTemp * -1;
+				m_velloc = m_vellocTemp * -1;
 				m_TimeSpend = 0;
 			}
 		}
@@ -104,30 +105,30 @@ void COctopus::ExecuteCollision(CEntity* _other, DirectCollision m_directCollisi
 			if( m_directCollision == BOTTOM)
 			{
 				m_pos.y = _other->GetRect().top + m_Size.y + 1;
-				m_vellocTemp = m_velloc.y;
+				m_vellocTemp.y = m_velloc.y;
 				m_velloc.y = 0;
 			}
 
 			if (m_directCollision == TOP)
 			{
 				m_pos.y = _other->GetRect().bottom;
-				m_vellocTemp = m_velloc.y;
+				m_vellocTemp.y = m_velloc.y;
 				m_velloc.y = 0;
 			}
 
-			//if( m_directCollision == LEFT)
-			//{
-			//	m_veloc.x = 0;
-			//	m_accel.x = 0;
-			//	m_pos.x = _other->GetRect().right ;
-			//}
+			if( m_directCollision == LEFT)
+			{
+				m_pos.x = _other->GetRect().right + 1;
+				m_vellocTemp.x = m_velloc.x;
+				m_velloc.x = 0;
+			}
 
-			//if( m_directCollision == RIGHT)
-			//{
-			//	m_veloc.x = 0;
-			//	m_accel.x = 0;
-			//	m_pos.x = _other->GetRect().left - m_Size.x;
-			//}
+			if( m_directCollision == RIGHT)
+			{
+				m_pos.x = _other->GetRect().left - m_Size.x - 1;
+				m_vellocTemp.x= m_velloc.x;
+				m_velloc.x = 0;
+			}
 
 		}
 		break;
