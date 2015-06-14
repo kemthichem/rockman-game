@@ -68,6 +68,10 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.bgOpenFile = new System.Windows.Forms.OpenFileDialog();
+            this.rdOctopus_d = new System.Windows.Forms.RadioButton();
+            this.rdLadder = new System.Windows.Forms.RadioButton();
+            this.rdOctopus = new System.Windows.Forms.RadioButton();
+            this.rdBeak_r = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             this.pnGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbGridMap)).BeginInit();
@@ -257,6 +261,10 @@
             // pnObjects
             // 
             this.pnObjects.AutoScroll = true;
+            this.pnObjects.Controls.Add(this.rdOctopus_d);
+            this.pnObjects.Controls.Add(this.rdLadder);
+            this.pnObjects.Controls.Add(this.rdOctopus);
+            this.pnObjects.Controls.Add(this.rdBeak_r);
             this.pnObjects.Controls.Add(this.rdMet);
             this.pnObjects.Controls.Add(this.rdLandIceberg_n);
             this.pnObjects.Controls.Add(this.rdLand_n);
@@ -600,6 +608,71 @@
             // 
             this.bgOpenFile.FileName = "bgOpenFile";
             // 
+            // rdOctopus_d
+            // 
+            this.rdOctopus_d.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdOctopus_d.FlatAppearance.BorderSize = 0;
+            this.rdOctopus_d.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdOctopus_d.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdOctopus_d.Image = global::MapEditor.Properties.Resources.LandIceberg;
+            this.rdOctopus_d.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rdOctopus_d.Location = new System.Drawing.Point(133, 973);
+            this.rdOctopus_d.Name = "rdOctopus_d";
+            this.rdOctopus_d.Size = new System.Drawing.Size(95, 88);
+            this.rdOctopus_d.TabIndex = 70;
+            this.rdOctopus_d.Text = "Octopus (down)";
+            this.rdOctopus_d.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdOctopus_d.UseVisualStyleBackColor = true;
+            // 
+            // rdLadder
+            // 
+            this.rdLadder.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdLadder.FlatAppearance.BorderSize = 0;
+            this.rdLadder.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdLadder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdLadder.Image = global::MapEditor.Properties.Resources.land1;
+            this.rdLadder.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rdLadder.Location = new System.Drawing.Point(133, 1067);
+            this.rdLadder.Name = "rdLadder";
+            this.rdLadder.Size = new System.Drawing.Size(95, 92);
+            this.rdLadder.TabIndex = 69;
+            this.rdLadder.Text = "Ladder";
+            this.rdLadder.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdLadder.UseVisualStyleBackColor = true;
+            // 
+            // rdOctopus
+            // 
+            this.rdOctopus.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdOctopus.FlatAppearance.BorderSize = 0;
+            this.rdOctopus.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdOctopus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdOctopus.Image = global::MapEditor.Properties.Resources.LandIceberg;
+            this.rdOctopus.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rdOctopus.Location = new System.Drawing.Point(7, 973);
+            this.rdOctopus.Name = "rdOctopus";
+            this.rdOctopus.Size = new System.Drawing.Size(95, 89);
+            this.rdOctopus.TabIndex = 68;
+            this.rdOctopus.Text = "Octopus";
+            this.rdOctopus.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdOctopus.UseVisualStyleBackColor = true;
+            // 
+            // rdBeak_r
+            // 
+            this.rdBeak_r.AccessibleName = "_LAND1";
+            this.rdBeak_r.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdBeak_r.FlatAppearance.BorderSize = 0;
+            this.rdBeak_r.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdBeak_r.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdBeak_r.Image = global::MapEditor.Properties.Resources.land1;
+            this.rdBeak_r.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rdBeak_r.Location = new System.Drawing.Point(7, 1067);
+            this.rdBeak_r.Name = "rdBeak_r";
+            this.rdBeak_r.Size = new System.Drawing.Size(95, 93);
+            this.rdBeak_r.TabIndex = 67;
+            this.rdBeak_r.Text = "Beak (right)";
+            this.rdBeak_r.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdBeak_r.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -669,6 +742,10 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.OpenFileDialog bgOpenFile;
         private System.Windows.Forms.RadioButton rdMet;
+        private System.Windows.Forms.RadioButton rdOctopus_d;
+        private System.Windows.Forms.RadioButton rdLadder;
+        private System.Windows.Forms.RadioButton rdOctopus;
+        private System.Windows.Forms.RadioButton rdBeak_r;
     }
 }
 
