@@ -402,7 +402,7 @@
             this.rdBeak.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdBeak.Image = global::MapEditor.Properties.Resources.break_left;
             this.rdBeak.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdBeak.Location = new System.Drawing.Point(137, 207);
+            this.rdBeak.Location = new System.Drawing.Point(23, 206);
             this.rdBeak.Name = "rdBeak";
             this.rdBeak.Size = new System.Drawing.Size(95, 92);
             this.rdBeak.TabIndex = 39;
@@ -434,7 +434,7 @@
             this.rdLand1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdLand1.Image = global::MapEditor.Properties.Resources.land1;
             this.rdLand1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLand1.Location = new System.Drawing.Point(137, 16);
+            this.rdLand1.Location = new System.Drawing.Point(137, 875);
             this.rdLand1.Name = "rdLand1";
             this.rdLand1.Size = new System.Drawing.Size(95, 92);
             this.rdLand1.TabIndex = 37;
@@ -477,6 +477,7 @@
             // rdLand
             // 
             this.rdLand.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdLand.Checked = true;
             this.rdLand.FlatAppearance.BorderSize = 0;
             this.rdLand.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
             this.rdLand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -486,6 +487,7 @@
             this.rdLand.Name = "rdLand";
             this.rdLand.Size = new System.Drawing.Size(95, 89);
             this.rdLand.TabIndex = 20;
+            this.rdLand.TabStop = true;
             this.rdLand.Text = "Land";
             this.rdLand.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.rdLand.UseVisualStyleBackColor = true;
@@ -531,7 +533,7 @@
             this.rdLand1_n.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdLand1_n.Image = global::MapEditor.Properties.Resources.land1;
             this.rdLand1_n.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLand1_n.Location = new System.Drawing.Point(11, 207);
+            this.rdLand1_n.Location = new System.Drawing.Point(11, 875);
             this.rdLand1_n.Name = "rdLand1_n";
             this.rdLand1_n.Size = new System.Drawing.Size(95, 93);
             this.rdLand1_n.TabIndex = 6;
@@ -558,7 +560,6 @@
             // rdBigEye
             // 
             this.rdBigEye.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rdBigEye.Checked = true;
             this.rdBigEye.FlatAppearance.BorderSize = 0;
             this.rdBigEye.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
             this.rdBigEye.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -568,7 +569,6 @@
             this.rdBigEye.Name = "rdBigEye";
             this.rdBigEye.Size = new System.Drawing.Size(95, 86);
             this.rdBigEye.TabIndex = 4;
-            this.rdBigEye.TabStop = true;
             this.rdBigEye.Text = "BigEye";
             this.rdBigEye.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.rdBigEye.UseVisualStyleBackColor = true;
