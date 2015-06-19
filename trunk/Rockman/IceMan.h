@@ -17,12 +17,20 @@ class CIceMan : public CEntity
 private:
 	IceManStatus m_Status;
 	float m_TimeSpend;
+	float m_TimeInjured;
 	CBlood* m_Blood;
 	CBulletIceman* m_ListBullet[5];
+	int m_yInit;
+	bool m_IsJustJump;
+	int m_yShot;
+	bool m_IsHello;
+
 
 	void UpdateSprite(float _time);
 	void Shot();
+	void Jump();
 protected:
+	virtual void UpdateCollison(CEntity* _other,float _time);
 public:
 	CIceMan(int _id, D3DXVECTOR3 _pos);
 	~CIceMan(void);

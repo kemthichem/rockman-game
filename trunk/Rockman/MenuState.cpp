@@ -53,6 +53,9 @@ void CMenuState::Update(CInput* _input,float _time,CCamera* _camera)
 	{
 		m_Select--;
 	}
+	else if (key == DIK_ESCAPE) {
+		PostQuitMessage(0);
+	}
 	if (m_Select > 5)
 	{
 		m_Select = 1;

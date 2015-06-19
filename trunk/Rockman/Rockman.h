@@ -55,7 +55,7 @@ public:
 	void ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,float _timeEntry);
 
 	/*rockman*/
-	void SetInjured(CEntity* _other);
+	void SetInjured(CEntity* _other, int _dam = -10);
 	int GetKeyDown();
 	static D3DXVECTOR2 g_PosRockman;
 };

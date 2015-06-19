@@ -25,16 +25,17 @@ CBulletIceman::~CBulletIceman(void)
 
 void CBulletIceman::UpdateCollison(CEntity* _other,float _time)
 {
-	/*if (m_IsActive) {
+	if (m_IsActive) {
 		switch (_other->GetType())
 		{
-		case SCREW_BOMBER:
-			(dynamic_cast<CScrewBomber*>(_other))->SetInjured(this);
+		case ROCKMAN:
+			(dynamic_cast<CRockman*>(_other))->SetInjured(this, -15);
+			m_IsActive = false;
 			break;
 		default:
 			break;
 		}
-	}*/
+	}
 }
 
 
