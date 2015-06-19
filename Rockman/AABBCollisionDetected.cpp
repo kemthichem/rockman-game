@@ -24,43 +24,6 @@ bool CAABBCollision::CheckCollision(RECT _nodeRect,RECT _otherRect)
 	else
 		return true;
 }
-float CAABBCollision::intersectX(CEntity* a,CEntity *b,float _time)
-{
-	//a->SetBound();
-	//b->SetBound();
-	if (a->GetRect().left >= b->GetRect().left && a->GetRect().left <= b->GetRect().right && a->GetRect().right >= b->GetRect().right)
-	{
-		return b->GetRect().right - a->GetRect().left;
-	}
-	else if (a->GetRect().left >= b->GetRect().left && a->GetRect().left <= b->GetRect().right && a->GetRect().right <= b->GetRect().right)
-	{
-		return a->GetRect().right - a->GetRect().left;
-	}
-	else if (a->GetRect().left <= b->GetRect().left && a->GetRect().right >= b->GetRect().left && a->GetRect().right <= b->GetRect().right)
-	{
-		return a->GetRect().right - b->GetRect().left;
-	}
-	else if (a->GetRect().left <= b->GetRect().left && a->GetRect().right >= b->GetRect().right)
-	{
-		return b->GetRect().right - b->GetRect().left;
-	}
-}
-
-bool CAABBCollision::SortObject(CEntity * a, CEntity*b)
-{
-	return true;
-	/*
-	if (a->m_TimeCollision!= b->m_TimeCollision)
-	{
-	return a->m_TimeCollision < b->m_TimeCollision;
-
-	}
-	else
-	{
-	return a->m_intetsect > b->m_intetsect;
-	}*/
-}
-
 float CAABBCollision::SweptAABB(CEntity* _ob1, CEntity* _ob2, float _time)
 {
 	D3DXVECTOR2 v1 = _ob1->GetVelocity() + _ob1->GetAccleration()*_time;

@@ -43,6 +43,7 @@ void CBulletRockman::UpdateCollison(CEntity* _other,float _time)
 		default:
 			break;
 		}
+		this->m_IsActive = false;
 	}
 }
 

@@ -292,6 +292,13 @@ void CRockman::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,
 				}
 			}
 			break;
+		case LADDER:
+			if (m_directCollion == TOP)
+			{/*
+				m_action = Action_Stand;
+				m_velloc.x = m_velloc.y = 0;*/
+			}
+			break;
 		case MOVEMAP:
 			CMoveMap *moveMap = dynamic_cast<CMoveMap*> (_other);
 			if (m_directCollion == TOP)
@@ -311,6 +318,7 @@ void CRockman::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,
 				}
 			}
 			break;
+		
 		}
 }
 
@@ -363,11 +371,11 @@ void CRockman::Injunred(bool _isImpactLeft, float _time)
 	m_action = Action_Injured;
 }
 
-void CRockman::SetInjured(CEntity* _other)
+void CRockman::SetInjured(CEntity* _other, int _dam)
 {
 	if (m_Injuring != 0) return;
 	m_Injuring = _other->GetVelocity().x > 0 ? 1 : -1;
-	m_Blood->ChangeBlood(-10);
+	m_Blood->ChangeBlood(_dam);
 }
 
 int CRockman::GetKeyDown()
