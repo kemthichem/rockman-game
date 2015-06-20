@@ -204,6 +204,12 @@
     <ClCompile Include="BulletIceman.cpp">
       <Filter>Item</Filter>
     </ClCompile>
+    <ClCompile Include="BulletCutman.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletGutsman.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RockmanGame.h">
@@ -342,6 +348,12 @@
       <Filter>GameState</Filter>
     </ClInclude>
     <ClInclude Include="BulletIceman.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletCutman.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletGutsman.h">
       <Filter>Item</Filter>
     </ClInclude>
   </ItemGroup>

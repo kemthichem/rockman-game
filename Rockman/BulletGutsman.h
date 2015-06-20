@@ -1,21 +1,22 @@
-#ifndef	_BULLET_ROCKMAN_H
-#define  _BULLET_ROCKMAN_H
+#ifndef	_BULLET_GUT_H
+#define  _BULLET_GUT_H
 
 #include "Bullet.h"
 
-class CBulletRockman : public CBullet
+class CBulletGutsman : public CBullet
 {
+private:
 protected:
 	virtual void UpdateCollison(CEntity* ,float);
 
 public:
-	CBulletRockman(D3DXVECTOR3 _pos);
-	~CBulletRockman(void);
+	CBulletGutsman(D3DXVECTOR3 _pos);
+	~CBulletGutsman(void);
 
 	virtual void Update(float , CCamera *, CInput *, vector<CEntity*>);
 	virtual void Render(LPD3DXSPRITE, CCamera*);
 	void SetPos(D3DXVECTOR3 _pos);
-	//BulletRockman
+	//BulletGustman
 };
 
 #endif

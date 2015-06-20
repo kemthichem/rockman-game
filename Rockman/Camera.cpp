@@ -34,7 +34,7 @@ void CCamera::Update(D3DXVECTOR2 _pos)
 	
 	if (_pos.x < CMap::g_widthMap - WIDTH_SCREEN - WIDTH_SCREEN/2)
 	{
-		m_pos.x = (float)_pos.x - WIDTH_SCREEN/2;
+	//	m_pos.x = (float)_pos.x - WIDTH_SCREEN/2;
 	}
 	/*else {
 		m_pos.x = CMap::g_widthMap - 2 * WIDTH_SCREEN;

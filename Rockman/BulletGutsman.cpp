@@ -1,14 +1,13 @@
-#include "BulletRockman.h"
+#include "BulletGutsman.h"
 #include "ResourceManager.h"
 #include "ScrewBomber.h"
 #include "Rockman.h"
 
-CBulletRockman::CBulletRockman(D3DXVECTOR3 _pos)
+CBulletGutsman::CBulletGutsman(D3DXVECTOR3 _pos)
 {
 	m_Type = BULLET;
-	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES)
-		, D3DXVECTOR2(335,205), 1, 1
-		, D3DXVECTOR2(320,190));
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MASTER)		, D3DXVECTOR2(418,470), 2, 1
+		, D3DXVECTOR2(348,436), D3DXVECTOR2(0,0), D3DXVECTOR2(5,0));
 	m_pos = _pos;
 
 	m_collision = new CAABBCollision();
@@ -19,17 +18,18 @@ CBulletRockman::CBulletRockman(D3DXVECTOR3 _pos)
 }
 
 
-CBulletRockman::~CBulletRockman(void)
+CBulletGutsman::~CBulletGutsman(void)
 {
 }
 
-void CBulletRockman::UpdateCollison(CEntity* _other,float _time)
+void CBulletGutsman::UpdateCollison(CEntity* _other,float _time)
 {
 	if (m_IsActive) {
 		switch (_other->GetType())
 		{
-		case SCREW_BOMBER:
-			(dynamic_cast<CScrewBomber*>(_other))->SetInjured(this);
+		case ROCKMAN:
+			(dynamic_cast<CRockman*>(_other))->SetInjured(this, -15);
+			m_IsActive = false;
 			break;
 		default:
 			break;
@@ -38,9 +38,10 @@ void CBulletRockman::UpdateCollison(CEntity* _other,float _time)
 }
 
 
-void CBulletRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewport)
+void CBulletGutsman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewport)
 {
 	if (m_IsActive) {
+		m_Sprite->NextOf(_time, 0,1 );
 		CEntity::Update(_time,_camera,_input,_listObjectInViewport);
 	} 
 
@@ -51,14 +52,15 @@ void CBulletRockman::Update(float _time, CCamera *_camera, CInput *_input, vecto
 	}
 }
 
-void CBulletRockman::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
+void CBulletGutsman::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 {
 	if (m_IsActive) {
 		CEntity::Render(_spriteHandle, _camera);
 	}
 }
 
-void CBulletRockman::SetPos(D3DXVECTOR3 _pos)
+void CBulletGutsman::SetPos(D3DXVECTOR3 _pos)
 {
 	m_pos = _pos;
+	UpdateRect();
 }

@@ -88,6 +88,8 @@
     <ClCompile Include="Blader.cpp" />
     <ClCompile Include="Blood.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="BulletCutman.cpp" />
+    <ClCompile Include="BulletGutsman.cpp" />
     <ClCompile Include="BulletIceman.cpp" />
     <ClCompile Include="BulletRockman.cpp" />
     <ClCompile Include="Camera.cpp" />
@@ -136,6 +138,8 @@
     <ClInclude Include="Blader.h" />
     <ClInclude Include="Blood.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletCutman.h" />
+    <ClInclude Include="BulletGutsman.h" />
     <ClInclude Include="BulletIceman.h" />
     <ClInclude Include="BulletRockman.h" />
     <ClInclude Include="Camera.h" />
