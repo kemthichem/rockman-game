@@ -25,7 +25,7 @@ private:
 	int m_yShot;
 	bool m_IsHello;
 
-
+	/*Method*/
 	void UpdateSprite(float _time);
 	void Shot();
 	void Jump();
