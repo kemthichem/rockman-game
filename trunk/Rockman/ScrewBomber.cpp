@@ -151,9 +151,5 @@ void CScrewBomber::SetInjured(CEntity* _other)
 		m_IsCheckCollision = false;
 		m_Item->SetActive(true);
 		m_IsLife = false;
-
-		//update bullet
-		CBulletRockman* bullet = dynamic_cast<CBulletRockman*> (_other);
-		bullet->SetActive(false);
 	}
 }

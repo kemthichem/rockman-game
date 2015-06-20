@@ -5,6 +5,7 @@
 class CBigEye : public CEntity
 {
 private:
+	D3DXVECTOR3 m_PosInit;
 protected:
 public:
 	CBigEye(int _id, D3DXVECTOR3 _pos);

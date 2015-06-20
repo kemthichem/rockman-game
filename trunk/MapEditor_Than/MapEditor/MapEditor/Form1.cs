@@ -463,5 +463,10 @@ namespace MapEditor
                     }
             }
         }
+
+        private void rdLadder5_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
      }
 }

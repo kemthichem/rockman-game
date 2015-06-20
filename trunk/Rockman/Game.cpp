@@ -24,7 +24,7 @@ void CGame::InitGame()
 	_InitFont();
 	
 	 m_StateManager = new CGameStateManager();
-	 m_StateManager->Init(m_hWnd, m_SpriteHandler, m_GraphicText);
+	 m_StateManager->Init(m_hWnd, m_SpriteHandler, m_GraphicText, m_camera);
 }
 
 LRESULT CALLBACK CGame::_WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 

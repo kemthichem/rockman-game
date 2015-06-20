@@ -24,7 +24,7 @@ CIceMan::CIceMan(int _id, D3DXVECTOR3 _pos)
 	m_IsHello = true;
 	m_isTurnLeft = true;
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
-	m_pos.x = CCamera::g_PosCamera.x + WIDTH_SCREEN - m_Size.x * 1.5;
+	m_pos.x = CMap::g_widthMap - m_Size.x * 1.5;
 	UpdateRect();
 	//create list bullet
 	for (int i = 0; i < 5; i++)
@@ -172,7 +172,7 @@ void CIceMan::Shot()
 				m_ListBullet[i]->SetActive(true);
 				int xBullet = m_isTurnLeft ? m_pos.x : m_pos.x + m_Size.x;
 				m_ListBullet[i]->SetPos(D3DXVECTOR3(xBullet,  m_pos.y - m_Size.y/3 , m_pos.z));
-				m_ListBullet[i]->SetVelloc(D3DXVECTOR2(m_isTurnLeft ? -15 : 15, 0));
+				m_ListBullet[i]->SetVelloc(D3DXVECTOR2(m_isTurnLeft ? -20 : 20, 0));
 				m_yShot = m_pos.y;
 				break;
 			}

@@ -10,6 +10,7 @@ CLand1::CLand1(int _id, D3DXVECTOR3 _pos, bool _isCheckCollison)
 		D3DXVECTOR2(721, 377), 2, 1, D3DXVECTOR2(653, 343), 
 		D3DXVECTOR2(1,1),  D3DXVECTOR2(1,1));
 	m_pos = _pos;
+	m_pos.z = DEPTH_BLOCK;
 	m_accel = D3DXVECTOR2(0,0);	
 
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite() * NUMB_SPRITE, m_Sprite->GetHeightRectSprite());

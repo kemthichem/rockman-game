@@ -34,7 +34,7 @@ void CCamera::Update(D3DXVECTOR2 _pos)
 	
 	if (_pos.x < CMap::g_widthMap - WIDTH_SCREEN - WIDTH_SCREEN/2)
 	{
-	//	m_pos.x = (float)_pos.x - WIDTH_SCREEN/2;
+		m_pos.x = (float)_pos.x - WIDTH_SCREEN/2;
 	}
 	/*else {
 		m_pos.x = CMap::g_widthMap - 2 * WIDTH_SCREEN;
@@ -64,10 +64,10 @@ D3DXVECTOR2 CCamera::GetPosCamera()
 	return m_pos;
 }
 
-void CCamera::SetPosCamera(D3DXVECTOR2 _posRockMan)
+void CCamera::SetPosCamera(D3DXVECTOR2 _pos)
 {
-	m_pos.y = ((int)(_posRockMan.y - 80)/HEIGHT_SCREEN + 1) * HEIGHT_SCREEN;
-	m_pos.x = ((int)(_posRockMan.x/WIDTH_SCREEN)) * WIDTH_SCREEN;
+	m_pos.y = _pos.y + HEIGHT_SCREEN;
+	m_pos.x = _pos.x;
 }
 
 void CCamera::MoveY(int _distanceY)
