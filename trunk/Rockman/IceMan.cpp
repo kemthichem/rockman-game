@@ -12,21 +12,20 @@ CIceMan::CIceMan(int _id, D3DXVECTOR3 _pos)
 	m_Id = _id;
 	m_Type = ICEMAN;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MASTER), D3DXVECTOR2(870, 480) , 8, 1, D3DXVECTOR2(420, 420));
-	m_pos = _pos;
-	m_yInit = m_yShot = m_pos.y;
-	m_accel = D3DXVECTOR2(0,0.0f);
-	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
-	m_IsJustJump = false;
-
-	UpdateRect();
+	m_pos = _pos;	
+	m_accel = D3DXVECTOR2(0,0.0f);	
 
 	/*Iceman*/
+	m_yInit = m_yShot = m_pos.y;
+	m_IsJustJump = false;
 	m_Status = HELLO;
 	m_TimeSpend = 0;
 	m_TimeInjured = 0;
 	m_IsHello = true;
 	m_isTurnLeft = true;
+	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 	m_pos.x = CCamera::g_PosCamera.x + WIDTH_SCREEN - m_Size.x * 1.5;
+	UpdateRect();
 	//create list bullet
 	for (int i = 0; i < 5; i++)
 	{
@@ -78,6 +77,7 @@ void CIceMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntit
 		//Shot();
 	}
 
+	//Jump and go down
 	if (m_Status == JUMP && m_velloc.y < 0) {
 		
 		if (m_pos.y < m_yShot - 40 || (m_yShot == m_yInit && ((int)m_pos.y - m_yInit < 200))) {
@@ -89,6 +89,9 @@ void CIceMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntit
 
 	CEntity::Update(_time, _camera, _input, _listObjectInViewPort);
 
+	if (m_Status == JUMP && m_pos.y <= m_yInit) {
+		m_Status = MOVE;
+	}
 	if (m_pos.x <= CCamera::g_PosCamera.x + 20) {
 		m_velloc.x *= -1;
 	} else 

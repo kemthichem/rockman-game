@@ -35,15 +35,19 @@ void CBulletRockman::UpdateCollison(CEntity* _other,float _time)
 		case SCREW_BOMBER:
 			//(dynamic_cast<CScrewBomber*>(_other))->SetInjured(this);
 			_other->SetInjured(this);
+			this->m_IsActive = false;
 			break;
 		case ICEMAN:
+		case CUTMAN:
+		case GUTSMAN:
 			//(dynamic_cast<CIceMan*>(_other))->SetInjured(this);
 			_other->SetInjured(this);
+			this->m_IsActive = false;
 			break;
 		default:
 			break;
 		}
-		this->m_IsActive = false;
+		
 	}
 }
 
