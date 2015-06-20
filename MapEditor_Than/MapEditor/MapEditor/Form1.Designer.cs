@@ -74,6 +74,7 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.bgOpenFile = new System.Windows.Forms.OpenFileDialog();
+            this.rdLadder5 = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             this.pnGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbGridMap)).BeginInit();
@@ -129,7 +130,7 @@
             this.pnGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnGrid.Location = new System.Drawing.Point(0, 0);
             this.pnGrid.Name = "pnGrid";
-            this.pnGrid.Size = new System.Drawing.Size(421, 457);
+            this.pnGrid.Size = new System.Drawing.Size(421, 494);
             this.pnGrid.TabIndex = 0;
             // 
             // pbGridMap
@@ -138,7 +139,7 @@
             this.pbGridMap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbGridMap.Location = new System.Drawing.Point(0, 0);
             this.pbGridMap.Name = "pbGridMap";
-            this.pbGridMap.Size = new System.Drawing.Size(318, 184);
+            this.pbGridMap.Size = new System.Drawing.Size(318, 198);
             this.pbGridMap.TabIndex = 4;
             this.pbGridMap.TabStop = false;
             this.pbGridMap.Paint += new System.Windows.Forms.PaintEventHandler(this.pbGridMap_Paint);
@@ -163,14 +164,14 @@
             this.paButton.Dock = System.Windows.Forms.DockStyle.Right;
             this.paButton.Location = new System.Drawing.Point(252, 0);
             this.paButton.Name = "paButton";
-            this.paButton.Size = new System.Drawing.Size(146, 457);
+            this.paButton.Size = new System.Drawing.Size(146, 494);
             this.paButton.TabIndex = 2;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(32, 353);
+            this.button1.Location = new System.Drawing.Point(32, 380);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(78, 23);
+            this.button1.Size = new System.Drawing.Size(78, 25);
             this.button1.TabIndex = 19;
             this.button1.Text = "Background";
             this.button1.UseVisualStyleBackColor = true;
@@ -179,7 +180,7 @@
             // tbSize
             // 
             this.tbSize.Enabled = false;
-            this.tbSize.Location = new System.Drawing.Point(56, 88);
+            this.tbSize.Location = new System.Drawing.Point(56, 95);
             this.tbSize.Name = "tbSize";
             this.tbSize.Size = new System.Drawing.Size(72, 20);
             this.tbSize.TabIndex = 18;
@@ -188,18 +189,18 @@
             // Size
             // 
             this.Size.AutoSize = true;
-            this.Size.Location = new System.Drawing.Point(13, 91);
+            this.Size.Location = new System.Drawing.Point(13, 98);
             this.Size.Name = "Size";
-            this.Size.Size = new System.Drawing.Size(27, 13);
+            this.Size.Size = new System.Drawing.Size(28, 14);
             this.Size.TabIndex = 17;
             this.Size.Text = "Size";
             // 
             // btCAll
             // 
             this.btCAll.AutoSize = true;
-            this.btCAll.Location = new System.Drawing.Point(32, 258);
+            this.btCAll.Location = new System.Drawing.Point(32, 278);
             this.btCAll.Name = "btCAll";
-            this.btCAll.Size = new System.Drawing.Size(74, 23);
+            this.btCAll.Size = new System.Drawing.Size(74, 26);
             this.btCAll.TabIndex = 16;
             this.btCAll.Text = "Clear all";
             this.btCAll.UseVisualStyleBackColor = true;
@@ -208,9 +209,9 @@
             // btFRange
             // 
             this.btFRange.AutoSize = true;
-            this.btFRange.Location = new System.Drawing.Point(37, 205);
+            this.btFRange.Location = new System.Drawing.Point(37, 221);
             this.btFRange.Name = "btFRange";
-            this.btFRange.Size = new System.Drawing.Size(64, 23);
+            this.btFRange.Size = new System.Drawing.Size(64, 26);
             this.btFRange.TabIndex = 14;
             this.btFRange.Text = "Fill range";
             this.btFRange.UseVisualStyleBackColor = true;
@@ -218,9 +219,9 @@
             // 
             // btCreate
             // 
-            this.btCreate.Location = new System.Drawing.Point(41, 155);
+            this.btCreate.Location = new System.Drawing.Point(41, 167);
             this.btCreate.Name = "btCreate";
-            this.btCreate.Size = new System.Drawing.Size(56, 23);
+            this.btCreate.Size = new System.Drawing.Size(56, 25);
             this.btCreate.TabIndex = 13;
             this.btCreate.Text = "Create";
             this.btCreate.UseVisualStyleBackColor = true;
@@ -228,7 +229,7 @@
             // 
             // tbWidth
             // 
-            this.tbWidth.Location = new System.Drawing.Point(56, 19);
+            this.tbWidth.Location = new System.Drawing.Point(56, 20);
             this.tbWidth.Name = "tbWidth";
             this.tbWidth.Size = new System.Drawing.Size(72, 20);
             this.tbWidth.TabIndex = 0;
@@ -236,7 +237,7 @@
             // 
             // tbHeight
             // 
-            this.tbHeight.Location = new System.Drawing.Point(56, 51);
+            this.tbHeight.Location = new System.Drawing.Point(56, 55);
             this.tbHeight.Name = "tbHeight";
             this.tbHeight.Size = new System.Drawing.Size(72, 20);
             this.tbHeight.TabIndex = 11;
@@ -245,24 +246,25 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 54);
+            this.label3.Location = new System.Drawing.Point(13, 58);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.Size = new System.Drawing.Size(37, 14);
             this.label3.TabIndex = 10;
             this.label3.Text = "Height";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 22);
+            this.label1.Location = new System.Drawing.Point(13, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(34, 14);
             this.label1.TabIndex = 9;
             this.label1.Text = "Width";
             // 
             // pnObjects
             // 
             this.pnObjects.AutoScroll = true;
+            this.pnObjects.Controls.Add(this.rdLadder5);
             this.pnObjects.Controls.Add(this.rdScrewBomber_D);
             this.pnObjects.Controls.Add(this.rdLadder);
             this.pnObjects.Controls.Add(this.rdScrewBomber);
@@ -291,7 +293,7 @@
             this.pnObjects.Location = new System.Drawing.Point(0, 0);
             this.pnObjects.Name = "pnObjects";
             this.pnObjects.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pnObjects.Size = new System.Drawing.Size(252, 457);
+            this.pnObjects.Size = new System.Drawing.Size(252, 494);
             this.pnObjects.TabIndex = 1;
             this.pnObjects.MouseEnter += new System.EventHandler(this.pnObjects_MouseEnter);
             // 
@@ -303,9 +305,9 @@
             this.rdScrewBomber_D.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdScrewBomber_D.Image = global::MapEditor.Properties.Resources.enemy_screwbomber__down;
             this.rdScrewBomber_D.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdScrewBomber_D.Location = new System.Drawing.Point(124, 1062);
+            this.rdScrewBomber_D.Location = new System.Drawing.Point(124, 1144);
             this.rdScrewBomber_D.Name = "rdScrewBomber_D";
-            this.rdScrewBomber_D.Size = new System.Drawing.Size(95, 98);
+            this.rdScrewBomber_D.Size = new System.Drawing.Size(95, 106);
             this.rdScrewBomber_D.TabIndex = 75;
             this.rdScrewBomber_D.Text = "Screw Bomber (down)";
             this.rdScrewBomber_D.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -319,9 +321,9 @@
             this.rdLadder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdLadder.Image = global::MapEditor.Properties.Resources.ladder;
             this.rdLadder.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLadder.Location = new System.Drawing.Point(14, 95);
+            this.rdLadder.Location = new System.Drawing.Point(14, 102);
             this.rdLadder.Name = "rdLadder";
-            this.rdLadder.Size = new System.Drawing.Size(95, 92);
+            this.rdLadder.Size = new System.Drawing.Size(95, 99);
             this.rdLadder.TabIndex = 74;
             this.rdLadder.Text = "Ladder";
             this.rdLadder.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -335,9 +337,9 @@
             this.rdScrewBomber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdScrewBomber.Image = global::MapEditor.Properties.Resources.enemy_screwbomber;
             this.rdScrewBomber.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdScrewBomber.Location = new System.Drawing.Point(11, 1061);
+            this.rdScrewBomber.Location = new System.Drawing.Point(11, 1143);
             this.rdScrewBomber.Name = "rdScrewBomber";
-            this.rdScrewBomber.Size = new System.Drawing.Size(95, 98);
+            this.rdScrewBomber.Size = new System.Drawing.Size(95, 106);
             this.rdScrewBomber.TabIndex = 73;
             this.rdScrewBomber.Text = "Screw Bomber";
             this.rdScrewBomber.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -352,9 +354,9 @@
             this.rdBeak_r.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdBeak_r.Image = global::MapEditor.Properties.Resources.enemy_break__right;
             this.rdBeak_r.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdBeak_r.Location = new System.Drawing.Point(128, 189);
+            this.rdBeak_r.Location = new System.Drawing.Point(128, 204);
             this.rdBeak_r.Name = "rdBeak_r";
-            this.rdBeak_r.Size = new System.Drawing.Size(95, 93);
+            this.rdBeak_r.Size = new System.Drawing.Size(95, 100);
             this.rdBeak_r.TabIndex = 72;
             this.rdBeak_r.Text = "Beak (right)";
             this.rdBeak_r.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -370,7 +372,7 @@
             this.rdBlader.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.rdBlader.Location = new System.Drawing.Point(128, 4);
             this.rdBlader.Name = "rdBlader";
-            this.rdBlader.Size = new System.Drawing.Size(95, 86);
+            this.rdBlader.Size = new System.Drawing.Size(95, 93);
             this.rdBlader.TabIndex = 71;
             this.rdBlader.Text = "Blader";
             this.rdBlader.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -384,9 +386,9 @@
             this.rdOctopus_v.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdOctopus_v.Image = global::MapEditor.Properties.Resources.octopus_up;
             this.rdOctopus_v.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdOctopus_v.Location = new System.Drawing.Point(124, 957);
+            this.rdOctopus_v.Location = new System.Drawing.Point(124, 1031);
             this.rdOctopus_v.Name = "rdOctopus_v";
-            this.rdOctopus_v.Size = new System.Drawing.Size(95, 88);
+            this.rdOctopus_v.Size = new System.Drawing.Size(95, 95);
             this.rdOctopus_v.TabIndex = 70;
             this.rdOctopus_v.Text = "Octopus (vertical)";
             this.rdOctopus_v.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -400,9 +402,9 @@
             this.rdOctopus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdOctopus.Image = global::MapEditor.Properties.Resources.octopus_left;
             this.rdOctopus.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdOctopus.Location = new System.Drawing.Point(-2, 957);
+            this.rdOctopus.Location = new System.Drawing.Point(-2, 1031);
             this.rdOctopus.Name = "rdOctopus";
-            this.rdOctopus.Size = new System.Drawing.Size(95, 89);
+            this.rdOctopus.Size = new System.Drawing.Size(95, 96);
             this.rdOctopus.TabIndex = 68;
             this.rdOctopus.Text = "Octopus";
             this.rdOctopus.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -416,9 +418,9 @@
             this.rdMet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdMet.Image = global::MapEditor.Properties.Resources.enemy_met;
             this.rdMet.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdMet.Location = new System.Drawing.Point(14, 285);
+            this.rdMet.Location = new System.Drawing.Point(14, 307);
             this.rdMet.Name = "rdMet";
-            this.rdMet.Size = new System.Drawing.Size(95, 92);
+            this.rdMet.Size = new System.Drawing.Size(95, 99);
             this.rdMet.TabIndex = 66;
             this.rdMet.Text = "Met";
             this.rdMet.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -432,9 +434,9 @@
             this.rdLandIceberg_n.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdLandIceberg_n.Image = global::MapEditor.Properties.Resources.LandIceberg;
             this.rdLandIceberg_n.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLandIceberg_n.Location = new System.Drawing.Point(128, 765);
+            this.rdLandIceberg_n.Location = new System.Drawing.Point(128, 824);
             this.rdLandIceberg_n.Name = "rdLandIceberg_n";
-            this.rdLandIceberg_n.Size = new System.Drawing.Size(95, 88);
+            this.rdLandIceberg_n.Size = new System.Drawing.Size(95, 95);
             this.rdLandIceberg_n.TabIndex = 54;
             this.rdLandIceberg_n.Text = "Land Iceberg (Not collision)";
             this.rdLandIceberg_n.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -448,9 +450,9 @@
             this.rdLand_n.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdLand_n.Image = global::MapEditor.Properties.Resources.land;
             this.rdLand_n.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLand_n.Location = new System.Drawing.Point(128, 576);
+            this.rdLand_n.Location = new System.Drawing.Point(128, 620);
             this.rdLand_n.Name = "rdLand_n";
-            this.rdLand_n.Size = new System.Drawing.Size(95, 88);
+            this.rdLand_n.Size = new System.Drawing.Size(95, 95);
             this.rdLand_n.TabIndex = 52;
             this.rdLand_n.Text = "Land (not collision)";
             this.rdLand_n.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -464,9 +466,9 @@
             this.rdLandWhite_n.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdLandWhite_n.Image = global::MapEditor.Properties.Resources.landwhite;
             this.rdLandWhite_n.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLandWhite_n.Location = new System.Drawing.Point(128, 682);
+            this.rdLandWhite_n.Location = new System.Drawing.Point(128, 734);
             this.rdLandWhite_n.Name = "rdLandWhite_n";
-            this.rdLandWhite_n.Size = new System.Drawing.Size(95, 77);
+            this.rdLandWhite_n.Size = new System.Drawing.Size(95, 83);
             this.rdLandWhite_n.TabIndex = 53;
             this.rdLandWhite_n.Text = "Land white(not collsion)";
             this.rdLandWhite_n.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -480,9 +482,9 @@
             this.rdGusman.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdGusman.Image = global::MapEditor.Properties.Resources.gutsman;
             this.rdGusman.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdGusman.Location = new System.Drawing.Point(128, 477);
+            this.rdGusman.Location = new System.Drawing.Point(128, 514);
             this.rdGusman.Name = "rdGusman";
-            this.rdGusman.Size = new System.Drawing.Size(95, 92);
+            this.rdGusman.Size = new System.Drawing.Size(95, 99);
             this.rdGusman.TabIndex = 42;
             this.rdGusman.Text = "Guts man";
             this.rdGusman.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -496,9 +498,9 @@
             this.rdCuman.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdCuman.Image = global::MapEditor.Properties.Resources.cutman;
             this.rdCuman.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdCuman.Location = new System.Drawing.Point(128, 379);
+            this.rdCuman.Location = new System.Drawing.Point(128, 408);
             this.rdCuman.Name = "rdCuman";
-            this.rdCuman.Size = new System.Drawing.Size(95, 92);
+            this.rdCuman.Size = new System.Drawing.Size(95, 99);
             this.rdCuman.TabIndex = 41;
             this.rdCuman.Text = "CutMan";
             this.rdCuman.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -512,9 +514,9 @@
             this.rdFlea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdFlea.Image = global::MapEditor.Properties.Resources.enemy_flea;
             this.rdFlea.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdFlea.Location = new System.Drawing.Point(128, 285);
+            this.rdFlea.Location = new System.Drawing.Point(128, 307);
             this.rdFlea.Name = "rdFlea";
-            this.rdFlea.Size = new System.Drawing.Size(95, 92);
+            this.rdFlea.Size = new System.Drawing.Size(95, 99);
             this.rdFlea.TabIndex = 40;
             this.rdFlea.Text = "Flea";
             this.rdFlea.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -528,9 +530,9 @@
             this.rdBeak.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdBeak.Image = global::MapEditor.Properties.Resources.break_left;
             this.rdBeak.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdBeak.Location = new System.Drawing.Point(14, 190);
+            this.rdBeak.Location = new System.Drawing.Point(14, 205);
             this.rdBeak.Name = "rdBeak";
-            this.rdBeak.Size = new System.Drawing.Size(95, 92);
+            this.rdBeak.Size = new System.Drawing.Size(95, 99);
             this.rdBeak.TabIndex = 39;
             this.rdBeak.Text = "Beak";
             this.rdBeak.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -543,9 +545,9 @@
             this.rdMoveMap.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
             this.rdMoveMap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdMoveMap.Image = global::MapEditor.Properties.Resources.movemap;
-            this.rdMoveMap.Location = new System.Drawing.Point(128, 91);
+            this.rdMoveMap.Location = new System.Drawing.Point(128, 98);
             this.rdMoveMap.Name = "rdMoveMap";
-            this.rdMoveMap.Size = new System.Drawing.Size(95, 92);
+            this.rdMoveMap.Size = new System.Drawing.Size(95, 99);
             this.rdMoveMap.TabIndex = 38;
             this.rdMoveMap.Text = "Move map";
             this.rdMoveMap.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -559,9 +561,9 @@
             this.rdLand1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdLand1.Image = global::MapEditor.Properties.Resources.land1;
             this.rdLand1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLand1.Location = new System.Drawing.Point(2, 863);
+            this.rdLand1.Location = new System.Drawing.Point(2, 929);
             this.rdLand1.Name = "rdLand1";
-            this.rdLand1.Size = new System.Drawing.Size(95, 92);
+            this.rdLand1.Size = new System.Drawing.Size(95, 99);
             this.rdLand1.TabIndex = 37;
             this.rdLand1.Text = "Land 1";
             this.rdLand1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -575,9 +577,9 @@
             this.rdLandIceberg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdLandIceberg.Image = global::MapEditor.Properties.Resources.LandIceberg;
             this.rdLandIceberg.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLandIceberg.Location = new System.Drawing.Point(2, 765);
+            this.rdLandIceberg.Location = new System.Drawing.Point(2, 824);
             this.rdLandIceberg.Name = "rdLandIceberg";
-            this.rdLandIceberg.Size = new System.Drawing.Size(95, 89);
+            this.rdLandIceberg.Size = new System.Drawing.Size(95, 96);
             this.rdLandIceberg.TabIndex = 22;
             this.rdLandIceberg.Text = "LandIceberg";
             this.rdLandIceberg.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -591,9 +593,9 @@
             this.rdLandWhite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdLandWhite.Image = global::MapEditor.Properties.Resources.landwhite;
             this.rdLandWhite.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLandWhite.Location = new System.Drawing.Point(2, 676);
+            this.rdLandWhite.Location = new System.Drawing.Point(2, 728);
             this.rdLandWhite.Name = "rdLandWhite";
-            this.rdLandWhite.Size = new System.Drawing.Size(95, 89);
+            this.rdLandWhite.Size = new System.Drawing.Size(95, 96);
             this.rdLandWhite.TabIndex = 21;
             this.rdLandWhite.Text = "Land White";
             this.rdLandWhite.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -608,9 +610,9 @@
             this.rdLand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdLand.Image = global::MapEditor.Properties.Resources.land;
             this.rdLand.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLand.Location = new System.Drawing.Point(2, 575);
+            this.rdLand.Location = new System.Drawing.Point(2, 619);
             this.rdLand.Name = "rdLand";
-            this.rdLand.Size = new System.Drawing.Size(95, 89);
+            this.rdLand.Size = new System.Drawing.Size(95, 96);
             this.rdLand.TabIndex = 20;
             this.rdLand.TabStop = true;
             this.rdLand.Text = "Land";
@@ -625,9 +627,9 @@
             this.rdIceMan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdIceMan.Image = global::MapEditor.Properties.Resources.iceman;
             this.rdIceMan.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdIceMan.Location = new System.Drawing.Point(2, 476);
+            this.rdIceMan.Location = new System.Drawing.Point(2, 513);
             this.rdIceMan.Name = "rdIceMan";
-            this.rdIceMan.Size = new System.Drawing.Size(95, 93);
+            this.rdIceMan.Size = new System.Drawing.Size(95, 100);
             this.rdIceMan.TabIndex = 19;
             this.rdIceMan.Text = "iceman";
             this.rdIceMan.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -641,9 +643,9 @@
             this.rdSpine.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdSpine.Image = global::MapEditor.Properties.Resources.enemy_spine;
             this.rdSpine.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdSpine.Location = new System.Drawing.Point(2, 381);
+            this.rdSpine.Location = new System.Drawing.Point(2, 410);
             this.rdSpine.Name = "rdSpine";
-            this.rdSpine.Size = new System.Drawing.Size(95, 93);
+            this.rdSpine.Size = new System.Drawing.Size(95, 100);
             this.rdSpine.TabIndex = 7;
             this.rdSpine.Text = "Spine";
             this.rdSpine.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -658,9 +660,9 @@
             this.rdLand1_n.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdLand1_n.Image = global::MapEditor.Properties.Resources.land1;
             this.rdLand1_n.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLand1_n.Location = new System.Drawing.Point(124, 863);
+            this.rdLand1_n.Location = new System.Drawing.Point(124, 929);
             this.rdLand1_n.Name = "rdLand1_n";
-            this.rdLand1_n.Size = new System.Drawing.Size(95, 93);
+            this.rdLand1_n.Size = new System.Drawing.Size(95, 100);
             this.rdLand1_n.TabIndex = 6;
             this.rdLand1_n.Text = "Land1(Not collision)";
             this.rdLand1_n.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -676,7 +678,7 @@
             this.rdBigEye.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.rdBigEye.Location = new System.Drawing.Point(2, 3);
             this.rdBigEye.Name = "rdBigEye";
-            this.rdBigEye.Size = new System.Drawing.Size(95, 86);
+            this.rdBigEye.Size = new System.Drawing.Size(95, 93);
             this.rdBigEye.TabIndex = 4;
             this.rdBigEye.Text = "BigEye";
             this.rdBigEye.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -697,7 +699,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.pnGrid);
-            this.splitContainer1.Size = new System.Drawing.Size(827, 459);
+            this.splitContainer1.Size = new System.Drawing.Size(827, 496);
             this.splitContainer1.SplitterDistance = 400;
             this.splitContainer1.TabIndex = 4;
             // 
@@ -709,11 +711,27 @@
             // 
             this.bgOpenFile.FileName = "bgOpenFile";
             // 
+            // rdLadder5
+            // 
+            this.rdLadder5.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdLadder5.FlatAppearance.BorderSize = 0;
+            this.rdLadder5.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdLadder5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdLadder5.Image = global::MapEditor.Properties.Resources.enemy_screwbomber;
+            this.rdLadder5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rdLadder5.Location = new System.Drawing.Point(70, 950);
+            this.rdLadder5.Name = "rdLadder5";
+            this.rdLadder5.Size = new System.Drawing.Size(95, 106);
+            this.rdLadder5.TabIndex = 76;
+            this.rdLadder5.Text = "Screw Bomber";
+            this.rdLadder5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdLadder5.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(827, 483);
+            this.ClientSize = new System.Drawing.Size(827, 520);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.Name = "Form1";
@@ -784,6 +802,7 @@
         private System.Windows.Forms.RadioButton rdScrewBomber_D;
         private System.Windows.Forms.RadioButton rdLadder;
         private System.Windows.Forms.RadioButton rdScrewBomber;
+        private System.Windows.Forms.RadioButton rdLadder5;
     }
 }
 
