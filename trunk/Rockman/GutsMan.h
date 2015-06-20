@@ -19,6 +19,7 @@ private:
 	CBlood* m_Blood;
 	float m_TimeInjured;
 	float m_TimeChange;
+	float m_TimeShot;
 	CBulletGutsman* m_Bullet;
 	int m_yInit;
 
@@ -34,8 +35,8 @@ public:
 	//method
 	virtual void Update(float , CCamera *, CInput *,  vector<CEntity* >);
 	virtual void Render(LPD3DXSPRITE, CCamera*);
-
 	void SetInjured(CEntity* _other);
+	void SetThrow(bool _isThrow);
 };
 
 #endif

@@ -1,5 +1,6 @@
 #include "CutMan.h"
 #include "Rockman.h"
+#include "PLayingGameState.h"
 
 #define TIME_INJURED (10.0f)
 #define TIME_WAIT (30.0f)
@@ -107,6 +108,8 @@ void CCutMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntit
 	}
 
 	UpdateSprite(_time);
+	if (m_Blood->IsOver())
+		CPLayingGameState::g_ChangeState = ChangeState::CHANGE_NEXT;
 
 	//Update bullet
 	m_Bullet->SetPosCutman(m_pos);
