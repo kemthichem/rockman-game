@@ -1,7 +1,9 @@
 #include "GutsMan.h"
+#include "PLayingGameState.h"
 
 #define TIME_INJURED (10.0f)
 #define TIME_WAIT (25.0f)
+#define TIME_SHOT (4.0f)
 
 #define VELLOC_X (10.0f)
 
@@ -20,6 +22,7 @@ CGutsMan::CGutsMan(int _id, D3DXVECTOR3 _pos)
 	m_yInit =  m_pos.y;
 	m_Status = GStand;
 	m_TimeInjured = m_TimeChange = 0;
+	m_TimeShot = 0;
 	m_isTurnLeft = true;
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 	m_pos.x = CCamera::g_PosCamera.x + WIDTH_SCREEN - m_Size.x * 1.5;
@@ -52,12 +55,18 @@ void CGutsMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEnti
 		m_velloc.x = 0;
 		if (m_Status == GJump) {
 			Shot();
+			m_Status = GCatchGun;
 		}
-		m_Status = GStand;
+		if (m_TimeShot > 0 ) {
+			if ( m_TimeShot < TIME_SHOT) {
+				m_TimeShot += _time;
+			} else {
+				m_TimeShot = 0;
+				m_Status = GStand;
+			}
+		}
 	}
 	//Shot
-	
-
 
 	//When injured
 	if (m_TimeInjured > 0) {
@@ -69,6 +78,8 @@ void CGutsMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEnti
 		}
 	}
 	UpdateSprite(_time);
+	if (m_Blood->IsOver())
+		CPLayingGameState::g_ChangeState = ChangeState::CHANGE_NEXT;
 
 	//Update bullet
 	m_Bullet->Update(_time, _camera, _input, _listObjectInViewPort);
@@ -126,4 +137,11 @@ void CGutsMan::UpdateSprite(float _time)
 	default:
 		break;
 	}
+}
+
+void CGutsMan::SetThrow(bool _isThrow)
+{
+	m_TimeShot = _isThrow;
+	m_TimeShot = 0.0001f;
+	m_Status = GShot;
 }

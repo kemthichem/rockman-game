@@ -2,6 +2,7 @@
 #include "ResourceManager.h"
 #include "ScrewBomber.h"
 #include "Rockman.h"
+#include "GutsMan.h"
 
 #define VELLOC (35.0f)
 
@@ -34,7 +35,7 @@ void CBulletGutsman::UpdateCollison(CEntity* _other,float _time)
 			m_IsActive = false;
 			break;
 		case GUTSMAN:
-			Throw();
+			Throw(_other);
 			break;
 		default:
 			break;
@@ -74,8 +75,9 @@ void CBulletGutsman::SetPos(D3DXVECTOR3 _pos)
 	UpdateRect();
 }
 
-void CBulletGutsman::Throw()
+void CBulletGutsman::Throw(CEntity* _other)
 {
+	if (m_velloc.x != 0) return;
 	D3DXVECTOR3 posDes = CRockman::g_PosRockman;
 	int disX = posDes.x - m_pos.x;
 	int disY = posDes.y - m_pos.y;
@@ -84,4 +86,6 @@ void CBulletGutsman::Throw()
 	m_velloc.x = disX > 0 ? VELLOC : -VELLOC;
 	m_velloc.y = disY > 0 ? VELLOC * rate: -VELLOC * rate;
 	m_accel.y = 0;
+
+	(dynamic_cast<CGutsMan*>(_other))->SetThrow(true);
 }
