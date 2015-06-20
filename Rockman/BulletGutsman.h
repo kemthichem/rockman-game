@@ -6,6 +6,7 @@
 class CBulletGutsman : public CBullet
 {
 private:
+	void Throw();
 protected:
 	virtual void UpdateCollison(CEntity* ,float);
 

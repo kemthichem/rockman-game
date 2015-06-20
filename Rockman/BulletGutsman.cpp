@@ -3,11 +3,12 @@
 #include "ScrewBomber.h"
 #include "Rockman.h"
 
+#define VELLOC (35.0f)
+
 CBulletGutsman::CBulletGutsman(D3DXVECTOR3 _pos)
 {
 	m_Type = BULLET;
-	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MASTER)		, D3DXVECTOR2(418,470), 2, 1
-		, D3DXVECTOR2(348,436), D3DXVECTOR2(0,0), D3DXVECTOR2(5,0));
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MASTER), D3DXVECTOR2(880, 210) , 9, 1, D3DXVECTOR2(250,140), D3DXVECTOR2(0,0), D3DXVECTOR2(0,0));
 	m_pos = _pos;
 
 	m_collision = new CAABBCollision();
@@ -28,8 +29,12 @@ void CBulletGutsman::UpdateCollison(CEntity* _other,float _time)
 		switch (_other->GetType())
 		{
 		case ROCKMAN:
-			(dynamic_cast<CRockman*>(_other))->SetInjured(this, -15);
+			(dynamic_cast<CRockman*>(_other))->SetInjured(this, -25);
+			m_velloc.x = m_velloc.y = 0;
 			m_IsActive = false;
+			break;
+		case GUTSMAN:
+			Throw();
 			break;
 		default:
 			break;
@@ -41,14 +46,17 @@ void CBulletGutsman::UpdateCollison(CEntity* _other,float _time)
 void CBulletGutsman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewport)
 {
 	if (m_IsActive) {
-		m_Sprite->NextOf(_time, 0,1 );
+		
+		
 		CEntity::Update(_time,_camera,_input,_listObjectInViewport);
+		m_Sprite->IndexOf(1);
 	} 
 
 	if(m_Rect.left < _camera->m_viewPort.left || m_Rect.right > _camera->m_viewPort.right 
 		|| m_Rect.top > _camera->m_viewPort.top || m_Rect.bottom < _camera->m_viewPort.bottom)
 	{
 		m_IsActive = false;
+		m_velloc.x = m_velloc.y = 0;
 	}
 }
 
@@ -61,6 +69,19 @@ void CBulletGutsman::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 
 void CBulletGutsman::SetPos(D3DXVECTOR3 _pos)
 {
+	m_accel.y = -20.0f;
 	m_pos = _pos;
 	UpdateRect();
+}
+
+void CBulletGutsman::Throw()
+{
+	D3DXVECTOR3 posDes = CRockman::g_PosRockman;
+	int disX = posDes.x - m_pos.x;
+	int disY = posDes.y - m_pos.y;
+	float rate = abs(((float)disY/disX));
+
+	m_velloc.x = disX > 0 ? VELLOC : -VELLOC;
+	m_velloc.y = disY > 0 ? VELLOC * rate: -VELLOC * rate;
+	m_accel.y = 0;
 }
