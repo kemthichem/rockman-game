@@ -10,6 +10,7 @@ CLandIceberg::CLandIceberg(int _id, D3DXVECTOR3 _pos, bool _isCheckCollison)
 		D3DXVECTOR2(277, 162), 2, 1, D3DXVECTOR2(209,128), 
 		D3DXVECTOR2(1,1),  D3DXVECTOR2(1,1));
 	m_pos = _pos;
+	m_pos.z = DEPTH_BLOCK;
 	m_accel = D3DXVECTOR2(0,0);	
 
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite() * NUMB_SPRITE, m_Sprite->GetHeightRectSprite());
@@ -26,11 +27,6 @@ void CLandIceberg::Update(float _time, CCamera *_camera, CInput *_input)
 	
 }
 
-
-void CLandIceberg::Collision()
-{
-
-}
 
 void CLandIceberg::Render(LPD3DXSPRITE _sp, CCamera* _camera)
 {

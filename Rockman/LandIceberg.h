@@ -14,7 +14,6 @@ public:
 	//method
 	virtual void Update(float , CCamera *, CInput *);
 	virtual void Render(LPD3DXSPRITE, CCamera*);
-	virtual void Collision();
 };
 
 #endif

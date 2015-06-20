@@ -91,7 +91,7 @@ void CPLayingGameState::Init()
 	char* pathTree = ""; 
 
 	//fixed stage
-	g_Stage = 2;
+	//g_Stage = 3;
 
 	switch (g_Stage)
 	{
