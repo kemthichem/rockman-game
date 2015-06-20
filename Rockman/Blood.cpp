@@ -43,7 +43,7 @@ void CBlood::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntit
 
 void CBlood::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 {
-	m_pos = D3DXVECTOR3(CCamera::g_PosCamera.x + m_Offset.x, CCamera::g_PosCamera.y - m_Offset.y, DEPTH_SCENERY);
+	m_pos = D3DXVECTOR3(CCamera::g_PosCamera.x + m_Offset.x, CCamera::g_PosCamera.y - m_Offset.y, DEPTH_MOTION);
 	CEntity::Render(_spriteHandle,_camera);
 	
 	D3DXVECTOR3 pos = m_pos;

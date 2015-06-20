@@ -28,7 +28,7 @@ CCutMan::CCutMan(int _id, D3DXVECTOR3 _pos)
 
 	m_isTurnLeft = true;
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
-	m_pos.x = CCamera::g_PosCamera.x + WIDTH_SCREEN - m_Size.x * 1.5;
+	m_pos.x = CMap::g_widthMap - m_Size.x * 1.5;
 	UpdateRect();
 	//create list bullet
 	m_Bullet = new CBulletCutman(D3DXVECTOR3(_pos.x + m_Size.x/2 - 10, _pos.y - m_Size.y/2 + 10, _pos.z));

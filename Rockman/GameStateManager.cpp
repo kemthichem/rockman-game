@@ -10,11 +10,12 @@ void CGameStateManager::InitFirstState(CGameState* _state)
 	m_ListState.push_back(_state);
 	m_ListState.back()->Init();
 }
-void CGameStateManager::Init(HWND _wndHandle,LPD3DXSPRITE _spriteHandler, LPD3DXFONT _font)
+void CGameStateManager::Init(HWND _wndHandle,LPD3DXSPRITE _spriteHandler, LPD3DXFONT _font, CCamera* _camera)
 {
 	this->m_wndHandle = _wndHandle;
 	m_spriteHandle = _spriteHandler;
 	m_GraphicText = _font;
+	m_Camera = _camera;
 }
 void CGameStateManager::CleanUp()
 {
@@ -50,4 +51,9 @@ CGameStateManager::~CGameStateManager(void)
 	for(int i = 0; i < m_ListState.size(); ++i)
 		delete m_ListState[i];
 	m_ListState.empty();
+}
+
+CCamera* CGameStateManager::GetCamera()
+{
+	return m_Camera;
 }

@@ -47,7 +47,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pnObjects = new System.Windows.Forms.Panel();
             this.rdScrewBomber_D = new System.Windows.Forms.RadioButton();
-            this.rdLadder = new System.Windows.Forms.RadioButton();
             this.rdScrewBomber = new System.Windows.Forms.RadioButton();
             this.rdBeak_r = new System.Windows.Forms.RadioButton();
             this.rdBlader = new System.Windows.Forms.RadioButton();
@@ -75,6 +74,7 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.bgOpenFile = new System.Windows.Forms.OpenFileDialog();
             this.rdLadder5 = new System.Windows.Forms.RadioButton();
+            this.rdLadder = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             this.pnGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbGridMap)).BeginInit();
@@ -264,9 +264,9 @@
             // pnObjects
             // 
             this.pnObjects.AutoScroll = true;
+            this.pnObjects.Controls.Add(this.rdLadder);
             this.pnObjects.Controls.Add(this.rdLadder5);
             this.pnObjects.Controls.Add(this.rdScrewBomber_D);
-            this.pnObjects.Controls.Add(this.rdLadder);
             this.pnObjects.Controls.Add(this.rdScrewBomber);
             this.pnObjects.Controls.Add(this.rdBeak_r);
             this.pnObjects.Controls.Add(this.rdBlader);
@@ -312,22 +312,6 @@
             this.rdScrewBomber_D.Text = "Screw Bomber (down)";
             this.rdScrewBomber_D.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.rdScrewBomber_D.UseVisualStyleBackColor = true;
-            // 
-            // rdLadder
-            // 
-            this.rdLadder.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rdLadder.FlatAppearance.BorderSize = 0;
-            this.rdLadder.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.rdLadder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdLadder.Image = global::MapEditor.Properties.Resources.ladder;
-            this.rdLadder.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLadder.Location = new System.Drawing.Point(14, 102);
-            this.rdLadder.Name = "rdLadder";
-            this.rdLadder.Size = new System.Drawing.Size(95, 99);
-            this.rdLadder.TabIndex = 74;
-            this.rdLadder.Text = "Ladder";
-            this.rdLadder.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.rdLadder.UseVisualStyleBackColor = true;
             // 
             // rdScrewBomber
             // 
@@ -717,15 +701,32 @@
             this.rdLadder5.FlatAppearance.BorderSize = 0;
             this.rdLadder5.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
             this.rdLadder5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdLadder5.Image = global::MapEditor.Properties.Resources.enemy_screwbomber;
+            this.rdLadder5.Image = global::MapEditor.Properties.Resources.ladder;
             this.rdLadder5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLadder5.Location = new System.Drawing.Point(70, 950);
+            this.rdLadder5.Location = new System.Drawing.Point(124, 1264);
             this.rdLadder5.Name = "rdLadder5";
             this.rdLadder5.Size = new System.Drawing.Size(95, 106);
             this.rdLadder5.TabIndex = 76;
-            this.rdLadder5.Text = "Screw Bomber";
+            this.rdLadder5.Text = "Ladder 5";
             this.rdLadder5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.rdLadder5.UseVisualStyleBackColor = true;
+            this.rdLadder5.CheckedChanged += new System.EventHandler(this.rdLadder5_CheckedChanged);
+            // 
+            // rdLadder
+            // 
+            this.rdLadder.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdLadder.FlatAppearance.BorderSize = 0;
+            this.rdLadder.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdLadder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdLadder.Image = global::MapEditor.Properties.Resources.ladder;
+            this.rdLadder.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rdLadder.Location = new System.Drawing.Point(11, 1264);
+            this.rdLadder.Name = "rdLadder";
+            this.rdLadder.Size = new System.Drawing.Size(95, 99);
+            this.rdLadder.TabIndex = 77;
+            this.rdLadder.Text = "Ladder";
+            this.rdLadder.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdLadder.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -800,9 +801,9 @@
         private System.Windows.Forms.RadioButton rdBlader;
         private System.Windows.Forms.RadioButton rdBeak_r;
         private System.Windows.Forms.RadioButton rdScrewBomber_D;
-        private System.Windows.Forms.RadioButton rdLadder;
         private System.Windows.Forms.RadioButton rdScrewBomber;
         private System.Windows.Forms.RadioButton rdLadder5;
+        private System.Windows.Forms.RadioButton rdLadder;
     }
 }
 

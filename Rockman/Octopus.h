@@ -18,7 +18,6 @@ private:
 public:
 	COctopus(int _id, D3DXVECTOR3 _pos, bool _isTurnHor = true);
 	~COctopus(void);
-
 	virtual void Update(float , CCamera *, CInput *,  vector<CEntity* >);
 	virtual void Render(LPD3DXSPRITE, CCamera*);
 	void SetInjured(CEntity* _other);

@@ -17,18 +17,20 @@ private:
 	//CResourceManager *m_resource;
 	LPD3DXSPRITE m_spriteHandle;
 	vector<CGameState*> m_ListState;
+	CCamera* m_Camera;
 public:
 	HWND m_wndHandle;
 	LPD3DXFONT m_GraphicText;
 	CGameState* m_nextState;
 	CGameStateManager(void);
 	~CGameStateManager(void);
-	void Init(HWND, LPD3DXSPRITE, LPD3DXFONT); 
+	void Init(HWND, LPD3DXSPRITE, LPD3DXFONT, CCamera*); 
 	void CleanUp();
 	void InitFirstState(CGameState*);
 	void ChangeState(CGameState*);
 	void Update(float,CCamera*, CInput*);
 	void Draw(LPD3DXSPRITE,CCamera*);
+	CCamera* GetCamera();
 };
 #endif
 

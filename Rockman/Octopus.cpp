@@ -1,6 +1,6 @@
 #include "Octopus.h"
 #include "BulletRockman.h"
-#define TIME_CONVERT (20.0f)
+#define TIME_CONVERT (10.0f)
 
 COctopus::COctopus(int _id, D3DXVECTOR3 _pos, bool _isTurnHor)
 {
@@ -76,10 +76,6 @@ void COctopus::SetInjured(CEntity* _other)
 		m_IsCheckCollision = false;
 		m_Item->SetActive(true);
 		m_IsLife = false;
-
-		//update bullet
-		CBulletRockman* bullet = dynamic_cast<CBulletRockman*> (_other);
-		bullet->SetActive(false);
 }
 
 void COctopus::UpdateCollison(CEntity* _other,float _time)

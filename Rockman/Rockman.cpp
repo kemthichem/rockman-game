@@ -43,7 +43,7 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 	}
 
 	//create blood
-	m_Blood = new CBlood(D3DXVECTOR2(30, 30), 100);
+	m_Blood = new CBlood(D3DXVECTOR2(30, 30), 200);
 }
 CRockman::~CRockman()
 {
@@ -59,11 +59,11 @@ CRockman::~CRockman()
 void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewPort) {
 	m_accel.y = mAccelOfRockman.y;
 
-	if (m_pos.y < 80) {
-		m_pos.y = 80;
-		m_isCollisionBottom = true;
-		m_velloc.y = 0;
-	}
+	//if (m_pos.y < 80) {
+	//	m_pos.y = 80;
+	//	m_isCollisionBottom = true;
+	//	m_velloc.y = 0;
+	//}
 
 	//turn left and right
 	if (_input->KeyDown(DIK_RIGHT)) {		
@@ -86,7 +86,7 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	m_KeyDown = _input ->GetKeyDown();
 	switch (m_KeyDown)
 	{
-	case DIK_SPACE:
+	case DIK_C:
 		Jump();
 		break;
 	case DIK_A:
@@ -122,7 +122,7 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 
 	//Update pos global
 	g_PosRockman = D3DXVECTOR2(m_pos.x, m_pos.y);
-	if (m_Blood->IsOver())
+	if (m_Blood->IsOver() || m_pos.y < CCamera::g_PosCamera.y - HEIGHT_SCREEN - 200)
 		CPLayingGameState::g_ChangeState = ChangeState::CHANGE_FAIL;
 
 	//Update sprite	
@@ -241,6 +241,11 @@ void CRockman::UpdateCollison(CEntity* _other, float _time) {
 		break;
 	case BIGEYE:
 	case BLADER:
+	case SCREW_BOMBER:
+	case OCTOPUS:
+	case BEAK:
+	case FLEA:
+	case MET:
 		SetInjured(_other);
 		break;
 	default:

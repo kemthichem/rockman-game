@@ -88,7 +88,11 @@ void CPLayingGameState::Update(CInput* _input,float _time,CCamera* _camera)
 void CPLayingGameState::Init()
 {
 	char* pathMap = "";
-	char* pathTree = "";
+	char* pathTree = ""; 
+
+	//fixed stage
+	g_Stage = 2;
+
 	switch (g_Stage)
 	{
 	case 1:
@@ -106,6 +110,8 @@ void CPLayingGameState::Init()
 	default:
 		break;
 	}
+	//Reset camera
+	m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(0,0));
 
 	m_Map.LoadObjectFromFile(pathMap);	
 	//Load tree

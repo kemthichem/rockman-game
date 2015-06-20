@@ -30,9 +30,13 @@ void CBulletRockman::UpdateCollison(CEntity* _other,float _time)
 {
 	if (m_IsActive) {
 		switch (_other->GetType())
-		{
-			
+		{			
 		case SCREW_BOMBER:
+		case OCTOPUS:
+		case BEAK:
+		case FLEA:
+		case BLADER:
+		case MET:
 			//(dynamic_cast<CScrewBomber*>(_other))->SetInjured(this);
 			_other->SetInjured(this);
 			this->m_IsActive = false;
@@ -50,7 +54,6 @@ void CBulletRockman::UpdateCollison(CEntity* _other,float _time)
 		
 	}
 }
-
 
 void CBulletRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewport)
 {
