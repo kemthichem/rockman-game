@@ -55,7 +55,8 @@ namespace MapEditor
             rdLandWhite_n.AccessibleName = ObjectType._LANDWHITE.ToString();
             rdLandIceberg.AccessibleName = ObjectType.LANDICEBERG.ToString();
             rdLandIceberg_n.AccessibleName = ObjectType._LANDICEBERG.ToString();
-            rdLadder.AccessibleName = ObjectType.LADDER.ToString();
+            rdLadder.AccessibleName = ObjectType.LADDER10.ToString();
+            rdLadder5.AccessibleName = ObjectType.LADDER5.ToString();
 
             /*Enemies*/
             rdBeak.AccessibleName = ObjectType.BEAK.ToString();
@@ -408,7 +409,7 @@ namespace MapEditor
                 nextXObject = 0;
                 for (int j = fromC; j < toC && nextXObject < toC * 32; j++)
                 {
-                    ObjectGame ob = new ObjectGame(new Point(j * widthType + 32, (SizeHeightMap - i) * 32 ), _type);
+                    ObjectGame ob = new ObjectGame(new Point(fromC * 32 + (j - fromC) * widthType + 32, (SizeHeightMap - i) * 32 ), _type);
                     listContents.Add(ob);
                     nextXObject = ob.Pos.X + widthType;
                    

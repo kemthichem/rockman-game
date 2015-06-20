@@ -19,7 +19,8 @@ namespace MapEditor
         _LANDWHITE,
         _LANDICEBERG,
         ROCKMAN = 0,
-        LADDER,
+        LADDER10,
+        LADDER5,
         BIGEYE,
         BLADER,
         MET,
@@ -124,9 +125,15 @@ namespace MapEditor
                     break;
                 case ObjectType.ROCKMAN:
                     break;
-                case ObjectType.LADDER:
+                case ObjectType.LADDER10:
                     width = 32;
                     height = 320;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.ladder_full;
+                    break;
+                case ObjectType.LADDER5:
+                    width = 32;
+                    height = 160;
                     if (isGetImage)
                         image = global::MapEditor.Properties.Resources.ladder_full;
                     break;
