@@ -24,7 +24,7 @@ CIceMan::CIceMan(int _id, D3DXVECTOR3 _pos)
 	m_IsHello = true;
 	m_isTurnLeft = true;
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
-	m_pos.x = CMap::g_widthMap - m_Size.x * 1.5;
+	m_pos.x = CMap::g_widthMap - m_Size.x - 64;
 	UpdateRect();
 	//create list bullet
 	for (int i = 0; i < 5; i++)
@@ -92,10 +92,10 @@ void CIceMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntit
 	if (m_Status == JUMP && m_pos.y <= m_yInit) {
 		m_Status = MOVE;
 	}
-	if (m_pos.x <= CCamera::g_PosCamera.x + 20) {
+	if (m_pos.x <= CCamera::g_PosCamera.x + 64) {
 		m_velloc.x *= -1;
 	} else 
-		if (m_pos.x >= CCamera::g_PosCamera.x + WIDTH_SCREEN - m_Size.x * 1.5 && m_pos.y <= m_yInit) {
+		if (m_pos.x >= CMap::g_widthMap - m_Size.x - 64 && m_pos.y <= m_yInit) {
 			m_isTurnLeft = true;			
 			m_velloc.x = 0;
 			if (m_Status != HELLO)
