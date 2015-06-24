@@ -307,6 +307,27 @@
   <ItemGroup>
     <None Include="Resources\enemy\enemy_screwbomber -down.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\background3.png" />
+    <None Include="Resources\gutsman\VUKHI.png" />
+    <None Include="Resources\gutsman\TRUCPHAI.png" />
+    <None Include="Resources\gutsman\TRUC_TRAI.png" />
+    <None Include="Resources\gutsman\TRUC.png" />
+    <None Include="Resources\gutsman\TUONGTRAI.png" />
+    <None Include="Resources\gutsman\TUONGPHAI.png" />
+    <None Include="Resources\gutsman\TUONGNHO.png" />
+    <None Include="Resources\gutsman\TUONG.png" />
+    <None Include="Resources\gutsman\RAO.png" />
+    <None Include="Resources\gutsman\NUI1.png" />
+    <None Include="Resources\gutsman\NUI.png" />
+    <None Include="Resources\gutsman\NEN.png" />
+    <None Include="Resources\gutsman\MUINHON.png" />
+    <None Include="Resources\gutsman\MAY.png" />
+    <None Include="Resources\gutsman\LOXO.png" />
+    <None Include="Resources\gutsman\DUONG.png" />
+    <None Include="Resources\gutsman\DAYNOI.png" />
+    <None Include="Resources\gutsman\DA.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
