@@ -37,7 +37,25 @@ namespace MapEditor
         GUTSMAN,
         ICEMAN,
         BULLET,
-        ITEM
+        ITEM,
+        //***FOR GUTSMAN MAP***//
+        DA,
+        DAYNOI,
+        DUONG,
+        LOXO,
+        MAY,
+        MUINHON,
+        NEN,
+        NUI,
+        NUI1,
+        RAO,
+        TUONG,
+        TUONGNHO,
+        TUONGPHAI,
+        TUONGTRAI,
+        TRUC,
+        TRUCTRAI,
+        TRUCPHAI
     };
 
     class ObjectGame
@@ -233,6 +251,109 @@ namespace MapEditor
                 case ObjectType.BULLET:
                     break;
                 case ObjectType.ITEM:
+                    break;
+                //***FOR GUTSMAN***//
+                case ObjectType.DA:
+                    width = 32;
+                    height = 32;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.DA;
+                    break;
+                case ObjectType.DAYNOI:
+                    width = 26;
+                    height = 4;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.DAYNOI;
+                    break;
+                case ObjectType.DUONG:
+                     width = 32;
+                     height = 16;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.DUONG;
+                    break;
+                case ObjectType.LOXO:
+                     width = 16;
+                     height = 88;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.LOXO;
+                    break;
+                case ObjectType.MAY:
+                     width = 47;
+                     height = 88;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.MAY;
+                    break;
+                case ObjectType.MUINHON:
+                     width = 16;
+                     height = 16;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.MUINHON;
+                    break;
+                case ObjectType.NEN:
+                     width = 64;
+                     height = 32;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.NEN;
+                    break;
+                case ObjectType.NUI:
+                     width = 32;
+                     height = 88;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.NUI;
+                    break;
+                case ObjectType.NUI1:
+                     width = 370;
+                     height = 186;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.NUI1;
+                    break;
+                case ObjectType.RAO:
+                     width = 96;
+                     height = 16;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.RAO;
+                    break;
+                case ObjectType.TUONG:
+                     width = 16;
+                     height = 80;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.TUONG;
+                    break;
+                case ObjectType.TUONGNHO:
+                     width = 16;
+                     height = 16;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.TUONGNHO;
+                    break;
+                case ObjectType.TUONGPHAI:
+                     width = 16;
+                     height = 140;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.TUONGPHAI;
+                    break;
+                case ObjectType.TUONGTRAI:
+                     width = 16;
+                     height = 140;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.TUONGTRAI;
+                    break;
+                case ObjectType.TRUC:
+                     width = 48;
+                     height = 8;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.TRUC;
+                    break;
+                case ObjectType.TRUCTRAI:
+                     width = 64;
+                     height = 16;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.TRUC_TRAI;
+                    break;
+                case ObjectType.TRUCPHAI:
+                     width = 32;
+                     height = 16;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.TRUCPHAI;
                     break;
                 default:
                     break;

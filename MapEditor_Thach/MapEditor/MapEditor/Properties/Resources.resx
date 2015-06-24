@@ -127,8 +127,8 @@
   <data name="LandIceberg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ground\LandIceberg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="landwhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ground\landwhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cutman" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\boss\cutman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="land1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ground\land1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,8 +139,8 @@
   <data name="enemy_peng" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\enemy\enemy_peng.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="background2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\background2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="landwhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ground\landwhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="enemy_flea" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\enemy\enemy_flea.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,14 +148,17 @@
   <data name="enemy_bigeye" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\enemy\enemy_bigeye.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cutman" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\boss\cutman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ladder" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ground\ladder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="background3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\background3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="background1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\background1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="enemy_screwbomber -down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemy\enemy_screwbomber -down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="enemy_spine" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\enemy\enemy_spine.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,17 +169,20 @@
   <data name="iceman" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boss\iceman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="gutsman" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\boss\gutsman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ladder-full" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ground\ladder-full.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gutsman" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\boss\gutsman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="enemy_blader" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\enemy\enemy_blader.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="movemap" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\item\movemap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="background2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\background2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="land" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ground\land.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -187,7 +193,58 @@
   <data name="break_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\enemy\enemy_break.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="enemy_screwbomber -down" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\enemy\enemy_screwbomber -down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="DA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gutsman\DA.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DAYNOI" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gutsman\DAYNOI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DUONG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gutsman\DUONG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LOXO" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gutsman\LOXO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MAY" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gutsman\MAY.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MUINHON" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gutsman\MUINHON.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NEN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gutsman\NEN.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NUI" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gutsman\NUI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NUI1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gutsman\NUI1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RAO" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gutsman\RAO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TUONG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gutsman\TUONG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TUONGNHO" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gutsman\TUONGNHO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TUONGPHAI" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gutsman\TUONGPHAI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TUONGTRAI" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gutsman\TUONGTRAI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TRUC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gutsman\TRUC.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TRUC_TRAI" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gutsman\TRUC_TRAI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TRUCPHAI" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gutsman\TRUCPHAI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="VUKHI" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gutsman\VUKHI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

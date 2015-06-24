@@ -40,7 +40,7 @@ namespace MapEditor
         }
         private void LoadResources()
         {
-            background = global::MapEditor.Properties.Resources.background1;
+            background = global::MapEditor.Properties.Resources.background3;
         }
 
         private void LoadTypeObject()
@@ -56,7 +56,7 @@ namespace MapEditor
             rdLandIceberg.AccessibleName = ObjectType.LANDICEBERG.ToString();
             rdLandIceberg_n.AccessibleName = ObjectType._LANDICEBERG.ToString();
             rdLadder.AccessibleName = ObjectType.LADDER10.ToString();
-            rdLadder5.AccessibleName = ObjectType.LADDER5.ToString();
+            rdDa.AccessibleName = ObjectType.LADDER5.ToString();
 
             /*Enemies*/
             rdBeak.AccessibleName = ObjectType.BEAK.ToString();
@@ -75,6 +75,24 @@ namespace MapEditor
             rdCuman.AccessibleName = ObjectType.CUTMAN.ToString();
             rdGusman.AccessibleName = ObjectType.GUTSMAN.ToString();
             rdIceMan.AccessibleName = ObjectType.ICEMAN.ToString();
+
+            /*Gutsman*/
+            rdDa.AccessibleName = ObjectType.DA.ToString();
+            rdDaynoi.AccessibleName = ObjectType.DAYNOI.ToString();
+            rdDuong.AccessibleName = ObjectType.DUONG.ToString();
+            rdLoxo.AccessibleName = ObjectType.LOXO.ToString();
+            rdMay.AccessibleName = ObjectType.MAY.ToString();
+            rdMuiNhon.AccessibleName = ObjectType.MUINHON.ToString();
+            rdNui.AccessibleName = ObjectType.NUI.ToString();
+            rdNui1.AccessibleName = ObjectType.NUI1.ToString();
+            rdRao.AccessibleName = ObjectType.RAO.ToString();
+            rdTuong.AccessibleName = ObjectType.TUONG.ToString();
+            rdTuongNho.AccessibleName = ObjectType.TUONGNHO.ToString();
+            rdTuongPhai.AccessibleName = ObjectType.TUONGPHAI.ToString();
+            rdTuongTrai.AccessibleName = ObjectType.TUONGTRAI.ToString();
+            rdTruc.AccessibleName = ObjectType.TRUC.ToString();
+            rdTrucTrai.AccessibleName = ObjectType.TRUCTRAI.ToString();
+            rdTrucPhai.AccessibleName = ObjectType.TRUCPHAI.ToString();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -464,9 +482,5 @@ namespace MapEditor
             }
         }
 
-        private void rdLadder5_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
      }
 }
