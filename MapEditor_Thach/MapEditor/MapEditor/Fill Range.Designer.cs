@@ -62,7 +62,9 @@
             // 
             this.cbbNameOb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbNameOb.FormattingEnabled = true;
+            this.cbbNameOb.ItemHeight = 13;
             this.cbbNameOb.Location = new System.Drawing.Point(82, 110);
+            this.cbbNameOb.MaxDropDownItems = 46;
             this.cbbNameOb.Name = "cbbNameOb";
             this.cbbNameOb.Size = new System.Drawing.Size(121, 21);
             this.cbbNameOb.TabIndex = 5;

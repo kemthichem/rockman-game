@@ -40,7 +40,7 @@ namespace MapEditor
         }
         private void LoadResources()
         {
-            background = global::MapEditor.Properties.Resources.background3;
+            background = global::MapEditor.Properties.Resources.background1;
         }
 
         private void LoadTypeObject()
@@ -83,6 +83,7 @@ namespace MapEditor
             rdLoxo.AccessibleName = ObjectType.LOXO.ToString();
             rdMay.AccessibleName = ObjectType.MAY.ToString();
             rdMuiNhon.AccessibleName = ObjectType.MUINHON.ToString();
+            rdNen.AccessibleName = ObjectType.NEN.ToString();
             rdNui.AccessibleName = ObjectType.NUI.ToString();
             rdNui1.AccessibleName = ObjectType.NUI1.ToString();
             rdRao.AccessibleName = ObjectType.RAO.ToString();
@@ -185,8 +186,7 @@ namespace MapEditor
         private void pnObjects_MouseEnter(object sender, EventArgs e)
         {
             pnObjects.Focus();
-        }
-
+        }        
         //-----event button-----
         private void btCreate_Click(object sender, EventArgs e)
         {
@@ -250,7 +250,7 @@ namespace MapEditor
                 {
                     if (RectGrid.Contains(e.Location))
                     {
-                         ObjectGame ob = null;
+                        ObjectGame ob = null;
                         Point p = new Point(e.Location.X - 32, e.Location.Y - 32);
                         int index = IndexObject(p);
                         if (index != -1)
@@ -263,9 +263,9 @@ namespace MapEditor
                             listContents.Add(_ob);
                         }
                     }
-                }
+                }                
             pbGridMap.Invalidate();
-        }
+        }        
 
         private void AddObjectsToQuadTree()
         {
@@ -480,6 +480,16 @@ namespace MapEditor
                         break;
                     }
             }
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+           
+        }
+
+        private void pnObjects_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+           
         }
 
      }
