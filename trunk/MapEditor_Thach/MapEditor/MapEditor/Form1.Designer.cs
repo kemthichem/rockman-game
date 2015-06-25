@@ -33,6 +33,7 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnGrid = new System.Windows.Forms.Panel();
+            this.pbGridMap = new System.Windows.Forms.PictureBox();
             this.paButton = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.tbSize = new System.Windows.Forms.TextBox();
@@ -45,11 +46,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnObjects = new System.Windows.Forms.Panel();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.bgOpenFile = new System.Windows.Forms.OpenFileDialog();
             this.rdLadder = new System.Windows.Forms.RadioButton();
+            this.rdTrucPhai = new System.Windows.Forms.RadioButton();
+            this.rdTruc = new System.Windows.Forms.RadioButton();
+            this.rdTuongPhai = new System.Windows.Forms.RadioButton();
+            this.rdTuong = new System.Windows.Forms.RadioButton();
+            this.rdNui1 = new System.Windows.Forms.RadioButton();
+            this.rdNen = new System.Windows.Forms.RadioButton();
+            this.rdTrucTrai = new System.Windows.Forms.RadioButton();
+            this.rdTuongTrai = new System.Windows.Forms.RadioButton();
+            this.rdTuongNho = new System.Windows.Forms.RadioButton();
+            this.rdRao = new System.Windows.Forms.RadioButton();
+            this.rdNui = new System.Windows.Forms.RadioButton();
             this.rdMuiNhon = new System.Windows.Forms.RadioButton();
             this.rdMay = new System.Windows.Forms.RadioButton();
             this.rdDuong = new System.Windows.Forms.RadioButton();
@@ -79,27 +87,19 @@
             this.rdSpine = new System.Windows.Forms.RadioButton();
             this.rdLand1_n = new System.Windows.Forms.RadioButton();
             this.rdBigEye = new System.Windows.Forms.RadioButton();
-            this.pbGridMap = new System.Windows.Forms.PictureBox();
-            this.rdNen = new System.Windows.Forms.RadioButton();
-            this.rdNui = new System.Windows.Forms.RadioButton();
-            this.rdNui1 = new System.Windows.Forms.RadioButton();
-            this.rdRao = new System.Windows.Forms.RadioButton();
-            this.rdTuong = new System.Windows.Forms.RadioButton();
-            this.rdTuongNho = new System.Windows.Forms.RadioButton();
-            this.rdTuongPhai = new System.Windows.Forms.RadioButton();
-            this.rdTuongTrai = new System.Windows.Forms.RadioButton();
-            this.rdTruc = new System.Windows.Forms.RadioButton();
-            this.rdTrucTrai = new System.Windows.Forms.RadioButton();
-            this.rdTrucPhai = new System.Windows.Forms.RadioButton();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.bgOpenFile = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             this.pnGrid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbGridMap)).BeginInit();
             this.paButton.SuspendLayout();
             this.pnObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbGridMap)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -148,6 +148,20 @@
             this.pnGrid.Name = "pnGrid";
             this.pnGrid.Size = new System.Drawing.Size(421, 457);
             this.pnGrid.TabIndex = 0;
+            // 
+            // pbGridMap
+            // 
+            this.pbGridMap.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pbGridMap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbGridMap.Location = new System.Drawing.Point(0, 0);
+            this.pbGridMap.Name = "pbGridMap";
+            this.pbGridMap.Size = new System.Drawing.Size(318, 184);
+            this.pbGridMap.TabIndex = 4;
+            this.pbGridMap.TabStop = false;
+            this.pbGridMap.Paint += new System.Windows.Forms.PaintEventHandler(this.pbGridMap_Paint);
+            this.pbGridMap.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pbGridMap_MouseDoubleClick);
+            this.pbGridMap.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbGridMap_MouseMove);
+            this.pbGridMap.MouseEnter += new System.EventHandler(this.pbGridMap_MouseEnter);
             // 
             // paButton
             // 
@@ -314,33 +328,7 @@
             this.pnObjects.Size = new System.Drawing.Size(252, 457);
             this.pnObjects.TabIndex = 1;
             this.pnObjects.MouseEnter += new System.EventHandler(this.pnObjects_MouseEnter);
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 24);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.pnObjects);
-            this.splitContainer1.Panel1.Controls.Add(this.paButton);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.pnGrid);
-            this.splitContainer1.Size = new System.Drawing.Size(827, 459);
-            this.splitContainer1.SplitterDistance = 400;
-            this.splitContainer1.TabIndex = 4;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // bgOpenFile
-            // 
-            this.bgOpenFile.FileName = "bgOpenFile";
+            this.pnObjects.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.pnObjects_PreviewKeyDown);
             // 
             // rdLadder
             // 
@@ -357,6 +345,160 @@
             this.rdLadder.Text = "Ladder";
             this.rdLadder.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.rdLadder.UseVisualStyleBackColor = true;
+            // 
+            // rdTrucPhai
+            // 
+            this.rdTrucPhai.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdTrucPhai.FlatAppearance.BorderSize = 0;
+            this.rdTrucPhai.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdTrucPhai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdTrucPhai.Image = global::MapEditor.Properties.Resources.TRUCPHAI;
+            this.rdTrucPhai.Location = new System.Drawing.Point(123, 2057);
+            this.rdTrucPhai.Name = "rdTrucPhai";
+            this.rdTrucPhai.Size = new System.Drawing.Size(95, 98);
+            this.rdTrucPhai.TabIndex = 76;
+            this.rdTrucPhai.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdTrucPhai.UseVisualStyleBackColor = true;
+            // 
+            // rdTruc
+            // 
+            this.rdTruc.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdTruc.FlatAppearance.BorderSize = 0;
+            this.rdTruc.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdTruc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdTruc.Image = global::MapEditor.Properties.Resources.TRUC;
+            this.rdTruc.Location = new System.Drawing.Point(123, 1953);
+            this.rdTruc.Name = "rdTruc";
+            this.rdTruc.Size = new System.Drawing.Size(95, 98);
+            this.rdTruc.TabIndex = 76;
+            this.rdTruc.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdTruc.UseVisualStyleBackColor = true;
+            // 
+            // rdTuongPhai
+            // 
+            this.rdTuongPhai.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdTuongPhai.FlatAppearance.BorderSize = 0;
+            this.rdTuongPhai.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdTuongPhai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdTuongPhai.Image = global::MapEditor.Properties.Resources.TUONGPHAI;
+            this.rdTuongPhai.Location = new System.Drawing.Point(123, 1849);
+            this.rdTuongPhai.Name = "rdTuongPhai";
+            this.rdTuongPhai.Size = new System.Drawing.Size(95, 98);
+            this.rdTuongPhai.TabIndex = 76;
+            this.rdTuongPhai.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdTuongPhai.UseVisualStyleBackColor = true;
+            // 
+            // rdTuong
+            // 
+            this.rdTuong.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdTuong.FlatAppearance.BorderSize = 0;
+            this.rdTuong.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdTuong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdTuong.Image = global::MapEditor.Properties.Resources.TUONG;
+            this.rdTuong.Location = new System.Drawing.Point(123, 1741);
+            this.rdTuong.Name = "rdTuong";
+            this.rdTuong.Size = new System.Drawing.Size(95, 98);
+            this.rdTuong.TabIndex = 76;
+            this.rdTuong.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdTuong.UseVisualStyleBackColor = true;
+            // 
+            // rdNui1
+            // 
+            this.rdNui1.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdNui1.FlatAppearance.BorderSize = 0;
+            this.rdNui1.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdNui1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdNui1.Image = global::MapEditor.Properties.Resources.NUI1;
+            this.rdNui1.Location = new System.Drawing.Point(123, 1626);
+            this.rdNui1.Name = "rdNui1";
+            this.rdNui1.Size = new System.Drawing.Size(95, 98);
+            this.rdNui1.TabIndex = 76;
+            this.rdNui1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdNui1.UseVisualStyleBackColor = true;
+            // 
+            // rdNen
+            // 
+            this.rdNen.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdNen.FlatAppearance.BorderSize = 0;
+            this.rdNen.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdNen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdNen.Image = global::MapEditor.Properties.Resources.NEN;
+            this.rdNen.Location = new System.Drawing.Point(123, 1509);
+            this.rdNen.Name = "rdNen";
+            this.rdNen.Size = new System.Drawing.Size(95, 98);
+            this.rdNen.TabIndex = 76;
+            this.rdNen.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdNen.UseVisualStyleBackColor = true;
+            // 
+            // rdTrucTrai
+            // 
+            this.rdTrucTrai.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdTrucTrai.FlatAppearance.BorderSize = 0;
+            this.rdTrucTrai.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdTrucTrai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdTrucTrai.Image = global::MapEditor.Properties.Resources.TRUC_TRAI;
+            this.rdTrucTrai.Location = new System.Drawing.Point(11, 2057);
+            this.rdTrucTrai.Name = "rdTrucTrai";
+            this.rdTrucTrai.Size = new System.Drawing.Size(95, 98);
+            this.rdTrucTrai.TabIndex = 76;
+            this.rdTrucTrai.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdTrucTrai.UseVisualStyleBackColor = true;
+            // 
+            // rdTuongTrai
+            // 
+            this.rdTuongTrai.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdTuongTrai.FlatAppearance.BorderSize = 0;
+            this.rdTuongTrai.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdTuongTrai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdTuongTrai.Image = global::MapEditor.Properties.Resources.TUONGTRAI;
+            this.rdTuongTrai.Location = new System.Drawing.Point(11, 1953);
+            this.rdTuongTrai.Name = "rdTuongTrai";
+            this.rdTuongTrai.Size = new System.Drawing.Size(95, 98);
+            this.rdTuongTrai.TabIndex = 76;
+            this.rdTuongTrai.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdTuongTrai.UseVisualStyleBackColor = true;
+            // 
+            // rdTuongNho
+            // 
+            this.rdTuongNho.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdTuongNho.FlatAppearance.BorderSize = 0;
+            this.rdTuongNho.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdTuongNho.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdTuongNho.Image = global::MapEditor.Properties.Resources.TUONGNHO;
+            this.rdTuongNho.Location = new System.Drawing.Point(11, 1849);
+            this.rdTuongNho.Name = "rdTuongNho";
+            this.rdTuongNho.Size = new System.Drawing.Size(95, 98);
+            this.rdTuongNho.TabIndex = 76;
+            this.rdTuongNho.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdTuongNho.UseVisualStyleBackColor = true;
+            // 
+            // rdRao
+            // 
+            this.rdRao.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdRao.FlatAppearance.BorderSize = 0;
+            this.rdRao.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdRao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdRao.Image = global::MapEditor.Properties.Resources.RAO;
+            this.rdRao.Location = new System.Drawing.Point(11, 1741);
+            this.rdRao.Name = "rdRao";
+            this.rdRao.Size = new System.Drawing.Size(95, 98);
+            this.rdRao.TabIndex = 76;
+            this.rdRao.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdRao.UseVisualStyleBackColor = true;
+            // 
+            // rdNui
+            // 
+            this.rdNui.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdNui.FlatAppearance.BorderSize = 0;
+            this.rdNui.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdNui.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdNui.Image = global::MapEditor.Properties.Resources.NUI;
+            this.rdNui.Location = new System.Drawing.Point(11, 1626);
+            this.rdNui.Name = "rdNui";
+            this.rdNui.Size = new System.Drawing.Size(95, 98);
+            this.rdNui.TabIndex = 76;
+            this.rdNui.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdNui.UseVisualStyleBackColor = true;
             // 
             // rdMuiNhon
             // 
@@ -819,173 +961,32 @@
             this.rdBigEye.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.rdBigEye.UseVisualStyleBackColor = true;
             // 
-            // pbGridMap
+            // splitContainer1
             // 
-            this.pbGridMap.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.pbGridMap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbGridMap.Location = new System.Drawing.Point(0, 0);
-            this.pbGridMap.Name = "pbGridMap";
-            this.pbGridMap.Size = new System.Drawing.Size(318, 184);
-            this.pbGridMap.TabIndex = 4;
-            this.pbGridMap.TabStop = false;
-            this.pbGridMap.Paint += new System.Windows.Forms.PaintEventHandler(this.pbGridMap_Paint);
-            this.pbGridMap.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pbGridMap_MouseDoubleClick);
-            this.pbGridMap.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbGridMap_MouseMove);
-            this.pbGridMap.MouseEnter += new System.EventHandler(this.pbGridMap_MouseEnter);
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 24);
+            this.splitContainer1.Name = "splitContainer1";
             // 
-            // rdNen
+            // splitContainer1.Panel1
             // 
-            this.rdNen.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rdNen.FlatAppearance.BorderSize = 0;
-            this.rdNen.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.rdNen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdNen.Image = global::MapEditor.Properties.Resources.NEN;
-            this.rdNen.Location = new System.Drawing.Point(123, 1509);
-            this.rdNen.Name = "rdNen";
-            this.rdNen.Size = new System.Drawing.Size(95, 98);
-            this.rdNen.TabIndex = 76;
-            this.rdNen.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.rdNen.UseVisualStyleBackColor = true;
+            this.splitContainer1.Panel1.Controls.Add(this.pnObjects);
+            this.splitContainer1.Panel1.Controls.Add(this.paButton);
             // 
-            // rdNui
+            // splitContainer1.Panel2
             // 
-            this.rdNui.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rdNui.FlatAppearance.BorderSize = 0;
-            this.rdNui.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.rdNui.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdNui.Image = global::MapEditor.Properties.Resources.NUI;
-            this.rdNui.Location = new System.Drawing.Point(11, 1626);
-            this.rdNui.Name = "rdNui";
-            this.rdNui.Size = new System.Drawing.Size(95, 98);
-            this.rdNui.TabIndex = 76;
-            this.rdNui.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.rdNui.UseVisualStyleBackColor = true;
+            this.splitContainer1.Panel2.Controls.Add(this.pnGrid);
+            this.splitContainer1.Size = new System.Drawing.Size(827, 459);
+            this.splitContainer1.SplitterDistance = 400;
+            this.splitContainer1.TabIndex = 4;
             // 
-            // rdNui1
+            // openFileDialog1
             // 
-            this.rdNui1.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rdNui1.FlatAppearance.BorderSize = 0;
-            this.rdNui1.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.rdNui1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdNui1.Image = global::MapEditor.Properties.Resources.NUI1;
-            this.rdNui1.Location = new System.Drawing.Point(123, 1626);
-            this.rdNui1.Name = "rdNui1";
-            this.rdNui1.Size = new System.Drawing.Size(95, 98);
-            this.rdNui1.TabIndex = 76;
-            this.rdNui1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.rdNui1.UseVisualStyleBackColor = true;
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // rdRao
+            // bgOpenFile
             // 
-            this.rdRao.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rdRao.FlatAppearance.BorderSize = 0;
-            this.rdRao.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.rdRao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdRao.Image = global::MapEditor.Properties.Resources.RAO;
-            this.rdRao.Location = new System.Drawing.Point(11, 1741);
-            this.rdRao.Name = "rdRao";
-            this.rdRao.Size = new System.Drawing.Size(95, 98);
-            this.rdRao.TabIndex = 76;
-            this.rdRao.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.rdRao.UseVisualStyleBackColor = true;
-            // 
-            // rdTuong
-            // 
-            this.rdTuong.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rdTuong.FlatAppearance.BorderSize = 0;
-            this.rdTuong.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.rdTuong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdTuong.Image = global::MapEditor.Properties.Resources.TUONG;
-            this.rdTuong.Location = new System.Drawing.Point(123, 1741);
-            this.rdTuong.Name = "rdTuong";
-            this.rdTuong.Size = new System.Drawing.Size(95, 98);
-            this.rdTuong.TabIndex = 76;
-            this.rdTuong.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.rdTuong.UseVisualStyleBackColor = true;
-            // 
-            // rdTuongNho
-            // 
-            this.rdTuongNho.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rdTuongNho.FlatAppearance.BorderSize = 0;
-            this.rdTuongNho.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.rdTuongNho.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdTuongNho.Image = global::MapEditor.Properties.Resources.TUONGNHO;
-            this.rdTuongNho.Location = new System.Drawing.Point(11, 1849);
-            this.rdTuongNho.Name = "rdTuongNho";
-            this.rdTuongNho.Size = new System.Drawing.Size(95, 98);
-            this.rdTuongNho.TabIndex = 76;
-            this.rdTuongNho.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.rdTuongNho.UseVisualStyleBackColor = true;
-            // 
-            // rdTuongPhai
-            // 
-            this.rdTuongPhai.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rdTuongPhai.FlatAppearance.BorderSize = 0;
-            this.rdTuongPhai.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.rdTuongPhai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdTuongPhai.Image = global::MapEditor.Properties.Resources.TUONGPHAI;
-            this.rdTuongPhai.Location = new System.Drawing.Point(123, 1849);
-            this.rdTuongPhai.Name = "rdTuongPhai";
-            this.rdTuongPhai.Size = new System.Drawing.Size(95, 98);
-            this.rdTuongPhai.TabIndex = 76;
-            this.rdTuongPhai.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.rdTuongPhai.UseVisualStyleBackColor = true;
-            // 
-            // rdTuongTrai
-            // 
-            this.rdTuongTrai.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rdTuongTrai.FlatAppearance.BorderSize = 0;
-            this.rdTuongTrai.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.rdTuongTrai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdTuongTrai.Image = global::MapEditor.Properties.Resources.TUONGTRAI;
-            this.rdTuongTrai.Location = new System.Drawing.Point(11, 1953);
-            this.rdTuongTrai.Name = "rdTuongTrai";
-            this.rdTuongTrai.Size = new System.Drawing.Size(95, 98);
-            this.rdTuongTrai.TabIndex = 76;
-            this.rdTuongTrai.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.rdTuongTrai.UseVisualStyleBackColor = true;
-            // 
-            // rdTruc
-            // 
-            this.rdTruc.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rdTruc.FlatAppearance.BorderSize = 0;
-            this.rdTruc.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.rdTruc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdTruc.Image = global::MapEditor.Properties.Resources.TRUC;
-            this.rdTruc.Location = new System.Drawing.Point(123, 1953);
-            this.rdTruc.Name = "rdTruc";
-            this.rdTruc.Size = new System.Drawing.Size(95, 98);
-            this.rdTruc.TabIndex = 76;
-            this.rdTruc.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.rdTruc.UseVisualStyleBackColor = true;
-            // 
-            // rdTrucTrai
-            // 
-            this.rdTrucTrai.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rdTrucTrai.FlatAppearance.BorderSize = 0;
-            this.rdTrucTrai.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.rdTrucTrai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdTrucTrai.Image = global::MapEditor.Properties.Resources.TRUC_TRAI;
-            this.rdTrucTrai.Location = new System.Drawing.Point(11, 2057);
-            this.rdTrucTrai.Name = "rdTrucTrai";
-            this.rdTrucTrai.Size = new System.Drawing.Size(95, 98);
-            this.rdTrucTrai.TabIndex = 76;
-            this.rdTrucTrai.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.rdTrucTrai.UseVisualStyleBackColor = true;
-            // 
-            // rdTrucPhai
-            // 
-            this.rdTrucPhai.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rdTrucPhai.FlatAppearance.BorderSize = 0;
-            this.rdTrucPhai.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.rdTrucPhai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdTrucPhai.Image = global::MapEditor.Properties.Resources.TRUCPHAI;
-            this.rdTrucPhai.Location = new System.Drawing.Point(123, 2057);
-            this.rdTrucPhai.Name = "rdTrucPhai";
-            this.rdTrucPhai.Size = new System.Drawing.Size(95, 98);
-            this.rdTrucPhai.TabIndex = 76;
-            this.rdTrucPhai.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.rdTrucPhai.UseVisualStyleBackColor = true;
+            this.bgOpenFile.FileName = "bgOpenFile";
             // 
             // Form1
             // 
@@ -998,9 +999,11 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MapEditor";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.pnGrid.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbGridMap)).EndInit();
             this.paButton.ResumeLayout(false);
             this.paButton.PerformLayout();
             this.pnObjects.ResumeLayout(false);
@@ -1008,7 +1011,6 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbGridMap)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
