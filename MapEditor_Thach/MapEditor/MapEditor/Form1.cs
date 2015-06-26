@@ -48,15 +48,20 @@ namespace MapEditor
             /*Blocks*/
             rdMoveMap.AccessibleName = ObjectType.MOVEMAP.ToString();
             rdLand1.AccessibleName = ObjectType.LAND1.ToString();
+            rdLand2.AccessibleName = ObjectType.LAND2.ToString();
             rdLand1_n.AccessibleName = ObjectType._LAND1.ToString();
             rdLand.AccessibleName = ObjectType.LAND.ToString();
             rdLand_n.AccessibleName = ObjectType._LAND.ToString();
             rdLandWhite.AccessibleName = ObjectType.LANDWHITE.ToString();
             rdLandWhite_n.AccessibleName = ObjectType._LANDWHITE.ToString();
             rdLandIceberg.AccessibleName = ObjectType.LANDICEBERG.ToString();
-            rdLandIceberg_n.AccessibleName = ObjectType._LANDICEBERG.ToString();
+            rdLandIceberg_n.AccessibleName = ObjectType.LAND3.ToString();
             rdLadder.AccessibleName = ObjectType.LADDER10.ToString();
-            rdDa.AccessibleName = ObjectType.LADDER5.ToString();
+            rdLadder5.AccessibleName = ObjectType.LADDER5.ToString();
+            rdLadder2.AccessibleName = ObjectType.LADDER2.ToString();
+            rdLadder6.AccessibleName = ObjectType.LADDER6.ToString();
+            rdLadder7.AccessibleName = ObjectType.LADDER7.ToString();
+            rdLadder4.AccessibleName = ObjectType.LADDER4.ToString();
 
             /*Enemies*/
             rdBeak.AccessibleName = ObjectType.BEAK.ToString();
