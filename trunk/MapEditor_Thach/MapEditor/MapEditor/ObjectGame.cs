@@ -13,7 +13,9 @@ namespace MapEditor
         LAND,
         _LAND,
         LAND1,
+        LAND2,
         _LAND1,
+        LAND3,
         LANDWHITE,
         LANDICEBERG,
         _LANDWHITE,
@@ -21,6 +23,10 @@ namespace MapEditor
         ROCKMAN = 0,
         LADDER10,
         LADDER5,
+        LADDER6,
+        LADDER2,
+        LADDER7,
+        LADDER4,
         BIGEYE,
         BLADER,
         MET,
@@ -115,12 +121,23 @@ namespace MapEditor
                     break;
                 case ObjectType.LAND:
                 case ObjectType._LAND:
-                     width = 128;
+                    width = 128;
                     height = 32;
                     if (isGetImage)
                         image = global::MapEditor.Properties.Resources.land;
                     break;
                 case ObjectType.LAND1:
+                    width = 32;
+                    height = 32;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.land2;
+                    break;
+                case ObjectType.LAND2:
+                    width = 32;
+                    height = 32;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.land2_1;
+                    break;              
                 case ObjectType._LAND1:
                     width = 64;
                     height = 32;
@@ -128,18 +145,25 @@ namespace MapEditor
                         image = global::MapEditor.Properties.Resources.land1;
                     break;
                 case ObjectType.LANDWHITE:
+
                 case ObjectType._LANDWHITE:
                     width = 96;
                     height = 32;
                     if (isGetImage)
                         image = global::MapEditor.Properties.Resources.landwhite;
                     break;
+
                 case ObjectType.LANDICEBERG:
-                case ObjectType._LANDICEBERG:
-                    width = 64;
+                                        width = 64;
                     height = 32;
                     if (isGetImage)
                         image = global::MapEditor.Properties.Resources.LandIceberg;
+                    break;
+                case ObjectType.LAND3:
+                    width = 64;
+                    height = 64;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.land3;
                     break;
                 case ObjectType.ROCKMAN:
                     break;
@@ -152,6 +176,30 @@ namespace MapEditor
                 case ObjectType.LADDER5:
                     width = 32;
                     height = 160;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.ladder_full;
+                    break;
+                case ObjectType.LADDER6:
+                    width = 32;
+                    height = 192;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.ladder_full;
+                    break;
+                case ObjectType.LADDER2:
+                    width = 32;
+                    height = 64;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.ladder_full;
+                    break;
+                case ObjectType.LADDER4:
+                    width = 32;
+                    height = 128;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.ladder_full;
+                    break;
+                case ObjectType.LADDER7:
+                    width = 32;
+                    height = 224;
                     if (isGetImage)
                         image = global::MapEditor.Properties.Resources.ladder_full;
                     break;
