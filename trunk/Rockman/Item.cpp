@@ -12,7 +12,6 @@ CItem::CItem(D3DXVECTOR3 _pos)
 	m_pos = _pos;
 	m_posInit = _pos;
 
-	m_collision = new CAABBCollision();
 	m_accel = D3DXVECTOR2(0,-20.0f);
 	m_velloc = D3DXVECTOR2(5, 10.0f);
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());

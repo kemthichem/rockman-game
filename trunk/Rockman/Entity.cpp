@@ -10,13 +10,15 @@ CEntity::CEntity(void)
 	m_isTurnLeft = false;
 	m_velloc = D3DXVECTOR2(0,0);
 	m_accel = D3DXVECTOR2(0,0);
+	m_Intersect = 0;
+	m_collision = new CAABBCollision();
 
-	m_collision = NULL;
 	m_Size = D3DXVECTOR2(0,0);
 	m_directCollision = NONE;
 }
 
 void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewPort) {
+	if ((int)m_Type < 0) return;
 	//set is turn left
 	if (m_velloc.x < 0) m_isTurnLeft = true;
 	else if (m_velloc.x > 0) m_isTurnLeft = false;
@@ -24,23 +26,24 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 	//set position
 	UpdatePosition(_time);
 
-	if (this->GetType() == BULLET)
-	{
-		int k = 0;
-	}
 	vector<CEntity*> listObjectCollision;
 	for (int i = 0; i < _listObjectInViewPort.size(); i++)
 	{
 		if(_listObjectInViewPort[i]->GetId() != this->GetId())
 		{
 			if (_listObjectInViewPort[i]->IsCheckCollision() && m_collision->IsCollision(this, _listObjectInViewPort[i], _time)) {
+				_listObjectInViewPort[i]->m_Intersect = m_collision->intersectX(this,_listObjectInViewPort[i],_time);
 				listObjectCollision.push_back(_listObjectInViewPort[i]);
 			}
 		}
 	}
 
+	//sort 
+	std::sort(listObjectCollision.begin(),listObjectCollision.end(),m_collision->SortObject);
 	for (int i = 0; i < listObjectCollision.size(); i++)
 	{
+		if (listObjectCollision[i]->GetType() == LAND3) 
+			int k = 0;
 		UpdateCollison(listObjectCollision[i],_time);
 	}
 

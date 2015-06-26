@@ -1,5 +1,7 @@
 #include"Map.h"
 #include "Land1.h"
+#include "Land2.h"
+#include "Land3.h"
 #include "LandWhite.h"
 #include "LandIceberg.h"
 #include "MoveMap.h"
@@ -87,7 +89,13 @@ void  CMap::LoadObjectFromFile(char* filePath)
 			}  else if(_objecttype == "LANDWHITE"){
 				CLandWhite *ob = new CLandWhite(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
 				m_ListObjects.push_back(ob);
-			} else if(_objecttype == "_LANDWHITE"){
+			} else if(_objecttype == "LAND3"){
+				CLand3 *ob = new CLand3(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
+				m_ListObjects.push_back(ob);
+			} else if(_objecttype == "LAND2"){
+				CLand2 *ob = new CLand2(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
+				m_ListObjects.push_back(ob);
+			}else if(_objecttype == "_LANDWHITE"){
 				CLandWhite *ob = new CLandWhite(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0), false);
 				m_ListObjects.push_back(ob);
 			}else if(_objecttype == "LANDICEBERG"){
@@ -108,8 +116,13 @@ void  CMap::LoadObjectFromFile(char* filePath)
 			} else if(_objecttype == "LADDER5"){
 				CLadder *ob = new CLadder(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0), 5);
 				m_ListObjects.push_back(ob);
-			} 		
-		
+			}  else if(_objecttype == "LADDER6"){
+				CLadder *ob = new CLadder(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0), 6);
+				m_ListObjects.push_back(ob);
+			}  else if(_objecttype == "LADDER2"){
+				CLadder *ob = new CLadder(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0), 2);
+				m_ListObjects.push_back(ob);
+			} 								
 			
 			//*************ENEMIES****************//
 			

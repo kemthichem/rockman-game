@@ -17,7 +17,6 @@ CBulletCutman::CBulletCutman(D3DXVECTOR3 _pos)
 		, D3DXVECTOR2(490,120), 2, 1
 		, D3DXVECTOR2(430,90));
 	m_pos = _pos;
-	m_collision = new CAABBCollision();
 	m_accel = D3DXVECTOR2(0,0);
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 	UpdateRect();

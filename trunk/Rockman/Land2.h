@@ -1,16 +1,16 @@
-#ifndef _LAND1_H_
-#define _LAND1_H_
+#ifndef _Land2_H_
+#define _Land2_H_
 #include "ResourceManager.h"
 #include "Entity.h"
-class CLand1 : public CEntity
+class CLand2 : public CEntity
 {
 private:
 	int m_NumSprite;
 protected:
 
 public:
-	CLand1(int _id, D3DXVECTOR3 _pos, bool _isCheckCollison = true);
-	~CLand1(void);
+	CLand2(int _id, D3DXVECTOR3 _pos, bool _isCheckCollison = true);
+	~CLand2(void);
 
 	//method
 	virtual void Update(float , CCamera *, CInput *);

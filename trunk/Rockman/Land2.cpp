@@ -1,17 +1,13 @@
-#include "Land1.h"
+#include "Land2.h"
 
-CLand1::CLand1(int _id, D3DXVECTOR3 _pos, bool _isCheckCollison)
+CLand2::CLand2(int _id, D3DXVECTOR3 _pos, bool _isCheckCollison)
 {
 	m_Id = _id;
-	m_Type = _isCheckCollison ? LAND1 : SCENERY;
-	m_NumSprite = _isCheckCollison? 1 : 2;
-	D3DXVECTOR2 src = _isCheckCollison ? D3DXVECTOR2(720,376) : D3DXVECTOR2(653, 343);
-	D3DXVECTOR2 des = _isCheckCollison ? D3DXVECTOR2(754, 410) : D3DXVECTOR2(721, 377);
-	int countCol = _isCheckCollison ? 1 : 2;
-
+	m_Type = _isCheckCollison ? LAND2 : SCENERY;
+	m_NumSprite = 1;
 
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES),
-		des, countCol, 1, src, 
+		D3DXVECTOR2(721, 377), 2, 1,  D3DXVECTOR2(653, 343), 
 		D3DXVECTOR2(1,1),  D3DXVECTOR2(1,1));
 	m_pos = _pos;
 	m_pos.z = DEPTH_BLOCK;
@@ -22,17 +18,17 @@ CLand1::CLand1(int _id, D3DXVECTOR3 _pos, bool _isCheckCollison)
 }
 
 
-CLand1::~CLand1(void)
+CLand2::~CLand2(void)
 {
 }
 
-void CLand1::Update(float _time, CCamera *_camera, CInput *_input)
+void CLand2::Update(float _time, CCamera *_camera, CInput *_input)
 {
 	m_Sprite->IndexOf(0);
 }
 
 
-void CLand1::Render(LPD3DXSPRITE _sp, CCamera* _camera)
+void CLand2::Render(LPD3DXSPRITE _sp, CCamera* _camera)
 {
 	D3DXVECTOR3 pos = m_pos;
 	for (int i = 0; i < m_NumSprite; i++)
