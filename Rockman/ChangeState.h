@@ -14,6 +14,7 @@ public:
 	void Init();
 	void Render(LPD3DXSPRITE,CCamera* _camera);
 	void Update(CInput* _input,float _time,CCamera* _camera);
+	virtual void RenderTextAndSurface();
 	
 };
 #endif

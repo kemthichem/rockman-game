@@ -248,6 +248,7 @@ void CRockman::UpdateCollison(CEntity* _other, float _time) {
 		m_PosXClimb = _other->GetRect().left + 16;
 		m_IsClimbing = true;
 		m_CanClimbUp = true;
+		m_velloc.x = 0;
 		if ((m_pos.y >= _other->GetRect().top + m_Size.y -5 && m_accel.y != 0))
 		{
 			m_CanClimbUp = false;
@@ -386,6 +387,7 @@ void CRockman::Climb(bool _isTurnUp)
 	}
 	if (m_PosXClimb > -1) {
 		m_velloc.y = _isTurnUp ? 10: -10;
+		m_velloc.x = 0;
 		m_accel.y = 0;
 		m_pos.x = m_PosXClimb - m_Size.x/2;
 		m_action = Action_Climb;

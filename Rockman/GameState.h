@@ -27,5 +27,6 @@ public:
 	virtual void Update(CInput* ,float,CCamera*);
 	virtual void Render(LPD3DXSPRITE,CCamera*);
 	void StopSoundBackGound();
+	virtual void RenderTextAndSurface(){};
 };
 #endif

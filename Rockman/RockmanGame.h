@@ -14,6 +14,7 @@ private:
 protected:
 	virtual void RenderWorld();
 	virtual void UpdateWorld();
+	virtual void RenderTextAndSurface();
 	
 public:
 	LPD3DXSPRITE GetSpriteHandle();

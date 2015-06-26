@@ -1,6 +1,6 @@
 #include"MenuState.h"
 #include"GamestateManager.h"
-#include"ChangeState.h"
+#include"PLayingGameState.h"
 #include "About.h"
 #include "HelpState.h"
 
@@ -96,7 +96,7 @@ void CMenuState::Update(CInput* _input,float _time,CCamera* _camera)
 		{
 		case 1:
 			{
-				m_StateManager->ChangeState(new CChangeState(this->m_StateManager));
+				m_StateManager->ChangeState(new CPLayingGameState(this->m_StateManager));
 				break;
 			}
 	/*	case 2:

@@ -4,7 +4,7 @@
 #include "MoveMap.h"
 #include "Map.h"
 #include "PLayingGameState.h"
-#include "MenuState.h"
+#include "ChangeState.h"
 
 CRockmanGame::CRockmanGame(void)
 {
@@ -38,11 +38,16 @@ void CRockmanGame::UpdateWorld()
 void CRockmanGame::InitGame()
 {
 	CGame::InitGame();
-	m_StateManager->InitFirstState(new CMenuState(m_StateManager));
+	m_StateManager->InitFirstState(new CChangeState(m_StateManager));
 }
 LPD3DXFONT CRockmanGame::GetLPFont()
 {
 	return m_GraphicText;
+}
+
+void CRockmanGame::RenderTextAndSurface()
+{
+	m_StateManager->RenderTextAndSurface();
 }
 
 
