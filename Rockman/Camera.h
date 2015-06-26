@@ -24,6 +24,7 @@ public:
 	CCamera(D3DXVECTOR2);
 
 	D3DXMATRIX GetMatrixCamera();
+	RECT GetViewPortEx();
 	D3DXVECTOR2 GetPosCamera();
 	void SetPosCamera(D3DXVECTOR2 _pos);
 	~CCamera(void);

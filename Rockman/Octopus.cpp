@@ -6,7 +6,6 @@ COctopus::COctopus(int _id, D3DXVECTOR3 _pos, bool _isTurnHor)
 {
 	m_Id = _id;
 	m_Type = OCTOPUS;
-	m_collision = new CAABBCollision();
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES),
 		D3DXVECTOR2(910,296), 3, 1,
 		D3DXVECTOR2(670,260),

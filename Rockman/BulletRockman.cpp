@@ -14,7 +14,6 @@ CBulletRockman::CBulletRockman(D3DXVECTOR3 _pos)
 		, D3DXVECTOR2(320,190));
 	m_pos = _pos;
 
-	m_collision = new CAABBCollision();
 	m_accel = D3DXVECTOR2(0,0);
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 

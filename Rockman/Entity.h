@@ -15,6 +15,8 @@ enum ObjectType
 	SCENERY = -10,
 	LAND,
 	LAND1,
+	LAND2,
+	LAND3,
 	LANDWHITE,
 	LANDICEBERG,
 	ROCKMAN = 0,
@@ -38,7 +40,8 @@ enum ObjectType
 class CEntity
 {
 private:	
-	void UpdatePosition(float);		
+	void UpdatePosition(float);	
+	float m_Intersect;
 	
 protected:
 	bool m_isTurnLeft;
@@ -71,6 +74,9 @@ public:
 	RECT GetRect();
 	bool IsShowed();
 	bool IsCheckCollision();
+	float GetIntersect()  {
+		return m_Intersect;
+	}
 	virtual void Update(float , CCamera *, CInput *, vector<CEntity*>);
 	virtual void Render(LPD3DXSPRITE, CCamera*);
 	virtual void SetInjured(CEntity* _other);

@@ -25,6 +25,8 @@ public:
 	DirectCollision GetDirectCollision(){return m_directCollision;}
 	float SweptAABB(CEntity* _ob1, CEntity* _ob2, float _time);
 	bool IsCollision(CEntity* _ob1, CEntity* _ob2, float _time);
+	float intersectX(CEntity* a,CEntity *b,float _time);
+	static bool  SortObject(CEntity * a, CEntity*b);
 };
 
 #endif

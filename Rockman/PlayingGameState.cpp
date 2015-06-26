@@ -52,7 +52,7 @@ void CPLayingGameState::Render(LPD3DXSPRITE _spriteHandle,CCamera* _camera)
 
 void CPLayingGameState::Update(CInput* _input,float _time,CCamera* _camera)
 {
-	vector<CEntity*> listOb = quadTree->GetListObjectInRect(_camera->m_viewPort);
+	vector<CEntity*> listOb = quadTree->GetListObjectInRect(_camera->GetViewPortEx());
 	quadTree->m_listObjectViewportToUpdate.push_back(rockman);
 
 
@@ -91,7 +91,7 @@ void CPLayingGameState::Init()
 	char* pathTree = ""; 
 
 	//fixed stage
-	//g_Stage = 3;
+	g_Stage = 1;
 
 	switch (g_Stage)
 	{

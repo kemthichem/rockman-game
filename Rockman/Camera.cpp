@@ -121,3 +121,10 @@ void CCamera::MoveX(int _distanceX)
 
 	g_PosCamera = m_pos;
 }
+
+RECT CCamera::GetViewPortEx()
+{
+	RECT rect = m_viewPort;
+	rect.top += 50;
+	return rect;
+}

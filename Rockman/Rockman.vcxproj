@@ -109,6 +109,8 @@
     <ClCompile Include="Ladder.cpp" />
     <ClCompile Include="Land.cpp" />
     <ClCompile Include="Land1.cpp" />
+    <ClCompile Include="Land2.cpp" />
+    <ClCompile Include="Land3.cpp" />
     <ClCompile Include="LandIceberg.cpp" />
     <ClCompile Include="LandWhite.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -160,6 +162,8 @@
     <ClInclude Include="Ladder.h" />
     <ClInclude Include="Land.h" />
     <ClInclude Include="Land1.h" />
+    <ClInclude Include="Land2.h" />
+    <ClInclude Include="Land3.h" />
     <ClInclude Include="LandIceberg.h" />
     <ClInclude Include="LandWhite.h" />
     <ClInclude Include="Map.h" />

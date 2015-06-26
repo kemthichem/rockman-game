@@ -210,6 +210,12 @@
     <ClCompile Include="BulletGutsman.cpp">
       <Filter>Item</Filter>
     </ClCompile>
+    <ClCompile Include="Land3.cpp">
+      <Filter>ObjectGame\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="Land2.cpp">
+      <Filter>ObjectGame\Block</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RockmanGame.h">
@@ -355,6 +361,12 @@
     </ClInclude>
     <ClInclude Include="BulletGutsman.h">
       <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Land3.h">
+      <Filter>ObjectGame\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="Land2.h">
+      <Filter>ObjectGame\Block</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
