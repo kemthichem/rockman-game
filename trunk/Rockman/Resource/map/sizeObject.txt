@@ -13,6 +13,14 @@ des:350,215
 
 Land1:
 sizeSprite:32x32
+sizeObject:32x32
+src:720,376
+des: 754, 410
+left-top:1,1
+right-bottom:1,1
+
+_Land1:
+sizeSprite:32x32
 sizeObject:64x32
 src:653, 343
 des: 721, 377
