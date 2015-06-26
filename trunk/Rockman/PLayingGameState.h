@@ -28,6 +28,7 @@ protected:
 	//virtual void CleanUp();
 	virtual void Render(LPD3DXSPRITE _spriteHandle,CCamera* _camera);
 	virtual void Update(CInput* _input,float _time,CCamera* _camera);
+	virtual void RenderTextAndSurface();
 	virtual void Init();
 public:
 	CPLayingGameState(void);

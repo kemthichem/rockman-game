@@ -57,3 +57,8 @@ CCamera* CGameStateManager::GetCamera()
 {
 	return m_Camera;
 }
+
+void CGameStateManager::RenderTextAndSurface()
+{
+	m_ListState.back()->RenderTextAndSurface();
+}

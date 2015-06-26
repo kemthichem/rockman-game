@@ -122,7 +122,13 @@ void  CMap::LoadObjectFromFile(char* filePath)
 			}  else if(_objecttype == "LADDER2"){
 				CLadder *ob = new CLadder(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0), 2);
 				m_ListObjects.push_back(ob);
-			} 								
+			} 	else if(_objecttype == "LADDER4"){
+				CLadder *ob = new CLadder(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0), 4);
+				m_ListObjects.push_back(ob);
+			} else if(_objecttype == "LADDER7"){
+				CLadder *ob = new CLadder(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0), 7);
+				m_ListObjects.push_back(ob);
+			} 							
 			
 			//*************ENEMIES****************//
 			

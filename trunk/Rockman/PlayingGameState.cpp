@@ -44,10 +44,11 @@ CPLayingGameState::~CPLayingGameState(void)
 
 void CPLayingGameState::Render(LPD3DXSPRITE _spriteHandle,CCamera* _camera)
 {
+	
 	rockman->Render(_spriteHandle, _camera);
 	quadTree->Render(_spriteHandle, _camera);
 
-	DrawText();
+	
 }
 
 void CPLayingGameState::Update(CInput* _input,float _time,CCamera* _camera)
@@ -70,13 +71,7 @@ void CPLayingGameState::Update(CInput* _input,float _time,CCamera* _camera)
 		quadTree->Update(_camera, _time);
 		break;
 	}
-	if (TypeMove::MOVENONE == CMoveMap::g_TypeMove) {
 		
-	}
-	else {
-		
-	}
-	
 	if (rockman->GetKeyDown()==DIK_ESCAPE)
 	{
 		m_StateManager->ChangeState(new CMenuState(m_StateManager));
@@ -127,23 +122,23 @@ void CPLayingGameState::DrawText()
 {
 	RECT r = {10, 0, 800, 100};
 
-	/*Life*/
+	///*Life*/
 	string textToDraw = "Life: ";
-	textToDraw.append(std::to_string(CPLayingGameState::g_LifeOfRockman));
-	m_StateManager->m_GraphicText->DrawText(NULL, textToDraw.c_str(), -1, &r, NULL, D3DCOLOR_XRGB(255,255,255));
+	//textToDraw.append(std::to_string(CPLayingGameState::g_LifeOfRockman));
+	//m_StateManager->m_GraphicText->DrawText(NULL, textToDraw.c_str(), -1, &r, NULL, D3DCOLOR_XRGB(255,255,255));
 
 
 	/*Stage*/
 	r.left = 375;
-	textToDraw = "Stage: ";
-	textToDraw.append(std::to_string(CPLayingGameState::g_Stage));
-	m_StateManager->m_GraphicText->DrawText(NULL, textToDraw.c_str(), -1, &r, NULL, D3DCOLOR_XRGB(255,255,255));
-
-	/*Score*/
-	r.left = 650;
-	textToDraw = "Score: ";
+	textToDraw = "00000";
 	textToDraw.append(std::to_string(CPLayingGameState::g_Score));
 	m_StateManager->m_GraphicText->DrawText(NULL, textToDraw.c_str(), -1, &r, NULL, D3DCOLOR_XRGB(255,255,255));
+
+	///*Score*/
+	//r.left = 650;
+	//textToDraw = "Score: ";
+	//textToDraw.append(std::to_string(CPLayingGameState::g_Score));
+	//m_StateManager->m_GraphicText->DrawText(NULL, textToDraw.c_str(), -1, &r, NULL, D3DCOLOR_XRGB(255,255,255));
 }
 
 void CPLayingGameState::UpdateState()
@@ -176,5 +171,10 @@ void CPLayingGameState::UpdateState()
 		break;
 	}
 	g_ChangeState = CHANGE_NONE;
+}
+
+void CPLayingGameState::RenderTextAndSurface()
+{
+	DrawText();
 }
 

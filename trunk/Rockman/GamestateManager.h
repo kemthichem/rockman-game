@@ -31,6 +31,7 @@ public:
 	void Update(float,CCamera*, CInput*);
 	void Draw(LPD3DXSPRITE,CCamera*);
 	CCamera* GetCamera();
+	void RenderTextAndSurface();
 };
 #endif
 
