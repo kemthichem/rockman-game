@@ -255,7 +255,7 @@ void CRockman::UpdateCollison(CEntity* _other, float _time) {
 		} else {
 			if (m_pos.y <= _other->GetRect().bottom + m_Size.y + 5) {			
 				m_IsClimbing = false;
-				//m_velloc.x = 0;
+				m_velloc.x = 0;
 			}
 		}
 
@@ -322,7 +322,7 @@ void CRockman::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,
 				}
 			}
 			break;
-		case LADDER:/*
+		case LADDER:
 			if( m_directCollion == LEFT)
 			{
 				m_velloc.x = 0;
@@ -341,7 +341,7 @@ void CRockman::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,
 				m_CanClimbUp = false;
 				m_IsClimbing = false;
 				m_PosXClimb = -1;
-			}*/
+			}
 			break;
 		case MOVEMAP:
 			CMoveMap *moveMap = dynamic_cast<CMoveMap*> (_other);
