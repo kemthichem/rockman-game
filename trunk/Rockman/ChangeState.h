@@ -6,6 +6,7 @@ class CChangeState:public CGameState
 {
 private:
 	CSprite *m_RockmanSprite;
+	float m_TimeChange;
 	void DrawTextChangeState();
 public:
 	CChangeState();

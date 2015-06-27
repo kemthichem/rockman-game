@@ -74,7 +74,7 @@ void CPLayingGameState::Update(CInput* _input,float _time,CCamera* _camera)
 		
 	if (rockman->GetKeyDown()==DIK_ESCAPE)
 	{
-		m_StateManager->ChangeState(new CMenuState(m_StateManager));
+		m_StateManager->ChangeState(new CChangeState(m_StateManager));
 		return;
 	}
 	UpdateState();
@@ -106,7 +106,22 @@ void CPLayingGameState::Init()
 		break;
 	}
 	//Reset camera
-	m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(0,0));
+	m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(0,0));	
+	rockman = new CRockman(D3DXVECTOR3(0,0,0));
+
+	//Go boss map 1
+	//m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(3552,2344));
+	//rockman = new CRockman(D3DXVECTOR3(3580,1000,0));
+
+	//Go boss map 2
+	//m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(3552,2344));
+	//rockman = new CRockman(D3DXVECTOR3(3580,1000,0));
+
+	//Go boss map 3
+	//m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(3552,2344));
+	//rockman = new CRockman(D3DXVECTOR3(3580,1000,0));
+
+
 
 	m_Map.LoadObjectFromFile(pathMap);	
 	//Load tree
@@ -114,13 +129,12 @@ void CPLayingGameState::Init()
 	quadTree->LoadNodeInFile(pathTree);
 
 	quadTree->MapIdToObjectInTree(quadTree->m_nodeRoot, m_Map.m_ListObjects);
-	//
-	rockman = new CRockman(D3DXVECTOR3(200,1000,0));
+
 }
 
 void CPLayingGameState::DrawText()
 {
-	RECT r = {10, 0, 800, 100};
+	RECT r = {10, 30, 800, 100};
 
 	///*Life*/
 	string textToDraw = "Life: ";
