@@ -36,6 +36,7 @@ void CBulletRockman::UpdateCollison(CEntity* _other,float _time)
 		case FLEA:
 		case BLADER:
 		case MET:
+		case BIGEYE:
 			//(dynamic_cast<CScrewBomber*>(_other))->SetInjured(this);
 			_other->SetInjured(this);
 			this->m_IsActive = false;

@@ -5,6 +5,8 @@
 class CBigEye : public CEntity
 {
 private:
+	int m_Blood;
+	bool m_IsLife;
 protected:
 	virtual void UpdateCollison(CEntity* _other,float _time);
 	void ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,float _timeEntry);
@@ -13,8 +15,9 @@ protected:
 
 public:
 	CBigEye(int _id, D3DXVECTOR3 _pos);
+	virtual void SetInjured(CEntity* _other);
 	~CBigEye(void);
-
+	void Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera);
 
 };
 
