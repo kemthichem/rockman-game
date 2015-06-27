@@ -74,9 +74,13 @@ void CCutMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntit
 		m_Status =  m_IsShotting ? MoveNormal : MoveHaveGun;
 	}
 	
-		if (m_velloc.y == 0) {		
+		if (m_velloc.y == 0 ) {
+			if (m_velloc.x == 0) {		
 			m_velloc.x = 0;
 			m_Status = m_IsShotting ? StandNormal : StandHaveGun;
+			} else {
+				m_Status = m_IsShotting ? MoveNormal : MoveHaveGun;
+			}
 		}
 		/*if (m_pos.y <= m_yInit) {
 			m_pos.y = m_yInit;
@@ -228,6 +232,7 @@ void CCutMan::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,f
 		m_velloc.x = 0;
 		m_accel.x = 0;
 		m_pos.x = _other->GetRect().right + 1 ;
+		m_isTurnLeft = m_pos.x > CRockman::g_PosRockman.x;
 	}
 
 	if( m_directCollion == RIGHT)
@@ -235,6 +240,7 @@ void CCutMan::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,f
 		m_velloc.x = 0;
 		m_accel.x = 0;
 		m_pos.x = _other->GetRect().left - m_Size.x -1;
+		m_isTurnLeft = m_pos.x > CRockman::g_PosRockman.x;
 	}
 
 	if (m_directCollion == TOP)
