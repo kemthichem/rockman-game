@@ -16,7 +16,7 @@ CCutMan::CCutMan(int _id, D3DXVECTOR3 _pos)
 	m_pos = _pos;
 	m_accel = D3DXVECTOR2(0,0);
 	m_velloc.x = 0;
-	m_accel.y = 0.0f;
+	m_accel.y = -20.0f;
 
 
 	//m_yInit = m_pos.y;
