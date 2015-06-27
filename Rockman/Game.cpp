@@ -227,14 +227,14 @@ bool CGame::_InitFont()
 
 	D3DXFONT_DESC FontDesc = {24,
 		0,
-		400,
+		1000,
 		0,
 		false,
 		DEFAULT_CHARSET,
 		OUT_TT_PRECIS,
 		CLIP_DEFAULT_PRECIS,
 		DEFAULT_PITCH,
-		"Broadway"};
+		"Gill Sans MT"};
 
 	HRESULT hre = D3DXCreateFontIndirect(_d3ddv,&FontDesc,&m_GraphicText);
 	return true;

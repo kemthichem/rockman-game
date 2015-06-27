@@ -19,16 +19,17 @@ CCutMan::CCutMan(int _id, D3DXVECTOR3 _pos)
 	m_accel.y = 0.0f;
 
 
-	m_yInit = m_pos.y;
+	//m_yInit = m_pos.y;
 	m_IsJustJump = false;
 	m_Status = StandHaveGun;
 	m_TimeSpend = 0;
 	m_TimeInjured = 0;
 	m_TimeShot = 0;
+	m_IsShotting = false;
 
 	m_isTurnLeft = true;
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
-	m_pos.x = CMap::g_widthMap - m_Size.x * 1.5;
+	//m_pos.x = CMap::g_widthMap - m_Size.x * 1.5;
 	UpdateRect();
 	//create list bullet
 	m_Bullet = new CBulletCutman(D3DXVECTOR3(_pos.x + m_Size.x/2 - 10, _pos.y - m_Size.y/2 + 10, _pos.z));
@@ -52,7 +53,7 @@ void CCutMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntit
 		if (m_Status == MoveNormal || m_Status == MoveHaveGun) {
 			Jump();
 		}
-		if ((m_Status ==  StandNormal || m_Status == StandHaveGun) && m_pos.y <= m_yInit && m_IsJustJump) {
+		if ((m_Status ==  StandNormal || m_Status == StandHaveGun) && m_velloc.y == 0 && m_IsJustJump) {
 			m_velloc.x = m_pos.x > CRockman::g_PosRockman.x ? -VELLOC_X : VELLOC_X;
 			m_Status = m_IsShotting ? MoveNormal : MoveHaveGun;
 			m_IsJustJump = false;
@@ -72,18 +73,15 @@ void CCutMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntit
 	if ((m_Status ==  JumpHaveGun || m_Status == JumpNormal || m_Status == Shotting)  && m_pos.y <= m_yInit) {
 		m_Status =  m_IsShotting ? MoveNormal : MoveHaveGun;
 	}
-	if (m_pos.x <= CCamera::g_PosCamera.x + 20) {
-		m_velloc.x *= -1;
-	} else 
-		if (m_pos.x >= CCamera::g_PosCamera.x + WIDTH_SCREEN - m_Size.x * 1.5 && m_pos.y <= m_yInit) {
-			m_isTurnLeft = true;			
+	
+		if (m_velloc.y == 0) {		
 			m_velloc.x = 0;
 			m_Status = m_IsShotting ? StandNormal : StandHaveGun;
 		}
-		if (m_pos.y <= m_yInit) {
+		/*if (m_pos.y <= m_yInit) {
 			m_pos.y = m_yInit;
 			m_velloc.y = 0;
-		}
+		}*/
 
 		//When shot
 		if (m_IsShotting) {
@@ -197,7 +195,51 @@ void CCutMan::UpdateCollison(CEntity* _other,float _time)
 	case ROCKMAN:
 		(dynamic_cast<CRockman*>(_other))->SetInjured(this, -20);
 		break;
+	case LAND:
+	case LAND1:
+	case LAND3:
+	case LAND2:
+	case LANDWHITE:
+	case LANDICEBERG:
+		{		
+			float timeEntry = m_collision->SweptAABB(this,_other,_time);
+			m_directCollision = m_collision->GetDirectCollision();
+			if (timeEntry < 1.0f)
+			{
+				ExecuteCollision(_other,m_directCollision,timeEntry);
+			}
+		}
+		break;
 	default:
 		break;
+	}
+}
+
+void CCutMan::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,float _timeEntry)
+{
+	if( m_directCollion == BOTTOM)
+	{
+		m_pos.y = _other->GetRect().top + m_Size.y + 1;
+		m_velloc.y = 0;
+	}
+
+	if( m_directCollion == LEFT)
+	{
+		m_velloc.x = 0;
+		m_accel.x = 0;
+		m_pos.x = _other->GetRect().right + 1 ;
+	}
+
+	if( m_directCollion == RIGHT)
+	{
+		m_velloc.x = 0;
+		m_accel.x = 0;
+		m_pos.x = _other->GetRect().left - m_Size.x -1;
+	}
+
+	if (m_directCollion == TOP)
+	{
+		m_pos.y = _other->GetRect().bottom;
+		m_velloc.y = 0;
 	}
 }

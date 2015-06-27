@@ -248,14 +248,14 @@ void CRockman::UpdateCollison(CEntity* _other, float _time) {
 		m_PosXClimb = _other->GetRect().left + 16;
 		m_IsClimbing = true;
 		m_CanClimbUp = true;
-		m_velloc.x = 0;
-		if ((m_pos.y >= _other->GetRect().top + m_Size.y -5 && m_accel.y != 0))
+		if ((m_pos.y >= _other->GetRect().top + m_Size.y -5 ) && m_accel.y != 0)
 		{
 			m_CanClimbUp = false;
 			m_IsClimbing = false;
 		} else {
 			if (m_pos.y <= _other->GetRect().bottom + m_Size.y + 5) {			
 				m_IsClimbing = false;
+				//m_velloc.x = 0;
 			}
 		}
 
@@ -322,19 +322,33 @@ void CRockman::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,
 				}
 			}
 			break;
-		case LADDER:
-			if (m_directCollion == TOP)
-			{/*
-				m_action = Action_Stand;
-				m_velloc.x = m_velloc.y = 0;*/
+		case LADDER:/*
+			if( m_directCollion == LEFT)
+			{
+				m_velloc.x = 0;
+				m_accel.x = 0;
+				m_pos.x = _other->GetRect().right + 1 ;
+				m_CanClimbUp = false;
+				m_IsClimbing = false;
+				m_PosXClimb = -1;
 			}
+
+			if( m_directCollion == RIGHT)
+			{
+				m_velloc.x = 0;
+				m_accel.x = 0;
+				m_pos.x = _other->GetRect().left - m_Size.x -1;
+				m_CanClimbUp = false;
+				m_IsClimbing = false;
+				m_PosXClimb = -1;
+			}*/
 			break;
 		case MOVEMAP:
 			CMoveMap *moveMap = dynamic_cast<CMoveMap*> (_other);
 			if (m_directCollion == TOP)
 			{
 				if (moveMap->IsCanWithDirect(true)) {
-					CMoveMap::g_DistanceMoveCameraY = HEIGHT_SCREEN;
+					CMoveMap::g_DistanceMoveCameraY = HEIGHT_SCREEN - (CCamera::g_PosCamera.y - m_pos.y + 40);
 					m_pos.y += 1;
 					CMoveMap::g_TypeMove = TypeMove::MOVEY;
 				}

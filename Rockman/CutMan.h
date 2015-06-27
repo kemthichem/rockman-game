@@ -34,6 +34,7 @@ private:
 	void Jump();
 protected:
 	virtual void UpdateCollison(CEntity* _other,float _time);
+	void ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,float _timeEntry);
 public:
 	CCutMan(int _id, D3DXVECTOR3 _pos);
 	~CCutMan(void);
