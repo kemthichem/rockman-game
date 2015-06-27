@@ -5,16 +5,17 @@
 class CBigEye : public CEntity
 {
 private:
-	D3DXVECTOR3 m_PosInit;
 protected:
+	virtual void UpdateCollison(CEntity* _other,float _time);
+	void ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,float _timeEntry);
+	//method
+	virtual void Update(float , CCamera *, CInput *,  vector<CEntity* >);
+
 public:
 	CBigEye(int _id, D3DXVECTOR3 _pos);
 	~CBigEye(void);
 
-	//method
-	virtual void Update(float , CCamera *, CInput *,  vector<CEntity* >);
-	virtual void Draw();
-	virtual void Collision();
+
 };
 
 #endif

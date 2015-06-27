@@ -6,7 +6,6 @@ CBigEye::CBigEye(int _id, D3DXVECTOR3 _pos)
 	m_Type = BIGEYE;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), D3DXVECTOR2(641,626) , 1, 2, D3DXVECTOR2(575,372), D3DXVECTOR2(0,30), D3DXVECTOR2(0,0));
 	m_pos = _pos;
-	m_PosInit = _pos;
 	m_accel = D3DXVECTOR2(0,0);
 	m_velloc.x = -10;
 	m_accel.y = -5.0f;
@@ -24,29 +23,71 @@ void CBigEye::Update(float _deltaTime, CCamera *_camera, CInput *_input,vector<C
 {
 	CEntity::Update(_deltaTime, _camera, _input, _listObjectInViewPort);
 
-	if (m_pos.x < m_PosInit.x - (WIDTH_SCREEN/2) || m_pos.x > m_PosInit.x + (WIDTH_SCREEN/2)) {
-		m_velloc.x *= -1;
-	}
+	//if (m_pos.x < m_PosInit.x - (WIDTH_SCREEN/2) || m_pos.x > m_PosInit.x + (WIDTH_SCREEN/2)) {
+	//	m_velloc.x *= -1;
+	//}
 
-	if( m_pos.y <= m_PosInit.y){
-		m_velloc.y = 35.0f;
-	}
+	//if( m_pos.y <= m_PosInit.y){
+	//	m_velloc.y = 35.0f;
+	//}
 
-	if(m_pos.y > m_PosInit.y + 25){
-		m_Sprite ->IndexOf(1);
-	}else{
+	if(m_velloc.y > 34.0f){
 		m_Sprite ->IndexOf(0);
+	}else{
+		m_Sprite ->IndexOf(1);
 	}
 
 	
 }
-
-void CBigEye::Draw()
+void CBigEye::UpdateCollison(CEntity* _other,float _time)
 {
-
+	switch (_other->GetType())
+	{
+	case LAND:
+	case LAND1:
+	case LAND3:
+	case LAND2:
+	case LANDWHITE:
+	case LANDICEBERG:
+		{		
+			float timeEntry = m_collision->SweptAABB(this,_other,_time);
+			m_directCollision = m_collision->GetDirectCollision();
+			if (timeEntry < 1.0f)
+			{
+				ExecuteCollision(_other,m_directCollision,timeEntry);
+			}
+		}
+		break;
+	default:
+		break;
+	}
 }
 
-void CBigEye::Collision()
+void CBigEye::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,float _timeEntry)
 {
+	if( m_directCollion == BOTTOM)
+	{
+		m_pos.y = _other->GetRect().top + m_Size.y + 1;
+		m_velloc.y = 35.0f;
+	}
 
+	if( m_directCollion == LEFT)
+	{
+		m_velloc.x *= -1;
+		m_accel.x = 0;
+		m_pos.x = _other->GetRect().right + 1 ;
+	}
+
+	if( m_directCollion == RIGHT)
+	{
+		m_velloc.x *= -1;
+		m_accel.x = 0;
+		m_pos.x = _other->GetRect().left - m_Size.x -1;
+	}
+
+	if (m_directCollion == TOP)
+	{
+		m_pos.y = _other->GetRect().bottom;
+		m_velloc.y = 0;
+	}
 }
