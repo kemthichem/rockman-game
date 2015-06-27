@@ -9,6 +9,8 @@ CBigEye::CBigEye(int _id, D3DXVECTOR3 _pos)
 	m_accel = D3DXVECTOR2(0,0);
 	m_velloc.x = -10;
 	m_accel.y = -5.0f;
+	m_Blood = 10;
+	m_IsLife = true;
 
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 	UpdateRect();
@@ -21,6 +23,7 @@ CBigEye::~CBigEye(void)
 
 void CBigEye::Update(float _deltaTime, CCamera *_camera, CInput *_input,vector<CEntity* > _listObjectInViewPort)
 {
+	if (!m_IsLife) return;
 	CEntity::Update(_deltaTime, _camera, _input, _listObjectInViewPort);
 
 	//if (m_pos.x < m_PosInit.x - (WIDTH_SCREEN/2) || m_pos.x > m_PosInit.x + (WIDTH_SCREEN/2)) {
@@ -89,5 +92,22 @@ void CBigEye::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,f
 	{
 		m_pos.y = _other->GetRect().bottom;
 		m_velloc.y = 0;
+	}
+}
+
+void CBigEye::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
+{
+	if (m_IsLife) {
+		CEntity::Render(_spriteHandle, _camera);
+
+	} 
+}
+
+void CBigEye::SetInjured(CEntity* _other)
+{
+	m_Blood --;
+	if (m_Blood <= 0) {
+		m_IsLife = false;
+		m_IsCheckCollision = false;
 	}
 }
