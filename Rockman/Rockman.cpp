@@ -20,7 +20,7 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 	m_Type = ROCKMAN;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), 
 	D3DXVECTOR2(960,320), 12, 4, 
-	D3DXVECTOR2(0,0), D3DXVECTOR2(5,8), D3DXVECTOR2(10,14));
+	D3DXVECTOR2(0,0), D3DXVECTOR2(11,8), D3DXVECTOR2(28,14));
 	m_pos = _pos;
 	m_pos.z = DEPTH_MOTION;
 	//m_pos.y = CCamera::g_PosCamera.y;
