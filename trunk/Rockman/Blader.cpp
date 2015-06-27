@@ -8,7 +8,7 @@ CBlader::CBlader(int _id, D3DXVECTOR3 _pos)
 	m_pos = _pos;
 	m_PosInit = _pos;
 	m_accel = D3DXVECTOR2(0,0);
-	m_velloc.x = 10;
+	m_velloc.x = -10;
 	m_IsLife = true;
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 
@@ -24,10 +24,6 @@ void CBlader::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntit
 {
 	if (!m_IsLife) return;
 	CEntity::Update(_time, _camera, _input, _listObjectInViewPort);
-	
-	if (m_pos.x < m_PosInit.x - (WIDTH_SCREEN/4) || m_pos.x > m_PosInit.x + (WIDTH_SCREEN/4)) {
-		m_velloc.x *= -1;
-	}
 
 	m_Sprite->NextOf(_time, 0, 1);	 
 }
@@ -36,7 +32,6 @@ void CBlader::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 {
 	if (m_IsLife) {
 		CEntity::Render(_spriteHandle, _camera);
-
 	} 
 }
 
