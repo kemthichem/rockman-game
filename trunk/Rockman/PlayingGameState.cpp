@@ -106,12 +106,14 @@ void CPLayingGameState::Init()
 		break;
 	}
 	//Reset camera
-	m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(0,0));	
-	rockman = new CRockman(D3DXVECTOR3(0,0,0));
+	//m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(0,0));	
+	//rockman = new CRockman(D3DXVECTOR3(0,0,0));
 
 	//Go boss map 1
-	//m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(3552,2344));
-	//rockman = new CRockman(D3DXVECTOR3(3580,1000,0));
+	//m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(3327, 3884));//-600y
+	//rockman = new CRockman(D3DXVECTOR3(3727, 4173, 0));
+	m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(4798,2084));//-600y
+	rockman = new CRockman(D3DXVECTOR3(5471, 2350, 0));
 
 	//Go boss map 2
 	//m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(3552,2344));

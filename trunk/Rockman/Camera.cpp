@@ -68,6 +68,13 @@ void CCamera::SetPosCamera(D3DXVECTOR2 _pos)
 {
 	m_pos.y = _pos.y + HEIGHT_SCREEN;
 	m_pos.x = _pos.x;
+
+	m_viewPort.left = m_pos.x;
+	m_viewPort.right = m_viewPort.left + WIDTH_SCREEN;
+	m_viewPort.top = m_pos.y;
+	m_viewPort.bottom = m_viewPort.top - HEIGHT_SCREEN;
+
+	g_PosCamera = m_pos;
 }
 
 void CCamera::MoveY(int _distanceY)

@@ -3,7 +3,7 @@
 #include <d3d9.h>
 #include <d3dx9.h>
 
-#define  TIME_PER_ANIMATION (2.0f)
+#define  TIME_PER_ANIMATION (6.0f)
 class CSprite
 {
 private:
