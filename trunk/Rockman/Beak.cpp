@@ -136,4 +136,11 @@ void CBeak::Shot()
 	}*/
 }
 
+void CBeak::SetInjured(CEntity* _other)
+{
+	if (m_Status == BeakShot) {
+		m_IsCheckCollision = false;
+		m_IsLife = false;
+	}
+}
 
