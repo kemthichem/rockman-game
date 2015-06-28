@@ -5,8 +5,6 @@
 class CLockCamera : public CEntity
 {
 public:
-	static TypeMove g_TypeMove;
-
 	CLockCamera(int, D3DXVECTOR3, bool _isLock = true);
 	~CLockCamera(void);
 

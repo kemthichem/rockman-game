@@ -118,7 +118,7 @@ void  CMap::LoadObjectFromFile(char* filePath)
 				CLockCamera *moveMap = new CLockCamera(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
 				m_ListObjects.push_back(moveMap);
 			}else if(_objecttype == "UNLOCKCAMERA"){
-				CLockCamera *moveMap = new CLockCamera(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
+				CLockCamera *moveMap = new CLockCamera(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0), false);
 				m_ListObjects.push_back(moveMap);
 			}else if(_objecttype == "BLADER"){
 				CBlader *ob = new CBlader(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
