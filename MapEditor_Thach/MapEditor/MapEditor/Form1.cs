@@ -51,9 +51,9 @@ namespace MapEditor
             rdLand2.AccessibleName = ObjectType.LAND2.ToString();
             rdLand1_n.AccessibleName = ObjectType._LAND1.ToString();
             rdLand.AccessibleName = ObjectType.LAND.ToString();
-            rdLand_n.AccessibleName = ObjectType._LAND.ToString();
+            rdLand_n.AccessibleName = ObjectType.LAND5.ToString();
             rdLandWhite.AccessibleName = ObjectType.LANDWHITE.ToString();
-            rdLandWhite_n.AccessibleName = ObjectType._LANDWHITE.ToString();
+            rdLandWhite_n.AccessibleName = ObjectType.LAND4.ToString();
             rdLandIceberg.AccessibleName = ObjectType.LANDICEBERG.ToString();
             rdLandIceberg_n.AccessibleName = ObjectType.LAND3.ToString();
             rdLadder.AccessibleName = ObjectType.LADDER10.ToString();
@@ -82,7 +82,7 @@ namespace MapEditor
             rdIceMan.AccessibleName = ObjectType.ICEMAN.ToString();
 
             /*Gutsman*/
-            rdDa.AccessibleName = ObjectType.DA.ToString();
+            rdDa.AccessibleName = ObjectType.BLOCKCAMERA.ToString();
             rdDaynoi.AccessibleName = ObjectType.DAYNOI.ToString();
             rdDuong.AccessibleName = ObjectType.DUONG.ToString();
             rdLoxo.AccessibleName = ObjectType.LOXO.ToString();

@@ -309,6 +309,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\background3.png" />
+    <None Include="Resources\ground\border.png" />
+    <None Include="Resources\ground\land2.3.png" />
+    <None Include="Resources\ground\land2.2.png" />
     <None Include="Resources\ground\land2.1.png" />
     <None Include="Resources\ground\land3.png" />
     <None Include="Resources\ground\land2.png" />
