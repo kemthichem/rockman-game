@@ -32,13 +32,20 @@ private:
 	CSprite *m_SpriteJump;
 	CSprite *m_SpriteClimb;
 
+	D3DXVECTOR2 m_SizeClimb;
+	D3DXVECTOR2 m_SizeInit;
+
 	//Other
 	static const D3DXVECTOR2 mAccelOfRockman;
 	CBulletRockman* m_ListBullet[5];
 	CBlood* m_Blood;
+
+
 	float m_PosXClimb;
 	bool m_IsClimbing;
-	bool m_CanClimbUp;
+	bool m_CanDown;
+
+
 	void Injunred(bool _isDirectX, float _time);
 	bool m_isCollisionBottom;
 	float m_TimeInjured;
@@ -53,8 +60,6 @@ private:
 	void Jump();
 	void Shot();
 	void Climb(bool _isTurnUp);
-	//collision
-	void CollisionBottom();
 public:
 	CRockman();
 	CRockman(D3DXVECTOR3 _pos);
@@ -67,6 +72,7 @@ public:
 	/*rockman*/
 	void SetInjured(CEntity* _other, int _dam = -10);
 	int GetKeyDown();
+	void UpdateActionShot();
 	static D3DXVECTOR2 g_PosRockman;
 };
 #endif

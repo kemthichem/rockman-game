@@ -11,7 +11,7 @@ CAABBCollision::CAABBCollision()
 CAABBCollision::~CAABBCollision()
 {
 }
-bool CAABBCollision::CheckCollision(RECT _nodeRect,RECT _otherRect)
+bool CAABBCollision::CheckCollision(RECT_F _nodeRect,RECT _otherRect)
 {
 	if (_otherRect.right < _nodeRect.left)
 		return false;
@@ -171,7 +171,7 @@ bool CAABBCollision::IsCollision(CEntity* _ob1, CEntity* _ob2, float _time)
 
 	D3DXVECTOR2 sMove = (s1 - s2);
 
-	RECT bound;//hcn bao quanh 2 fram lien tiep
+	RECT_F bound;//hcn bao quanh 2 fram lien tiep
 	if(sMove.x > 0)
 	{
 		bound.left = _ob1->GetRect().left;
@@ -210,11 +210,17 @@ bool  CAABBCollision::compSortObjectBottom (CEntity* first, CEntity* second){
 bool  CAABBCollision::compSortObjectRight (CEntity* first, CEntity* second){
 	//bool isPri = (first->id>second->id);
 	bool isPri = first->GetRect().left >= second->GetRect().right;
+
+	//if (first->GetType() == LADDER || second->GetType() == LADDER )
+		//isPri = false;
 	return isPri;
 }
 bool  CAABBCollision::compSortObjectLeft (CEntity* first, CEntity* second){
 	//bool isPri = (first->id>second->id);
 	bool isPri = first->GetRect().right <= second->GetRect().left;
+
+	//if (first->GetType() == LADDER || second->GetType() == LADDER )
+		//isPri = false;
 	return isPri;
 }
 
