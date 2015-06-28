@@ -100,6 +100,12 @@ vector<CEntity*> CQuadTree::GetListObjectInRect(RECT _rect)
 				}
 				if ((int)listObjectInNode[j]->GetType() > -10) {
 					m_listObjectViewportToUpdate.push_back(listObjectInNode[j]);
+
+					if (listObjectInNode[i]->GetType() == BLOCK_CAMERA) {
+						CCamera::g_IsMoveX = false;
+					} else if (listObjectInNode[i]->GetType() == UNLOCK_CAMERA) {
+						CCamera::g_IsMoveX = true;
+					}
 				}
 			}
 	}

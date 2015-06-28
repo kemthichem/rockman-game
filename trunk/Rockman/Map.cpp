@@ -16,6 +16,7 @@
 #include "Beak.h"
 #include "Met.h"
 #include "Spine.h"
+#include "LockCamera.h"
 
 int CMap::g_widthMap = 0;
 int CMap::g_heightMap = 0;
@@ -90,7 +91,7 @@ void  CMap::LoadObjectFromFile(char* filePath)
 				CLand1 *ob = new CLand1(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0), 1);
 				m_ListObjects.push_back(ob);
 			}  else if(_objecttype == "LAND5"){
-				CLand1 *ob = new CLand1(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0), -2);
+				CLand2 *ob = new CLand2(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
 				m_ListObjects.push_back(ob);
 			}else if(_objecttype == "LANDWHITE"){
 				CLandWhite *ob = new CLandWhite(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
@@ -112,6 +113,12 @@ void  CMap::LoadObjectFromFile(char* filePath)
 				m_ListObjects.push_back(ob);
 			}   else if(_objecttype == "MOVEMAP"){
 				CMoveMap *moveMap = new CMoveMap(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
+				m_ListObjects.push_back(moveMap);
+			}else if(_objecttype == "BLOCKCAMERA"){
+				CLockCamera *moveMap = new CLockCamera(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
+				m_ListObjects.push_back(moveMap);
+			}else if(_objecttype == "UNLOCKCAMERA"){
+				CLockCamera *moveMap = new CLockCamera(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
 				m_ListObjects.push_back(moveMap);
 			}else if(_objecttype == "BLADER"){
 				CBlader *ob = new CBlader(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));

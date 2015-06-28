@@ -113,6 +113,7 @@
     <ClCompile Include="Land3.cpp" />
     <ClCompile Include="LandIceberg.cpp" />
     <ClCompile Include="LandWhite.cpp" />
+    <ClCompile Include="LockCamera.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="Met.cpp" />
@@ -166,6 +167,7 @@
     <ClInclude Include="Land3.h" />
     <ClInclude Include="LandIceberg.h" />
     <ClInclude Include="LandWhite.h" />
+    <ClInclude Include="LockCamera.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MenuState.h" />
     <ClInclude Include="Met.h" />

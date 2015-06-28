@@ -216,6 +216,9 @@
     <ClCompile Include="Land2.cpp">
       <Filter>ObjectGame\Block</Filter>
     </ClCompile>
+    <ClCompile Include="LockCamera.cpp">
+      <Filter>ObjectGame\Block</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RockmanGame.h">
@@ -366,6 +369,9 @@
       <Filter>ObjectGame\Block</Filter>
     </ClInclude>
     <ClInclude Include="Land2.h">
+      <Filter>ObjectGame\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="LockCamera.h">
       <Filter>ObjectGame\Block</Filter>
     </ClInclude>
   </ItemGroup>
