@@ -33,6 +33,7 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnGrid = new System.Windows.Forms.Panel();
+            this.pbGridMap = new System.Windows.Forms.PictureBox();
             this.paButton = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.tbSize = new System.Windows.Forms.TextBox();
@@ -45,10 +46,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnObjects = new System.Windows.Forms.Panel();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.bgOpenFile = new System.Windows.Forms.OpenFileDialog();
+            this.rdLadder7 = new System.Windows.Forms.RadioButton();
+            this.rdLadder4 = new System.Windows.Forms.RadioButton();
             this.rdLand2 = new System.Windows.Forms.RadioButton();
             this.rdLadder6 = new System.Windows.Forms.RadioButton();
             this.rdLadder2 = new System.Windows.Forms.RadioButton();
@@ -94,18 +93,19 @@
             this.rdSpine = new System.Windows.Forms.RadioButton();
             this.rdLand1_n = new System.Windows.Forms.RadioButton();
             this.rdBigEye = new System.Windows.Forms.RadioButton();
-            this.pbGridMap = new System.Windows.Forms.PictureBox();
-            this.rdLadder7 = new System.Windows.Forms.RadioButton();
-            this.rdLadder4 = new System.Windows.Forms.RadioButton();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.bgOpenFile = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             this.pnGrid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbGridMap)).BeginInit();
             this.paButton.SuspendLayout();
             this.pnObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbGridMap)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -154,6 +154,20 @@
             this.pnGrid.Name = "pnGrid";
             this.pnGrid.Size = new System.Drawing.Size(421, 494);
             this.pnGrid.TabIndex = 0;
+            // 
+            // pbGridMap
+            // 
+            this.pbGridMap.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pbGridMap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbGridMap.Location = new System.Drawing.Point(0, 0);
+            this.pbGridMap.Name = "pbGridMap";
+            this.pbGridMap.Size = new System.Drawing.Size(318, 198);
+            this.pbGridMap.TabIndex = 4;
+            this.pbGridMap.TabStop = false;
+            this.pbGridMap.Paint += new System.Windows.Forms.PaintEventHandler(this.pbGridMap_Paint);
+            this.pbGridMap.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pbGridMap_MouseDoubleClick);
+            this.pbGridMap.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbGridMap_MouseMove);
+            this.pbGridMap.MouseEnter += new System.EventHandler(this.pbGridMap_MouseEnter);
             // 
             // paButton
             // 
@@ -328,32 +342,37 @@
             this.pnObjects.MouseEnter += new System.EventHandler(this.pnObjects_MouseEnter);
             this.pnObjects.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.pnObjects_PreviewKeyDown);
             // 
-            // splitContainer1
+            // rdLadder7
             // 
-            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 24);
-            this.splitContainer1.Name = "splitContainer1";
+            this.rdLadder7.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdLadder7.FlatAppearance.BorderSize = 0;
+            this.rdLadder7.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdLadder7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdLadder7.Image = global::MapEditor.Properties.Resources.ladder;
+            this.rdLadder7.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rdLadder7.Location = new System.Drawing.Point(112, 3455);
+            this.rdLadder7.Name = "rdLadder7";
+            this.rdLadder7.Size = new System.Drawing.Size(95, 96);
+            this.rdLadder7.TabIndex = 83;
+            this.rdLadder7.Text = "Ladder 7";
+            this.rdLadder7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdLadder7.UseVisualStyleBackColor = true;
             // 
-            // splitContainer1.Panel1
+            // rdLadder4
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.pnObjects);
-            this.splitContainer1.Panel1.Controls.Add(this.paButton);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.pnGrid);
-            this.splitContainer1.Size = new System.Drawing.Size(827, 496);
-            this.splitContainer1.SplitterDistance = 400;
-            this.splitContainer1.TabIndex = 4;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // bgOpenFile
-            // 
-            this.bgOpenFile.FileName = "bgOpenFile";
+            this.rdLadder4.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdLadder4.FlatAppearance.BorderSize = 0;
+            this.rdLadder4.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
+            this.rdLadder4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdLadder4.Image = global::MapEditor.Properties.Resources.ladder;
+            this.rdLadder4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rdLadder4.Location = new System.Drawing.Point(11, 3454);
+            this.rdLadder4.Name = "rdLadder4";
+            this.rdLadder4.Size = new System.Drawing.Size(95, 96);
+            this.rdLadder4.TabIndex = 82;
+            this.rdLadder4.Text = "Ladder 4";
+            this.rdLadder4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdLadder4.UseVisualStyleBackColor = true;
             // 
             // rdLand2
             // 
@@ -670,12 +689,12 @@
             this.rdDa.FlatAppearance.BorderSize = 0;
             this.rdDa.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
             this.rdDa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdDa.Image = global::MapEditor.Properties.Resources.DA;
+            this.rdDa.Image = global::MapEditor.Properties.Resources.border;
             this.rdDa.Location = new System.Drawing.Point(139, 5093);
             this.rdDa.Name = "rdDa";
             this.rdDa.Size = new System.Drawing.Size(95, 106);
             this.rdDa.TabIndex = 76;
-            this.rdDa.Text = "Brock";
+            this.rdDa.Text = "BlockCamera";
             this.rdDa.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.rdDa.UseVisualStyleBackColor = true;
             // 
@@ -814,13 +833,13 @@
             this.rdLand_n.FlatAppearance.BorderSize = 0;
             this.rdLand_n.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
             this.rdLand_n.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdLand_n.Image = global::MapEditor.Properties.Resources.land;
+            this.rdLand_n.Image = global::MapEditor.Properties.Resources.land2_3;
             this.rdLand_n.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.rdLand_n.Location = new System.Drawing.Point(112, 4343);
             this.rdLand_n.Name = "rdLand_n";
             this.rdLand_n.Size = new System.Drawing.Size(95, 95);
             this.rdLand_n.TabIndex = 52;
-            this.rdLand_n.Text = "Land (not collision)";
+            this.rdLand_n.Text = "Land 5";
             this.rdLand_n.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.rdLand_n.UseVisualStyleBackColor = true;
             // 
@@ -830,13 +849,13 @@
             this.rdLandWhite_n.FlatAppearance.BorderSize = 0;
             this.rdLandWhite_n.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
             this.rdLandWhite_n.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdLandWhite_n.Image = global::MapEditor.Properties.Resources.landwhite;
+            this.rdLandWhite_n.Image = global::MapEditor.Properties.Resources.land2_2;
             this.rdLandWhite_n.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.rdLandWhite_n.Location = new System.Drawing.Point(123, 4445);
             this.rdLandWhite_n.Name = "rdLandWhite_n";
             this.rdLandWhite_n.Size = new System.Drawing.Size(95, 96);
             this.rdLandWhite_n.TabIndex = 53;
-            this.rdLandWhite_n.Text = "Land white(not collsion)";
+            this.rdLandWhite_n.Text = "Land 4";
             this.rdLandWhite_n.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.rdLandWhite_n.UseVisualStyleBackColor = true;
             // 
@@ -1050,51 +1069,32 @@
             this.rdBigEye.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.rdBigEye.UseVisualStyleBackColor = true;
             // 
-            // pbGridMap
+            // splitContainer1
             // 
-            this.pbGridMap.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.pbGridMap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbGridMap.Location = new System.Drawing.Point(0, 0);
-            this.pbGridMap.Name = "pbGridMap";
-            this.pbGridMap.Size = new System.Drawing.Size(318, 198);
-            this.pbGridMap.TabIndex = 4;
-            this.pbGridMap.TabStop = false;
-            this.pbGridMap.Paint += new System.Windows.Forms.PaintEventHandler(this.pbGridMap_Paint);
-            this.pbGridMap.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pbGridMap_MouseDoubleClick);
-            this.pbGridMap.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbGridMap_MouseMove);
-            this.pbGridMap.MouseEnter += new System.EventHandler(this.pbGridMap_MouseEnter);
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 24);
+            this.splitContainer1.Name = "splitContainer1";
             // 
-            // rdLadder7
+            // splitContainer1.Panel1
             // 
-            this.rdLadder7.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rdLadder7.FlatAppearance.BorderSize = 0;
-            this.rdLadder7.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.rdLadder7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdLadder7.Image = global::MapEditor.Properties.Resources.ladder;
-            this.rdLadder7.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLadder7.Location = new System.Drawing.Point(112, 3455);
-            this.rdLadder7.Name = "rdLadder7";
-            this.rdLadder7.Size = new System.Drawing.Size(95, 96);
-            this.rdLadder7.TabIndex = 83;
-            this.rdLadder7.Text = "Ladder 7";
-            this.rdLadder7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.rdLadder7.UseVisualStyleBackColor = true;
+            this.splitContainer1.Panel1.Controls.Add(this.pnObjects);
+            this.splitContainer1.Panel1.Controls.Add(this.paButton);
             // 
-            // rdLadder4
+            // splitContainer1.Panel2
             // 
-            this.rdLadder4.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rdLadder4.FlatAppearance.BorderSize = 0;
-            this.rdLadder4.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Highlight;
-            this.rdLadder4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdLadder4.Image = global::MapEditor.Properties.Resources.ladder;
-            this.rdLadder4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rdLadder4.Location = new System.Drawing.Point(11, 3454);
-            this.rdLadder4.Name = "rdLadder4";
-            this.rdLadder4.Size = new System.Drawing.Size(95, 96);
-            this.rdLadder4.TabIndex = 82;
-            this.rdLadder4.Text = "Ladder 4";
-            this.rdLadder4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.rdLadder4.UseVisualStyleBackColor = true;
+            this.splitContainer1.Panel2.Controls.Add(this.pnGrid);
+            this.splitContainer1.Size = new System.Drawing.Size(827, 496);
+            this.splitContainer1.SplitterDistance = 400;
+            this.splitContainer1.TabIndex = 4;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // bgOpenFile
+            // 
+            this.bgOpenFile.FileName = "bgOpenFile";
             // 
             // Form1
             // 
@@ -1111,6 +1111,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.pnGrid.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbGridMap)).EndInit();
             this.paButton.ResumeLayout(false);
             this.paButton.PerformLayout();
             this.pnObjects.ResumeLayout(false);
@@ -1118,7 +1119,6 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbGridMap)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

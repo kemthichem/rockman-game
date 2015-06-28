@@ -9,8 +9,10 @@ namespace MapEditor
 {
     enum ObjectType
     {
-        SCENERY = -10,
+        SCENERY = -20,
         LAND,
+        LAND5,
+        BLOCKCAMERA,
         _LAND,
         LAND1,
         LAND2,
@@ -18,7 +20,7 @@ namespace MapEditor
         LAND3,
         LANDWHITE,
         LANDICEBERG,
-        _LANDWHITE,
+        LAND4,
         _LANDICEBERG,
         ROCKMAN = 0,
         LADDER10,
@@ -119,7 +121,19 @@ namespace MapEditor
             {
                 case ObjectType.SCENERY:
                     break;
+
+
+                case ObjectType.LAND5:
+                    width = 32;
+                    height = 32;
+                    if (isGetImage)
+                        image = global::MapEditor.Properties.Resources.land2_3;
+                    break;       
+
                 case ObjectType.LAND:
+
+
+
                 case ObjectType._LAND:
                     width = 128;
                     height = 32;
@@ -146,11 +160,11 @@ namespace MapEditor
                     break;
                 case ObjectType.LANDWHITE:
 
-                case ObjectType._LANDWHITE:
-                    width = 96;
+                case ObjectType.LAND4:
+                    width = 64;
                     height = 32;
                     if (isGetImage)
-                        image = global::MapEditor.Properties.Resources.landwhite;
+                        image = global::MapEditor.Properties.Resources.land2_2;
                     break;
 
                 case ObjectType.LANDICEBERG:
@@ -301,11 +315,11 @@ namespace MapEditor
                 case ObjectType.ITEM:
                     break;
                 //***FOR GUTSMAN***//
-                case ObjectType.DA:
+                case ObjectType.BLOCKCAMERA:
                     width = 50;
                     height = 50;
                     if (isGetImage)
-                        image = global::MapEditor.Properties.Resources.DA;
+                        image = global::MapEditor.Properties.Resources.border;
                     break;
                 case ObjectType.DAYNOI:
                     width = 26;
