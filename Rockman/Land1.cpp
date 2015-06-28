@@ -4,6 +4,7 @@ CLand1::CLand1(int _id, D3DXVECTOR3 _pos, int _type)
 {
 	m_Id = _id;
 	m_Type = _type >= 0  ? LAND1 : SCENERY;
+	if (_type == -2) _type = 0;
 	m_NumSprite = _type == 0? 1 : 2;
 	D3DXVECTOR2 src = _type == 0? D3DXVECTOR2(720,376) : D3DXVECTOR2(653, 343);
 	D3DXVECTOR2 des = _type == 0? D3DXVECTOR2(754, 410) : D3DXVECTOR2(721, 377);
