@@ -7,8 +7,6 @@
 
 #include "Define.h"
 
-
-
 class CCamera
 {
 private:
@@ -17,6 +15,7 @@ private:
 	D3DXMATRIX m_matrixCamera;
 public:
 	static D3DXVECTOR2 g_PosCamera;
+	static bool g_IsMoveX;
 	RECT m_viewPort;
 	void Update(D3DXVECTOR2);
 
