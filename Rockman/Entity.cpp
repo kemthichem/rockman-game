@@ -39,17 +39,17 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 	}
 
 	//sort 
-	if (m_velloc.x > 0)
+	if (!m_isTurnLeft)
 		std::sort(listObjectCollision.begin(),listObjectCollision.end(),m_collision->compSortObjectLeft);
-	if (m_velloc.x < 0)
+	else
 		std::sort(listObjectCollision.begin(),listObjectCollision.end(),m_collision->compSortObjectRight);
-
 
 	for (int i = 0; i < listObjectCollision.size(); i++)
 	{
 		//Recheck collision after change velloc
-		if (m_collision->IsCollision(this, listObjectCollision[i], _time))
+		if (m_collision->IsCollision(this, listObjectCollision[i], _time)) {
 			UpdateCollison(listObjectCollision[i],_time);
+		}
 	}
 
 	UpdateRect();

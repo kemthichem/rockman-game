@@ -1,15 +1,14 @@
 #include "Land1.h"
 
-CLand1::CLand1(int _id, D3DXVECTOR3 _pos, bool _isCheckCollison)
+CLand1::CLand1(int _id, D3DXVECTOR3 _pos, int _type)
 {
 	m_Id = _id;
-	m_Type = _isCheckCollison ? LAND1 : SCENERY;
-	m_NumSprite = _isCheckCollison? 1 : 2;
-	D3DXVECTOR2 src = _isCheckCollison ? D3DXVECTOR2(720,376) : D3DXVECTOR2(653, 343);
-	D3DXVECTOR2 des = _isCheckCollison ? D3DXVECTOR2(754, 410) : D3DXVECTOR2(721, 377);
-	int countCol = _isCheckCollison ? 1 : 2;
-
-
+	m_Type = _type >= 0  ? LAND1 : SCENERY;
+	m_NumSprite = _type == 0? 1 : 2;
+	D3DXVECTOR2 src = _type == 0? D3DXVECTOR2(720,376) : D3DXVECTOR2(653, 343);
+	D3DXVECTOR2 des = _type == 0? D3DXVECTOR2(754, 410) : D3DXVECTOR2(721, 377);
+	int countCol = _type == 0? 1 : 2;
+	
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES),
 		des, countCol, 1, src, 
 		D3DXVECTOR2(1,1),  D3DXVECTOR2(1,1));

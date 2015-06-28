@@ -5,6 +5,14 @@
 #include <windows.h>
 #include<stdlib.h>
 class CEntity;
+
+struct RECT_F
+{
+	float right;
+	float left;
+	float bottom;
+	float top;
+};
 enum DirectCollision
 {
 	NONE,
@@ -17,7 +25,7 @@ class CAABBCollision
 {
 private:
 	DirectCollision m_directCollision;
-	bool CheckCollision(RECT ,RECT);
+	bool CheckCollision(RECT_F ,RECT);
 public:
 	CAABBCollision();
 	~CAABBCollision();

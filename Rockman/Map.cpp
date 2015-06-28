@@ -84,9 +84,12 @@ void  CMap::LoadObjectFromFile(char* filePath)
 				CLand1 *ob = new CLand1(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
 				m_ListObjects.push_back(ob);
 			}  else if(_objecttype == "_LAND1"){
-				CLand1 *ob = new CLand1(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0), false);
+				CLand1 *ob = new CLand1(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0), -1);
 				m_ListObjects.push_back(ob);
-			}  else if(_objecttype == "LANDWHITE"){
+			}  else if(_objecttype == "LAND4"){
+				CLand1 *ob = new CLand1(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0), 1);
+				m_ListObjects.push_back(ob);
+			}else if(_objecttype == "LANDWHITE"){
 				CLandWhite *ob = new CLandWhite(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
 				m_ListObjects.push_back(ob);
 			} else if(_objecttype == "LAND3"){

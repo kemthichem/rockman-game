@@ -9,7 +9,7 @@ private:
 protected:
 
 public:
-	CLand1(int _id, D3DXVECTOR3 _pos, bool _isCheckCollison = true);
+	CLand1(int _id, D3DXVECTOR3 _pos, int _type = 0);
 	~CLand1(void);
 
 	//method
