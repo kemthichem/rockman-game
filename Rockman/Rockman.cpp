@@ -347,19 +347,6 @@ void CRockman::UpdateCollison(CEntity* _other, float _time) {
 	case LADDER:
 		m_PosXClimb = _other->GetRect().left + 16;
 		m_IsClimbing = !m_isCollisionBottom;
-
-		/*
-		if ((m_pos.y >= _other->GetRect().top + m_Size.y -5 ) && m_accel.y != 0)
-		{
-			m_CanClimbUp = false;
-			m_IsClimbing = false;
-		} else {
-			if (m_pos.y <= _other->GetRect().bottom + m_Size.y + 5) {			
-				m_IsClimbing = false;
-				m_velloc.x = 0;
-			}
-		}*/
-
 		break;
 	case BIGEYE:
 	case BLADER:
