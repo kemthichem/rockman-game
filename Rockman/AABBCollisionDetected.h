@@ -27,6 +27,10 @@ public:
 	bool IsCollision(CEntity* _ob1, CEntity* _ob2, float _time);
 	float intersectX(CEntity* a,CEntity *b,float _time);
 	static bool  SortObject(CEntity * a, CEntity*b);
+	static bool compSortObjectLeft (CEntity* first, CEntity* second);
+	static bool compSortObjectTop (CEntity* first, CEntity* second);
+	static bool compSortObjectRight (CEntity* first, CEntity* second);
+	static bool compSortObjectBottom (CEntity* first, CEntity* second);
 };
 
 #endif
