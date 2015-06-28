@@ -129,7 +129,7 @@ bool CGame::_InitInput()
 	m_input = new CInput(); 
 	if (!m_input->InitKeyboard(_hInstance,m_hWnd))
 	{
-		MessageBox(m_hWnd, "Can't create input", "Error", MB_OK );
+		//MessageBox(m_hWnd, "Can't create input", "Error", MB_OK );
 
 	}
 	return 0;

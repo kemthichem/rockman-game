@@ -2,13 +2,17 @@
 #include "MoveMap.h"
 #include "PLayingGameState.h"
 
-const D3DXVECTOR2 CRockman::mAccelOfRockman = D3DXVECTOR2(0.0f,-30.0f);
+const D3DXVECTOR2 CRockman::mAccelOfRockman = D3DXVECTOR2(15.0f,-30.0f);
 
 D3DXVECTOR2 CRockman::g_PosRockman = D3DXVECTOR2(0, 100);
 
 #define TIME_INJUNRED 3.0f
 #define TIME_SHOT (3.0f)
 #define VY_JUMP 100.0f
+#define ACCEL_STOP (11.0f)
+#define MAX_VX (30.0f)
+#define VX_PREPARE (15.0f)
+
 
 CRockman::CRockman(void)
 {
@@ -17,10 +21,11 @@ CRockman::CRockman(void)
 CRockman::CRockman(D3DXVECTOR3 _pos)
 {
 	m_Id = 0;
-	m_Type = ROCKMAN;
-	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), 
-	D3DXVECTOR2(960,320), 12, 4, 
-	D3DXVECTOR2(0,0), D3DXVECTOR2(11,8), D3DXVECTOR2(28,14));
+	m_Type = ROCKMAN;	
+	m_SpriteClimb = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(70,224), 2, 1 , D3DXVECTOR2(0,168));
+	m_SpriteJump = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(360,167), 6,1, D3DXVECTOR2(0,113));
+	m_SpriteMain = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(344,112), 8, 2);
+	m_Sprite = m_SpriteMain;
 	m_pos = _pos;
 	m_pos.z = DEPTH_MOTION;
 	//m_pos.y = CCamera::g_PosCamera.y;
@@ -58,18 +63,23 @@ CRockman::~CRockman()
 
 	if (m_Blood)
 		delete m_Blood;
+	if (m_SpriteClimb)
+		delete m_SpriteClimb;
+	if (m_SpriteJump)
+		delete m_SpriteJump;
+	if (m_SpriteMain)
+		delete m_SpriteMain;
+
+	 m_SpriteClimb = NULL;
+	 m_SpriteJump = NULL;
+	 m_SpriteMain = NULL;
+	 m_Sprite = NULL;
 }
 
 void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewPort) {
-	m_accel.y = m_IsClimbing ? 0 : mAccelOfRockman.y;
+	//Always impact gravity
+	m_accel.y = mAccelOfRockman.y;
 
-	//if (m_pos.y < 80) {
-	//	m_pos.y = 80;
-	//	m_isCollisionBottom = true;
-	//	m_velloc.y = 0;
-	//}
-
-	//turn left and right
 	if (_input->KeyDown(DIK_RIGHT)) {		
 		TurnRight();
 	} else if (_input->KeyDown(DIK_LEFT)) {
@@ -81,12 +91,13 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	} else {
 		Stand();
 	}
-	
-	if (m_velloc.y != 0 && m_action != Action_Start && m_PosXClimb == -1)
-		m_action = Action_Jump;
-	if (m_Injuring != 0)
-		Injunred(m_Injuring > 0, _time);
 
+	
+
+
+	CEntity::Update(_time, _camera, _input, _listObjectInViewPort);
+
+	//Check keydown
 	m_KeyDown = _input ->GetKeyDown();
 	switch (m_KeyDown)
 	{
@@ -96,39 +107,21 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	default:
 		break;
 	}
-	
-
-	//reset	
-	m_PosXClimb = -1;
-	m_isCollisionBottom = false;
-	m_IsClimbing = false;
-	CEntity::Update(_time, _camera, _input, _listObjectInViewPort);
-
-	m_isTurnLeft = m_Injuring !=0 ? !m_isTurnLeft: m_isTurnLeft;
-
-	//Climb
-	if (m_IsClimbing && m_velloc.y == 0) {
-		m_action = Action_Climb_Stand;
-	}
-	switch (m_KeyDown)
-	{
-	case DIK_A:
-		//m_action = (ActionRockman)((int)m_action + 1);
-		Shot();
-		break;
-	default:
-		break;
-	}
-	//When shot
-	if (m_TimeShot > 0) {
-		if (m_TimeShot < TIME_SHOT) {
-			m_TimeShot += _time;
-			m_action = (ActionRockman)((int)m_action + 1);
-		} else {
-			m_TimeShot = 0;
+	//When stop after update vellocx 
+	if (abs(m_accel.x) == ACCEL_STOP) {
+		if (m_accel.x < 0 && m_velloc.x < 0) {
+			m_velloc.x =  0;
+		}
+		if (m_accel.x > 0 && m_velloc.x > 0) {
+			m_velloc.x =  0;
 		}
 	}
 
+	//Update action Jump
+	if (m_accel.y != 0 && m_action != Action_Start)
+		m_action = Action_Jump;
+
+	//Not Edit
 	//Update pos global
 	g_PosRockman = D3DXVECTOR2(m_pos.x, m_pos.y);
 	if (m_Blood->IsOver() || m_pos.y < CCamera::g_PosCamera.y - HEIGHT_SCREEN - 200)
@@ -149,42 +142,57 @@ void CRockman::UpdateSprite(float _time)
 	switch (m_action)
 	{
 	case Action_Stand:
-		m_Sprite->NextOf(_time, 12,15);
+		m_Sprite = m_SpriteMain;
+		m_Sprite->NextOf(_time, 8,9);
 		break;
 	case Action_Stand_Gun:
-		m_Sprite->IndexOf(16);
-		
+		m_Sprite = m_SpriteJump;
+		m_Sprite->IndexOf(5);		
+		break;
+	case Action_Go_Prepare:
+		m_Sprite = m_SpriteMain;
+		m_Sprite->IndexOf(10);
 		break;
 	case Action_Go:
-		m_Sprite->NextOf(_time, 24,28);
+		m_Sprite = m_SpriteMain;
+		m_Sprite->NextOf(_time, 11,13);
 		break;
 	case Action_Go_Gun:
+		m_Sprite = m_SpriteJump;
 		m_Sprite->NextOf(_time, 30,35);
 		OutputDebugString("Go gun \n");
 		break;
 	case Action_Jump:
-		m_Sprite->IndexOf(36);
+		m_Sprite = m_SpriteJump;
+		m_Sprite->IndexOf(3);
 		OutputDebugString("jump\n");
 		break;
 	case Action_Jump_Gun:
-		m_Sprite->IndexOf(37);
+		m_Sprite = m_SpriteJump;
+		m_Sprite->IndexOf(4);
 		OutputDebugString("jump gun\n");
 		break;
 	case Action_Climb_Stand:
+		m_Sprite = m_SpriteClimb;
 		m_Sprite->OneOf(48,51);
 		break;
 	case Action_Climb_Stand_Gun:
+		m_Sprite = m_SpriteClimb;
 		m_Sprite->OneOf(52,53);
 		break;
 	case Action_Climb:
+		m_Sprite = m_SpriteClimb;
 		m_Sprite->NextOf(_time,48,51);
 		break;
 	case Action_Climb_Gun:
+		m_Sprite = m_SpriteClimb;
 		break;
 	case Action_Start:
+		m_Sprite = m_SpriteMain;
 		m_Sprite->NextOf(_time,0,7);
 		break;
 	case Action_Injured:
+		m_Sprite = m_SpriteMain;
 		m_Sprite->NextOf(_time, 60, 61);
 		break;
 	case Action_Fainting:
@@ -197,39 +205,47 @@ void CRockman::UpdateSprite(float _time)
 
 void CRockman::Stand()
 {
-	if (m_PosXClimb > -1) {
-		m_velloc.y = 0;
-		m_accel.y = 0;
-	}
-	if (m_isCollisionBottom) 
-	{
-		m_velloc.x = 0;
-		m_action = Action_Stand;
+	m_action = Action_Stand;
+	m_accel.x = m_velloc.x < 0 ? ACCEL_STOP : -ACCEL_STOP;
+	if (m_velloc.x == 0) {
+		m_accel.x = 0;
 	}
 }
 
 void CRockman::TurnLeft()
 {
-	//if (m_isCollisionBottom /*&& m_action != */) 
-	{
-		m_velloc.x = m_IsClimbing ? -0.000001f : -30;
-		m_action = Action_Go;
-	}
+	m_accel.x = -mAccelOfRockman.x;
+	m_velloc.x = m_velloc.x < -MAX_VX ? -MAX_VX :m_velloc.x ;
+
+	//Update action
+	if (m_velloc.x > 0)
+		m_action = Action_Stand;
+	else 
+		if (m_velloc.x > -VX_PREPARE)
+			m_action = Action_Go_Prepare;
+		else 
+			m_action = Action_Go;
 }
 
 void CRockman::TurnRight()
 {
-	//if (m_isCollisionBottom) 
-	{
-		m_velloc.x = m_IsClimbing ? 0.000001f : 30;
-		m_action = Action_Go;
-	}
+	m_accel.x = mAccelOfRockman.x;
+	m_velloc.x = m_velloc.x > MAX_VX ? MAX_VX : m_velloc.x;
+
+	//Update action
+	if (m_velloc.x < 0)
+		m_action = Action_Stand;
+	else 
+		if (m_velloc.x < VX_PREPARE)
+			m_action = Action_Go_Prepare;
+		else 
+			m_action = Action_Go;
 }
 
 void CRockman::Jump()
 {
-	if (m_velloc.y == 0) {
-		m_accel = mAccelOfRockman;
+	if (m_accel.y == 0) {
+		m_accel.y = mAccelOfRockman.y;
 		m_velloc.y = VY_JUMP;
 		m_action = Action_Jump;
 	}
@@ -298,7 +314,7 @@ void CRockman::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,
 				if( m_directCollion == BOTTOM)
 				{
 					m_pos.y = _other->GetRect().top + m_Size.y + 1;
-					CollisionBottom();
+					m_velloc.y = m_accel.y = 0;
 				}
 
 				if( m_directCollion == LEFT)

@@ -2,19 +2,19 @@
 #include "ResourceManager.h"
 #include "Rockman.h"
 
-#define SIZE_OF_BLOOD (50)
+#define SIZE_OF_BLOOD (30)
 
 CBlood::CBlood(D3DXVECTOR2 _offsetPosCamera, int _totalBlood)
 {
 	m_Type = SCENERY;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES)
-		,D3DXVECTOR2(230,381), 1, 1
-		,D3DXVECTOR2(211,233));
+		,D3DXVECTOR2(224,351), 1, 1
+		,D3DXVECTOR2(211,232));
 
 	//Blood
 	m_SpriteBar = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES)
-		,D3DXVECTOR2(230,235), 1, 1
-		,D3DXVECTOR2(211,233));
+		,D3DXVECTOR2(235,236), 1, 1
+		,D3DXVECTOR2(226,234));
 
 	m_Offset = _offsetPosCamera;
 	m_CurrentBlood = m_TotalBlood = _totalBlood;
@@ -47,11 +47,12 @@ void CBlood::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 	CEntity::Render(_spriteHandle,_camera);
 	
 	D3DXVECTOR3 pos = m_pos;
-	pos.y = m_pos.y - m_Sprite->GetHeightRectSprite();
+	pos.x = m_pos.x + 2;
+	pos.y = m_pos.y - m_Sprite->GetHeightRectSprite() + 3;
 	for (int i = 0; i < m_CurrentPer; i++)
 	{
 		CEntity::RenderEachSprite(_spriteHandle, _camera,m_SpriteBar, pos);
-		pos.y += 3;		
+		pos.y += 4;		
 	}	
 }
 

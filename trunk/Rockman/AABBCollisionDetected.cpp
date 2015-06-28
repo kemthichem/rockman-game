@@ -196,3 +196,25 @@ bool CAABBCollision::IsCollision(CEntity* _ob1, CEntity* _ob2, float _time)
 
 	return CheckCollision(bound, _ob2->GetRect());
 }
+
+bool  CAABBCollision::compSortObjectTop (CEntity* first, CEntity* second){
+	//bool isPri = (first->id>second->id);
+	bool isPri = first->GetRect().top<second->GetRect().top;
+	return isPri;
+}
+bool  CAABBCollision::compSortObjectBottom (CEntity* first, CEntity* second){
+	//bool isPri = (first->id>second->id);
+	bool isPri = first->GetRect().bottom>second->GetRect().bottom;
+	return isPri;
+}
+bool  CAABBCollision::compSortObjectRight (CEntity* first, CEntity* second){
+	//bool isPri = (first->id>second->id);
+	bool isPri = first->GetRect().left >= second->GetRect().right;
+	return isPri;
+}
+bool  CAABBCollision::compSortObjectLeft (CEntity* first, CEntity* second){
+	//bool isPri = (first->id>second->id);
+	bool isPri = first->GetRect().right <= second->GetRect().left;
+	return isPri;
+}
+

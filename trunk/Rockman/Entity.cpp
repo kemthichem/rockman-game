@@ -39,12 +39,17 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 	}
 
 	//sort 
-	std::sort(listObjectCollision.begin(),listObjectCollision.end(),m_collision->SortObject);
+	if (m_velloc.x > 0)
+		std::sort(listObjectCollision.begin(),listObjectCollision.end(),m_collision->compSortObjectLeft);
+	if (m_velloc.x < 0)
+		std::sort(listObjectCollision.begin(),listObjectCollision.end(),m_collision->compSortObjectRight);
+
+
 	for (int i = 0; i < listObjectCollision.size(); i++)
 	{
-		if (listObjectCollision[i]->GetType() == LAND3) 
-			int k = 0;
-		UpdateCollison(listObjectCollision[i],_time);
+		//Recheck collision after change velloc
+		if (m_collision->IsCollision(this, listObjectCollision[i], _time))
+			UpdateCollison(listObjectCollision[i],_time);
 	}
 
 	UpdateRect();
@@ -97,7 +102,8 @@ void CEntity::UpdatePosition(float _time)
 
 CEntity::~CEntity(void)
 {
-	delete m_Sprite;
+	if (m_Sprite)
+		delete m_Sprite;
 
 	if (m_collision != NULL)
 		delete m_collision;

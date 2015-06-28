@@ -10,6 +10,7 @@ enum ActionRockman
 {
 	Action_Stand = 0,
 	Action_Stand_Gun,
+	Action_Go_Prepare,
 	Action_Go,
 	Action_Go_Gun,
 	Action_Jump,
@@ -26,6 +27,12 @@ enum ActionRockman
 class CRockman: public CEntity
 {
 private:
+	//Sprite
+	CSprite *m_SpriteMain;
+	CSprite *m_SpriteJump;
+	CSprite *m_SpriteClimb;
+
+	//Other
 	static const D3DXVECTOR2 mAccelOfRockman;
 	CBulletRockman* m_ListBullet[5];
 	CBlood* m_Blood;
