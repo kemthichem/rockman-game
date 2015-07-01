@@ -73,6 +73,7 @@ public:
 	void SetInjured(CEntity* _other, int _dam = -10);
 	int GetKeyDown();
 	void UpdateActionShot();
+	void SetPos(D3DXVECTOR3 _pos);
 	static D3DXVECTOR2 g_PosRockman;
 };
 #endif

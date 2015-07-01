@@ -107,6 +107,8 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 			m_action = Action_Climb_Stand;
 		}
 	}
+	if (m_Injuring != 0)
+		Injunred(m_Injuring > 0, _time);
 
 	//reset	before update
 	m_PosXClimb = -1;
@@ -230,7 +232,7 @@ void CRockman::UpdateSprite(float _time)
 		break;
 	case Action_Injured:
 		m_Sprite = m_SpriteMain;
-		m_Sprite->NextOf(_time, 60, 61);
+		m_Sprite->NextOf(_time, 14, 15);
 		break;
 	case Action_Fainting:
 		break;
@@ -517,4 +519,9 @@ void CRockman::SetInjured(CEntity* _other, int _dam)
 int CRockman::GetKeyDown()
 {
 	return m_KeyDown;
+}
+
+void CRockman::SetPos(D3DXVECTOR3 _pos)
+{
+	m_pos = _pos;
 }
