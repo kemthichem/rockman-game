@@ -1,0 +1,23 @@
+#Tile_Matrix
+Total_Row	Total_Column	Total_Tile
+2	4	5
+#Tile_Matrix_Value
+0	1	0	2	
+3	-1	3	4	
+#Tile_Matrix_End
+#Objects
+ObjCount
+2
+ObjID	TypeID	PosX	PosY	Width	Height	PosXCollide	PosYCollide	WidthCollide	HeightCollide
+0	22	13	19	16	16	5	27	16	16
+1	1	13	50	16	21	5	60	16	21
+#Objects_End
+#Quadtree_Collision
+NodeCount
+1
+NodeID	PosX	PosY	Width	Height	ObjectsCount	ObjectIDs
+0	0	128	128	128	2	0	1
+#Quadtree_Collision_End
+#Camera_Path_Point
+0
+#Camera_Path_Point_End

@@ -1,4 +1,5 @@
 #include "Land3.h"
+#include "Define.h"
 
 #define  NUMB_SPRITE 2
 

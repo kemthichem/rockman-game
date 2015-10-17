@@ -1,4 +1,5 @@
 ﻿#include "Game.h"
+#include "Define.h"
 #include "ResourceManager.h"
 
 CGame::CGame(HINSTANCE hInstance)
@@ -207,7 +208,6 @@ int CGame::RunGame()
 				UpdateWorld();
 				Render();
 			}
-
 		}	
 	}
 	Release();
@@ -242,5 +242,4 @@ bool CGame::_InitFont()
 
 void CGame::RenderTextAndSurface()
 {
-	//_d3ddv->StretchRect(CResourceManager::GetInstance()->GetSurface(IMAGE_BG_MENU), NULL,_backbuffer, NULL,D3DTEXF_NONE);
 }

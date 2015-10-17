@@ -8,6 +8,7 @@
 #include "GameState.h"
 #include"GameStateManager.h"
 #include "Map.h"
+#include "SceneryTile.h"
 
 enum ChangeState
 {
@@ -21,6 +22,7 @@ class CPLayingGameState : public CGameState
 private:
 	CQuadTree *quadTree;
 	CMap m_Map;
+	CSceneryTile *m_ScereryTile;
 
 	void DrawText();
 	void UpdateState();

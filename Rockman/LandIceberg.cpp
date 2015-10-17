@@ -1,4 +1,5 @@
 #include "LandIceberg.h"
+#include "Define.h"
 
 #define  NUMB_SPRITE 2
 

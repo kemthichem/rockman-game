@@ -59,8 +59,33 @@ void CSprite::NextOf(float _time, int indexStart, int indexEnd)
 		m_TimeWait=0;
 	}
 }
-void CSprite::Render(LPD3DXSPRITE _spriteHandler, D3DXVECTOR3 _pos)
+void CSprite::Render(LPD3DXSPRITE _spriteHandler,CCamera *_camera, D3DXVECTOR3 _pos, bool _isTurnLeft)
 {
+	if (_camera) {
+		D3DXMATRIX matrixTransform;
+		D3DXMatrixIdentity(&matrixTransform);
+		D3DXMatrixTransformation2D(&matrixTransform, &D3DXVECTOR2(_pos.x, _pos.y), 0.0f, &D3DXVECTOR2(1.f, -1.f),NULL, 0.f, NULL);
+		D3DXMatrixMultiply(&matrixTransform,&matrixTransform, &_camera->GetMatrixCamera());
+
+		if (_isTurnLeft) {
+			//flip sprite when move left
+			D3DXMATRIX matrixFlip;
+			D3DXVECTOR2 trans(2*(_pos.x - _camera->GetPosCamera().x ) + this->GetWidthRectSprite(), 0);
+			D3DXMatrixTransformation2D(&matrixFlip
+				,NULL//center of sprite
+				,0.0f
+				,new D3DXVECTOR2(-1,1)//flip Ox
+				,NULL
+				,0
+				,&trans//distance transform
+				);
+
+			D3DXMatrixMultiply(&matrixTransform, &matrixTransform, &matrixFlip);
+		}
+
+		_spriteHandler->SetTransform(&matrixTransform);
+	}
+
 	RECT srect;
 	srect.left = (m_CurrentIndex % m_CountPerRow) * (m_SizeSprite.x) + m_PosSrc.x + m_OffsetLeftTop.x;
 	srect.top = (m_CurrentIndex / m_CountPerRow)*(m_SizeSprite.y) + m_PosSrc.y + m_OffsetLeftTop.y;

@@ -54,7 +54,7 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 
 	UpdateRect();
 
-	if (m_Type==ROCKMAN)
+	if (m_Type == ROCKMAN)
 	{
 		_camera->Update(D3DXVECTOR2(m_pos.x, m_pos.y));
 	}
@@ -67,30 +67,7 @@ void CEntity::Render(LPD3DXSPRITE _spriteHandler, CCamera* _camera) {
 
 void CEntity::RenderEachSprite(LPD3DXSPRITE _spriteHandler, CCamera* _camera,CSprite * _sprite, D3DXVECTOR3 _posRender)
 {
-	D3DXMATRIX Scale;
-	D3DXMatrixIdentity(&Scale);
-	D3DXMatrixTransformation2D(&Scale, &D3DXVECTOR2(_posRender.x, _posRender.y), 0.0f, &D3DXVECTOR2(1.f, -1.f),NULL, 0.f, NULL);
-	D3DXMatrixMultiply(&Scale,&Scale, &_camera->GetMatrixCamera());
-
-	//flip sprite when move left
-	D3DXMATRIX matrixFlip;
-	D3DXVECTOR2 trans(2*(_posRender.x - _camera->GetPosCamera().x ) + _sprite->GetWidthRectSprite(), 0);
-	if (m_isTurnLeft) {
-		D3DXMatrixTransformation2D(&matrixFlip
-			,NULL//center of sprite
-			,0.0f
-			,new D3DXVECTOR2(-1,1)//flip Ox
-			,NULL
-			,0
-			,&trans//distance transform
-			);
-
-		D3DXMatrixMultiply(&Scale, &Scale, &matrixFlip);
-	}
-
-	_spriteHandler->SetTransform(&Scale);
-
-	_sprite->Render(_spriteHandler, _posRender);
+	_sprite->Render(_spriteHandler, _camera, _posRender, m_isTurnLeft);
 }
 
 void CEntity::UpdatePosition(float _time)

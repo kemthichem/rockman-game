@@ -1,6 +1,6 @@
 #include "MoveMap.h"
 #include "Map.h"
-
+#include "Define.h"
 
 int CMoveMap::g_DistanceMoveCameraY = HEIGHT_SCREEN;
 int CMoveMap::g_DistanceMoveCameraX = WIDTH_SCREEN;

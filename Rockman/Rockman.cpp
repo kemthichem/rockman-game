@@ -1,6 +1,7 @@
 ﻿#include "Rockman.h"
 #include "MoveMap.h"
 #include "PLayingGameState.h"
+#include "Define.h"
 
 const D3DXVECTOR2 CRockman::mAccelOfRockman = D3DXVECTOR2(15.0f,-30.0f);
 

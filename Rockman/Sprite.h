@@ -2,6 +2,7 @@
 #define  _SPRITE_H
 #include <d3d9.h>
 #include <d3dx9.h>
+#include "Camera.h"
 
 #define  TIME_PER_ANIMATION (2.0f)
 class CSprite
@@ -26,7 +27,7 @@ public:
 		D3DXVECTOR2 _offsetLeftTop = D3DXVECTOR2(0,0),
 		D3DXVECTOR2 _offsetRightBottom = D3DXVECTOR2(0,0));
 
-	void Render(LPD3DXSPRITE _spriteHandler, D3DXVECTOR3 _pos);
+	void Render(LPD3DXSPRITE _spriteHandler, CCamera *_camera, D3DXVECTOR3 _pos, bool _isTurnLeft = false);
 	void Next(float _time);
 	void OneOf(int, int);
 	void NextOf(float _time, int _indexStart, int indexEnd);

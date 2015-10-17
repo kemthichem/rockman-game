@@ -1,5 +1,6 @@
 #include "Blood.h"
 #include "ResourceManager.h"
+#include "Define.h"
 #include "Rockman.h"
 
 #define SIZE_OF_BLOOD (30)

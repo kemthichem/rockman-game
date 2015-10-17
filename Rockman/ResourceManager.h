@@ -23,6 +23,9 @@
 #define  IMAGE_BG_GAMEOVER "Resource/State/bg_gameover.jpg"
 #define  IMAGE_BG_HELP "Resource/State/bg_help.jpg"
 #define  IMAGE_BG_WIN "Resource/State/bg_win.jpg"
+
+//hard code map resource
+#define IMAGE_MAP_CUTMAN "Resource/map/Map1.bmp"
 //background
 #define  IMAGE_BG "Resource/bg.jpg"
 

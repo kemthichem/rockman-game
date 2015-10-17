@@ -125,9 +125,11 @@
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Rockman.cpp" />
     <ClCompile Include="RockmanGame.cpp" />
+    <ClCompile Include="SceneryTile.cpp" />
     <ClCompile Include="ScrewBomber.cpp" />
     <ClCompile Include="Spine.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="TextTure.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="utils.cpp" />
     <ClCompile Include="winmain.cpp" />
@@ -179,9 +181,11 @@
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Rockman.h" />
     <ClInclude Include="RockmanGame.h" />
+    <ClInclude Include="SceneryTile.h" />
     <ClInclude Include="ScrewBomber.h" />
     <ClInclude Include="Spine.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="TextTure.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="utils.h" />
     <ClInclude Include="WinState.h" />

@@ -5,8 +5,6 @@
 #include <d3dx9.h>
 #include <windows.h>
 
-#include "Define.h"
-
 class CCamera
 {
 private:

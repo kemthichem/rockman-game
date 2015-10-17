@@ -127,12 +127,12 @@ void CMenuState::Update(CInput* _input,float _time,CCamera* _camera)
 }
 void CMenuState::Render(LPD3DXSPRITE _spriteHandle,CCamera* _camera)
 {
-	m_background->Render(_spriteHandle,D3DXVECTOR3(0,0,0));
-	m_menunewgame->Render(_spriteHandle,D3DXVECTOR3(400 - m_menunewgame->GetWidthRectSprite()/2,100,0));
-	m_menucontinue->Render(_spriteHandle,D3DXVECTOR3(400 - m_menucontinue->GetWidthRectSprite()/2,180,0));
-	m_menuoption->Render(_spriteHandle,D3DXVECTOR3(400 - m_menuoption->GetWidthRectSprite()/2,260,0));
-	m_menuabout->Render(_spriteHandle,D3DXVECTOR3(400 - m_menuabout->GetWidthRectSprite()/2,340,0));
-	m_menuexit->Render(_spriteHandle,D3DXVECTOR3(400 - m_menuexit->GetWidthRectSprite()/2,420,0));
+	m_background->Render(_spriteHandle, NULL, D3DXVECTOR3(0,0,0));
+	m_menunewgame->Render(_spriteHandle, NULL, D3DXVECTOR3(400 - m_menunewgame->GetWidthRectSprite()/2,100,0));
+	m_menucontinue->Render(_spriteHandle, NULL, D3DXVECTOR3(400 - m_menucontinue->GetWidthRectSprite()/2,180,0));
+	m_menuoption->Render(_spriteHandle, NULL, D3DXVECTOR3(400 - m_menuoption->GetWidthRectSprite()/2,260,0));
+	m_menuabout->Render(_spriteHandle, NULL, D3DXVECTOR3(400 - m_menuabout->GetWidthRectSprite()/2,340,0));
+	m_menuexit->Render(_spriteHandle, NULL, D3DXVECTOR3(400 - m_menuexit->GetWidthRectSprite()/2,420,0));
 }
 CMenuState::~CMenuState()
 {

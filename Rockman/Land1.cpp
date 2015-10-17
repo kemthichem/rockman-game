@@ -1,4 +1,5 @@
 #include "Land1.h"
+#include "Define.h"
 
 CLand1::CLand1(int _id, D3DXVECTOR3 _pos, int _type)
 {

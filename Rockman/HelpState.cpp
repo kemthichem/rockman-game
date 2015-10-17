@@ -27,7 +27,7 @@ void CHelpState::Update(CInput* _input,float _time,CCamera* _camera)
 }
 void CHelpState::Render(LPD3DXSPRITE _spriteHandle,CCamera* _camera)
 {
-	m_background->Render(_spriteHandle,D3DXVECTOR3(0,0,0));
+	m_background->Render(_spriteHandle, _camera, D3DXVECTOR3(0,0,0));
 
 }
 CHelpState::~CHelpState()

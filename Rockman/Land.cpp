@@ -1,4 +1,5 @@
 #include "Land.h"
+#include "Define.h"
 #define  NUMB_SPRITE 4
 
 CLand::CLand(int _id, D3DXVECTOR3 _pos, bool _isCheckCollison)

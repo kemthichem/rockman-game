@@ -2,6 +2,7 @@
 #include "Rockman.h"
 #include "MoveMap.h"
 #include "Map.h"
+#include "Define.h"
 
 D3DXVECTOR2 CCamera::g_PosCamera = D3DXVECTOR2(0,0);
 CCamera::CCamera(void)

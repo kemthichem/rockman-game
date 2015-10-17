@@ -7,7 +7,6 @@
 #include "GameOverState.h"
 #include "WinState.h"
 
-
 ChangeState CPLayingGameState::g_ChangeState = CHANGE_NONE;
 
 int CPLayingGameState::g_LifeOfRockman = 2;
@@ -40,22 +39,25 @@ CPLayingGameState::~CPLayingGameState(void)
 		delete quadTree;
 		quadTree = NULL;
 	}
+
+	if (m_ScereryTile) {
+		delete m_ScereryTile;
+	}
 }
 
 void CPLayingGameState::Render(LPD3DXSPRITE _spriteHandle,CCamera* _camera)
 {
-	
 	rockman->Render(_spriteHandle, _camera);
 	quadTree->Render(_spriteHandle, _camera);
 
-	
+	m_ScereryTile->Render(_spriteHandle, _camera);
 }
 
 void CPLayingGameState::Update(CInput* _input,float _time,CCamera* _camera)
 {
-	vector<CEntity*> listOb = quadTree->GetListObjectInRect(_camera->GetViewPortEx());
+	vector<CEntity*> listOb = quadTree->GetListObjectInRect(_camera->m_viewPort);
 	quadTree->m_listObjectViewportToUpdate.push_back(rockman);
-
+	m_ScereryTile->Update(_camera->m_viewPort);
 
 	switch (CMoveMap::g_TypeMove)
 	{
@@ -97,8 +99,8 @@ void CPLayingGameState::Init()
 	switch (g_Stage)
 	{
 	case 1:
-		pathMap = "Resource//map//Map1.txt";
-		pathTree = "Resource//map//Map1Tree.txt";
+		pathMap = "Resource//map//Map1Old.txt";
+		pathTree = "Resource//map//Map1OldTree.txt";
 		break;
 	case 2:
 		pathMap = "Resource//map//Map2.txt";
@@ -127,9 +129,42 @@ void CPLayingGameState::Init()
 	//m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(3552,2344));
 	//rockman = new CRockman(D3DXVECTOR3(3580,1000,0));
 
-
-
 	m_Map.LoadObjectFromFile(pathMap);	
+
+	//hard code to demo
+	int row = 3;
+	int col = 4;
+	int countTile = 6;
+
+	int **arrayTile = new int *[row];
+	for (int i = 0; i < row; i++)
+	{
+		arrayTile[i] = new int[col];
+	}
+
+
+	/*0	1	0	2	
+		3	-1	3	4	
+		5	5	5	5*/
+	arrayTile[0][0] = 0;
+	arrayTile[0][1] = 1;
+	arrayTile[0][2] = 0;
+	arrayTile[0][3] = 2;
+
+	arrayTile[1][0] = 3;
+	arrayTile[1][1] = -1;
+	arrayTile[1][2] = 3;
+	arrayTile[1][3] = 4;
+
+	arrayTile[2][0] = 5;
+	arrayTile[2][1] = 5;
+	arrayTile[2][2] = 5;
+	arrayTile[2][3] = 5;
+
+	//create scenery tile
+	m_ScereryTile = new CSceneryTile(CResourceManager::GetInstance()->GetSprite(IMAGE_MAP_CUTMAN), arrayTile, row, col, countTile);
+
+
 	//Load tree
 	quadTree = new CQuadTree();
 	quadTree->LoadNodeInFile(pathTree);
@@ -197,4 +232,3 @@ void CPLayingGameState::RenderTextAndSurface()
 {
 	DrawText();
 }
-

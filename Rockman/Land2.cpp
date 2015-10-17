@@ -1,4 +1,5 @@
 #include "Land2.h"
+#include "Define.h"
 
 CLand2::CLand2(int _id, D3DXVECTOR3 _pos, bool _isCheckCollison)
 {
