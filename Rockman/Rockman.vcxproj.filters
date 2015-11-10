@@ -219,9 +219,6 @@
     <ClCompile Include="LockCamera.cpp">
       <Filter>ObjectGame\Block</Filter>
     </ClCompile>
-    <ClCompile Include="TextTure.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SceneryTile.cpp">
       <Filter>Map</Filter>
     </ClCompile>
@@ -379,9 +376,6 @@
     </ClInclude>
     <ClInclude Include="LockCamera.h">
       <Filter>ObjectGame\Block</Filter>
-    </ClInclude>
-    <ClInclude Include="TextTure.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SceneryTile.h">
       <Filter>Map</Filter>
