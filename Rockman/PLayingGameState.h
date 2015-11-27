@@ -31,12 +31,13 @@ protected:
 	virtual void Render(LPD3DXSPRITE _spriteHandle,CCamera* _camera);
 	virtual void Update(CInput* _input,float _time,CCamera* _camera);
 	virtual void RenderTextAndSurface();
-	virtual void Init();
+	/*virtual void Init();TODO*/
 public:
 	CPLayingGameState(void);
 	~CPLayingGameState(void);
 	CPLayingGameState(CGameStateManager *_gameState);
 	CRockman *rockman;
+	virtual void Init();
 
 	/**Score, Life of Rockman, Stage**/
 	static int g_Score;

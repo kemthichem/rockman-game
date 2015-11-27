@@ -6,6 +6,12 @@
 #include "ChangeState.h"
 #include "GameOverState.h"
 #include "WinState.h"
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <iterator>
+
+using namespace std;
 
 ChangeState CPLayingGameState::g_ChangeState = CHANGE_NONE;
 
@@ -73,7 +79,7 @@ void CPLayingGameState::Update(CInput* _input,float _time,CCamera* _camera)
 		quadTree->Update(_camera, _time);
 		break;
 	}
-		
+
 	if (rockman->GetKeyDown()==DIK_ESCAPE)
 	{
 		m_StateManager->ChangeState(new CChangeState(m_StateManager));
@@ -90,32 +96,34 @@ void CPLayingGameState::Update(CInput* _input,float _time,CCamera* _camera)
 
 void CPLayingGameState::Init()
 {
-	char* pathMap = "";
-	char* pathTree = ""; 
+	char* pathMap = "Resource//map//cut_man_stage.txt";
 
-	//fixed stage
-	g_Stage = 1;
+	//#pragma region fuck 
+	//char* pathTree = ""; 
 
-	switch (g_Stage)
-	{
-	case 1:
-		pathMap = "Resource//map//Map1Old.txt";
-		pathTree = "Resource//map//Map1OldTree.txt";
-		break;
-	case 2:
-		pathMap = "Resource//map//Map2.txt";
-		pathTree = "Resource//map//Map2Tree.txt";
-		break;
-	case 3:
-		pathMap = "Resource//map//Map3.txt";
-		pathTree = "Resource//map//Map3Tree.txt";
-		break;
-	default:
-		break;
-	}
+	////fixed stage
+	//g_Stage = 1;
+
+	//switch (g_Stage)
+	//{
+	//case 1:
+	//	pathMap = "Resource//map//Map1Old.txt";
+	//	pathTree = "Resource//map//Map1OldTree.txt";
+	//	break;
+	//case 2:
+	//	pathMap = "Resource//map//Map2.txt";
+	//	pathTree = "Resource//map//Map2Tree.txt";
+	//	break;
+	//case 3:
+	//	pathMap = "Resource//map//Map3.txt";
+	//	pathTree = "Resource//map//Map3Tree.txt";
+	//	break;
+	//default:
+	//	break;
+	//}
 	//Reset camera
-	m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(0,0));	
-	rockman = new CRockman(D3DXVECTOR3(100, 500,0));
+	//m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(0,0));	
+	//rockman = new CRockman(D3DXVECTOR3(100, 500,0));
 
 	//Go boss map 1
 	//m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(4798,2084));//-600y
@@ -129,47 +137,94 @@ void CPLayingGameState::Init()
 	//m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(3552,2344));
 	//rockman = new CRockman(D3DXVECTOR3(3580,1000,0));
 
-	m_Map.LoadObjectFromFile(pathMap);	
+	//m_Map.LoadObjectFromFile(pathMap);	
+	//#pragma endregion fuck 
 
 	//hard code to demo
-	int row = 3;
-	int col = 4;
-	int countTile = 6;
 
-	int **arrayTile = new int *[row];
+	//int countTile = 6;
+
+	// define mapFile
+	ifstream mapFile;
+
+	// line of mapFile
+	string line;
+
+	// data from mapFile read into vector
+	vector<string> listMap;
+
+	// read file map and push data into a vecto
+	mapFile.open(pathMap);
+	if (mapFile.is_open())
+	{
+		while (getline(mapFile,line))
+		{
+			listMap.push_back(line);
+		}
+	}
+
+	istringstream istringstreamSize(listMap[2]);
+	istream_iterator<std::string> istream_iteratorSize(istringstreamSize), end;
+	// vector save row, column
+	vector<string> sizeMap (istream_iteratorSize, end);
+
+	// get row
+	const int row = atoi(sizeMap.at(0).c_str());
+
+	// get column
+	int column = atoi(sizeMap.at(1).c_str());
+
+	// declare a 2 demen array to save tile 
+	//int **arrayTile = new int *[row];
+
+	//FIXME - help me define a array
+	int arrayTile[80][130];
+
 	for (int i = 0; i < row; i++)
 	{
-		arrayTile[i] = new int[col];
+		//arrayTile[i] = new int[column];
+		istringstream istringstreamTile(listMap[i + 4]);
+		istream_iterator<std::string> istream_iteratorTile(istringstreamTile), endTile;
+		// vector save data of a row
+		vector<string> rowTitle (istream_iteratorTile, endTile);
+
+		for (int j = 0; j < column; j++)
+		{
+			arrayTile[i][j] = atoi(rowTitle.at(j).c_str());
+		}
+
 	}
+
+	int k = 10;
 
 
 	/*0	1	0	2	
-		3	-1	3	4	
-		5	5	5	5*/
-	arrayTile[0][0] = 0;
-	arrayTile[0][1] = 1;
-	arrayTile[0][2] = 0;
-	arrayTile[0][3] = 2;
+	3	-1	3	4	
+	5	5	5	5*/
+	//arrayTile[0][0] = 0;
+	//arrayTile[0][1] = 1;
+	//arrayTile[0][2] = 0;
+	//arrayTile[0][3] = 2;
 
-	arrayTile[1][0] = 3;
-	arrayTile[1][1] = -1;
-	arrayTile[1][2] = 3;
-	arrayTile[1][3] = 4;
+	//arrayTile[1][0] = 3;
+	//arrayTile[1][1] = -1;
+	//arrayTile[1][2] = 3;
+	//arrayTile[1][3] = 4;
 
-	arrayTile[2][0] = 5;
-	arrayTile[2][1] = 5;
-	arrayTile[2][2] = 5;
-	arrayTile[2][3] = 5;
+	//arrayTile[2][0] = 5;
+	//arrayTile[2][1] = 5;
+	//arrayTile[2][2] = 5;
+	//arrayTile[2][3] = 5;
 
 	//create scenery tile
-	m_ScereryTile = new CSceneryTile(CResourceManager::GetInstance()->GetSprite(IMAGE_MAP_CUTMAN), arrayTile, row, col, countTile);
+	//	m_ScereryTile = new CSceneryTile(CResourceManager::GetInstance()->GetSprite(IMAGE_MAP_CUTMAN), arrayTile, row, col, countTile);
 
 
 	//Load tree
-	quadTree = new CQuadTree();
-	quadTree->LoadNodeInFile(pathTree);
+	//	quadTree = new CQuadTree();
+	//quadTree->LoadNodeInFile(pathTree);
 
-	quadTree->MapIdToObjectInTree(quadTree->m_nodeRoot, m_Map.m_ListObjects);
+	//	quadTree->MapIdToObjectInTree(quadTree->m_nodeRoot, m_Map.m_ListObjects);
 
 }
 
