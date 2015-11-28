@@ -28,9 +28,15 @@ class CRockman: public CEntity
 {
 private:
 	//Sprite
-	CSprite *m_SpriteMain;
+	CSprite *m_SpriteStart;
 	CSprite *m_SpriteJump;
+	CSprite *m_SpriteStand;
+	CSprite *m_SpriteStandGun;
+	CSprite *m_SpriteRun;
+	CSprite *m_SpriteRunGun;
 	CSprite *m_SpriteClimb;
+	CSprite *m_SpriteClimbGun;
+	CSprite *m_SpriteInjured;
 
 	D3DXVECTOR2 m_SizeClimb;
 	D3DXVECTOR2 m_SizeInit;

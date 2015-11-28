@@ -55,7 +55,7 @@ void CBlader::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 
 void CBlader::UpdateCollison(CEntity* _other, float _time) {
 
-	if (_other->GetType() == LAND) {
+	if (_other->GetType() == BLOCK) {
 		m_pos.x = GetRect().left - 1;
 		m_velloc.x *= -1;
 	}

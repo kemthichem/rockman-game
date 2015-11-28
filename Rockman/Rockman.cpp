@@ -22,11 +22,18 @@ CRockman::CRockman(void)
 CRockman::CRockman(D3DXVECTOR3 _pos)
 {
 	m_Id = 0;
-	m_Type = ROCKMAN;	
-	m_SpriteClimb = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(70,224), 2, 1 , D3DXVECTOR2(0,168));
-	m_SpriteJump = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(360,167), 6,1, D3DXVECTOR2(0,113));
-	m_SpriteMain = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(344,112), 8, 2);
-	m_Sprite = m_SpriteMain;
+	m_Type = ROCKMAN;
+	m_SpriteStart = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(72, 32), 3, 1);
+	m_SpriteJump = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(58, 62), 2, 1 , D3DXVECTOR2(0, 33));
+	m_SpriteStand = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(63, 86), 3, 1 , D3DXVECTOR2(0, 62));
+	m_SpriteStandGun = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(32, 110), 1, 1, D3DXVECTOR2(0, 87));
+	m_SpriteRun = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(72, 134), 3, 1, D3DXVECTOR2(0, 111));
+	m_SpriteRunGun = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(96, 158), 3, 1, D3DXVECTOR2(0, 135));
+	m_SpriteClimb = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(32, 188), 2, 1, D3DXVECTOR2(0, 159));
+	m_SpriteClimbGun = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(24, 220), 1, 1, D3DXVECTOR2(0, 189));
+	m_SpriteInjured = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(52, 248), 2, 1, D3DXVECTOR2(0, 221));
+
+	m_Sprite = m_SpriteStand;
 	m_pos = _pos;
 	m_pos.z = DEPTH_MOTION;
 	//m_pos.y = CCamera::g_PosCamera.y;
@@ -62,20 +69,47 @@ CRockman::~CRockman()
 	{
 		delete m_ListBullet[i];
 	}
+	delete m_Blood;
+	m_Blood = NULL;
 
-	if (m_Blood)
-		delete m_Blood;
-	if (m_SpriteClimb)
-		delete m_SpriteClimb;
-	if (m_SpriteJump)
+	if (m_SpriteStart) {
+		delete m_SpriteStart;
+		m_SpriteStart = NULL;
+	}
+	if (m_SpriteJump) {
 		delete m_SpriteJump;
-	if (m_SpriteMain)
-		delete m_SpriteMain;
-
-	 m_SpriteClimb = NULL;
-	 m_SpriteJump = NULL;
-	 m_SpriteMain = NULL;
-	 m_Sprite = NULL;
+		m_SpriteJump = NULL;
+	}
+	if (m_SpriteStand) {
+		delete m_SpriteStand;
+		m_SpriteStand = NULL;
+	}
+	if (m_SpriteStandGun) {
+		delete m_SpriteStandGun;
+		m_SpriteStandGun = NULL;
+	}
+	if (m_SpriteRun) {
+		delete m_SpriteRun;
+		m_SpriteRun = NULL;
+	}
+	if (m_SpriteRunGun) {
+		delete m_SpriteRunGun;
+		m_SpriteRunGun = NULL;
+	}
+	if (m_SpriteClimb) {
+		delete m_SpriteClimb;
+		m_SpriteClimb = NULL;
+	}
+	if (m_SpriteClimbGun) {
+		delete m_SpriteClimbGun;
+		m_SpriteClimbGun = NULL;
+	}
+	if (m_SpriteInjured) {
+		delete m_SpriteInjured;
+		m_SpriteInjured = NULL;
+	}
+	
+	m_Sprite = NULL;
 }
 
 void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewPort) {
@@ -116,6 +150,11 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	m_IsClimbing = false;
 	m_isCollisionBottom = false;
 	CEntity::Update(_time, _camera, _input, _listObjectInViewPort);
+
+
+	//TODO
+	m_pos.y = 100;
+	UpdateRect();
 
 	//Check keydown
 	m_KeyDown = _input ->GetKeyDown();
@@ -181,59 +220,59 @@ void CRockman::UpdateSprite(float _time)
 	switch (m_action)
 	{
 	case Action_Stand:
-		m_Sprite = m_SpriteMain;
-		m_Sprite->NextOf(_time, 8,9);
+		m_Sprite = m_SpriteStand;
+		m_Sprite->NextOf(_time, 1, 2);
 		break;
 	case Action_Stand_Gun:
-		m_Sprite = m_SpriteJump;
-		m_Sprite->IndexOf(5);		
+		m_Sprite = m_SpriteStandGun;
+		m_Sprite->IndexOf(0);		
 		break;
 	case Action_Go_Prepare:
-		m_Sprite = m_SpriteMain;
-		m_Sprite->IndexOf(10);
+		m_Sprite = m_SpriteStand;
+		m_Sprite->IndexOf(0);
 		break;
 	case Action_Go:
-		m_Sprite = m_SpriteMain;
-		m_Sprite->NextOf(_time, 11,13);
+		m_Sprite = m_SpriteRun;
+		m_Sprite->NextOf(_time, 0,2);
 		break;
 	case Action_Go_Gun:
-		m_Sprite = m_SpriteJump;
+		m_Sprite = m_SpriteRunGun;
 		m_Sprite->NextOf(_time, 0,2);
 		OutputDebugString("Go gun \n");
 		break;
 	case Action_Jump:
 		m_Sprite = m_SpriteJump;
-		m_Sprite->IndexOf(3);
+		m_Sprite->IndexOf(0);
 		OutputDebugString("jump\n");
 		break;
 	case Action_Jump_Gun:
 		m_Sprite = m_SpriteJump;
-		m_Sprite->IndexOf(4);
+		m_Sprite->IndexOf(1);
 		OutputDebugString("jump gun\n");
 		break;
 	case Action_Climb_Stand:
 		m_Sprite = m_SpriteClimb;
-		m_Sprite->IndexOf(1);
+		m_Sprite->IndexOf(0);
 		break;
 	case Action_Climb_Stand_Gun:
-		m_Sprite = m_SpriteMain;
-		m_Sprite->IndexOf(3);
+		m_Sprite = m_SpriteClimbGun;
+		m_Sprite->IndexOf(0);
 		break;
 	case Action_Climb:
 		m_Sprite = m_SpriteClimb;
 		m_Sprite->NextOf(_time,0,1);
 		break;
 	case Action_Climb_Gun:
-		m_Sprite = m_SpriteMain;
-		m_Sprite->IndexOf(3);
+		m_Sprite = m_SpriteClimbGun;
+		m_Sprite->IndexOf(0);
 		break;
 	case Action_Start:
-		m_Sprite = m_SpriteMain;
-		m_Sprite->NextOf(_time,0,7);
+		m_Sprite = m_SpriteStart;
+		m_Sprite->NextOf(_time,0,2);
 		break;
 	case Action_Injured:
-		m_Sprite = m_SpriteMain;
-		m_Sprite->NextOf(_time, 14, 15);
+		m_Sprite = m_SpriteInjured;
+		m_Sprite->NextOf(_time, 0, 1);
 		break;
 	case Action_Fainting:
 		break;
@@ -377,7 +416,7 @@ void CRockman::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,
 		//ListObjectColision
 		switch (_other->GetType())
 		{
-		case LAND:
+		case BLOCK:
 		case LAND1:
 		case LAND3:
 		case LAND2:

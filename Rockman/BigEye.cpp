@@ -46,7 +46,7 @@ void CBigEye::UpdateCollison(CEntity* _other,float _time)
 {
 	switch (_other->GetType())
 	{
-	case LAND:
+	case BLOCK:
 	case LAND1:
 	case LAND3:
 	case LAND2:

@@ -69,8 +69,8 @@ bool CGame::_InitWindow()
 		WS_OVERLAPPEDWINDOW, 
 		250,//x 
 		100, //y
-		WIDTH_SCREEN, 
-		HEIGHT_SCREEN,
+		WIDTH_SCREEN_WINDOW, 
+		HEIGHT_SCREEN_WINDOW,
 		NULL, 
 		NULL, 
 		_hInstance, 

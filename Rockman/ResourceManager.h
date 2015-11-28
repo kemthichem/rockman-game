@@ -25,7 +25,7 @@
 #define  IMAGE_BG_WIN "Resource/State/bg_win.jpg"
 
 //hard code map resource
-#define IMAGE_MAP_CUTMAN "Resource/map/Map1.bmp"
+#define IMAGE_MAP_CUTMAN "Resource/map/cut_man_stage.bmp"
 //background
 #define  IMAGE_BG "Resource/bg.jpg"
 

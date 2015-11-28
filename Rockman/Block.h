@@ -2,14 +2,14 @@
 #define _LAND_H_
 #include "ResourceManager.h"
 #include "Entity.h"
-class CLand : public CEntity
+class CBlock : public CEntity
 {
 private:
 protected:
 
 public:
-	CLand(int _id, D3DXVECTOR3 _pos, bool _isCheckCollison = true);
-	~CLand(void);
+	CBlock(int _id, D3DXVECTOR3 _pos, bool _isCheckCollison = true);
+	~CBlock(void);
 
 	//method
 	virtual void Update(float , CCamera *, CInput *);

@@ -1,5 +1,8 @@
-#define WIDTH_SCREEN 300
-#define HEIGHT_SCREEN 400
+#define WIDTH_SCREEN_WINDOW 300
+#define HEIGHT_SCREEN_WINDOW 400
+
+#define WIDTH_SCREEN 150
+#define HEIGHT_SCREEN 200
 
 //Define depth
 #define DEPTH_SCENERY 1.0f

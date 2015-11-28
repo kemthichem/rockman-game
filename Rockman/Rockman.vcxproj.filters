@@ -171,9 +171,6 @@
     <ClCompile Include="Ladder.cpp">
       <Filter>ObjectGame\Block</Filter>
     </ClCompile>
-    <ClCompile Include="Land.cpp">
-      <Filter>ObjectGame\Block</Filter>
-    </ClCompile>
     <ClCompile Include="Land1.cpp">
       <Filter>ObjectGame\Block</Filter>
     </ClCompile>
@@ -221,6 +218,9 @@
     </ClCompile>
     <ClCompile Include="SceneryTile.cpp">
       <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Block.cpp">
+      <Filter>ObjectGame\Block</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -326,9 +326,6 @@
     <ClInclude Include="Ladder.h">
       <Filter>ObjectGame\Block</Filter>
     </ClInclude>
-    <ClInclude Include="Land.h">
-      <Filter>ObjectGame\Block</Filter>
-    </ClInclude>
     <ClInclude Include="Land1.h">
       <Filter>ObjectGame\Block</Filter>
     </ClInclude>
@@ -379,6 +376,9 @@
     </ClInclude>
     <ClInclude Include="SceneryTile.h">
       <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Block.h">
+      <Filter>ObjectGame\Block</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -199,7 +199,7 @@ void CCutMan::UpdateCollison(CEntity* _other,float _time)
 	case ROCKMAN:
 		(dynamic_cast<CRockman*>(_other))->SetInjured(this, -20);
 		break;
-	case LAND:
+	case BLOCK:
 	case LAND1:
 	case LAND3:
 	case LAND2:

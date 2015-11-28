@@ -40,7 +40,7 @@ void CItem::UpdateCollison(CEntity* _other,float _time)
 		m_IsShowed = false;
 		//(dynamic_cast<CRockman*>(_other))->SetInjured(this);
 		break;
-	case LAND:
+	case BLOCK:
 	case LAND1:
 	case LANDWHITE:
 	case LANDICEBERG:
@@ -97,7 +97,7 @@ void CItem::ExecuteCollision(CEntity* _other, DirectCollision m_directCollision,
 	//ListObjectColision
 	switch (_other->GetType())
 	{
-	case LAND:
+	case BLOCK:
 	case LAND1:
 	case LANDWHITE:
 	case LANDICEBERG:

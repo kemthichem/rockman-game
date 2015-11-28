@@ -18,16 +18,31 @@
 #include "Spine.h"
 #include "LockCamera.h"
 
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <iterator>
+
 int CMap::g_widthMap = 0;
 int CMap::g_heightMap = 0;
 
-CMap::CMap(){}
+CMap::CMap(){
+	row, col, countTile = 0;
+	m_ArrayMapTile = NULL;
+}
 CMap::~CMap()
 {
 	//delete list object
 	for(int i = 0; i < m_ListObjects.size(); ++i)
 		delete m_ListObjects[i];
 	m_ListObjects.clear();
+
+	//delete m_ArrayMapTile
+	for (int i = 0; i < row; i++)
+	{
+		delete []m_ArrayMapTile[i];
+	}
+	delete []m_ArrayMapTile;
 }
 
 vector<string> CMap::SplitString(std::string str, char ch)
@@ -47,150 +62,164 @@ vector<string> CMap::SplitString(std::string str, char ch)
 	return result;
 }
 
-void  CMap::LoadObjectFromFile(char* filePath)
+void  CMap::LoadMap(char* pathMap,  CQuadTree *quadTree)
 {	
-	ifstream f(filePath);
-	vector<string> itemsInfo;
-	if(f.is_open())
+	// define mapFile
+	ifstream mapFile;
+
+	// line of mapFile
+	string line;
+
+	// data from mapFile read into vector
+	vector<string> listMap;
+
+	// read file map and push data into a vector
+	mapFile.open(pathMap);
+	if (mapFile.is_open())
 	{
-		string line;
-		D3DXVECTOR2 _pos;
-		string _objecttype;
-		int _idObject;
-		getline(f,line);
-		itemsInfo = SplitString(line,' ');
-		g_widthMap = atoi(itemsInfo.at(0).c_str());
-		g_heightMap = atoi(itemsInfo.at(1).c_str());
-
-		while(1){
-			getline(f,line);
-			itemsInfo = SplitString(line,' ');
-			if(strcmp(line.c_str(), "<End>") == 0)
-				break;
-			_idObject = atoi(itemsInfo.at(0).c_str());
-			_objecttype= itemsInfo.at(1).c_str();
-			_pos.x = atoi(itemsInfo.at(2).c_str());
-			_pos.y= atoi(itemsInfo.at(3).c_str());
-
-			//*************SCENERY****************//
-
-			//*************BLOCK****************//
-			if(_objecttype == "LAND"){
-				CLand *_brick = new CLand(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
-				m_ListObjects.push_back(_brick);
-			}  else if(_objecttype == "_LAND"){
-				CLand *ob = new CLand(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0), false);
-				m_ListObjects.push_back(ob);
-			} else if(_objecttype == "LAND1"){
-				CLand1 *ob = new CLand1(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
-				m_ListObjects.push_back(ob);
-			}  else if(_objecttype == "_LAND1"){
-				CLand1 *ob = new CLand1(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0), -1);
-				m_ListObjects.push_back(ob);
-			}  else if(_objecttype == "LAND4"){
-				CLand1 *ob = new CLand1(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0), 1);
-				m_ListObjects.push_back(ob);
-			}  else if(_objecttype == "LAND5"){
-				CLand2 *ob = new CLand2(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
-				m_ListObjects.push_back(ob);
-			}else if(_objecttype == "LANDWHITE"){
-				CLandWhite *ob = new CLandWhite(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
-				m_ListObjects.push_back(ob);
-			} else if(_objecttype == "LAND3"){
-				CLand3 *ob = new CLand3(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
-				m_ListObjects.push_back(ob);
-			} else if(_objecttype == "LAND2"){
-				CLand2 *ob = new CLand2(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
-				m_ListObjects.push_back(ob);
-			}else if(_objecttype == "_LANDWHITE"){
-				CLandWhite *ob = new CLandWhite(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0), false);
-				m_ListObjects.push_back(ob);
-			}else if(_objecttype == "LANDICEBERG"){
-				CLandIceberg *ob = new CLandIceberg(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
-				m_ListObjects.push_back(ob);
-			} else if(_objecttype == "_LANDICEBERG"){
-				CLandIceberg *ob = new CLandIceberg(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0), false);
-				m_ListObjects.push_back(ob);
-			}   else if(_objecttype == "MOVEMAP"){
-				CMoveMap *moveMap = new CMoveMap(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
-				m_ListObjects.push_back(moveMap);
-			}else if(_objecttype == "BLOCKCAMERA"){
-				CLockCamera *moveMap = new CLockCamera(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
-				m_ListObjects.push_back(moveMap);
-			}else if(_objecttype == "UNLOCKCAMERA"){
-				CLockCamera *moveMap = new CLockCamera(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0), false);
-				m_ListObjects.push_back(moveMap);
-			}else if(_objecttype == "BLADER"){
-				CBlader *ob = new CBlader(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
-				m_ListObjects.push_back(ob);
-			} else if(_objecttype == "LADDER10"){
-				CLadder *ob = new CLadder(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0), 10);
-				m_ListObjects.push_back(ob);
-			} else if(_objecttype == "LADDER5"){
-				CLadder *ob = new CLadder(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0), 5);
-				m_ListObjects.push_back(ob);
-			}  else if(_objecttype == "LADDER6"){
-				CLadder *ob = new CLadder(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0), 6);
-				m_ListObjects.push_back(ob);
-			}  else if(_objecttype == "LADDER2"){
-				CLadder *ob = new CLadder(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0), 2);
-				m_ListObjects.push_back(ob);
-			} 	else if(_objecttype == "LADDER4"){
-				CLadder *ob = new CLadder(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0), 4);
-				m_ListObjects.push_back(ob);
-			} else if(_objecttype == "LADDER7"){
-				CLadder *ob = new CLadder(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0), 7);
-				m_ListObjects.push_back(ob);
-			} 							
-			
-			//*************ENEMIES****************//
-			
-			else if(_objecttype == "SCREW_BOMBER"){
-				CScrewBomber *ob = new CScrewBomber(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
-				m_ListObjects.push_back(ob);
-			} else if(_objecttype == "SCREW_BOMBER_D"){
-				CScrewBomber *ob = new CScrewBomber(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0), false);
-				m_ListObjects.push_back(ob);
-			}else if(_objecttype == "OCTOPUS") {
-				COctopus *ob = new COctopus(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
-				m_ListObjects.push_back(ob);
-			} else if(_objecttype == "OCTOPUS_D") {
-				COctopus *ob = new COctopus(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0), false);
-				m_ListObjects.push_back(ob);
-			} else if(_objecttype == "MET") {
-				CMet *ob = new CMet(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
-				m_ListObjects.push_back(ob);
-			} else if(_objecttype == "BEAK") {
-				CBeak *ob = new CBeak(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
-				m_ListObjects.push_back(ob);
-			}	else if(_objecttype == "FLEA") {
-				CFlea *ob = new CFlea(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
-				m_ListObjects.push_back(ob);
-			}	else if(_objecttype == "SPINE") {
-				CSpine *ob = new CSpine(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
-				m_ListObjects.push_back(ob);
-			}	else if(_objecttype == "BEAK") {
-				CBeak *ob = new CBeak(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
-				m_ListObjects.push_back(ob);
-			}	 else if(_objecttype == "BEAK_R") {
-				CBeak *ob = new CBeak(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0), false);
-				m_ListObjects.push_back(ob);
-			}else if(_objecttype == "BIGEYE"){
-				CBigEye *bigEye = new CBigEye(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
-				m_ListObjects.push_back(bigEye);
-			} 
-			//*************BOSS****************//
-			
-			else if(_objecttype == "ICEMAN"){				
-				CIceMan *ob = new CIceMan(_idObject, D3DXVECTOR3((float)_pos.x,(float)_pos.y,0));
-				m_ListObjects.push_back(ob);
-			} else if(_objecttype == "CUTMAN"){
-				CCutMan *ob = new CCutMan(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
-				m_ListObjects.push_back(ob);
-			} else if(_objecttype == "GUTSMAN"){
-				CGutsMan *ob = new CGutsMan(_idObject, D3DXVECTOR3((float)_pos.x, (float)_pos.y, 0));
-				m_ListObjects.push_back(ob);
-			} 
+		while (getline(mapFile,line))
+		{
+			listMap.push_back(line);
 		}
 	}
+
+	istringstream istringstreamSize(listMap[2]);
+	istream_iterator<std::string> istream_iteratorSize(istringstreamSize), end;
+	// vector save row, column
+	vector<string> sizeMap (istream_iteratorSize, end);
+
+	// get row
+	row = atoi(sizeMap.at(0).c_str());
+
+	// get column
+	col = atoi(sizeMap.at(1).c_str());
+
+	countTile = atoi(sizeMap.at(2).c_str());
+
+	// declare a 2 demen array to save tile 
+	m_ArrayMapTile = new int *[row];
+
+	//FIXME - help me define a array
+	//int arrayTile[80][130];
+
+	for (int i = 0; i < row; i++)
+	{
+		m_ArrayMapTile[i] = new int[col];
+		istringstream istringstreamTile(listMap[i + 4]);
+		istream_iterator<std::string> istream_iteratorTile(istringstreamTile), endTile;
+		// vector save data of a row
+		vector<string> rowTitle (istream_iteratorTile, endTile);
+
+		for (int j = 0; j < col; j++)
+		{
+			m_ArrayMapTile[i][j] = atoi(rowTitle.at(j).c_str());
+		}
+	}
+}
+
+void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int width, int height, double posYCollide, int widthCollide, int heightCollide)
+{
+	CEntity *object;
+
+	switch (objID)
+	{
+	case ID_ENEMY_BALL:
+		break;
+	case ID_ENEMY_BOOM_BLUE:
+		break;
+	case ID_ENEMY_EYE_RED_UP:
+		break;
+	case ID_ENEMY_EYE_RED_RIGHT:
+		break;
+	case ID_ENEMY_FISH_ORANGE:
+		break;
+	case ID_ENEMY_INK_RED:
+		break;
+	case ID_ENEMY_MACHINE_AUTO_BLUE_TOP:
+		break;
+	case ID_ENEMY_MACHINE_ORANGE:
+		break;
+	case ID_ENEMY_NINJA_GREEN:
+		break;
+	case ID_ENEMY_BUBBLE_BLUE:
+		break;
+	case ID_ENEMY_CUT:
+		break;
+	case ID_ENEMY_INK_BLUE:
+		break;
+	case ID_ENEMY_MACHINE_AUTO_ORGANGE_TOP:
+		break;
+	case ID_ENEMY_ROBOT_RED:
+		break;
+	case ID_ENEMY_TANK_RED:
+		break;
+	case ID_ENEMY_BUBBLE_GREEN:
+		break;
+	case ID_ENEMY_HAT:
+		break;
+	case ID_ENEMY_ROBOT_BLUE:
+		break;
+	case ID_ENEMY_WORKER:
+		break;
+	case ID_BLOCK_TROUBLE_OF_ELEVATOR:
+		break;
+	case ID_ELEVATOR:
+		break;
+	case ID_ROCKGUSTMAN:
+		break;
+	case ID_BLOCK:
+		break;
+	case ID_CLAMPER:
+		break;
+	case ID_ITEM_LIFE:
+		break;
+	case ID_ITEM_BLOOD_BIG:
+		break;
+	case ID_ITEM_BLOOD_SMALL:
+		break;
+	case ID_ITEM_MANA:
+		break;
+	case ID_ITEM_MANA_SMALL:
+		break;
+	case ID_ROCK:
+		break;
+	case ID_DIEAARROW:
+		break;
+	case ID_BOSSCUT:
+		break;
+	case ID_BOSSBOOM:
+		break;
+	case ID_BOSSRUT:
+		break;
+	case ID_ENEMY_MACHINE_AUTO_BLUE_BOTTOM:
+		break;
+	case ID_ENEMY_MACHINE_AUTO_ORGANGE_BOTT:
+		break;
+	case ID_CAMERA_PATH_POINT:
+		break;
+	case ID_FALLING_POINT:
+		break;
+	case ID_DOOR1_CUTMAN:
+		break;
+	case ID_DOOR1_GUTSMAN:
+		break;
+	case ID_DOOR1_BOOMMAN:
+		break;
+	case ID_DOOR2_BOOMMAN:
+		break;
+	case ID_DOOR2_CUTMAN:
+		break;
+	case ID_DOOR2_GUTSMAN:
+		break;
+	case ID_ENEMY_SNAPPER:
+		break;
+	case ID_ENEMY_WALL_SHOOTER_LEFT:
+		break;
+	case ID_ENEMY_WALL_SHOOTER_RIGHT:
+		break;
+	default:
+		break;
+	}
+
+	m_ListObjects.push_back(object);
 }

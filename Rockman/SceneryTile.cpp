@@ -55,20 +55,22 @@ CSceneryTile::~CSceneryTile(void)
 	}
 
 	//delete array tile
-	for (int i = 0; i < m_RowArray; i++)
+	/*for (int i = 0; i < m_RowArray; i++)
 	{
 		delete []m_ArrayMapTile[i];
 	}
-	delete[] m_ArrayMapTile;
+	delete[] m_ArrayMapTile;*/
 }
 
 void CSceneryTile::Render(LPD3DXSPRITE _spriteHandle, CCamera *_camera)
 {
-	int rowFrom = m_PEnd.y / SIZE_OF_TILE;
-	rowFrom = rowFrom > m_RowArray ? 0 : rowFrom;
-	int rowTo = m_PStart.y / SIZE_OF_TILE + 1;
+	//Specify row
+	int rowFrom = m_RowArray - m_PStart.y / SIZE_OF_TILE - 1;
+	rowFrom = rowFrom < 0 ? 0 : rowFrom;
+	int rowTo =  m_RowArray - m_PEnd.y / SIZE_OF_TILE;
 	rowTo = rowTo > m_RowArray ? m_RowArray : rowTo;
 
+	//Specify column
 	int colFrom = m_PStart.x / SIZE_OF_TILE;
 	colFrom = colFrom > m_ColArray ? 0 : colFrom;
 	int colTo = m_PEnd.x / SIZE_OF_TILE + 1;
