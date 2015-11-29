@@ -14,6 +14,7 @@ protected:
 	virtual void Update(float , CCamera *, CInput *,  vector<CEntity* >);
 
 public:
+	CBigEye(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide);
 	CBigEye(int _id, D3DXVECTOR3 _pos);
 	virtual void SetInjured(CEntity* _other);
 	~CBigEye(void);

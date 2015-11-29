@@ -83,10 +83,8 @@ void  CMap::LoadMap(char* pathMap,  CQuadTree *quadTree)
 		}
 	}
 
-	istringstream istringstreamSize(listMap[2]);
-	istream_iterator<std::string> istream_iteratorSize(istringstreamSize), end;
-	// vector save row, column
-	vector<string> sizeMap (istream_iteratorSize, end);
+	// vector save rowNum, columnNum at line 2 on map file
+	vector<string> sizeMap = getListFromFile(listMap, 2); 
 
 	// get row
 	row = atoi(sizeMap.at(0).c_str());
@@ -105,21 +103,49 @@ void  CMap::LoadMap(char* pathMap,  CQuadTree *quadTree)
 	for (int i = 0; i < row; i++)
 	{
 		m_ArrayMapTile[i] = new int[col];
-		istringstream istringstreamTile(listMap[i + 4]);
-		istream_iterator<std::string> istream_iteratorTile(istringstreamTile), endTile;
 		// vector save data of a row
-		vector<string> rowTitle (istream_iteratorTile, endTile);
+		vector<string> rowTitle = getListFromFile(listMap, i + 4);
 
 		for (int j = 0; j < col; j++)
 		{
 			m_ArrayMapTile[i][j] = atoi(rowTitle.at(j).c_str());
 		}
 	}
+
+	// get object count at row 75 on fileMap
+	vector<string> sizeObject = getListFromFile(listMap, row + 7);
+	int objectCount = atoi(sizeObject.at(0).c_str());
+	for (int k = row + 9; k < objectCount; k++)
+	{
+		vector<string> sizeObject = getListFromFile(listMap, k);
+		int objID = atoi(sizeObject.at(0).c_str());
+		int typeID = atoi(sizeObject.at(1).c_str());
+		double posX = atoi(sizeObject.at(2).c_str());
+		double posY = atoi(sizeObject.at(3).c_str());
+		int width = atoi(sizeObject.at(4).c_str());
+		int height = atoi(sizeObject.at(5).c_str());
+		double posXCollide = atoi(sizeObject.at(6).c_str());
+		double posYCollide = atoi(sizeObject.at(7).c_str());
+		int widthCollide = atoi(sizeObject.at(8).c_str());
+		int heightCollide = atoi(sizeObject.at(9).c_str());
+		// add object game
+		AddObjectGame(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
+	}
+	int temp = 1;
 }
 
-void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int width, int height, double posYCollide, int widthCollide, int heightCollide)
+vector<string> CMap::getListFromFile(vector<string> listMap, int i)
 {
-	CEntity *object;
+	istringstream istringStream(listMap[i]);
+	istream_iterator<std::string> istream_Iterator(istringStream), end;
+
+	vector<string> sizeObject (istream_Iterator, end);
+	return sizeObject;
+}
+
+void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide)
+{
+	CEntity *object = NULL;
 
 	switch (objID)
 	{
@@ -127,21 +153,29 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 		break;
 	case ID_ENEMY_BOOM_BLUE:
 		break;
+	// FIX-ME UP - RIGHT
 	case ID_ENEMY_EYE_RED_UP:
+		object = new COctopus(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_ENEMY_EYE_RED_RIGHT:
 		break;
 	case ID_ENEMY_FISH_ORANGE:
 		break;
+	// Flea
 	case ID_ENEMY_INK_RED:
+		object = new CFlea(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_ENEMY_MACHINE_AUTO_BLUE_TOP:
 		break;
+	// Spine
 	case ID_ENEMY_MACHINE_ORANGE:
+		object = new CSpine(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_ENEMY_NINJA_GREEN:
 		break;
+	// CBlader
 	case ID_ENEMY_BUBBLE_BLUE:
+		object = new CBlader(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_ENEMY_CUT:
 		break;
@@ -149,13 +183,17 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 		break;
 	case ID_ENEMY_MACHINE_AUTO_ORGANGE_TOP:
 		break;
+	// BigEye
 	case ID_ENEMY_ROBOT_RED:
+		object = new CBigEye(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_ENEMY_TANK_RED:
 		break;
 	case ID_ENEMY_BUBBLE_GREEN:
 		break;
+	// Met
 	case ID_ENEMY_HAT:
+		object = new CMet(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_ENEMY_ROBOT_BLUE:
 		break;
@@ -168,8 +206,10 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 	case ID_ROCKGUSTMAN:
 		break;
 	case ID_BLOCK:
+		object = new CBlock(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_CLAMPER:
+		object = new CLadder(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_ITEM_LIFE:
 		break;
@@ -194,6 +234,7 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 	case ID_ENEMY_MACHINE_AUTO_BLUE_BOTTOM:
 		break;
 	case ID_ENEMY_MACHINE_AUTO_ORGANGE_BOTT:
+		object = new CScrewBomber(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_CAMERA_PATH_POINT:
 		break;
@@ -213,13 +254,16 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 		break;
 	case ID_ENEMY_SNAPPER:
 		break;
+	// Beak
 	case ID_ENEMY_WALL_SHOOTER_LEFT:
+		object = new CBeak(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_ENEMY_WALL_SHOOTER_RIGHT:
 		break;
 	default:
 		break;
 	}
-
-	m_ListObjects.push_back(object);
+	if (object) {
+		m_ListObjects.push_back(object);
+	}
 }

@@ -23,6 +23,8 @@ private:
 
 	void Shot(int _n);
 public:
+	CScrewBomber(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide);
+
 	CScrewBomber(int _id, D3DXVECTOR3 _pos, bool _isUp = true);
 	~CScrewBomber(void);
 

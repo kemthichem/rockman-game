@@ -34,6 +34,10 @@ COctopus::~COctopus(void)
 		delete m_Item;
 }
 
+COctopus::COctopus(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide)
+{
+
+}
 
 void COctopus::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity* >_listObjectInViewPort)
 {

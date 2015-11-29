@@ -17,8 +17,8 @@ using namespace std;
 class CMap{
 
 private:
-	void AddObjectGame(int objID, int typeID, double posX, double posY, int width, int height, double posYCollide, int widthCollide, int heightCollide);
-
+	void AddObjectGame(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide);
+	
 public:
 	static int g_widthMap, g_heightMap;
 	int **m_ArrayMapTile;
@@ -29,7 +29,7 @@ public:
 	~CMap();
 
 	vector<CEntity*> m_ListObjects;
-
+	vector<string> getListFromFile(vector<string> listMap, int i);
 	vector<string> SplitString(string str, char ch);
 	void LoadMap(char* filePath, CQuadTree *quadTree);
 };

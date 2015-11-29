@@ -9,6 +9,7 @@ private:
 	D3DXVECTOR3 m_PosInit;
 protected:
 public:
+	CBlader(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide);
 	CBlader(int _id, D3DXVECTOR3 _pos);
 	~CBlader(void);
 	//method

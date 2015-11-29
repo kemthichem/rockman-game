@@ -9,7 +9,7 @@ protected:
 
 public:
 	CBlock(int _id, D3DXVECTOR3 _pos, bool _isCheckCollison = true);
-	CBlock(int objID, int typeID, double posX, double posY, int width, int height, double posYCollide, int widthCollide, int heightCollide);
+	CBlock(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide);
 	~CBlock(void);
 
 	//method

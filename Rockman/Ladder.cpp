@@ -15,6 +15,10 @@ CLadder::CLadder(int _id, D3DXVECTOR3 _pos, int _height)
 	UpdateRect();
 }
 
+CLadder::CLadder(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide)
+{
+
+}
 
 CLadder::~CLadder(void)
 {

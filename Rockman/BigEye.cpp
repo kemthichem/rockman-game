@@ -15,7 +15,10 @@ CBigEye::CBigEye(int _id, D3DXVECTOR3 _pos)
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 	UpdateRect();
 }
+CBigEye::CBigEye(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide)
+{
 
+}
 
 CBigEye::~CBigEye(void)
 {

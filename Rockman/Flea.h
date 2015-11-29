@@ -8,6 +8,7 @@ private:
 protected:
 public:
 	CFlea(int _id, D3DXVECTOR3 _pos);
+	CFlea(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide);
 	~CFlea(void);
 
 	//method
