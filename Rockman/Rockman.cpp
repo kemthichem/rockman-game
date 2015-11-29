@@ -118,7 +118,7 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	m_Size = m_SizeInit;
 	m_CanDown = false;
 
-	if (_input->KeyDown(DIK_RIGHT)) {		
+	if (_input->KeyDown(DIK_RIGHT)) {
 		TurnRight();
 	} else if (_input->KeyDown(DIK_LEFT)) {
 		TurnLeft();
