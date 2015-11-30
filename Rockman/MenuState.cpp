@@ -35,7 +35,7 @@ void CMenuState::CleanUp()
 {
 	
 }
-void CMenuState::Update(CInput* _input,float _time,CCamera* _camera)
+void CMenuState::Update(CInput* _input,float _time)
 {
 	
 	m_background->IndexOf(0);
@@ -125,7 +125,7 @@ void CMenuState::Update(CInput* _input,float _time,CCamera* _camera)
 		}
 	}
 }
-void CMenuState::Render(LPD3DXSPRITE _spriteHandle,CCamera* _camera)
+void CMenuState::Render(LPD3DXSPRITE _spriteHandle)
 {
 	m_background->Render(_spriteHandle, NULL, D3DXVECTOR3(0,0,0));
 	m_menunewgame->Render(_spriteHandle, NULL, D3DXVECTOR3(400 - m_menunewgame->GetWidthRectSprite()/2,100,0));

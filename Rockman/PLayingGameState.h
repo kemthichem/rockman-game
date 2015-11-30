@@ -23,13 +23,14 @@ private:
 	CQuadTree *quadTree;
 	CMap m_Map;
 	CSceneryTile *m_ScereryTile;
+	CCamera *m_Camera;
 
 	void DrawText();
 	void UpdateState();
 protected:
 	//virtual void CleanUp();
-	virtual void Render(LPD3DXSPRITE _spriteHandle,CCamera* _camera);
-	virtual void Update(CInput* _input,float _time,CCamera* _camera);
+	virtual void Render(LPD3DXSPRITE _spriteHandle);
+	virtual void Update(CInput* _input,float _time);
 	virtual void RenderTextAndSurface();
 	/*virtual void Init();TODO*/
 public:

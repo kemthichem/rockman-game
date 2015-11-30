@@ -19,8 +19,8 @@ public:
 	CMenuState(CGameStateManager* _stateManager);
 	void Init();
 	void CleanUp();
-	void Update(CInput* ,float,CCamera* _camera);
-	void Render(LPD3DXSPRITE,CCamera* _camera);
+	void Update(CInput* ,float);
+	void Render(LPD3DXSPRITE);
 	GameStateId GetGameStateId();
 };
 #endif

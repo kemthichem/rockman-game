@@ -16,12 +16,12 @@ void CGameState::Init()
 	m_background = NULL;
 }
 
-void CGameState::Update(CInput* _keyboard,float _time,CCamera* _camera)
+void CGameState::Update(CInput* _keyboard,float _time)
 {
 
 }
 
-void CGameState::Render(LPD3DXSPRITE _spriteHandle,CCamera* _camera)
+void CGameState::Render(LPD3DXSPRITE _spriteHandle)
 {
 
 }

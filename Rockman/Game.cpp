@@ -16,16 +16,14 @@ void CGame::InitGame()
 {
 	m_time = new CTimer();
 	m_time->SetMaxFps(60.0f);
-
-	m_camera = new CCamera();
-
+	
 	_InitWindow();
 	_InitDirectX();
 	_InitInput();
 	_InitFont();
 	
 	 m_StateManager = new CGameStateManager();
-	 m_StateManager->Init(m_hWnd, m_SpriteHandler, m_GraphicText, m_camera);
+	 m_StateManager->Init(m_hWnd, m_SpriteHandler, m_GraphicText);
 }
 
 LRESULT CALLBACK CGame::_WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
@@ -177,10 +175,6 @@ void CGame::Release() {
 		delete m_StateManager;
 	}
 
-	if (m_camera) {
-		delete m_camera;
-		m_camera = NULL;
-	}
 }
 int CGame::RunGame()
 {

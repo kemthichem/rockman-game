@@ -32,20 +32,17 @@ CCamera::~CCamera(void)
 
 void CCamera::Update(D3DXVECTOR2 _pos)
 {
-	
-	if (_pos.x < CMap::g_widthMap - WIDTH_SCREEN - WIDTH_SCREEN/2)
-	{
-		if (g_IsMoveX)
-			m_pos.x = (float)_pos.x - WIDTH_SCREEN/2;
-	}
-	/*else {
-		m_pos.x = CMap::g_widthMap - 2 * WIDTH_SCREEN;
-	}*/
+	bool isMoveX, isMoveY;
 
-	if (m_pos.x < 0)
-	{
-		m_pos.x =  0;
+	//check next point follow x
+	if (_pos.x > m_arrayPoint[curIndex].x) {
+		m_pos.x = (float)_pos.x - WIDTH_SCREEN/2;
 	}
+
+	//check pre point follow x
+
+	//check next point follow y
+	//check pre point follow y
 
 	if (_pos.x >= CMap::g_widthMap - WIDTH_SCREEN - 14 && m_pos.x <= CMap::g_widthMap - 2 * WIDTH_SCREEN) {
 		CMoveMap::g_TypeMove = TypeMove::MOVEX;
@@ -136,6 +133,14 @@ RECT CCamera::GetViewPortEx()
 	RECT rect = m_viewPort;
 	rect.top += 50;
 	return rect;
+}
+
+void CCamera::Initialize(POINT *array, int m_countPoint)
+{
+	m_arrayPoint = array;
+	m_countPoint = countPoint;
+
+	curIndex = 0;
 }
 
 bool CCamera::g_IsMoveX = true;

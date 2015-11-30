@@ -21,6 +21,8 @@ CPLayingGameState::CPLayingGameState(CGameStateManager *_gameState)
 {
 	m_StateManager = _gameState;
 
+	m_Camera = new CCamera();
+
 	rockman = NULL;
 	quadTree = NULL;
 }
@@ -45,34 +47,37 @@ CPLayingGameState::~CPLayingGameState(void)
 	if (m_ScereryTile) {
 		delete m_ScereryTile;
 	}
+
+	if (m_Camera)
+		delete m_Camera;
 }
 
-void CPLayingGameState::Render(LPD3DXSPRITE _spriteHandle,CCamera* _camera)
+void CPLayingGameState::Render(LPD3DXSPRITE _spriteHandle)
 {
-	rockman->Render(_spriteHandle, _camera);
+	rockman->Render(_spriteHandle, m_Camera);
 	//quadTree->Render(_spriteHandle, _camera);
 
-	m_ScereryTile->Render(_spriteHandle, _camera);
+	m_ScereryTile->Render(_spriteHandle, m_Camera);
 }
 
-void CPLayingGameState::Update(CInput* _input,float _time,CCamera* _camera)
+void CPLayingGameState::Update(CInput* _input,float _time)
 {
-	vector<CEntity*> listOb = quadTree->GetListObjectInRect(_camera->m_viewPort);
+	vector<CEntity*> listOb = quadTree->GetListObjectInRect(m_Camera->m_viewPort);
 	quadTree->m_listObjectViewportToUpdate.push_back(rockman);
-	m_ScereryTile->Update(_camera->m_viewPort);
+	m_ScereryTile->Update(m_Camera->m_viewPort);
 
 	switch (CMoveMap::g_TypeMove)
 	{
 	case TypeMove::MOVEX:
-		_camera->MoveX(CMoveMap::g_DistanceMoveCameraX);
+		m_Camera->MoveX(CMoveMap::g_DistanceMoveCameraX);
 		break;
 	case TypeMove::MOVEY:
-		_camera->MoveY(CMoveMap::g_DistanceMoveCameraY);
+		m_Camera->MoveY(CMoveMap::g_DistanceMoveCameraY);
 		break;
 	case TypeMove::MOVENONE:
 	default:
-		rockman->Update(_time, _camera, _input, listOb);
-		quadTree->Update(_camera, _time);
+		rockman->Update(_time, m_Camera, _input, listOb);
+		quadTree->Update(m_Camera, _time);
 		break;
 	}
 
@@ -83,7 +88,7 @@ void CPLayingGameState::Update(CInput* _input,float _time,CCamera* _camera)
 	}
 	if (rockman->GetKeyDown()==DIK_L)
 	{
-		m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(4798,2084));//-600y
+		m_Camera->SetPosCamera(D3DXVECTOR2(4798,2084));//-600y
 		rockman->SetPos(D3DXVECTOR3(5471, 2350, 0));
 	}
 
@@ -118,7 +123,7 @@ void CPLayingGameState::Init()
 		break;
 	}
 	////Reset camera
-	m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(0,0));	
+	m_Camera->SetPosCamera(D3DXVECTOR2(0,0));	
 	rockman = new CRockman(D3DXVECTOR3(100, 500,0));
 	////Go boss map 1
 	//m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(4798,2084));//-600y
@@ -147,6 +152,11 @@ void CPLayingGameState::Init()
 	//create scenery tile
 	m_ScereryTile = new CSceneryTile(CResourceManager::GetInstance()->GetSprite(IMAGE_MAP_CUTMAN),
 		m_Map.m_ArrayMapTile, m_Map.row, m_Map.col, m_Map.countTile);
+
+
+	//Set camera
+	POINT array[3] = { {129, 111}, {897, 111}, {897, 232}};
+	m_Camera->Initialize(array, 3);
 }
 
 void CPLayingGameState::DrawText()

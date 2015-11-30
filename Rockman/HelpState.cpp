@@ -16,7 +16,7 @@ void CHelpState::Init()
 	m_background = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_BG_HELP), D3DXVECTOR2(800,600), 1, 1);
 	m_time = 0;
 }
-void CHelpState::Update(CInput* _input,float _time,CCamera* _camera)
+void CHelpState::Update(CInput* _input,float _time)
 {
 	if (_input->GetKeyDown()==DIK_ESCAPE)
 	{
@@ -25,9 +25,9 @@ void CHelpState::Update(CInput* _input,float _time,CCamera* _camera)
 	}
 	
 }
-void CHelpState::Render(LPD3DXSPRITE _spriteHandle,CCamera* _camera)
+void CHelpState::Render(LPD3DXSPRITE _spriteHandle)
 {
-	m_background->Render(_spriteHandle, _camera, D3DXVECTOR3(0,0,0));
+	m_background->Render(_spriteHandle, NULL, D3DXVECTOR3(0,0,0));
 
 }
 CHelpState::~CHelpState()

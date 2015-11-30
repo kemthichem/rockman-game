@@ -15,7 +15,6 @@ CRockmanGame::CRockmanGame( HINSTANCE hInstance ):CGame(hInstance)
 }
 CRockmanGame::~CRockmanGame(void)
 {
-	//Release resource
 	CResourceManager::Release();
 }
 LPD3DXSPRITE CRockmanGame::GetSpriteHandle()
@@ -28,12 +27,12 @@ LPDIRECT3DDEVICE9 CRockmanGame::GetDevice3d()
 }
 void CRockmanGame::RenderWorld()
 {	
-	m_StateManager->Draw(GetSpriteHandle(), m_camera);
+	m_StateManager->Draw(GetSpriteHandle());
 }
 
 void CRockmanGame::UpdateWorld()
 {
-	m_StateManager->Update(m_time->GetDeltaTime(), m_camera, m_input);
+	m_StateManager->Update(m_time->GetDeltaTime(), m_input);
 }
 void CRockmanGame::InitGame()
 {

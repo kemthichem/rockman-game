@@ -11,6 +11,10 @@ private:
 	D3DXVECTOR2 m_posInit;
 	D3DXVECTOR2 m_pos;
 	D3DXMATRIX m_matrixCamera;
+
+	POINT *m_arrayPoint;
+	int countPoint;
+	int curIndex;
 public:
 	static D3DXVECTOR2 g_PosCamera;
 	static bool g_IsMoveX;
@@ -20,6 +24,7 @@ public:
 	CCamera(void);
 	CCamera(D3DXVECTOR2);
 
+	void Initialize(POINT *array, int countPoint);
 	D3DXMATRIX GetMatrixCamera();
 	RECT GetViewPortEx();
 	D3DXVECTOR2 GetPosCamera();

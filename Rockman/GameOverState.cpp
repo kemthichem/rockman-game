@@ -17,7 +17,7 @@ void CGameOverState::Init()
 	m_background = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_BG_GAMEOVER), D3DXVECTOR2(800,600), 1, 1);
 	m_time = 0;
 }
-void CGameOverState::Update(CInput* _input,float _time,CCamera* _camera)
+void CGameOverState::Update(CInput* _input,float _time)
 {
 	if (m_time < TIME_IN_STATE) {
 		m_time += _time;
@@ -25,9 +25,9 @@ void CGameOverState::Update(CInput* _input,float _time,CCamera* _camera)
 		m_StateManager->ChangeState(new CMenuState(m_StateManager));
 	}	
 }
-void CGameOverState::Render(LPD3DXSPRITE _spriteHandle,CCamera* _camera)
+void CGameOverState::Render(LPD3DXSPRITE _spriteHandle)
 {
-	m_background->Render(_spriteHandle, _camera, D3DXVECTOR3(0,0,0));
+	m_background->Render(_spriteHandle, NULL, D3DXVECTOR3(0,0,0));
 
 }
 CGameOverState::~CGameOverState()

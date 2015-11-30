@@ -6,7 +6,6 @@
 #include "Windows.h"
 #include "Input.h"
 #include "Time.h"
-#include "Camera.h"
 #include "GameStateManager.h"
 
 class CGame
@@ -26,7 +25,6 @@ private:
 protected:
 	CInput *m_input;
 	CTimer *m_time;
-	CCamera *m_camera;
 	CGameStateManager *m_StateManager;
 
 	LPD3DXSPRITE m_SpriteHandler;

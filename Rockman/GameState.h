@@ -24,8 +24,8 @@ public:
 	virtual ~CGameState(void);
 	CGameState(CGameStateManager*);
 	virtual void Init();
-	virtual void Update(CInput* ,float,CCamera*);
-	virtual void Render(LPD3DXSPRITE,CCamera*);
+	virtual void Update(CInput* ,float);
+	virtual void Render(LPD3DXSPRITE);
 	void StopSoundBackGound();
 	virtual void RenderTextAndSurface(){};
 };

@@ -19,7 +19,7 @@ void CChangeState::Init()
 	
 	m_time = 0;
 }
-void CChangeState::Update(CInput* _input,float _time,CCamera* _camera)
+void CChangeState::Update(CInput* _input,float _time)
 {
 
 	if (_input->GetKeyDown()==DIK_RETURN)
@@ -28,7 +28,7 @@ void CChangeState::Update(CInput* _input,float _time,CCamera* _camera)
 		return;
 	}
 }
-void CChangeState::Render(LPD3DXSPRITE _spriteHandle,CCamera* _camera)
+void CChangeState::Render(LPD3DXSPRITE _spriteHandle)
 {
 	m_background->Render(_spriteHandle, NULL, D3DXVECTOR3(0,0,0));
 }

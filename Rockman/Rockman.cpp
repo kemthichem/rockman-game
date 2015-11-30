@@ -151,10 +151,13 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	m_isCollisionBottom = false;
 	CEntity::Update(_time, _camera, _input, _listObjectInViewPort);
 
+	m_pos.y = 50 + m_Size.y + 1;
+	m_velloc.y = m_accel.y = 0;
+	m_isCollisionBottom = true;
+	m_IsClimbing = !m_isCollisionBottom;
 
-	//TODO
-	m_pos.y = 100;
-	UpdateRect();
+
+
 
 	//Check keydown
 	m_KeyDown = _input ->GetKeyDown();
@@ -380,8 +383,6 @@ void CRockman::Jump()
 		m_action = Action_Jump;
 	}
 }
-
-
 
 void CRockman::UpdateCollison(CEntity* _other, float _time) {
 	switch (_other->GetType())

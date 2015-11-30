@@ -10,12 +10,11 @@ void CGameStateManager::InitFirstState(CGameState* _state)
 	m_ListState.push_back(_state);
 	m_ListState.back()->Init();
 }
-void CGameStateManager::Init(HWND _wndHandle,LPD3DXSPRITE _spriteHandler, LPD3DXFONT _font, CCamera* _camera)
+void CGameStateManager::Init(HWND _wndHandle,LPD3DXSPRITE _spriteHandler, LPD3DXFONT _font)
 {
 	this->m_wndHandle = _wndHandle;
 	m_spriteHandle = _spriteHandler;
 	m_GraphicText = _font;
-	m_Camera = _camera;
 }
 void CGameStateManager::CleanUp()
 {
@@ -37,25 +36,20 @@ void CGameStateManager::ChangeState(CGameState* _nextState)
 	m_ListState.push_back(m_nextState);
 	m_ListState.back()->Init();
 }
-void CGameStateManager::Update(float _time,CCamera * _camera, CInput *_input)
+void CGameStateManager::Update(float _time, CInput *_input)
 {
-	m_ListState.back()->Update(_input, _time,_camera);
+	m_ListState.back()->Update(_input, _time);
 }
 
-void CGameStateManager::Draw(LPD3DXSPRITE _spriteHandler,CCamera * _camera)
+void CGameStateManager::Draw(LPD3DXSPRITE _spriteHandler)
 {
-	m_ListState.back()->Render(_spriteHandler,_camera);
+	m_ListState.back()->Render(_spriteHandler);
 }
 CGameStateManager::~CGameStateManager(void)
 {
 	for(int i = 0; i < m_ListState.size(); ++i)
 		delete m_ListState[i];
 	m_ListState.empty();
-}
-
-CCamera* CGameStateManager::GetCamera()
-{
-	return m_Camera;
 }
 
 void CGameStateManager::RenderTextAndSurface()
