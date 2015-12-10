@@ -23,8 +23,8 @@ public:
 	vector<CEntity*> m_listObjectViewportToUpdate;
 
 	CQuadTreeNode* m_nodeRoot;
-
-	void LoadNodeInFile(char*);
+	vector<string> getListFromFile(vector<string> listMap, int i);
+	void LoadNodeInFile(vector<string>, int, int);
 	void MapIdToObjectInTree(CQuadTreeNode* _nodeParent, vector<CEntity*> _listobject);
 	vector<CEntity*> GetListObjectInRect(RECT _rect);
 	void Update(CCamera* _camera, float _time);

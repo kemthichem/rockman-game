@@ -67,7 +67,7 @@ CScrewBomber::CScrewBomber(int _id, D3DXVECTOR3 _pos, bool _isUp)
 
 CScrewBomber::CScrewBomber(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide)
 {
-
+	m_Id = objID;
 }
 
 CScrewBomber::~CScrewBomber(void)

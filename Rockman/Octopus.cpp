@@ -36,7 +36,7 @@ COctopus::~COctopus(void)
 
 COctopus::COctopus(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide)
 {
-
+	m_Id = objID;
 }
 
 void COctopus::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity* >_listObjectInViewPort)

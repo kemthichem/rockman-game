@@ -145,7 +145,7 @@ void CPLayingGameState::Init()
 	//Load to quadtree tree
 	quadTree = new CQuadTree();
 	m_Map.LoadMap(pathMap, quadTree);	
-	quadTree->LoadNodeInFile(pathTree);
+	//quadTree->LoadNodeInFile(pathTree);
 	quadTree->MapIdToObjectInTree(quadTree->m_nodeRoot, m_Map.m_ListObjects);
 
 

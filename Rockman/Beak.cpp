@@ -53,7 +53,7 @@ CBeak::CBeak(int _id, D3DXVECTOR3 _pos, bool _isLeft)
 
 CBeak::CBeak(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide)
 {
-
+	m_Id = objID;
 }
 
 CBeak::~CBeak(void)

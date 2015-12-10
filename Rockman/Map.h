@@ -28,6 +28,9 @@ public:
 	CMap();
 	~CMap();
 
+	CQuadTreeNode* m_nodeRoot;
+
+
 	vector<CEntity*> m_ListObjects;
 	vector<string> getListFromFile(vector<string> listMap, int i);
 	vector<string> SplitString(string str, char ch);

@@ -1,6 +1,10 @@
 #include "QuadTree.h"
 #include "utils.h"
+
 #include <fstream>
+#include <iostream>
+#include <sstream>
+#include <iterator>
 
 
 CQuadTree::CQuadTree(void)
@@ -9,6 +13,14 @@ CQuadTree::CQuadTree(void)
 	m_listObjectViewportToRender.clear();
 }
 
+vector<string> CQuadTree::getListFromFile(vector<string> listMap, int i)
+{
+	istringstream istringStream(listMap[i]);
+	istream_iterator<std::string> istream_Iterator(istringStream), end;
+
+	vector<string> sizeObject (istream_Iterator, end);
+	return sizeObject;
+}
 
 CQuadTree::~CQuadTree(void)
 {
@@ -22,41 +34,46 @@ CQuadTree::~CQuadTree(void)
 		delete m_nodeRoot;
 }
 
-void CQuadTree::LoadNodeInFile(char* _pathFileTree)
+void CQuadTree::LoadNodeInFile(vector<string> listMap, int startRow, int nodeCount)
 {
-	ifstream f(_pathFileTree);
+	//ifstream f(_pathFileTree);
 	vector<string> itemsInfo;
 
-	if(f.is_open()){
-		string line;
-		while(1){
-			CQuadTreeNode* node= new CQuadTreeNode();
-			getline(f,line);
-			itemsInfo = CUtils::SplitString(line,' ');
-			if(strcmp(line.c_str(), "<End>") == 0)
-				break;
-			node->m_IdNode = atoi(itemsInfo.at(0).c_str());
-			node->m_Rect.left =(LONG)atoi(itemsInfo.at(1).c_str());
-			node->m_Rect.top =(LONG)atoi(itemsInfo.at(2).c_str());
-			node->m_Rect.right = (LONG)atoi(itemsInfo.at(3).c_str());
-			node->m_Rect.bottom =(LONG)atoi(itemsInfo.at(4).c_str());
-			if (itemsInfo.size() >5)
+
+	//if(f.is_open()){
+	//string line;
+	//while(1){
+	for(int i = startRow; i < startRow + nodeCount; i++)
+	{
+		CQuadTreeNode* node= new CQuadTreeNode();
+		//getline(f,line);
+		itemsInfo = getListFromFile(listMap, i);
+		//if(strcmp(line.c_str(), "<End>") == 0)
+		//break;
+		node->m_IdNode = atoi(itemsInfo.at(0).c_str());
+		node->m_Rect.left =(LONG)atoi(itemsInfo.at(1).c_str());
+		node->m_Rect.top =(LONG)atoi(itemsInfo.at(2).c_str());
+		node->m_Rect.right = (LONG)atoi(itemsInfo.at(3).c_str());
+		node->m_Rect.bottom =(LONG)atoi(itemsInfo.at(4).c_str());
+		if (itemsInfo.size() > 6)
+		{
+			for (int i = 6; i < itemsInfo.size(); i++)
 			{
-				for (int i = 5; i < itemsInfo.size(); i++)
-				{
-					node->m_ListIdObject.push_back(atoi(itemsInfo.at(i).c_str()));
-				}
-			}
-			if(node->m_IdNode!=0)
-			{
-				m_mapNode[node->m_IdNode] = node;
-			}
-			else
-			{
-				m_nodeRoot = node;
+
+				node->m_ListIdObject.push_back(atoi(itemsInfo.at(i).c_str()));
 			}
 		}
-	}	
+		if(node->m_IdNode!=0)
+		{
+			m_mapNode[node->m_IdNode] = node;
+		}
+		else
+		{
+			m_nodeRoot = node;
+		}
+		//}
+		//}	
+	}
 	CreateTree(m_nodeRoot, m_mapNode);
 }
 
@@ -90,24 +107,24 @@ vector<CEntity*> CQuadTree::GetListObjectInRect(RECT _rect)
 	{
 		vector<CEntity*> listObjectInNode;
 		m_listNodeInViewPort[i]->GetListObjectInNode(_rect, listObjectInNode);
-				
-		
+
+
 		//m_listObjectViewportToUpdate.insert(m_listObjectViewportToUpdate.begin(), listObjectInNode.begin(), listObjectInNode.end());
 
-			for (int j = 0; j < listObjectInNode.size(); j++) {
-				if (listObjectInNode[j]->IsShowed()) {
-					m_listObjectViewportToRender.push_back(listObjectInNode[j]);
-				}
-				if ((int)listObjectInNode[j]->GetType() > -10) {
-					m_listObjectViewportToUpdate.push_back(listObjectInNode[j]);
+		for (int j = 0; j < listObjectInNode.size(); j++) {
+			if (listObjectInNode[j]->IsShowed()) {
+				m_listObjectViewportToRender.push_back(listObjectInNode[j]);
+			}
+			if ((int)listObjectInNode[j]->GetType() > -10) {
+				m_listObjectViewportToUpdate.push_back(listObjectInNode[j]);
 
-					if (listObjectInNode[j]->GetType() == BLOCK_CAMERA) {
-						CCamera::g_IsMoveX = false;
-					} else if (listObjectInNode[j]->GetType() == UNLOCK_CAMERA) {
-						CCamera::g_IsMoveX = true;
-					}
+				if (listObjectInNode[j]->GetType() == BLOCK_CAMERA) {
+					CCamera::g_IsMoveX = false;
+				} else if (listObjectInNode[j]->GetType() == UNLOCK_CAMERA) {
+					CCamera::g_IsMoveX = true;
 				}
 			}
+		}
 	}
 	m_listObjectViewportToUpdate = ClearDuplicate(m_listObjectViewportToUpdate);
 	return m_listObjectViewportToUpdate;
@@ -194,7 +211,7 @@ vector<CQuadTreeNode*> CQuadTree::GetListNodeIntersectRect(CQuadTreeNode* _nodeP
 	{
 		m_listNodeInViewPort.push_back(_nodeParent);
 	}
-	
+
 	if(_nodeParent->m_ListIdObject.size()==0 && IsIntersect(_nodeParent->m_Rect, _rect))
 	{
 		if(_nodeParent->ChildTopLeft != NULL)

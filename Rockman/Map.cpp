@@ -17,6 +17,7 @@
 #include "Met.h"
 #include "Spine.h"
 #include "LockCamera.h"
+#include "QuadTree.h"
 
 #include <fstream>
 #include <iostream>
@@ -131,7 +132,14 @@ void  CMap::LoadMap(char* pathMap,  CQuadTree *quadTree)
 		// add object game
 		AddObjectGame(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 	}
-	int temp = 1;
+	int nodeCount = atoi(getListFromFile(listMap, row + 12 + objectCount).at(0).c_str());
+	int startRow = row + 14 + objectCount;
+	quadTree->LoadNodeInFile(listMap, startRow, nodeCount);
+
+	quadTree->MapIdToObjectInTree(quadTree->m_nodeRoot, m_ListObjects);
+	
+	
+
 }
 
 vector<string> CMap::getListFromFile(vector<string> listMap, int i)

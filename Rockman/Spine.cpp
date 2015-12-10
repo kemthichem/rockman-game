@@ -14,7 +14,7 @@ CSpine::CSpine(int _id, D3DXVECTOR3 _pos)
 
 CSpine::CSpine(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide)
 {
-
+	m_Id = objID;
 }
 
 CSpine::~CSpine(void)

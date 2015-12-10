@@ -17,7 +17,7 @@ CBigEye::CBigEye(int _id, D3DXVECTOR3 _pos)
 }
 CBigEye::CBigEye(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide)
 {
-
+	m_Id = objID;
 }
 
 CBigEye::~CBigEye(void)
