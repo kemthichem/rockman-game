@@ -200,20 +200,7 @@ void CCutMan::UpdateCollison(CEntity* _other,float _time)
 		(dynamic_cast<CRockman*>(_other))->SetInjured(this, -20);
 		break;
 	case BLOCK:
-	case LAND1:
-	case LAND3:
-	case LAND2:
-	case LANDWHITE:
-	case LANDICEBERG:
-		{		
-			float timeEntry = m_collision->SweptAABB(this,_other,_time);
-			m_directCollision = m_collision->GetDirectCollision();
-			if (timeEntry < 1.0f)
-			{
-				ExecuteCollision(_other,m_directCollision,timeEntry);
-			}
-		}
-		break;
+
 	default:
 		break;
 	}

@@ -41,11 +41,7 @@ void CItem::UpdateCollison(CEntity* _other,float _time)
 		//(dynamic_cast<CRockman*>(_other))->SetInjured(this);
 		break;
 	case BLOCK:
-	case LAND1:
-	case LANDWHITE:
-	case LANDICEBERG:
-		break;
-		m_velloc = m_accel = D3DXVECTOR2(0,0);
+	
 	default:
 		break;
 	}
@@ -98,38 +94,7 @@ void CItem::ExecuteCollision(CEntity* _other, DirectCollision m_directCollision,
 	switch (_other->GetType())
 	{
 	case BLOCK:
-	case LAND1:
-	case LANDWHITE:
-	case LANDICEBERG:
-		{
-			if( m_directCollision == BOTTOM)
-			{
-				m_pos.y = _other->GetRect().top + m_Size.y + 1;
-				m_velloc.y = 0;
-			}
 
-			if( m_directCollision == LEFT)
-			{
-				m_velloc.x = 0;
-				m_accel.x = 0;
-				m_pos.x = _other->GetRect().right ;
-			}
-
-			if( m_directCollision == RIGHT)
-			{
-				m_velloc.x = 0;
-				m_accel.x = 0;
-				m_pos.x = _other->GetRect().left - m_Size.x;
-			}
-
-			if (m_directCollision == TOP)
-			{
-				m_pos.y = _other->GetRect().bottom;
-				m_velloc.y = 0;
-			}
-			m_velloc.x = 0;
-		}
-		break;
 	default:
 		break;
 	}

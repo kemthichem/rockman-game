@@ -417,45 +417,7 @@ void CRockman::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,
 		//ListObjectColision
 		switch (_other->GetType())
 		{
-		case BLOCK:
-		case LAND1:
-		case LAND3:
-		case LAND2:
-		case LANDWHITE:
-		case LANDICEBERG:
-			{ 
-				//Not check collison with block when climbing
-				//if (m_IsClimbing) 
-					//break;
-				if( m_directCollion == BOTTOM)
-				{
-					m_pos.y = _other->GetRect().top + m_Size.y + 1;
-					m_velloc.y = m_accel.y = 0;
-					m_isCollisionBottom = true;
-					m_IsClimbing = !m_isCollisionBottom;
-				}
-
-				if( m_directCollion == LEFT)
-				{
-					m_velloc.x = 0;
-					m_accel.x = 0;
-					m_pos.x = _other->GetRect().right + 1 ;
-				}
-
-				if( m_directCollion == RIGHT)
-				{
-					m_velloc.x = 0;
-					m_accel.x = 0;
-					m_pos.x = _other->GetRect().left - m_Size.x -1;
-				}
-
-				if (m_directCollion == TOP)
-				{
-					m_pos.y = _other->GetRect().bottom;
-					m_velloc.y = 0;
-				}
-			}
-			break;
+		case BLOCK:		
 		case LADDER:
 			if( m_directCollion == BOTTOM)
 			{
