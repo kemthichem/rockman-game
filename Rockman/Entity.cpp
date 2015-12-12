@@ -56,7 +56,7 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 
 	if (m_Type == ROCKMAN)
 	{
-		_camera->Update(D3DXVECTOR2(m_pos.x, m_pos.y));
+		_camera->Update(D3DXVECTOR2(m_pos.x, m_pos.y), m_velloc);
 	}
 
 }

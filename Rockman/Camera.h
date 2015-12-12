@@ -13,13 +13,15 @@ private:
 	D3DXMATRIX m_matrixCamera;
 
 	POINT *m_arrayPoint;
-	int countPoint;
-	int curIndex;
+	int m_countPoint;
+	int curIndex1, curIndex2;
+	RECT GetCurrentRect();
+	bool IsInRect(POINT inPoint);
 public:
 	static D3DXVECTOR2 g_PosCamera;
 	static bool g_IsMoveX;
 	RECT m_viewPort;
-	void Update(D3DXVECTOR2);
+	void Update(D3DXVECTOR2, D3DXVECTOR2);
 
 	CCamera(void);
 	CCamera(D3DXVECTOR2);

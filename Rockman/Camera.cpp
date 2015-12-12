@@ -15,6 +15,8 @@ CCamera::CCamera(D3DXVECTOR2 _pos)
 {
 	m_pos = _pos;
 	g_PosCamera = m_pos;
+
+	curIndex1 = curIndex2 = 0;
 }
 
 D3DXMATRIX CCamera::GetMatrixCamera()
@@ -30,23 +32,62 @@ CCamera::~CCamera(void)
 {
 }
 
-void CCamera::Update(D3DXVECTOR2 _pos)
+void CCamera::Update(D3DXVECTOR2 _pos, D3DXVECTOR2 _velloc)
 {
-	bool isMoveX, isMoveY;
+	bool isTurnLeft = _velloc.x < 0;
+	int nextIndex = curIndex1 < m_countPoint - 1 ? curIndex1 + 1: m_countPoint -1;
+	if (isTurnLeft) {
+		nextIndex = curIndex1 > 0 ? curIndex1 - 1: 0;
+	}
+
+
+
+
+
+
+
+	bool isHavePointNextX = false;
+	if (curIndex1 != nextIndex) {
+		isHavePointNextX = m_arrayPoint[nextIndex].y == m_arrayPoint[curIndex1].y ? true : false;
+	}
 
 	//check next point follow x
-	if (_pos.x > m_arrayPoint[curIndex].x) {
+	
+	if (_pos.x > m_arrayPoint[curIndex1].x && isHavePointNextX) {
 		m_pos.x = (float)_pos.x - WIDTH_SCREEN/2;
 	}
 
-	//check pre point follow x
+	int dir = isTurnLeft ? -1 : 1;
+	if (_pos.x * dir> m_arrayPoint[nextIndex].x *dir && isHavePointNextX) {
+		curIndex1 = nextIndex;
+	}
 
-	//check next point follow y
 	//check pre point follow y
+	if (0 < curIndex1 && curIndex1 < m_countPoint - 2) {
+		int nextIndex = curIndex1 - 1;
 
-	if (_pos.x >= CMap::g_widthMap - WIDTH_SCREEN - 14 && m_pos.x <= CMap::g_widthMap - 2 * WIDTH_SCREEN) {
-		CMoveMap::g_TypeMove = TypeMove::MOVEX;
-		//MoveX(WIDTH_SCREEN);
+		if (m_arrayPoint[curIndex1].x == m_arrayPoint[curIndex1 - 1].x) {
+
+		}
+
+		else
+			//check next point follow y
+			if (m_arrayPoint[curIndex1].x == m_arrayPoint[curIndex1 + 1].x) {
+				//turn up
+				if (_velloc.y > 0) {
+					if (_pos.y > m_arrayPoint[curIndex1 + 1].y) {
+						nextIndex = curIndex1 + 1;
+					} 
+				} 
+				//turn down
+				else if (_velloc.y < 0) {
+					if (_pos.y < m_arrayPoint[curIndex1 + 1].y) {
+						nextIndex = curIndex1 + 1;
+					} 
+				}
+			}
+			//check pre point follow y
+
 	}
 
 	m_viewPort.left = m_pos.x;
@@ -135,12 +176,40 @@ RECT CCamera::GetViewPortEx()
 	return rect;
 }
 
-void CCamera::Initialize(POINT *array, int m_countPoint)
+void CCamera::Initialize(POINT *array, int countPoint)
 {
 	m_arrayPoint = array;
 	m_countPoint = countPoint;
 
-	curIndex = 0;
+	curIndex1 = 0;
+	if (countPoint >= 2) {
+		curIndex2 = 1;
+	}
+}
+
+RECT CCamera::GetCurrentRect()
+{
+
+
+	RECT rect;
+	rect.top = m_arrayPoint[curIndex1].y > m_arrayPoint[curIndex2].y ? m_arrayPoint[curIndex1].y : m_arrayPoint[curIndex2].y;
+	rect.left = m_arrayPoint[curIndex1].x < m_arrayPoint[curIndex2].x ? m_arrayPoint[curIndex1].x : m_arrayPoint[curIndex2].x;
+	rect.bottom = rect.top - (abs(m_arrayPoint[curIndex1].y - m_arrayPoint[curIndex2].y));
+	rect.right = rect.left + (abs(m_arrayPoint[curIndex1].x - m_arrayPoint[curIndex2].x));
+
+	return rect;
+}
+
+bool CCamera::IsInRect(POINT inPoint)
+{
+	RECT r = GetCurrentRect();
+
+	if (inPoint.x < r.left || inPoint.x > r.right
+		|| inPoint.y < r.bottom || inPoint.y > r.top)
+	{
+		return false;
+	}
+	return true;
 }
 
 bool CCamera::g_IsMoveX = true;
