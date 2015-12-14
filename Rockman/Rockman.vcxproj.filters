@@ -171,15 +171,6 @@
     <ClCompile Include="Ladder.cpp">
       <Filter>ObjectGame\Block</Filter>
     </ClCompile>
-    <ClCompile Include="Land1.cpp">
-      <Filter>ObjectGame\Block</Filter>
-    </ClCompile>
-    <ClCompile Include="LandIceberg.cpp">
-      <Filter>ObjectGame\Block</Filter>
-    </ClCompile>
-    <ClCompile Include="LandWhite.cpp">
-      <Filter>ObjectGame\Block</Filter>
-    </ClCompile>
     <ClCompile Include="Blood.cpp">
       <Filter>Item</Filter>
     </ClCompile>
@@ -206,12 +197,6 @@
     </ClCompile>
     <ClCompile Include="BulletGutsman.cpp">
       <Filter>Item</Filter>
-    </ClCompile>
-    <ClCompile Include="Land3.cpp">
-      <Filter>ObjectGame\Block</Filter>
-    </ClCompile>
-    <ClCompile Include="Land2.cpp">
-      <Filter>ObjectGame\Block</Filter>
     </ClCompile>
     <ClCompile Include="LockCamera.cpp">
       <Filter>ObjectGame\Block</Filter>
@@ -326,15 +311,6 @@
     <ClInclude Include="Ladder.h">
       <Filter>ObjectGame\Block</Filter>
     </ClInclude>
-    <ClInclude Include="Land1.h">
-      <Filter>ObjectGame\Block</Filter>
-    </ClInclude>
-    <ClInclude Include="LandIceberg.h">
-      <Filter>ObjectGame\Block</Filter>
-    </ClInclude>
-    <ClInclude Include="LandWhite.h">
-      <Filter>ObjectGame\Block</Filter>
-    </ClInclude>
     <ClInclude Include="MoveMap.h">
       <Filter>ObjectGame\Block</Filter>
     </ClInclude>
@@ -364,12 +340,6 @@
     </ClInclude>
     <ClInclude Include="BulletGutsman.h">
       <Filter>Item</Filter>
-    </ClInclude>
-    <ClInclude Include="Land3.h">
-      <Filter>ObjectGame\Block</Filter>
-    </ClInclude>
-    <ClInclude Include="Land2.h">
-      <Filter>ObjectGame\Block</Filter>
     </ClInclude>
     <ClInclude Include="LockCamera.h">
       <Filter>ObjectGame\Block</Filter>

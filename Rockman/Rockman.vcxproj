@@ -108,11 +108,6 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Ladder.cpp" />
-    <ClCompile Include="Land1.cpp" />
-    <ClCompile Include="Land2.cpp" />
-    <ClCompile Include="Land3.cpp" />
-    <ClCompile Include="LandIceberg.cpp" />
-    <ClCompile Include="LandWhite.cpp" />
     <ClCompile Include="LockCamera.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MenuState.cpp" />
@@ -163,11 +158,6 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Ladder.h" />
-    <ClInclude Include="Land1.h" />
-    <ClInclude Include="Land2.h" />
-    <ClInclude Include="Land3.h" />
-    <ClInclude Include="LandIceberg.h" />
-    <ClInclude Include="LandWhite.h" />
     <ClInclude Include="LockCamera.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MenuState.h" />
