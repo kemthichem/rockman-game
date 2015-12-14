@@ -155,7 +155,7 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 {
 	CEntity *object = NULL;
 
-	switch (objID)
+	switch (typeID)
 	{
 	case ID_ENEMY_BALL:
 		break;

@@ -53,8 +53,8 @@ void CQuadTree::LoadNodeInFile(vector<string> listMap, int startRow, int nodeCou
 		node->m_IdNode = atoi(itemsInfo.at(0).c_str());
 		node->m_Rect.left =(LONG)atoi(itemsInfo.at(1).c_str());
 		node->m_Rect.top =(LONG)atoi(itemsInfo.at(2).c_str());
-		node->m_Rect.right = (LONG)atoi(itemsInfo.at(3).c_str());
-		node->m_Rect.bottom =(LONG)atoi(itemsInfo.at(4).c_str());
+		node->m_Rect.right = node->m_Rect.left + (LONG)atoi(itemsInfo.at(3).c_str());
+		node->m_Rect.bottom =node->m_Rect.top - (LONG)atoi(itemsInfo.at(4).c_str());
 		if (itemsInfo.size() > 6)
 		{
 			for (int i = 6; i < itemsInfo.size(); i++)

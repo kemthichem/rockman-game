@@ -55,7 +55,7 @@ CPLayingGameState::~CPLayingGameState(void)
 void CPLayingGameState::Render(LPD3DXSPRITE _spriteHandle)
 {
 	rockman->Render(_spriteHandle, m_Camera);
-	//quadTree->Render(_spriteHandle, _camera);
+	quadTree->Render(_spriteHandle, m_Camera);
 
 	m_ScereryTile->Render(_spriteHandle, m_Camera);
 }

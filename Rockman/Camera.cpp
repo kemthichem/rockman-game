@@ -16,7 +16,7 @@ CCamera::CCamera(D3DXVECTOR2 _pos)
 	m_pos = _pos;
 	g_PosCamera = m_pos;
 
-	curIndex1 = curIndex2 = 0;
+	curIndex = 0;
 }
 
 D3DXMATRIX CCamera::GetMatrixCamera()
@@ -32,63 +32,88 @@ CCamera::~CCamera(void)
 {
 }
 
+int CCamera::GetNextIndexY(long _posY, float _vY)
+{
+	
+	POINT curPoint = m_arrayPoint[curIndex];
+	int nIdx = (curIndex > m_countPoint - 2) ? -1 : curIndex + 1;
+	int pIdx = curIndex < 0 ? -1 : curIndex - 1;
+	int arr[2] = { nIdx, pIdx };
+
+	int dir = _vY > 0 ? 1 : -1;
+
+	int idx = -1;
+	for (int i = 0; i < 2; i++)
+	{
+		idx = arr[i];
+		if ( idx != -1) {
+
+			if (m_arrayPoint[idx].x == curPoint.x && m_arrayPoint[idx].y * dir > curPoint.y * dir) {
+				return idx;
+			}
+		}
+	}
+
+	return -1;
+}
+
 void CCamera::Update(D3DXVECTOR2 _pos, D3DXVECTOR2 _velloc)
 {
-	bool isTurnLeft = _velloc.x < 0;
-	int nextIndex = curIndex1 < m_countPoint - 1 ? curIndex1 + 1: m_countPoint -1;
-	if (isTurnLeft) {
-		nextIndex = curIndex1 > 0 ? curIndex1 - 1: 0;
+	//X
+	POINT pCur = m_arrayPoint[curIndex];
+	bool isHaveNextPointX = false;
+	bool isHavePrePointX = false;
+
+	if (curIndex < m_countPoint - 2) {
+		isHaveNextPointX = pCur.y == m_arrayPoint[curIndex + 1].y;
 	}
 
-
-
-
-
-
-
-	bool isHavePointNextX = false;
-	if (curIndex1 != nextIndex) {
-		isHavePointNextX = m_arrayPoint[nextIndex].y == m_arrayPoint[curIndex1].y ? true : false;
+	if (curIndex > 0) {
+		isHavePrePointX = pCur.y == m_arrayPoint[curIndex -1].y;
 	}
 
-	//check next point follow x
-	
-	if (_pos.x > m_arrayPoint[curIndex1].x && isHavePointNextX) {
-		m_pos.x = (float)_pos.x - WIDTH_SCREEN/2;
-	}
-
-	int dir = isTurnLeft ? -1 : 1;
-	if (_pos.x * dir> m_arrayPoint[nextIndex].x *dir && isHavePointNextX) {
-		curIndex1 = nextIndex;
-	}
-
-	//check pre point follow y
-	if (0 < curIndex1 && curIndex1 < m_countPoint - 2) {
-		int nextIndex = curIndex1 - 1;
-
-		if (m_arrayPoint[curIndex1].x == m_arrayPoint[curIndex1 - 1].x) {
-
+	if (isHaveNextPointX) {
+		if (_pos.x > pCur.x) {
+			m_pos.x = (float)_pos.x - WIDTH_SCREEN/2;
 		}
 
-		else
-			//check next point follow y
-			if (m_arrayPoint[curIndex1].x == m_arrayPoint[curIndex1 + 1].x) {
-				//turn up
-				if (_velloc.y > 0) {
-					if (_pos.y > m_arrayPoint[curIndex1 + 1].y) {
-						nextIndex = curIndex1 + 1;
-					} 
-				} 
-				//turn down
-				else if (_velloc.y < 0) {
-					if (_pos.y < m_arrayPoint[curIndex1 + 1].y) {
-						nextIndex = curIndex1 + 1;
-					} 
-				}
-			}
-			//check pre point follow y
+		if (_pos.x > m_arrayPoint[curIndex + 1].x) {
+			curIndex = curIndex + 1;
+		}
+	} else
+	{
+		if (isHavePrePointX) {
+			if (_pos.x < pCur.x) {
+				m_pos.x = (float)_pos.x - WIDTH_SCREEN/2;
+			} 
 
+			if (_pos.x < m_arrayPoint[curIndex - 1].x) {
+				curIndex = curIndex - 1;
+			}
+		}
 	}
+
+
+	int nextIndexY = GetNextIndexY(pCur.y, _velloc.y);
+	if (nextIndexY != -1) {
+		int dir = _velloc.y > 0 ? 1 : -1;
+		if (m_arrayPoint[nextIndexY].y * dir > _pos.y * dir) {
+			//MoveY;
+			int k = 0;
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
 
 	m_viewPort.left = m_pos.x;
 	m_viewPort.right = m_viewPort.left + WIDTH_SCREEN;
@@ -181,21 +206,14 @@ void CCamera::Initialize(POINT *array, int countPoint)
 	m_arrayPoint = array;
 	m_countPoint = countPoint;
 
-	curIndex1 = 0;
-	if (countPoint >= 2) {
-		curIndex2 = 1;
-	}
+	curIndex = 0;
 }
 
 RECT CCamera::GetCurrentRect()
 {
 
 
-	RECT rect;
-	rect.top = m_arrayPoint[curIndex1].y > m_arrayPoint[curIndex2].y ? m_arrayPoint[curIndex1].y : m_arrayPoint[curIndex2].y;
-	rect.left = m_arrayPoint[curIndex1].x < m_arrayPoint[curIndex2].x ? m_arrayPoint[curIndex1].x : m_arrayPoint[curIndex2].x;
-	rect.bottom = rect.top - (abs(m_arrayPoint[curIndex1].y - m_arrayPoint[curIndex2].y));
-	rect.right = rect.left + (abs(m_arrayPoint[curIndex1].x - m_arrayPoint[curIndex2].x));
+	RECT rect = {0};
 
 	return rect;
 }

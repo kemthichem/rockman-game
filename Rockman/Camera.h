@@ -14,9 +14,10 @@ private:
 
 	POINT *m_arrayPoint;
 	int m_countPoint;
-	int curIndex1, curIndex2;
+	int curIndex;
 	RECT GetCurrentRect();
 	bool IsInRect(POINT inPoint);
+	int GetNextIndexY(long _posY, float _vY);
 public:
 	static D3DXVECTOR2 g_PosCamera;
 	static bool g_IsMoveX;
