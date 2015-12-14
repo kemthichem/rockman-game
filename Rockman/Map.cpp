@@ -1,9 +1,4 @@
 #include"Map.h"
-#include "Land1.h"
-#include "Land2.h"
-#include "Land3.h"
-#include "LandWhite.h"
-#include "LandIceberg.h"
 #include "MoveMap.h"
 #include "Blader.h"
 #include "Ladder.h"
@@ -137,9 +132,6 @@ void  CMap::LoadMap(char* pathMap,  CQuadTree *quadTree)
 	quadTree->LoadNodeInFile(listMap, startRow, nodeCount);
 
 	quadTree->MapIdToObjectInTree(quadTree->m_nodeRoot, m_ListObjects);
-	
-	
-
 }
 
 vector<string> CMap::getListFromFile(vector<string> listMap, int i)

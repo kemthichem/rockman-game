@@ -20,7 +20,7 @@ public:
 	LPD3DXSPRITE GetSpriteHandle();
 	LPDIRECT3DDEVICE9 GetDevice3d();
 	LPD3DXFONT GetLPFont();
-	CRockmanGame(void);
+
 	CRockmanGame(HINSTANCE hInstance);
 	CRockman *rockman;
 	virtual void InitGame();

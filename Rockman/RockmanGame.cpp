@@ -6,10 +6,6 @@
 #include "PLayingGameState.h"
 #include "ChangeState.h"
 
-CRockmanGame::CRockmanGame(void)
-{
-
-}
 CRockmanGame::CRockmanGame( HINSTANCE hInstance ):CGame(hInstance)
 {	
 }

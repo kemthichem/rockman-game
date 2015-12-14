@@ -75,7 +75,7 @@ Total_Row	Total_Column	Total_Tile
 ObjCount
 293
 ObjID	TypeID	PosX	PosY	Width	Height	PosXCollide	PosYCollide	WidthCollide	HeightCollide
-1	340	129	111	8	8	125	115	8	8
+1		340		129		111		8		8		125			 115		8				8
 2	340	897	111	8	8	893	115	8	8
 1361	340	897	232	8	8	893	236	8	8
 1362	340	897	472	8	8	893	476	8	8
