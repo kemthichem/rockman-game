@@ -113,9 +113,11 @@ void CCamera::Update(D3DXVECTOR2 _pos, D3DXVECTOR2 _velloc)
 		char dir = _velloc.y > 0 ? 1 : -1;
 		long offsetY =  m_curIsBound ? HEIGHT_SCREEN / 2 : 0;
 		if (_pos.y * dir > (m_arrayPoint[curIndex].y + HEIGHT_SCREEN  - offsetY)* dir) {
-			indexMoveTo = nextIndexY;
-			MoveMap();
-			return;
+			if (m_pos.x == m_arrayPoint[curIndex].x - WIDTH_SCREEN / 2) {
+				indexMoveTo = nextIndexY;
+				MoveMap();
+				return;
+			}
 		}
 	}
 
@@ -157,7 +159,7 @@ void CCamera::MoveMap()
 
 		long offsetY = m_curIsBound ? HEIGHT_SCREEN / 2 : 0;
 
-		if (m_pos.x + WIDTH_SCREEN / 2 == m_arrayPoint[indexMoveTo].x && dirY *m_pos.y >= dirY * (m_arrayPoint[indexMoveTo].y + HEIGHT_SCREEN/2 + offsetY)) {
+		if (m_arrayPoint[curIndex].x == m_arrayPoint[indexMoveTo].x && dirY *m_pos.y >= dirY * (m_arrayPoint[indexMoveTo].y + HEIGHT_SCREEN/2 + offsetY)) {
 			g_IsMoving = false;
 			curIndex = indexMoveTo;
 			m_pos.y = m_arrayPoint[curIndex].y + (HEIGHT_SCREEN/2 + offsetY);
