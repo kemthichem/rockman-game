@@ -11,6 +11,7 @@ CEntity::CEntity(void)
 	m_velloc = D3DXVECTOR2(0,0);
 	m_accel = D3DXVECTOR2(0,0);
 	m_Intersect = 0;
+	m_Sprite = NULL;
 	m_collision = new CAABBCollision();
 
 	m_Size = D3DXVECTOR2(0,0);
@@ -39,10 +40,16 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 	}
 
 	//sort 
-	if (!m_isTurnLeft)
+	if (m_velloc.x > 0)
 		std::sort(listObjectCollision.begin(),listObjectCollision.end(),m_collision->compSortObjectLeft);
 	else
+		if (m_velloc.x < 0)
 		std::sort(listObjectCollision.begin(),listObjectCollision.end(),m_collision->compSortObjectRight);
+
+		else {
+			std::sort(listObjectCollision.begin(),listObjectCollision.end(),m_collision->compSortObjectTop);
+			std::sort(listObjectCollision.begin(),listObjectCollision.end(),m_collision->compSortObjectForType);
+		}
 
 	for (int i = 0; i < listObjectCollision.size(); i++)
 	{

@@ -55,6 +55,9 @@ void CQuadTree::LoadNodeInFile(vector<string> listMap, int startRow, int nodeCou
 		node->m_Rect.top =(LONG)atoi(itemsInfo.at(2).c_str());
 		node->m_Rect.right = node->m_Rect.left + (LONG)atoi(itemsInfo.at(3).c_str());
 		node->m_Rect.bottom =node->m_Rect.top - (LONG)atoi(itemsInfo.at(4).c_str());
+
+		if (node->m_IdNode==256)
+			int k = 0;
 		if (itemsInfo.size() > 6)
 		{
 			for (int i = 6; i < itemsInfo.size(); i++)
@@ -128,7 +131,7 @@ void CQuadTree::Update(CCamera* _camera, float _time)
 {
 	for (int i = 0; i < m_listObjectViewportToUpdate.size(); i++)
 	{
-		if (m_listObjectViewportToUpdate[i]->GetType() != ROCKMAN)
+		if (m_listObjectViewportToUpdate[i]->GetType() > ROCKMAN)
 			m_listObjectViewportToUpdate[i]->Update(_time, _camera, NULL, m_listObjectViewportToUpdate);
 	}
 }

@@ -50,13 +50,14 @@ private:
 	float m_PosXClimb;
 	bool m_IsClimbing;
 	bool m_CanDown;
+	bool m_IsLadderBottom;
 
 
 	void Injunred(bool _isDirectX, float _time);
 	bool m_isCollisionBottom;
 	float m_TimeInjured;
 	float m_TimeShot;
-	int m_Injuring;//0: not Injuring - 1:right - -1:left
+	char m_Injuring;//0: not Injuring - 1:right - -1:left
 	int m_KeyDown;
 	ActionRockman m_action;
 	void UpdateSprite(float _time);

@@ -10,14 +10,20 @@ CLadder::CLadder(int _id, D3DXVECTOR3 _pos, int _height)
 	m_pos.z = DEPTH_BLOCK;
 	m_accel = D3DXVECTOR2(0,0);
 
-	m_HeightLadder = _height;
-	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite() * m_HeightLadder);
+	//m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite() * m_HeightLadder);
 	UpdateRect();
 }
 
 CLadder::CLadder(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide)
 {
 	m_Id = objID;
+	m_Type = LADDER;
+	m_accel = D3DXVECTOR2(0,0);
+
+	m_Size = D3DXVECTOR2(width, height);
+	m_pos = D3DXVECTOR3(posX - m_Size.x / 2, posY + m_Size.y / 2, 0);
+	m_pos.z = DEPTH_BLOCK;
+	UpdateRect();
 }
 
 CLadder::~CLadder(void)
@@ -30,12 +36,6 @@ void CLadder::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntit
 }
 
 void CLadder::Render(LPD3DXSPRITE _spriteHandler, CCamera* _camera) {
-	D3DXVECTOR3 posRender = m_pos;
-	for (int i = 0; i < m_HeightLadder; i++)
-	{
-		posRender.y = m_pos.y - i * m_Sprite->GetHeightRectSprite();
-		RenderEachSprite(_spriteHandler, _camera,m_Sprite, posRender);
-	}
 	
 }
 

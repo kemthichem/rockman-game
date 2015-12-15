@@ -2,7 +2,7 @@
 #define HEIGHT_SCREEN_WINDOW HEIGHT_SCREEN * 2 + 28 + 7
 
 #define WIDTH_SCREEN 130 * 2
-#define HEIGHT_SCREEN 111 * 2
+#define HEIGHT_SCREEN 110 * 2
 
 //Define depth
 #define DEPTH_SCENERY 1.0f

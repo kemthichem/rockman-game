@@ -4,6 +4,8 @@
 #include "Define.h"
 
 #define DIS_MOVE (5.0f)
+#define OFFSET_MAP_Y (10.0f)
+
 
 POINT CCamera::g_PosCamera = { 0 };
 CCamera::CCamera(void)
@@ -37,7 +39,7 @@ CCamera::~CCamera(void)
 
 int CCamera::GetNextIndexY(POINT _pos, float _vY)
 {
-	if (_vY == 1) return -1;
+	if (_vY == 0) return -1;
 
 	POINT curPoint = m_arrayPoint[curIndex];
 	if (_pos.x > curPoint.x + WIDTH_SCREEN / 2 || _pos.x < curPoint.x - WIDTH_SCREEN / 2) return -1;
@@ -111,8 +113,9 @@ void CCamera::Update(D3DXVECTOR2 _pos, D3DXVECTOR2 _velloc)
 	int nextIndexY = GetNextIndexY(rPos, _velloc.y);
 	if (nextIndexY != -1) {
 		char dir = _velloc.y > 0 ? 1 : -1;
-		long offsetY =  m_curIsBound ? HEIGHT_SCREEN / 2 : 0;
-		if (_pos.y * dir > (m_arrayPoint[curIndex].y + HEIGHT_SCREEN  - offsetY)* dir) {
+		long offsetY =  m_curIsBound ? HEIGHT_SCREEN / 2 + OFFSET_MAP_Y : 0;
+		long temp = _velloc.y > 0 ? m_arrayPoint[curIndex].y + HEIGHT_SCREEN + OFFSET_MAP_Y - offsetY : m_arrayPoint[curIndex].y + offsetY;
+		if (_pos.y * dir > (temp)* dir) {
 			if (m_pos.x == m_arrayPoint[curIndex].x - WIDTH_SCREEN / 2) {
 				indexMoveTo = nextIndexY;
 				MoveMap();
@@ -157,14 +160,12 @@ void CCamera::MoveMap()
 		m_pos.x += dirX * DIS_MOVE;
 		m_pos.y += dirY * DIS_MOVE;
 
-		long offsetY = m_curIsBound ? HEIGHT_SCREEN / 2 : 0;
-
-		if (m_arrayPoint[curIndex].x == m_arrayPoint[indexMoveTo].x && dirY *m_pos.y >= dirY * (m_arrayPoint[indexMoveTo].y + HEIGHT_SCREEN/2 + offsetY)) {
+		long temp = dirY == 1 ? m_arrayPoint[indexMoveTo].y + OFFSET_MAP_Y + HEIGHT_SCREEN : m_arrayPoint[curIndex].y - OFFSET_MAP_Y;
+		if (m_arrayPoint[curIndex].x == m_arrayPoint[indexMoveTo].x && dirY *m_pos.y >= dirY * (temp)) {
 			g_IsMoving = false;
+			m_pos.y = temp;
 			curIndex = indexMoveTo;
-			m_pos.y = m_arrayPoint[curIndex].y + (HEIGHT_SCREEN/2 + offsetY);
 			indexMoveTo = -1;
-
 		} 
 
 		m_viewPort.left = m_pos.x;

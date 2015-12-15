@@ -20,7 +20,7 @@ CBlock::CBlock(int objID, int typeID, double posX, double posY, int width, int h
 {
 	m_Id = objID;
 	m_Type = BLOCK;
-	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES), D3DXVECTOR2(140,35), 4, 1, D3DXVECTOR2(3,1), D3DXVECTOR2(1,1), D3DXVECTOR2(1,1));
+	//m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES), D3DXVECTOR2(140,35), 4, 1, D3DXVECTOR2(3,1), D3DXVECTOR2(1,1), D3DXVECTOR2(1,1));
 	m_Size = D3DXVECTOR2(width, height);
 	m_pos = D3DXVECTOR3(posX - m_Size.x / 2, posY + m_Size.y / 2, 0);
 	m_pos.z = DEPTH_BLOCK;

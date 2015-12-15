@@ -34,7 +34,12 @@ public:
 	float SweptAABB(CEntity* _ob1, CEntity* _ob2, float _time);
 	bool IsCollision(CEntity* _ob1, CEntity* _ob2, float _time);
 	float intersectX(CEntity* a,CEntity *b,float _time);
+	static bool IntersectRectX(RECT r1, RECT r2);
+
 	static bool  SortObject(CEntity * a, CEntity*b);
+
+
+	static bool compSortObjectForType(CEntity* first, CEntity* second);
 	static bool compSortObjectLeft (CEntity* first, CEntity* second);
 	static bool compSortObjectTop (CEntity* first, CEntity* second);
 	static bool compSortObjectRight (CEntity* first, CEntity* second);

@@ -8,8 +8,8 @@ D3DXVECTOR2 CRockman::g_PosRockman = D3DXVECTOR2(0, 100);
 
 #define TIME_INJUNRED 3.0f
 #define TIME_SHOT (3.0f)
-//#define VY_JUMP 50.0f
-#define VY_JUMP 70.0f
+#define VY_JUMP 50.0f
+//#define VY_JUMP 70.0f
 #define ACCEL_STOP (10.0f)
 #define MAX_VX (15.0f)
 #define VX_PREPARE (7.0f)
@@ -42,7 +42,7 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 	m_accel = mAccelOfRockman;
 
 	m_Size = m_SizeInit = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
-	m_SizeClimb = D3DXVECTOR2(28/*m_SpriteClimb->GetWidthRectSprite()*/, m_SpriteClimb->GetHeightRectSprite());
+	m_SizeClimb = D3DXVECTOR2(m_SpriteClimb->GetWidthRectSprite() - 2, m_SpriteClimb->GetHeightRectSprite());
 	UpdateRect();
 	m_PosXClimb = -1;
 	m_IsClimbing = false;
@@ -55,8 +55,7 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 
 	//create list bullet
 	for (int i = 0; i < 5; i++)
-	{
-		CBulletRockman *bullet = new CBulletRockman(D3DXVECTOR3(_pos.x + m_Size.x/2 - 10, _pos.y - m_Size.y/2 + 10, _pos.z));
+	{		CBulletRockman *bullet = new CBulletRockman(D3DXVECTOR3(_pos.x + m_Size.x/2 - 10, _pos.y - m_Size.y/2 + 10, _pos.z));
 		m_ListBullet[i] = bullet;
 	}
 
@@ -145,19 +144,17 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	if (m_Injuring != 0)
 		Injunred(m_Injuring > 0, _time);
 
-	//reset	before update
+	//reset before update
 	m_PosXClimb = -1;
 	m_IsClimbing = false;
 	m_isCollisionBottom = false;
+	m_IsLadderBottom = false;
 	CEntity::Update(_time, _camera, _input, _listObjectInViewPort);
 
 	/*m_pos.y = 50 + m_Size.y + 1;
 	m_velloc.y = m_accel.y = 0;
 	m_isCollisionBottom = true;
 	m_IsClimbing = !m_isCollisionBottom;*/
-
-
-
 
 	//Check keydown
 	m_KeyDown = _input ->GetKeyDown();
@@ -180,14 +177,7 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 			m_velloc.x =  0;
 		}
 	}
-	////Climb
-	//if (m_IsClimbing) {
-	//	if (m_accel.y != 0) {
-	//		m_velloc.y = 0;
-	//		m_action = Action_Climb_Stand;
-	//	}
-	//}
-
+	
 	//Update action when Jump
 	if (m_accel.y != 0 && m_action != Action_Start && !m_IsClimbing)
 		m_action = Action_Jump;
@@ -363,6 +353,14 @@ void CRockman::TurnRight()
 
 void CRockman::Climb(bool _isTurnUp)
 {
+	if (!_isTurnUp) {
+		m_CanDown = true;
+	} else {
+		if (m_IsLadderBottom) {
+			m_velloc.y = 0;
+			return;
+		}
+	}
 	if (m_PosXClimb > -1) {		
 		m_velloc.y = _isTurnUp ? 10: -10;
 		m_velloc.x = 0;
@@ -370,9 +368,7 @@ void CRockman::Climb(bool _isTurnUp)
 		m_action = Action_Climb;
 		m_IsClimbing = true;
 	}
-	if (!_isTurnUp) {
-		m_CanDown = true;
-	}
+	
 }
 
 void CRockman::Jump()
@@ -385,10 +381,14 @@ void CRockman::Jump()
 }
 
 void CRockman::UpdateCollison(CEntity* _other, float _time) {
+
+	float timeEntry = m_collision->SweptAABB(this,_other,_time);
+	m_directCollision = m_collision->GetDirectCollision();
+
 	switch (_other->GetType())
 	{
 	case LADDER:
-		m_PosXClimb = _other->GetRect().left + 16;
+		m_PosXClimb = _other->GetRect().left + (LONG)(_other->GetSize().x) / 2;
 		m_IsClimbing = !m_isCollisionBottom;
 		break;
 	case BIGEYE:
@@ -400,12 +400,28 @@ void CRockman::UpdateCollison(CEntity* _other, float _time) {
 	case MET:
 		SetInjured(_other);
 		break;
+	case BLOCK:
+		{
+			bool isIntersect = CAABBCollision::IntersectRectX(m_Rect, _other->GetRect());
+			if (!m_IsClimbing && isIntersect && m_velloc.y == 0) {
+				if (m_Rect.left < _other->GetRect().left && m_Rect.right > _other->GetRect().left) {
+					m_velloc.x = 0;
+					m_accel.x = 0;
+					m_pos.x = _other->GetRect().left - m_Size.x -1;
+				}
+				else 
+				if (m_Rect.left > _other->GetRect().left && m_Rect.left < _other->GetRect().right) {
+					m_velloc.x = 0;
+					m_accel.x = 0;
+					m_pos.x = _other->GetRect().right + 1 ;
+				}
+			}
+		}
+	break;
+
 	default:
 		break;
 	}
-
-		float timeEntry = m_collision->SweptAABB(this,_other,_time);
-		m_directCollision = m_collision->GetDirectCollision();
 		if (timeEntry < 1.0f)
 		{
 			ExecuteCollision(_other,m_directCollision,timeEntry);
@@ -427,7 +443,7 @@ void CRockman::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,
 					m_pos.y = _other->GetRect().top + m_Size.y + 1;
 					m_velloc.y = m_accel.y = 0;
 					m_isCollisionBottom = true;
-					m_IsClimbing = !m_isCollisionBottom;
+					m_IsClimbing = false;
 				}
 
 				if( m_directCollion == LEFT)
@@ -457,31 +473,32 @@ void CRockman::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,
 			{
 				if (!m_CanDown) {
 					m_pos.y = _other->GetRect().top + m_Size.y + 1;
-					m_PosXClimb = -1;
+					//m_PosXClimb = -1;
 				}
 				m_velloc.y = m_accel.y = 0;
 				m_isCollisionBottom = true;
-				m_IsClimbing = !m_isCollisionBottom;
-			}
-			/*if( m_directCollion == LEFT)
-			{
-				m_velloc.x = 0;
-				m_accel.x = 0;
-				m_pos.x = _other->GetRect().right + 1 ;
-				m_CanClimbUp = false;
+				m_IsLadderBottom = true;
 				m_IsClimbing = false;
-				m_PosXClimb = -1;
 			}
+			//if( m_directCollion == LEFT)
+			//{
+			//	m_velloc.x = 0;
+			//	m_accel.x = 0;
+			//	m_pos.x = _other->GetRect().right + 1 ;
+			//	//m_CanClimbUp = false;
+			//	m_IsClimbing = false;
+			//	m_PosXClimb = -1;
+			//}
 
-			if( m_directCollion == RIGHT)
-			{
-				m_velloc.x = 0;
-				m_accel.x = 0;
-				m_pos.x = _other->GetRect().left - m_Size.x -1;
-				m_CanClimbUp = false;
-				m_IsClimbing = false;
-				m_PosXClimb = -1;
-			}*/
+			//if( m_directCollion == RIGHT)
+			//{
+			//	m_velloc.x = 0;
+			//	m_accel.x = 0;
+			//	m_pos.x = _other->GetRect().left - m_Size.x -1;
+			//	//m_CanClimbUp = false;
+			//	m_IsClimbing = false;
+			//	m_PosXClimb = -1;
+			//}
 			break;
 		
 		}

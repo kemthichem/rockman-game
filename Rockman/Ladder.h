@@ -4,8 +4,6 @@
 #include "Entity.h"
 class CLadder : public CEntity
 {
-private:
-	int m_HeightLadder;
 protected:
 	void UpdateCollison(CEntity* _other, float _time);
 public:

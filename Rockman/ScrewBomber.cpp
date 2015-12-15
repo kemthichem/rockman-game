@@ -73,7 +73,7 @@ CScrewBomber::CScrewBomber(int objID, int typeID, double posX, double posY, int 
 CScrewBomber::~CScrewBomber(void)
 {
 	for(int i = 0; i < NUM_BULLET; ++i)
-		delete m_ListBullet[i];
+		//delete m_ListBullet[i];
 
 	if (m_Item)
 		delete m_Item;

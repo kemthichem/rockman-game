@@ -86,7 +86,7 @@ void CPLayingGameState::Update(CInput* _input,float _time)
 
 	UpdateState();
 }
-POINT array[4] = { {129, 111}, {897, 111}, {897, 232}, {897, 472}};
+POINT array[20] = { {129, 111}, {897, 111}, {897, 232}, {897, 472}, {897		,712 },{897		,952 },{897		,1071},{1409	,1071}    ,{1409	,1192}    ,{1409	,1432}    ,{1409	,1672}    ,{1409	,1914}    ,{1409	,2031}    ,{1921	,2031}    ,{1921	,1914}    ,{1921	,1672}    ,{1921	,1432}    ,{1921	,1311}    ,{2304	,1311}    ,{3216	,1311}};
 void CPLayingGameState::Init()
 {
 	char* pathMap = "Resource//map//cut_man_stage.txt";
@@ -148,7 +148,7 @@ void CPLayingGameState::Init()
 
 	//Set camera
 	
-	m_Camera->Initialize(array, 4);
+	m_Camera->Initialize(array, 20);
 }
 
 void CPLayingGameState::DrawText()

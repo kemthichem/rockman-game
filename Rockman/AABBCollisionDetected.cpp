@@ -197,6 +197,11 @@ bool CAABBCollision::IsCollision(CEntity* _ob1, CEntity* _ob2, float _time)
 	return CheckCollision(bound, _ob2->GetRect());
 }
 
+bool  CAABBCollision::compSortObjectForType(CEntity* first, CEntity* second){
+	bool isPri = first->GetType() > second->GetType();
+	return isPri;
+}
+
 bool  CAABBCollision::compSortObjectTop (CEntity* first, CEntity* second){
 	//bool isPri = (first->id>second->id);
 	bool isPri = first->GetRect().top<second->GetRect().top;
@@ -222,5 +227,38 @@ bool  CAABBCollision::compSortObjectLeft (CEntity* first, CEntity* second){
 	//if (first->GetType() == LADDER || second->GetType() == LADDER )
 		//isPri = false;
 	return isPri;
+}
+
+bool CAABBCollision::IntersectRectX(RECT _r1, RECT _r2)
+{
+	bool isIntersect = false;
+	if (_r2.right < _r1.left){
+		isIntersect = false;
+		goto intersectX;
+	}
+	else if (_r2.left > _r1.right){
+		isIntersect = false;
+		goto intersectX;
+	}
+	else if (_r2.top < _r1.bottom){
+		isIntersect = false;
+		goto intersectX;
+	}
+	else if (_r2.bottom > _r1.top){
+		isIntersect = false;
+		goto intersectX;
+	}
+	else
+		isIntersect = true;
+
+intersectX:
+	if (isIntersect) {
+		if (_r1.top < _r2.bottom || _r2.top < _r1.bottom) {
+			return true;
+		}
+	}
+
+	//return false;
+
 }
 

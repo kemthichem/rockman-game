@@ -14,8 +14,8 @@ enum ObjectType
 {
 	SCENERY = -10,
 	BLOCK,
-	ROCKMAN = 0,
 	LADDER,
+	ROCKMAN = 0,	
 	BIGEYE,
 	BLADER,
 	MET,
@@ -119,6 +119,10 @@ public:
 	int GetType(){
 		return m_Type;//ID
 	}
+	D3DXVECTOR2 GetSize() {
+		return m_Size;
+	}
+
 	D3DXVECTOR2 GetVelocity();
 	D3DXVECTOR2 GetAccleration();
 	RECT GetRect();
