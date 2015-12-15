@@ -143,7 +143,7 @@ void CPLayingGameState::Init()
 
 	//create scenery tile
 	m_ScereryTile = new CSceneryTile(CResourceManager::GetInstance()->GetSprite(IMAGE_MAP_CUTMAN),
-		m_Map.m_ArrayMapTile, m_Map.row, m_Map.col, m_Map.countTile);
+		m_Map.m_ArrayMapTile, m_Map.rowTitle, m_Map.colTitle, m_Map.countTile);
 
 
 	//Set camera
