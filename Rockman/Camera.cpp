@@ -1,19 +1,22 @@
 ﻿#include "Camera.h"
 #include "Rockman.h"
-#include "MoveMap.h"
 #include "Map.h"
 #include "Define.h"
 
-D3DXVECTOR2 CCamera::g_PosCamera = D3DXVECTOR2(0,0);
+#define DIS_MOVE (5.0f)
+
+POINT CCamera::g_PosCamera = { 0 };
 CCamera::CCamera(void)
 {
-	m_pos = D3DXVECTOR2(0, HEIGHT_SCREEN*1);
+	m_pos.x = 0;
+	m_pos.y = HEIGHT_SCREEN;
 	g_PosCamera = m_pos;
 }
 
 CCamera::CCamera(D3DXVECTOR2 _pos)
 {
-	m_pos = _pos;
+	m_pos.x = _pos.x;
+	m_pos.y = _pos.y;
 	g_PosCamera = m_pos;
 
 	curIndex = 0;
@@ -60,74 +63,71 @@ int CCamera::GetNextIndexY(long _posY, float _vY)
 
 void CCamera::Update(D3DXVECTOR2 _pos, D3DXVECTOR2 _velloc)
 {
-	//X
-	POINT pCur = m_arrayPoint[curIndex];
-	bool isHaveNextPointX = false;
-	bool isHavePrePointX = false;
+	if (indexMoveTo == -1) {
+		//X
+		POINT pCur = m_arrayPoint[curIndex];
+		bool isHaveNextPointX = false;
+		bool isHavePrePointX = false;
 
-	if (curIndex < m_countPoint - 2) {
-		isHaveNextPointX = pCur.y == m_arrayPoint[curIndex + 1].y;
-	}
-
-	if (curIndex > 0) {
-		isHavePrePointX = pCur.y == m_arrayPoint[curIndex -1].y;
-	}
-
-	if (isHaveNextPointX) {
-		if (_pos.x > pCur.x) {
-			m_pos.x = (float)_pos.x - WIDTH_SCREEN/2;
+		if (curIndex < m_countPoint - 2) {
+			isHaveNextPointX = pCur.y == m_arrayPoint[curIndex + 1].y;
 		}
 
-		if (_pos.x > m_arrayPoint[curIndex + 1].x) {
-			curIndex = curIndex + 1;
+		if (curIndex > 0) {
+			isHavePrePointX = pCur.y == m_arrayPoint[curIndex -1].y;
 		}
-	} else
-	{
-		if (isHavePrePointX) {
-			if (_pos.x < pCur.x) {
+
+		if (isHaveNextPointX) {
+			if (_pos.x > pCur.x) {
 				m_pos.x = (float)_pos.x - WIDTH_SCREEN/2;
-			} 
+			}else {
+				m_pos.x = m_arrayPoint[curIndex].x - WIDTH_SCREEN / 2;
+			}
 
-			if (_pos.x < m_arrayPoint[curIndex - 1].x) {
-				curIndex = curIndex - 1;
+			if (_pos.x > m_arrayPoint[curIndex + 1].x) {
+				curIndex = curIndex + 1;
+			}
+		} else
+		{
+			if (isHavePrePointX) {
+				if (_pos.x < pCur.x) {
+					m_pos.x = (float)_pos.x - WIDTH_SCREEN/2;
+				} else {
+					m_pos.x = m_arrayPoint[curIndex].x - WIDTH_SCREEN / 2;
+				}
+
+				if (_pos.x < m_arrayPoint[curIndex - 1].x) {
+					curIndex = curIndex - 1;
+				}
 			}
 		}
-	}
 
-
-	int nextIndexY = GetNextIndexY(pCur.y, _velloc.y);
-	if (nextIndexY != -1) {
-		int dir = _velloc.y > 0 ? 1 : -1;
-		if (_pos.y * dir > m_arrayPoint[nextIndexY].y * dir) {
-			//MoveY;
-			int k = 0;
+		//Y
+		int nextIndexY = GetNextIndexY(pCur.y, _velloc.y);
+		if (nextIndexY != -1) {
+			int dir = _velloc.y > 0 ? 1 : -1;
+			if (_pos.y * dir > m_arrayPoint[nextIndexY].y * dir) {
+				//m_pos.y = m_arrayPoint[curIndex].y + HEIGHT_SCREEN/ 2;
+				indexMoveTo = nextIndexY;
+				int k = 0;
+			}
 		}
+
+	} else {
+		MoveMap();
 	}
-
-
-
-
-
-
-
-
-
-
-
-
 
 	m_viewPort.left = m_pos.x;
 	m_viewPort.right = m_viewPort.left + WIDTH_SCREEN;
 	m_viewPort.top = m_pos.y;
 	m_viewPort.bottom =m_viewPort.top - HEIGHT_SCREEN;
 
-	m_posInit = m_pos;
 	g_PosCamera = m_pos;
 }
 
 D3DXVECTOR2 CCamera::GetPosCamera()
 {
-	return m_pos;
+	return D3DXVECTOR2(m_pos.x, m_pos.y);
 }
 
 void CCamera::SetPosCamera(D3DXVECTOR2 _pos)
@@ -145,54 +145,26 @@ void CCamera::SetPosCamera(D3DXVECTOR2 _pos)
 
 void CCamera::MoveY(int _distanceY)
 { 
-	int desY =  m_posInit.y + _distanceY;
-
-	if (_distanceY < 0)
-		if (m_pos.y > desY) {
-			m_pos.y -= 5;
-		} else
-		{
-			m_pos.y = desY;
-			CMoveMap::g_TypeMove = TypeMove::MOVENONE;
-		}
-	else {
-		if (m_pos.y < desY) {
-			m_pos.y += 5;
-		} else
-		{
-			m_pos.y = desY;
-			CMoveMap::g_TypeMove = TypeMove::MOVENONE;
-		}
-	}
-	
-	m_viewPort.left = m_pos.x;
-	m_viewPort.right = m_viewPort.left + WIDTH_SCREEN;
-	m_viewPort.top = m_pos.y;
-	m_viewPort.bottom =m_viewPort.top - HEIGHT_SCREEN;
-
-	g_PosCamera = m_pos;
 }
 
-void CCamera::MoveX(int _distanceX) 
+void CCamera::MoveMap() 
 {
-	int desX =  m_posInit.x + _distanceX;
+	g_IsMoving = true;
+	if (indexMoveTo != -1) {
+		short dirX = m_arrayPoint[indexMoveTo].x - m_arrayPoint[curIndex].x == 0 ? 0 : (m_arrayPoint[indexMoveTo].x - m_arrayPoint[curIndex].x > 0 ? 1 : -1);
+		short dirY = m_arrayPoint[indexMoveTo].y - m_arrayPoint[curIndex].y == 0 ? 0 : (m_arrayPoint[indexMoveTo].y - m_arrayPoint[curIndex].y > 0 ? 1 : -1);
 
-	if (m_pos.x < desX) {
-		m_pos.x += 5;
-	}
-	else
-	{
-		m_pos.x = desX;
-		CMoveMap::g_TypeMove = TypeMove::MOVENONE;
-;
-	}
-	
-	m_viewPort.left = m_pos.x;
-	m_viewPort.right = m_viewPort.left + WIDTH_SCREEN;
-	m_viewPort.top = m_pos.y;
-	m_viewPort.bottom = m_viewPort.top - HEIGHT_SCREEN;
+		m_pos.x += dirX * DIS_MOVE;
+		m_pos.y += dirY * DIS_MOVE;
 
-	g_PosCamera = m_pos;
+		if (m_pos.x + WIDTH_SCREEN / 2 == m_arrayPoint[indexMoveTo].x && dirY *(m_pos.y  - HEIGHT_SCREEN) >= dirY * m_arrayPoint[indexMoveTo].y) {
+			g_IsMoving = false;			
+			curIndex = indexMoveTo;
+			m_pos.y = m_arrayPoint[curIndex].y + HEIGHT_SCREEN;
+			indexMoveTo = -1;
+
+		} 
+	}
 }
 
 RECT CCamera::GetViewPortEx()
@@ -206,6 +178,7 @@ void CCamera::Initialize(POINT *array, int countPoint)
 {
 	m_arrayPoint = array;
 	m_countPoint = countPoint;
+	indexMoveTo = -1;
 
 	curIndex = 0;
 }
@@ -231,4 +204,4 @@ bool CCamera::IsInRect(POINT inPoint)
 	return true;
 }
 
-bool CCamera::g_IsMoveX = true;
+bool CCamera::g_IsMoving = false;

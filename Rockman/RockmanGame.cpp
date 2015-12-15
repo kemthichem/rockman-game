@@ -1,7 +1,6 @@
 #include "RockmanGame.h"
 #include "BigEye.h"
 #include "Block.h"
-#include "MoveMap.h"
 #include "Map.h"
 #include "PLayingGameState.h"
 #include "ChangeState.h"

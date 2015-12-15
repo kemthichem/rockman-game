@@ -165,9 +165,6 @@
     <ClCompile Include="GutsMan.cpp">
       <Filter>ObjectGame\Boss</Filter>
     </ClCompile>
-    <ClCompile Include="MoveMap.cpp">
-      <Filter>ObjectGame\Block</Filter>
-    </ClCompile>
     <ClCompile Include="Ladder.cpp">
       <Filter>ObjectGame\Block</Filter>
     </ClCompile>
@@ -197,9 +194,6 @@
     </ClCompile>
     <ClCompile Include="BulletGutsman.cpp">
       <Filter>Item</Filter>
-    </ClCompile>
-    <ClCompile Include="LockCamera.cpp">
-      <Filter>ObjectGame\Block</Filter>
     </ClCompile>
     <ClCompile Include="SceneryTile.cpp">
       <Filter>Map</Filter>
@@ -311,9 +305,6 @@
     <ClInclude Include="Ladder.h">
       <Filter>ObjectGame\Block</Filter>
     </ClInclude>
-    <ClInclude Include="MoveMap.h">
-      <Filter>ObjectGame\Block</Filter>
-    </ClInclude>
     <ClInclude Include="Blood.h">
       <Filter>Item</Filter>
     </ClInclude>
@@ -340,9 +331,6 @@
     </ClInclude>
     <ClInclude Include="BulletGutsman.h">
       <Filter>Item</Filter>
-    </ClInclude>
-    <ClInclude Include="LockCamera.h">
-      <Filter>ObjectGame\Block</Filter>
     </ClInclude>
     <ClInclude Include="SceneryTile.h">
       <Filter>Map</Filter>

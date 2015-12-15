@@ -1,5 +1,4 @@
 #include"Map.h"
-#include "MoveMap.h"
 #include "Blader.h"
 #include "Ladder.h"
 #include "Cutman.h"
@@ -11,7 +10,6 @@
 #include "Beak.h"
 #include "Met.h"
 #include "Spine.h"
-#include "LockCamera.h"
 #include "QuadTree.h"
 
 #include <fstream>

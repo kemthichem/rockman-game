@@ -108,11 +108,9 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Ladder.cpp" />
-    <ClCompile Include="LockCamera.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="Met.cpp" />
-    <ClCompile Include="MoveMap.cpp" />
     <ClCompile Include="Octopus.cpp" />
     <ClCompile Include="PlayingGameState.cpp" />
     <ClCompile Include="QuadTree.cpp" />
@@ -158,11 +156,9 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Ladder.h" />
-    <ClInclude Include="LockCamera.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MenuState.h" />
     <ClInclude Include="Met.h" />
-    <ClInclude Include="MoveMap.h" />
     <ClInclude Include="Octopus.h" />
     <ClInclude Include="PLayingGameState.h" />
     <ClInclude Include="QuadTree.h" />

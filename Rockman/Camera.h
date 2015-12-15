@@ -8,19 +8,19 @@
 class CCamera
 {
 private:
-	D3DXVECTOR2 m_posInit;
-	D3DXVECTOR2 m_pos;
+	POINT m_pos;
 	D3DXMATRIX m_matrixCamera;
 
 	POINT *m_arrayPoint;
 	int m_countPoint;
 	int curIndex;
+	int indexMoveTo;
 	RECT GetCurrentRect();
 	bool IsInRect(POINT inPoint);
 	int GetNextIndexY(long _posY, float _vY);
 public:
-	static D3DXVECTOR2 g_PosCamera;
-	static bool g_IsMoveX;
+	static POINT g_PosCamera;
+	static bool g_IsMoving;
 	RECT m_viewPort;
 	void Update(D3DXVECTOR2, D3DXVECTOR2);
 
@@ -34,7 +34,7 @@ public:
 	void SetPosCamera(D3DXVECTOR2 _pos);
 	~CCamera(void);
 	void MoveY(int);
-	void MoveX(int);
+	void MoveMap();
 };
 
 #endif

@@ -1,5 +1,4 @@
 ﻿#include "Rockman.h"
-#include "MoveMap.h"
 #include "PLayingGameState.h"
 #include "Define.h"
 
@@ -10,6 +9,7 @@ D3DXVECTOR2 CRockman::g_PosRockman = D3DXVECTOR2(0, 100);
 #define TIME_INJUNRED 3.0f
 #define TIME_SHOT (3.0f)
 #define VY_JUMP 50.0f
+//#define VY_JUMP 70.0f
 #define ACCEL_STOP (5.0f)
 #define MAX_VX (15.0f)
 #define VX_PREPARE (7.0f)
@@ -205,7 +205,7 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	//Not Edit
 	//Update pos global
 	g_PosRockman = D3DXVECTOR2(m_pos.x, m_pos.y);
-	if (m_Blood->IsOver() || m_pos.y < CCamera::g_PosCamera.y - HEIGHT_SCREEN - 200)
+	if (m_Blood->IsOver() /*|| m_pos.y < CCamera::g_PosCamera.y - HEIGHT_SCREEN - 200*/)
 		CPLayingGameState::g_ChangeState = ChangeState::CHANGE_FAIL;
 
 	//Update sprite	
@@ -482,25 +482,6 @@ void CRockman::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,
 				m_IsClimbing = false;
 				m_PosXClimb = -1;
 			}*/
-			break;
-		case MOVEMAP:
-			CMoveMap *moveMap = dynamic_cast<CMoveMap*> (_other);
-			if (m_directCollion == TOP)
-			{
-				if (moveMap->IsCanWithDirect(true)) {
-					CMoveMap::g_DistanceMoveCameraY = HEIGHT_SCREEN - (CCamera::g_PosCamera.y - m_pos.y + 40);
-					m_pos.y += 1;
-					CMoveMap::g_TypeMove = TypeMove::MOVEY;
-				}
-			}
-			if (m_directCollion == BOTTOM)
-			{
-				if (moveMap->IsCanWithDirect(false)) {
-					CMoveMap::g_DistanceMoveCameraY = -HEIGHT_SCREEN;
-					m_pos.y -= 1;
-					CMoveMap::g_TypeMove = TypeMove::MOVEY;
-				}
-			}
 			break;
 		
 		}

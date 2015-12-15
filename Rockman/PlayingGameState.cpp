@@ -2,7 +2,6 @@
 #include "MenuState.h"
 #include "BigEye.h"
 #include "Block.h"
-#include "MoveMap.h"
 #include "ChangeState.h"
 #include "GameOverState.h"
 #include "WinState.h"
@@ -66,19 +65,13 @@ void CPLayingGameState::Update(CInput* _input,float _time)
 	quadTree->m_listObjectViewportToUpdate.push_back(rockman);
 	m_ScereryTile->Update(m_Camera->m_viewPort);
 
-	switch (CMoveMap::g_TypeMove)
-	{
-	case TypeMove::MOVEX:
-		m_Camera->MoveX(CMoveMap::g_DistanceMoveCameraX);
-		break;
-	case TypeMove::MOVEY:
-		m_Camera->MoveY(CMoveMap::g_DistanceMoveCameraY);
-		break;
-	case TypeMove::MOVENONE:
-	default:
+	if (CCamera::g_IsMoving) {
+		m_Camera->MoveMap();
+
+	} else {
+
 		rockman->Update(_time, m_Camera, _input, listOb);
 		quadTree->Update(m_Camera, _time);
-		break;
 	}
 
 	if (rockman->GetKeyDown()==DIK_ESCAPE)
