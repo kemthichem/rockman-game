@@ -3,16 +3,16 @@
 #include "PLayingGameState.h"
 #include "Define.h"
 
-const D3DXVECTOR2 CRockman::mAccelOfRockman = D3DXVECTOR2(15.0f,-30.0f);
+const D3DXVECTOR2 CRockman::mAccelOfRockman = D3DXVECTOR2(15.0f,-25.0f);
 
 D3DXVECTOR2 CRockman::g_PosRockman = D3DXVECTOR2(0, 100);
 
 #define TIME_INJUNRED 3.0f
 #define TIME_SHOT (3.0f)
-#define VY_JUMP 100.0f
-#define ACCEL_STOP (11.0f)
-#define MAX_VX (30.0f)
-#define VX_PREPARE (15.0f)
+#define VY_JUMP 50.0f
+#define ACCEL_STOP (5.0f)
+#define MAX_VX (15.0f)
+#define VX_PREPARE (7.0f)
 
 
 CRockman::CRockman(void)
@@ -417,7 +417,41 @@ void CRockman::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,
 		//ListObjectColision
 		switch (_other->GetType())
 		{
-		case BLOCK:		
+		case BLOCK:
+			{ 
+				//Not check collison with block when climbing
+				//if (m_IsClimbing) 
+				//break;
+				if( m_directCollion == BOTTOM)
+				{
+					m_pos.y = _other->GetRect().top + m_Size.y + 1;
+					m_velloc.y = m_accel.y = 0;
+					m_isCollisionBottom = true;
+					m_IsClimbing = !m_isCollisionBottom;
+				}
+
+				if( m_directCollion == LEFT)
+				{
+					m_velloc.x = 0;
+					m_accel.x = 0;
+					m_pos.x = _other->GetRect().right + 1 ;
+				}
+
+				if( m_directCollion == RIGHT)
+				{
+					m_velloc.x = 0;
+					m_accel.x = 0;
+					m_pos.x = _other->GetRect().left - m_Size.x -1;
+				}
+
+				if (m_directCollion == TOP)
+				{
+					m_pos.y = _other->GetRect().bottom;
+					m_velloc.y = 0;
+				}
+			}
+			break;
+
 		case LADDER:
 			if( m_directCollion == BOTTOM)
 			{

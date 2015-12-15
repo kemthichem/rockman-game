@@ -34,7 +34,8 @@ CCamera::~CCamera(void)
 
 int CCamera::GetNextIndexY(long _posY, float _vY)
 {
-	
+	if (_vY == 1) return -1;
+
 	POINT curPoint = m_arrayPoint[curIndex];
 	int nIdx = (curIndex > m_countPoint - 2) ? -1 : curIndex + 1;
 	int pIdx = curIndex < 0 ? -1 : curIndex - 1;
@@ -97,7 +98,7 @@ void CCamera::Update(D3DXVECTOR2 _pos, D3DXVECTOR2 _velloc)
 	int nextIndexY = GetNextIndexY(pCur.y, _velloc.y);
 	if (nextIndexY != -1) {
 		int dir = _velloc.y > 0 ? 1 : -1;
-		if (m_arrayPoint[nextIndexY].y * dir > _pos.y * dir) {
+		if (_pos.y * dir > m_arrayPoint[nextIndexY].y * dir) {
 			//MoveY;
 			int k = 0;
 		}
