@@ -47,18 +47,21 @@ int CCamera::GetNextIndexY(long _posY, float _vY)
 	int dir = _vY > 0 ? 1 : -1;
 
 	int idx = -1;
+	int reVal = -1;
 	for (int i = 0; i < 2; i++)
 	{
 		idx = arr[i];
+		m_curIsBound = false;
 		if ( idx != -1) {
 
 			if (m_arrayPoint[idx].x == curPoint.x && m_arrayPoint[idx].y * dir > curPoint.y * dir) {
-				return idx;
+				reVal =  idx;
 			}
+			m_curIsBound = (m_curIsBound == false) ? m_arrayPoint[idx].x != curPoint.x : true;
 		}
 	}
 
-	return -1;
+	return reVal;
 }
 
 void CCamera::Update(D3DXVECTOR2 _pos, D3DXVECTOR2 _velloc)
@@ -105,11 +108,11 @@ void CCamera::Update(D3DXVECTOR2 _pos, D3DXVECTOR2 _velloc)
 		//Y
 		int nextIndexY = GetNextIndexY(pCur.y, _velloc.y);
 		if (nextIndexY != -1) {
-			int dir = _velloc.y > 0 ? 1 : -1;
-			if (_pos.y * dir > m_arrayPoint[nextIndexY].y * dir) {
+			char dir = _velloc.y > 0 ? 1 : -1;
+			long offsetY =  m_curIsBound ? HEIGHT_SCREEN / 2 : 0;
+			if (_pos.y * dir > (m_arrayPoint[curIndex].y + HEIGHT_SCREEN  - offsetY)* dir) {
 				//m_pos.y = m_arrayPoint[curIndex].y + HEIGHT_SCREEN/ 2;
 				indexMoveTo = nextIndexY;
-				int k = 0;
 			}
 		}
 
@@ -143,34 +146,38 @@ void CCamera::SetPosCamera(D3DXVECTOR2 _pos)
 	g_PosCamera = m_pos;
 }
 
-void CCamera::MoveY(int _distanceY)
-{ 
-}
-
 void CCamera::MoveMap() 
 {
 	g_IsMoving = true;
 	if (indexMoveTo != -1) {
-		short dirX = m_arrayPoint[indexMoveTo].x - m_arrayPoint[curIndex].x == 0 ? 0 : (m_arrayPoint[indexMoveTo].x - m_arrayPoint[curIndex].x > 0 ? 1 : -1);
-		short dirY = m_arrayPoint[indexMoveTo].y - m_arrayPoint[curIndex].y == 0 ? 0 : (m_arrayPoint[indexMoveTo].y - m_arrayPoint[curIndex].y > 0 ? 1 : -1);
+		char dirX = m_arrayPoint[indexMoveTo].x - m_arrayPoint[curIndex].x == 0 ? 0 : (m_arrayPoint[indexMoveTo].x - m_arrayPoint[curIndex].x > 0 ? 1 : -1);
+		char dirY = m_arrayPoint[indexMoveTo].y - m_arrayPoint[curIndex].y == 0 ? 0 : (m_arrayPoint[indexMoveTo].y - m_arrayPoint[curIndex].y > 0 ? 1 : -1);
 
 		m_pos.x += dirX * DIS_MOVE;
 		m_pos.y += dirY * DIS_MOVE;
 
-		if (m_pos.x + WIDTH_SCREEN / 2 == m_arrayPoint[indexMoveTo].x && dirY *(m_pos.y  - HEIGHT_SCREEN) >= dirY * m_arrayPoint[indexMoveTo].y) {
-			g_IsMoving = false;			
+		long offsetY = m_curIsBound ? HEIGHT_SCREEN / 2 : 0;
+
+		if (m_pos.x + WIDTH_SCREEN / 2 == m_arrayPoint[indexMoveTo].x && dirY *m_pos.y >= dirY * (m_arrayPoint[indexMoveTo].y + HEIGHT_SCREEN/2 + offsetY)) {
+			g_IsMoving = false;
 			curIndex = indexMoveTo;
-			m_pos.y = m_arrayPoint[curIndex].y + HEIGHT_SCREEN;
+			m_pos.y = m_arrayPoint[curIndex].y + (HEIGHT_SCREEN/2 + offsetY);
 			indexMoveTo = -1;
 
 		} 
+
+		m_viewPort.left = m_pos.x;
+		m_viewPort.right = m_viewPort.left + WIDTH_SCREEN;
+		m_viewPort.top = m_pos.y;
+		m_viewPort.bottom =m_viewPort.top - HEIGHT_SCREEN;
+
+		g_PosCamera = m_pos;
 	}
 }
 
-RECT CCamera::GetViewPortEx()
+RECT CCamera::GetViewPort()
 {
 	RECT rect = m_viewPort;
-	rect.top += 50;
 	return rect;
 }
 
@@ -181,27 +188,6 @@ void CCamera::Initialize(POINT *array, int countPoint)
 	indexMoveTo = -1;
 
 	curIndex = 0;
+	m_curIsBound = true;
 }
-
-RECT CCamera::GetCurrentRect()
-{
-
-
-	RECT rect = {0};
-
-	return rect;
-}
-
-bool CCamera::IsInRect(POINT inPoint)
-{
-	RECT r = GetCurrentRect();
-
-	if (inPoint.x < r.left || inPoint.x > r.right
-		|| inPoint.y < r.bottom || inPoint.y > r.top)
-	{
-		return false;
-	}
-	return true;
-}
-
 bool CCamera::g_IsMoving = false;

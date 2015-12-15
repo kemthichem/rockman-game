@@ -69,9 +69,8 @@ void CPLayingGameState::Update(CInput* _input,float _time)
 		m_Camera->MoveMap();
 
 	} else {
-
-		rockman->Update(_time, m_Camera, _input, listOb);
 		quadTree->Update(m_Camera, _time);
+		rockman->Update(_time, m_Camera, _input, listOb);
 	}
 
 	if (rockman->GetKeyDown()==DIK_ESCAPE)
@@ -87,7 +86,7 @@ void CPLayingGameState::Update(CInput* _input,float _time)
 
 	UpdateState();
 }
-POINT array[3] = { {129, 111}, {897, 111}, {897, 232}};
+POINT array[4] = { {129, 111}, {897, 111}, {897, 232}, {897, 472}};
 void CPLayingGameState::Init()
 {
 	char* pathMap = "Resource//map//cut_man_stage.txt";
@@ -149,7 +148,7 @@ void CPLayingGameState::Init()
 
 	//Set camera
 	
-	m_Camera->Initialize(array, 3);
+	m_Camera->Initialize(array, 4);
 }
 
 void CPLayingGameState::DrawText()

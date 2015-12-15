@@ -15,9 +15,8 @@ private:
 	int m_countPoint;
 	int curIndex;
 	int indexMoveTo;
-	RECT GetCurrentRect();
-	bool IsInRect(POINT inPoint);
 	int GetNextIndexY(long _posY, float _vY);
+	bool m_curIsBound;
 public:
 	static POINT g_PosCamera;
 	static bool g_IsMoving;
@@ -29,11 +28,10 @@ public:
 
 	void Initialize(POINT *array, int countPoint);
 	D3DXMATRIX GetMatrixCamera();
-	RECT GetViewPortEx();
+	RECT GetViewPort();
 	D3DXVECTOR2 GetPosCamera();
 	void SetPosCamera(D3DXVECTOR2 _pos);
 	~CCamera(void);
-	void MoveY(int);
 	void MoveMap();
 };
 
