@@ -11,6 +11,7 @@
 #include "Met.h"
 #include "Spine.h"
 #include "QuadTree.h"
+#include "utils.h"
 
 #include <fstream>
 #include <iostream>
@@ -21,7 +22,7 @@ int CMap::g_widthMap = 0;
 int CMap::g_heightMap = 0;
 
 CMap::CMap(){
-	row, col, countTile = 0;
+	rowTitle, colTitle, countTile = 0;
 	m_ArrayMapTile = NULL;
 }
 CMap::~CMap()
@@ -32,86 +33,69 @@ CMap::~CMap()
 	m_ListObjects.clear();
 
 	//delete m_ArrayMapTile
-	for (int i = 0; i < row; i++)
+	for (int i = 0; i < rowTitle; i++)
 	{
 		delete []m_ArrayMapTile[i];
 	}
 	delete []m_ArrayMapTile;
 }
 
-vector<string> CMap::SplitString(std::string str, char ch)
-{
-	vector<string> result;
-	int n = str.size();
-	string line = "";
-	for(int i = 0; i < n; i++){
-		while((i<n)&&(str.at(i)!=ch))
-		{
-			line.push_back(str.at(i));
-			i++;
-		}
-		result.push_back(line);
-		line.clear();		
-	}
-	return result;
-}
-
 void  CMap::LoadMap(char* pathMap,  CQuadTree *quadTree)
 {	
-	// define mapFile
-	ifstream mapFile;
+	// define ifstream file
+	ifstream ifstreamMapFile;
+	char splitChar = '\t';
 
 	// line of mapFile
 	string line;
 
 	// data from mapFile read into vector
-	vector<string> listMap;
+	vector<string> vectorDataFromMap;
 
 	// read file map and push data into a vector
-	mapFile.open(pathMap);
-	if (mapFile.is_open())
+	ifstreamMapFile.open(pathMap);
+	if (ifstreamMapFile.is_open())
 	{
-		while (getline(mapFile,line))
+		while (getline(ifstreamMapFile,line))
 		{
-			listMap.push_back(line);
+			vectorDataFromMap.push_back(line);
 		}
 	}
+	ifstreamMapFile.close();
 
-	// vector save rowNum, columnNum at line 2 on map file
-	vector<string> sizeMap = getListFromFile(listMap, 2); 
+	vector<string> sizeMap = CUtils::SplitString(vectorDataFromMap[2], splitChar);
 
 	// get row
-	row = atoi(sizeMap.at(0).c_str());
-
+	rowTitle = atoi(sizeMap.at(0).c_str());
+	
 	// get column
-	col = atoi(sizeMap.at(1).c_str());
+	colTitle = atoi(sizeMap.at(1).c_str());
 
 	countTile = atoi(sizeMap.at(2).c_str());
 
-	// declare a 2 demen array to save tile 
-	m_ArrayMapTile = new int *[row];
+	// declare a 2 dimensional array to save tile 
+	m_ArrayMapTile = new int *[rowTitle];
 
-	//FIXME - help me define a array
-	//int arrayTile[80][130];
-
-	for (int i = 0; i < row; i++)
+	for (int i = 0; i < rowTitle; i++)
 	{
-		m_ArrayMapTile[i] = new int[col];
-		// vector save data of a row
-		vector<string> rowTitle = getListFromFile(listMap, i + 4);
+		m_ArrayMapTile[i] = new int[colTitle];
+		vector<string> rowTitle = CUtils::SplitString(vectorDataFromMap[i + 4], splitChar);
 
-		for (int j = 0; j < col; j++)
+		for (int j = 0; j < colTitle; j++)
 		{
 			m_ArrayMapTile[i][j] = atoi(rowTitle.at(j).c_str());
 		}
 	}
 
 	// get object count at row 75 on fileMap
-	vector<string> sizeObject = getListFromFile(listMap, row + 7);
+	vector<string> sizeObject = CUtils::SplitString(vectorDataFromMap[rowTitle + 7], splitChar);
 	int objectCount = atoi(sizeObject.at(0).c_str());
-	for (int k = row + 9; k < objectCount; k++)
+
+	int startRowObject = rowTitle + 9;
+	for (int k = startRowObject; k < startRowObject + objectCount; k++)
 	{
-		vector<string> sizeObject = getListFromFile(listMap, k);
+		//vector<string> sizeObject = getListFromFile(listMap, k);
+		vector<string> sizeObject = CUtils::SplitString(vectorDataFromMap[k], splitChar);//
 		int objID = atoi(sizeObject.at(0).c_str());
 		int typeID = atoi(sizeObject.at(1).c_str());
 		double posX = atoi(sizeObject.at(2).c_str());
@@ -125,21 +109,13 @@ void  CMap::LoadMap(char* pathMap,  CQuadTree *quadTree)
 		// add object game
 		AddObjectGame(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 	}
-	int nodeCount = atoi(getListFromFile(listMap, row + 12 + objectCount).at(0).c_str());
-	int startRow = row + 14 + objectCount;
-	quadTree->LoadNodeInFile(listMap, startRow, nodeCount);
+	int nodeCount = atoi(CUtils::SplitString(vectorDataFromMap[rowTitle + 12 + objectCount], splitChar).at(0).c_str());
+	int startRowQuadTree = rowTitle + 14 + objectCount;
+	quadTree->LoadNodeInFile(vectorDataFromMap, startRowQuadTree, nodeCount);
 
 	quadTree->MapIdToObjectInTree(quadTree->m_nodeRoot, m_ListObjects);
 }
 
-vector<string> CMap::getListFromFile(vector<string> listMap, int i)
-{
-	istringstream istringStream(listMap[i]);
-	istream_iterator<std::string> istream_Iterator(istringStream), end;
-
-	vector<string> sizeObject (istream_Iterator, end);
-	return sizeObject;
-}
 
 void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide)
 {

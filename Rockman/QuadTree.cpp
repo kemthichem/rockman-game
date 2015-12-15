@@ -38,7 +38,7 @@ void CQuadTree::LoadNodeInFile(vector<string> listMap, int startRow, int nodeCou
 {
 	//ifstream f(_pathFileTree);
 	vector<string> itemsInfo;
-
+	char splitChar = '\t';
 
 	//if(f.is_open()){
 	//string line;
@@ -47,7 +47,7 @@ void CQuadTree::LoadNodeInFile(vector<string> listMap, int startRow, int nodeCou
 	{
 		CQuadTreeNode* node= new CQuadTreeNode();
 		//getline(f,line);
-		itemsInfo = getListFromFile(listMap, i);
+		itemsInfo = CUtils::SplitString(listMap[i], splitChar);
 		//if(strcmp(line.c_str(), "<End>") == 0)
 		//break;
 		node->m_IdNode = atoi(itemsInfo.at(0).c_str());

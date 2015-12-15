@@ -22,7 +22,7 @@ private:
 public:
 	static int g_widthMap, g_heightMap;
 	int **m_ArrayMapTile;
-	int row, col, countTile;
+	int rowTitle, colTitle, countTile;
 
 
 	CMap();
@@ -30,10 +30,8 @@ public:
 
 	CQuadTreeNode* m_nodeRoot;
 
-
 	vector<CEntity*> m_ListObjects;
-	vector<string> getListFromFile(vector<string> listMap, int i);
-	vector<string> SplitString(string str, char ch);
+
 	void LoadMap(char* filePath, CQuadTree *quadTree);
 };
 
