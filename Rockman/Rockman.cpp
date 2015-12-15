@@ -8,8 +8,8 @@ D3DXVECTOR2 CRockman::g_PosRockman = D3DXVECTOR2(0, 100);
 
 #define TIME_INJUNRED 3.0f
 #define TIME_SHOT (3.0f)
-#define VY_JUMP 50.0f
-//#define VY_JUMP 70.0f
+//#define VY_JUMP 50.0f
+#define VY_JUMP 70.0f
 #define ACCEL_STOP (10.0f)
 #define MAX_VX (15.0f)
 #define VX_PREPARE (7.0f)

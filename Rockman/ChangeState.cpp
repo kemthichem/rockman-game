@@ -1,6 +1,7 @@
 #include"ChangeState.h"
 #include"GamestateManager.h"
 #include"PLayingGameState.h"
+#include "Define.h"
 
 #define TIME_IN_STATE (3.0f)
 
@@ -15,7 +16,7 @@ CChangeState::CChangeState(CGameStateManager* _game):CGameState(_game)
 void CChangeState::Init()
 {
 	CGameState::Init();
-	m_background = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_BG_CHANGE_STATE), D3DXVECTOR2(800,600), 1, 1);
+	m_background = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_BG_CHANGE_STATE), D3DXVECTOR2(WIDTH_SCREEN, HEIGHT_SCREEN), 1, 1);
 	
 	m_time = 0;
 }

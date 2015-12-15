@@ -15,7 +15,7 @@ private:
 	int m_countPoint;
 	int curIndex;
 	int indexMoveTo;
-	int GetNextIndexY(long _posY, float _vY);
+	int GetNextIndexY(POINT _pos, float _vY);
 	bool m_curIsBound;
 public:
 	static POINT g_PosCamera;

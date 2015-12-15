@@ -35,11 +35,13 @@ CCamera::~CCamera(void)
 {
 }
 
-int CCamera::GetNextIndexY(long _posY, float _vY)
+int CCamera::GetNextIndexY(POINT _pos, float _vY)
 {
 	if (_vY == 1) return -1;
 
 	POINT curPoint = m_arrayPoint[curIndex];
+	if (_pos.x > curPoint.x + WIDTH_SCREEN / 2 || _pos.x < curPoint.x - WIDTH_SCREEN / 2) return -1;
+	
 	int nIdx = (curIndex > m_countPoint - 2) ? -1 : curIndex + 1;
 	int pIdx = curIndex < 0 ? -1 : curIndex - 1;
 	int arr[2] = { nIdx, pIdx };
@@ -66,58 +68,55 @@ int CCamera::GetNextIndexY(long _posY, float _vY)
 
 void CCamera::Update(D3DXVECTOR2 _pos, D3DXVECTOR2 _velloc)
 {
-	if (indexMoveTo == -1) {
-		//X
-		POINT pCur = m_arrayPoint[curIndex];
-		bool isHaveNextPointX = false;
-		bool isHavePrePointX = false;
+	//X
+	POINT pCur = m_arrayPoint[curIndex];
+	bool isHaveNextPointX = false;
+	bool isHavePrePointX = false;
 
-		if (curIndex < m_countPoint - 2) {
-			isHaveNextPointX = pCur.y == m_arrayPoint[curIndex + 1].y;
+	if (curIndex < m_countPoint - 2) {
+		isHaveNextPointX = pCur.y == m_arrayPoint[curIndex + 1].y;
+	}
+
+	if (curIndex > 0) {
+		isHavePrePointX = pCur.y == m_arrayPoint[curIndex -1].y;
+	}
+
+	if (isHaveNextPointX) {
+		if (_pos.x > pCur.x) {
+			m_pos.x = (float)_pos.x - WIDTH_SCREEN/2;
+		}else {
+			m_pos.x = m_arrayPoint[curIndex].x - WIDTH_SCREEN / 2;
 		}
 
-		if (curIndex > 0) {
-			isHavePrePointX = pCur.y == m_arrayPoint[curIndex -1].y;
+		if (_pos.x > m_arrayPoint[curIndex + 1].x) {
+			curIndex = curIndex + 1;
 		}
-
-		if (isHaveNextPointX) {
-			if (_pos.x > pCur.x) {
+	} else
+	{
+		if (isHavePrePointX) {
+			if (_pos.x < pCur.x) {
 				m_pos.x = (float)_pos.x - WIDTH_SCREEN/2;
-			}else {
+			} else {
 				m_pos.x = m_arrayPoint[curIndex].x - WIDTH_SCREEN / 2;
 			}
 
-			if (_pos.x > m_arrayPoint[curIndex + 1].x) {
-				curIndex = curIndex + 1;
-			}
-		} else
-		{
-			if (isHavePrePointX) {
-				if (_pos.x < pCur.x) {
-					m_pos.x = (float)_pos.x - WIDTH_SCREEN/2;
-				} else {
-					m_pos.x = m_arrayPoint[curIndex].x - WIDTH_SCREEN / 2;
-				}
-
-				if (_pos.x < m_arrayPoint[curIndex - 1].x) {
-					curIndex = curIndex - 1;
-				}
+			if (_pos.x < m_arrayPoint[curIndex - 1].x) {
+				curIndex = curIndex - 1;
 			}
 		}
+	}
 
-		//Y
-		int nextIndexY = GetNextIndexY(pCur.y, _velloc.y);
-		if (nextIndexY != -1) {
-			char dir = _velloc.y > 0 ? 1 : -1;
-			long offsetY =  m_curIsBound ? HEIGHT_SCREEN / 2 : 0;
-			if (_pos.y * dir > (m_arrayPoint[curIndex].y + HEIGHT_SCREEN  - offsetY)* dir) {
-				//m_pos.y = m_arrayPoint[curIndex].y + HEIGHT_SCREEN/ 2;
-				indexMoveTo = nextIndexY;
-			}
+	//Y
+	POINT rPos = {_pos.x , _pos. y};
+	int nextIndexY = GetNextIndexY(rPos, _velloc.y);
+	if (nextIndexY != -1) {
+		char dir = _velloc.y > 0 ? 1 : -1;
+		long offsetY =  m_curIsBound ? HEIGHT_SCREEN / 2 : 0;
+		if (_pos.y * dir > (m_arrayPoint[curIndex].y + HEIGHT_SCREEN  - offsetY)* dir) {
+			indexMoveTo = nextIndexY;
+			MoveMap();
+			return;
 		}
-
-	} else {
-		MoveMap();
 	}
 
 	m_viewPort.left = m_pos.x;
