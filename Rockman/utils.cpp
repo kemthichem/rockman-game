@@ -90,7 +90,7 @@ float CUtils::Max( float n1, float n2 )
 {
 	return value1 + (value2 - value1) * amount;
 }
-vector<string> CUtils::LoadDataFromFileMap(char *pathMap)
+vector<string> CUtils::LoadDataFromFile(char *pathFile)
 {
 	ifstream ifstreamMapFile;
 
@@ -98,7 +98,7 @@ vector<string> CUtils::LoadDataFromFileMap(char *pathMap)
 	vector<string> vectorDataFromMap;
 	string line;
 	// read file map and push data into a vector
-	ifstreamMapFile.open(pathMap);
+	ifstreamMapFile.open(pathFile);
 	if (ifstreamMapFile.is_open())
 	{
 		while (getline(ifstreamMapFile,line))

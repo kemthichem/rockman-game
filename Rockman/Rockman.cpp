@@ -6,14 +6,16 @@ const D3DXVECTOR2 CRockman::mAccelOfRockman = D3DXVECTOR2(15.0f,-25.0f);
 
 D3DXVECTOR2 CRockman::g_PosRockman = D3DXVECTOR2(0, 100);
 
-#define TIME_INJUNRED 3.0f
-#define TIME_SHOT (3.0f)
-#define VY_JUMP 50.0f
+float TIME_INJUNRED;
+float TIME_SHOT;
+float VY_JUMP;
 //#define VY_JUMP 70.0f
-#define ACCEL_STOP (10.0f)
-#define MAX_VX (15.0f)
-#define VX_PREPARE (7.0f)
+float ACCEL_STOP;
+float MAX_VX;
+float VX_PREPARE;
+char* pathConfig = "Resource//rockman_config.txt";
 
+vector<string> vectorDataRockManConfig = CUtils::LoadDataFromFile(pathConfig);
 
 CRockman::CRockman(void)
 {
@@ -61,6 +63,16 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 
 	//create blood
 	m_Blood = new CBlood(D3DXVECTOR2(30, 30), 200);
+
+
+	// load config
+	TIME_INJUNRED = atoi(vectorDataRockManConfig.at(1).c_str());	
+	TIME_SHOT = atoi(vectorDataRockManConfig.at(2).c_str());	
+	VY_JUMP = atoi(vectorDataRockManConfig.at(3).c_str());
+	ACCEL_STOP = atoi(vectorDataRockManConfig.at(4).c_str());
+	MAX_VX = atoi(vectorDataRockManConfig.at(5).c_str());
+	VX_PREPARE = atoi(vectorDataRockManConfig.at(6).c_str());
+
 }
 CRockman::~CRockman()
 {

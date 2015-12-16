@@ -41,7 +41,7 @@ CMap::~CMap()
 void  CMap::LoadMap(char* pathMap,  CQuadTree *quadTree)
 {
 	// get data from map
-	vector<string> vectorDataFromMap = CUtils::LoadDataFromFileMap(pathMap);;
+	vector<string> vectorDataFromMap = CUtils::LoadDataFromFile(pathMap);
 
 	// get a row contain row, col
 	vector<string> sizeMap = CUtils::SplitString(vectorDataFromMap[2], CUtils::charSplit);

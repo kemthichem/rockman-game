@@ -216,7 +216,7 @@ void CPLayingGameState::RenderTextAndSurface()
 
 vector <POINT>CPLayingGameState::getCameraPath()
 {	
-	vector<string> vectorDataFromMap = CUtils::LoadDataFromFileMap(pathMap);
+	vector<string> vectorDataFromMap = CUtils::LoadDataFromFile(pathMap);
 	int start, size;
 	for (int i = 0; i < vectorDataFromMap.size(); i++)
 	{
