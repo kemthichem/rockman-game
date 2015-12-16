@@ -201,6 +201,9 @@
     <ClCompile Include="Block.cpp">
       <Filter>ObjectGame\Block</Filter>
     </ClCompile>
+    <ClCompile Include="ResourceConfig.cpp">
+      <Filter>ResourceManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RockmanGame.h">
@@ -337,6 +340,9 @@
     </ClInclude>
     <ClInclude Include="Block.h">
       <Filter>ObjectGame\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceConfig.h">
+      <Filter>ResourceManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

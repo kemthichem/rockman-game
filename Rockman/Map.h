@@ -11,6 +11,7 @@
 #include"BigEye.h"
 #include"Block.h"
 #include "QuadTree.h"
+#include "Camera.h"
 
 using std::vector;
 using namespace std;
@@ -32,7 +33,7 @@ public:
 
 	vector<CEntity*> m_ListObjects;
 
-	void LoadMap(char* filePath, CQuadTree *quadTree);
+	void LoadMap(char* filePath, CQuadTree *quadTree, CCamera*);
 };
 
 

@@ -38,7 +38,7 @@ CMap::~CMap()
 	delete []m_ArrayMapTile;
 }
 
-void  CMap::LoadMap(char* pathMap,  CQuadTree *quadTree)
+void  CMap::LoadMap(char* pathMap,  CQuadTree *quadTree, CCamera *camera)
 {
 	// get data from map
 	vector<string> vectorDataFromMap = CUtils::LoadDataFromFile(pathMap);
@@ -96,6 +96,24 @@ void  CMap::LoadMap(char* pathMap,  CQuadTree *quadTree)
 	quadTree->LoadNodeInFile(vectorDataFromMap, startRowQuadTree, nodeCount);
 
 	quadTree->MapIdToObjectInTree(quadTree->m_nodeRoot, m_ListObjects);
+
+	int sizePathPoint = atoi(CUtils::SplitString(vectorDataFromMap[rowTitle + 14 + objectCount + nodeCount + 2], CUtils::charSplit).at(0).c_str());
+	int startPathPoint = rowTitle + 14 + objectCount + nodeCount + 3;
+	
+	int _temp = 0;
+	int X, Y;
+	POINT * arrayPoint = new POINT[sizePathPoint];
+	for (int k = startPathPoint; k < startPathPoint + sizePathPoint; k++)
+	{
+		vectorObject = CUtils::SplitString(vectorDataFromMap[k], CUtils::charSplit);
+		X = atoi(vectorObject.at(0).c_str());
+		Y = atoi(vectorObject.at(1).c_str());
+		arrayPoint[_temp].x = X;
+		arrayPoint[_temp].y = Y;
+		_temp++;
+	}
+
+	camera->Initialize(arrayPoint, sizePathPoint);
 }
 
 

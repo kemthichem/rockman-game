@@ -138,7 +138,7 @@ void CPLayingGameState::Init()
 
 	//Load to quadtree tree
 	quadTree = new CQuadTree();
-	m_Map.LoadMap(pathMap, quadTree);	
+	m_Map.LoadMap(pathMap, quadTree, m_Camera);	
 	//quadTree->LoadNodeInFile(pathTree);
 	quadTree->MapIdToObjectInTree(quadTree->m_nodeRoot, m_Map.m_ListObjects);
 
@@ -146,12 +146,6 @@ void CPLayingGameState::Init()
 	//create scenery tile
 	m_ScereryTile = new CSceneryTile(CResourceManager::GetInstance()->GetSprite(IMAGE_MAP_CUTMAN),
 		m_Map.m_ArrayMapTile, m_Map.rowTitle, m_Map.colTitle, m_Map.countTile);
-
-
-	//Set camera
-	POINT* cameraPathPoint = getCameraPath();
-
-	m_Camera->Initialize(cameraPathPoint, 20);
 }
 
 void CPLayingGameState::DrawText()
@@ -212,35 +206,4 @@ void CPLayingGameState::UpdateState()
 void CPLayingGameState::RenderTextAndSurface()
 {
 	DrawText();
-}
-
-POINT *CPLayingGameState::getCameraPath()
-{	
-	vector<string> vectorDataFromMap = CUtils::LoadDataFromFile(pathMap);
-	int start, size;
-	for (int i = 0; i < vectorDataFromMap.size(); i++)
-	{
-		if (vectorDataFromMap.at(i).compare("#Camera_Path_Point") == 0)
-		{
-			// size point path camera is next row
-			// start point is next 2 row
-			size = atoi(vectorDataFromMap.at(i + 1).c_str());
-			start = i + 2;
-			break;
-		}
-	}
-
-	vector<string> vectorStringPoint;
-	POINT* arrayPoint = new POINT[size];	
-	POINT tempPoint;
-
-	for (int j = start; j < start + size; j++)
-	{
-		vectorStringPoint = CUtils::SplitString(vectorDataFromMap[j], CUtils::charSplit);
-		tempPoint.x = atoi(vectorStringPoint.at(0).c_str());
-		tempPoint.y = atoi(vectorStringPoint.at(1).c_str());
-		arrayPoint[j - start] = tempPoint;
-	}
-
-	return arrayPoint;
 }

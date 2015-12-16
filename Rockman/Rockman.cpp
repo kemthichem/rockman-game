@@ -1,21 +1,11 @@
 ﻿#include "Rockman.h"
 #include "PLayingGameState.h"
 #include "Define.h"
+#include "ResourceConfig.h"
 
 const D3DXVECTOR2 CRockman::mAccelOfRockman = D3DXVECTOR2(15.0f,-25.0f);
 
 D3DXVECTOR2 CRockman::g_PosRockman = D3DXVECTOR2(0, 100);
-
-#define TIME_INJUNRED 3.0f
-#define TIME_SHOT (3.0f)
-#define VY_JUMP 55.0f
-//#define VY_JUMP 70.0f
-float ACCEL_STOP;
-float MAX_VX;
-float VX_PREPARE;
-char* pathConfig = "Resource//rockman_config.txt";
-
-vector<string> vectorDataRockManConfig = CUtils::LoadDataFromFile(pathConfig);
 
 CRockman::CRockman(void)
 {
@@ -63,16 +53,6 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 
 	//create blood
 	m_Blood = new CBlood(D3DXVECTOR2(30, 30), 200);
-
-
-	// load config
-	TIME_INJUNRED = atoi(vectorDataRockManConfig.at(1).c_str());	
-	TIME_SHOT = atoi(vectorDataRockManConfig.at(2).c_str());	
-	VY_JUMP = atoi(vectorDataRockManConfig.at(3).c_str());
-	ACCEL_STOP = atoi(vectorDataRockManConfig.at(4).c_str());
-	MAX_VX = atoi(vectorDataRockManConfig.at(5).c_str());
-	VX_PREPARE = atoi(vectorDataRockManConfig.at(6).c_str());
-
 }
 CRockman::~CRockman()
 {
@@ -181,7 +161,7 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 		break;
 	}
 	//When stop after update vellocx 
-	if (abs(m_accel.x) == ACCEL_STOP) {
+	if (abs(m_accel.x) == ResourceConfig::GetInstance()->GetValue(KEY_RM_ACCEL_STOP)) {
 		if (m_accel.x < 0 && m_velloc.x < 0) {
 			m_velloc.x =  0;
 		}
@@ -196,7 +176,7 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 
 	//Update action when shot
 	if (m_TimeShot > 0) {
-		if (m_TimeShot < TIME_SHOT) {
+		if (m_TimeShot < ResourceConfig::GetInstance()->GetValue(KEY_RM_TIME_SHOT)) {
 			m_TimeShot += _time;
 			UpdateActionShot();
 		} else {
@@ -317,7 +297,7 @@ void CRockman::UpdateActionShot()
 void CRockman::Stand()
 {
 	m_action = Action_Stand;
-	m_accel.x = m_velloc.x < 0 ? ACCEL_STOP : -ACCEL_STOP;
+	m_accel.x = m_velloc.x < 0 ? ResourceConfig::GetInstance()->GetValue(KEY_RM_ACCEL_STOP) : - ResourceConfig::GetInstance()->GetValue(KEY_RM_ACCEL_STOP);
 	if (m_velloc.x == 0) {
 		m_accel.x = 0;
 	}
@@ -331,13 +311,13 @@ void CRockman::TurnLeft()
 	}
 
 	m_accel.x = -mAccelOfRockman.x;
-	m_velloc.x = m_velloc.x < -MAX_VX ? -MAX_VX :m_velloc.x ;
+	m_velloc.x = m_velloc.x < -ResourceConfig::GetInstance()->GetValue(KEY_RM_MAX_VX) ? -ResourceConfig::GetInstance()->GetValue(KEY_RM_MAX_VX) :m_velloc.x ;
 
 	//Update action
 	if (m_velloc.x > 0)
 		m_action = Action_Stand;
 	else 
-		if (m_velloc.x > -VX_PREPARE)
+		if (m_velloc.x > -ResourceConfig::GetInstance()->GetValue(KEY_RM_VX_PREPARE))
 			m_action = Action_Go_Prepare;
 		else 
 			m_action = Action_Go;
@@ -351,13 +331,13 @@ void CRockman::TurnRight()
 	}
 
 	m_accel.x = mAccelOfRockman.x;
-	m_velloc.x = m_velloc.x > MAX_VX ? MAX_VX : m_velloc.x;
+	m_velloc.x = m_velloc.x > ResourceConfig::GetInstance()->GetValue(KEY_RM_MAX_VX) ? ResourceConfig::GetInstance()->GetValue(KEY_RM_MAX_VX) : m_velloc.x;
 
 	//Update action
 	if (m_velloc.x < 0)
 		m_action = Action_Stand;
 	else 
-		if (m_velloc.x < VX_PREPARE)
+		if (m_velloc.x < ResourceConfig::GetInstance()->GetValue(KEY_RM_VX_PREPARE))
 			m_action = Action_Go_Prepare;
 		else 
 			m_action = Action_Go;
@@ -387,7 +367,7 @@ void CRockman::Jump()
 {
 	if (m_accel.y == 0) {
 		m_accel.y = mAccelOfRockman.y;
-		m_velloc.y = VY_JUMP;
+		m_velloc.y = ResourceConfig::GetInstance()->GetValue(KEY_RM_VY_JUMP);
 		m_action = Action_Jump;
 	}
 }
