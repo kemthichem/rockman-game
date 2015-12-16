@@ -52,12 +52,12 @@ int CCamera::GetNextIndexY(POINT _pos, float _vY)
 
 	int idx = -1;
 	int reVal = -1;
+
+	m_curIsBound = false;
 	for (int i = 0; i < 2; i++)
 	{
 		idx = arr[i];
-		m_curIsBound = false;
 		if ( idx != -1) {
-
 			if (m_arrayPoint[idx].x == curPoint.x && m_arrayPoint[idx].y * dir > curPoint.y * dir) {
 				reVal =  idx;
 			}
@@ -111,10 +111,16 @@ void CCamera::Update(D3DXVECTOR2 _pos, D3DXVECTOR2 _velloc)
 	//Y
 	POINT rPos = {_pos.x , _pos. y};
 	int nextIndexY = GetNextIndexY(rPos, _velloc.y);
+
 	if (nextIndexY != -1) {
+		if (_velloc.y > 0 && m_arrayPoint[nextIndexY].y - m_arrayPoint[curIndex].y < HEIGHT_SCREEN && !m_curIsBound) {
+			curIndex = nextIndexY;
+			nextIndexY = GetNextIndexY(rPos, _velloc.y);
+		}
+
 		char dir = _velloc.y > 0 ? 1 : -1;
 		long offsetY =  m_curIsBound ? HEIGHT_SCREEN / 2 + OFFSET_MAP_Y : 0;
-		long temp = _velloc.y > 0 ? m_arrayPoint[curIndex].y + HEIGHT_SCREEN + OFFSET_MAP_Y - offsetY : m_arrayPoint[curIndex].y + offsetY;
+		long temp = _velloc.y > 0 ? m_arrayPoint[curIndex].y + HEIGHT_SCREEN + OFFSET_MAP_Y - offsetY : m_arrayPoint[curIndex].y - offsetY;
 		if (_pos.y * dir > (temp)* dir) {
 			if (m_pos.x == m_arrayPoint[curIndex].x - WIDTH_SCREEN / 2) {
 				indexMoveTo = nextIndexY;

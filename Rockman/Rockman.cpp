@@ -6,9 +6,9 @@ const D3DXVECTOR2 CRockman::mAccelOfRockman = D3DXVECTOR2(15.0f,-25.0f);
 
 D3DXVECTOR2 CRockman::g_PosRockman = D3DXVECTOR2(0, 100);
 
-float TIME_INJUNRED;
-float TIME_SHOT;
-float VY_JUMP;
+#define TIME_INJUNRED 3.0f
+#define TIME_SHOT (3.0f)
+#define VY_JUMP 55.0f
 //#define VY_JUMP 70.0f
 float ACCEL_STOP;
 float MAX_VX;
@@ -44,7 +44,7 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 	m_accel = mAccelOfRockman;
 
 	m_Size = m_SizeInit = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
-	m_SizeClimb = D3DXVECTOR2(m_SpriteClimb->GetWidthRectSprite() - 2, m_SpriteClimb->GetHeightRectSprite());
+	m_SizeClimb = D3DXVECTOR2(m_SpriteClimb->GetWidthRectSprite() - 4, m_SpriteClimb->GetHeightRectSprite());
 	UpdateRect();
 	m_PosXClimb = -1;
 	m_IsClimbing = false;
