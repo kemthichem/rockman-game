@@ -149,9 +149,9 @@ void CPLayingGameState::Init()
 
 
 	//Set camera
-	vector<POINT> vectorCameraPath = getCameraPath();
+	POINT* cameraPathPoint = getCameraPath();
 
-	m_Camera->Initialize(array, 20);
+	m_Camera->Initialize(cameraPathPoint, 20);
 }
 
 void CPLayingGameState::DrawText()
@@ -214,7 +214,7 @@ void CPLayingGameState::RenderTextAndSurface()
 	DrawText();
 }
 
-vector <POINT>CPLayingGameState::getCameraPath()
+POINT *CPLayingGameState::getCameraPath()
 {	
 	vector<string> vectorDataFromMap = CUtils::LoadDataFromFile(pathMap);
 	int start, size;
@@ -230,8 +230,8 @@ vector <POINT>CPLayingGameState::getCameraPath()
 		}
 	}
 
-	vector<POINT> vectorCameraPathPoint;	
 	vector<string> vectorStringPoint;
+	POINT* arrayPoint = new POINT[size];	
 	POINT tempPoint;
 
 	for (int j = start; j < start + size; j++)
@@ -239,8 +239,8 @@ vector <POINT>CPLayingGameState::getCameraPath()
 		vectorStringPoint = CUtils::SplitString(vectorDataFromMap[j], CUtils::charSplit);
 		tempPoint.x = atoi(vectorStringPoint.at(0).c_str());
 		tempPoint.y = atoi(vectorStringPoint.at(1).c_str());
-		vectorCameraPathPoint.push_back(tempPoint);
+		arrayPoint[j - start] = tempPoint;
 	}
 
-	return vectorCameraPathPoint;
+	return arrayPoint;
 }
