@@ -1,5 +1,6 @@
 ﻿#include "utils.h"
 
+
 LPDIRECT3DSURFACE9 CUtils::LoadSurface(LPDIRECT3DDEVICE9 _d3ddv, LPCSTR filepath)
 {
 	LPDIRECT3DSURFACE9 surface = NULL;
@@ -86,6 +87,25 @@ float CUtils::Max( float n1, float n2 )
  	return n2;
  }
   float CUtils::Lerp(float value1, float value2, float amount)
- {
+{
 	return value1 + (value2 - value1) * amount;
+}
+vector<string> CUtils::LoadDataFromFileMap(char *pathMap)
+{
+	ifstream ifstreamMapFile;
+
+	// data from mapFile read into vector
+	vector<string> vectorDataFromMap;
+	string line;
+	// read file map and push data into a vector
+	ifstreamMapFile.open(pathMap);
+	if (ifstreamMapFile.is_open())
+	{
+		while (getline(ifstreamMapFile,line))
+		{
+			vectorDataFromMap.push_back(line);
+		}
+	}
+	ifstreamMapFile.close();
+	return vectorDataFromMap;
 }

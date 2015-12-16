@@ -16,6 +16,8 @@ int CPLayingGameState::g_Stage = 1;
 
 int CPLayingGameState::g_Score = 0;
 
+char* pathMap = "Resource//map//cut_man_stage.txt";
+
 CPLayingGameState::CPLayingGameState(CGameStateManager *_gameState)
 {
 	m_StateManager = _gameState;
@@ -89,9 +91,9 @@ void CPLayingGameState::Update(CInput* _input,float _time)
 POINT array[20] = { {129, 111}, {897, 111}, {897, 232}, {897, 472}, {897		,712 },{897		,952 },{897		,1071},{1409	,1071}    ,{1409	,1192}    ,{1409	,1432}    ,{1409	,1672}    ,{1409	,1914}    ,{1409	,2031}    ,{1921	,2031}    ,{1921	,1914}    ,{1921	,1672}    ,{1921	,1432}    ,{1921	,1311}    ,{2304	,1311}    ,{3216	,1311}};
 void CPLayingGameState::Init()
 {
-	char* pathMap = "Resource//map//cut_man_stage.txt";
+	//char* pathMap = "Resource//map//cut_man_stage.txt";
 
-	#pragma region  
+#pragma region  
 	char* pathTree = ""; 
 
 	//fixed stage
@@ -100,15 +102,15 @@ void CPLayingGameState::Init()
 	switch (g_Stage)
 	{
 	case 1:
-		pathMap = "Resource//map//Map1Old.txt";
+		//pathMap = "Resource//map//Map1Old.txt";
 		pathTree = "Resource//map//Map1OldTree.txt";
 		break;
 	case 2:
-		pathMap = "Resource//map//Map2.txt";
+		//pathMap = "Resource//map//Map2.txt";
 		pathTree = "Resource//map//Map2Tree.txt";
 		break;
 	case 3:
-		pathMap = "Resource//map//Map3.txt";
+		//pathMap = "Resource//map//Map3.txt";
 		pathTree = "Resource//map//Map3Tree.txt";
 		break;
 	default:
@@ -120,19 +122,19 @@ void CPLayingGameState::Init()
 	////Go boss map 1
 	//m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(4798,2084));//-600y
 	//rockman = new CRockman(D3DXVECTOR3(5471, 2350, 0));
-		////Go boss map 2
+	////Go boss map 2
 	//m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(3552,2344));
 	//rockman = new CRockman(D3DXVECTOR3(3580,1000,0));
 	////Go boss map 3
 	//m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(3552,2344));
 	//rockman = new CRockman(D3DXVECTOR3(3580,1000,0));
 
-	
-	#pragma endregion
 
-	pathMap = "Resource//map//cut_man_stage.txt";
+#pragma endregion
 
-	
+	//pathMap = "Resource//map//cut_man_stage.txt";
+
+
 
 	//Load to quadtree tree
 	quadTree = new CQuadTree();
@@ -147,7 +149,8 @@ void CPLayingGameState::Init()
 
 
 	//Set camera
-	
+	vector<POINT> vectorCameraPath = getCameraPath();
+
 	m_Camera->Initialize(array, 20);
 }
 
@@ -209,4 +212,35 @@ void CPLayingGameState::UpdateState()
 void CPLayingGameState::RenderTextAndSurface()
 {
 	DrawText();
+}
+
+vector <POINT>CPLayingGameState::getCameraPath()
+{	
+	vector<string> vectorDataFromMap = CUtils::LoadDataFromFileMap(pathMap);
+	int start, size;
+	for (int i = 0; i < vectorDataFromMap.size(); i++)
+	{
+		if (vectorDataFromMap.at(i).compare("#Camera_Path_Point") == 0)
+		{
+			// size point path camera is next row
+			// start point is next 2 row
+			size = atoi(vectorDataFromMap.at(i + 1).c_str());
+			start = i + 2;
+			break;
+		}
+	}
+
+	vector<POINT> vectorCameraPathPoint;	
+	vector<string> vectorStringPoint;
+	POINT tempPoint;
+
+	for (int j = start; j < start + size; j++)
+	{
+		vectorStringPoint = CUtils::SplitString(vectorDataFromMap[j], CUtils::charSplit);
+		tempPoint.x = atoi(vectorStringPoint.at(0).c_str());
+		tempPoint.y = atoi(vectorStringPoint.at(1).c_str());
+		vectorCameraPathPoint.push_back(tempPoint);
+	}
+
+	return vectorCameraPathPoint;
 }

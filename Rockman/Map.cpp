@@ -13,10 +13,8 @@
 #include "QuadTree.h"
 #include "utils.h"
 
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <iterator>
+
+
 
 int CMap::g_widthMap = 0;
 int CMap::g_heightMap = 0;
@@ -41,75 +39,59 @@ CMap::~CMap()
 }
 
 void  CMap::LoadMap(char* pathMap,  CQuadTree *quadTree)
-{	
-	// define ifstream file
-	ifstream ifstreamMapFile;
-	char splitChar = '\t';
+{
+	// get data from map
+	vector<string> vectorDataFromMap = CUtils::LoadDataFromFileMap(pathMap);;
 
-	// line of mapFile
-	string line;
-
-	// data from mapFile read into vector
-	vector<string> vectorDataFromMap;
-
-	// read file map and push data into a vector
-	ifstreamMapFile.open(pathMap);
-	if (ifstreamMapFile.is_open())
-	{
-		while (getline(ifstreamMapFile,line))
-		{
-			vectorDataFromMap.push_back(line);
-		}
-	}
-	ifstreamMapFile.close();
-
-	vector<string> sizeMap = CUtils::SplitString(vectorDataFromMap[2], splitChar);
+	// get a row contain row, col
+	vector<string> sizeMap = CUtils::SplitString(vectorDataFromMap[2], CUtils::charSplit);
 
 	// get row
-	rowTitle = atoi(sizeMap.at(0).c_str());
-	
+	rowTitle = atoi(sizeMap.at(0).c_str());	
 	// get column
 	colTitle = atoi(sizeMap.at(1).c_str());
-
 	countTile = atoi(sizeMap.at(2).c_str());
 
 	// declare a 2 dimensional array to save tile 
 	m_ArrayMapTile = new int *[rowTitle];
-
+	vector<string> vectorTitle;
 	for (int i = 0; i < rowTitle; i++)
 	{
 		m_ArrayMapTile[i] = new int[colTitle];
-		vector<string> rowTitle = CUtils::SplitString(vectorDataFromMap[i + 4], splitChar);
+		vectorTitle = CUtils::SplitString(vectorDataFromMap[i + 4], CUtils::charSplit);
 
 		for (int j = 0; j < colTitle; j++)
 		{
-			m_ArrayMapTile[i][j] = atoi(rowTitle.at(j).c_str());
+			m_ArrayMapTile[i][j] = atoi(vectorTitle.at(j).c_str());
 		}
 	}
 
 	// get object count at row 75 on fileMap
-	vector<string> sizeObject = CUtils::SplitString(vectorDataFromMap[rowTitle + 7], splitChar);
-	int objectCount = atoi(sizeObject.at(0).c_str());
+	vector<string> vectorSize = CUtils::SplitString(vectorDataFromMap[rowTitle + 7], CUtils::charSplit);
+	int objectCount = atoi(vectorSize.at(0).c_str());
 
 	int startRowObject = rowTitle + 9;
+	vector<string> vectorObject;
+	int objID, typeID, width, height, widthCollide, heightCollide;
+	double posX, posY, posXCollide, posYCollide;
 	for (int k = startRowObject; k < startRowObject + objectCount; k++)
 	{
 		//vector<string> sizeObject = getListFromFile(listMap, k);
-		vector<string> sizeObject = CUtils::SplitString(vectorDataFromMap[k], splitChar);//
-		int objID = atoi(sizeObject.at(0).c_str());
-		int typeID = atoi(sizeObject.at(1).c_str());
-		double posX = atoi(sizeObject.at(2).c_str());
-		double posY = atoi(sizeObject.at(3).c_str());
-		int width = atoi(sizeObject.at(4).c_str());
-		int height = atoi(sizeObject.at(5).c_str());
-		double posXCollide = atoi(sizeObject.at(6).c_str());
-		double posYCollide = atoi(sizeObject.at(7).c_str());
-		int widthCollide = atoi(sizeObject.at(8).c_str());
-		int heightCollide = atoi(sizeObject.at(9).c_str());
+		vectorObject = CUtils::SplitString(vectorDataFromMap[k], CUtils::charSplit);//
+		objID = atoi(vectorObject.at(0).c_str());
+		typeID = atoi(vectorObject.at(1).c_str());
+		posX = atoi(vectorObject.at(2).c_str());
+		posY = atoi(vectorObject.at(3).c_str());
+		width = atoi(vectorObject.at(4).c_str());
+		height = atoi(vectorObject.at(5).c_str());
+		posXCollide = atoi(vectorObject.at(6).c_str());
+		posYCollide = atoi(vectorObject.at(7).c_str());
+		widthCollide = atoi(vectorObject.at(8).c_str());
+		heightCollide = atoi(vectorObject.at(9).c_str());
 		// add object game
 		AddObjectGame(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 	}
-	int nodeCount = atoi(CUtils::SplitString(vectorDataFromMap[rowTitle + 12 + objectCount], splitChar).at(0).c_str());
+	int nodeCount = atoi(CUtils::SplitString(vectorDataFromMap[rowTitle + 12 + objectCount], CUtils::charSplit).at(0).c_str());
 	int startRowQuadTree = rowTitle + 14 + objectCount;
 	quadTree->LoadNodeInFile(vectorDataFromMap, startRowQuadTree, nodeCount);
 

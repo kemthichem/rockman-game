@@ -27,6 +27,7 @@ private:
 
 	void DrawText();
 	void UpdateState();
+	vector<POINT> getCameraPath();
 protected:
 	//virtual void CleanUp();
 	virtual void Render(LPD3DXSPRITE _spriteHandle);
