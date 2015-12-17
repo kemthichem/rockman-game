@@ -16,8 +16,6 @@ int CPLayingGameState::g_Stage = 1;
 
 int CPLayingGameState::g_Score = 0;
 
-char* pathMap = "Resource//map//cut_man_stage.txt";
-
 CPLayingGameState::CPLayingGameState(CGameStateManager *_gameState)
 {
 	m_StateManager = _gameState;
@@ -88,30 +86,25 @@ void CPLayingGameState::Update(CInput* _input,float _time)
 
 	UpdateState();
 }
-POINT array[20] = { {129, 111}, {897, 111}, {897, 232}, {897, 472}, {897		,712 },{897		,952 },{897		,1071},{1409	,1071}    ,{1409	,1192}    ,{1409	,1432}    ,{1409	,1672}    ,{1409	,1914}    ,{1409	,2031}    ,{1921	,2031}    ,{1921	,1914}    ,{1921	,1672}    ,{1921	,1432}    ,{1921	,1311}    ,{2304	,1311}    ,{3216	,1311}};
+
 void CPLayingGameState::Init()
 {
-	//char* pathMap = "Resource//map//cut_man_stage.txt";
+	char* pathMap = NULL;
 
-#pragma region  
-	char* pathTree = ""; 
-
+#pragma region
 	//fixed stage
 	g_Stage = 1;
 
 	switch (g_Stage)
 	{
 	case 1:
-		//pathMap = "Resource//map//Map1Old.txt";
-		pathTree = "Resource//map//Map1OldTree.txt";
+		pathMap = "Resource//map//cut_man_stage.txt";
 		break;
 	case 2:
 		//pathMap = "Resource//map//Map2.txt";
-		pathTree = "Resource//map//Map2Tree.txt";
 		break;
 	case 3:
 		//pathMap = "Resource//map//Map3.txt";
-		pathTree = "Resource//map//Map3Tree.txt";
 		break;
 	default:
 		break;
@@ -128,21 +121,12 @@ void CPLayingGameState::Init()
 	////Go boss map 3
 	//m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(3552,2344));
 	//rockman = new CRockman(D3DXVECTOR3(3580,1000,0));
-
-
 #pragma endregion
 
-	//pathMap = "Resource//map//cut_man_stage.txt";
-
-
-
-	//Load to quadtree tree
 	quadTree = new CQuadTree();
-	m_Map.LoadMap(pathMap, quadTree, m_Camera);	
-	//quadTree->LoadNodeInFile(pathTree);
-	quadTree->MapIdToObjectInTree(quadTree->m_nodeRoot, m_Map.m_ListObjects);
 
-
+	//Load to quadTree and camera path point from map.
+	m_Map.LoadMap(pathMap, quadTree, m_Camera);
 	//create scenery tile
 	m_ScereryTile = new CSceneryTile(CResourceManager::GetInstance()->GetSprite(IMAGE_MAP_CUTMAN),
 		m_Map.m_ArrayMapTile, m_Map.rowTitle, m_Map.colTitle, m_Map.countTile);

@@ -20,6 +20,14 @@ CBlader::CBlader(int _id, D3DXVECTOR3 _pos)
 CBlader::CBlader(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide)
 {
 	m_Id = objID;
+	m_Type = BLADER;
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), D3DXVECTOR2(190,700), 2, 1, D3DXVECTOR2(30,655), D3DXVECTOR2(0,0), D3DXVECTOR2(45,0));
+	m_Size = D3DXVECTOR2(widthCollide, heightCollide);
+	m_pos = D3DXVECTOR3(posXCollide, posYCollide, 0);
+	m_PosInit = m_pos;
+	m_IsLife = true;
+
+	UpdateRect();
 }
 
 CBlader::~CBlader(void)
