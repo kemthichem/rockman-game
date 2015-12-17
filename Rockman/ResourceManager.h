@@ -9,9 +9,6 @@
 
 #include "utils.h"
 
-//resource menu
-#define  IMAGE_MENU "Resource/menu.png"
-
 //resource object
 #define  IMAGE_ROCKMAN "Resource/rockman.png"
 #define  IMAGE_TILES "Resource/tiles.png"

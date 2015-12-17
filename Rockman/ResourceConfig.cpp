@@ -7,7 +7,7 @@
 
 #include "utils.h"
 
-#define PATH_CONFIG "Resource//rockman_config.txt"
+#define PATH_CONFIG "Resource//Config//rockman_config.txt"
 
 
 ResourceConfig::ResourceConfig(void)
@@ -50,7 +50,7 @@ void ResourceConfig::LoadConfig(char* inPath)
 		{
 			stringsLine = CUtils::SplitString(line, ' ');
 			if (stringsLine.size() > 1) {
-				m_ArrayConfig[i] = atof(stringsLine[1].c_str());
+				m_ArrayConfig[i] = (float)atof(stringsLine[1].c_str());
 			}
 			++i;
 		}

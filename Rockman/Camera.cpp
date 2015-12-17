@@ -75,7 +75,7 @@ void CCamera::Update(D3DXVECTOR2 _pos, D3DXVECTOR2 _velloc)
 	bool isHaveNextPointX = false;
 	bool isHavePrePointX = false;
 
-	if (curIndex < m_countPoint - 2) {
+	if (curIndex < m_countPoint - 1) {
 		isHaveNextPointX = pCur.y == m_arrayPoint[curIndex + 1].y;
 	}
 

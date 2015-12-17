@@ -22,11 +22,11 @@ void CMenuState::Init()
 	CGameState::Init();
 	m_background = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_BG_MENU), D3DXVECTOR2(800,600), 1, 1);
 	
-	m_menuoption = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MENU), D3DXVECTOR2(380,40), 2, 1, D3DXVECTOR2(0,0));
+	/*m_menuoption = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MENU), D3DXVECTOR2(380,40), 2, 1, D3DXVECTOR2(0,0));
 	m_menuexit = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MENU), D3DXVECTOR2(200,90), 2, 1, D3DXVECTOR2(0,50));
 	m_menucontinue = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MENU), D3DXVECTOR2(400,140), 2, 1, D3DXVECTOR2(0,100));
 	m_menuabout = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MENU), D3DXVECTOR2(300,190), 2, 1, D3DXVECTOR2(0,150));
-	m_menunewgame =  new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MENU), D3DXVECTOR2(420,240), 2, 1, D3DXVECTOR2(0,200));
+	m_menunewgame =  new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MENU), D3DXVECTOR2(420,240), 2, 1, D3DXVECTOR2(0,200));*/
 	
 	m_time = 0;
 	m_Select = 1;
@@ -127,12 +127,12 @@ void CMenuState::Update(CInput* _input,float _time)
 }
 void CMenuState::Render(LPD3DXSPRITE _spriteHandle)
 {
-	m_background->Render(_spriteHandle, NULL, D3DXVECTOR3(0,0,0));
+	/*m_background->Render(_spriteHandle, NULL, D3DXVECTOR3(0,0,0));
 	m_menunewgame->Render(_spriteHandle, NULL, D3DXVECTOR3(400 - m_menunewgame->GetWidthRectSprite()/2,100,0));
 	m_menucontinue->Render(_spriteHandle, NULL, D3DXVECTOR3(400 - m_menucontinue->GetWidthRectSprite()/2,180,0));
 	m_menuoption->Render(_spriteHandle, NULL, D3DXVECTOR3(400 - m_menuoption->GetWidthRectSprite()/2,260,0));
 	m_menuabout->Render(_spriteHandle, NULL, D3DXVECTOR3(400 - m_menuabout->GetWidthRectSprite()/2,340,0));
-	m_menuexit->Render(_spriteHandle, NULL, D3DXVECTOR3(400 - m_menuexit->GetWidthRectSprite()/2,420,0));
+	m_menuexit->Render(_spriteHandle, NULL, D3DXVECTOR3(400 - m_menuexit->GetWidthRectSprite()/2,420,0));*/
 }
 CMenuState::~CMenuState()
 {
