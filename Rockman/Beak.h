@@ -25,7 +25,7 @@ private:
 
 protected:
 public:
-	CBeak(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide);
+	CBeak(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide, bool _isLeft = true);
 
 	CBeak(int _id, D3DXVECTOR3 _pos, bool _isLeft = true);
 	~CBeak(void);

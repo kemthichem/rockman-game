@@ -34,9 +34,29 @@ COctopus::~COctopus(void)
 		delete m_Item;
 }
 
-COctopus::COctopus(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide)
+COctopus::COctopus(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide, bool _isTurnHor)
 {
 	m_Id = objID;
+
+	m_Type = OCTOPUS;
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES),
+		D3DXVECTOR2(910,296), 3, 1,
+		D3DXVECTOR2(670,260),
+		D3DXVECTOR2(0,0),
+		D3DXVECTOR2(47,0));
+	m_velloc.x = _isTurnHor ? -10 : 0;
+	m_velloc.y = _isTurnHor ? 0 : 10;
+	m_Size = D3DXVECTOR2(widthCollide, heightCollide);
+	m_pos = D3DXVECTOR3(posXCollide, posYCollide, 0);
+	UpdateRect();
+
+	/**Attribute Octopus**/
+	m_TimeSpend = 0;
+	m_IsLife = true;
+	m_vellocTemp = D3DXVECTOR2(0,0);
+
+	//create item
+	m_Item = new CItem(m_pos);
 }
 
 void COctopus::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity* >_listObjectInViewPort)

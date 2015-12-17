@@ -51,9 +51,50 @@ CBeak::CBeak(int _id, D3DXVECTOR3 _pos, bool _isLeft)
 #pragma endregion
 }
 
-CBeak::CBeak(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide)
+CBeak::CBeak(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide, bool _isLeft)
 {
 	m_Id = objID;
+	m_Status = BeakWait;
+	m_IsLife = true;
+	m_TimeSpent = m_TimeShot = 0;
+	m_CurrentBullet = 0;
+	m_isTurnLeft = _isLeft;
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), D3DXVECTOR2(360, 455) , 4, 1, D3DXVECTOR2(40,420), D3DXVECTOR2(0, 0), D3DXVECTOR2(50,0));
+	m_Size = D3DXVECTOR2(widthCollide, heightCollide);
+	m_pos = D3DXVECTOR3(posXCollide, posYCollide, 0);
+
+	UpdateRect();
+
+#pragma region create list bullet
+
+	int vx = -V_BULLET;
+	int vy = 0;
+	int dir = _isLeft ? 1 : -1;
+	for (int i = 0; i < NUM_BULLET; i++)
+	{
+		CBullet *bullet = new CBullet(D3DXVECTOR3(m_pos.x + m_Size.x/2 - 10, m_pos.y - m_Size.y/2 + 10, m_pos.z));
+		switch (i % (NUM_BULLET/2))
+		{
+		case 0:
+			vx = -V_BULLET * dir;
+			vy = V_BULLET * dir;
+			break;
+		case 1:
+			vx = -V_BULLET * dir;
+			vy = 0;
+			break;
+		case 2:
+			vx = -V_BULLET *dir;
+			vy = -V_BULLET *dir;
+			break;
+		default:
+			break;
+		}
+		bullet->SetVelloc(D3DXVECTOR2(vx, vy));
+		m_ListBullet[i] = bullet;
+	}
+
+#pragma endregion
 }
 
 CBeak::~CBeak(void)
