@@ -37,6 +37,7 @@ protected:
 	void ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,float _timeEntry);
 public:
 	CCutMan(int _id, D3DXVECTOR3 _pos);
+	CCutMan(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide);
 	~CCutMan(void);
 
 	//method

@@ -200,6 +200,7 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 	case ID_DIEAARROW:
 		break;
 	case ID_BOSSCUT:
+		object = new CCutMan(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_BOSSBOOM:
 		break;

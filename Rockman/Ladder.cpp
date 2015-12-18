@@ -18,8 +18,6 @@ CLadder::CLadder(int objID, int typeID, double posX, double posY, int width, int
 {
 	m_Id = objID;
 	m_Type = LADDER;
-	m_accel = D3DXVECTOR2(0,0);
-
 	m_Size = D3DXVECTOR2(widthCollide, heightCollide);
 	m_pos = D3DXVECTOR3(posXCollide, posYCollide, 0);
 	UpdateRect();

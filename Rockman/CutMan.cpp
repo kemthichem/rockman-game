@@ -37,6 +37,34 @@ CCutMan::CCutMan(int _id, D3DXVECTOR3 _pos)
 	m_Blood = new CBlood(D3DXVECTOR2(740, 30), 100);
 }
 
+CCutMan::CCutMan(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide)
+{
+	m_Id = objID;
+	m_Type = CUTMAN;
+	//m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MASTER), D3DXVECTOR2(870, 140) , 9, 2, D3DXVECTOR2(430, 10));
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MASTER), D3DXVECTOR2(435, 70) , 9, 2, D3DXVECTOR2(215, 5));
+	m_accel = D3DXVECTOR2(0,0);
+	m_velloc.x = 0;
+	m_accel.y = -20.0f;
+
+	//m_yInit = m_pos.y;
+	m_IsJustJump = false;
+	m_Status = StandHaveGun;
+	m_TimeSpend = 0;
+	m_TimeInjured = 0;
+	m_TimeShot = 0;
+	m_IsShotting = false;
+
+	m_isTurnLeft = true;
+
+	m_Size = D3DXVECTOR2(widthCollide, heightCollide);
+	m_pos = D3DXVECTOR3(posXCollide, posYCollide, 0);
+	UpdateRect();
+	//create list bullet
+	m_Bullet = new CBulletCutman(D3DXVECTOR3(m_pos.x + m_Size.x/2 - 10, m_pos.y - m_Size.y/2 + 10, m_pos.z));
+	//create blood
+	m_Blood = new CBlood(D3DXVECTOR2(740, 30), 100);
+}
 
 CCutMan::~CCutMan(void)
 {
@@ -200,7 +228,15 @@ void CCutMan::UpdateCollison(CEntity* _other,float _time)
 		(dynamic_cast<CRockman*>(_other))->SetInjured(this, -20);
 		break;
 	case BLOCK:
-
+		{		
+			float timeEntry = m_collision->SweptAABB(this,_other,_time);
+			m_directCollision = m_collision->GetDirectCollision();
+			if (timeEntry < 1.0f)
+			{
+				ExecuteCollision(_other,m_directCollision,timeEntry);
+			}
+		}
+		break;
 	default:
 		break;
 	}
