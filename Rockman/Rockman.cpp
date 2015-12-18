@@ -354,7 +354,7 @@ void CRockman::Climb(bool _isTurnUp)
 		}
 	}
 	if (m_PosXClimb > -1) {		
-		m_velloc.y = _isTurnUp ? 10: -10;
+		m_velloc.y = _isTurnUp ?  ResourceConfig::GetInstance()->GetValue(KEY_RM_CLIMB_VY): - ResourceConfig::GetInstance()->GetValue(KEY_RM_CLIMB_VY);
 		m_velloc.x = 0;
 		m_accel.y = 0;
 		m_action = Action_Climb;
