@@ -126,7 +126,7 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 		m_velloc.x = 0;
 		m_accel.x = 0;
 		m_Size = m_SizeClimb;
-		m_pos.x = m_PosXClimb - m_Size.x/2 - 1;
+		m_pos.x = m_PosXClimb - m_Size.x/2;
 		if (m_accel.y != 0) {
 			m_velloc.y = 0;
 			m_accel.y = 0;
