@@ -62,7 +62,7 @@ void CPLayingGameState::Render(LPD3DXSPRITE _spriteHandle)
 void CPLayingGameState::Update(CInput* _input,float _time)
 {
 	vector<CEntity*> listOb = quadTree->GetListObjectInRect(m_Camera->m_viewPort);
-	quadTree->m_listObjectViewportToUpdate.push_back(rockman);
+	quadTree->m_listObjectViewportWillUpdate.push_back(rockman);
 	m_ScereryTile->Update(m_Camera->m_viewPort);
 
 	if (CCamera::g_IsMoving) {

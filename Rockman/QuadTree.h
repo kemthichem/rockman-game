@@ -11,27 +11,27 @@ private:
 	map<int, CQuadTreeNode*> m_mapNode ;
 	vector<CQuadTreeNode*> m_listNodeInViewPort;
 	
-	vector<CEntity*> m_listObjectViewportToRender;
-
+	vector<CEntity*> m_listObjectViewportCheckCollision;
+	void HeldObjectInScreen(vector<CEntity*>& listObject, RECT rScreen);
 	vector<CQuadTreeNode*> GetListNodeIntersectRect(CQuadTreeNode*, RECT );
 	bool IsIntersect(RECT, RECT);
+	bool AddObjectToList(vector<CEntity*>& list, CEntity* obAdd);
 
 public:
 	CQuadTree(void);
 	~CQuadTree(void);
 
-	vector<CEntity*> m_listObjectViewportToUpdate;
+	vector<CEntity*> m_listObjectViewportWillUpdate;
 
 	CQuadTreeNode* m_nodeRoot;
-	vector<string> getListFromFile(vector<string> listMap, int i);
 	void LoadNodeInFile(vector<string>, int, int);
 	void MapIdToObjectInTree(CQuadTreeNode* _nodeParent, vector<CEntity*> _listobject);
 	vector<CEntity*> GetListObjectInRect(RECT _rect);
 	void Update(CCamera* _camera, float _time);
 	void Render (LPD3DXSPRITE _spriteHandle, CCamera* _camera);
-	void CreateTree(CQuadTreeNode *_NodeParent,map<int,CQuadTreeNode*> _map);
-	vector<CEntity*>ClearDuplicate(vector<CEntity*> list);
+	void CreateTree(CQuadTreeNode *_NodeParent, map<int,CQuadTreeNode*> _map);
 	bool IsContains(RECT _rectBig, RECT _rectSmall);
+	bool IsObjectInRect(CEntity *entity, RECT rect);
 };
 
 #endif//_QUADTREE_H_

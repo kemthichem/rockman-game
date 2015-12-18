@@ -20,11 +20,8 @@ CBlock::CBlock(int objID, int typeID, double posX, double posY, int width, int h
 {
 	m_Id = objID;
 	m_Type = BLOCK;
-	//m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES), D3DXVECTOR2(140,35), 4, 1, D3DXVECTOR2(3,1), D3DXVECTOR2(1,1), D3DXVECTOR2(1,1));
 	m_Size = D3DXVECTOR2(widthCollide, heightCollide);
 	m_pos = D3DXVECTOR3(posXCollide, posYCollide, 0);
-	m_accel = D3DXVECTOR2(0,0);	
-	
 
 	UpdateRect();
 }

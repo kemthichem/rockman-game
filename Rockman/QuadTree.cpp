@@ -9,17 +9,8 @@
 
 CQuadTree::CQuadTree(void)
 {
-	m_listObjectViewportToUpdate.clear();
-	m_listObjectViewportToRender.clear();
-}
-
-vector<string> CQuadTree::getListFromFile(vector<string> listMap, int i)
-{
-	istringstream istringStream(listMap[i]);
-	istream_iterator<std::string> istream_Iterator(istringStream), end;
-
-	vector<string> sizeObject (istream_Iterator, end);
-	return sizeObject;
+	m_listObjectViewportWillUpdate.clear();
+	m_listObjectViewportCheckCollision.clear();
 }
 
 CQuadTree::~CQuadTree(void)
@@ -80,30 +71,11 @@ void CQuadTree::LoadNodeInFile(vector<string> listMap, int startRow, int nodeCou
 	CreateTree(m_nodeRoot, m_mapNode);
 }
 
-vector<CEntity*>CQuadTree::ClearDuplicate(vector<CEntity*> list)
-{
-	vector<CEntity*> Listkq;
-	int size =  list.size();
-	for (int i=0;i<size - 1;i++) 
-		for (int j=i+1;j<size;j++) 
-		{ 
-			if (list[i]->GetId()==list[j]->GetId()) 
-				list[j--]=list[--size];   
-		}
-
-		for (int i = 0; i < size; i++)
-		{
-			Listkq.push_back(list[i]);
-		}
-		return Listkq;
-}
-
-
 vector<CEntity*> CQuadTree::GetListObjectInRect(RECT _rect)
 {
-	m_listObjectViewportToRender.clear();
-	m_listObjectViewportToUpdate.clear();
 	m_listNodeInViewPort.clear();
+	HeldObjectInScreen(m_listObjectViewportCheckCollision, _rect);
+	HeldObjectInScreen(m_listObjectViewportWillUpdate, _rect);	
 
 	GetListNodeIntersectRect(m_nodeRoot, _rect);
 	for (int i = 0; i < m_listNodeInViewPort.size(); i++)
@@ -111,36 +83,33 @@ vector<CEntity*> CQuadTree::GetListObjectInRect(RECT _rect)
 		vector<CEntity*> listObjectInNode;
 		m_listNodeInViewPort[i]->GetListObjectInNode(_rect, listObjectInNode);
 
-
-		//m_listObjectViewportToUpdate.insert(m_listObjectViewportToUpdate.begin(), listObjectInNode.begin(), listObjectInNode.end());
-
 		for (int j = 0; j < listObjectInNode.size(); j++) {
 			if (listObjectInNode[j]->IsShowed()) {
-				m_listObjectViewportToRender.push_back(listObjectInNode[j]);
+				AddObjectToList(m_listObjectViewportCheckCollision, listObjectInNode[j]);
 			}
-			if ((int)listObjectInNode[j]->GetType() > -10) {
-				m_listObjectViewportToUpdate.push_back(listObjectInNode[j]);
+			if ((int)listObjectInNode[j]->GetType() > 0) {
+				AddObjectToList(m_listObjectViewportWillUpdate, listObjectInNode[j]);
 			}
 		}
 	}
-	m_listObjectViewportToUpdate = ClearDuplicate(m_listObjectViewportToUpdate);
-	return m_listObjectViewportToUpdate;
+
+	return m_listObjectViewportCheckCollision;
 }
 
 void CQuadTree::Update(CCamera* _camera, float _time)
 {
-	for (int i = 0; i < m_listObjectViewportToUpdate.size(); i++)
+	for (int i = 0; i < m_listObjectViewportWillUpdate.size(); i++)
 	{
-		if (m_listObjectViewportToUpdate[i]->GetType() > ROCKMAN)
-			m_listObjectViewportToUpdate[i]->Update(_time, _camera, NULL, m_listObjectViewportToUpdate);
+		if (m_listObjectViewportWillUpdate[i]->GetType() > ROCKMAN)
+			m_listObjectViewportWillUpdate[i]->Update(_time, _camera, NULL, m_listObjectViewportWillUpdate);
 	}
 }
 
 void CQuadTree::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 {
-	for (int i = 0; i < m_listObjectViewportToRender.size(); i++)
+	for (int i = 0; i < m_listObjectViewportCheckCollision.size(); i++)
 	{
-		m_listObjectViewportToRender[i]->Render(_spriteHandle, _camera);
+		m_listObjectViewportCheckCollision[i]->Render(_spriteHandle, _camera);
 	}
 }
 
@@ -245,12 +214,40 @@ bool CQuadTree::IsIntersect(RECT _rect1, RECT _rect2)
 	return true;
 }
 
-bool CQuadTree::IsContains(RECT _rectBig, RECT _rectSmall)
+void CQuadTree::HeldObjectInScreen(vector<CEntity*>& listObject, RECT rScreen)
 {
-	if (_rectSmall.left < _rectBig.left || _rectSmall.right > _rectBig.right)
-		return false;
-	else if (_rectSmall.top < _rectBig.top || _rectSmall.bottom > _rectBig.bottom)
-		return false;
-	return true;
+	int size = listObject.size();
+	for (int i = 0; i < size; i++)
+	{
+		if (listObject[i]->GetType() < 0 || !IsObjectInRect(listObject[i], rScreen)) {
+			listObject.erase(listObject.begin() + i);
+			i--;
+			size--;
+		}
+	}
 }
 
+bool CQuadTree::IsObjectInRect(CEntity *entity, RECT rect)
+{
+	return CAABBCollision::IntersectRect(entity->GetRect(), rect);
+}
+
+bool CQuadTree::AddObjectToList(vector<CEntity*>& list, CEntity* obAdd)
+{
+	bool isCanAdd = true;
+	int id = obAdd->GetId();
+
+	int size = list.size();
+	for (int i = 0; i < size; i++)
+	{
+		if (list[i]->GetId() == id) {
+			isCanAdd = false;
+			break;
+		}
+	}
+	if (isCanAdd) {
+		list.push_back(obAdd);
+	}
+
+	return isCanAdd;
+}

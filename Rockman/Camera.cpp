@@ -156,7 +156,7 @@ void CCamera::SetPosCamera(D3DXVECTOR2 _pos)
 	g_PosCamera = m_pos;
 }
 
-void CCamera::MoveMap() 
+void CCamera::MoveMap()
 {
 	g_IsMoving = true;
 	if (indexMoveTo != -1) {
