@@ -1,6 +1,5 @@
 #ifndef _BIGEYE_H_
 #define _BIGEYE_H_
-#include "ResourceManager.h"
 #include "Entity.h"
 class CBigEye : public CEntity
 {

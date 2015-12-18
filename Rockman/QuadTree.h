@@ -15,8 +15,6 @@ private:
 	void HeldObjectInScreen(vector<CEntity*>& listObject, RECT rScreen);
 	vector<CQuadTreeNode*> GetListNodeIntersectRect(CQuadTreeNode*, RECT );
 	bool IsIntersect(RECT, RECT);
-	bool AddObjectToList(vector<CEntity*>& list, CEntity* obAdd);
-
 public:
 	CQuadTree(void);
 	~CQuadTree(void);
@@ -32,6 +30,7 @@ public:
 	void CreateTree(CQuadTreeNode *_NodeParent, map<int,CQuadTreeNode*> _map);
 	bool IsContains(RECT _rectBig, RECT _rectSmall);
 	bool IsObjectInRect(CEntity *entity, RECT rect);
+	bool AddObjectToList(vector<CEntity*>& list, CEntity* obAdd);
 };
 
 #endif//_QUADTREE_H_

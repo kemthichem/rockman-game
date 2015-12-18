@@ -1,5 +1,7 @@
 #include "Block.h"
 #include "Define.h"
+#include "ResourceManager.h"
+
 #define  NUMB_SPRITE 4
 
 CBlock::CBlock(int _id, D3DXVECTOR3 _pos, bool _isCheckCollison)
@@ -9,7 +11,6 @@ CBlock::CBlock(int _id, D3DXVECTOR3 _pos, bool _isCheckCollison)
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES), D3DXVECTOR2(140,35), 4, 1, D3DXVECTOR2(3,1), D3DXVECTOR2(1,1), D3DXVECTOR2(1,1));
 	m_pos = _pos;
 	m_pos.z = DEPTH_BLOCK;
-	m_accel = D3DXVECTOR2(0,0);	
 
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite() * NUMB_SPRITE, m_Sprite->GetHeightRectSprite());

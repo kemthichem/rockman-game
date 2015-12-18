@@ -1,6 +1,5 @@
 #ifndef _LAND_H_
 #define _LAND_H_
-#include "ResourceManager.h"
 #include "Entity.h"
 class CBlock : public CEntity
 {
