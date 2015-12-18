@@ -9,13 +9,13 @@ CBlood::CBlood(D3DXVECTOR2 _offsetPosCamera, int _totalBlood)
 {
 	m_Type = SCENERY;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES)
-		,D3DXVECTOR2(224,351), 1, 1
-		,D3DXVECTOR2(211,232));
+		,D3DXVECTOR2(112, 175), 1, 1
+		,D3DXVECTOR2(105, 120));
 
 	//Blood
 	m_SpriteBar = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES)
-		,D3DXVECTOR2(235,236), 1, 1
-		,D3DXVECTOR2(226,234));
+		,D3DXVECTOR2(123, 122), 1, 1
+		,D3DXVECTOR2(115, 120));
 
 	m_Offset = _offsetPosCamera;
 	m_CurrentBlood = m_TotalBlood = _totalBlood;
