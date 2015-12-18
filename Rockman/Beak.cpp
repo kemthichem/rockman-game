@@ -59,9 +59,9 @@ CBeak::CBeak(int objID, int typeID, double posX, double posY, int width, int hei
 	m_TimeSpent = m_TimeShot = 0;
 	m_CurrentBullet = 0;
 	m_isTurnLeft = _isLeft;
-	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), D3DXVECTOR2(360, 455) , 4, 1, D3DXVECTOR2(40,420), D3DXVECTOR2(0, 0), D3DXVECTOR2(50,0));
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), D3DXVECTOR2(180, 267) , 4, 1, D3DXVECTOR2(20, 250), D3DXVECTOR2(0, 0), D3DXVECTOR2(30,0));
 	m_Size = D3DXVECTOR2(widthCollide, heightCollide);
-	m_pos = D3DXVECTOR3(posXCollide, posYCollide, 0);
+	m_pos = D3DXVECTOR3(posX, posY + height/2, 0);
 
 	UpdateRect();
 

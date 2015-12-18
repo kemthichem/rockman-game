@@ -10,8 +10,8 @@ CBulletRockman::CBulletRockman(D3DXVECTOR3 _pos)
 {
 	m_Type = BULLET;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES)
-		, D3DXVECTOR2(335,205), 1, 1
-		, D3DXVECTOR2(320,190));
+		, D3DXVECTOR2(170, 105), 1, 1
+		, D3DXVECTOR2(155, 95));
 	m_pos = _pos;
 
 	m_accel = D3DXVECTOR2(0,0);
