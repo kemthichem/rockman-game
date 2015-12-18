@@ -20,7 +20,7 @@ CBigEye::CBigEye(int objID, int typeID, double posX, double posY, int width, int
 	m_Id = objID;
 
 	m_Type = BIGEYE;
-	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), D3DXVECTOR2(641,626) , 1, 2, D3DXVECTOR2(575,372), D3DXVECTOR2(0,30), D3DXVECTOR2(0,0));
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), D3DXVECTOR2(365, 315) , 1, 2, D3DXVECTOR2(325, 210), D3DXVECTOR2(0, 15), D3DXVECTOR2(0,0));
 	m_Size = D3DXVECTOR2(widthCollide, heightCollide);
 	m_pos = D3DXVECTOR3(posXCollide, posYCollide, 0);
 	m_velloc.x = -10;
@@ -61,6 +61,14 @@ void CBigEye::UpdateCollison(CEntity* _other,float _time)
 	switch (_other->GetType())
 	{
 	case BLOCK:	
+		{		
+			float timeEntry = m_collision->SweptAABB(this,_other,_time);
+			m_directCollision = m_collision->GetDirectCollision();
+			if (timeEntry < 1.0f)
+			{
+				ExecuteCollision(_other,m_directCollision,timeEntry);
+			}
+		}
 	default:
 		break;
 	}
