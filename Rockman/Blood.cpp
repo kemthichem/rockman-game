@@ -7,7 +7,7 @@
 
 CBlood::CBlood(D3DXVECTOR2 _offsetPosCamera, int _totalBlood)
 {
-	m_Type = SCENERY;
+	//m_Type = SCENERY;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES)
 		,D3DXVECTOR2(112, 175), 1, 1
 		,D3DXVECTOR2(105, 120));

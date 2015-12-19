@@ -18,6 +18,16 @@ CFlea::CFlea(int _id, D3DXVECTOR3 _pos)
 CFlea::CFlea(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide)
 {
 	m_Id = objID;
+	m_Type = FLEA;
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), D3DXVECTOR2(335, 190) , 2, 1, D3DXVECTOR2(255, 170), D3DXVECTOR2(0,0), D3DXVECTOR2(20,0));
+	m_pos = D3DXVECTOR3(posXCollide, posYCollide, 0);
+	m_accel = D3DXVECTOR2(0,0);
+	m_velloc.x = -10;
+	m_accel.y = -5.0f;
+
+	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
+	UpdateRect();
+
 }
 
 CFlea::~CFlea(void)

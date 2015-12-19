@@ -12,10 +12,12 @@ using std::vector;
 
 enum ObjectType
 {
-	SCENERY = -10,
-	BLOCK,
+	BLOCK = -10,
 	LADDER,
-	ROCKMAN = 0,	
+	ROCKMAN = 0,
+	DOOR1_CUTMAN,
+	SUPER_CUTTER,
+	FLYING_SHELL,
 	BIGEYE,
 	BLADER,
 	MET,
@@ -27,9 +29,6 @@ enum ObjectType
 	CUTMAN,
 	GUTSMAN,
 	ICEMAN,
-	MOVEMAP,
-	BLOCK_CAMERA,
-	UNLOCK_CAMERA,
 	BULLET,
 	ITEM
 };

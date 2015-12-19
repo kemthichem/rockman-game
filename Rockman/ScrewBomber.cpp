@@ -72,10 +72,10 @@ CScrewBomber::CScrewBomber(int objID, int typeID, double posX, double posY, int 
 	m_Type = SCREW_BOMBER;
 	int k = _isUp ? 73 : 0;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES),
-		D3DXVECTOR2(350,215 + k), 4, 1,
-		D3DXVECTOR2(30,180 + k),
+		D3DXVECTOR2(175, 106 + k), 4, 1,
+		D3DXVECTOR2(10, 90 + k),
 		D3DXVECTOR2(0,0),
-		D3DXVECTOR2(45,0));
+		D3DXVECTOR2(20, 0));
 	m_Size = D3DXVECTOR2(widthCollide, heightCollide);
 	m_pos = D3DXVECTOR3(posXCollide, posYCollide, 0);
 	m_IsLife = true;

@@ -97,9 +97,11 @@
     <ClCompile Include="ChangeState.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="CutMan.cpp" />
+    <ClCompile Include="Door.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Flea.cpp" />
+    <ClCompile Include="FlyingShell.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameOverState.cpp" />
     <ClCompile Include="GameState.cpp" />
@@ -117,6 +119,7 @@
     <ClCompile Include="PlayingGameState.cpp" />
     <ClCompile Include="QuadTree.cpp" />
     <ClCompile Include="QuadTreeNode.cpp" />
+    <ClCompile Include="ResourceConfig.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Rockman.cpp" />
     <ClCompile Include="RockmanGame.cpp" />
@@ -124,6 +127,7 @@
     <ClCompile Include="ScrewBomber.cpp" />
     <ClCompile Include="Spine.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="SupperCutter.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="utils.cpp" />
     <ClCompile Include="winmain.cpp" />
@@ -147,9 +151,11 @@
     <ClInclude Include="Config.h" />
     <ClInclude Include="CutMan.h" />
     <ClInclude Include="Define.h" />
+    <ClInclude Include="Door.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Flea.h" />
+    <ClInclude Include="FlyingShell.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameOverState.h" />
     <ClInclude Include="GameState.h" />
@@ -167,6 +173,7 @@
     <ClInclude Include="PLayingGameState.h" />
     <ClInclude Include="QuadTree.h" />
     <ClInclude Include="QuadTreeNode.h" />
+    <ClInclude Include="ResourceConfig.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Rockman.h" />
     <ClInclude Include="RockmanGame.h" />
@@ -174,6 +181,7 @@
     <ClInclude Include="ScrewBomber.h" />
     <ClInclude Include="Spine.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="SupperCutter.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="utils.h" />
     <ClInclude Include="WinState.h" />

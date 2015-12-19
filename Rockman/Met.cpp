@@ -18,7 +18,7 @@ CMet::CMet(int objID, int typeID, double posX, double posY, int width, int heigh
 	m_Id = objID;
 
 	m_Type = MET;
-	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), D3DXVECTOR2(830, 50) , 2, 1, D3DXVECTOR2(670,20), D3DXVECTOR2(0,0), D3DXVECTOR2(40,0));
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), D3DXVECTOR2(415, 26) , 2, 1, D3DXVECTOR2(315, 10), D3DXVECTOR2(0,0), D3DXVECTOR2(20, 0));
 	m_Size = D3DXVECTOR2(widthCollide, heightCollide);
 	m_pos = D3DXVECTOR3(posXCollide, posYCollide, 0);
 
