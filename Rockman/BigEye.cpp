@@ -51,7 +51,7 @@ void CBigEye::Update(float _deltaTime, CCamera *_camera, CInput *_input,vector<C
 	//	m_velloc.y = 35.0f;
 	//}
 
-	if(m_velloc.y > 34.0f){
+	if(m_velloc.y > 20.0f){
 		m_Sprite ->IndexOf(0);
 	}else{
 		m_Sprite ->IndexOf(1);
@@ -82,7 +82,7 @@ void CBigEye::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,f
 	if( m_directCollion == BOTTOM)
 	{
 		m_pos.y = _other->GetRect().top + m_Size.y + 1;
-		m_velloc.y = 35.0f;
+		m_velloc.y = 21.0f;
 	}
 
 	if( m_directCollion == LEFT)

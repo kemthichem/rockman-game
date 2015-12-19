@@ -200,10 +200,14 @@ void CCamera::Initialize(POINT *array, int countPoint)
 	curIndex = CConfig::ValueOf(KEY_CAMERA_CURRENT_POINT);
 	m_curIsBound = true;
 
-	m_viewPort.left = m_arrayPoint[curIndex].x - WIDTH_SCREEN / 2;
+	m_pos.x = m_arrayPoint[curIndex].x - WIDTH_SCREEN/2;
+	m_pos.y = m_arrayPoint[curIndex].y + HEIGHT_SCREEN/2;
+
+	m_viewPort.left = m_pos.x;
 	m_viewPort.right = m_viewPort.left + WIDTH_SCREEN;
-	m_viewPort.top = m_arrayPoint[curIndex].y + HEIGHT_SCREEN / 2;
-	m_viewPort.bottom = m_viewPort.top - HEIGHT_SCREEN;
+	m_viewPort.top = m_pos.y;
+	m_viewPort.bottom =m_viewPort.top - HEIGHT_SCREEN;
+
 	g_PosCamera = m_pos;
 }
 bool CCamera::g_IsMoving = false;

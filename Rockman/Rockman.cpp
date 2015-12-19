@@ -500,7 +500,7 @@ void CRockman::Shot()
 		if (!m_ListBullet[i]->GetActive()) {
 			m_ListBullet[i]->SetActive(true);
 			int posXBullet = m_isTurnLeft ? m_pos.x : m_pos.x + m_Size.x;
-			m_ListBullet[i]->SetPos(D3DXVECTOR3(m_isTurnLeft, m_pos.y - 5, m_pos.z));
+			m_ListBullet[i]->SetPos(D3DXVECTOR3(posXBullet, m_pos.y - 5, m_pos.z));
 			m_ListBullet[i]->SetVelloc(D3DXVECTOR2(m_isTurnLeft ? -60 : 60, 0));
 			m_TimeShot = 0.001f;
 			break;

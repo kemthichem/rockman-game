@@ -220,7 +220,7 @@ void CQuadTree::HeldObjectInScreen(vector<CEntity*>& listObject, RECT rScreen)
 	int size = listObject.size();
 	for (int i = 0; i < size; i++)
 	{
-		if (listObject[i]->GetType() > 0 || !IsObjectInRect(listObject[i], rScreen)) {
+		if (listObject[i]->GetType() > 0 && !IsObjectInRect(listObject[i], rScreen)) {
 			CEnemy *enemy = dynamic_cast<CEnemy*> (listObject[i]);
 			if(enemy)
 				enemy->Reset();

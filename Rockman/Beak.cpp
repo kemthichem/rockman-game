@@ -195,6 +195,7 @@ void CBeak::SetInjured(CEntity* _other)
 
 void CBeak::Reset()
 {
+	CEnemy::Reset();
 	for (int i = 0; i < NUM_BULLET; i++)
 	{
 		m_ListBullet[i]->SetActive(false);
