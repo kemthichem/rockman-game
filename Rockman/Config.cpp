@@ -1,4 +1,4 @@
-#include "CConfig.h"
+#include "Config.h"
 
 #include <iostream>
 #include <vector>
@@ -38,6 +38,14 @@ float CConfig::ValueOf(int inIDKey)
 
 	return instance->m_ArrayConfig[inIDKey];
 }
+ void CConfig::ReleaseConfig() {
+	 if (instance)
+	 {
+		 delete instance;
+		 instance = NULL;
+	 }
+ }
+
 
 void CConfig::LoadConfig(char* inPath)
 {

@@ -4,8 +4,12 @@
 
 class CEnemy : public CEntity
 {
+protected:
+	bool m_IsLife;
+	D3DXVECTOR3 m_posOrg;
 public:
+	virtual void Reset();
 	CEnemy(void);
-	~CEnemy(void);
+	virtual ~CEnemy(void);
 };
 #endif // !ENEMY_H_

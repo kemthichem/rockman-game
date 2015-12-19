@@ -2,9 +2,9 @@
 #include "Rockman.h"
 #include "PLayingGameState.h"
 #include "Define.h"
-#include "CConfig.h"
+#include "Config.h"
 
-D3DXVECTOR2 CRockman::g_PosRockman = D3DXVECTOR2(0, 0);
+D3DXVECTOR2 CRockman::g_PosRockman = D3DXVECTOR2(0,0);
 
 CRockman::CRockman(void)
 {
@@ -30,7 +30,8 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 	m_action = Action_Start;
 	m_velloc.y = -50.0f;
 	m_accel = D3DXVECTOR2(CConfig::ValueOf(KEY_RM_ACCEL_VX), CConfig::ValueOf(KEY_RM_ACCEL_VY));
-	g_PosRockman = D3DXVECTOR2(CConfig::ValueOf(KEY_RM_POS_INIT_X), CConfig::ValueOf(KEY_RM_POS_INIT_Y));
+	g_PosRockman.x = _pos.x;
+	g_PosRockman.y = _pos.y;
 
 	m_Size = m_SizeInit = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 	m_SizeClimb = D3DXVECTOR2(m_SpriteClimb->GetWidthRectSprite() - 4, m_SpriteClimb->GetHeightRectSprite());
@@ -498,8 +499,9 @@ void CRockman::Shot()
 	{
 		if (!m_ListBullet[i]->GetActive()) {
 			m_ListBullet[i]->SetActive(true);
-			m_ListBullet[i]->SetPos(D3DXVECTOR3(m_pos.x + m_Size.x/2 - 10, m_pos.y - m_Size.y/2 + 10, m_pos.z));
-			m_ListBullet[i]->SetVelloc(D3DXVECTOR2(m_isTurnLeft ? -80 : 80, 0));
+			int posXBullet = m_isTurnLeft ? m_pos.x : m_pos.x + m_Size.x;
+			m_ListBullet[i]->SetPos(D3DXVECTOR3(m_isTurnLeft, m_pos.y - 5, m_pos.z));
+			m_ListBullet[i]->SetVelloc(D3DXVECTOR2(m_isTurnLeft ? -60 : 60, 0));
 			m_TimeShot = 0.001f;
 			break;
 		}

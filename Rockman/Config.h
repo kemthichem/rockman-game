@@ -14,6 +14,7 @@ enum KEY
 	KEY_RM_CLIMB_VY,
 	KEY_RM_POS_INIT_X,
 	KEY_RM_POS_INIT_Y,
+	KEY_CAMERA_CURRENT_POINT,
 	KEY_COUNT
 };
 
@@ -29,6 +30,7 @@ public:
 	//static CConfig* GetInstance();
 	float *m_ArrayConfig;
 	static float ValueOf(int inIDKey);
+	static void ReleaseConfig();
 	~CConfig(void);
 };
 

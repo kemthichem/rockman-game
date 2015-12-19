@@ -5,6 +5,7 @@
 #include "ChangeState.h"
 #include "GameOverState.h"
 #include "WinState.h"
+#include "Config.h"
 
 using namespace std;
 
@@ -49,6 +50,8 @@ CPLayingGameState::~CPLayingGameState(void)
 
 	if (m_Camera)
 		delete m_Camera;
+
+	CConfig::ReleaseConfig();
 }
 
 void CPLayingGameState::Render(LPD3DXSPRITE _spriteHandle)
@@ -111,7 +114,7 @@ void CPLayingGameState::Init()
 	}
 	////Reset camera
 	m_Camera->SetPosCamera(D3DXVECTOR2(0,0));	
-	rockman = new CRockman(D3DXVECTOR3(100, 500,0));
+	rockman = new CRockman(D3DXVECTOR3(CConfig::ValueOf(KEY_RM_POS_INIT_X), CConfig::ValueOf(KEY_RM_POS_INIT_Y),0));
 	////Go boss map 1
 	//m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(4798,2084));//-600y
 	//rockman = new CRockman(D3DXVECTOR3(5471, 2350, 0));

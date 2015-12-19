@@ -1,6 +1,6 @@
 #ifndef _BEAK_H_
 #define _BEAK_H_
-#include "Entity.h"
+#include "Enemy.h"
 #include "Bullet.h"
 
 
@@ -11,18 +11,18 @@ enum BeakrStatus {
 	BeakShot
 };
 
-class CBeak : public CEntity
+class CBeak : public CEnemy
 {
 private:
 	CBullet *m_ListBullet[NUM_BULLET];
 	BeakrStatus m_Status;
-	bool m_IsLife;
 	float m_TimeSpent;
 	float m_TimeShot;
 	void Shot();
 	int m_CurrentBullet;
 
 protected:
+	virtual void Reset();
 public:
 	CBeak(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide, bool _isLeft = true);
 

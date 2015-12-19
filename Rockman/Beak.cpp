@@ -3,7 +3,7 @@
 
 #define TIME_CHANGE (20.0f)
 #define TIME_SHOT (6.0f)
-#define V_BULLET (20.0f)
+#define V_BULLET (10.0f)
 
 CBeak::CBeak(int _id, D3DXVECTOR3 _pos, bool _isLeft)
 {
@@ -56,6 +56,7 @@ CBeak::CBeak(int _id, D3DXVECTOR3 _pos, bool _isLeft)
 CBeak::CBeak(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide, bool _isLeft)
 {
 	m_Id = objID;
+	m_Type = BEAK;
 	m_Status = BeakWait;
 	m_IsLife = true;
 	m_TimeSpent = m_TimeShot = 0;
@@ -64,6 +65,7 @@ CBeak::CBeak(int objID, int typeID, double posX, double posY, int width, int hei
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), D3DXVECTOR2(180, 267) , 4, 1, D3DXVECTOR2(20, 250), D3DXVECTOR2(0, 0), D3DXVECTOR2(30,0));
 	m_Size = D3DXVECTOR2(widthCollide, heightCollide);
 	m_pos = D3DXVECTOR3(posX, posY + height/2, 0);
+	m_posOrg = m_pos;
 
 	UpdateRect();
 
@@ -188,6 +190,14 @@ void CBeak::SetInjured(CEntity* _other)
 	if (m_Status == BeakShot) {
 		m_IsCheckCollision = false;
 		m_IsLife = false;
+	}
+}
+
+void CBeak::Reset()
+{
+	for (int i = 0; i < NUM_BULLET; i++)
+	{
+		m_ListBullet[i]->SetActive(false);
 	}
 }
 

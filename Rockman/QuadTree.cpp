@@ -1,5 +1,6 @@
 #include "QuadTree.h"
 #include "utils.h"
+#include "Enemy.h"
 
 #include <fstream>
 #include <iostream>
@@ -101,7 +102,7 @@ void CQuadTree::Update(CCamera* _camera, float _time)
 	for (int i = 0; i < m_listObjectViewportWillUpdate.size(); i++)
 	{
 		if (m_listObjectViewportWillUpdate[i]->GetType() > ROCKMAN)
-			m_listObjectViewportWillUpdate[i]->Update(_time, _camera, NULL, m_listObjectViewportWillUpdate);
+			m_listObjectViewportWillUpdate[i]->Update(_time, _camera, NULL, m_listObjectViewportCheckCollision);
 	}
 }
 
@@ -219,6 +220,12 @@ void CQuadTree::HeldObjectInScreen(vector<CEntity*>& listObject, RECT rScreen)
 	int size = listObject.size();
 	for (int i = 0; i < size; i++)
 	{
+		if (listObject[i]->GetType() > 0 || !IsObjectInRect(listObject[i], rScreen)) {
+			CEnemy *enemy = dynamic_cast<CEnemy*> (listObject[i]);
+			if(enemy)
+				enemy->Reset();
+		}
+
 		if (listObject[i]->GetType() < 0 || !IsObjectInRect(listObject[i], rScreen)) {
 			listObject.erase(listObject.begin() + i);
 			i--;

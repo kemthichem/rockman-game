@@ -95,6 +95,7 @@
     <ClCompile Include="BulletRockman.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="ChangeState.cpp" />
+    <ClCompile Include="Config.cpp" />
     <ClCompile Include="CutMan.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Entity.cpp" />
@@ -116,7 +117,6 @@
     <ClCompile Include="PlayingGameState.cpp" />
     <ClCompile Include="QuadTree.cpp" />
     <ClCompile Include="QuadTreeNode.cpp" />
-    <ClCompile Include="CConfig.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Rockman.cpp" />
     <ClCompile Include="RockmanGame.cpp" />
@@ -144,6 +144,7 @@
     <ClInclude Include="BulletRockman.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="ChangeState.h" />
+    <ClInclude Include="Config.h" />
     <ClInclude Include="CutMan.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="Enemy.h" />
@@ -166,7 +167,6 @@
     <ClInclude Include="PLayingGameState.h" />
     <ClInclude Include="QuadTree.h" />
     <ClInclude Include="QuadTreeNode.h" />
-    <ClInclude Include="CConfig.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Rockman.h" />
     <ClInclude Include="RockmanGame.h" />
