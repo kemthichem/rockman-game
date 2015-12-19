@@ -1,5 +1,6 @@
 #include "Blader.h"
 #include "Rockman.h"
+#include "ResourceManager.h"
 
 #define VELLOC_X (50.0f)
 

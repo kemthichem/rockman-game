@@ -1,6 +1,6 @@
 #ifndef _LADDER_H_
 #define _LADDER_H_
-#include "ResourceManager.h"
+
 #include "Entity.h"
 class CLadder : public CEntity
 {

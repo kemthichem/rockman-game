@@ -1,6 +1,5 @@
 #ifndef _BLADER_H_
 #define _BLADER_H_
-#include "ResourceManager.h"
 #include "Entity.h"
 class CBlader : public CEntity
 {

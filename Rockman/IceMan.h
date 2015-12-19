@@ -1,6 +1,5 @@
 #ifndef _ICEMAN_H_
 #define _ICEMAN_H_
-#include "ResourceManager.h"
 #include "Entity.h"
 #include "Blood.h"
 #include "BulletIceman.h"

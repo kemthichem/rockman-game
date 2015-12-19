@@ -1,5 +1,6 @@
 #include "CutMan.h"
 #include "Rockman.h"
+#include "ResourceManager.h"
 #include "PLayingGameState.h"
 
 #define TIME_INJURED (10.0f)

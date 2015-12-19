@@ -1,6 +1,5 @@
 #ifndef _GUT_H_
 #define _GUT_H_
-#include "ResourceManager.h"
 #include "Entity.h"
 #include "Blood.h"
 #include "BulletGutsman.h"

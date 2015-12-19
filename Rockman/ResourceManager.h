@@ -10,21 +10,21 @@
 #include "utils.h"
 
 //resource object
-#define  IMAGE_ROCKMAN "Resource/rockman.png"
-#define  IMAGE_TILES "Resource/tiles.png"
-#define  IMAGE_ENEMIES "Resource/enemies.png"
-#define  IMAGE_MASTER "Resource/master.png"
-#define  IMAGE_BG_MENU "Resource/State/bg_menu.jpg"
-#define  IMAGE_BG_CHANGE_STATE "Resource/State/start.png"
-#define  IMAGE_BG_ABOUT "Resource/State/bg_about.jpg"
-#define  IMAGE_BG_GAMEOVER "Resource/State/bg_gameover.jpg"
-#define  IMAGE_BG_HELP "Resource/State/bg_help.jpg"
-#define  IMAGE_BG_WIN "Resource/State/bg_win.jpg"
+#define  IMAGE_ROCKMAN			"Resources/rockman.png"
+#define  IMAGE_TILES			"Resources/tiles.png"
+#define  IMAGE_ENEMIES			"Resources/enemies.png"
+#define  IMAGE_MASTER			"Resources/master.png"
+#define  IMAGE_BG_MENU			"Resources/State/bg_menu.jpg"
+#define  IMAGE_BG_CHANGE_STATE	"Resources/State/start.png"
+#define  IMAGE_BG_ABOUT			"Resources/State/bg_about.jpg"
+#define  IMAGE_BG_GAMEOVER		"Resources/State/bg_gameover.jpg"
+#define  IMAGE_BG_HELP			"Resources/State/bg_help.jpg"
+#define  IMAGE_BG_WIN			"Resources/State/bg_win.jpg"
 
 //hard code map resource
-#define IMAGE_MAP_CUTMAN "Resource/map/cut_man_stage.bmp"
+#define IMAGE_MAP_CUTMAN "Resources/map/cut_man_stage.bmp"
 //background
-#define  IMAGE_BG "Resource/bg.jpg"
+#define  IMAGE_BG "Resources/bg.jpg"
 
 using namespace std;
 class CResourceManager

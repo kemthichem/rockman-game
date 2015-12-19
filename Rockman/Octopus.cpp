@@ -1,3 +1,4 @@
+#include "ResourceManager.h"
 #include "Octopus.h"
 #include "BulletRockman.h"
 #define TIME_CONVERT (10.0f)

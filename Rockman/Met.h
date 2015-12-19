@@ -1,6 +1,5 @@
 #ifndef _MET_H_
 #define _MET_H_
-#include "ResourceManager.h"
 #include "Entity.h"
 class CMet : public CEntity
 {

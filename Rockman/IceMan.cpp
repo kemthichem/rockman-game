@@ -1,3 +1,4 @@
+#include "ResourceManager.h"
 #include "IceMan.h"
 #include "Rockman.h"
 #include "PLayingGameState.h"

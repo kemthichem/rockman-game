@@ -1,5 +1,6 @@
 #include "Ladder.h"
 #include "Define.h"
+#include "ResourceManager.h"
 
 CLadder::CLadder(int _id, D3DXVECTOR3 _pos, int _height)
 {

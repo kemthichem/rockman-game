@@ -1,6 +1,5 @@
 #ifndef	_ROCKMAN_H
 #define  _ROCKMAN_H
-#include "ResourceManager.h"
 #include "Entity.h"
 #include "AABBCollisionDetected.h"
 #include "BulletRockman.h"
@@ -37,36 +36,35 @@ private:
 	CSprite *m_SpriteClimb;
 	CSprite *m_SpriteClimbGun;
 	CSprite *m_SpriteInjured;
+	ActionRockman m_action;
 
 	D3DXVECTOR2 m_SizeClimb;
 	D3DXVECTOR2 m_SizeInit;
 
 	//Other
-	static const D3DXVECTOR2 mAccelOfRockman;
 	CBulletRockman* m_ListBullet[5];
 	CBlood* m_Blood;
 
 
 	float m_PosXClimb;
-	bool m_IsClimbing;
-	bool m_CanDown;
+	bool m_isCanClimb;
+	bool m_isCollisionBottom;
 	bool m_IsLadderBottom;
 
-
+	//bool m_CanDown;
 	void Injunred(bool _isDirectX, float _time);
-	bool m_isCollisionBottom;
+	
 	float m_TimeInjured;
 	float m_TimeShot;
 	char m_Injuring;//0: not Injuring - 1:right - -1:left
 	int m_KeyDown;
-	ActionRockman m_action;
 	void UpdateSprite(float _time);
 	void Stand();
 	void TurnLeft();
 	void TurnRight();
 	void Jump();
 	void Shot();
-	void Climb(bool _isTurnUp);
+	bool Climb(bool _isTurnUp);
 public:
 	CRockman();
 	CRockman(D3DXVECTOR3 _pos);
@@ -82,5 +80,6 @@ public:
 	void UpdateActionShot();
 	void SetPos(D3DXVECTOR3 _pos);
 	static D3DXVECTOR2 g_PosRockman;
+	static bool m_IsClimbing;
 };
 #endif

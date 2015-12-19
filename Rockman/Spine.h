@@ -1,6 +1,5 @@
 #ifndef _SPINE_H_
 #define _SPINE_H_
-#include "ResourceManager.h"
 #include "Entity.h"
 class CSpine : public CEntity
 {

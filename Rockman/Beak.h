@@ -1,6 +1,5 @@
 #ifndef _BEAK_H_
 #define _BEAK_H_
-#include "ResourceManager.h"
 #include "Entity.h"
 #include "Bullet.h"
 

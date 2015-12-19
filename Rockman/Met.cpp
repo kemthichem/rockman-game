@@ -1,3 +1,4 @@
+#include "ResourceManager.h"
 #include "Met.h"
 
 CMet::CMet(int _id, D3DXVECTOR3 _pos)

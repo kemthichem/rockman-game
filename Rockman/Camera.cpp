@@ -121,7 +121,7 @@ void CCamera::Update(D3DXVECTOR2 _pos, D3DXVECTOR2 _velloc)
 		char dir = _velloc.y > 0 ? 1 : -1;
 		long offsetY =  m_curIsBound ? HEIGHT_SCREEN / 2 + OFFSET_MAP_Y : 0;
 		long temp = _velloc.y > 0 ? m_arrayPoint[curIndex].y + HEIGHT_SCREEN + OFFSET_MAP_Y - offsetY : m_arrayPoint[curIndex].y - offsetY;
-		if (_pos.y * dir > (temp)* dir) {
+		if ((_velloc.y < 0 ||_velloc.y > 0 && CRockman::m_IsClimbing) && _pos.y * dir > (temp)* dir) {
 			if (m_pos.x == m_arrayPoint[curIndex].x - WIDTH_SCREEN / 2) {
 				indexMoveTo = nextIndexY;
 				MoveMap();

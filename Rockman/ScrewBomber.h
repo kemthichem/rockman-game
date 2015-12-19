@@ -1,6 +1,5 @@
 #ifndef  _SCREW_BOMBER_H
 #define  _SCREW_BOMBER_H
-#include "ResourceManager.h"
 #include "Entity.h"
 #include "Bullet.h"
 #include "Item.h"

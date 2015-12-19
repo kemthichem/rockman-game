@@ -1,4 +1,6 @@
 #include "Beak.h"
+#include "ResourceManager.h"
+
 #define TIME_CHANGE (20.0f)
 #define TIME_SHOT (6.0f)
 #define V_BULLET (20.0f)

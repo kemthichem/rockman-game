@@ -1,3 +1,4 @@
+#include "ResourceManager.h"
 #include "GutsMan.h"
 #include "PLayingGameState.h"
 

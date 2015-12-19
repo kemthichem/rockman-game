@@ -1,4 +1,4 @@
-#include "ResourceConfig.h"
+#include "CConfig.h"
 
 #include <iostream>
 #include <vector>
@@ -7,35 +7,39 @@
 
 #include "utils.h"
 
-#define PATH_CONFIG "Resource//Config//rockman_config.txt"
+#define PATH_CONFIG "Resources//Config//rockman_config.txt"
 
 
-ResourceConfig::ResourceConfig(void)
+CConfig::CConfig(void)
 {
 	m_ArrayConfig = new float[KEY_COUNT];
 	LoadConfig(PATH_CONFIG);
 }
 
 
-ResourceConfig::~ResourceConfig(void)
+CConfig::~CConfig(void)
 {
 }
 
-ResourceConfig* ResourceConfig::GetInstance()
+//CConfig* CConfig::GetInstance()
+//{
+//	if (!instance) {
+//		instance = new CConfig();
+//	}
+//
+//	return instance;
+//}
+
+float CConfig::ValueOf(int inIDKey)
 {
 	if (!instance) {
-		instance = new ResourceConfig();
+		instance = new CConfig();
 	}
 
-	return instance;
+	return instance->m_ArrayConfig[inIDKey];
 }
 
-float ResourceConfig::GetValue(int inIDKey)
-{
-	return m_ArrayConfig[inIDKey];
-}
-
-void ResourceConfig::LoadConfig(char* inPath)
+void CConfig::LoadConfig(char* inPath)
 {
 	using namespace std;
 	ifstream ifstreamMapFile;
@@ -58,4 +62,4 @@ void ResourceConfig::LoadConfig(char* inPath)
 	ifstreamMapFile.close();
 }
 
-ResourceConfig* ResourceConfig::instance = 0;
+CConfig* CConfig::instance = 0;

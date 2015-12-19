@@ -1,3 +1,4 @@
+#include "ResourceManager.h"
 #include "Flea.h"
 
 CFlea::CFlea(int _id, D3DXVECTOR3 _pos)

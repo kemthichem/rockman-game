@@ -98,13 +98,13 @@ void CPLayingGameState::Init()
 	switch (g_Stage)
 	{
 	case 1:
-		pathMap = "Resource//map//cut_man_stage.txt";
+		pathMap = "Resources//map//cut_man_stage.txt";
 		break;
 	case 2:
-		//pathMap = "Resource//map//Map2.txt";
+		//pathMap = "Resources//map//Map2.txt";
 		break;
 	case 3:
-		//pathMap = "Resource//map//Map3.txt";
+		//pathMap = "Resources//map//Map3.txt";
 		break;
 	default:
 		break;

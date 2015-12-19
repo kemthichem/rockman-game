@@ -1,3 +1,4 @@
+#include "ResourceManager.h"
 #include "Spine.h"
 
 CSpine::CSpine(int _id, D3DXVECTOR3 _pos)

@@ -1,11 +1,10 @@
-﻿#include "Rockman.h"
+﻿#include "ResourceManager.h"
+#include "Rockman.h"
 #include "PLayingGameState.h"
 #include "Define.h"
-#include "ResourceConfig.h"
+#include "CConfig.h"
 
-const D3DXVECTOR2 CRockman::mAccelOfRockman = D3DXVECTOR2(15.0f,-25.0f);
-
-D3DXVECTOR2 CRockman::g_PosRockman = D3DXVECTOR2(0, 100);
+D3DXVECTOR2 CRockman::g_PosRockman = D3DXVECTOR2(0, 0);
 
 CRockman::CRockman(void)
 {
@@ -28,21 +27,20 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 	m_Sprite = m_SpriteStand;
 	m_pos = _pos;
 	m_pos.z = DEPTH_MOTION;
-	//m_pos.y = CCamera::g_PosCamera.y;
 	m_action = Action_Start;
 	m_velloc.y = -50.0f;
-	m_accel = mAccelOfRockman;
+	m_accel = D3DXVECTOR2(CConfig::ValueOf(KEY_RM_ACCEL_VX), CConfig::ValueOf(KEY_RM_ACCEL_VY));
+	g_PosRockman = D3DXVECTOR2(CConfig::ValueOf(KEY_RM_POS_INIT_X), CConfig::ValueOf(KEY_RM_POS_INIT_Y));
 
 	m_Size = m_SizeInit = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 	m_SizeClimb = D3DXVECTOR2(m_SpriteClimb->GetWidthRectSprite() - 4, m_SpriteClimb->GetHeightRectSprite());
 	UpdateRect();
 	m_PosXClimb = -1;
 	m_IsClimbing = false;
-	m_CanDown = false;
+	//m_CanDown = false;
 	m_Injuring = 0;
 	m_TimeInjured = 0;
 	m_TimeShot = 0;
-	m_accel = mAccelOfRockman;
 	m_KeyDown = 0;
 
 	//create list bullet
@@ -105,19 +103,23 @@ CRockman::~CRockman()
 
 void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewPort) {
 	//Always impact gravity
-	m_accel.y = mAccelOfRockman.y;
+	m_accel.y = CConfig::ValueOf(KEY_RM_ACCEL_VY);
 	m_Size = m_SizeInit;
-	m_CanDown = false;
+	//m_CanDown = false;
 
+	bool reval = false;
 	if (_input->KeyDown(DIK_RIGHT)) {
 		TurnRight();
+		reval = true;
 	} else if (_input->KeyDown(DIK_LEFT)) {
 		TurnLeft();
+		reval = true;
 	} else if (_input->KeyDown(DIK_UP)) {
-		Climb(true);
+		reval = Climb(true);
 	} else if (_input->KeyDown(DIK_DOWN)) {
-		Climb(false);
-	} else {
+		reval = Climb(false);
+	} 
+	if (!reval) {
 		Stand();
 	}
 
@@ -138,15 +140,15 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 
 	//reset before update
 	m_PosXClimb = -1;
-	m_IsClimbing = false;
+	m_isCanClimb = false;
 	m_isCollisionBottom = false;
 	m_IsLadderBottom = false;
 	CEntity::Update(_time, _camera, _input, _listObjectInViewPort);
 
-	/*m_pos.y = 50 + m_Size.y + 1;
-	m_velloc.y = m_accel.y = 0;
-	m_isCollisionBottom = true;
-	m_IsClimbing = !m_isCollisionBottom;*/
+	if (!m_isCanClimb && m_IsClimbing) {
+		m_IsClimbing = false;
+	}
+
 
 	//Check keydown
 	m_KeyDown = _input ->GetKeyDown();
@@ -161,7 +163,7 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 		break;
 	}
 	//When stop after update vellocx 
-	if (abs(m_accel.x) == ResourceConfig::GetInstance()->GetValue(KEY_RM_ACCEL_STOP)) {
+	if (abs(m_accel.x) == CConfig::ValueOf(KEY_RM_ACCEL_STOP)) {
 		if (m_accel.x < 0 && m_velloc.x < 0) {
 			m_velloc.x =  0;
 		}
@@ -176,7 +178,7 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 
 	//Update action when shot
 	if (m_TimeShot > 0) {
-		if (m_TimeShot < ResourceConfig::GetInstance()->GetValue(KEY_RM_TIME_SHOT)) {
+		if (m_TimeShot < CConfig::ValueOf(KEY_RM_TIME_SHOT)) {
 			m_TimeShot += _time;
 			UpdateActionShot();
 		} else {
@@ -297,7 +299,7 @@ void CRockman::UpdateActionShot()
 void CRockman::Stand()
 {
 	m_action = Action_Stand;
-	m_accel.x = m_velloc.x < 0 ? ResourceConfig::GetInstance()->GetValue(KEY_RM_ACCEL_STOP) : - ResourceConfig::GetInstance()->GetValue(KEY_RM_ACCEL_STOP);
+	m_accel.x = m_velloc.x < 0 ? CConfig::ValueOf(KEY_RM_ACCEL_STOP) : - CConfig::ValueOf(KEY_RM_ACCEL_STOP);
 	if (m_velloc.x == 0) {
 		m_accel.x = 0;
 	}
@@ -310,14 +312,14 @@ void CRockman::TurnLeft()
 		return;
 	}
 
-	m_accel.x = -mAccelOfRockman.x;
-	m_velloc.x = m_velloc.x < -ResourceConfig::GetInstance()->GetValue(KEY_RM_MAX_VX) ? -ResourceConfig::GetInstance()->GetValue(KEY_RM_MAX_VX) :m_velloc.x ;
+	m_accel.x = -CConfig::ValueOf(KEY_RM_ACCEL_VX);
+	m_velloc.x = m_velloc.x < -CConfig::ValueOf(KEY_RM_MAX_VX) ? -CConfig::ValueOf(KEY_RM_MAX_VX) :m_velloc.x ;
 
 	//Update action
 	if (m_velloc.x > 0)
 		m_action = Action_Stand;
 	else 
-		if (m_velloc.x > -ResourceConfig::GetInstance()->GetValue(KEY_RM_VX_PREPARE))
+		if (m_velloc.x > -CConfig::ValueOf(KEY_RM_VX_PREPARE))
 			m_action = Action_Go_Prepare;
 		else 
 			m_action = Action_Go;
@@ -330,45 +332,48 @@ void CRockman::TurnRight()
 		return;
 	}
 
-	m_accel.x = mAccelOfRockman.x;
-	m_velloc.x = m_velloc.x > ResourceConfig::GetInstance()->GetValue(KEY_RM_MAX_VX) ? ResourceConfig::GetInstance()->GetValue(KEY_RM_MAX_VX) : m_velloc.x;
+	m_accel.x = CConfig::ValueOf(KEY_RM_ACCEL_VX);
+	m_velloc.x = m_velloc.x > CConfig::ValueOf(KEY_RM_MAX_VX) ? CConfig::ValueOf(KEY_RM_MAX_VX) : m_velloc.x;
 
 	//Update action
 	if (m_velloc.x < 0)
 		m_action = Action_Stand;
 	else 
-		if (m_velloc.x < ResourceConfig::GetInstance()->GetValue(KEY_RM_VX_PREPARE))
+		if (m_velloc.x < CConfig::ValueOf(KEY_RM_VX_PREPARE))
 			m_action = Action_Go_Prepare;
 		else 
 			m_action = Action_Go;
 }
 
-void CRockman::Climb(bool _isTurnUp)
+bool CRockman::Climb(bool _isTurnUp)
 {
-	if (!_isTurnUp) {
-		m_CanDown = true;
-	} else {
-		if (m_IsLadderBottom) {
-			m_velloc.y = 0;
-			return;
-		}
+	bool isWillClimb = m_isCanClimb;
+	if (!m_IsClimbing){
+		if (!_isTurnUp)
+			isWillClimb &=  m_IsLadderBottom;
+		else
+			isWillClimb &= !m_IsLadderBottom;
 	}
-	if (m_PosXClimb > -1) {		
-		m_velloc.y = _isTurnUp ?  ResourceConfig::GetInstance()->GetValue(KEY_RM_CLIMB_VY): - ResourceConfig::GetInstance()->GetValue(KEY_RM_CLIMB_VY);
+
+	if (isWillClimb) {
+		m_velloc.y = _isTurnUp ?  CConfig::ValueOf(KEY_RM_CLIMB_VY): - CConfig::ValueOf(KEY_RM_CLIMB_VY);
 		m_velloc.x = 0;
 		m_accel.y = 0;
 		m_action = Action_Climb;
 		m_IsClimbing = true;
 	}
-	
+
+	return isWillClimb;
 }
 
 void CRockman::Jump()
 {
 	if (m_accel.y == 0) {
-		m_accel.y = mAccelOfRockman.y;
-		m_velloc.y = ResourceConfig::GetInstance()->GetValue(KEY_RM_VY_JUMP);
+		m_accel.y = CConfig::ValueOf(KEY_RM_ACCEL_VY);
+		m_velloc.y = m_IsClimbing ? 0 : CConfig::ValueOf(KEY_RM_VY_JUMP);
 		m_action = Action_Jump;
+
+		m_IsClimbing = false;
 	}
 }
 
@@ -381,7 +386,7 @@ void CRockman::UpdateCollison(CEntity* _other, float _time) {
 	{
 	case LADDER:
 		m_PosXClimb = _other->GetRect().left + (LONG)(_other->GetSize().x) / 2;
-		m_IsClimbing = !m_isCollisionBottom;
+		m_isCanClimb = true;
 		break;
 	case BIGEYE:
 	case BLADER:
@@ -402,11 +407,11 @@ void CRockman::UpdateCollison(CEntity* _other, float _time) {
 					m_pos.x = _other->GetRect().left - m_Size.x -1;
 				}
 				else 
-				if (m_Rect.left > _other->GetRect().left && m_Rect.left < _other->GetRect().right) {
-					m_velloc.x = 0;
-					m_accel.x = 0;
-					m_pos.x = _other->GetRect().right + 1 ;
-				}
+					if (m_Rect.left > _other->GetRect().left && m_Rect.left < _other->GetRect().right) {
+						m_velloc.x = 0;
+						m_accel.x = 0;
+						m_pos.x = _other->GetRect().right + 1 ;
+					}
 			}
 		}
 	break;
@@ -463,34 +468,12 @@ void CRockman::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,
 		case LADDER:
 			if( m_directCollion == BOTTOM)
 			{
-				if (!m_CanDown) {
-					m_pos.y = _other->GetRect().top + m_Size.y + 1;
-					//m_PosXClimb = -1;
-				}
 				m_velloc.y = m_accel.y = 0;
 				m_isCollisionBottom = true;
-				m_IsLadderBottom = true;
 				m_IsClimbing = false;
+				m_IsLadderBottom = true;
+				m_pos.y = _other->GetRect().top + m_Size.y + 1;
 			}
-			//if( m_directCollion == LEFT)
-			//{
-			//	m_velloc.x = 0;
-			//	m_accel.x = 0;
-			//	m_pos.x = _other->GetRect().right + 1 ;
-			//	//m_CanClimbUp = false;
-			//	m_IsClimbing = false;
-			//	m_PosXClimb = -1;
-			//}
-
-			//if( m_directCollion == RIGHT)
-			//{
-			//	m_velloc.x = 0;
-			//	m_accel.x = 0;
-			//	m_pos.x = _other->GetRect().left - m_Size.x -1;
-			//	//m_CanClimbUp = false;
-			//	m_IsClimbing = false;
-			//	m_PosXClimb = -1;
-			//}
 			break;
 		
 		}
@@ -552,3 +535,5 @@ void CRockman::SetPos(D3DXVECTOR3 _pos)
 {
 	m_pos = _pos;
 }
+
+bool CRockman::m_IsClimbing = false;

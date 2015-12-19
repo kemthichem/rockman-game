@@ -1,6 +1,5 @@
 #ifndef  _OCTOPUS_H
 #define  _OCTOPUS_H
-#include "ResourceManager.h"
 #include "Entity.h"
 #include "Bullet.h"
 #include "Item.h"

@@ -61,9 +61,6 @@
     <Filter Include="ObjectGame\Enemies">
       <UniqueIdentifier>{47be2e8a-90f0-4046-80b2-f7177bb7933e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ObjectGame\Scenery">
-      <UniqueIdentifier>{d2113617-6d78-4496-8e17-e6b4617f2163}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="winmain.cpp">
@@ -201,7 +198,10 @@
     <ClCompile Include="Block.cpp">
       <Filter>ObjectGame\Block</Filter>
     </ClCompile>
-    <ClCompile Include="ResourceConfig.cpp">
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CConfig.cpp">
       <Filter>ResourceManager</Filter>
     </ClCompile>
   </ItemGroup>
@@ -341,7 +341,10 @@
     <ClInclude Include="Block.h">
       <Filter>ObjectGame\Block</Filter>
     </ClInclude>
-    <ClInclude Include="ResourceConfig.h">
+    <ClInclude Include="Enemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CConfig.h">
       <Filter>ResourceManager</Filter>
     </ClInclude>
   </ItemGroup>

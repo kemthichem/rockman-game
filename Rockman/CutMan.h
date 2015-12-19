@@ -1,6 +1,5 @@
 #ifndef _CUTMAN_H_
 #define _CUTMAN_H_
-#include "ResourceManager.h"
 #include "Entity.h"
 #include "Blood.h"
 #include "BulletCutman.h"
