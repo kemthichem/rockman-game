@@ -1,6 +1,6 @@
 #ifndef  _SCREW_BOMBER_H
 #define  _SCREW_BOMBER_H
-#include "Entity.h"
+#include "Enemy.h"
 #include "Bullet.h"
 #include "Item.h"
 
@@ -11,16 +11,16 @@ enum ScrewBomberStatus {
 	Rotate
 };
 
-class CScrewBomber : public CEntity
+class CScrewBomber : public CEnemy
 {
 private:
 	ScrewBomberStatus m_Status;
 	CBullet *m_ListBullet[NUM_BULLET];
 	CItem *m_Item;
 	float  m_TimeSpend;
-	bool m_IsLife;
-
 	void Shot(int _n);
+protected:
+	virtual void Reset();
 public:
 	CScrewBomber(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide, bool _isUp = true);
 

@@ -70,15 +70,19 @@ CScrewBomber::CScrewBomber(int objID, int typeID, double posX, double posY, int 
 {
 	m_Id = objID;
 	m_Type = SCREW_BOMBER;
-	int k = _isUp ? 73 : 0;
+	int k = _isUp ? 39 : 0;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES),
 		D3DXVECTOR2(175, 106 + k), 4, 1,
-		D3DXVECTOR2(10, 90 + k),
+		D3DXVECTOR2(15, 90 + k),
 		D3DXVECTOR2(0,0),
 		D3DXVECTOR2(20, 0));
 	m_Size = D3DXVECTOR2(widthCollide, heightCollide);
 	m_pos = D3DXVECTOR3(posXCollide, posYCollide, 0);
 	m_IsLife = true;
+
+	/**Attribute ScrewBomber**/
+	m_Status = Wait;
+	m_TimeSpend = 0;
 
 	UpdateRect();
 
@@ -210,5 +214,14 @@ void CScrewBomber::SetInjured(CEntity* _other)
 		m_IsCheckCollision = false;
 		m_Item->SetActive(true);
 		m_IsLife = false;
+	}
+}
+
+void CScrewBomber::Reset()
+{
+	CEnemy::Reset();
+	for (int i = 0; i < NUM_BULLET; i++)
+	{
+		m_ListBullet[i]->SetActive(false);
 	}
 }

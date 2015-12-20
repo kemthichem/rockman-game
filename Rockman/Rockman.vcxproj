@@ -121,6 +121,7 @@
     <ClCompile Include="QuadTreeNode.cpp" />
     <ClCompile Include="ResourceConfig.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="Rock.cpp" />
     <ClCompile Include="Rockman.cpp" />
     <ClCompile Include="RockmanGame.cpp" />
     <ClCompile Include="SceneryTile.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="QuadTreeNode.h" />
     <ClInclude Include="ResourceConfig.h" />
     <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="Rock.h" />
     <ClInclude Include="Rockman.h" />
     <ClInclude Include="RockmanGame.h" />
     <ClInclude Include="SceneryTile.h" />
