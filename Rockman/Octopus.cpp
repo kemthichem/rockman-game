@@ -41,10 +41,10 @@ COctopus::COctopus(int objID, int typeID, double posX, double posY, int width, i
 
 	m_Type = OCTOPUS;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES),
-		D3DXVECTOR2(455, 106), 3, 1,
-		D3DXVECTOR2(315, 90),
-		D3DXVECTOR2(0,0),
-		D3DXVECTOR2(20,0));
+		D3DXVECTOR2(445, 106), 3, 1,
+		D3DXVECTOR2(325, 90),
+		D3DXVECTOR2(10, 0),
+		D3DXVECTOR2(10,0));
 	m_velloc.x = _isTurnHor ? -10 : 0;
 	m_velloc.y = _isTurnHor ? 0 : 10;
 	m_Size = D3DXVECTOR2(widthCollide, heightCollide);
@@ -118,7 +118,37 @@ void COctopus::ExecuteCollision(CEntity* _other, DirectCollision m_directCollisi
 	switch (_other->GetType())
 	{
 	case BLOCK:
-	
+		{
+			if( m_directCollision == BOTTOM)
+			{
+				m_pos.y = _other->GetRect().top + m_Size.y + 1;
+				m_vellocTemp.y = m_velloc.y;
+				m_velloc.y = 0;
+			}
+
+			if (m_directCollision == TOP)
+			{
+				m_pos.y = _other->GetRect().bottom;
+				m_vellocTemp.y = m_velloc.y;
+				m_velloc.y = 0;
+			}
+
+			if( m_directCollision == LEFT)
+			{
+				m_pos.x = _other->GetRect().right + 1;
+				m_vellocTemp.x = m_velloc.x;
+				m_velloc.x = 0;
+			}
+
+			if( m_directCollision == RIGHT)
+			{
+				m_pos.x = _other->GetRect().left - m_Size.x - 1;
+				m_vellocTemp.x= m_velloc.x;
+				m_velloc.x = 0;
+			}
+
+		}
+		break;
 	default:
 		break;
 	}

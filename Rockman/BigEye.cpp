@@ -22,7 +22,7 @@ CBigEye::CBigEye(int objID, int typeID, double posX, double posY, int width, int
 	m_Id = objID;
 
 	m_Type = BIGEYE;
-	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), D3DXVECTOR2(365, 315) , 1, 2, D3DXVECTOR2(325, 210), D3DXVECTOR2(0, 15), D3DXVECTOR2(0,0));
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), D3DXVECTOR2(360, 315) , 1, 2, D3DXVECTOR2(330, 210), D3DXVECTOR2(0, 0), D3DXVECTOR2(0, 0));
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 	m_pos = D3DXVECTOR3(posXCollide, posYCollide, 0);
 	m_velloc.x = -10;
