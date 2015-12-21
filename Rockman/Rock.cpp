@@ -9,7 +9,7 @@ CRock::CRock(int _id, D3DXVECTOR3 _pos, bool _isCheckCollison)
 {
 	m_Id = _id;
 	m_Type = BLOCK;
-	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES), D3DXVECTOR2(140,35), 4, 1, D3DXVECTOR2(3,1), D3DXVECTOR2(1,1), D3DXVECTOR2(1,1));
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES), D3DXVECTOR2(428,239), 2, 2, D3DXVECTOR2(394,205), D3DXVECTOR2(1,1), D3DXVECTOR2(1,1));
 	m_pos = _pos;
 	m_pos.z = DEPTH_BLOCK;
 
@@ -24,7 +24,7 @@ CRock::CRock(int objID, int typeID, double posX, double posY, int width, int hei
 	m_Type = BLOCK;
 	m_Size = D3DXVECTOR2(widthCollide, heightCollide);
 	m_pos = D3DXVECTOR3(posXCollide, posYCollide, 0);
-
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES), D3DXVECTOR2(428,239), 2, 2, D3DXVECTOR2(394,205), D3DXVECTOR2(1,1), D3DXVECTOR2(1,1));
 	UpdateRect();
 }
 
@@ -41,11 +41,12 @@ void CRock::Update(float _deltaTime, CCamera *_camera, CInput *_input)
 void CRock::Render(LPD3DXSPRITE _sp, CCamera* _camera)
 {
 	//CEntity::Render(_sp, _camera);
-	/*D3DXVECTOR3 pos = m_pos;
+	D3DXVECTOR3 pos = m_pos;
 	for (int i = 0; i < NUMB_SPRITE; i++)
 	{
 		m_Sprite->IndexOf(i);
-		pos.x = m_pos.x + i * m_Sprite->GetWidthRectSprite();
-		CEntity::RenderEachSprite(_sp, _camera,m_Sprite, pos);
-	}*/
+		pos.x = m_pos.x + (i % 2) * m_Sprite->GetWidthRectSprite() + 1;
+		pos.y = m_pos.y - (i / 2) * m_Sprite->GetHeightRectSprite() - 1;
+		CEntity::RenderEachSprite(_sp, _camera, m_Sprite, pos);
+	}
 }

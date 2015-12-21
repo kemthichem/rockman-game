@@ -189,6 +189,9 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 	case ID_BLOCK:
 		object = new CBlock(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
+	case ID_ROCK:
+		object = new CRock(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
+		break;
 	case ID_CLAMPER:
 		object = new CLadder(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
@@ -201,8 +204,6 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 	case ID_ITEM_MANA:
 		break;
 	case ID_ITEM_MANA_SMALL:
-		break;
-	case ID_ROCK:
 		break;
 	case ID_DIEAARROW:
 		break;

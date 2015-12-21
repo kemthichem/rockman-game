@@ -253,12 +253,12 @@ bool CAABBCollision::IntersectRectX(RECT _r1, RECT _r2)
 
 intersectX:
 	if (isIntersect) {
-		if (_r1.top < _r2.bottom || _r2.top < _r1.bottom) {
-			return true;
+		if ((_r1.top > _r2.bottom && _r1.bottom < _r2.bottom) || (_r1.bottom < _r2.top && _r1.top > _r2.top)) {
+			return false;
 		}
 	}
 
-	//return false;
+	return true;
 
 }
 
