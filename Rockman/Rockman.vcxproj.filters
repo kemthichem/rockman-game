@@ -75,9 +75,6 @@
     <ClCompile Include="Rockman.cpp">
       <Filter>Player</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Camera</Filter>
     </ClCompile>
@@ -89,9 +86,6 @@
     </ClCompile>
     <ClCompile Include="utils.cpp">
       <Filter>Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="Time.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Entity.cpp">
       <Filter>ObjectGame</Filter>
@@ -198,23 +192,29 @@
     <ClCompile Include="Block.cpp">
       <Filter>ObjectGame\Block</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Config.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>ResourceManager</Filter>
     </ClCompile>
-    <ClCompile Include="Door.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>ObjectGame\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="FlyingShell.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourceConfig.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>ObjectGame\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="SupperCutter.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>ObjectGame\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Rock.cpp">
+      <Filter>ObjectGame\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="Door.cpp">
+      <Filter>ObjectGame\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -239,9 +239,6 @@
     <ClInclude Include="utils.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="Time.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Define.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -250,9 +247,6 @@
     </ClInclude>
     <ClInclude Include="Entity.h">
       <Filter>ObjectGame</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="QuadTreeNode.h">
       <Filter>Quadtree</Filter>
@@ -353,23 +347,29 @@
     <ClInclude Include="Block.h">
       <Filter>ObjectGame\Block</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Config.h">
-      <Filter>Header Files</Filter>
+      <Filter>ResourceManager</Filter>
     </ClInclude>
-    <ClInclude Include="Door.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FlyingShell.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceConfig.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Rock.h">
+      <Filter>ObjectGame\Block</Filter>
     </ClInclude>
     <ClInclude Include="SupperCutter.h">
-      <Filter>Header Files</Filter>
+      <Filter>ObjectGame\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="FlyingShell.h">
+      <Filter>ObjectGame\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>ObjectGame\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Door.h">
+      <Filter>ObjectGame\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Base</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

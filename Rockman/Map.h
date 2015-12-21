@@ -7,9 +7,6 @@
 #include <string>
 #include <vector>
 
-#include"Rockman.h"
-#include"BigEye.h"
-#include"Block.h"
 #include "QuadTree.h"
 #include "Camera.h"
 

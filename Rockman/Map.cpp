@@ -1,5 +1,8 @@
 #include"Map.h"
 #include "Blader.h"
+#include "BigEye.h"
+#include "Block.h"
+#include "Rock.h"
 #include "Ladder.h"
 #include "Cutman.h"
 #include "ScrewBomber.h"

@@ -1,11 +1,20 @@
 #ifndef _BLADER_H_
 #define _BLADER_H_
-#include "Entity.h"
-class CBlader : public CEntity
+#include "Enemy.h"
+enum BladerState
+{
+	Bide,
+	Back,
+	Attack
+};
+
+class CBlader : public CEnemy
 {
 private:
-	bool m_IsLife;
-	D3DXVECTOR3 m_PosInit;
+	int disBack;
+	bool m_isCompleteAttack;
+	BladerState m_state;
+	D3DXVECTOR2 m_posAttack;
 protected:
 public:
 	CBlader(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide);
