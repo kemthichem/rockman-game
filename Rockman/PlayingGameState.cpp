@@ -95,7 +95,9 @@ void CPLayingGameState::Update(CInput* _input,float _time)
 void CPLayingGameState::Init()
 {
 	//fixed stage
-	g_Stage = 1;
+	//g_Stage = 1;
+	g_Stage = 2;
+	//g_Stage = 3;
 	char* pathStageMap = PATH_STAGE_MAP;
 	m_Map.LoadMapStages(pathStageMap);
 	string pathMap = "";
