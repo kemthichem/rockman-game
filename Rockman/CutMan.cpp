@@ -2,6 +2,7 @@
 #include "Rockman.h"
 #include "ResourceManager.h"
 #include "PLayingGameState.h"
+#include "Define.h"
 
 #define TIME_INJURED (10.0f)
 #define TIME_WAIT (30.0f)
@@ -35,7 +36,7 @@ CCutMan::CCutMan(int _id, D3DXVECTOR3 _pos)
 	//create list bullet
 	m_Bullet = new CBulletCutman(D3DXVECTOR3(_pos.x + m_Size.x/2 - 10, _pos.y - m_Size.y/2 + 10, _pos.z));
 	//create blood
-	m_Blood = new CBlood(D3DXVECTOR2(740, 30), 100);
+	m_Blood = new CBlood(D3DXVECTOR2(WIDTH_SCREEN - 30, 25), 100);
 }
 
 CCutMan::CCutMan(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide)

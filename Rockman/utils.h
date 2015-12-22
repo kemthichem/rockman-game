@@ -19,6 +19,6 @@ public:
 	static float Min(float n1, float n2);
 	static float Lerp(float value1, float value2, float amount);
 	static vector<string> SplitString(std::string str, char ch);
-	static vector<string> LoadDataFromFile(char *pathMap);
+	static vector<string> LoadDataFromFile(const char *pathMap);
 
 };

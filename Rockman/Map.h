@@ -13,13 +13,7 @@
 using std::vector;
 using namespace std;
 
-enum KEY_MAP
-{
-	KEY_MAP_1,
-	KEY_MAP_2,
-	KEY_MAP_3,
-	KEY_MAP_COUNT
-};
+#define PATH_STAGE_MAP "Resources//map//map_stages.txt";
 
 struct MAP
 {
@@ -32,7 +26,7 @@ class CMap{
 
 private:
 	void AddObjectGame(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide);
-	MAP m_MapStage[KEY_MAP_COUNT];
+	vector<MAP> m_Maps;
 public:
 	static int g_widthMap, g_heightMap;
 	int **m_ArrayMapTile;
@@ -43,7 +37,9 @@ public:
 
 	CQuadTreeNode* m_nodeRoot;
 	vector<CEntity*> m_ListObjects;
-	void LoadMap(char* filePath, CQuadTree *quadTree, CCamera*);
+	void LoadMap(const char* filePath, CQuadTree *quadTree, CCamera*);
+	void LoadMapStages(const char* fileStage);
+	bool GetMap(int stage, string& pathMap, string& pathMapTile);
 };
 
 

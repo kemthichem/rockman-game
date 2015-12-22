@@ -51,7 +51,7 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 	}
 
 	//create blood
-	m_Blood = new CBlood(D3DXVECTOR2(30, 30), 200);
+	m_Blood = new CBlood(D3DXVECTOR2(30, 25), 200);
 }
 CRockman::~CRockman()
 {

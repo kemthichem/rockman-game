@@ -1,0 +1,3 @@
+MAP1	Resources/map/cut_man_stage.txt	Resources/map/cut_man_stage.bmp
+MAP2	Resources/map/guts_man_stage.txt	Resources/map/guts_man_stage.bmp
+MAP3	Resources/map/boom_man_stage.txt	Resources/map/boom_man_stage.bmp

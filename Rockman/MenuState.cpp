@@ -3,6 +3,7 @@
 #include"PLayingGameState.h"
 #include "About.h"
 #include "HelpState.h"
+#include "ResourceManager.h"
 
 CMenuState::CMenuState()
 {

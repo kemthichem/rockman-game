@@ -90,7 +90,7 @@ float CUtils::Max( float n1, float n2 )
 {
 	return value1 + (value2 - value1) * amount;
 }
-vector<string> CUtils::LoadDataFromFile(char *pathFile)
+vector<string> CUtils::LoadDataFromFile(const char *pathFile)
 {
 	ifstream ifstreamMapFile;
 

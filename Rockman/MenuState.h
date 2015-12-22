@@ -1,7 +1,6 @@
 #ifndef MENUSTATE_H_
 #define MENUSTATE_H_
 #include"GameState.h"
-#include"PLayingGameState.h"
 class CMenuState:public CGameState
 {
 private:

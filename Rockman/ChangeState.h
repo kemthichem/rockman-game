@@ -1,7 +1,6 @@
 #ifndef _CHANGESTATE_H_
 #define _CHANGESTATE_H_
 #include"GameState.h"
-#include"PLayingGameState.h"
 class CChangeState:public CGameState
 {
 private:

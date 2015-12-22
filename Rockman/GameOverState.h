@@ -1,7 +1,6 @@
 #ifndef _OVERCHANGESTATE_H_
 #define _OVERCHANGESTATE_H_
 #include"GameState.h"
-#include"PLayingGameState.h"
 class CGameOverState:public CGameState
 {
 private:

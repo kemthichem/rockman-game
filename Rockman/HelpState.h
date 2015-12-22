@@ -1,7 +1,6 @@
 #ifndef _HELPSTATE_H_
 #define _HELPSTATE_H_
 #include"GameState.h"
-#include"PLayingGameState.h"
 class CHelpState:public CGameState
 {
 private:

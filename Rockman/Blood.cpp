@@ -45,15 +45,15 @@ void CBlood::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntit
 void CBlood::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 {
 	m_pos = D3DXVECTOR3(CCamera::g_PosCamera.x + m_Offset.x, CCamera::g_PosCamera.y - m_Offset.y, DEPTH_MOTION);
-	CEntity::Render(_spriteHandle,_camera);
+	CEntity::Render(_spriteHandle, _camera);
 	
 	D3DXVECTOR3 pos = m_pos;
-	pos.x = m_pos.x + 2;
-	pos.y = m_pos.y - m_Sprite->GetHeightRectSprite() + 3;
+	pos.x = m_pos.x + 0.2;
+	pos.y = m_pos.y - m_Sprite->GetHeightRectSprite() + 1;
 	for (int i = 0; i < m_CurrentPer; i++)
 	{
 		CEntity::RenderEachSprite(_spriteHandle, _camera,m_SpriteBar, pos);
-		pos.y += 4;		
+		pos.y += 2;		
 	}	
 }
 

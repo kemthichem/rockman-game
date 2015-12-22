@@ -3,6 +3,7 @@
 #include "Block.h"
 #include "Map.h"
 #include "PLayingGameState.h"
+#include "ResourceManager.h"
 #include "ChangeState.h"
 
 CRockmanGame::CRockmanGame( HINSTANCE hInstance ):CGame(hInstance)

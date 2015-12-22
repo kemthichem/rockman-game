@@ -3,9 +3,7 @@
 #include <d3d9.h>
 #include <d3dx9.h>
 #include "Input.h"
-#include "Camera.h"
 #include "Sprite.h"
-#include"ResourceManager.h"
 enum GameStateId
 {
 	GAME_LOADING,GAME_MENU,GAME_PLAY,GAME_CONTINUE,GAME_OPTIONS,GAME_EXIT,GAME_ABOUT

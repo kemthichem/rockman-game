@@ -6,6 +6,8 @@
 #include "GameOverState.h"
 #include "WinState.h"
 #include "Config.h"
+#include "Define.h"
+#include "ResourceManager.h"
 
 using namespace std;
 
@@ -92,46 +94,25 @@ void CPLayingGameState::Update(CInput* _input,float _time)
 
 void CPLayingGameState::Init()
 {
-	char* pathMap = NULL;
-
-#pragma region
 	//fixed stage
 	g_Stage = 1;
+	char* pathStageMap = PATH_STAGE_MAP;
+	m_Map.LoadMapStages(pathStageMap);
+	string pathMap = "";
+	string pathMapTile = "";
+	bool rVal = m_Map.GetMap(g_Stage, pathMap, pathMapTile);
 
-	switch (g_Stage)
-	{
-	case 1:
-		pathMap = "Resources//map//cut_man_stage.txt";
-		break;
-	case 2:
-		//pathMap = "Resources//map//Map2.txt";
-		break;
-	case 3:
-		//pathMap = "Resources//map//Map3.txt";
-		break;
-	default:
-		break;
-	}
 	////Reset camera
 	m_Camera->SetPosCamera(D3DXVECTOR2(0,0));	
-	rockman = new CRockman(D3DXVECTOR3(CConfig::ValueOf(KEY_RM_POS_INIT_X), CConfig::ValueOf(KEY_RM_POS_INIT_Y),0));
-	////Go boss map 1
-	//m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(4798,2084));//-600y
-	//rockman = new CRockman(D3DXVECTOR3(5471, 2350, 0));
-	////Go boss map 2
-	//m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(3552,2344));
-	//rockman = new CRockman(D3DXVECTOR3(3580,1000,0));
-	////Go boss map 3
-	//m_StateManager->GetCamera()->SetPosCamera(D3DXVECTOR2(3552,2344));
-	//rockman = new CRockman(D3DXVECTOR3(3580,1000,0));
-#pragma endregion
-
 	quadTree = new CQuadTree();
 
 	//Load to quadTree and camera path point from map.
-	m_Map.LoadMap(pathMap, quadTree, m_Camera);
+	m_Map.LoadMap(pathMap.c_str(), quadTree, m_Camera);
+
+	//rockman = new CRockman(D3DXVECTOR3(CConfig::ValueOf(KEY_RM_POS_INIT_X), CConfig::ValueOf(KEY_RM_POS_INIT_Y),0));
+	rockman = new CRockman(D3DXVECTOR3(CCamera::g_PosCamera.x + WIDTH_SCREEN / 2, CCamera::g_PosCamera.y,0));
 	//create scenery tile
-	m_ScereryTile = new CSceneryTile(CResourceManager::GetInstance()->GetSprite(IMAGE_MAP_CUTMAN),
+	m_ScereryTile = new CSceneryTile(CResourceManager::GetInstance()->GetTileMap(pathMapTile),
 		m_Map.m_ArrayMapTile, m_Map.rowTitle, m_Map.colTitle, m_Map.countTile);
 }
 

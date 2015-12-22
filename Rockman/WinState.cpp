@@ -1,6 +1,7 @@
 #include"WinState.h"
 #include"GamestateManager.h"
 #include"PLayingGameState.h"
+#include "ResourceManager.h"
 #include "MenuState.h"
 
 CWinState::CWinState()

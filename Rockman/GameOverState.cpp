@@ -1,6 +1,7 @@
 #include"GameOverState.h"
 #include"GamestateManager.h"
-#include"MenuState.h"
+#include"ChangeState.h"
+#include "ResourceManager.h"
 
 #define TIME_IN_STATE (25.0f)
 
@@ -22,7 +23,7 @@ void CGameOverState::Update(CInput* _input,float _time)
 	if (m_time < TIME_IN_STATE) {
 		m_time += _time;
 	} else {
-		m_StateManager->ChangeState(new CMenuState(m_StateManager));
+		m_StateManager->ChangeState(new CChangeState(m_StateManager));
 	}	
 }
 void CGameOverState::Render(LPD3DXSPRITE _spriteHandle)

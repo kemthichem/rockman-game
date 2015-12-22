@@ -13,7 +13,7 @@
 #define  IMAGE_ROCKMAN			"Resources/rockman.png"
 #define  IMAGE_TILES			"Resources/tiles.png"
 #define  IMAGE_ENEMIES			"Resources/enemies.png"
-#define  IMAGE_EXPLOSIVE			"Resources/explosive.png"
+#define  IMAGE_EXPLOSIVE		"Resources/explosive.png"
 #define  IMAGE_MASTER			"Resources/master.png"
 #define  IMAGE_BG_MENU			"Resources/State/bg_menu.jpg"
 #define  IMAGE_BG_CHANGE_STATE	"Resources/State/start.png"
@@ -22,8 +22,6 @@
 #define  IMAGE_BG_HELP			"Resources/State/bg_help.jpg"
 #define  IMAGE_BG_WIN			"Resources/State/bg_win.jpg"
 
-//hard code map resource
-#define IMAGE_MAP_CUTMAN "Resources/map/cut_man_stage.bmp"
 //background
 #define  IMAGE_BG "Resources/bg.jpg"
 
@@ -37,13 +35,12 @@ private:
 	map<string, LPDIRECT3DSURFACE9> mMapSurface;
 	CResourceManager(void);
 public:
-	static string mPathFileBg;
-	static string mPathFileMap;
-	static char* GetFilePathBG();
 	static CResourceManager* GetInstance();
-	static void Release();
+	static void Release();	
+	
 	void LoadResource(LPDIRECT3DDEVICE9);
 	LPDIRECT3DTEXTURE9 GetSprite(string);
+	LPDIRECT3DTEXTURE9 GetTileMap(string);
 	LPDIRECT3DSURFACE9 GetSurface(string);
 	~CResourceManager(void);
 };

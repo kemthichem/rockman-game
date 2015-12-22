@@ -2,6 +2,7 @@
 #include"GamestateManager.h"
 #include"PLayingGameState.h"
 #include "MenuState.h"
+#include "ResourceManager.h"
 
 CHelpState::CHelpState()
 {

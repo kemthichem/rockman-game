@@ -1,6 +1,7 @@
 #include"ChangeState.h"
 #include"GamestateManager.h"
 #include"PLayingGameState.h"
+#include "ResourceManager.h"
 #include "Define.h"
 
 #define TIME_IN_STATE (3.0f)

@@ -42,7 +42,7 @@ CMap::~CMap()
 	delete []m_ArrayMapTile;
 }
 
-void  CMap::LoadMap(char* pathMap,  CQuadTree *quadTree, CCamera *camera)
+void  CMap::LoadMap(const char* pathMap,  CQuadTree *quadTree, CCamera *camera)
 {
 	// get data from map
 	vector<string> vectorDataFromMap = CUtils::LoadDataFromFile(pathMap);
@@ -252,4 +252,36 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 	if (object) {
 		m_ListObjects.push_back(object);
 	}
+}
+
+void CMap::LoadMapStages(const char* fileStage)
+{
+	using namespace std;
+	ifstream ifstreamMapFile;
+	string line;
+	// read file map and push data into a vector
+	ifstreamMapFile.open(fileStage);
+	if (ifstreamMapFile.is_open())
+	{
+		vector<string> stringsLine;
+		while (getline(ifstreamMapFile,line))
+		{
+			stringsLine = CUtils::SplitString(line, '\t');
+			if (stringsLine.size() >= 3) {
+				MAP map = { stringsLine[1], stringsLine[2] };
+				m_Maps.push_back(map);
+			}
+		}
+	}
+	ifstreamMapFile.close();
+}
+
+bool CMap::GetMap(int stage, string& pathMap, string& pathMapTile)
+{
+	if (stage > m_Maps.size() || stage < 1) {
+		return false;
+	}
+
+	pathMap = m_Maps[stage - 1].pathMapObject;
+	pathMapTile = m_Maps[stage - 1].pathMapImage;
 }

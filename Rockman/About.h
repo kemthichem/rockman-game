@@ -1,7 +1,6 @@
 #ifndef _ABOUTSTATE_H_
 #define _ABOUTSTATE_H_
 #include"GameState.h"
-#include"PLayingGameState.h"
 class CAboutState:public CGameState
 {
 private:

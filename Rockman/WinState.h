@@ -1,7 +1,6 @@
 #ifndef  _WINSTATE_H_
 #define _WINSTATE_H_
 #include"GameState.h"
-#include"PLayingGameState.h"
 class CWinState:public CGameState
 {
 private:
