@@ -3,13 +3,13 @@
 #include "Define.h"
 #include "Rockman.h"
 
-#define SIZE_OF_BLOOD (30)
+#define SIZE_OF_BLOOD (28)
 
 CBlood::CBlood(D3DXVECTOR2 _offsetPosCamera, int _totalBlood)
 {
 	//m_Type = SCENERY;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES)
-		,D3DXVECTOR2(112, 175), 1, 1
+		,D3DXVECTOR2(113, 175), 1, 1
 		,D3DXVECTOR2(105, 120));
 
 	//Blood
