@@ -13,6 +13,7 @@
 #define  IMAGE_ROCKMAN			"Resources/rockman.png"
 #define  IMAGE_TILES			"Resources/tiles.png"
 #define  IMAGE_ENEMIES			"Resources/enemies.png"
+#define  IMAGE_EXPLOSIVE			"Resources/explosive.png"
 #define  IMAGE_MASTER			"Resources/master.png"
 #define  IMAGE_BG_MENU			"Resources/State/bg_menu.jpg"
 #define  IMAGE_BG_CHANGE_STATE	"Resources/State/start.png"

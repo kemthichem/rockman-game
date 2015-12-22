@@ -88,7 +88,7 @@ vector<CEntity*> CQuadTree::GetListObjectInRect(RECT _rect)
 			if (listObjectInNode[j]->IsShowed()) {
 				AddObjectToList(m_listObjectViewportCheckCollision, listObjectInNode[j]);
 			}
-			if ((int)listObjectInNode[j]->GetType() > 0) {
+			if ((int)listObjectInNode[j]->GetType() > 0 && listObjectInNode[j]->IsShowed()) {
 				AddObjectToList(m_listObjectViewportWillUpdate, listObjectInNode[j]);
 			}
 		}
@@ -101,7 +101,7 @@ void CQuadTree::Update(CCamera* _camera, float _time)
 {
 	for (int i = 0; i < m_listObjectViewportWillUpdate.size(); i++)
 	{
-		if (m_listObjectViewportWillUpdate[i]->GetType() > ROCKMAN)
+		if (m_listObjectViewportWillUpdate[i]->GetType() > ROCKMAN && m_listObjectViewportWillUpdate[i]->IsShowed())
 			m_listObjectViewportWillUpdate[i]->Update(_time, _camera, NULL, m_listObjectViewportCheckCollision);
 	}
 }

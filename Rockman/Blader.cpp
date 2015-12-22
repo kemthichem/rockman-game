@@ -43,7 +43,7 @@ CBlader::~CBlader(void)
 
 void CBlader::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntity* > _listObjectInViewPort)
 {
-	if (!m_IsLife) return;
+	if (!m_IsLife) return CEnemy::Update(_time, _camera, _input, _listObjectInViewPort);
 
 	if (m_state == Bide) {
 		int disX = abs(CRockman::g_PosRockman.x - m_pos.x);
@@ -83,25 +83,6 @@ void CBlader::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntit
 			m_state = Bide;
 		}
 	}
-
-	
-	/*
-
-
-
-
-
-	if (abs(CRockman::g_PosRockman.x - m_pos.x) <= 200 && m_pos.y >= m_posOrg.y ) {
-	m_velloc.x = -VELLOC_X;
-	m_velloc.y = -(abs(CRockman::g_PosRockman.y - m_pos.y) / 2);
-	m_accel.y = 20.0f;
-	}
-	if (m_pos.y >= m_posOrg.y && CRockman::g_PosRockman.x - m_pos.x > 0) {
-	m_velloc.x = -10;
-	m_accel.y = m_velloc.y = 0;
-	}
-
-	*/
 	CEntity::Update(_time, _camera, _input, _listObjectInViewPort);
 
 	m_Sprite->NextOf(_time, 0, 1);	 
@@ -109,10 +90,9 @@ void CBlader::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntit
 
 void CBlader::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 {
-	if (m_IsLife) {
-		CEntity::Render(_spriteHandle, _camera);
+	if (!m_IsLife) return CEnemy::Render(_spriteHandle, _camera);
+	CEntity::Render(_spriteHandle, _camera);
 		
-	} 
 }
 
 

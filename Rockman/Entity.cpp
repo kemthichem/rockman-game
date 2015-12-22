@@ -27,6 +27,8 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 	//set position
 	UpdatePosition(_time);
 
+	//if (!m_IsCheckCollision) {}
+
 	vector<CEntity*> listObjectCollision;
 	for (int i = 0; i < _listObjectInViewPort.size(); i++)
 	{

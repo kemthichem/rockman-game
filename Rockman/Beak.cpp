@@ -146,7 +146,7 @@ void CBeak::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntity*
 			m_ListBullet[i]->Update(_time,_camera,_input,_listObjectInViewPort);
 		}		
 	} else {
-		//Update item
+		CEnemy::Update(_time, _camera, _input, _listObjectInViewPort);
 		//m_Item->Update(_time,_camera,_input,_listObjectInViewPort);
 	}
 }
@@ -163,6 +163,7 @@ void CBeak::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 		}
 	} else {
 		//Render item
+		CEnemy::Render(_spriteHandle, _camera);
 		//m_Item->Render(_spriteHandle, _camera);
 		//if (!m_Item->GetActive())
 		//	m_IsShowed = false;
