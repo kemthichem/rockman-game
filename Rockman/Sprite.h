@@ -5,6 +5,13 @@
 #include "Camera.h"
 
 #define  TIME_PER_ANIMATION (2.0f)
+
+enum D3DX_RESIZE
+{
+	D3DX_RESIZE_NONE = 0x00000001,
+	D3DX_RESIZE_FILL = 0x00000010,
+};
+
 class CSprite
 {
 private:
@@ -33,6 +40,7 @@ public:
 	void NextOf(float _time, int _indexStart, int indexEnd);
 	void NextAt(float _time, int _indexStart, int indexEnd);
 	void IndexOf(int _index);
+	void Draw(LPD3DXSPRITE _spHandle, RECT _rectDraw, D3DX_RESIZE _styleResize);
 
 	int GetWidthRectSprite();
 	int GetHeightRectSprite();

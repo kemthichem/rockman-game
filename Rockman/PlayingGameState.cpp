@@ -1,6 +1,5 @@
 ﻿#include "PLayingGameState.h"
 #include "MenuState.h"
-#include "BigEye.h"
 #include "Block.h"
 #include "ChangeState.h"
 #include "GameOverState.h"
@@ -80,7 +79,7 @@ void CPLayingGameState::Update(CInput* _input,float _time)
 
 	if (rockman->GetKeyDown()==DIK_ESCAPE)
 	{
-		m_StateManager->ChangeState(new CChangeState(m_StateManager));
+		m_StateManager->ChangeState(new CMenuState(m_StateManager));
 		return;
 	}
 	if (rockman->GetKeyDown()==DIK_L)
@@ -94,16 +93,14 @@ void CPLayingGameState::Update(CInput* _input,float _time)
 
 void CPLayingGameState::Init()
 {
-	//fixed stage
-	//g_Stage = 1;
-	g_Stage = 2;
-	//g_Stage = 3;
 	char* pathStageMap = PATH_STAGE_MAP;
 	m_Map.LoadMapStages(pathStageMap);
 	string pathMap = "";
 	string pathMapTile = "";
 	bool rVal = m_Map.GetMap(g_Stage, pathMap, pathMapTile);
-
+	if (!rVal) {
+		m_StateManager->ChangeState(new CChangeState(m_StateManager));
+	}
 	////Reset camera
 	m_Camera->SetPosCamera(D3DXVECTOR2(0,0));	
 	quadTree = new CQuadTree();

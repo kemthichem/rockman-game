@@ -134,3 +134,39 @@ int CSprite::GetWidthRectSprite()
 	return m_SizeSprite.x - m_OffsetRightBottom.x - m_OffsetLeftTop.x;
 }
 
+void CSprite::Draw(LPD3DXSPRITE _spHandle, RECT _rectDraw, D3DX_RESIZE _styleResize)
+{
+	D3DXMATRIX matrixTransform;
+	D3DXMatrixIdentity(&matrixTransform);
+
+	RECT rSrc;
+	SIZE sSrc = { m_SizeSprite.x - m_OffsetRightBottom.x - m_OffsetLeftTop.x, m_SizeSprite.y - m_OffsetRightBottom.y - m_OffsetLeftTop.y};
+	rSrc.left = (m_CurrentIndex % m_CountPerRow) * (m_SizeSprite.x) + m_PosSrc.x + m_OffsetLeftTop.x;
+	rSrc.top = (m_CurrentIndex / m_CountPerRow)*(m_SizeSprite.y) + m_PosSrc.y + m_OffsetLeftTop.y;
+	rSrc.right = rSrc.left + sSrc.cx;
+	rSrc.bottom = rSrc.top + sSrc.cy;
+
+	SIZE sDst = { abs(_rectDraw.left - _rectDraw.right), abs(_rectDraw.top - _rectDraw.bottom) };
+	//D3DXVECTOR2 pScaling((float)sDst.cx / sSrc.cx, (float)sDst.cy / sSrc.cy);
+	D3DXVECTOR2 pScaling(1,1);
+	D3DXMatrixTransformation2D(
+		&matrixTransform,
+		NULL,//*pScalingCenter,
+		1,//pScalingRotation,
+		&pScaling,//D3DXVECTOR2 *pScaling,
+		NULL,//*pRotationCenter,
+		0,//Rotation,
+		NULL//*pTranslation
+		);
+	_spHandle->SetTransform(&matrixTransform);
+
+	D3DXVECTOR3 posDraw(_rectDraw.left, _rectDraw.top, 0);
+	_spHandle->Draw(
+		m_Texture,
+		&rSrc,
+		NULL,
+		&posDraw,
+		D3DCOLOR_XRGB(255,255,255)
+		);
+}
+

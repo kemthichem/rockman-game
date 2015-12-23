@@ -14,7 +14,7 @@ class CUtils
 public:
 	const static char charSplit = '\t';
 	static LPDIRECT3DSURFACE9 LoadSurface(LPDIRECT3DDEVICE9 _d3ddv, LPCSTR filepath);
-	static LPDIRECT3DTEXTURE9 LoadTexture(LPDIRECT3DDEVICE9 _d3ddv,LPCSTR filepath);
+	static LPDIRECT3DTEXTURE9 LoadTexture(LPDIRECT3DDEVICE9 _d3ddv,LPCSTR filepath, COLORREF _colorFilter = D3DCOLOR_XRGB(0,102,102));
 	static float Max(float n1, float n2);
 	static float Min(float n1, float n2);
 	static float Lerp(float value1, float value2, float amount);

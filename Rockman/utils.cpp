@@ -16,7 +16,7 @@ LPDIRECT3DSURFACE9 CUtils::LoadSurface(LPDIRECT3DDEVICE9 _d3ddv, LPCSTR filepath
 	re = D3DXLoadSurfaceFromFile(surface, NULL, NULL, filepath, NULL, D3DX_DEFAULT, 0, NULL);//load ảnh vào surface
 	return surface;
 }
-LPDIRECT3DTEXTURE9 CUtils::LoadTexture(LPDIRECT3DDEVICE9 _d3ddv,LPCSTR filepath)
+LPDIRECT3DTEXTURE9 CUtils::LoadTexture(LPDIRECT3DDEVICE9 _d3ddv,LPCSTR filepath, COLORREF _colorFilter)
 {
 	HRESULT result;  
 	LPDIRECT3DTEXTURE9 texture;  
@@ -45,7 +45,7 @@ LPDIRECT3DTEXTURE9 CUtils::LoadTexture(LPDIRECT3DDEVICE9 _d3ddv,LPCSTR filepath)
 		D3DX_DEFAULT,            // DWORD Filter  
 		D3DX_DEFAULT,            // DWORD MipFilter  
 		//NULL,
-		D3DCOLOR_XRGB(0,102,102),    // D3DCOLOR ColorKey  
+		_colorFilter,    // D3DCOLOR ColorKey  
 		&info,                // D3DXIMAGE_INFO *pSrcInfo  
 		NULL,                // PALETTEENTRY *pPalette  
 		&texture);                // LPDIRECT3DTEXTURE9 *ppTexture  

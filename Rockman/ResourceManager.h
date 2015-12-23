@@ -15,7 +15,7 @@
 #define  IMAGE_ENEMIES			"Resources/enemies.png"
 #define  IMAGE_EXPLOSIVE		"Resources/explosive.png"
 #define  IMAGE_MASTER			"Resources/master.png"
-#define  IMAGE_BG_MENU			"Resources/State/bg_menu.jpg"
+#define  IMAGE_MENU				"Resources/State/menu_item.png"
 #define  IMAGE_BG_CHANGE_STATE	"Resources/State/start.png"
 #define  IMAGE_BG_ABOUT			"Resources/State/bg_about.jpg"
 #define  IMAGE_BG_GAMEOVER		"Resources/State/bg_gameover.jpg"

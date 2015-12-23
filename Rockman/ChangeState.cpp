@@ -1,6 +1,6 @@
 #include"ChangeState.h"
 #include"GamestateManager.h"
-#include"PLayingGameState.h"
+#include"MenuState.h"
 #include "ResourceManager.h"
 #include "Define.h"
 
@@ -26,13 +26,14 @@ void CChangeState::Update(CInput* _input,float _time)
 
 	if (_input->GetKeyDown()==DIK_RETURN)
 	{
-		m_StateManager->ChangeState(new CPLayingGameState(m_StateManager));
+		m_StateManager->ChangeState(new CMenuState(m_StateManager));
 		return;
 	}
 }
 void CChangeState::Render(LPD3DXSPRITE _spriteHandle)
 {
-	m_background->Render(_spriteHandle, NULL, D3DXVECTOR3(0,0,0));
+	RECT rect = {0, 0, WIDTH_SCREEN, HEIGHT_SCREEN};
+	m_background->Draw(_spriteHandle, rect, D3DX_RESIZE_FILL);
 }
 CChangeState::~CChangeState()
 {
