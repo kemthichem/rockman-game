@@ -16,7 +16,6 @@ class CSprite
 {
 private:
 	float  m_TimeWait;  //Chờ chuyển hình
-	int m_CurrentIndex;
 	int m_CountPerRow;
 	int m_CountPerCol;
 	int m_CountSprite;
@@ -41,7 +40,7 @@ public:
 	void NextAt(float _time, int _indexStart, int indexEnd);
 	void IndexOf(int _index);
 	void Draw(LPD3DXSPRITE _spHandle, RECT _rectDraw, D3DX_RESIZE _styleResize);
-
+	int m_CurrentIndex;
 	int GetWidthRectSprite();
 	int GetHeightRectSprite();
 	RECT rect;

@@ -52,17 +52,18 @@ void CMenuState::CleanUp()
 void CMenuState::Update(CInput* _input,float _time)
 {
 	
-	//m_spriteSelect->Next(_time);
+	m_spriteSelect->Next(_time);
 
 
 	int key = _input->GetKeyDown();
 	if (key==DIK_DOWN || key==DIK_RIGHT)
 	{
-		m_indexSelect++;
+		m_indexSelect = (++m_indexSelect % COUNT_ITEM);
 	}
 	else if (key==DIK_UP || key==DIK_LEFT)
 	{
-		m_indexSelect--;
+		if (--m_indexSelect < 0) m_indexSelect = COUNT_ITEM - 1;
+		m_indexSelect = (m_indexSelect % COUNT_ITEM);
 	}
 	else if (key == DIK_ESCAPE) {
 		m_StateManager->ChangeState(new CChangeState(m_StateManager));
@@ -75,7 +76,7 @@ void CMenuState::Update(CInput* _input,float _time)
 }
 void CMenuState::Render(LPD3DXSPRITE _spriteHandle)
 {
-	//int currentIndex = m_spriteSelect->
+	int currentIndex = m_spriteSelect->m_CurrentIndex;
 
 	RECT rScreen = { 0, 0, WIDTH_SCREEN, HEIGHT_SCREEN };
 	m_background->Draw(_spriteHandle, rScreen, D3DX_RESIZE_FILL);
@@ -106,7 +107,9 @@ void CMenuState::Render(LPD3DXSPRITE _spriteHandle)
 		rItemSelect.bottom + 6
 	};
 	//m_spriteItem->IndexOf(currentIndex);
-	m_spriteSelect->Next(2.0);
+	static int tempIndex = 0;
+	tempIndex = (++tempIndex%2);
+	m_spriteSelect->IndexOf(currentIndex);
 	m_spriteSelect->Draw(_spriteHandle, rSelect, D3DX_RESIZE_FILL);
 
 }
