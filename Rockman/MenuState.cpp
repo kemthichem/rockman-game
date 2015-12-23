@@ -5,6 +5,8 @@
 #include "ResourceManager.h"
 #include "Define.h"
 
+#define COUNT_ENABLE_ITEM 3
+
 CMenuState::CMenuState()
 {
 }
@@ -27,22 +29,22 @@ void CMenuState::Init()
 	m_indexSelect = 0;
 
 	//init rect item
-	RECT rItem1 = {100, 20, 100 + m_spriteItem->GetWidthRectSprite(), 20 + m_spriteItem->GetHeightRectSprite()};
+	RECT rItem1 = {74, 27, 74 + m_spriteItem->GetWidthRectSprite(), 27 + m_spriteItem->GetHeightRectSprite()};
 	arrayRectItem[0] = rItem1;
 
-	RECT rItem2 = { 180, 20, 180 + m_spriteItem->GetWidthRectSprite(), 20 + m_spriteItem->GetHeightRectSprite()};
+	RECT rItem2 = { 140, 27, 140 + m_spriteItem->GetWidthRectSprite(), 27 + m_spriteItem->GetHeightRectSprite()};
 	arrayRectItem[1] = rItem2;
 
-	RECT rItem3 = {190,100, 190 + m_spriteItem->GetWidthRectSprite(), 100 + m_spriteItem->GetHeightRectSprite()};
+	RECT rItem3 = {170,87, 170 + m_spriteItem->GetWidthRectSprite(), 87 + m_spriteItem->GetHeightRectSprite()};
 	arrayRectItem[2] = rItem3;
 
-	RECT rItem4 = {0,200, 100 + m_spriteItem->GetWidthRectSprite(), 200 + m_spriteItem->GetHeightRectSprite()};
+	RECT rItem4 = {140,148, 140 + m_spriteItem->GetWidthRectSprite(), 148 + m_spriteItem->GetHeightRectSprite()};
 	arrayRectItem[3] = rItem4;
 
-	RECT rItem5 = {0,200, 100 + m_spriteItem->GetWidthRectSprite(), 200 + m_spriteItem->GetHeightRectSprite()};
+	RECT rItem5 = {74,148, 74 + m_spriteItem->GetWidthRectSprite(), 148 + m_spriteItem->GetHeightRectSprite()};
 	arrayRectItem[4] = rItem5;
 
-	RECT rItem6 = {0,200, 100 + m_spriteItem->GetWidthRectSprite(), 200 + m_spriteItem->GetHeightRectSprite()};
+	RECT rItem6 = {45, 87, 90 + m_spriteItem->GetWidthRectSprite(), 45 + m_spriteItem->GetHeightRectSprite()};
 	arrayRectItem[5] = rItem6;
 }
 void CMenuState::CleanUp()
@@ -58,12 +60,12 @@ void CMenuState::Update(CInput* _input,float _time)
 	int key = _input->GetKeyDown();
 	if (key==DIK_DOWN || key==DIK_RIGHT)
 	{
-		m_indexSelect = (++m_indexSelect % COUNT_ITEM);
+		m_indexSelect = (++m_indexSelect % COUNT_ENABLE_ITEM);
 	}
 	else if (key==DIK_UP || key==DIK_LEFT)
 	{
-		if (--m_indexSelect < 0) m_indexSelect = COUNT_ITEM - 1;
-		m_indexSelect = (m_indexSelect % COUNT_ITEM);
+		if (--m_indexSelect < 0) m_indexSelect = COUNT_ENABLE_ITEM - 1;
+		m_indexSelect = (m_indexSelect % COUNT_ENABLE_ITEM);
 	}
 	else if (key == DIK_ESCAPE) {
 		m_StateManager->ChangeState(new CChangeState(m_StateManager));
@@ -95,7 +97,7 @@ void CMenuState::Render(LPD3DXSPRITE _spriteHandle)
 			rItem.bottom + 6
 		};
 		m_spriteSelect->IndexOf(0);
-		m_spriteSelect->Draw(_spriteHandle, rSelect, D3DX_RESIZE_FILL);
+		m_spriteSelect->Draw(_spriteHandle, rSelect, D3DX_RESIZE_NONE);
 	}
 
 	//Draw select
@@ -110,7 +112,7 @@ void CMenuState::Render(LPD3DXSPRITE _spriteHandle)
 	static int tempIndex = 0;
 	tempIndex = (++tempIndex%2);
 	m_spriteSelect->IndexOf(currentIndex);
-	m_spriteSelect->Draw(_spriteHandle, rSelect, D3DX_RESIZE_FILL);
+	m_spriteSelect->Draw(_spriteHandle, rSelect, D3DX_RESIZE_NONE);
 
 }
 CMenuState::~CMenuState()
