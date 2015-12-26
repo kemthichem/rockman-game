@@ -1,5 +1,6 @@
 #include "FlyingShell.h"
 #include "ResourceManager.h"
+#include "Define.h"
 
 CFlyingShell::CFlyingShell(int _id, D3DXVECTOR3 _pos)
 {
@@ -19,8 +20,8 @@ CFlyingShell::CFlyingShell(int objID, int typeID, double posX, double posY, int 
 
 	m_Type = FLYING_SHELL;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), D3DXVECTOR2(335, 110) , 2, 1, D3DXVECTOR2(255, 90), D3DXVECTOR2(0, 0), D3DXVECTOR2(20, 0));
-	m_Size = D3DXVECTOR2(widthCollide, heightCollide);
-	m_pos = D3DXVECTOR3(posXCollide, posYCollide, 0);
+	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
+	m_pos = D3DXVECTOR3(posX - m_Size.x/2, posY + m_Size.y/2, DEPTH_MOTION);
 
 	UpdateRect();
 }

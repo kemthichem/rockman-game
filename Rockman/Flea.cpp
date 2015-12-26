@@ -1,5 +1,6 @@
 #include "ResourceManager.h"
 #include "Flea.h"
+#include "Define.h"
 
 CFlea::CFlea(int _id, D3DXVECTOR3 _pos)
 {
@@ -20,7 +21,7 @@ CFlea::CFlea(int objID, int typeID, double posX, double posY, int width, int hei
 	m_Id = objID;
 	m_Type = FLEA;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), D3DXVECTOR2(335, 190) , 2, 1, D3DXVECTOR2(255, 170), D3DXVECTOR2(0,0), D3DXVECTOR2(20,0));
-	m_pos = D3DXVECTOR3(posXCollide, posYCollide, 0);
+	m_pos = D3DXVECTOR3(posX - m_Size.x/2, posY + m_Size.y/2, DEPTH_MOTION);
 	m_accel = D3DXVECTOR2(0,0);
 	m_velloc.x = -10;
 	m_accel.y = -5.0f;

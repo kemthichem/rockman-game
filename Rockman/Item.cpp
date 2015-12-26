@@ -6,9 +6,9 @@ CItem::CItem(D3DXVECTOR3 _pos)
 {
 	m_Type = ITEM;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES)
-		,D3DXVECTOR2(428,901), 1, 2
-		,D3DXVECTOR2(390,741)
-		,D3DXVECTOR2(0,0), D3DXVECTOR2(0,48));
+		,D3DXVECTOR2(40, 500), 2, 1
+		,D3DXVECTOR2(10, 485)
+		,D3DXVECTOR2(0,0), D3DXVECTOR2(0, 0));
 	m_pos = _pos;
 	m_posInit = _pos;
 

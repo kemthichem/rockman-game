@@ -26,8 +26,8 @@ CBlader::CBlader(int objID, int typeID, double posX, double posY, int width, int
 	m_Id = objID;
 	m_Type = BLADER;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), D3DXVECTOR2(95, 350), 2, 1, D3DXVECTOR2(15, 330), D3DXVECTOR2(0, 0), D3DXVECTOR2(20, 0));
-	m_Size = D3DXVECTOR2(widthCollide, heightCollide);
-	m_pos = D3DXVECTOR3(posXCollide, posYCollide, 0);
+	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
+	m_pos = D3DXVECTOR3(posX - m_Size.x/2, posY + m_Size.y/2, DEPTH_MOTION);
 	m_pos.z = DEPTH_MOTION;
 
 	m_posOrg = m_pos;

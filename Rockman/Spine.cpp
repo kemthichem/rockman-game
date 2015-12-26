@@ -1,5 +1,6 @@
 #include "ResourceManager.h"
 #include "Spine.h"
+#include "Define.h"
 
 CSpine::CSpine(int _id, D3DXVECTOR3 _pos)
 {
@@ -19,8 +20,8 @@ CSpine::CSpine(int objID, int typeID, double posX, double posY, int width, int h
 	m_Type = SPINE;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), D3DXVECTOR2(205, 105) , 2, 1, D3DXVECTOR2(175, 95), D3DXVECTOR2(0,0), D3DXVECTOR2(22, 0));
 
-	m_Size = D3DXVECTOR2(widthCollide, heightCollide);
-	m_pos = D3DXVECTOR3(posXCollide, posYCollide, 0);
+	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
+	m_pos = D3DXVECTOR3(posX - m_Size.x/2, posY + m_Size.y/2, DEPTH_MOTION);
 	UpdateRect();
 }
 

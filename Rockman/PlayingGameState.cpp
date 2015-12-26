@@ -82,11 +82,12 @@ void CPLayingGameState::Update(CInput* _input,float _time)
 		m_StateManager->ChangeState(new CMenuState(m_StateManager));
 		return;
 	}
-	if (rockman->GetKeyDown()==DIK_L)
-	{
-		m_Camera->SetPosCamera(D3DXVECTOR2(4798,2084));//-600y
-		rockman->SetPos(D3DXVECTOR3(5471, 2350, 0));
-	}
+
+	//if (rockman->GetKeyDown()==DIK_L)
+	//{
+	//	m_Camera->SetPosCamera(D3DXVECTOR2(4798,2084));//-600y
+	//	rockman->SetPos(D3DXVECTOR3(5471, 2350, 0));
+	//}
 
 	UpdateState();
 }
