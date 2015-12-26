@@ -4,6 +4,7 @@
 
 CBullet::CBullet(D3DXVECTOR3 _pos)
 {
+	m_Id = -10;
 	m_Type = BULLET;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), D3DXVECTOR2(170, 105), 1, 1, D3DXVECTOR2(160, 95));
 	m_pos = _pos;
@@ -70,4 +71,12 @@ void CBullet::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 	if (m_IsActive) {
 		CEntity::Render(_spriteHandle, _camera);
 	}
+}
+
+bool CBullet::IsObtainCollision(CEntity* _other)
+{
+	if (_other->GetType() == ROCKMAN) {
+		return true;
+	}
+	return false;
 }

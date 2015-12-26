@@ -26,9 +26,9 @@ enum ObjectType
 	OCTOPUS,
 	BEAK,
 	FLEA,
-	CUTMAN,
+	CUTMAN = 100,
 	GUTSMAN,
-	ICEMAN,
+	ICEMAN = 110,
 	BULLET,
 	ITEM
 };
@@ -91,7 +91,7 @@ class CEntity
 private:	
 	void UpdatePosition(float);	
 	float m_Intersect;
-	
+	D3DXVECTOR2 m_lastVelloc;
 protected:
 	bool m_isTurnLeft;
 	int m_Id;
@@ -110,6 +110,8 @@ protected:
 	virtual void UpdateCollison(CEntity* _other,float _time);
 	void RenderEachSprite(LPD3DXSPRITE, CCamera*,CSprite*, D3DXVECTOR3 _posRender);
 	void UpdateRect();
+
+	virtual bool IsObtainCollision(CEntity* _other);
 public:
 	float m_TimeCollision;
 	int GetId(){

@@ -1,6 +1,7 @@
 #include "Blader.h"
 #include "Rockman.h"
 #include "ResourceManager.h"
+#include "Define.h"
 #include "Config.h"
 
 #define VELLOC_X (50.0f)
@@ -11,7 +12,7 @@ CBlader::CBlader(int _id, D3DXVECTOR3 _pos)
 	m_Id = _id;
 	m_Type = BLADER;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), D3DXVECTOR2(95,350), 2, 1, D3DXVECTOR2(15,310), D3DXVECTOR2(0,0), D3DXVECTOR2(20,0));
-	m_pos = _pos;
+	m_pos = _pos;	
 	m_posOrg = _pos;
 	m_accel = D3DXVECTOR2(0,0);
 	m_velloc.x = -10;
@@ -27,6 +28,8 @@ CBlader::CBlader(int objID, int typeID, double posX, double posY, int width, int
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), D3DXVECTOR2(95, 350), 2, 1, D3DXVECTOR2(15, 330), D3DXVECTOR2(0, 0), D3DXVECTOR2(20, 0));
 	m_Size = D3DXVECTOR2(widthCollide, heightCollide);
 	m_pos = D3DXVECTOR3(posXCollide, posYCollide, 0);
+	m_pos.z = DEPTH_MOTION;
+
 	m_posOrg = m_pos;
 	m_state = Bide;
 	disBack = 0;
@@ -95,17 +98,15 @@ void CBlader::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 		
 }
 
-
-void CBlader::UpdateCollison(CEntity* _other, float _time) {
-
-	/*if (_other->GetType() == BLOCK) {
-		m_pos.x = GetRect().left - 1;
-		m_velloc.x *= -1;
-	}*/
-}
-
 void CBlader::SetInjured(CEntity* _other)
 {
 	m_IsCheckCollision = false;
 	m_IsLife = false;
+}
+bool CBlader::IsObtainCollision(CEntity* _other)
+{
+	if (_other->GetType() == ROCKMAN) {
+		return true;
+	}
+	return false;
 }

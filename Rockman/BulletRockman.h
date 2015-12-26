@@ -7,7 +7,7 @@ class CBulletRockman : public CBullet
 {
 protected:
 	virtual void UpdateCollison(CEntity* ,float);
-
+	virtual	bool IsObtainCollision(CEntity* _other);
 public:
 	CBulletRockman(D3DXVECTOR3 _pos);
 	~CBulletRockman(void);
@@ -15,6 +15,7 @@ public:
 	virtual void Update(float , CCamera *, CInput *, vector<CEntity*>);
 	virtual void Render(LPD3DXSPRITE, CCamera*);
 	void SetPos(D3DXVECTOR3 _pos);
+
 	//BulletRockman
 };
 

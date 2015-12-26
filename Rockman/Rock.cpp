@@ -11,7 +11,6 @@ CRock::CRock(int _id, D3DXVECTOR3 _pos, bool _isCheckCollison)
 	m_Type = BLOCK;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES), D3DXVECTOR2(428,239), 2, 2, D3DXVECTOR2(394,205), D3DXVECTOR2(1,1), D3DXVECTOR2(1,1));
 	m_pos = _pos;
-	m_pos.z = DEPTH_BLOCK;
 
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite() * NUMB_SPRITE, m_Sprite->GetHeightRectSprite());
@@ -23,7 +22,7 @@ CRock::CRock(int objID, int typeID, double posX, double posY, int width, int hei
 	m_Id = objID;
 	m_Type = BLOCK;
 	m_Size = D3DXVECTOR2(widthCollide, heightCollide);
-	m_pos = D3DXVECTOR3(posXCollide, posYCollide, 0);
+	m_pos = D3DXVECTOR3(posXCollide, posYCollide, DEPTH_BLOCK);
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES), D3DXVECTOR2(428,239), 2, 2, D3DXVECTOR2(394,205), D3DXVECTOR2(1,1), D3DXVECTOR2(1,1));
 	UpdateRect();
 }

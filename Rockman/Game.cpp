@@ -139,7 +139,7 @@ void CGame::Render()
 	HRESULT re = _d3ddv->BeginScene();
 	//if (re) 
 	//{
-		_d3ddv->StretchRect(CResourceManager::GetInstance()->GetSurface(IMAGE_BG), NULL,_backbuffer, NULL,D3DTEXF_NONE);
+		//_d3ddv->StretchRect(CResourceManager::GetInstance()->GetSurface(IMAGE_BG), NULL,_backbuffer, NULL,D3DTEXF_NONE);
 		m_SpriteHandler->Begin(D3DXSPRITE_ALPHABLEND|D3DXSPRITE_SORT_DEPTH_FRONTTOBACK);	
 		RenderWorld();		
 		m_SpriteHandler->End();

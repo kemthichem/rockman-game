@@ -1,6 +1,5 @@
 #include "ResourceManager.h"
 #include "ScrewBomber.h"
-#include "BulletRockman.h"
 #define TIME_CONVERT (20.0f)
 #define V_BULLET (50.0f)
 

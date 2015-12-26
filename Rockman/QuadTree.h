@@ -11,16 +11,14 @@ private:
 	map<int, CQuadTreeNode*> m_mapNode ;
 	vector<CQuadTreeNode*> m_listNodeInViewPort;
 	
-	vector<CEntity*> m_listObjectViewportCheckCollision;
+	vector<CEntity*> m_listObjectViewportWillUpdate;
 	void HeldObjectInScreen(vector<CEntity*>& listObject, RECT rScreen);
 	vector<CQuadTreeNode*> GetListNodeIntersectRect(CQuadTreeNode*, RECT );
 	bool IsIntersect(RECT, RECT);
 public:
 	CQuadTree(void);
 	~CQuadTree(void);
-
-	vector<CEntity*> m_listObjectViewportWillUpdate;
-
+	vector<CEntity*> m_listObjectViewportCheckCollision;
 	CQuadTreeNode* m_nodeRoot;
 	void LoadNodeInFile(vector<string>, int, int);
 	void MapIdToObjectInTree(CQuadTreeNode* _nodeParent, vector<CEntity*> _listobject);

@@ -6,7 +6,7 @@ CEnemy::CEnemy(void)
 {
 	m_posOrg = D3DXVECTOR3(0,0,0);
 	m_timeExplosive = CConfig::ValueOf(KEY_EN_TIMEEXPLOSIVE);
-	m_spriteExplosive = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_EXPLOSIVE), D3DXVECTOR2(112, 40), 7, 1, D3DXVECTOR2(0,24));
+	m_spriteExplosive = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_EXPLOSIVE), D3DXVECTOR2(112, 40), 7, 1, D3DXVECTOR2(0,25));
 	m_IsLife = m_IsCheckCollision = true;
 }
 

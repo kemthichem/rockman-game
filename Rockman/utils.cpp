@@ -1,5 +1,34 @@
 ﻿#include "utils.h"
 
+#include <iostream>
+#include <sstream>
+
+static void PrintRect(RECT r, char* name, int i=-1) {
+	/*using namespace std;
+	stringstream ss;
+	ss<<"*******"<<name;
+	if (i != -1) {
+		ss<<"["<<i<<"]";
+	}
+	ss<<"*******"<<endl;
+	ss<<"left = " <<r.left<<", ";
+	ss<<"top = " <<r.top<<", ";
+	ss<<"right = " <<r.right<<", ";
+	ss<<"bottom = " <<r.bottom<<endl;
+
+	OutputDebugString(ss.str().c_str());*/
+}
+static void PrintLog(char* name, float value, int i=-1) {
+	/*std::stringstream ss;
+	ss<<name;
+	if (i != -1) {
+		ss<<"["<<i<<"]";
+	}
+	ss<<" = "<<value<<std::endl;
+
+	OutputDebugString(ss.str().c_str());*/
+}
+
 
 LPDIRECT3DSURFACE9 CUtils::LoadSurface(LPDIRECT3DDEVICE9 _d3ddv, LPCSTR filepath)
 {

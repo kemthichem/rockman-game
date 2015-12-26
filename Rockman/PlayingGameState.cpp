@@ -66,7 +66,7 @@ void CPLayingGameState::Render(LPD3DXSPRITE _spriteHandle)
 void CPLayingGameState::Update(CInput* _input,float _time)
 {
 	vector<CEntity*> listOb = quadTree->GetListObjectInRect(m_Camera->m_viewPort);
-	quadTree->AddObjectToList(quadTree->m_listObjectViewportWillUpdate, rockman);
+	quadTree->AddObjectToList(quadTree->m_listObjectViewportCheckCollision, rockman);
 	m_ScereryTile->Update(m_Camera->m_viewPort);
 
 	if (CCamera::g_IsMoving) {
@@ -172,5 +172,5 @@ void CPLayingGameState::UpdateState()
 
 void CPLayingGameState::RenderTextAndSurface()
 {
-	DrawText();
+	//DrawText();
 }

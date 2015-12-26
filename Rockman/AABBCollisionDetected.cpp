@@ -155,10 +155,8 @@ bool CAABBCollision::SortObject(CEntity * a, CEntity*b)
 	}
 	else
 	{
-		return a->GetIntersect() > b->GetIntersect();
+		return a->GetIntersect() < b->GetIntersect();
 	}
-
-
 }
 
 bool CAABBCollision::IsCollision(CEntity* _ob1, CEntity* _ob2, float _time)
@@ -174,24 +172,24 @@ bool CAABBCollision::IsCollision(CEntity* _ob1, CEntity* _ob2, float _time)
 	RECT_F bound;//hcn bao quanh 2 fram lien tiep
 	if(sMove.x > 0)
 	{
-		bound.left = _ob1->GetRect().left;
-		bound.right = _ob1->GetRect().right + sMove.x;
+		bound.left = (float)_ob1->GetRect().left;
+		bound.right = (float)_ob1->GetRect().right + sMove.x;
 	}
 	else
 	{
-		bound.right = _ob1->GetRect().right;
-		bound.left = _ob1->GetRect().left + sMove.x;
+		bound.right = (float)_ob1->GetRect().right;
+		bound.left = (float)_ob1->GetRect().left + sMove.x;
 	}
 
 	if(sMove.y > 0)
 	{
-		bound.bottom = _ob1->GetRect().bottom;
-		bound.top =_ob1->GetRect().top + sMove.y;
+		bound.bottom = (float)_ob1->GetRect().bottom;
+		bound.top = (float)_ob1->GetRect().top + sMove.y;
 	}
 	else
 	{
-		bound.top = _ob1->GetRect().top;
-		bound.bottom = _ob1->GetRect().bottom + sMove.y;
+		bound.top = (float)_ob1->GetRect().top;
+		bound.bottom = (float)_ob1->GetRect().bottom + sMove.y;
 	}
 
 	return CheckCollision(bound, _ob2->GetRect());
@@ -256,7 +254,8 @@ intersectX:
 		if ((_r1.top > _r2.bottom && _r1.bottom < _r2.bottom) || (_r1.bottom < _r2.top && _r1.top > _r2.top)) {
 			return false;
 		}
-	}
+	} else
+		return false;
 
 	return true;
 

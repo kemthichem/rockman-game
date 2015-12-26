@@ -2,13 +2,12 @@
 #include <windows.h>
 #include <stdio.h>
 
-
 CEntity::CEntity(void)
 {
 	m_IsShowed = true;
 	m_IsCheckCollision = true;
 	m_isTurnLeft = false;
-	m_velloc = D3DXVECTOR2(0,0);
+	m_lastVelloc = m_velloc = D3DXVECTOR2(0,0);
 	m_accel = D3DXVECTOR2(0,0);
 	m_Intersect = 0;
 	m_Sprite = NULL;
@@ -26,22 +25,22 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 	
 	//set position
 	UpdatePosition(_time);
-
-	//if (!m_IsCheckCollision) {}
-
 	vector<CEntity*> listObjectCollision;
 	for (int i = 0; i < _listObjectInViewPort.size(); i++)
 	{
-		if(_listObjectInViewPort[i]->GetId() != this->GetId())
+		/*if(_listObjectInViewPort[i]->GetId() != this->GetId() 
+			&& _listObjectInViewPort[i]->GetType() != this->GetType())*/
+		if (IsObtainCollision(_listObjectInViewPort[i]) 
+			&& _listObjectInViewPort[i]->IsCheckCollision())
 		{
-			if (_listObjectInViewPort[i]->IsCheckCollision() && m_collision->IsCollision(this, _listObjectInViewPort[i], _time)) {
-				_listObjectInViewPort[i]->m_Intersect = m_collision->intersectX(this,_listObjectInViewPort[i],_time);
+			if (m_collision->IsCollision(this, _listObjectInViewPort[i], _time)) {
+				//_listObjectInViewPort[i]->m_Intersect = m_collision->intersectX(this,_listObjectInViewPort[i],_time);
 				listObjectCollision.push_back(_listObjectInViewPort[i]);
 			}
 		}
 	}
 
-	//sort 
+	////sort 
 	if (m_velloc.x > 0)
 		std::sort(listObjectCollision.begin(),listObjectCollision.end(),m_collision->compSortObjectLeft);
 	else
@@ -52,6 +51,7 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 			std::sort(listObjectCollision.begin(),listObjectCollision.end(),m_collision->compSortObjectTop);
 			std::sort(listObjectCollision.begin(),listObjectCollision.end(),m_collision->compSortObjectForType);
 		}
+	//std::sort(listObjectCollision.begin(),listObjectCollision.end(),m_collision->SortObject);
 
 	for (int i = 0; i < listObjectCollision.size(); i++)
 	{
@@ -62,7 +62,6 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 	}
 
 	UpdateRect();
-
 	if (m_Type == ROCKMAN)
 	{
 		_camera->Update(D3DXVECTOR2(m_pos.x, m_pos.y), m_velloc);
@@ -81,6 +80,7 @@ void CEntity::RenderEachSprite(LPD3DXSPRITE _spriteHandler, CCamera* _camera,CSp
 
 void CEntity::UpdatePosition(float _time)
 {
+	m_lastVelloc = m_velloc;
 	m_velloc += m_accel * _time;
 	m_pos.x += m_velloc.x * _time + 1.0f/2 * m_accel.x *_time * _time;
 	m_pos.y += m_velloc.y * _time + 1.0f/2 * m_accel.y *_time * _time;
@@ -97,7 +97,7 @@ CEntity::~CEntity(void)
 
 D3DXVECTOR2 CEntity::GetVelocity()
 {
-	return m_velloc;
+	return m_lastVelloc;
 }
 
 RECT CEntity::GetRect()
@@ -117,10 +117,10 @@ void CEntity::UpdateCollison(CEntity* _other , float _time)
 
 void CEntity::UpdateRect()
 {
-	m_Rect.left = m_pos.x;
-	m_Rect.top = m_pos.y;
-	m_Rect.right = m_Rect.left + m_Size.x;
-	m_Rect.bottom = m_Rect.top - m_Size.y;
+	m_Rect.left = (long)(m_pos.x + 0.5);
+	m_Rect.top = (long)(m_pos.y+ 0.5);
+	m_Rect.right = (long)(m_Rect.left + m_Size.x );
+	m_Rect.bottom = (long)(m_Rect.top - m_Size.y );
 }
 
 bool CEntity::IsShowed()
@@ -136,4 +136,12 @@ bool CEntity::IsCheckCollision()
 void CEntity::SetInjured(CEntity* _other)
 {
 
+}
+
+bool CEntity::IsObtainCollision(CEntity* _other)
+{
+	if (this->GetId() != _other->GetId())
+		return true;
+
+	return false;
 }

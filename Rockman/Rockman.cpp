@@ -51,7 +51,7 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 	}
 
 	//create blood
-	m_Blood = new CBlood(D3DXVECTOR2(30, 25), 200);
+	m_Blood = new CBlood(D3DXVECTOR2(15, 20), 200);
 }
 CRockman::~CRockman()
 {
@@ -106,7 +106,6 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	//Always impact gravity
 	m_accel.y = CConfig::ValueOf(KEY_RM_ACCEL_VY);
 	m_Size = m_SizeInit;
-	//m_CanDown = false;
 
 	bool reval = false;
 	if (_input->KeyDown(DIK_RIGHT)) {
@@ -125,7 +124,7 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	}
 
 	//Climb
-	if (m_IsClimbing) {	
+	if (m_IsClimbing & !m_Injuring) {	
 		m_velloc.x = 0;
 		m_accel.x = 0;
 		m_Size = m_SizeClimb;
@@ -136,8 +135,9 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 			m_action = Action_Climb_Stand;
 		}
 	}
-	if (m_Injuring != 0)
+	if (m_Injuring != 0) {
 		Injunred(m_Injuring > 0, _time);
+	}
 
 	//reset before update
 	m_PosXClimb = -1;
@@ -348,7 +348,7 @@ void CRockman::TurnRight()
 
 bool CRockman::Climb(bool _isTurnUp)
 {
-	bool isWillClimb = m_isCanClimb;
+	bool isWillClimb = m_isCanClimb & !m_Injuring;
 	if (!m_IsClimbing){
 		if (!_isTurnUp)
 			isWillClimb &=  m_IsLadderBottom;
@@ -362,6 +362,8 @@ bool CRockman::Climb(bool _isTurnUp)
 		m_accel.y = 0;
 		m_action = Action_Climb;
 		m_IsClimbing = true;
+	} else {
+		m_IsClimbing = false;
 	}
 
 	return isWillClimb;
@@ -400,8 +402,8 @@ void CRockman::UpdateCollison(CEntity* _other, float _time) {
 		break;
 	case BLOCK:
 		{
-			bool isIntersect = CAABBCollision::IntersectRectX(m_Rect, _other->GetRect());
-			if (!m_IsClimbing && isIntersect && m_velloc.y == 0) {
+			bool isIntersectX = CAABBCollision::IntersectRectX(m_Rect, _other->GetRect());
+			if ((m_Injuring || !m_IsClimbing) && isIntersectX && m_velloc.y == 0) {
 				if (m_Rect.left < _other->GetRect().left && m_Rect.right > _other->GetRect().left) {
 					m_velloc.x = 0;
 					m_accel.x = 0;
@@ -525,6 +527,7 @@ void CRockman::SetInjured(CEntity* _other, int _dam)
 {
 	if (m_Injuring != 0) return;
 	m_Injuring = _other->GetVelocity().x > 0 ? 1 : -1;
+	m_TimeInjured = 0;
 	m_Blood->ChangeBlood(_dam);
 }
 

@@ -12,7 +12,7 @@ private:
 protected:
 	bool m_IsActive;
 	virtual void UpdateCollison(CEntity* ,float);
-
+	virtual bool IsObtainCollision(CEntity* _other);
 public:
 	CBullet();
 	CBullet(D3DXVECTOR3 _pos);

@@ -28,8 +28,9 @@ CBulletRockman::~CBulletRockman(void)
 void CBulletRockman::UpdateCollison(CEntity* _other,float _time)
 {
 	if (m_IsActive) {
+		bool isIntersect = false;
 		switch (_other->GetType())
-		{			
+		{		
 		case SCREW_BOMBER:
 		case OCTOPUS:
 		case BEAK:
@@ -37,15 +38,12 @@ void CBulletRockman::UpdateCollison(CEntity* _other,float _time)
 		case BLADER:
 		case MET:
 		case BIGEYE:
-			//(dynamic_cast<CScrewBomber*>(_other))->SetInjured(this);
-			_other->SetInjured(this);
-			this->m_IsActive = false;
-			break;
 		case ICEMAN:
 		case CUTMAN:
 		case GUTSMAN:
-			//(dynamic_cast<CIceMan*>(_other))->SetInjured(this);
-			_other->SetInjured(this);
+			isIntersect = CAABBCollision::IntersectRect(m_Rect, _other->GetRect());
+			if (isIntersect)
+				_other->SetInjured(this);
 			this->m_IsActive = false;
 			break;
 		default:
@@ -78,4 +76,10 @@ void CBulletRockman::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 void CBulletRockman::SetPos(D3DXVECTOR3 _pos)
 {
 	m_pos = _pos;
+}
+bool CBulletRockman::IsObtainCollision(CEntity* _other)
+{
+	if (_other->GetType() > 1 && _other->GetType() < 110)
+		return true;
+	return false;
 }
