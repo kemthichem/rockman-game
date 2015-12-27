@@ -48,7 +48,7 @@ bool CGame::_InitWindow()
 
 	wndc.hbrBackground    = (HBRUSH)GetStockObject(WHITE_BRUSH); 
 	wndc.hCursor        = LoadCursor(NULL, IDC_ARROW); 
-	wndc.hIcon            = (HICON)LoadImage(GetModuleHandle(NULL), "mario.ico", IMAGE_ICON, 32, 32, LR_LOADFROMFILE); 
+	wndc.hIcon            = (HICON)LoadImage(GetModuleHandle(NULL), "rockman.ico", IMAGE_ICON, 32, 32, LR_LOADFROMFILE); 
 	wndc.hInstance        = _hInstance; 
 	wndc.lpfnWndProc    = (WNDPROC)CGame::_WinProc; 
 	wndc.lpszClassName    = "CGame"; 

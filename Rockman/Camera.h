@@ -5,6 +5,13 @@
 #include <d3dx9.h>
 #include <windows.h>
 
+enum DirectMove
+{
+	DIRECT_NONE,
+	DIRECT_X,
+	DIRECT_Y
+};
+
 class CCamera
 {
 private:
@@ -14,9 +21,14 @@ private:
 	POINT *m_arrayPoint;
 	int m_countPoint;
 	int curIndex;
-	int indexMoveTo;
+	int m_indexMoveTo;
 	int GetNextIndexY(POINT _pos, float _vY);
-	bool m_curIsBound;
+	int GetNextIndexX(POINT _pos, float _vY);
+	bool m_curIsBoundY;
+	bool m_NextIsMiddleX;
+
+	DirectMove m_DirectMove;
+	
 public:
 	static POINT g_PosCamera;
 	static bool g_IsMoving;
@@ -33,6 +45,9 @@ public:
 	void SetPosCamera(D3DXVECTOR2 _pos);
 	~CCamera(void);
 	void MoveMap();
+	void MoveMapY();
+	void MoveMapX();
+	void GetMiddlePoint(int _index, bool *isMiddleX, bool *isMiddelY);
 };
 
 #endif

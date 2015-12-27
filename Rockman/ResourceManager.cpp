@@ -34,7 +34,7 @@ void CResourceManager::LoadResource(LPDIRECT3DDEVICE9 _d3ddv)
 	mD3ddv = _d3ddv;
 
 	mMapTexture[IMAGE_ROCKMAN] = CUtils::LoadTexture(mD3ddv, IMAGE_ROCKMAN);
-	mMapTexture[IMAGE_TILES] = CUtils::LoadTexture(mD3ddv, IMAGE_TILES);
+	mMapTexture[IMAGE_TILES] = CUtils::LoadTexture(mD3ddv, IMAGE_TILES, RGB(255,255,255));
 	mMapTexture[IMAGE_ENEMIES] = CUtils::LoadTexture(mD3ddv, IMAGE_ENEMIES, RGB(255,255,255));
 	mMapTexture[IMAGE_EXPLOSIVE] = CUtils::LoadTexture(mD3ddv, IMAGE_EXPLOSIVE, RGB(0,255,0));	
 	mMapTexture[IMAGE_MASTER] = CUtils::LoadTexture(mD3ddv, IMAGE_MASTER);

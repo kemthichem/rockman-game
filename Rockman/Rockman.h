@@ -61,7 +61,6 @@ private:
 	void UpdateSprite(float _time);
 	void Stand();
 	void TurnLeft();
-	void TurnRight();
 	void Jump();
 	void Shot();
 	bool Climb(bool _isTurnUp);
@@ -71,12 +70,15 @@ public:
 	~CRockman();
 	virtual void Update(float , CCamera *, CInput *, vector<CEntity*> );
 	virtual void Render(LPD3DXSPRITE, CCamera*);
+
+	void TurnRight();
 	virtual void UpdateCollison(CEntity* _other, float _time);
 	void ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,float _timeEntry);
 
 	/*rockman*/
 	void SetInjured(CEntity* _other, int _dam = -10);
-	int GetKeyDown();
+	void SetKeyDown(int _key);
+	bool isCollisingDoor;
 	void UpdateActionShot();
 	void SetPos(D3DXVECTOR3 _pos);
 	static D3DXVECTOR2 g_PosRockman;

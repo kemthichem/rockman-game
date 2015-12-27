@@ -25,6 +25,11 @@ void CEntity::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 	
 	//set position
 	UpdatePosition(_time);
+
+	if (m_Type==ROCKMAN && m_isTurnLeft && m_velloc.x > 0) {
+		int k  = 0;
+	}
+
 	vector<CEntity*> listObjectCollision;
 	for (int i = 0; i < _listObjectInViewPort.size(); i++)
 	{
@@ -84,6 +89,9 @@ void CEntity::UpdatePosition(float _time)
 	m_velloc += m_accel * _time;
 	m_pos.x += m_velloc.x * _time + 1.0f/2 * m_accel.x *_time * _time;
 	m_pos.y += m_velloc.y * _time + 1.0f/2 * m_accel.y *_time * _time;
+
+	if ((m_accel.x < 0 && m_velloc.x > 0) || (m_accel.x > 0 && m_velloc.x < 0))  
+		m_velloc.x = 0;
 }
 
 CEntity::~CEntity(void)

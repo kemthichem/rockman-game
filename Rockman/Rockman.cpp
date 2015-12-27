@@ -1,5 +1,6 @@
 ﻿#include "ResourceManager.h"
 #include "Rockman.h"
+#include "Door.h"
 #include "PLayingGameState.h"
 #include "Define.h"
 #include "Config.h"
@@ -107,20 +108,22 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	m_accel.y = CConfig::ValueOf(KEY_RM_ACCEL_VY);
 	m_Size = m_SizeInit;
 
-	bool reval = false;
-	if (_input->KeyDown(DIK_RIGHT)) {
-		TurnRight();
-		reval = true;
-	} else if (_input->KeyDown(DIK_LEFT)) {
-		TurnLeft();
-		reval = true;
-	} else if (_input->KeyDown(DIK_UP)) {
-		reval = Climb(true);
-	} else if (_input->KeyDown(DIK_DOWN)) {
-		reval = Climb(false);
-	} 
-	if (!reval) {
-		Stand();
+	if (_input) {
+		bool reval = false;
+		if (_input->KeyDown(DIK_RIGHT)) {
+			TurnRight();
+			reval = true;
+		} else if (_input->KeyDown(DIK_LEFT)) {
+			TurnLeft();
+			reval = true;
+		} else if (_input->KeyDown(DIK_UP)) {
+			reval = Climb(true);
+		} else if (_input->KeyDown(DIK_DOWN)) {
+			reval = Climb(false);
+		} 
+		if (!reval) {
+			Stand();
+		}
 	}
 
 	//Climb
@@ -144,6 +147,7 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	m_isCanClimb = false;
 	m_isCollisionBottom = false;
 	m_IsLadderBottom = false;
+	isCollisingDoor = false;
 	CEntity::Update(_time, _camera, _input, _listObjectInViewPort);
 
 	if (!m_isCanClimb && m_IsClimbing) {
@@ -152,16 +156,17 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 
 
 	//Check keydown
-	m_KeyDown = _input ->GetKeyDown();
-	switch (m_KeyDown)
-	{
-	case DIK_SPACE:
-		Jump();
-		break;
-	case DIK_A:
-		Shot();
-	default:
-		break;
+	if (_input) {
+		switch (m_KeyDown)
+		{
+		case DIK_SPACE:
+			Jump();
+			break;
+		case DIK_A:
+			Shot();
+		default:
+			break;
+		}
 	}
 	//When stop after update vellocx 
 	if (abs(m_accel.x) == CConfig::ValueOf(KEY_RM_ACCEL_STOP)) {
@@ -384,7 +389,7 @@ void CRockman::UpdateCollison(CEntity* _other, float _time) {
 
 	float timeEntry = m_collision->SweptAABB(this,_other,_time);
 	m_directCollision = m_collision->GetDirectCollision();
-
+	bool isIntersectX = false;
 	switch (_other->GetType())
 	{
 	case LADDER:
@@ -400,9 +405,20 @@ void CRockman::UpdateCollison(CEntity* _other, float _time) {
 	case MET:
 		SetInjured(_other);
 		break;
+	case DOOR1_CUTMAN:
+		isIntersectX = CAABBCollision::IntersectRect(m_Rect, _other->GetRect());
+		if (isIntersectX) {
+			isCollisingDoor = true;
+			if (m_velloc.x > 0)
+			CCamera::g_IsMoving = true;
+			dynamic_cast<CDoor*>(_other)->ActiveDoor();
+			vector<CEntity*> v;
+			dynamic_cast<CDoor*>(_other)->Update(_time, NULL, NULL, v);
+		}
+		break;
 	case BLOCK:
 		{
-			bool isIntersectX = CAABBCollision::IntersectRectX(m_Rect, _other->GetRect());
+			isIntersectX = CAABBCollision::IntersectRectX(m_Rect, _other->GetRect());
 			if ((m_Injuring || !m_IsClimbing) && isIntersectX && m_velloc.y == 0) {
 				if (m_Rect.left < _other->GetRect().left && m_Rect.right > _other->GetRect().left) {
 					m_velloc.x = 0;
@@ -433,6 +449,15 @@ void CRockman::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,
 		//ListObjectColision
 		switch (_other->GetType())
 		{
+		case  DOOR1_CUTMAN:
+			if( m_directCollion == LEFT)
+			{
+				m_velloc.x = 0;
+				m_accel.x = 0;
+				m_pos.x = _other->GetRect().right + 1 ;
+				isCollisingDoor = false;
+			}
+			break;
 		case BLOCK:
 			{ 
 				//Not check collison with block when climbing
@@ -512,7 +537,7 @@ void CRockman::Shot()
 
 void CRockman::Injunred(bool _isImpactLeft, float _time)
 {
-	if (m_TimeInjured >= TIME_PER_ANIMATION * 2) {
+	if (m_TimeInjured >= TIME_PER_ANIMATION * 4) {
 		m_TimeInjured = 0;
 		m_Injuring = 0;
 		return;
@@ -525,15 +550,16 @@ void CRockman::Injunred(bool _isImpactLeft, float _time)
 
 void CRockman::SetInjured(CEntity* _other, int _dam)
 {
-	if (m_Injuring != 0) return;
+	//return;
+		if (m_Injuring != 0) return;
 	m_Injuring = _other->GetVelocity().x > 0 ? 1 : -1;
 	m_TimeInjured = 0;
 	m_Blood->ChangeBlood(_dam);
 }
 
-int CRockman::GetKeyDown()
+void CRockman::SetKeyDown(int _key)
 {
-	return m_KeyDown;
+	m_KeyDown = _key;
 }
 
 void CRockman::SetPos(D3DXVECTOR3 _pos)

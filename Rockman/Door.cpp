@@ -12,13 +12,17 @@ CDoor::CDoor(int _id, D3DXVECTOR3 _pos)
 	UpdateRect();
 }
 
-CDoor::CDoor(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide)
+CDoor::CDoor(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide, bool _isEndDoor)
 {
 	m_Id = objID;
 	m_Type = DOOR1_CUTMAN;
-	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES), D3DXVECTOR2(130, 305) , 1, 1, D3DXVECTOR2(0, 240), D3DXVECTOR2(0,0), D3DXVECTOR2(0,0));
-	m_Size = D3DXVECTOR2(widthCollide, heightCollide);
-	m_pos = D3DXVECTOR3(posXCollide, posYCollide, 0);
+	m_isEndDoor = _isEndDoor;
+
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES), D3DXVECTOR2(160, 274) , 5, 1, D3DXVECTOR2(0, 210));
+	m_Sprite->IndexOf(0);
+	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
+	m_pos = D3DXVECTOR3(posX - m_Size.x / 2, posY + m_Size.y / 2, 0);
+
 
 	UpdateRect();
 }
@@ -30,11 +34,25 @@ CDoor::~CDoor(void)
 
 void CDoor::Update(float _deltaTime, CCamera *_camera, CInput *_input,vector<CEntity* > _listObjectInViewPort)
 {
-	m_Sprite->Next(_deltaTime);
+	if (m_isActived) {
+		if (CCamera::g_IsMoving) {
+			if (m_Sprite->m_CurrentIndex < 4) {
+				m_Sprite->Next(_deltaTime);
+			}
+		}
+		else
+		{
+			if (m_Sprite->m_CurrentIndex > 0) {
+				m_Sprite->Next(_deltaTime);
+			} else {
+				m_isActived = false;
+			}
+		}
+	}
+	
 }
 
-void CDoor::Draw()
+void CDoor::ActiveDoor()
 {
-
+	m_isActived = true;
 }
-

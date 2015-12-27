@@ -47,9 +47,9 @@ CCutMan::CCutMan(int objID, int typeID, double posX, double posY, int width, int
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MASTER), D3DXVECTOR2(435, 70) , 9, 2, D3DXVECTOR2(215, 5));
 	m_accel = D3DXVECTOR2(0,0);
 	m_velloc.x = 0;
-	m_accel.y = -20.0f;
+	m_accel.y = -7.0f;
 
-	//m_yInit = m_pos.y;
+	m_yInit = m_pos.y;
 	m_IsJustJump = false;
 	m_Status = StandHaveGun;
 	m_TimeSpend = 0;
@@ -59,13 +59,13 @@ CCutMan::CCutMan(int objID, int typeID, double posX, double posY, int width, int
 
 	m_isTurnLeft = true;
 
-	m_Size = D3DXVECTOR2(widthCollide, heightCollide);
-	m_pos = D3DXVECTOR3(posXCollide, posYCollide, 0);
+	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
+	m_pos = D3DXVECTOR3(posX - m_Size.x / 2, posY + m_Size.y / 2, 0);
 	UpdateRect();
 	//create list bullet
 	m_Bullet = new CBulletCutman(D3DXVECTOR3(m_pos.x + m_Size.x/2 - 10, m_pos.y - m_Size.y/2 + 10, m_pos.z));
 	//create blood
-	m_Blood = new CBlood(D3DXVECTOR2(740, 30), 100);
+	m_Blood = new CBlood(D3DXVECTOR2(WIDTH_SCREEN - 35, 20), 100);
 }
 
 CCutMan::~CCutMan(void)
@@ -90,6 +90,7 @@ void CCutMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntit
 		} else
 		{
 			if ((m_Status ==  StandNormal || m_Status == StandHaveGun) && !m_IsJustJump) {
+				m_velloc.x = m_pos.x > CRockman::g_PosRockman.x ? -VELLOC_X : VELLOC_X;
 				Jump();
 				m_IsJustJump = true;
 			} 
@@ -112,10 +113,6 @@ void CCutMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntit
 				m_Status = m_IsShotting ? MoveNormal : MoveHaveGun;
 			}
 		}
-		/*if (m_pos.y <= m_yInit) {
-			m_pos.y = m_yInit;
-			m_velloc.y = 0;
-		}*/
 
 		//When shot
 		if (m_IsShotting) {
@@ -209,8 +206,8 @@ void CCutMan::Shot()
 void CCutMan::Jump()
 {
 	if (m_Status == JumpHaveGun || m_Status == JumpNormal) return;
-	m_velloc.y = 100.0f;
-	m_accel.y = -20.0f;
+	m_velloc.y = 25.0f;
+	m_accel.y = -7.0f;
 	m_Status = m_IsShotting ? JumpNormal : JumpHaveGun;
 }
 

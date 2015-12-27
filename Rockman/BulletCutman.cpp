@@ -1,21 +1,18 @@
 #include "BulletCutman.h"
 #include "ResourceManager.h"
-#include "ScrewBomber.h"
+#include "Config.h"
 #include "Rockman.h"
 #include "CutMan.h"
 
 #define TIME_CHANGE_DES (30.0f)
 #define TIME_CHANGE_DIRECT (2.0f)
 
-#define VELLOC_X (20.0f)
-#define VELLOC_Y (10.0f)
+#define VELLOC_Y (14.0f)
 
 CBulletCutman::CBulletCutman(D3DXVECTOR3 _pos)
 {
 	m_Type = BULLET;
-	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MASTER)
-		, D3DXVECTOR2(490,120), 2, 1
-		, D3DXVECTOR2(430,90));
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MASTER), D3DXVECTOR2(269,63), 2, 1, D3DXVECTOR2(237,49));
 	m_pos = _pos;
 	m_accel = D3DXVECTOR2(0,0);
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
@@ -68,7 +65,7 @@ void CBulletCutman::Update(float _time, CCamera *_camera, CInput *_input, vector
 		if (m_TimeChangeDirect < TIME_CHANGE_DIRECT) {
 			m_TimeChangeDirect += _time;
 		} else {
-			m_velloc.x = m_pos.x > posDes.x ? -VELLOC_X : VELLOC_X;
+			m_velloc.x = m_pos.x > posDes.x ? - CConfig::ValueOf(KEY_CM_VELLOC_X) : CConfig::ValueOf(KEY_CM_VELLOC_X);
 			m_velloc.y = m_pos.y > posDes.y ? -VELLOC_Y : VELLOC_Y;
 			m_TimeChangeDirect = 0;
 		}

@@ -53,6 +53,9 @@ CPLayingGameState::~CPLayingGameState(void)
 		delete m_Camera;
 
 	CConfig::ReleaseConfig();
+
+	//Reset value camera
+	CCamera::g_IsMoving = false;
 }
 
 void CPLayingGameState::Render(LPD3DXSPRITE _spriteHandle)
@@ -69,15 +72,22 @@ void CPLayingGameState::Update(CInput* _input,float _time)
 	quadTree->AddObjectToList(quadTree->m_listObjectViewportCheckCollision, rockman);
 	m_ScereryTile->Update(m_Camera->m_viewPort);
 
-	if (CCamera::g_IsMoving) {
-		m_Camera->MoveMap();
+	int keyDown = _input->GetKeyDown();
+	rockman->SetKeyDown(keyDown);
 
+
+	if (CCamera::g_IsMoving) {
+		if (rockman->isCollisingDoor) {
+			rockman->TurnRight();
+			rockman->Update(_time, m_Camera, NULL, listOb);
+		}
+		m_Camera->MoveMap();
 	} else {
 		quadTree->Update(m_Camera, _time);
 		rockman->Update(_time, m_Camera, _input, listOb);
 	}
 
-	if (rockman->GetKeyDown()==DIK_ESCAPE)
+	if (keyDown==DIK_ESCAPE)
 	{
 		m_StateManager->ChangeState(new CMenuState(m_StateManager));
 		return;
