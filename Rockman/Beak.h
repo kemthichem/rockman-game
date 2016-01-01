@@ -4,7 +4,7 @@
 #include "Bullet.h"
 
 
-#define NUM_BULLET (10)
+#define NUM_BULLET (4)
 
 enum BeakrStatus {
 	BeakWait,

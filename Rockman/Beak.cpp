@@ -3,7 +3,7 @@
 #include "Define.h"
 
 #define TIME_CHANGE (20.0f)
-#define TIME_SHOT (6.0f)
+#define TIME_SHOT (4.0f)
 #define V_BULLET (10.0f)
 
 CBeak::CBeak(int _id, D3DXVECTOR3 _pos, bool _isLeft)
@@ -79,18 +79,22 @@ CBeak::CBeak(int objID, int typeID, double posX, double posY, int width, int hei
 	int dir = _isLeft ? 1 : -1;
 	for (int i = 0; i < NUM_BULLET; i++)
 	{
-		CBullet *bullet = new CBullet(D3DXVECTOR3(m_pos.x + m_Size.x/2 - 10, m_pos.y - m_Size.y/2 + 10, m_pos.z));
-		switch (i % (NUM_BULLET/2))
+		CBullet *bullet = new CBullet(D3DXVECTOR3(m_pos.x + m_Size.x/2 - dir * m_Size.x/2, m_pos.y - m_Size.y/2, m_pos.z));
+		switch (i)
 		{
 		case 0:
 			vx = -V_BULLET * dir;
 			vy = V_BULLET * dir;
 			break;
 		case 1:
-			vx = -V_BULLET * dir;
-			vy = 0;
+			vx = -V_BULLET * 1.7 * dir;
+			vy =  V_BULLET*0.3 * dir;
 			break;
 		case 2:
+			vx = -V_BULLET*1.7 *dir;
+			vy = -V_BULLET*0.3 *dir;
+			break;
+		case 3:
 			vx = -V_BULLET *dir;
 			vy = -V_BULLET *dir;
 			break;
@@ -111,8 +115,10 @@ CBeak::~CBeak(void)
 
 void CBeak::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntity* > _listObjectInViewPort)
 {	
+	float timeChange = m_Status == BeakWait ? TIME_CHANGE/2 : TIME_CHANGE;
+
 	if (m_IsLife) {
-		if (m_TimeSpent < TIME_CHANGE) {
+		if (m_TimeSpent < timeChange) {
 			m_TimeSpent += _time;
 		} else {
 			m_TimeSpent = 0;
@@ -140,10 +146,6 @@ void CBeak::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntity*
 		default:
 			break;
 		}
-
-		// Not call update base class
-		//CEntity::Update(_time, _camera, _input,_listObjectInViewPort);
-
 		//Update bullet
 		for(int i = 0; i < NUM_BULLET; ++i) {
 			m_ListBullet[i]->Update(_time,_camera,_input,_listObjectInViewPort);
