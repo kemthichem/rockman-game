@@ -6,7 +6,7 @@ CBullet::CBullet(D3DXVECTOR3 _pos)
 {
 	m_Id = -10;
 	m_Type = BULLET;
-	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), D3DXVECTOR2(170, 105), 1, 1, D3DXVECTOR2(160, 95));
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), D3DXVECTOR2(167, 142), 1, 1, D3DXVECTOR2(160, 136));
 	m_pos = _pos;
 	m_posInit = _pos;
 

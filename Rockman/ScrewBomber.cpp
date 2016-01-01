@@ -75,7 +75,7 @@ CScrewBomber::CScrewBomber(int objID, int typeID, double posX, double posY, int 
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES),
 		D3DXVECTOR2(175, 106 + k), 4, 1,
 		D3DXVECTOR2(15, 90 + k),
-		D3DXVECTOR2(0,0),
+		D3DXVECTOR2(0, 0),
 		D3DXVECTOR2(20, 0));
 	m_Size = D3DXVECTOR2(widthCollide, heightCollide);
 	m_pos = D3DXVECTOR3(posX - m_Size.x/2, posY + m_Size.y/2, DEPTH_MOTION);

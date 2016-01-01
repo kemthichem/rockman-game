@@ -9,7 +9,7 @@ CRock::CRock(int _id, D3DXVECTOR3 _pos, bool _isCheckCollison)
 {
 	m_Id = _id;
 	m_Type = BLOCK;
-	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES), D3DXVECTOR2(428,239), 2, 2, D3DXVECTOR2(394,205), D3DXVECTOR2(1,1), D3DXVECTOR2(1,1));
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES), D3DXVECTOR2(163, 159), 1, 1, D3DXVECTOR2(131, 127), D3DXVECTOR2(1,1), D3DXVECTOR2(1,1));
 	m_pos = _pos;
 
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
