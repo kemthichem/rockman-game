@@ -10,7 +10,6 @@ class COctopus : public CEnemy
 {
 private:
 	float  m_TimeSpend;
-	bool m_IsLife;
 	D3DXVECTOR2 m_vellocTemp;
 
 public:

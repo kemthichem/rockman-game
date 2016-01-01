@@ -2,19 +2,6 @@
 #include "Flea.h"
 #include "Define.h"
 
-CFlea::CFlea(int _id, D3DXVECTOR3 _pos)
-{
-	m_Id = _id;
-	m_Type = FLEA;
-	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES), D3DXVECTOR2(663, 296) , 2, 1, D3DXVECTOR2(513,258), D3DXVECTOR2(0,0), D3DXVECTOR2(43,0));
-	m_pos = _pos;
-	m_accel = D3DXVECTOR2(0,0);
-	m_velloc.x = -10;
-	m_accel.y = -5.0f;
-
-	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
-	UpdateRect();
-}
 
 CFlea::CFlea(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide)
 {
@@ -38,12 +25,16 @@ CFlea::~CFlea(void)
 
 void CFlea::Update(float _deltaTime, CCamera *_camera, CInput *_input,vector<CEntity* > _listObjectInViewPort)
 {
-	CEntity::Update(_deltaTime, _camera, _input, _listObjectInViewPort);
+	if (m_IsLife) {
+		CEntity::Update(_deltaTime, _camera, _input, _listObjectInViewPort);
 
-	if(m_velloc.y > 14.0f){
-		m_Sprite ->IndexOf(1);
-	}else{
-		m_Sprite ->IndexOf(0);
+		if(m_velloc.y > 14.0f){
+			m_Sprite ->IndexOf(1);
+		}else{
+			m_Sprite ->IndexOf(0);
+		}
+	} else {
+		CEnemy::Update(_deltaTime, _camera, _input, _listObjectInViewPort);
 	}
 }
 void CFlea::UpdateCollison(CEntity* _other,float _time)
@@ -99,4 +90,15 @@ void CFlea::SetInjured(CEntity* _other)
 	m_IsCheckCollision = false;
 	CreateItem();
 	m_IsLife = false;
+}
+
+void CFlea::Render(LPD3DXSPRITE _spHandle, CCamera* _camera)
+{
+	if (m_IsLife) {
+		CEntity::Render(_spHandle, _camera);
+
+	} else {
+		//Render item
+		CEnemy::Render(_spHandle, _camera);
+	}
 }
