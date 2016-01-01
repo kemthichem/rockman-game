@@ -17,6 +17,8 @@
 #include "QuadTree.h"
 #include "SupperCutter.h"
 #include "Door.h"
+#include "Ramie.h"
+#include "Item.h"
 #include "utils.h"
 
 
@@ -120,7 +122,6 @@ void  CMap::LoadMap(const char* pathMap,  CQuadTree *quadTree, CCamera *camera)
 	camera->Initialize(arrayPoint, sizePathPoint);
 }
 
-
 void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide)
 {
 	CEntity *object = NULL;
@@ -198,14 +199,17 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 	case ID_ITEM_LIFE:
 		break;
 	case ID_ITEM_BLOOD_BIG:
+		object = new CItem(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide, BLOOD_BIG);
 		break;
 	case ID_ITEM_BLOOD_SMALL:
+		object = new CItem(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide, BLOOD_SMALL);
 		break;
 	case ID_ITEM_MANA:
 		break;
 	case ID_ITEM_MANA_SMALL:
 		break;
 	case ID_DIEAARROW:
+		object = new CRamie(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_BOSSCUT:
 		object = new CCutMan(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);

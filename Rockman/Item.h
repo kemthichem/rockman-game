@@ -7,7 +7,7 @@ enum Type {
 	BONUS = 1,
 	MANA,
 	BLOOD_SMALL,
-	BLOOB_BIG
+	BLOOD_BIG
 };
 
 //Item for enemies
@@ -25,6 +25,7 @@ protected:
 public:
 	CItem();
 	CItem(D3DXVECTOR3 _pos, Type _type);
+	CItem(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide, Type _type);
 	~CItem(void);
 
 	virtual void Update(float , CCamera *, CInput *, vector<CEntity*>);

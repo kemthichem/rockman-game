@@ -1,6 +1,7 @@
 #include "Item.h"
 #include "ResourceManager.h"
 #include "Config.h"
+#include "Define.h"
 #include "Rockman.h"
 
 CItem::CItem(D3DXVECTOR3 _pos, Type _type)
@@ -27,7 +28,7 @@ CItem::CItem(D3DXVECTOR3 _pos, Type _type)
 		posDst = D3DXVECTOR2(10,22);
 		posSrc = D3DXVECTOR2(0,10);
 		break;
-	case BLOOB_BIG:
+	case BLOOD_BIG:
 		coutRow = 2;
 		posDst = D3DXVECTOR2(30,54);
 		posSrc = D3DXVECTOR2(0,38);
@@ -55,10 +56,57 @@ CItem::CItem()
 
 }
 
+CItem::CItem(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide, Type _type)
+{
+	m_Type = ITEM;
+	m_typeItem = _type;
+
+	D3DXVECTOR2 posDst = D3DXVECTOR2(0,0);
+	D3DXVECTOR2 posSrc = D3DXVECTOR2(0,0);
+	int coutRow = 1;
+	int coutCol = 1; 
+
+	switch (m_typeItem)
+	{
+	case BONUS:
+		posDst = D3DXVECTOR2(8,8);
+		break;
+	case MANA:
+		coutRow = 2;
+		posDst = D3DXVECTOR2(34,37);
+		posSrc = D3DXVECTOR2(0,25);
+		break;
+	case BLOOD_SMALL:
+		posDst = D3DXVECTOR2(10,22);
+		posSrc = D3DXVECTOR2(0,10);
+		break;
+	case BLOOD_BIG:
+		coutRow = 2;
+		posDst = D3DXVECTOR2(30,54);
+		posSrc = D3DXVECTOR2(0,38);
+		break;
+	default:
+		break;
+	}
+
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ITEMS)
+		,posDst, coutRow, coutCol, posSrc);
+
+
+	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
+	m_pos = D3DXVECTOR3(posX - m_Size.x/2, posY + m_Size.y/2, DEPTH_MOTION);
+	m_posInit = m_pos;
+
+	m_accel = D3DXVECTOR2(0,-15.0f);
+	m_velloc = D3DXVECTOR2(0, 5.0f);
+
+	//Item
+	m_IsActive = true;
+}
+
 
 CItem::~CItem(void)
 {
-;
 }
 
 void CItem::UpdateCollison(CEntity* _other,float _time)
@@ -174,7 +222,7 @@ void CItem::HaveItem(CEntity* _rockMan)
 	case BLOOD_SMALL:
 		rockMan->SetInjured(this, CConfig::ValueOf(KEY_ITEM_BLOOB_SMALL));
 		break;
-	case BLOOB_BIG:
+	case BLOOD_BIG:
 		rockMan->SetInjured(this, CConfig::ValueOf(KEY_ITEM_BLOOB_BIG));
 		break;
 	default:
