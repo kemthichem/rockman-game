@@ -25,5 +25,6 @@ public:
 	virtual void Update(float , CCamera *, CInput *,  vector<CEntity* >);
 	virtual void Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera);
 	void SetInjured(CEntity* _other);
+	virtual void Reset();
 };
 #endif

@@ -129,7 +129,7 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 	switch (typeID)
 	{
 	case ID_ENEMY_BALL:
-		object = new CFlyingShell(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
+		object = new CFlyingShell(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide, false);
 		break;
 	case ID_ENEMY_BOOM_BLUE:
 		break;

@@ -113,3 +113,8 @@ bool CBlader::IsObtainCollision(CEntity* _other)
 	}
 	return false;
 }
+
+void CBlader::Reset()
+{
+
+}
