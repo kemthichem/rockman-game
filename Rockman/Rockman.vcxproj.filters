@@ -216,6 +216,9 @@
     <ClCompile Include="Time.cpp">
       <Filter>Base</Filter>
     </ClCompile>
+    <ClCompile Include="ExplosiveBoss.cpp">
+      <Filter>ObjectGame\Boss</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RockmanGame.h">
@@ -370,6 +373,9 @@
     </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="ExplosiveBoss.h">
+      <Filter>ObjectGame\Boss</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -57,13 +57,14 @@ void CBulletRockman::Update(float _time, CCamera *_camera, CInput *_input, vecto
 {
 	if (m_IsActive) {
 		CEntity::Update(_time,_camera,_input,_listObjectInViewport);
-	} 
 
-	if(m_Rect.left < _camera->m_viewPort.left || m_Rect.right > _camera->m_viewPort.right 
-		|| m_Rect.top > _camera->m_viewPort.top || m_Rect.bottom < _camera->m_viewPort.bottom)
-	{
-		m_IsActive = false;
-	}
+
+		if(m_Rect.left < _camera->m_viewPort.left || m_Rect.right > _camera->m_viewPort.right 
+			|| m_Rect.top > _camera->m_viewPort.top || m_Rect.bottom < _camera->m_viewPort.bottom)
+		{
+			m_IsActive = false;
+		}
+	} 
 }
 
 void CBulletRockman::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)

@@ -16,7 +16,7 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 	m_Id = 0;
 	m_Type = ROCKMAN;
 	m_SpriteStart = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(72, 32), 3, 1);
-	m_SpriteJump = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(58, 62), 2, 1 , D3DXVECTOR2(0, 33));
+	m_SpriteJump = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(58, 61), 2, 1 , D3DXVECTOR2(0, 33));
 	m_SpriteStand = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(63, 86), 3, 1 , D3DXVECTOR2(0, 62));
 	m_SpriteStandGun = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(32, 110), 1, 1, D3DXVECTOR2(0, 87));
 	m_SpriteRun = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(72, 134), 3, 1, D3DXVECTOR2(0, 111));
@@ -24,6 +24,7 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 	m_SpriteClimb = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(32, 188), 2, 1, D3DXVECTOR2(0, 159));
 	m_SpriteClimbGun = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(24, 220), 1, 1, D3DXVECTOR2(0, 189));
 	m_SpriteInjured = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(52, 248), 2, 1, D3DXVECTOR2(0, 221));
+	explosive = new CExplosiveBoss(new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_EXPLOSIVE), D3DXVECTOR2(120, 24), 5, 1));
 
 	m_Sprite = m_SpriteStand;
 	m_pos = _pos;
@@ -39,7 +40,7 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 	UpdateRect();
 	m_PosXClimb = -1;
 	m_IsClimbing = false;
-	//m_CanDown = false;
+	m_isExplosive = false;
 	m_Injuring = 0;
 	m_TimeInjured = 0;
 	m_TimeShot = 0;
@@ -100,10 +101,17 @@ CRockman::~CRockman()
 		m_SpriteInjured = NULL;
 	}
 	
+	if (explosive) {
+		delete explosive;
+		explosive = NULL;
+	}
+
 	m_Sprite = NULL;
 }
 
 void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewPort) {
+	if (m_isExplosive) {explosive->Update(_time, _camera);return;}
+
 	//Always impact gravity
 	m_accel.y = CConfig::ValueOf(KEY_RM_ACCEL_VY);
 	m_Size = m_SizeInit;
@@ -194,8 +202,11 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	//Not Edit
 	//Update pos global
 	g_PosRockman = D3DXVECTOR2(m_pos.x, m_pos.y);
-	if (m_Blood->IsOver() /*|| m_pos.y < CCamera::g_PosCamera.y - HEIGHT_SCREEN - 200*/)
-		CPLayingGameState::g_ChangeState = ChangeState::CHANGE_FAIL;
+	if (m_Blood->IsOver()) {
+		m_isExplosive = true;
+		explosive->Explosive(m_pos, CHANGE_FAIL);
+	}
+		//CPLayingGameState::g_ChangeState = ChangeState::CHANGE_FAIL;
 
 	//Update sprite	
 	UpdateSprite(_time);
@@ -205,6 +216,21 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	{
 		m_ListBullet[i]->Update(_time, _camera, _input, _listObjectInViewPort);
 	}
+}
+
+void CRockman::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
+{
+	if (m_isExplosive) {explosive->Render(_spriteHandle, _camera);return;}
+
+	CEntity::Render(_spriteHandle, _camera);
+
+	//Render bullet
+	for (int i = 0; i < 5; i++)
+	{
+		m_ListBullet[i]->Render(_spriteHandle, _camera);
+	}
+	//Render blood
+	m_Blood->Render(_spriteHandle, _camera);
 }
 
 void CRockman::UpdateSprite(float _time)
@@ -510,19 +536,6 @@ void CRockman::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,
 			break;
 		
 		}
-}
-
-void CRockman::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
-{
-	CEntity::Render(_spriteHandle, _camera);
-
-	//Render bullet
-	for (int i = 0; i < 5; i++)
-	{
-		m_ListBullet[i]->Render(_spriteHandle, _camera);
-	}
-	//Render blood
-	m_Blood->Render(_spriteHandle, _camera);
 }
 
 void CRockman::Shot()

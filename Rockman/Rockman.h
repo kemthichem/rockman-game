@@ -4,6 +4,7 @@
 #include "AABBCollisionDetected.h"
 #include "BulletRockman.h"
 #include "Blood.h"
+#include "ExplosiveBoss.h"
 
 enum ActionRockman
 {
@@ -44,12 +45,13 @@ private:
 	//Other
 	CBulletRockman* m_ListBullet[5];
 	CBlood* m_Blood;
-
+	CExplosiveBoss* explosive;
 
 	float m_PosXClimb;
 	bool m_isCanClimb;
 	bool m_isCollisionBottom;
 	bool m_IsLadderBottom;
+	bool m_isExplosive;
 
 	//bool m_CanDown;
 	void Injunred(bool _isDirectX, float _time);

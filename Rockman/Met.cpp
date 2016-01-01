@@ -35,9 +35,3 @@ void CMet::Update(float _deltaTime, CCamera *_camera, CInput *_input,vector<CEnt
 {
 	m_Sprite->Next(_deltaTime);
 }
-
-void CMet::Draw()
-{
-
-}
-
