@@ -207,6 +207,9 @@
     <ClCompile Include="ExplosiveBoss.cpp">
       <Filter>ObjectGame\Boss</Filter>
     </ClCompile>
+    <ClCompile Include="Ramie.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RockmanGame.h">
@@ -352,6 +355,9 @@
     </ClInclude>
     <ClInclude Include="ExplosiveBoss.h">
       <Filter>ObjectGame\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="Ramie.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
