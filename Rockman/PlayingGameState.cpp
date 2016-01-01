@@ -89,6 +89,9 @@ void CPLayingGameState::Update(CInput* _input,float _time)
 		m_StateManager->ChangeState(new CMenuState(m_StateManager));
 		return;
 	}
+	if (keyDown == DIK_H) {
+		rockman->CheatBlood();
+	}
 
 	//if (rockman->GetKeyDown()==DIK_L)
 	//{

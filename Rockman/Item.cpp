@@ -124,6 +124,7 @@ void CItem::ExecuteCollision(CEntity* _other, DirectCollision m_directCollision,
 	switch (_other->GetType())
 	{
 	case BLOCK:
+	case LADDER:
 		{
 			if( m_directCollision == BOTTOM)
 			{

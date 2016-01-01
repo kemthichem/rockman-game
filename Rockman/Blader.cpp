@@ -36,7 +36,7 @@ CBlader::CBlader(int objID, int typeID, double posX, double posY, int width, int
 	m_posAttack = POS_INVALID;
 	m_isCompleteAttack = false;
 	m_velloc.x = -CConfig::ValueOf(KEY_BD_VX);
-	m_rangeItem = 1;
+	m_rangeItem = 3;
 
 	UpdateRect();
 }

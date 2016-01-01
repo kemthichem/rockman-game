@@ -68,7 +68,7 @@ CBeak::CBeak(int objID, int typeID, double posX, double posY, int width, int hei
 	m_pos = D3DXVECTOR3(posX - m_Size.x/2, posY + m_Size.y/2, DEPTH_MOTION);
 
 	m_posOrg = m_pos;
-	m_rangeItem = 1;
+	m_rangeItem = 3;
 
 	UpdateRect();
 

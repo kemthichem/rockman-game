@@ -1,15 +1,14 @@
 #ifndef  _OCTOPUS_H
 #define  _OCTOPUS_H
-#include "Entity.h"
+#include "Enemy.h"
 #include "Bullet.h"
 #include "Item.h"
 
 #define NUM_BULLET (10)
 
-class COctopus : public CEntity
+class COctopus : public CEnemy
 {
 private:
-	CItem *m_Item;
 	float  m_TimeSpend;
 	bool m_IsLife;
 	D3DXVECTOR2 m_vellocTemp;

@@ -29,8 +29,6 @@ COctopus::COctopus(int _id, D3DXVECTOR3 _pos, bool _isTurnHor)
 
 COctopus::~COctopus(void)
 {
-	if (m_Item)
-		delete m_Item;
 }
 
 COctopus::COctopus(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide, bool _isTurnHor)
@@ -55,6 +53,7 @@ COctopus::COctopus(int objID, int typeID, double posX, double posY, int width, i
 	m_IsLife = true;
 	m_vellocTemp = D3DXVECTOR2(0,0);
 
+	m_rangeItem = 3;
 }
 
 void COctopus::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity* >_listObjectInViewPort)
@@ -74,7 +73,7 @@ void COctopus::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 
 	} else {
 		//Update item
-		m_Item->Update(_time,_camera,_input,_listObjectInViewPort);
+		CEnemy::Update(_time,_camera,_input,_listObjectInViewPort);
 	}
 }
 
@@ -85,9 +84,7 @@ void COctopus::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 
 	} else {
 		//Render item
-		m_Item->Render(_spriteHandle, _camera);
-		if (!m_Item->GetActive())
-			m_IsShowed = false;
+		CEnemy::Render(_spriteHandle, _camera);
 	}
 }
 
@@ -95,7 +92,7 @@ void COctopus::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 void COctopus::SetInjured(CEntity* _other)
 {
 		m_IsCheckCollision = false;
-		m_Item->SetActive(true);
+		CreateItem();
 		m_IsLife = false;
 }
 

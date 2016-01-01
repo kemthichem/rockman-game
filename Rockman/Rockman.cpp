@@ -131,7 +131,7 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 		} 
 		if (!reval) {
 			Stand();
-		}
+		} 
 	}
 
 	//Climb
@@ -588,6 +588,11 @@ void CRockman::MoveRightWhenMoveMap()
 {
 	m_velloc.x = 5.0;
 	m_action = Action_Go;
+}
+
+void CRockman::CheatBlood()
+{
+	m_Blood->ChangeBlood(1000);
 }
 
 bool CRockman::m_IsClimbing = false;
