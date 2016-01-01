@@ -16,7 +16,6 @@ class CScrewBomber : public CEnemy
 private:
 	ScrewBomberStatus m_Status;
 	CBullet *m_ListBullet[NUM_BULLET];
-	CItem *m_Item;
 	float  m_TimeSpend;
 	void Shot(int _n);
 protected:

@@ -130,9 +130,6 @@ CScrewBomber::~CScrewBomber(void)
 {
 	for(int i = 0; i < NUM_BULLET; ++i)
 		delete m_ListBullet[i];
-
-	if (m_Item)
-		delete m_Item;
 }
 
 
@@ -176,7 +173,7 @@ void CScrewBomber::Update(float _time, CCamera *_camera, CInput *_input, vector<
 		}		
 	} else {
 		//Update item
-		m_Item->Update(_time,_camera,_input,_listObjectInViewPort);
+		CEnemy::Update(_time,_camera,_input,_listObjectInViewPort);
 	}
 }
 
@@ -191,10 +188,7 @@ void CScrewBomber::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 			m_ListBullet[i]->Render(_spriteHandle, _camera);
 		}
 	} else {
-		//Render item
-		m_Item->Render(_spriteHandle, _camera);
-		if (!m_Item->GetActive())
-			m_IsShowed = false;
+		CEnemy::Render(_spriteHandle, _camera);
 	}
 }
 
@@ -209,7 +203,7 @@ void CScrewBomber::SetInjured(CEntity* _other)
 {
 	if (m_Status == Rotate) {
 		m_IsCheckCollision = false;
-		m_Item->SetActive(true);
+		CreateItem();
 		m_IsLife = false;
 	}
 }
