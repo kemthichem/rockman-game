@@ -12,6 +12,7 @@
 //resource object
 #define  IMAGE_ROCKMAN			"Resources/rockman.png"
 #define  IMAGE_TILES			"Resources/tiles.png"
+#define  IMAGE_ITEMS			"Resources/items.png"
 #define  IMAGE_ENEMIES			"Resources/enemies.png"
 #define  IMAGE_EXPLOSIVE		"Resources/explosive.png"
 #define  IMAGE_MASTER			"Resources/master.png"

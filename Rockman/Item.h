@@ -3,19 +3,26 @@
 
 #include "Entity.h"
 
+enum Type {
+	BONUS = 1,
+	MANA,
+	BLOOD_SMALL,
+	BLOOB_BIG
+};
+
 //Item for enemies
 class CItem : public CEntity
 {
 private:	
 	D3DXVECTOR3 m_posInit;
-
+	Type m_typeItem;
 protected:
 	bool m_IsActive;
 	virtual void UpdateCollison(CEntity* ,float);
 
 public:
 	CItem();
-	CItem(D3DXVECTOR3 _pos);
+	CItem(D3DXVECTOR3 _pos, Type _type);
 	~CItem(void);
 
 	virtual void Update(float , CCamera *, CInput *, vector<CEntity*>);

@@ -63,8 +63,6 @@ CScrewBomber::CScrewBomber(int _id, D3DXVECTOR3 _pos, bool _isUp)
 	}
 
 #pragma endregion 
-	//create item
-	m_Item = new CItem(m_pos);
 }
 
 CScrewBomber::CScrewBomber(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide, bool _isUp)
@@ -126,8 +124,6 @@ CScrewBomber::CScrewBomber(int objID, int typeID, double posX, double posY, int 
 	}
 
 #pragma endregion 
-	//create item
-	m_Item = new CItem(m_pos);
 }
 
 CScrewBomber::~CScrewBomber(void)

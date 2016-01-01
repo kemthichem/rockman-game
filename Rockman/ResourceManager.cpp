@@ -39,6 +39,7 @@ void CResourceManager::LoadResource(LPDIRECT3DDEVICE9 _d3ddv)
 	mMapTexture[IMAGE_EXPLOSIVE] = CUtils::LoadTexture(mD3ddv, IMAGE_EXPLOSIVE, RGB(0,255,0));	
 	mMapTexture[IMAGE_MASTER] = CUtils::LoadTexture(mD3ddv, IMAGE_MASTER);
 	mMapTexture[IMAGE_MENU] = CUtils::LoadTexture(mD3ddv, IMAGE_MENU, RGB(0,255,0));
+	mMapTexture[IMAGE_ITEMS] = CUtils::LoadTexture(mD3ddv, IMAGE_ITEMS, RGB(255,255,255));
 	mMapTexture[IMAGE_BG_CHANGE_STATE] = CUtils::LoadTexture(mD3ddv, IMAGE_BG_CHANGE_STATE);
 	
 	//load background

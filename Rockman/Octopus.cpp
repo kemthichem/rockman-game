@@ -24,9 +24,6 @@ COctopus::COctopus(int _id, D3DXVECTOR3 _pos, bool _isTurnHor)
 	m_TimeSpend = 0;
 	m_IsLife = true;
 	m_vellocTemp = D3DXVECTOR2(0,0);
-
-	//create item
-	m_Item = new CItem(m_pos);
 }
 
 
@@ -58,8 +55,6 @@ COctopus::COctopus(int objID, int typeID, double posX, double posY, int width, i
 	m_IsLife = true;
 	m_vellocTemp = D3DXVECTOR2(0,0);
 
-	//create item
-	m_Item = new CItem(m_pos);
 }
 
 void COctopus::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity* >_listObjectInViewPort)

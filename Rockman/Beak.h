@@ -20,7 +20,6 @@ private:
 	float m_TimeShot;
 	void Shot();
 	int m_CurrentBullet;
-
 protected:
 	virtual void Reset();
 public:

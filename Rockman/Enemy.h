@@ -1,6 +1,7 @@
 #ifndef ENEMY_H_
 #define  ENEMY_H_
 #include "Entity.h"
+#include "Item.h"
 
 class CEnemy : public CEntity
 {
@@ -10,6 +11,10 @@ protected:
 	bool m_IsLife;
 	D3DXVECTOR3 m_posOrg;
 	CSprite *m_spriteExplosive;
+
+	int m_rangeItem;
+	CItem* m_item;
+	void CreateItem();
 public:
 	virtual void Reset();
 	CEnemy(void);

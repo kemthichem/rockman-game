@@ -36,6 +36,7 @@ CBlader::CBlader(int objID, int typeID, double posX, double posY, int width, int
 	m_posAttack = POS_INVALID;
 	m_isCompleteAttack = false;
 	m_velloc.x = -CConfig::ValueOf(KEY_BD_VX);
+	m_rangeItem = 1;
 
 	UpdateRect();
 }
@@ -102,6 +103,8 @@ void CBlader::SetInjured(CEntity* _other)
 {
 	m_IsCheckCollision = false;
 	m_IsLife = false;
+
+	CreateItem();
 }
 bool CBlader::IsObtainCollision(CEntity* _other)
 {
