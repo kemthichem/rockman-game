@@ -41,7 +41,7 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 	m_PosXClimb = -1;
 	m_IsClimbing = false;
 	m_isExplosive = false;
-	m_Injuring = 0;
+	m_dirInjuring = 0;
 	m_TimeInjured = 0;
 	m_TimeShot = 0;
 	m_KeyDown = 0;
@@ -135,7 +135,7 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	}
 
 	//Climb
-	if (m_IsClimbing & !m_Injuring) {	
+	if (m_IsClimbing & !m_dirInjuring) {	
 		m_velloc.x = 0;
 		m_accel.x = 0;
 		m_Size = m_SizeClimb;
@@ -146,8 +146,8 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 			m_action = Action_Climb_Stand;
 		}
 	}
-	if (m_Injuring != 0) {
-		Injunred(m_Injuring > 0, _time);
+	if (m_dirInjuring != 0) {
+		Injunred(m_dirInjuring > 0, _time);
 	}
 
 	//can't move left when pos lesser 0
@@ -377,7 +377,7 @@ void CRockman::TurnRight()
 
 bool CRockman::Climb(bool _isTurnUp)
 {
-	bool isWillClimb = m_isCanClimb & !m_Injuring;
+	bool isWillClimb = m_isCanClimb & !m_dirInjuring;
 	if (!m_IsClimbing){
 		if (!_isTurnUp)
 			isWillClimb &=  m_IsLadderBottom;
@@ -436,7 +436,7 @@ void CRockman::UpdateCollison(CEntity* _other, float _time) {
 	case BLOCK:
 		{
 			isIntersectX = CAABBCollision::IntersectRectX(m_Rect, _other->GetRect());
-			if ((m_Injuring || !m_IsClimbing) && isIntersectX && m_velloc.y == 0) {
+			if ((m_dirInjuring || !m_IsClimbing) && isIntersectX && m_velloc.y == 0) {
 				if (m_Rect.left < _other->GetRect().left && m_Rect.right > _other->GetRect().left) {
 					m_velloc.x = 0;
 					m_accel.x = 0;
@@ -548,15 +548,20 @@ void CRockman::Shot()
 
 void CRockman::Injunred(bool _isImpactLeft, float _time)
 {
-	if (m_TimeInjured >= TIME_PER_ANIMATION * 4) {
-		m_TimeInjured = 0;
-		m_Injuring = 0;
+	if (m_TimeInjured <= TIME_PER_ANIMATION) {
+		m_TimeInjured += _time;
+		m_velloc.x = _isImpactLeft ? 5: -5;
+		m_action = Action_Injured;
 		return;
-	}
-	m_TimeInjured += _time;
-	m_velloc.x = _isImpactLeft ? 5: -5;
-	
-	m_action = Action_Injured;
+	} 
+	else if (m_TimeInjured <= TIME_PER_ANIMATION * 4) {
+			m_TimeInjured += _time;
+		}
+		else
+		{
+			m_TimeInjured = 0;
+			m_dirInjuring = 0;
+		}
 }
 
 void CRockman::SetInjured(CEntity* _other, int _dam)
@@ -567,8 +572,8 @@ void CRockman::SetInjured(CEntity* _other, int _dam)
 	}
 
 	//return;
-		if (m_Injuring != 0) return;
-	m_Injuring = _other->GetVelocity().x > 0 ? 1 : -1;
+	if (m_dirInjuring != 0) return;
+	m_dirInjuring = _other->GetVelocity().x > 0 ? 1 : -1;
 	m_TimeInjured = 0;
 	m_Blood->ChangeBlood(_dam);
 }

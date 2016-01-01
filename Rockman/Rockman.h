@@ -58,7 +58,7 @@ private:
 	
 	float m_TimeInjured;
 	float m_TimeShot;
-	char m_Injuring;//0: not Injuring - 1:right - -1:left
+	char m_dirInjuring;//0: not Injuring - 1:right - -1:left
 	int m_KeyDown;
 	void UpdateSprite(float _time);
 	void Stand();
