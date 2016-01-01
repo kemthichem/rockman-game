@@ -20,7 +20,7 @@ CRamie::CRamie(int _id, D3DXVECTOR3 _pos, bool _isCheckCollison)
 CRamie::CRamie(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide)
 {
 	m_Id = objID;
-	m_Type = BLOCK;
+	m_Type = RAMIE;
 	m_Size = D3DXVECTOR2(widthCollide, heightCollide);
 	m_pos = D3DXVECTOR3(posXCollide, posYCollide, 0);
 

@@ -1,5 +1,6 @@
 #include "Item.h"
 #include "ResourceManager.h"
+#include "Config.h"
 #include "Rockman.h"
 
 CItem::CItem(D3DXVECTOR3 _pos, Type _type)
@@ -67,7 +68,7 @@ void CItem::UpdateCollison(CEntity* _other,float _time)
 	case ROCKMAN:
 		m_IsActive = false;
 		m_IsShowed = false;
-		//(dynamic_cast<CRockman*>(_other))->SetInjured(this);
+		HaveItem(_other);
 		break;
 	case BLOCK:
 			//m_velloc = m_accel = D3DXVECTOR2(0,0);
@@ -156,6 +157,26 @@ void CItem::ExecuteCollision(CEntity* _other, DirectCollision m_directCollision,
 			break;
 		}
 
+	default:
+		break;
+	}
+}
+
+void CItem::HaveItem(CEntity* _rockMan)
+{
+	CRockman* rockMan = dynamic_cast<CRockman*> (_rockMan);
+	switch (m_typeItem)
+	{
+	case BONUS:
+		break;
+	case MANA:
+		break;
+	case BLOOD_SMALL:
+		rockMan->SetInjured(this, CConfig::ValueOf(KEY_ITEM_BLOOB_SMALL));
+		break;
+	case BLOOB_BIG:
+		rockMan->SetInjured(this, CConfig::ValueOf(KEY_ITEM_BLOOB_BIG));
+		break;
 	default:
 		break;
 	}

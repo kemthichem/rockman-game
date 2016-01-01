@@ -24,7 +24,7 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 	m_SpriteClimb = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(32, 188), 2, 1, D3DXVECTOR2(0, 159));
 	m_SpriteClimbGun = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(24, 220), 1, 1, D3DXVECTOR2(0, 189));
 	m_SpriteInjured = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ROCKMAN), D3DXVECTOR2(52, 248), 2, 1, D3DXVECTOR2(0, 221));
-	explosive = new CExplosiveBoss(new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_EXPLOSIVE), D3DXVECTOR2(120, 24), 5, 1));
+	m_Explosive = new CExplosiveBoss(new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_EXPLOSIVE), D3DXVECTOR2(120, 24), 5, 1));
 
 	m_Sprite = m_SpriteStand;
 	m_pos = _pos;
@@ -53,7 +53,7 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 	}
 
 	//create blood
-	m_Blood = new CBlood(D3DXVECTOR2(15, 20), 200);
+	m_Blood = new CBlood(D3DXVECTOR2(15, 20), CConfig::ValueOf(KEY_RM_TOTAL_BLOOD));
 }
 CRockman::~CRockman()
 {
@@ -101,16 +101,16 @@ CRockman::~CRockman()
 		m_SpriteInjured = NULL;
 	}
 	
-	if (explosive) {
-		delete explosive;
-		explosive = NULL;
+	if (m_Explosive) {
+		delete m_Explosive;
+		m_Explosive = NULL;
 	}
 
 	m_Sprite = NULL;
 }
 
 void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewPort) {
-	if (m_isExplosive) {explosive->Update(_time, _camera);return;}
+	if (m_isExplosive) {m_Explosive->Update(_time, _camera);return;}
 
 	//Always impact gravity
 	m_accel.y = CConfig::ValueOf(KEY_RM_ACCEL_VY);
@@ -118,15 +118,15 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 
 	if (_input) {
 		bool reval = false;
-		if (_input->KeyDown(DIK_L)) {
+		if (_input->KeyDown(DIK_RIGHT)) {
 			TurnRight();
 			reval = true;
-		} else if (_input->KeyDown(DIK_J)) {
+		} else if (_input->KeyDown(DIK_LEFT)) {
 			TurnLeft();
 			reval = true;
-		} else if (_input->KeyDown(DIK_I)) {
+		} else if (_input->KeyDown(DIK_UP)) {
 			reval = Climb(true);
-		} else if (_input->KeyDown(DIK_K)) {
+		} else if (_input->KeyDown(DIK_DOWN)) {
 			reval = Climb(false);
 		} 
 		if (!reval) {
@@ -169,10 +169,10 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	if (_input) {
 		switch (m_KeyDown)
 		{
-		case DIK_W:
+		case DIK_SPACE:
 			Jump();
 			break;
-		case DIK_D:
+		case DIK_A:
 			Shot();
 		default:
 			break;
@@ -207,7 +207,7 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	g_PosRockman = D3DXVECTOR2(m_pos.x, m_pos.y);
 	if (m_Blood->IsOver() || m_pos.y < CCamera::g_PosCamera.y - HEIGHT_SCREEN - m_Size.y) {
 		m_isExplosive = true;
-		explosive->Explosive(m_pos, CHANGE_FAIL);
+		m_Explosive->Explosive(m_pos, CHANGE_FAIL);
 	}
 
 	//Update sprite	
@@ -222,7 +222,7 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 
 void CRockman::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 {
-	if (m_isExplosive) {explosive->Render(_spriteHandle, _camera);return;}
+	if (m_isExplosive) {m_Explosive->Render(_spriteHandle, _camera);return;}
 
 	CEntity::Render(_spriteHandle, _camera);
 
@@ -429,15 +429,9 @@ void CRockman::UpdateCollison(CEntity* _other, float _time) {
 	case MET:
 		SetInjured(_other);
 		break;
-	case DOOR1_CUTMAN:
-		//isIntersectX = CAABBCollision::IntersectRect(m_Rect, _other->GetRect());
-		//if (isIntersectX) {
-		//	if (m_velloc.x > 0)
-		//	//CCamera::g_IsMoving = true;
-		//	dynamic_cast<CDoor*>(_other)->ActiveDoor();
-		//	//vector<CEntity*> v;
-		//	//dynamic_cast<CDoor*>(_other)->Update(_time, NULL, NULL, v);
-		//}
+	case RAMIE:
+		m_isExplosive = true;
+		m_Explosive->Explosive(m_pos, CHANGE_FAIL);
 		break;
 	case BLOCK:
 		{
@@ -567,6 +561,11 @@ void CRockman::Injunred(bool _isImpactLeft, float _time)
 
 void CRockman::SetInjured(CEntity* _other, int _dam)
 {
+	if (_other->GetType()==ITEM) {
+		m_Blood->ChangeBlood(_dam);
+		return;
+	}
+
 	//return;
 		if (m_Injuring != 0) return;
 	m_Injuring = _other->GetVelocity().x > 0 ? 1 : -1;

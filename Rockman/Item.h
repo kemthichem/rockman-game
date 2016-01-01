@@ -16,6 +16,8 @@ class CItem : public CEntity
 private:	
 	D3DXVECTOR3 m_posInit;
 	Type m_typeItem;
+
+	void HaveItem(CEntity* _rockMan);
 protected:
 	bool m_IsActive;
 	virtual void UpdateCollison(CEntity* ,float);

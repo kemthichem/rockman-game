@@ -45,7 +45,7 @@ private:
 	//Other
 	CBulletRockman* m_ListBullet[5];
 	CBlood* m_Blood;
-	CExplosiveBoss* explosive;
+	CExplosiveBoss* m_Explosive;
 
 	float m_PosXClimb;
 	bool m_isCanClimb;

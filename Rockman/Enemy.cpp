@@ -15,7 +15,7 @@ CEnemy::CEnemy(void)
 	m_spriteExplosive->IndexOf(3);
 	m_IsLife = m_IsCheckCollision = true;
 
-	m_rangeItem = 0;
+	m_rangeItem = 1;
 }
 
 
@@ -38,6 +38,11 @@ void CEnemy::Reset()
 	m_timeExplosive = CConfig::ValueOf(KEY_EN_TIMEEXPLOSIVE);
 	m_pos = m_posOrg;
 	m_IsLife = m_IsCheckCollision = m_IsShowed = true;
+
+	if (m_item) {
+		delete m_item;
+		m_item = NULL;
+	}
 }
 
 void CEnemy::Update(float _time, CCamera * _camera, CInput* _input, vector<CEntity*> _listOb)

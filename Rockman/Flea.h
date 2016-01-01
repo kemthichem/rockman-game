@@ -1,7 +1,7 @@
 #ifndef _FLEA_H_
 #define _FLEA_H_
-#include "Entity.h"
-class CFlea : public CEntity
+#include "Enemy.h"
+class CFlea : public CEnemy
 {
 private:
 protected:
@@ -14,6 +14,7 @@ public:
 	virtual void Update(float , CCamera *, CInput *,  vector<CEntity* >);
 	void UpdateCollison(CEntity* _other,float _time);
 	void ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,float _timeEntry);
+	void SetInjured(CEntity* _other);
 };
 
 #endif

@@ -77,6 +77,7 @@ CScrewBomber::CScrewBomber(int objID, int typeID, double posX, double posY, int 
 		D3DXVECTOR2(20, 0));
 	m_Size = D3DXVECTOR2(widthCollide, heightCollide);
 	m_pos = D3DXVECTOR3(posX - m_Size.x/2, posY + m_Size.y/2, DEPTH_MOTION);
+	m_posOrg = m_pos;
 	m_IsLife = true;
 
 	/**Attribute ScrewBomber**/
