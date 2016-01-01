@@ -118,15 +118,15 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 
 	if (_input) {
 		bool reval = false;
-		if (_input->KeyDown(DIK_L)) {
+		if (_input->KeyDown(DIK_RIGHT)) {
 			TurnRight();
 			reval = true;
-		} else if (_input->KeyDown(DIK_J)) {
+		} else if (_input->KeyDown(DIK_LEFT)) {
 			TurnLeft();
 			reval = true;
-		} else if (_input->KeyDown(DIK_I)) {
+		} else if (_input->KeyDown(DIK_UP)) {
 			reval = Climb(true);
-		} else if (_input->KeyDown(DIK_K)) {
+		} else if (_input->KeyDown(DIK_DOWN)) {
 			reval = Climb(false);
 		} 
 		if (!reval) {
@@ -150,6 +150,9 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 		Injunred(m_Injuring > 0, _time);
 	}
 
+	//can't move left when pos lesser 0
+	if (m_pos.x < 0) m_pos.x = 0;;
+
 	//reset before update
 	m_PosXClimb = -1;
 	m_isCanClimb = false;
@@ -166,10 +169,10 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	if (_input) {
 		switch (m_KeyDown)
 		{
-		case DIK_W:
+		case DIK_SPACE:
 			Jump();
 			break;
-		case DIK_D:
+		case DIK_A:
 			Shot();
 		default:
 			break;
@@ -202,11 +205,10 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	//Not Edit
 	//Update pos global
 	g_PosRockman = D3DXVECTOR2(m_pos.x, m_pos.y);
-	if (m_Blood->IsOver()) {
+	if (m_Blood->IsOver() || m_pos.y < CCamera::g_PosCamera.y - HEIGHT_SCREEN - m_Size.y) {
 		m_isExplosive = true;
 		explosive->Explosive(m_pos, CHANGE_FAIL);
 	}
-		//CPLayingGameState::g_ChangeState = ChangeState::CHANGE_FAIL;
 
 	//Update sprite	
 	UpdateSprite(_time);
@@ -256,17 +258,14 @@ void CRockman::UpdateSprite(float _time)
 	case Action_Go_Gun:
 		m_Sprite = m_SpriteRunGun;
 		m_Sprite->NextOf(_time, 0,2);
-		OutputDebugString("Go gun \n");
 		break;
 	case Action_Jump:
 		m_Sprite = m_SpriteJump;
 		m_Sprite->IndexOf(0);
-		OutputDebugString("jump\n");
 		break;
 	case Action_Jump_Gun:
 		m_Sprite = m_SpriteJump;
 		m_Sprite->IndexOf(1);
-		OutputDebugString("jump gun\n");
 		break;
 	case Action_Climb_Stand:
 		m_Sprite = m_SpriteClimb;

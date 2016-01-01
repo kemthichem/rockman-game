@@ -2,8 +2,6 @@
 #include "MenuState.h"
 #include "Block.h"
 #include "ChangeState.h"
-#include "GameOverState.h"
-#include "WinState.h"
 #include "Config.h"
 #include "Define.h"
 #include "ResourceManager.h"
@@ -157,7 +155,7 @@ void CPLayingGameState::UpdateState()
 	case CHANGE_NEXT:
 		g_Stage++;
 		if (g_Stage > 3) {
-			m_StateManager->ChangeState(new CWinState(m_StateManager));
+			m_StateManager->ChangeState(new CChangeState(m_StateManager));
 		} else {
 			m_StateManager->ChangeState(new CChangeState(m_StateManager));
 		}
@@ -171,7 +169,7 @@ void CPLayingGameState::UpdateState()
 			CPLayingGameState::g_LifeOfRockman = 2;
 			CPLayingGameState::g_Score = 0;
 			CPLayingGameState::g_Stage = 1;
-			m_StateManager->ChangeState(new CGameOverState(m_StateManager));
+			m_StateManager->ChangeState(new CMenuState(m_StateManager));
 		}
 		break;
 	default:

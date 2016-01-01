@@ -17,10 +17,6 @@
 #define  IMAGE_MASTER			"Resources/master.png"
 #define  IMAGE_MENU				"Resources/State/menu_item.png"
 #define  IMAGE_BG_CHANGE_STATE	"Resources/State/start.png"
-#define  IMAGE_BG_ABOUT			"Resources/State/bg_about.jpg"
-#define  IMAGE_BG_GAMEOVER		"Resources/State/bg_gameover.jpg"
-#define  IMAGE_BG_HELP			"Resources/State/bg_help.jpg"
-#define  IMAGE_BG_WIN			"Resources/State/bg_win.jpg"
 
 //background
 #define  IMAGE_BG "Resources/bg.jpg"

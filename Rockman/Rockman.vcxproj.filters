@@ -165,18 +165,6 @@
     <ClCompile Include="ChangeState.cpp">
       <Filter>GameState</Filter>
     </ClCompile>
-    <ClCompile Include="HelpState.cpp">
-      <Filter>GameState</Filter>
-    </ClCompile>
-    <ClCompile Include="GameOverState.cpp">
-      <Filter>GameState</Filter>
-    </ClCompile>
-    <ClCompile Include="About.cpp">
-      <Filter>GameState</Filter>
-    </ClCompile>
-    <ClCompile Include="WinState.cpp">
-      <Filter>GameState</Filter>
-    </ClCompile>
     <ClCompile Include="BulletIceman.cpp">
       <Filter>Item</Filter>
     </ClCompile>
@@ -321,18 +309,6 @@
       <Filter>Item</Filter>
     </ClInclude>
     <ClInclude Include="ChangeState.h">
-      <Filter>GameState</Filter>
-    </ClInclude>
-    <ClInclude Include="HelpState.h">
-      <Filter>GameState</Filter>
-    </ClInclude>
-    <ClInclude Include="GameOverState.h">
-      <Filter>GameState</Filter>
-    </ClInclude>
-    <ClInclude Include="About.h">
-      <Filter>GameState</Filter>
-    </ClInclude>
-    <ClInclude Include="WinState.h">
       <Filter>GameState</Filter>
     </ClInclude>
     <ClInclude Include="BulletIceman.h">

@@ -82,7 +82,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AABBCollisionDetected.cpp" />
-    <ClCompile Include="About.cpp" />
     <ClCompile Include="Beak.cpp" />
     <ClCompile Include="BigEye.cpp" />
     <ClCompile Include="Blader.cpp" />
@@ -104,11 +103,9 @@
     <ClCompile Include="Flea.cpp" />
     <ClCompile Include="FlyingShell.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameOverState.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
     <ClCompile Include="GutsMan.cpp" />
-    <ClCompile Include="HelpState.cpp" />
     <ClCompile Include="IceMan.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Item.cpp" />
@@ -132,11 +129,9 @@
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="utils.cpp" />
     <ClCompile Include="winmain.cpp" />
-    <ClCompile Include="WinState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AABBCollisionDetected.h" />
-    <ClInclude Include="About.h" />
     <ClInclude Include="Beak.h" />
     <ClInclude Include="BigEye.h" />
     <ClInclude Include="Blader.h" />
@@ -159,11 +154,9 @@
     <ClInclude Include="Flea.h" />
     <ClInclude Include="FlyingShell.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="GameOverState.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GamestateManager.h" />
     <ClInclude Include="GutsMan.h" />
-    <ClInclude Include="HelpState.h" />
     <ClInclude Include="IceMan.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Item.h" />
@@ -186,7 +179,6 @@
     <ClInclude Include="SupperCutter.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="utils.h" />
-    <ClInclude Include="WinState.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
