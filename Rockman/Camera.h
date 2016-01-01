@@ -44,7 +44,7 @@ public:
 	D3DXVECTOR2 GetPosCamera();
 	void SetPosCamera(D3DXVECTOR2 _pos);
 	~CCamera(void);
-	void MoveMap();
+	DirectMove MoveMap();
 	void MoveMapY();
 	void MoveMapX();
 	void GetMiddlePoint(int _index, bool *isMiddleX, bool *isMiddelY);

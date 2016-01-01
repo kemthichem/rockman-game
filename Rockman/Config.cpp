@@ -18,7 +18,8 @@ CConfig::CConfig(void)
 
 
 CConfig::~CConfig(void)
-{
+{	
+	delete []m_ArrayConfig;
 }
 
 //CConfig* CConfig::GetInstance()
@@ -44,6 +45,7 @@ float CConfig::ValueOf(int inIDKey)
 		 delete instance;
 		 instance = NULL;
 	 }
+
  }
 
 

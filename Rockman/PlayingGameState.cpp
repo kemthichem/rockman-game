@@ -77,11 +77,10 @@ void CPLayingGameState::Update(CInput* _input,float _time)
 
 
 	if (CCamera::g_IsMoving) {
-		if (rockman->isCollisingDoor) {
-			rockman->TurnRight();
+		if (m_Camera->MoveMap() == DirectMove::DIRECT_X) {
+			rockman->MoveRightWhenMoveMap();
 			rockman->Update(_time, m_Camera, NULL, listOb);
 		}
-		m_Camera->MoveMap();
 	} else {
 		quadTree->Update(m_Camera, _time);
 		rockman->Update(_time, m_Camera, _input, listOb);

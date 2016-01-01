@@ -147,7 +147,6 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	m_isCanClimb = false;
 	m_isCollisionBottom = false;
 	m_IsLadderBottom = false;
-	isCollisingDoor = false;
 	CEntity::Update(_time, _camera, _input, _listObjectInViewPort);
 
 	if (!m_isCanClimb && m_IsClimbing) {
@@ -406,15 +405,14 @@ void CRockman::UpdateCollison(CEntity* _other, float _time) {
 		SetInjured(_other);
 		break;
 	case DOOR1_CUTMAN:
-		isIntersectX = CAABBCollision::IntersectRect(m_Rect, _other->GetRect());
-		if (isIntersectX) {
-			isCollisingDoor = true;
-			if (m_velloc.x > 0)
-			CCamera::g_IsMoving = true;
-			dynamic_cast<CDoor*>(_other)->ActiveDoor();
-			vector<CEntity*> v;
-			dynamic_cast<CDoor*>(_other)->Update(_time, NULL, NULL, v);
-		}
+		//isIntersectX = CAABBCollision::IntersectRect(m_Rect, _other->GetRect());
+		//if (isIntersectX) {
+		//	if (m_velloc.x > 0)
+		//	//CCamera::g_IsMoving = true;
+		//	dynamic_cast<CDoor*>(_other)->ActiveDoor();
+		//	//vector<CEntity*> v;
+		//	//dynamic_cast<CDoor*>(_other)->Update(_time, NULL, NULL, v);
+		//}
 		break;
 	case BLOCK:
 		{
@@ -455,9 +453,16 @@ void CRockman::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,
 				m_velloc.x = 0;
 				m_accel.x = 0;
 				m_pos.x = _other->GetRect().right + 1 ;
-				isCollisingDoor = false;
+				break;
+			} else if (m_directCollion == RIGHT)
+			{
+				m_velloc.x = 0;
+				m_accel.x = 0;
+				m_pos.x = _other->GetRect().left - m_Size.x -1;
+				dynamic_cast<CDoor*>(_other)->ActiveDoor();
+				break;
 			}
-			break;
+			
 		case BLOCK:
 			{ 
 				//Not check collison with block when climbing
@@ -543,7 +548,7 @@ void CRockman::Injunred(bool _isImpactLeft, float _time)
 		return;
 	}
 	m_TimeInjured += _time;
-	m_velloc.x = _isImpactLeft ? 10: -10;
+	m_velloc.x = _isImpactLeft ? 5: -5;
 	
 	m_action = Action_Injured;
 }
@@ -565,6 +570,12 @@ void CRockman::SetKeyDown(int _key)
 void CRockman::SetPos(D3DXVECTOR3 _pos)
 {
 	m_pos = _pos;
+}
+
+void CRockman::MoveRightWhenMoveMap()
+{
+	m_velloc.x = 5.0;
+	m_action = Action_Go;
 }
 
 bool CRockman::m_IsClimbing = false;

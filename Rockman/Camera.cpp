@@ -79,8 +79,6 @@ void CCamera::Update(D3DXVECTOR2 _pos, D3DXVECTOR2 _velloc)
 		return;
 	}
 	{
-
-
 		POINT rPos = {_pos.x , _pos. y};
 		//X
 		if (_velloc.x != 0) {
@@ -94,7 +92,8 @@ void CCamera::Update(D3DXVECTOR2 _pos, D3DXVECTOR2 _velloc)
 			GetMiddlePoint(curIndex, &isCurMiddleX, NULL);
 
 			if (isNextMiddleX || (isHaveNextX && curIndex==m_countPoint-2)) { 
-				m_indexMoveTo = curIndex + 1; m_DirectMove = DIRECT_X;}
+				m_indexMoveTo = curIndex + 1; m_DirectMove = DIRECT_X;
+			}
 
 			if (_velloc.x > 0 && isHaveNextX) {
 				int boundX = isNextMiddleX ? m_arrayPoint[curIndex + 1].x - WIDTH_SCREEN / 2 : m_arrayPoint[curIndex + 1].x;
@@ -165,7 +164,7 @@ updateViewport:
 }
 
 
-void CCamera::MoveMap()
+DirectMove CCamera::MoveMap()
 {
 	g_IsMoving = true;
 	if (m_indexMoveTo != -1) {
@@ -182,6 +181,8 @@ void CCamera::MoveMap()
 
 		g_PosCamera = m_pos;
 	}
+
+	return m_DirectMove;
 }
 
 D3DXVECTOR2 CCamera::GetPosCamera()
@@ -233,7 +234,7 @@ void CCamera::Initialize(POINT *array, int countPoint)
 void CCamera::MoveMapY()
 {
 	char dirY = m_arrayPoint[m_indexMoveTo].y - m_arrayPoint[curIndex].y == 0 ? 0 : (m_arrayPoint[m_indexMoveTo].y - m_arrayPoint[curIndex].y > 0 ? 1 : -1);
-	m_pos.y += dirY * DIS_MOVE;
+	m_pos.y += dirY * CConfig::ValueOf(KEY_CAMERA_MOVE_Y);;
 
 	long temp = dirY == 1 ? m_arrayPoint[m_indexMoveTo].y + OFFSET_MAP_Y + HEIGHT_SCREEN : m_arrayPoint[curIndex].y - OFFSET_MAP_Y;
 	if (m_arrayPoint[curIndex].x == m_arrayPoint[m_indexMoveTo].x && dirY *m_pos.y >= dirY * (temp)) {
@@ -252,7 +253,7 @@ void CCamera::MoveMapX()
 {
 	g_IsMoving = true;
 	//char dirX = m_arrayPoint[m_indexMoveTo].x - m_arrayPoint[curIndex].x == 0 ? 0 : (m_arrayPoint[m_indexMoveTo].x - m_arrayPoint[curIndex].x > 0 ? 1 : -1);
-	m_pos.x += DIS_MOVE;
+	m_pos.x += CConfig::ValueOf(KEY_CAMERA_MOVE_X);
 
 	int compareX = m_indexMoveTo == m_countPoint - 1 ? m_arrayPoint[m_indexMoveTo].x - WIDTH_SCREEN / 2 : m_arrayPoint[m_indexMoveTo].x;
 
@@ -261,12 +262,12 @@ void CCamera::MoveMapX()
 		curIndex = m_indexMoveTo;
 	}
 
-	m_viewPort.left = m_pos.x;
+	/*m_viewPort.left = m_pos.x;
 	m_viewPort.right = m_viewPort.left + WIDTH_SCREEN;
 	m_viewPort.top = m_pos.y;
 	m_viewPort.bottom =m_viewPort.top - HEIGHT_SCREEN;
 
-	g_PosCamera = m_pos;
+	g_PosCamera = m_pos;*/
 }
 
 int CCamera::GetNextIndexX(POINT _pos, float _vX)
