@@ -14,6 +14,7 @@
 #include "Met.h"
 #include "Spine.h"
 #include "FlyingShell.h"
+#include "PicketMan.h"
 #include "QuadTree.h"
 #include "SupperCutter.h"
 #include "Door.h"
@@ -180,6 +181,7 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 	case ID_ENEMY_ROBOT_BLUE:
 		break;
 	case ID_ENEMY_WORKER:
+		object = new CPicketMan(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_BLOCK_TROUBLE_OF_ELEVATOR:
 		break;

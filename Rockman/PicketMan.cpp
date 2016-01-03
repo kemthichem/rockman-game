@@ -1,48 +1,26 @@
+#include "PicketMan.h"
 #include "ResourceManager.h"
-#include "Octopus.h"
 #include "BulletRockman.h"
 #include "Define.h"
 #define TIME_CONVERT (10.0f)
 
-COctopus::COctopus(int _id, D3DXVECTOR3 _pos, bool _isTurnHor)
-{
-	m_Id = _id;
-	m_Type = OCTOPUS;
-	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES),
-		D3DXVECTOR2(910, 296), 3, 1,
-		D3DXVECTOR2(670, 260),
-		D3DXVECTOR2(0,0),
-		D3DXVECTOR2(47,0));
-	m_pos = _pos;
-	m_accel = D3DXVECTOR2(0,0);
-	m_velloc.x = _isTurnHor ? -10 : 0;
-	m_velloc.y = _isTurnHor ? 0 : 10;
-	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
-	UpdateRect();
-
-	/**Attribute Octopus**/
-	m_TimeSpend = 0;
-	m_IsLife = true;
-	m_vellocTemp = D3DXVECTOR2(0,0);
-}
 
 
-COctopus::~COctopus(void)
+CPicketMan::~CPicketMan(void)
 {
 }
 
-COctopus::COctopus(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide, bool _isTurnHor)
+CPicketMan::CPicketMan(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide, bool _isTurnHor)
 {
 	m_Id = objID;
 
-	m_Type = OCTOPUS;
+	m_Type = PICKETMAN;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES),
-		D3DXVECTOR2(445, 146), 3, 1,
-		D3DXVECTOR2(325, 130),
-		D3DXVECTOR2(10, 0),
+		D3DXVECTOR2(450, 71), 3, 1,
+		D3DXVECTOR2(335, 46),
+		D3DXVECTOR2(0, 0),
 		D3DXVECTOR2(10, 0));
-	m_velloc.x = _isTurnHor ? -10 : 0;
-	m_velloc.y = _isTurnHor ? 0 : 10;
+
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 	m_pos = D3DXVECTOR3(posX - m_Size.x/2, posY + m_Size.y/2, DEPTH_MOTION);
 
@@ -58,7 +36,7 @@ COctopus::COctopus(int objID, int typeID, double posX, double posY, int width, i
 	m_rangeItem = 3;
 }
 
-void COctopus::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity* >_listObjectInViewPort)
+void CPicketMan::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity* >_listObjectInViewPort)
 {
 	if (m_IsLife) {
 		if (m_velloc.x == 0 && m_velloc.y == 0) {
@@ -79,7 +57,7 @@ void COctopus::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	}
 }
 
-void COctopus::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
+void CPicketMan::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 {
 	if (m_IsLife) {
 		CEntity::Render(_spriteHandle, _camera);
@@ -91,14 +69,14 @@ void COctopus::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 }
 
 
-void COctopus::SetInjured(CEntity* _other)
+void CPicketMan::SetInjured(CEntity* _other)
 {
-		m_IsCheckCollision = false;
-		CreateItem();
-		m_IsLife = false;
+	m_IsCheckCollision = false;
+	CreateItem();
+	m_IsLife = false;
 }
 
-void COctopus::UpdateCollison(CEntity* _other,float _time)
+void CPicketMan::UpdateCollison(CEntity* _other,float _time)
 {
 	float timeEntry = m_collision->SweptAABB(this,_other,_time);
 	m_directCollision = m_collision->GetDirectCollision();
@@ -108,7 +86,7 @@ void COctopus::UpdateCollison(CEntity* _other,float _time)
 	}
 }
 
-void COctopus::ExecuteCollision(CEntity* _other, DirectCollision m_directCollision, float timeEntry)
+void CPicketMan::ExecuteCollision(CEntity* _other, DirectCollision m_directCollision, float timeEntry)
 {
 	//ListObjectColision
 	switch (_other->GetType())

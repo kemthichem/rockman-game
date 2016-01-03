@@ -42,6 +42,7 @@ void CBulletRockman::UpdateCollison(CEntity* _other,float _time)
 		case CUTMAN:
 		case FLYING_SHELL:
 		case SPINE:
+		case PICKETMAN:
 		case GUTSMAN:
 			isIntersect = CAABBCollision::IntersectRect(m_Rect, _other->GetRect());
 			if (isIntersect) {

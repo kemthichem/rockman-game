@@ -114,6 +114,7 @@
     <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="Met.cpp" />
     <ClCompile Include="Octopus.cpp" />
+    <ClCompile Include="PicketMan.cpp" />
     <ClCompile Include="PlayingGameState.cpp" />
     <ClCompile Include="QuadTree.cpp" />
     <ClCompile Include="QuadTreeNode.cpp" />
@@ -166,6 +167,7 @@
     <ClInclude Include="MenuState.h" />
     <ClInclude Include="Met.h" />
     <ClInclude Include="Octopus.h" />
+    <ClInclude Include="PicketMan.h" />
     <ClInclude Include="PLayingGameState.h" />
     <ClInclude Include="QuadTree.h" />
     <ClInclude Include="QuadTreeNode.h" />

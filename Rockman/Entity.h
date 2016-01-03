@@ -28,6 +28,7 @@ enum ObjectType
 	OCTOPUS,
 	BEAK,
 	FLEA,
+	PICKETMAN,
 	CUTMAN = 100,
 	GUTSMAN,
 	ICEMAN = 110,
