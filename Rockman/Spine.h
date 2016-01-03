@@ -1,7 +1,7 @@
 #ifndef _SPINE_H_
 #define _SPINE_H_
-#include "Entity.h"
-class CSpine : public CEntity
+#include "Enemy.h"
+class CSpine : public CEnemy
 {
 private:
 protected:

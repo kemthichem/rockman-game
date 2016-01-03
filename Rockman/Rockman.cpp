@@ -432,6 +432,8 @@ void CRockman::UpdateCollison(CEntity* _other, float _time) {
 	case OCTOPUS:
 	case BEAK:
 	case FLEA:
+	case FLYING_SHELL:
+	case SPINE:
 	case MET:
 		SetInjured(_other);
 		break;

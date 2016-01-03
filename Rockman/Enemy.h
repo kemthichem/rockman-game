@@ -22,5 +22,6 @@ public:
 
 	virtual void Update(float _time, CCamera * _camare, CInput* _input, vector<CEntity*> _listOb);
 	virtual void Render(LPD3DXSPRITE _spHandle, CCamera* _camera);
+	virtual void SetInjured(CEntity* _other);
 };
 #endif // !ENEMY_H_

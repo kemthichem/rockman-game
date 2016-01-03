@@ -64,12 +64,18 @@ void CEnemy::Update(float _time, CCamera * _camera, CInput* _input, vector<CEnti
 
 void CEnemy::Render(LPD3DXSPRITE _spHandle, CCamera* _camera)
 {
-	if (m_timeExplosive > 0) {
-		CEntity::RenderEachSprite(_spHandle, _camera, m_spriteExplosive, m_pos);
-	}
+	if (m_IsLife) {
+		CEntity::Render(_spHandle, _camera);
+	} else
+	{
+		if (m_timeExplosive > 0) {
+			CEntity::RenderEachSprite(_spHandle, _camera, m_spriteExplosive, m_pos);
+		}
 
-	if (m_item) {
-		m_item->Render(_spHandle,_camera);
+		if (m_item) {
+			m_item->Render(_spHandle,_camera);
+		}
+
 	}
 }
 
@@ -88,4 +94,12 @@ void CEnemy::CreateItem()
 	{
 		m_item = NULL;
 	}
+}
+
+void CEnemy::SetInjured(CEntity* _other)
+{
+	m_IsCheckCollision = false;
+	m_IsLife = false;
+
+	CreateItem();
 }
