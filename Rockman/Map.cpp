@@ -250,6 +250,7 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 		object = new CDoor(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_ENEMY_SNAPPER:
+		object = new CSupperCutter(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	// Beak
 	case ID_ENEMY_WALL_SHOOTER_LEFT:

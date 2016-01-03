@@ -1,8 +1,8 @@
 #ifndef _SUPER_CUTTER_
 #define _SUPER_CUTTER_
 
-#include "Entity.h"
-class CSupperCutter : public CEntity
+#include "Enemy.h"
+class CSupperCutter : public CEnemy
 {
 private:
 protected:
