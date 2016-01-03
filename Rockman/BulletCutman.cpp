@@ -5,7 +5,7 @@
 #include "CutMan.h"
 
 #define TIME_CHANGE_DES (30.0f)
-#define TIME_CHANGE_DIRECT (2.0f)
+#define TIME_CHANGE_DIRECT (30.0f)
 
 #define VELLOC_Y (14.0f)
 
@@ -20,7 +20,7 @@ CBulletCutman::CBulletCutman(D3DXVECTOR3 _pos)
 	m_IsActive = false;
 
 	//**Bullet cutman*/
-	m_TimeChange = m_TimeChangeDirect = 0;
+	m_TimeChangeDirect = 0;
 	m_DesIsCutman = false;
 	m_PosCutman = D3DXVECTOR3(0,0,0);
 }
@@ -37,7 +37,7 @@ void CBulletCutman::UpdateCollison(CEntity* _other,float _time)
 		{
 		case ROCKMAN:
 			(dynamic_cast<CRockman*>(_other))->SetInjured(this, -15);
-			m_IsActive = false;
+			//m_IsActive = false;
 			break;
 		case CUTMAN:
 			if (m_DesIsCutman)
@@ -55,20 +55,13 @@ void CBulletCutman::Update(float _time, CCamera *_camera, CInput *_input, vector
 	if (m_IsActive) {
 		D3DXVECTOR3 posDes = CRockman::g_PosRockman;
 
-		if (m_TimeChange < TIME_CHANGE_DES) {
-			m_TimeChange += _time;
-		} else {
-			posDes = m_PosCutman;
-			m_DesIsCutman = true;
-		}
-
 		if (m_TimeChangeDirect < TIME_CHANGE_DIRECT) {
 			m_TimeChangeDirect += _time;
 		} else {
-			m_velloc.x = m_pos.x > posDes.x ? - CConfig::ValueOf(KEY_CM_VELLOC_X) : CConfig::ValueOf(KEY_CM_VELLOC_X);
-			m_velloc.y = m_pos.y > posDes.y ? -VELLOC_Y : VELLOC_Y;
-			m_TimeChangeDirect = 0;
+			ChangeDirection(D3DXVECTOR2(m_PosCutman.x,m_PosCutman.y));
+			m_DesIsCutman = true;
 		}
+
 		m_Sprite->NextOf(_time, 0,1 );
 		CEntity::Update(_time,_camera,_input,_listObjectInViewport);
 	} 
@@ -83,13 +76,31 @@ void CBulletCutman::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 
 void CBulletCutman::SetPos(D3DXVECTOR3 _pos)
 {
-	m_TimeChangeDirect = m_TimeChange = 0;
+	m_TimeChangeDirect = 0;
 	m_DesIsCutman = false;
 	m_pos = _pos;
+	m_posAttack.x = CRockman::g_PosRockman.x;
+	m_posAttack.y = CRockman::g_PosRockman.y;
+
+	ChangeDirection(m_posAttack);
 	UpdateRect();
 }
 
 void CBulletCutman::SetPosCutman(D3DXVECTOR3 _posCutman)
 {
 	m_PosCutman = _posCutman;
+}
+
+void CBulletCutman::ChangeDirection(D3DXVECTOR2 _posDest)
+{
+	int disX = abs(_posDest.x - m_pos.x);
+	int disY = abs(_posDest.y - m_pos.y);
+
+	char dir = _posDest.y - m_pos.y > 0 ? 1 : -1;
+	m_velloc.y = (double)(dir * CConfig::ValueOf(KEY_CM_VELLOC_Y) * disY);
+
+	char dirX = _posDest.x - m_pos.x > 0 ? 1 : -1;
+	m_velloc.x = dirX * abs(m_velloc.y) * disX / disY;
+
+	m_TimeChangeDirect = 0;
 }

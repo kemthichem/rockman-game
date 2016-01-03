@@ -1,14 +1,15 @@
 #include "ResourceManager.h"
-#include "IceMan.h"
+#include "BoomMan.h"
 #include "Rockman.h"
 #include "PLayingGameState.h"
+#include "Define.h"
 
 #define TIME_INJURED (10.0f)
 #define TIME_WAIT (30.0f)
 
 #define VELLOC_X (10.0f)
 
-CIceMan::CIceMan(int _id, D3DXVECTOR3 _pos)
+CBoomMan::CBoomMan(int _id, D3DXVECTOR3 _pos)
 {
 	m_Id = _id;
 	m_Type = ICEMAN;
@@ -38,8 +39,38 @@ CIceMan::CIceMan(int _id, D3DXVECTOR3 _pos)
 	m_Blood = new CBlood(D3DXVECTOR2(740, 30), 100);
 }
 
+CBoomMan::CBoomMan(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide)
+{
 
-CIceMan::~CIceMan(void)
+	m_Id = objID;
+	m_Type = ICEMAN;
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MASTER), D3DXVECTOR2(870, 480) , 8, 1, D3DXVECTOR2(420, 420));
+	m_accel = D3DXVECTOR2(0,0.0f);	
+
+	/*Iceman*/
+	m_yInit = m_yShot = m_pos.y;
+	m_IsJustJump = false;
+	m_Status = HELLO;
+	m_TimeSpend = 0;
+	m_TimeInjured = 0;
+	m_IsHello = true;
+	m_isTurnLeft = true;
+	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
+	m_pos = D3DXVECTOR3(posX - m_Size.x / 2, posY + m_Size.y / 2, 0);
+	//m_pos.x = CMap::g_widthMap - m_Size.x - 64;
+	UpdateRect();
+	//create list bullet
+	for (int i = 0; i < 5; i++)
+	{
+		CBulletIceman *bullet = new CBulletIceman(D3DXVECTOR3(m_pos.x + m_Size.x/2 - 10, m_pos.y - m_Size.y/2 + 10, m_pos.z));
+		m_ListBullet[i] = bullet;
+	}
+
+	//create blood
+	m_Blood = new CBlood(D3DXVECTOR2(WIDTH_SCREEN - 35, 20), 100);
+}
+
+CBoomMan::~CBoomMan(void)
 {
 	for (int i = 0; i < 5; i++)
 	{
@@ -50,7 +81,7 @@ CIceMan::~CIceMan(void)
 		delete m_Blood;
 }
 
-void CIceMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntity* > _listObjectInViewPort)
+void CBoomMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntity* > _listObjectInViewPort)
 {
 	if (m_TimeSpend < TIME_WAIT) {
 			m_TimeSpend += _time;
@@ -127,7 +158,7 @@ void CIceMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntit
 	}
 }
 
-void CIceMan::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
+void CBoomMan::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 {
 	CEntity::RenderEachSprite(_spriteHandle, _camera, m_Sprite, m_pos);
 
@@ -140,7 +171,7 @@ void CIceMan::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 	m_Blood->Render(_spriteHandle, _camera);
 }
 
-void CIceMan::UpdateSprite(float _time)
+void CBoomMan::UpdateSprite(float _time)
 {
 	switch (m_Status)
 	{
@@ -165,7 +196,7 @@ void CIceMan::UpdateSprite(float _time)
 	}
 }
 
-void CIceMan::Shot()
+void CBoomMan::Shot()
 {
 		for (int i = 0; i < 5; i++)
 		{
@@ -180,7 +211,7 @@ void CIceMan::Shot()
 		}
 }
 
-void CIceMan::SetInjured(CEntity* _other)
+void CBoomMan::SetInjured(CEntity* _other)
 {
 	if (m_TimeInjured == 0) {
 		m_Blood->ChangeBlood(-10);
@@ -188,7 +219,7 @@ void CIceMan::SetInjured(CEntity* _other)
 	}
 }
 
-void CIceMan::Jump()
+void CBoomMan::Jump()
 {
 	if (m_Status == JUMP) return;
 	m_velloc.y = 100.0f;
@@ -196,7 +227,7 @@ void CIceMan::Jump()
 	m_Status = JUMP;
 }
 
-void CIceMan::UpdateCollison(CEntity* _other,float _time) {
+void CBoomMan::UpdateCollison(CEntity* _other,float _time) {
 	switch (_other->GetType())
 	{
 	case ROCKMAN:

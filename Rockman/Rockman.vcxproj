@@ -87,6 +87,7 @@
     <ClCompile Include="Blader.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="Blood.cpp" />
+    <ClCompile Include="BoomMan.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletCutman.cpp" />
     <ClCompile Include="BulletGutsman.cpp" />
@@ -106,7 +107,6 @@
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
     <ClCompile Include="GutsMan.cpp" />
-    <ClCompile Include="IceMan.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Ladder.cpp" />
@@ -138,6 +138,7 @@
     <ClInclude Include="Blader.h" />
     <ClInclude Include="Block.h" />
     <ClInclude Include="Blood.h" />
+    <ClInclude Include="BoomMan.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletCutman.h" />
     <ClInclude Include="BulletGutsman.h" />
@@ -158,7 +159,6 @@
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GamestateManager.h" />
     <ClInclude Include="GutsMan.h" />
-    <ClInclude Include="IceMan.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Ladder.h" />

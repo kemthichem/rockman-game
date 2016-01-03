@@ -4,7 +4,7 @@
 #include "Rockman.h"
 #include "CutMan.h"
 #include "GutsMan.h"
-#include "IceMan.h"
+#include "BoomMan.h"
 
 CBulletRockman::CBulletRockman(D3DXVECTOR3 _pos)
 {

@@ -5,10 +5,12 @@
 class CBulletCutman : public CBullet
 {
 private:
-	float m_TimeChange;
 	float m_TimeChangeDirect;
 	bool m_DesIsCutman;
+	D3DXVECTOR2 m_posAttack;
 	D3DXVECTOR3 m_PosCutman;
+
+	void ChangeDirection(D3DXVECTOR2 _posAttack);
 protected:
 	virtual void UpdateCollison(CEntity* ,float);
 

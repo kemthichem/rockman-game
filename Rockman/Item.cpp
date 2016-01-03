@@ -47,6 +47,7 @@ CItem::CItem(D3DXVECTOR3 _pos, Type _type)
 	m_velloc = D3DXVECTOR2(0, 5.0f);
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 
+	UpdateRect();
 	//Item
 	m_IsActive = true;
 }
@@ -58,6 +59,7 @@ CItem::CItem()
 
 CItem::CItem(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide, Type _type)
 {
+	m_Id = objID;
 	m_Type = ITEM;
 	m_typeItem = _type;
 
@@ -73,7 +75,7 @@ CItem::CItem(int objID, int typeID, double posX, double posY, int width, int hei
 		break;
 	case MANA:
 		coutRow = 2;
-		posDst = D3DXVECTOR2(34,37);
+		posDst = D3DXVECTOR2(36,37);
 		posSrc = D3DXVECTOR2(0,25);
 		break;
 	case BLOOD_SMALL:
@@ -82,7 +84,7 @@ CItem::CItem(int objID, int typeID, double posX, double posY, int width, int hei
 		break;
 	case BLOOD_BIG:
 		coutRow = 2;
-		posDst = D3DXVECTOR2(30,54);
+		posDst = D3DXVECTOR2(32,54);
 		posSrc = D3DXVECTOR2(0,38);
 		break;
 	default:
@@ -99,6 +101,8 @@ CItem::CItem(int objID, int typeID, double posX, double posY, int width, int hei
 
 	m_accel = D3DXVECTOR2(0,-15.0f);
 	m_velloc = D3DXVECTOR2(0, 5.0f);
+
+	UpdateRect();
 
 	//Item
 	m_IsActive = true;

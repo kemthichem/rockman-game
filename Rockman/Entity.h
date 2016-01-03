@@ -17,6 +17,7 @@ enum ObjectType
 	ROCKMAN = 0,
 	DOOR1_CUTMAN,
 	RAMIE,
+	ITEM,
 	SUPER_CUTTER,
 	FLYING_SHELL,
 	BIGEYE,
@@ -31,7 +32,7 @@ enum ObjectType
 	GUTSMAN,
 	ICEMAN = 110,
 	BULLET,
-	ITEM
+	
 };
 
 enum TypeID{

@@ -7,7 +7,7 @@
 #include "Cutman.h"
 #include "ScrewBomber.h"
 #include "Octopus.h"
-#include "IceMan.h"
+#include "BoomMan.h"
 #include "GutsMan.h"
 #include "Flea.h"
 #include "Beak.h"
@@ -215,8 +215,10 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 		object = new CCutMan(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_BOSSBOOM:
+		object = new CBoomMan(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_BOSSRUT:
+		object = new CGutsMan(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_ENEMY_MACHINE_AUTO_BLUE_BOTTOM:
 		break;
@@ -231,15 +233,19 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 		object = new CDoor(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_DOOR1_GUTSMAN:
+		object = new CDoor(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_DOOR1_BOOMMAN:
+		object = new CDoor(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_DOOR2_BOOMMAN:
+		//object = new CDoor(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_DOOR2_CUTMAN:
 		object = new CDoor(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_DOOR2_GUTSMAN:
+		object = new CDoor(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_ENEMY_SNAPPER:
 		break;

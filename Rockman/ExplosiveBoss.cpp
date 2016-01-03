@@ -36,7 +36,7 @@ void CExplosiveBoss::Update(float _deltaTime, CCamera *_camera)
 
 	m_spriteExplosive->Next(_deltaTime);
 	m_timeAnimation = 0;
-	m_dis += 2;
+	m_dis += 1;
 }
 
 void CExplosiveBoss::Render(LPD3DXSPRITE _spriteHandler, CCamera *_camera)

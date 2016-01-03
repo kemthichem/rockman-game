@@ -1,6 +1,7 @@
 #include "ResourceManager.h"
 #include "GutsMan.h"
 #include "PLayingGameState.h"
+#include "Define.h"
 
 #define TIME_INJURED (10.0f)
 #define TIME_WAIT (25.0f)
@@ -26,13 +27,41 @@ CGutsMan::CGutsMan(int _id, D3DXVECTOR3 _pos)
 	m_TimeShot = 0;
 	m_isTurnLeft = true;
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
-	m_pos.x = CMap::g_widthMap - m_Size.x * 1.5;
+	//m_pos.x = CMap::g_widthMap - m_Size.x * 1.5;
 	UpdateRect();
 
 	//create list bullet
 	m_Bullet = new CBulletGutsman(D3DXVECTOR3(_pos.x + m_Size.x/2 - 10, _pos.y - m_Size.y/2 + 10, _pos.z));
 	//create blood
 	m_Blood = new CBlood(D3DXVECTOR2(740, 30), 100);
+}
+
+
+CGutsMan::CGutsMan(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide)
+{
+	m_Id = objID;
+	m_Type = GUTSMAN;
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MASTER), D3DXVECTOR2(880, 210) , 9, 1, D3DXVECTOR2(250,140), D3DXVECTOR2(0,0), D3DXVECTOR2(0,0));
+	m_accel = D3DXVECTOR2(0,0);
+
+	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
+	UpdateRect();
+
+	/*Gustman*/	
+	m_yInit =  m_pos.y;
+	m_Status = GStand;
+	m_TimeInjured = m_TimeChange = 0;
+	m_TimeShot = 0;
+	m_isTurnLeft = true;
+	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
+	m_pos = D3DXVECTOR3(posX - m_Size.x / 2, posY + m_Size.y / 2, 0);
+	//m_pos.x = CMap::g_widthMap - m_Size.x * 1.5;
+	UpdateRect();
+
+	//create list bullet
+	m_Bullet = new CBulletGutsman(D3DXVECTOR3(m_pos.x + m_Size.x/2 - 10, m_pos.y - m_Size.y/2 + 10, m_pos.z));
+	//create blood
+	m_Blood = new CBlood(D3DXVECTOR2(WIDTH_SCREEN - 35, 20), 100);
 }
 
 

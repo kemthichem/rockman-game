@@ -37,6 +37,7 @@ CRockman::CRockman(D3DXVECTOR3 _pos)
 
 	m_Size = m_SizeInit = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 	m_SizeClimb = D3DXVECTOR2(m_SpriteClimb->GetWidthRectSprite() - 4, m_SpriteClimb->GetHeightRectSprite());
+	m_SizeSmall = D3DXVECTOR2(m_SpriteJump->GetWidthRectSprite() - 14, m_SpriteJump->GetHeightRectSprite());
 	UpdateRect();
 	m_PosXClimb = -1;
 	m_IsClimbing = false;
@@ -145,7 +146,13 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 			m_accel.y = 0;
 			m_action = Action_Climb_Stand;
 		}
-	}
+	}/* else if (!m_isCollisionBottom && m_velloc.y < 0) {
+		m_Size = m_SizeJump;
+
+	} else {
+		m_Size = m_SizeInit;
+
+	}*/
 	if (m_dirInjuring != 0) {
 		Injunred(m_dirInjuring > 0, _time);
 	}
@@ -163,7 +170,6 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	if (!m_isCanClimb && m_IsClimbing) {
 		m_IsClimbing = false;
 	}
-
 
 	//Check keydown
 	if (_input) {
@@ -435,7 +441,7 @@ void CRockman::UpdateCollison(CEntity* _other, float _time) {
 		break;
 	case BLOCK:
 		{
-			isIntersectX = CAABBCollision::IntersectRectX(m_Rect, _other->GetRect());
+			isIntersectX = CAABBCollision::IntersectRect(m_Rect, _other->GetRect());
 			if ((m_dirInjuring || !m_IsClimbing) && isIntersectX && m_velloc.y == 0) {
 				if (m_Rect.left < _other->GetRect().left && m_Rect.right > _other->GetRect().left) {
 					m_velloc.x = 0;

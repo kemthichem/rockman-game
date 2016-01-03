@@ -1,5 +1,5 @@
-#ifndef _ICEMAN_H_
-#define _ICEMAN_H_
+#ifndef _BOOMMAN_H_
+#define _BOOMMAN_H_
 #include "Entity.h"
 #include "Blood.h"
 #include "BulletIceman.h"
@@ -11,7 +11,7 @@ enum IceManStatus {
 	JUMP
 };
 
-class CIceMan : public CEntity
+class CBoomMan : public CEntity
 {
 private:
 	IceManStatus m_Status;
@@ -31,8 +31,9 @@ private:
 protected:
 	virtual void UpdateCollison(CEntity* _other,float _time);
 public:
-	CIceMan(int _id, D3DXVECTOR3 _pos);
-	~CIceMan(void);
+	CBoomMan(int _id, D3DXVECTOR3 _pos);
+	CBoomMan(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide);
+	~CBoomMan(void);
 
 	//method
 	virtual void Update(float , CCamera *, CInput *,  vector<CEntity* >);

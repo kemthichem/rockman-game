@@ -84,7 +84,7 @@ public:
 	void SetPos(D3DXVECTOR3 _pos);
 	static D3DXVECTOR2 g_PosRockman;
 	static bool m_IsClimbing;
-
+	D3DXVECTOR2 m_SizeSmall;
 
 	/***Cheat***/
 	void CheatBlood();
