@@ -2,8 +2,8 @@
 #include "ScrewBomber.h"
 #include "Define.h"
 
-#define TIME_CONVERT (20.0f)
-#define V_BULLET (50.0f)
+#define TIME_CONVERT (12.0f)
+#define V_BULLET (20.0f)
 
 CScrewBomber::CScrewBomber(int _id, D3DXVECTOR3 _pos, bool _isUp)
 {
@@ -82,7 +82,7 @@ CScrewBomber::CScrewBomber(int objID, int typeID, double posX, double posY, int 
 
 	/**Attribute ScrewBomber**/
 	m_Status = Wait;
-	m_TimeSpend = 0;
+	m_TimeSpend = TIME_CONVERT;
 
 	UpdateRect();
 
