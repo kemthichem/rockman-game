@@ -141,7 +141,7 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 		break;
 	// FIX-ME UP - RIGHT
 	case ID_ENEMY_EYE_RED_UP:
-		object = new COctopus(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide, true);
+		object = new COctopus(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide, false);
 		break;
 	case ID_ENEMY_EYE_RED_RIGHT:
 		object = new COctopus(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
