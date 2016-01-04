@@ -103,3 +103,11 @@ void CEnemy::SetInjured(CEntity* _other)
 
 	CreateItem();
 }
+
+void CEnemy::GetRectInit(RECT &r)
+{
+	r.left = m_posOrg.x;
+	r.top = m_posOrg.y;
+	r.right = m_posOrg.x + m_Size.x;
+	r.bottom = m_posOrg.y - m_Size.y;
+}

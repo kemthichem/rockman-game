@@ -116,5 +116,5 @@ bool CBlader::IsObtainCollision(CEntity* _other)
 
 void CBlader::Reset()
 {
-
+	CEnemy::Reset();
 }

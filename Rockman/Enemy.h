@@ -7,15 +7,16 @@ class CEnemy : public CEntity
 {
 private:
 	long m_timeExplosive;
+	
 protected:
 	bool m_IsLife;
-	D3DXVECTOR3 m_posOrg;
 	CSprite *m_spriteExplosive;
-
+	D3DXVECTOR3 m_posOrg;
 	int m_rangeItem;
 	CItem* m_item;
 	void CreateItem();
 public:
+	void GetRectInit(RECT &r);
 	virtual void Reset();
 	CEnemy(void);
 	virtual ~CEnemy(void);
