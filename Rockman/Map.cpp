@@ -136,9 +136,10 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 		break;
 	// FIX-ME UP - RIGHT
 	case ID_ENEMY_EYE_RED_UP:
-		object = new COctopus(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
+		object = new COctopus(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide, true);
 		break;
 	case ID_ENEMY_EYE_RED_RIGHT:
+		object = new COctopus(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_ENEMY_FISH_ORANGE:
 		break;
@@ -165,6 +166,7 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 		object = new CFlea(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_ENEMY_MACHINE_AUTO_ORGANGE_TOP:
+		object = new CScrewBomber(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide, false);
 		break;
 	// BigEye
 	case ID_ENEMY_ROBOT_RED:
@@ -222,7 +224,7 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 	case ID_BOSSRUT:
 		object = new CGutsMan(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
-	case ID_ENEMY_MACHINE_AUTO_BLUE_BOTTOM:
+	case ID_ENEMY_MACHINE_AUTO_BLUE_BOTTOM:		
 		break;
 	case ID_ENEMY_MACHINE_AUTO_ORGANGE_BOTT:
 		object = new CScrewBomber(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);

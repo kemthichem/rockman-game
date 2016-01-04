@@ -37,10 +37,10 @@ COctopus::COctopus(int objID, int typeID, double posX, double posY, int width, i
 
 	m_Type = OCTOPUS;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES),
-		D3DXVECTOR2(445, 146), 3, 1,
-		D3DXVECTOR2(325, 130),
-		D3DXVECTOR2(10, 0),
-		D3DXVECTOR2(10, 0));
+		D3DXVECTOR2(455, 146), 3, 1,
+		D3DXVECTOR2(336, 130),
+		D3DXVECTOR2(0, 0),
+		D3DXVECTOR2(23, 0));
 	m_velloc.x = _isTurnHor ? -10 : 0;
 	m_velloc.y = _isTurnHor ? 0 : 10;
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
