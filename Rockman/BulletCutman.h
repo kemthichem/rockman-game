@@ -13,6 +13,7 @@ private:
 	void ChangeDirection(D3DXVECTOR2 _posAttack);
 protected:
 	virtual void UpdateCollison(CEntity* ,float);
+	virtual bool IsObtainCollision(CEntity* _other);
 
 public:
 	CBulletCutman(D3DXVECTOR3 _pos);

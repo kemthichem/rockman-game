@@ -4,15 +4,12 @@
 #include "Rockman.h"
 #include "CutMan.h"
 
-#define TIME_CHANGE_DES (30.0f)
-#define TIME_CHANGE_DIRECT (30.0f)
-
-#define VELLOC_Y (14.0f)
+#define TIME_CHANGE_DIRECT (15.0f)
 
 CBulletCutman::CBulletCutman(D3DXVECTOR3 _pos)
 {
 	m_Type = BULLET;
-	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MASTER), D3DXVECTOR2(269,63), 2, 1, D3DXVECTOR2(237,49));
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MASTER), D3DXVECTOR2(28,51), 2, 1, D3DXVECTOR2(0,37));
 	m_pos = _pos;
 	m_accel = D3DXVECTOR2(0,0);
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
@@ -40,8 +37,10 @@ void CBulletCutman::UpdateCollison(CEntity* _other,float _time)
 			//m_IsActive = false;
 			break;
 		case CUTMAN:
-			if (m_DesIsCutman)
+			if (m_DesIsCutman) {
 				m_IsActive = false;
+				m_pos = m_PosCutman;
+			}
 			break;
 		default:
 			break;
@@ -55,11 +54,21 @@ void CBulletCutman::Update(float _time, CCamera *_camera, CInput *_input, vector
 	if (m_IsActive) {
 		D3DXVECTOR3 posDes = CRockman::g_PosRockman;
 
-		if (m_TimeChangeDirect < TIME_CHANGE_DIRECT) {
+		if (m_TimeChangeDirect < CConfig::ValueOf(KEY_CM_BULLET_TIME_CHANGE_DIRECT)) {
 			m_TimeChangeDirect += _time;
+
+
+			//change direct to back cutman
+			if (m_DesIsCutman ) {
+				ChangeDirection(D3DXVECTOR2(m_PosCutman.x, m_PosCutman.y));
+			}
+
 		} else {
-			ChangeDirection(D3DXVECTOR2(m_PosCutman.x,m_PosCutman.y));
-			m_DesIsCutman = true;
+			if (!m_DesIsCutman) {
+				ChangeDirection(D3DXVECTOR2(m_PosCutman.x, m_PosCutman.y));
+				m_TimeChangeDirect = 0;
+				m_DesIsCutman = true;
+			}
 		}
 
 		m_Sprite->NextOf(_time, 0,1 );
@@ -96,11 +105,24 @@ void CBulletCutman::ChangeDirection(D3DXVECTOR2 _posDest)
 	int disX = abs(_posDest.x - m_pos.x);
 	int disY = abs(_posDest.y - m_pos.y);
 
-	char dir = _posDest.y - m_pos.y > 0 ? 1 : -1;
-	m_velloc.y = (double)(dir * CConfig::ValueOf(KEY_CM_VELLOC_Y) * disY);
+	char dirY = _posDest.y - m_pos.y > 0 ? 1 : -1;
+	m_velloc.y = (double)(dirY * CConfig::ValueOf(KEY_CM_VELLOC_Y));
 
 	char dirX = _posDest.x - m_pos.x > 0 ? 1 : -1;
 	m_velloc.x = dirX * abs(m_velloc.y) * disX / disY;
+	if (abs(m_velloc.x) > abs(m_velloc.y)) {
+		m_velloc.x = dirX * CConfig::ValueOf(KEY_CM_VELLOC_Y);
+		m_velloc.y = dirY * abs(m_velloc.x * disY / disX);
+	} else {
+		m_velloc.y = dirY * CConfig::ValueOf(KEY_CM_VELLOC_Y);
+		m_velloc.x = dirX * abs(m_velloc.y * disX / disY);
+	}
+}
 
-	m_TimeChangeDirect = 0;
+bool CBulletCutman::IsObtainCollision(CEntity* _other)
+{
+	if (_other->GetType() == ROCKMAN || _other->GetType() == CUTMAN) {
+		return true;
+	}
+	return false;
 }

@@ -33,8 +33,13 @@ CMap::CMap(){
 CMap::~CMap()
 {
 	//delete list object
-	for(int i = 0; i < m_ListObjects.size(); ++i)
-		delete m_ListObjects[i];
+	int size = m_ListObjects.size();
+	for(int i = 0; i < size; ++i) {
+		if (m_ListObjects[i]) {
+			delete m_ListObjects[i];
+			m_ListObjects[i] = NULL;
+		}
+	}
 	m_ListObjects.clear();
 
 	//delete m_ArrayMapTile
