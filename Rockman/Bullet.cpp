@@ -34,7 +34,6 @@ void CBullet::UpdateCollison(CEntity* _other,float _time)
 	{
 	case ROCKMAN:
 		this->m_IsActive = false;
-		m_pos = m_posInit;
 		(dynamic_cast<CRockman*>(_other))->SetInjured(this);
 		break;
 	default:
@@ -51,16 +50,14 @@ void CBullet::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnti
 {
 	if (m_IsActive) {
 		CEntity::Update(_time,_camera,_input,_listObjectInViewport);
-		/*} else {
+	} else {
 		m_pos = m_posInit;
-		}*/
+	}
 
-		if(m_Rect.left < _camera->m_viewPort.left || m_Rect.right > _camera->m_viewPort.right 
-			|| m_Rect.top > _camera->m_viewPort.top || m_Rect.bottom < _camera->m_viewPort.bottom)
-		{
-			m_IsActive = false;
-			m_pos = m_posInit;
-		}
+	if(m_Rect.left < _camera->m_viewPort.left || m_Rect.right > _camera->m_viewPort.right 
+		|| m_Rect.top > _camera->m_viewPort.top || m_Rect.bottom < _camera->m_viewPort.bottom)
+	{
+		m_IsActive = false;
 	}
 }
 

@@ -1,7 +1,6 @@
 #include "ResourceManager.h"
 #include "Octopus.h"
 #include "BulletRockman.h"
-#include "Rockman.h"
 #include "Define.h"
 #define TIME_CONVERT (10.0f)
 
@@ -62,22 +61,17 @@ COctopus::COctopus(int objID, int typeID, double posX, double posY, int width, i
 void COctopus::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity* >_listObjectInViewPort)
 {
 	if (m_IsLife) {
-		bool isUpdate = false;
-		D3DXVECTOR3 posRockMan = CRockman::g_PosRockman;
-		isUpdate = abs(m_pos.x - posRockMan.x) < 50 || abs(m_pos.y - posRockMan.y) < 50;
-		if (isUpdate) {
-			if (m_velloc.x == 0 && m_velloc.y == 0) {
-				if (m_TimeSpend < TIME_CONVERT) {
-					m_TimeSpend += _time;				
-				} else {
-					m_velloc = m_vellocTemp * -1;
-					m_TimeSpend = 0;
-				}
+		if (m_velloc.x == 0 && m_velloc.y == 0) {
+			if (m_TimeSpend < TIME_CONVERT) {
+				m_TimeSpend += _time;				
+			} else {
+				m_velloc = m_vellocTemp * -1;
+				m_TimeSpend = 0;
 			}
-
-			m_Sprite->NextOf(_time, 0, 2);
-			CEntity::Update(_time, _camera, _input,_listObjectInViewPort);
 		}
+
+		m_Sprite->NextOf(_time, 0, 2);
+		CEntity::Update(_time, _camera, _input,_listObjectInViewPort);
 
 	} else {
 		//Update item

@@ -3,7 +3,6 @@
 #include "Entity.h"
 #include "Blood.h"
 #include "BulletCutman.h"
-#include "ExplosiveBoss.h"
 
 enum Status {
 	StandNormal,
@@ -27,8 +26,7 @@ private:
 	int m_yInit;
 	bool m_IsJustJump;
 	bool m_IsShotting;
-	CExplosiveBoss* m_Explosive;
-	bool m_isExplosive;
+
 	//Method
 	void UpdateSprite(float _time);
 	void Shot();

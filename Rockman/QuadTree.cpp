@@ -220,20 +220,13 @@ void CQuadTree::HeldObjectInScreen(vector<CEntity*>& listObject, RECT rScreen)
 	int size = listObject.size();
 	for (int i = 0; i < size; i++)
 	{
-		bool isRemove = true;
-
-		if (listObject[i]->GetType() > SUPER_CUTTER && listObject[i]->GetType() < CUTMAN) { //Enemy
+		if (listObject[i]->GetType() > 0 && !IsObjectInRect(listObject[i], rScreen)) {
 			CEnemy *enemy = dynamic_cast<CEnemy*> (listObject[i]);
-			if(enemy) {
-				RECT r = { 0 };
-				enemy->GetRectInit(r);
-				isRemove = !CAABBCollision::IntersectRect(r, rScreen) && !IsObjectInRect(listObject[i], rScreen);
-				if (isRemove)
-					enemy->Reset();
-			}
+			if(enemy)
+				enemy->Reset();
 		}
 
-		if (isRemove) {
+		if (listObject[i]->GetType() < 0 || !IsObjectInRect(listObject[i], rScreen)) {
 			listObject.erase(listObject.begin() + i);
 			i--;
 			size--;

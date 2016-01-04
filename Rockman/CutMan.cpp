@@ -4,8 +4,8 @@
 #include "PLayingGameState.h"
 #include "Define.h"
 
-#define TIME_INJURED (8.0f)
-#define TIME_WAIT (15.0f)
+#define TIME_INJURED (10.0f)
+#define TIME_WAIT (30.0f)
 #define TIME_SHOT (2.0f)
 
 #define VELLOC_X (10.0f)
@@ -49,9 +49,6 @@ CCutMan::CCutMan(int objID, int typeID, double posX, double posY, int width, int
 	m_velloc.x = 0;
 	m_accel.y = -7.0f;
 
-	m_Explosive = new CExplosiveBoss(new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_EXPLOSIVE), D3DXVECTOR2(112, 40), 7, 1, D3DXVECTOR2(0,25)));
-	m_isExplosive = false;
-
 	m_yInit = m_pos.y;
 	m_IsJustJump = false;
 	m_Status = StandHaveGun;
@@ -79,8 +76,6 @@ CCutMan::~CCutMan(void)
 
 void CCutMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntity* > _listObjectInViewPort)
 {
-	if (m_isExplosive) {m_Explosive->Update(_time, _camera);return;}
-
 	if (m_TimeSpend < TIME_WAIT) {
 		m_TimeSpend += _time;
 	} else
@@ -142,10 +137,8 @@ void CCutMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntit
 	}
 
 	UpdateSprite(_time);
-	if (m_Blood->IsOver()) {
-		m_isExplosive = true;
-		m_Explosive->Explosive(m_pos, ChangeState::CHANGE_NEXT);
-	}
+	if (m_Blood->IsOver())
+		CPLayingGameState::g_ChangeState = ChangeState::CHANGE_NEXT;
 
 	//Update bullet
 	m_Bullet->SetPosCutman(m_pos);
@@ -155,8 +148,6 @@ void CCutMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntit
 
 void CCutMan::Render(LPD3DXSPRITE _sp, CCamera* _cam)
 {
-	if (m_isExplosive) {m_Explosive->Render(_sp, _cam);return;}
-
 	CEntity::RenderEachSprite(_sp, _cam, m_Sprite, m_pos);
 
 	m_Bullet->Render(_sp, _cam);
