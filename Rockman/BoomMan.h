@@ -3,6 +3,7 @@
 #include "Entity.h"
 #include "Blood.h"
 #include "BulletIceman.h"
+#include "ExplosiveBoss.h"
 
 enum IceManStatus {
 	HELLO,
@@ -23,6 +24,9 @@ private:
 	bool m_IsJustJump;
 	int m_yShot;
 	bool m_IsHello;
+
+	CExplosiveBoss* m_Explosive;
+	bool m_isExplosive;
 
 	/*Method*/
 	void UpdateSprite(float _time);

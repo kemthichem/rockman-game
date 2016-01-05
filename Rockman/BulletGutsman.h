@@ -9,7 +9,7 @@ private:
 	void Throw(CEntity* _other);
 protected:
 	virtual void UpdateCollison(CEntity* ,float);
-
+	virtual bool IsObtainCollision(CEntity* _other);
 public:
 	CBulletGutsman(D3DXVECTOR3 _pos);
 	~CBulletGutsman(void);

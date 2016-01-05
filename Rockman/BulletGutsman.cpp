@@ -4,7 +4,7 @@
 #include "Rockman.h"
 #include "GutsMan.h"
 
-#define VELLOC (35.0f)
+#define VELLOC (20.0f)
 
 CBulletGutsman::CBulletGutsman(D3DXVECTOR3 _pos)
 {
@@ -87,4 +87,12 @@ void CBulletGutsman::Throw(CEntity* _other)
 	m_accel.y = 0;
 
 	(dynamic_cast<CGutsMan*>(_other))->SetThrow(true);
+}
+
+bool CBulletGutsman::IsObtainCollision(CEntity* _other)
+{
+	if (_other->GetType() == ROCKMAN || _other->GetType() == GUTSMAN) {
+		return true;
+	}
+	return false;
 }

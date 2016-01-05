@@ -1,7 +1,7 @@
 #ifndef _MET_H_
 #define _MET_H_
-#include "Entity.h"
-class CMet : public CEntity
+#include "Enemy.h"
+class CMet : public CEnemy
 {
 private:
 protected:

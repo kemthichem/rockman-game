@@ -65,6 +65,9 @@ CBoomMan::CBoomMan(int objID, int typeID, double posX, double posY, int width, i
 		m_ListBullet[i] = bullet;
 	}
 
+	m_Explosive = new CExplosiveBoss(new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_EXPLOSIVE), D3DXVECTOR2(112, 40), 7, 1, D3DXVECTOR2(0,25)));
+	m_isExplosive = false;
+
 	//create blood
 	m_Blood = new CBlood(D3DXVECTOR2(WIDTH_SCREEN - 35, 20), 100);
 }
@@ -78,10 +81,17 @@ CBoomMan::~CBoomMan(void)
 
 	if (m_Blood)
 		delete m_Blood;
+
+	if (m_Explosive) {
+		delete m_Explosive;
+		m_Explosive = NULL;
+	}
 }
 
 void CBoomMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntity* > _listObjectInViewPort)
 {
+	if (m_isExplosive) {m_Explosive->Update(_time, _camera);return;}
+
 	if (m_TimeSpend < TIME_WAIT) {
 			m_TimeSpend += _time;
 	} else
@@ -148,8 +158,11 @@ void CBoomMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEnti
 
 	UpdateSprite(_time);
 
-	if (m_Blood->IsOver())
-		CPLayingGameState::g_ChangeState = ChangeState::CHANGE_NEXT;
+	if (m_Blood->IsOver()) {
+		m_isExplosive = true;
+		m_Explosive->Explosive(m_pos, ChangeState::CHANGE_NEXT);
+	}
+
 	//Update bullet
 	for (int i = 0; i < 5; i++)
 	{
@@ -159,6 +172,7 @@ void CBoomMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEnti
 
 void CBoomMan::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 {
+	if (m_isExplosive) {m_Explosive->Render(_spriteHandle, _camera);return;}
 	CEntity::RenderEachSprite(_spriteHandle, _camera, m_Sprite, m_pos);
 
 	//Render bullet

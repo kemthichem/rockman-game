@@ -58,6 +58,9 @@ CGutsMan::CGutsMan(int objID, int typeID, double posX, double posY, int width, i
 	//m_pos.x = CMap::g_widthMap - m_Size.x * 1.5;
 	UpdateRect();
 
+	m_Explosive = new CExplosiveBoss(new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_EXPLOSIVE), D3DXVECTOR2(112, 40), 7, 1, D3DXVECTOR2(0,25)));
+	m_isExplosive = false;
+
 	//create list bullet
 	m_Bullet = new CBulletGutsman(D3DXVECTOR3(m_pos.x + m_Size.x/2 - 10, m_pos.y - m_Size.y/2 + 10, m_pos.z));
 	//create blood
@@ -67,18 +70,35 @@ CGutsMan::CGutsMan(int objID, int typeID, double posX, double posY, int width, i
 
 CGutsMan::~CGutsMan(void)
 {
+	if (m_Bullet) {
+		delete m_Bullet;
+		m_Bullet = NULL;
+	}
+
+	if (m_Blood) {
+		delete m_Blood;
+		m_Blood = NULL;
+	}
+
+	if (m_Explosive) {
+		delete m_Explosive;
+		m_Explosive = NULL;
+	}
 }
 
 void CGutsMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntity* > _listObjectInViewPort)
 {
+	if (m_isExplosive) {m_Explosive->Update(_time, _camera);return;}
+
 	if (m_TimeChange < TIME_WAIT) {
 		m_TimeChange += _time;
 	} else {
 		m_TimeChange = 0;
 		Jump();
+		Shot();
 	}
 
-	CEntity::Update(_time, _camera, _input, _listObjectInViewPort);
+	
 	if (m_pos.y <= m_yInit) {
 		m_pos.y = m_yInit;
 		m_velloc.y = 0;
@@ -96,6 +116,7 @@ void CGutsMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEnti
 			}
 		}
 	}
+	CEntity::Update(_time, _camera, _input, _listObjectInViewPort);
 	//Shot
 
 	//When injured
@@ -108,8 +129,10 @@ void CGutsMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEnti
 		}
 	}
 	UpdateSprite(_time);
-	if (m_Blood->IsOver())
-		CPLayingGameState::g_ChangeState = ChangeState::CHANGE_NEXT;
+	if (m_Blood->IsOver()) {
+		m_isExplosive = true;
+		m_Explosive->Explosive(m_pos, ChangeState::CHANGE_NEXT);
+	}
 
 	//Update bullet
 	m_Bullet->Update(_time, _camera, _input, _listObjectInViewPort);
@@ -117,6 +140,8 @@ void CGutsMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEnti
 
 void CGutsMan::Render(LPD3DXSPRITE _sp, CCamera* _cam)
 {
+	if (m_isExplosive) {m_Explosive->Render(_sp, _cam);return;}
+
 	CEntity::RenderEachSprite(_sp, _cam, m_Sprite, m_pos);
 
 	m_Bullet->Render(_sp, _cam);
@@ -144,7 +169,7 @@ void CGutsMan::Shot()
 	if (!m_Bullet->GetActive()) {
 		m_Bullet->SetActive(true);
 		int xBullet = m_pos.x;
-		m_Bullet->SetPos(D3DXVECTOR3(xBullet,  m_pos.y + 300 , m_pos.z));
+		m_Bullet->SetPos(D3DXVECTOR3(xBullet,  m_pos.y + 100 , m_pos.z));
 	}
 }
 
