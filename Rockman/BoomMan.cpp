@@ -18,12 +18,10 @@ CBoomMan::CBoomMan(int _id, D3DXVECTOR3 _pos)
 	m_accel = D3DXVECTOR2(0,0.0f);	
 
 	/*Iceman*/
-	m_yInit = m_yShot = m_pos.y;
 	m_IsJustJump = false;
 	m_Status = STAND;
 	m_TimeSpend = 0;
 	m_TimeInjured = 0;
-	m_IsHello = true;
 	m_isTurnLeft = true;
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 	m_pos.x = CMap::g_widthMap - m_Size.x - 64;
@@ -42,15 +40,14 @@ CBoomMan::CBoomMan(int objID, int typeID, double posX, double posY, int width, i
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MASTER), D3DXVECTOR2(210, 197) , 7, 1, D3DXVECTOR2(0, 167));
 
 	/*Iceman*/
-	m_yInit = m_yShot = m_pos.y;
 	m_IsJustJump = false;
 	m_Status = STAND;
 	m_TimeSpend = 0;
 	m_TimeInjured = 0;
-	m_IsHello = true;
 	m_isTurnLeft = true;
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 	m_pos = D3DXVECTOR3(posX - m_Size.x / 2, posY + m_Size.y / 2, 0);
+	m_accel = D3DXVECTOR2(0, -12.0f);
 	//m_pos.x = CMap::g_widthMap - m_Size.x - 64;
 	UpdateRect();
 	//create list bullet
@@ -90,7 +87,7 @@ void CBoomMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEnti
 	{
 		Jump();
 		m_TimeSpend = 0;
-		//Shot();
+		Shot();
 	}
 	
 	CEntity::Update(_time, _camera, _input, _listObjectInViewPort);
@@ -145,12 +142,14 @@ void CBoomMan::Shot()
 {
 		for (int i = 0; i < 5; i++)
 		{
-			if (m_bullet->GetActive()) {
+			if (!m_bullet->GetActive()) {
 				m_bullet->SetActive(true);
-				int xBullet = m_isTurnLeft ? m_pos.x : m_pos.x + m_Size.x;
+				int xBullet = m_isTurnLeft ? m_pos.x - m_Size.x / 2: m_pos.x + m_Size.x / 2;
 				m_bullet->SetPos(D3DXVECTOR3(xBullet,  m_pos.y - m_Size.y/3 , m_pos.z));
-				m_bullet->SetVelloc(D3DXVECTOR2(m_isTurnLeft ? -10 : 10, 0));
-				m_yShot = m_pos.y;
+				D3DXVECTOR3 posRockman = CRockman::g_PosRockman;
+				float vx = posRockman.x - m_pos.x;
+
+				m_bullet->SetVelloc(D3DXVECTOR2(vx / 9, 40));
 				break;
 			}
 		}
@@ -167,9 +166,8 @@ void CBoomMan::SetInjured(CEntity* _other)
 void CBoomMan::Jump()
 {
 	if (m_Status == JUMP) return;
-	m_velloc.y = 100.0f;
+	m_velloc.y = 90.0f;
 	m_velloc.x = (m_pos.x - CRockman::g_PosRockman.x) > 0 ? -20 : 20;
-	m_accel.y = -20.0f;
 	m_Status = JUMP;
 }
 
@@ -201,6 +199,7 @@ void CBoomMan::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,
 	{
 		m_pos.y = _other->GetRect().top + m_Size.y + 1;
 		m_velloc.y = 0;
+		m_Status = STAND;
 	}
 
 	if( m_directCollion == LEFT)

@@ -10,8 +10,9 @@ CBulletIceman::CBulletIceman(D3DXVECTOR3 _pos)
 		, D3DXVECTOR2(15,213), 1, 1
 		, D3DXVECTOR2(0,200));
 	m_pos = _pos;
+	m_accel = D3DXVECTOR2(0,-8);
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
-
+	m_Sprite->IndexOf(0);
 	m_IsActive = false;
 }
 
@@ -26,7 +27,7 @@ void CBulletIceman::UpdateCollison(CEntity* _other,float _time)
 		switch (_other->GetType())
 		{
 		case ROCKMAN:
-			(dynamic_cast<CRockman*>(_other))->SetInjured(this, -15);
+		 	(dynamic_cast<CRockman*>(_other))->SetInjured(this, -15);
 			m_IsActive = false;
 			break;
 		default:
@@ -39,7 +40,6 @@ void CBulletIceman::UpdateCollison(CEntity* _other,float _time)
 void CBulletIceman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewport)
 {
 	if (m_IsActive) {
-		m_Sprite->NextOf(_time, 0,1 );
 		CEntity::Update(_time,_camera,_input,_listObjectInViewport);	
 
 		if(m_Rect.left < _camera->m_viewPort.left || m_Rect.right > _camera->m_viewPort.right 

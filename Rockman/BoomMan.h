@@ -20,10 +20,7 @@ private:
 	float m_TimeInjured;
 	CBlood* m_Blood;
 	CBulletIceman* m_bullet;
-	int m_yInit;
 	bool m_IsJustJump;
-	int m_yShot;
-	bool m_IsHello;
 
 	CExplosiveBoss* m_Explosive;
 	bool m_isExplosive;

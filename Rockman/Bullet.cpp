@@ -10,7 +10,6 @@ CBullet::CBullet(D3DXVECTOR3 _pos)
 	m_pos = _pos;
 	m_posInit = _pos;
 
-	m_accel = D3DXVECTOR2(0,0);
 	m_velloc = D3DXVECTOR2(0,0);
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 
@@ -88,4 +87,9 @@ void CBullet::SetPos(D3DXVECTOR2 _pos)
 {
 	m_pos.x = _pos.x;
 	m_pos.y = _pos.y;
+}
+
+void CBullet::SetAccel(D3DXVECTOR2 _accel)
+{
+	m_accel = _accel;
 }
