@@ -27,6 +27,7 @@ public:
 	bool GetActive() {
 		return m_IsActive;
 	}
+	void SetPos(D3DXVECTOR2 _pos);
 };
 
 #endif

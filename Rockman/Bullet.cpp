@@ -83,3 +83,9 @@ bool CBullet::IsObtainCollision(CEntity* _other)
 	}
 	return false;
 }
+
+void CBullet::SetPos(D3DXVECTOR2 _pos)
+{
+	m_pos.x = _pos.x;
+	m_pos.y = _pos.y;
+}
