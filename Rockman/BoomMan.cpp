@@ -99,6 +99,15 @@ void CBoomMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEnti
 		m_Explosive->Explosive(m_pos, ChangeState::CHANGE_NEXT);
 	}
 
+	if (m_TimeInjured > 0) {
+		if (m_TimeInjured < TIME_INJURED) {
+			m_TimeInjured += _time;
+		} else
+		{
+			m_TimeInjured = 0;
+		}
+	}
+
 	//Update bullet
 	m_bullet->Update(_time, _camera, _input, _listObjectInViewPort);
 
