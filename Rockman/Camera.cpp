@@ -3,6 +3,7 @@
 #include "Map.h"
 #include "Define.h"
 #include "Config.h"
+#include "PLayingGameState.h"
 
 
 #define DIS_MOVE (5.0f)
@@ -75,6 +76,12 @@ void CCamera::Update(D3DXVECTOR2 _pos, D3DXVECTOR2 _velloc)
 		return;
 	if (curIndex == m_countPoint-1) {
 		m_pos.x = m_arrayPoint[curIndex].x - WIDTH_SCREEN/2;
+
+		if (CPLayingGameState::g_Stage==3) //cheat 
+			{
+				m_pos.x += 10;
+				m_pos.y =  m_arrayPoint[curIndex].y + HEIGHT_SCREEN/2;
+			}
 		goto updateViewport;
 		return;
 	}
