@@ -116,36 +116,36 @@ void CCutMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntit
 	if ((m_Status ==  JumpHaveGun || m_Status == JumpNormal || m_Status == Shotting)  && m_pos.y <= m_yInit) {
 		m_Status =  m_IsShotting ? MoveNormal : MoveHaveGun;
 	}
-	
-		if (m_velloc.y == 0 ) {
-			if (m_velloc.x == 0) {		
+
+	if (m_velloc.y == 0 ) {
+		if (m_velloc.x == 0) {		
 			m_velloc.x = 0;
 			m_Status = m_IsShotting ? StandNormal : StandHaveGun;
-			} else {
-				m_Status = m_IsShotting ? MoveNormal : MoveHaveGun;
-			}
+		} else {
+			m_Status = m_IsShotting ? MoveNormal : MoveHaveGun;
 		}
+	}
 
-		//When shot
-		if (m_IsShotting) {
-			if (m_TimeShot < TIME_SHOT) {
-				m_TimeShot += _time;
-				m_Status = Shotting;
-			}
+	//When shot
+	if (m_IsShotting) {
+		if (m_TimeShot < TIME_SHOT) {
+			m_TimeShot += _time;
+			m_Status = Shotting;
 		}
-		//When injured
-		if (m_TimeInjured > 0) {
-			if (m_TimeInjured < TIME_INJURED) {
-				m_TimeInjured += _time;
-			} else
-			{
-				m_TimeInjured = 0;
-			}
+	}
+	//When injured
+	if (m_TimeInjured > 0) {
+		if (m_TimeInjured < TIME_INJURED) {
+			m_TimeInjured += _time;
+		} else
+		{
+			m_TimeInjured = 0;
 		}
+	}
 	if (!m_IsShotting) {
 		if (m_Status == StandNormal) m_Status = StandHaveGun; else
-		if (m_Status == MoveNormal) m_Status = MoveHaveGun; else
-		if (m_Status == JumpNormal) m_Status = JumpHaveGun;
+			if (m_Status == MoveNormal) m_Status = MoveHaveGun; else
+				if (m_Status == JumpNormal) m_Status = JumpHaveGun;
 	}
 
 	UpdateSprite(_time);

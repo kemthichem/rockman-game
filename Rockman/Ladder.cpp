@@ -30,7 +30,7 @@ CLadder::~CLadder(void)
 
 void CLadder::Update(float _time, CCamera *_camera, CInput *_input,vector<CEntity* > _listObjectInViewPort)
 {
-	CEntity::Update(_time, _camera, _input, _listObjectInViewPort);
+	//CEntity::Update(_time, _camera, _input, _listObjectInViewPort);
 }
 
 void CLadder::Render(LPD3DXSPRITE _spriteHandler, CCamera* _camera) {
