@@ -209,5 +209,8 @@ void CBeak::Reset()
 	{
 		m_ListBullet[i]->SetActive(false);
 	}
+
+	m_Status = BeakWait;
+	m_TimeSpent = m_TimeShot = 0;
 }
 
