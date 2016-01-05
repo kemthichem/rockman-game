@@ -9,7 +9,7 @@
 CBulletGutsman::CBulletGutsman(D3DXVECTOR3 _pos)
 {
 	m_Type = BULLET;
-	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MASTER), D3DXVECTOR2(880, 210) , 9, 1, D3DXVECTOR2(250,140), D3DXVECTOR2(0,0), D3DXVECTOR2(0,0));
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MASTER), D3DXVECTOR2(64, 150) , 2, 1, D3DXVECTOR2(0,118));
 	m_pos = _pos;
 
 	m_accel = D3DXVECTOR2(0,0);

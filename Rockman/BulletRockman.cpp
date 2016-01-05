@@ -38,12 +38,12 @@ void CBulletRockman::UpdateCollison(CEntity* _other,float _time)
 		case BLADER:
 		case MET:
 		case BIGEYE:
-		case ICEMAN:
-		case CUTMAN:
 		case FLYING_SHELL:
 		case SPINE:
 		case PICKETMAN:
+		case CUTMAN:
 		case GUTSMAN:
+		case ICEMAN:
 			isIntersect = CAABBCollision::IntersectRect(m_Rect, _other->GetRect());
 			if (isIntersect) {
 				_other->SetInjured(this);
@@ -84,7 +84,7 @@ void CBulletRockman::SetPos(D3DXVECTOR3 _pos)
 }
 bool CBulletRockman::IsObtainCollision(CEntity* _other)
 {
-	if (_other->GetType() > 1 && _other->GetType() < 110)
+	if (_other->GetType() > 1 && _other->GetType() <= 110)
 		return true;
 	return false;
 }

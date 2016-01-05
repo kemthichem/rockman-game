@@ -7,8 +7,8 @@ CBulletIceman::CBulletIceman(D3DXVECTOR3 _pos)
 {
 	m_Type = BULLET;
 	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MASTER)
-		, D3DXVECTOR2(418,470), 2, 1
-		, D3DXVECTOR2(348,436), D3DXVECTOR2(0,0), D3DXVECTOR2(5,0));
+		, D3DXVECTOR2(15,213), 1, 1
+		, D3DXVECTOR2(0,200));
 	m_pos = _pos;
 
 	m_accel = D3DXVECTOR2(0,0);

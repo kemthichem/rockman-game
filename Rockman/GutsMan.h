@@ -37,6 +37,8 @@ public:
 	virtual void Render(LPD3DXSPRITE, CCamera*);
 	void SetInjured(CEntity* _other);
 	void SetThrow(bool _isThrow);
+	void UpdateCollison(CEntity* _other,float _time);
+	void ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,float _timeEntry);
 };
 
 #endif

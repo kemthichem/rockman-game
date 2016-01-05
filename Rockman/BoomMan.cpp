@@ -44,8 +44,7 @@ CBoomMan::CBoomMan(int objID, int typeID, double posX, double posY, int width, i
 
 	m_Id = objID;
 	m_Type = ICEMAN;
-	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MASTER), D3DXVECTOR2(870, 480) , 8, 1, D3DXVECTOR2(420, 420));
-	m_accel = D3DXVECTOR2(0,0.0f);	
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MASTER), D3DXVECTOR2(210, 196) , 7, 1, D3DXVECTOR2(0, 167));
 
 	/*Iceman*/
 	m_yInit = m_yShot = m_pos.y;
@@ -227,13 +226,55 @@ void CBoomMan::Jump()
 	m_Status = JUMP;
 }
 
-void CBoomMan::UpdateCollison(CEntity* _other,float _time) {
+void CBoomMan::UpdateCollison(CEntity* _other,float _time)
+{
 	switch (_other->GetType())
 	{
 	case ROCKMAN:
 		(dynamic_cast<CRockman*>(_other))->SetInjured(this, -20);
 		break;
+	case BLOCK:
+		{		
+			float timeEntry = m_collision->SweptAABB(this,_other,_time);
+			m_directCollision = m_collision->GetDirectCollision();
+			if (timeEntry < 1.0f)
+			{
+				ExecuteCollision(_other,m_directCollision,timeEntry);
+			}
+		}
+		break;
 	default:
 		break;
+	}
+}
+
+void CBoomMan::ExecuteCollision(CEntity* _other,DirectCollision m_directCollion,float _timeEntry)
+{
+	if( m_directCollion == BOTTOM)
+	{
+		m_pos.y = _other->GetRect().top + m_Size.y + 1;
+		m_velloc.y = 0;
+	}
+
+	if( m_directCollion == LEFT)
+	{
+		m_velloc.x = 0;
+		m_accel.x = 0;
+		m_pos.x = _other->GetRect().right + 1 ;
+		m_isTurnLeft = m_pos.x > CRockman::g_PosRockman.x;
+	}
+
+	if( m_directCollion == RIGHT)
+	{
+		m_velloc.x = 0;
+		m_accel.x = 0;
+		m_pos.x = _other->GetRect().left - m_Size.x -1;
+		m_isTurnLeft = m_pos.x > CRockman::g_PosRockman.x;
+	}
+
+	if (m_directCollion == TOP)
+	{
+		m_pos.y = _other->GetRect().bottom;
+		m_velloc.y = 0;
 	}
 }
