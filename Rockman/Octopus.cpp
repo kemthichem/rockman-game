@@ -23,7 +23,7 @@ COctopus::COctopus(int _id, D3DXVECTOR3 _pos, bool _isTurnHor)
 	/**Attribute Octopus**/
 	m_TimeSpend = 0;
 	m_IsLife = true;
-	m_vellocTemp = D3DXVECTOR2(0,0);
+	m_vellocTemp = m_velloc;
 }
 
 
@@ -53,7 +53,7 @@ COctopus::COctopus(int objID, int typeID, double posX, double posY, int width, i
 	/**Attribute Octopus**/
 	m_TimeSpend = 0;
 	m_IsLife = true;
-	m_vellocTemp = D3DXVECTOR2(0,0);
+	m_vellocTemp = m_velloc;
 
 	m_rangeItem = 3;
 }
@@ -118,28 +118,28 @@ void COctopus::ExecuteCollision(CEntity* _other, DirectCollision m_directCollisi
 			if( m_directCollision == BOTTOM)
 			{
 				m_pos.y = _other->GetRect().top + m_Size.y + 1;
-				m_vellocTemp.y = m_velloc.y;
+				m_vellocTemp.y = m_velloc.y != 0 ? m_velloc.y : m_vellocTemp.y;
 				m_velloc.y = 0;
 			}
 
 			if (m_directCollision == TOP)
 			{
 				m_pos.y = _other->GetRect().bottom;
-				m_vellocTemp.y = m_velloc.y;
+				m_vellocTemp.y = m_velloc.y != 0 ? m_velloc.y : m_vellocTemp.y;
 				m_velloc.y = 0;
 			}
 
 			if( m_directCollision == LEFT)
 			{
 				m_pos.x = _other->GetRect().right + 1;
-				m_vellocTemp.x = m_velloc.x;
+				m_vellocTemp.x = m_velloc.x != 0 ? m_velloc.x : m_vellocTemp.x;
 				m_velloc.x = 0;
 			}
 
 			if( m_directCollision == RIGHT)
 			{
 				m_pos.x = _other->GetRect().left - m_Size.x - 1;
-				m_vellocTemp.x= m_velloc.x;
+				m_vellocTemp.x= m_velloc.x != 0 ? m_velloc.x : m_vellocTemp.x;
 				m_velloc.x = 0;
 			}
 
