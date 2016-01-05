@@ -211,7 +211,7 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	//Not Edit
 	//Update pos global
 	g_PosRockman = D3DXVECTOR2(m_pos.x, m_pos.y);
-	if (m_Blood->IsOver() || m_pos.y < CCamera::g_PosCamera.y - HEIGHT_SCREEN - m_Size.y) {
+	if (m_Blood->IsOver() || m_pos.y < CCamera::g_PosCamera.y - HEIGHT_SCREEN - 50) {
 		m_isExplosive = true;
 		m_Explosive->Explosive(m_pos, CHANGE_FAIL);
 	}
