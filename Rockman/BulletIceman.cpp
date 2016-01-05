@@ -10,8 +10,6 @@ CBulletIceman::CBulletIceman(D3DXVECTOR3 _pos)
 		, D3DXVECTOR2(15,213), 1, 1
 		, D3DXVECTOR2(0,200));
 	m_pos = _pos;
-
-	m_accel = D3DXVECTOR2(0,0);
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 
 	m_IsActive = false;
@@ -42,14 +40,15 @@ void CBulletIceman::Update(float _time, CCamera *_camera, CInput *_input, vector
 {
 	if (m_IsActive) {
 		m_Sprite->NextOf(_time, 0,1 );
-		CEntity::Update(_time,_camera,_input,_listObjectInViewport);
-	} 
+		CEntity::Update(_time,_camera,_input,_listObjectInViewport);	
 
-	if(m_Rect.left < _camera->m_viewPort.left || m_Rect.right > _camera->m_viewPort.right 
-		|| m_Rect.top > _camera->m_viewPort.top || m_Rect.bottom < _camera->m_viewPort.bottom)
-	{
-		m_IsActive = false;
-	}
+		if(m_Rect.left < _camera->m_viewPort.left || m_Rect.right > _camera->m_viewPort.right 
+			|| m_Rect.top > _camera->m_viewPort.top || m_Rect.bottom < _camera->m_viewPort.bottom)
+		{
+			m_IsActive = false;
+		}
+
+	} 
 }
 
 void CBulletIceman::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)

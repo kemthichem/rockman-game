@@ -6,10 +6,10 @@
 #include "ExplosiveBoss.h"
 
 enum IceManStatus {
-	HELLO,
 	STAND,
 	MOVE,
-	JUMP
+	JUMP,
+	THROW
 };
 
 class CBoomMan : public CEntity
@@ -19,7 +19,7 @@ private:
 	float m_TimeSpend;
 	float m_TimeInjured;
 	CBlood* m_Blood;
-	CBulletIceman* m_ListBullet[5];
+	CBulletIceman* m_bullet;
 	int m_yInit;
 	bool m_IsJustJump;
 	int m_yShot;

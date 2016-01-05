@@ -5,7 +5,7 @@
 #include "Define.h"
 
 #define TIME_INJURED (10.0f)
-#define TIME_WAIT (30.0f)
+#define TIME_WAIT (20.0f)
 
 #define VELLOC_X (10.0f)
 
@@ -20,7 +20,7 @@ CBoomMan::CBoomMan(int _id, D3DXVECTOR3 _pos)
 	/*Iceman*/
 	m_yInit = m_yShot = m_pos.y;
 	m_IsJustJump = false;
-	m_Status = HELLO;
+	m_Status = STAND;
 	m_TimeSpend = 0;
 	m_TimeInjured = 0;
 	m_IsHello = true;
@@ -28,12 +28,7 @@ CBoomMan::CBoomMan(int _id, D3DXVECTOR3 _pos)
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 	m_pos.x = CMap::g_widthMap - m_Size.x - 64;
 	UpdateRect();
-	//create list bullet
-	for (int i = 0; i < 5; i++)
-	{
-		CBulletIceman *bullet = new CBulletIceman(D3DXVECTOR3(_pos.x + m_Size.x/2 - 10, _pos.y - m_Size.y/2 + 10, _pos.z));
-		m_ListBullet[i] = bullet;
-	}
+	
 
 	//create blood
 	m_Blood = new CBlood(D3DXVECTOR2(740, 30), 100);
@@ -44,12 +39,12 @@ CBoomMan::CBoomMan(int objID, int typeID, double posX, double posY, int width, i
 
 	m_Id = objID;
 	m_Type = ICEMAN;
-	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MASTER), D3DXVECTOR2(210, 196) , 7, 1, D3DXVECTOR2(0, 167));
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_MASTER), D3DXVECTOR2(210, 197) , 7, 1, D3DXVECTOR2(0, 167));
 
 	/*Iceman*/
 	m_yInit = m_yShot = m_pos.y;
 	m_IsJustJump = false;
-	m_Status = HELLO;
+	m_Status = STAND;
 	m_TimeSpend = 0;
 	m_TimeInjured = 0;
 	m_IsHello = true;
@@ -59,11 +54,8 @@ CBoomMan::CBoomMan(int objID, int typeID, double posX, double posY, int width, i
 	//m_pos.x = CMap::g_widthMap - m_Size.x - 64;
 	UpdateRect();
 	//create list bullet
-	for (int i = 0; i < 5; i++)
-	{
-		CBulletIceman *bullet = new CBulletIceman(D3DXVECTOR3(m_pos.x + m_Size.x/2 - 10, m_pos.y - m_Size.y/2 + 10, m_pos.z));
-		m_ListBullet[i] = bullet;
-	}
+	
+	m_bullet = new CBulletIceman(D3DXVECTOR3(m_pos.x + m_Size.x/2 - 10, m_pos.y - m_Size.y/2 + 10, m_pos.z));
 
 	m_Explosive = new CExplosiveBoss(new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_EXPLOSIVE), D3DXVECTOR2(112, 40), 7, 1, D3DXVECTOR2(0,25)));
 	m_isExplosive = false;
@@ -74,9 +66,9 @@ CBoomMan::CBoomMan(int objID, int typeID, double posX, double posY, int width, i
 
 CBoomMan::~CBoomMan(void)
 {
-	for (int i = 0; i < 5; i++)
+	if (m_bullet)
 	{
-		delete m_ListBullet[i];
+		delete m_bullet;
 	}
 
 	if (m_Blood)
@@ -96,65 +88,12 @@ void CBoomMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEnti
 			m_TimeSpend += _time;
 	} else
 	{
-		if (m_IsHello) {
-			m_Status =  STAND;
-			m_IsHello = false;
-		}
-		if (m_Status == MOVE) {
-			Jump();
-		}
-		if (m_Status ==  STAND && m_pos.y <= m_yInit && m_IsJustJump) {
-			m_velloc.x = m_pos.x > CRockman::g_PosRockman.x ? -VELLOC_X : VELLOC_X;
-			m_Status = MOVE;
-			m_IsJustJump = false;
-		} else
-		{
-			if (m_Status == STAND && !m_IsJustJump) {
-				Jump();
-				m_IsJustJump = true;
-			} 
-		}
+		Jump();
 		m_TimeSpend = 0;
 		//Shot();
 	}
-
-	//Jump and go down
-	if (m_Status == JUMP && m_velloc.y < 0) {
-		
-		if (m_pos.y < m_yShot - 40 || (m_yShot == m_yInit && ((int)m_pos.y - m_yInit < 200))) {
-			Shot();
-			m_velloc.y = -6.0f;
-			m_accel.y = 0.0f;
-		}
-	}
-
+	
 	CEntity::Update(_time, _camera, _input, _listObjectInViewPort);
-
-	if (m_Status == JUMP && m_pos.y <= m_yInit) {
-		m_Status = MOVE;
-	}
-	if (m_pos.x <= CCamera::g_PosCamera.x + 64) {
-		m_velloc.x *= -1;
-	} else 
-		if (m_pos.x >= CMap::g_widthMap - m_Size.x - 64 && m_pos.y <= m_yInit) {
-			m_isTurnLeft = true;			
-			m_velloc.x = 0;
-			if (m_Status != HELLO)
-				m_Status = STAND;
-		}
-	if (m_pos.y <= m_yInit) {
-		m_pos.y = m_yInit;
-		m_velloc.y = 0;
-		m_yShot = m_yInit;
-	}
-	if (m_TimeInjured > 0) {
-		if (m_TimeInjured < TIME_INJURED) {
-			m_TimeInjured += _time;
-		} else
-		{
-			m_TimeInjured = 0;
-		}
-	}
 
 	UpdateSprite(_time);
 
@@ -164,10 +103,8 @@ void CBoomMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEnti
 	}
 
 	//Update bullet
-	for (int i = 0; i < 5; i++)
-	{
-		m_ListBullet[i]->Update(_time, _camera, _input, _listObjectInViewPort);
-	}
+	m_bullet->Update(_time, _camera, _input, _listObjectInViewPort);
+
 }
 
 void CBoomMan::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
@@ -176,10 +113,9 @@ void CBoomMan::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 	CEntity::RenderEachSprite(_spriteHandle, _camera, m_Sprite, m_pos);
 
 	//Render bullet
-	for (int i = 0; i < 5; i++)
-	{
-		m_ListBullet[i]->Render(_spriteHandle, _camera);
-	}
+	
+	m_bullet->Render(_spriteHandle, _camera);
+	
 	//Render blood
 	m_Blood->Render(_spriteHandle, _camera);
 }
@@ -188,13 +124,9 @@ void CBoomMan::UpdateSprite(float _time)
 {
 	switch (m_Status)
 	{
-	case HELLO:
-		// stand normal
-		m_Sprite->NextOf(_time, 4, 5);
-		break;
 	case STAND:
 		// move normal
-		m_Sprite->IndexOf(7);
+		m_Sprite->NextOf(_time, 5, 6);
 		break;
 	case MOVE:
 		// Stand have cut
@@ -202,7 +134,7 @@ void CBoomMan::UpdateSprite(float _time)
 		break;
 	case JUMP:
 		// Stand have cut
-		m_Sprite->IndexOf(6);
+		m_Sprite->IndexOf(1);
 		break;
 	default:
 		break;
@@ -213,11 +145,11 @@ void CBoomMan::Shot()
 {
 		for (int i = 0; i < 5; i++)
 		{
-			if (!m_ListBullet[i]->GetActive()) {
-				m_ListBullet[i]->SetActive(true);
+			if (m_bullet->GetActive()) {
+				m_bullet->SetActive(true);
 				int xBullet = m_isTurnLeft ? m_pos.x : m_pos.x + m_Size.x;
-				m_ListBullet[i]->SetPos(D3DXVECTOR3(xBullet,  m_pos.y - m_Size.y/3 , m_pos.z));
-				m_ListBullet[i]->SetVelloc(D3DXVECTOR2(m_isTurnLeft ? -20 : 20, 0));
+				m_bullet->SetPos(D3DXVECTOR3(xBullet,  m_pos.y - m_Size.y/3 , m_pos.z));
+				m_bullet->SetVelloc(D3DXVECTOR2(m_isTurnLeft ? -10 : 10, 0));
 				m_yShot = m_pos.y;
 				break;
 			}
@@ -236,6 +168,7 @@ void CBoomMan::Jump()
 {
 	if (m_Status == JUMP) return;
 	m_velloc.y = 100.0f;
+	m_velloc.x = (m_pos.x - CRockman::g_PosRockman.x) > 0 ? -20 : 20;
 	m_accel.y = -20.0f;
 	m_Status = JUMP;
 }

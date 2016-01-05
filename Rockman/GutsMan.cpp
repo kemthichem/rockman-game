@@ -95,7 +95,6 @@ void CGutsMan::Update(float _time, CCamera *_camera, CInput *_input,vector<CEnti
 	} else {
 		m_TimeChange = 0;
 		Jump();
-		Shot();
 	}
 
 	
