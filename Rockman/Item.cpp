@@ -99,9 +99,6 @@ CItem::CItem(int objID, int typeID, double posX, double posY, int width, int hei
 	m_pos = D3DXVECTOR3(posX - m_Size.x/2, posY + m_Size.y/2, DEPTH_MOTION);
 	m_posInit = m_pos;
 
-	m_accel = D3DXVECTOR2(0,-15.0f);
-	m_velloc = D3DXVECTOR2(0, 5.0f);
-
 	UpdateRect();
 
 	//Item
@@ -152,11 +149,11 @@ void CItem::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity
 		m_pos = m_posInit;
 	}
 
-	if(m_Rect.left < _camera->m_viewPort.left || m_Rect.right > _camera->m_viewPort.right 
-		|| m_Rect.top > _camera->m_viewPort.top || m_Rect.bottom < _camera->m_viewPort.bottom)
-	{
-		m_IsActive = false;
-	}
+	//if(m_Rect.left < _camera->m_viewPort.left || m_Rect.right > _camera->m_viewPort.right 
+	//	|| m_Rect.top > _camera->m_viewPort.top || m_Rect.bottom < _camera->m_viewPort.bottom)
+	//{
+	//	m_IsActive = false;
+	//}
 }
 
 void CItem::SetActive(bool _isActive)
@@ -232,4 +229,9 @@ void CItem::HaveItem(CEntity* _rockMan)
 	default:
 		break;
 	}
+}
+
+void CItem::SetAccel(D3DXVECTOR2 _accel)
+{
+	m_accel = _accel;
 }

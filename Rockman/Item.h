@@ -33,6 +33,7 @@ public:
 
 	//Item
 	void SetVelloc(D3DXVECTOR2 _velloc);
+	void SetAccel(D3DXVECTOR2 _accel);
 	void SetActive(bool _isActive);
 	bool GetActive() {
 		return m_IsActive;
