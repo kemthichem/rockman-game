@@ -213,6 +213,12 @@
     <ClCompile Include="PicketMan.cpp">
       <Filter>ObjectGame\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Bombomb.cpp">
+      <Filter>ObjectGame\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletBombomb.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RockmanGame.h">
@@ -363,6 +369,12 @@
       <Filter>ObjectGame\Boss</Filter>
     </ClInclude>
     <ClInclude Include="PicketMan.h">
+      <Filter>ObjectGame\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletBombomb.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Bombomb.h">
       <Filter>ObjectGame\Enemies</Filter>
     </ClInclude>
   </ItemGroup>

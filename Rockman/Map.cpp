@@ -19,6 +19,7 @@
 #include "SupperCutter.h"
 #include "Door.h"
 #include "Ramie.h"
+#include "Bombomb.h"
 #include "Item.h"
 #include "utils.h"
 
@@ -138,6 +139,7 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 		object = new CFlyingShell(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_ENEMY_BOOM_BLUE:
+		object = new CBombomb(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	// FIX-ME UP - RIGHT
 	case ID_ENEMY_EYE_RED_UP:

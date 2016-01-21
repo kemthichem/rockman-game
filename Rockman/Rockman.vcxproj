@@ -90,8 +90,10 @@
     <ClCompile Include="Blader.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="Blood.cpp" />
+    <ClCompile Include="Bombomb.cpp" />
     <ClCompile Include="BoomMan.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="BulletBombomb.cpp" />
     <ClCompile Include="BulletCutman.cpp" />
     <ClCompile Include="BulletGutsman.cpp" />
     <ClCompile Include="BulletIceman.cpp" />
@@ -142,8 +144,10 @@
     <ClInclude Include="Blader.h" />
     <ClInclude Include="Block.h" />
     <ClInclude Include="Blood.h" />
+    <ClInclude Include="Bombomb.h" />
     <ClInclude Include="BoomMan.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletBombomb.h" />
     <ClInclude Include="BulletCutman.h" />
     <ClInclude Include="BulletGutsman.h" />
     <ClInclude Include="BulletIceman.h" />
