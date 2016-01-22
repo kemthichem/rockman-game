@@ -34,6 +34,7 @@ CPicketMan::CPicketMan(int objID, int typeID, double posX, double posY, int widt
 	m_vellocTemp = D3DXVECTOR2(0,0);
 
 	m_rangeItem = 3;
+	m_isTurnLeft = true;
 }
 
 void CPicketMan::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity* >_listObjectInViewPort)

@@ -18,7 +18,7 @@ private:
 protected:
 	virtual bool IsObtainCollision(CEntity* _other);
 public:
-	CBlader(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide);
+	CBlader(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide, bool isGreen);
 	CBlader(int _id, D3DXVECTOR3 _pos);
 	~CBlader(void);
 	//method

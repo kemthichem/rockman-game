@@ -155,6 +155,7 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 		object = new CFlea(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_ENEMY_MACHINE_AUTO_BLUE_TOP:
+		object = new CScrewBomber(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide, false, false);
 		break;
 	// Spine
 	case ID_ENEMY_MACHINE_ORANGE:
@@ -164,7 +165,7 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 		break;
 	// CBlader
 	case ID_ENEMY_BUBBLE_BLUE:
-		object = new CBlader(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
+		object = new CBlader(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide, false);
 		break;
 	case ID_ENEMY_CUT:
 		object = new CSupperCutter(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
@@ -173,7 +174,7 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 		object = new CFlea(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_ENEMY_MACHINE_AUTO_ORGANGE_TOP:
-		object = new CScrewBomber(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide, false);
+		object = new CScrewBomber(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide, false, true);
 		break;
 	// BigEye
 	case ID_ENEMY_ROBOT_RED:
@@ -182,6 +183,7 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 	case ID_ENEMY_TANK_RED:
 		break;
 	case ID_ENEMY_BUBBLE_GREEN:
+		object = new CBlader(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide, true);
 		break;
 	// Met
 	case ID_ENEMY_HAT:
@@ -232,9 +234,10 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 		object = new CGutsMan(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_ENEMY_MACHINE_AUTO_BLUE_BOTTOM:		
+		object = new CScrewBomber(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide, true, false);
 		break;
 	case ID_ENEMY_MACHINE_AUTO_ORGANGE_BOTT:
-		object = new CScrewBomber(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
+		object = new CScrewBomber(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide, true, true);
 		break;
 	case ID_CAMERA_PATH_POINT:
 		break;

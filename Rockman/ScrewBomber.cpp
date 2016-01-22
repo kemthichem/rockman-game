@@ -65,16 +65,32 @@ CScrewBomber::CScrewBomber(int _id, D3DXVECTOR3 _pos, bool _isUp)
 #pragma endregion 
 }
 
-CScrewBomber::CScrewBomber(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide, bool _isUp)
+CScrewBomber::CScrewBomber(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide, bool _isUp, bool isOrange)
 {
 	m_Id = objID;
 	m_Type = SCREW_BOMBER;
-	int k = _isUp ? 39 : 0;
-	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES),
-		D3DXVECTOR2(175, 106 + k), 4, 1,
-		D3DXVECTOR2(15, 90 + k),
-		D3DXVECTOR2(0, 0),
-		D3DXVECTOR2(20, 0));
+	
+
+	if (isOrange)
+	{
+		int k = _isUp ? 39 : 0;
+		m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES),
+			D3DXVECTOR2(175, 106 + k), 4, 1,
+			D3DXVECTOR2(15, 90 + k),
+			D3DXVECTOR2(0, 0),
+			D3DXVECTOR2(20, 0));
+	} 
+	else
+	{
+		int k = _isUp ? 20 : 0;
+		m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_ENEMIES),
+			D3DXVECTOR2(175, 505 + k), 4, 1,
+			D3DXVECTOR2(15, 490 + k),
+			D3DXVECTOR2(0, 0),
+			D3DXVECTOR2(20, 0));
+	}
+
+
 	m_Size = D3DXVECTOR2(m_Sprite->GetWidthRectSprite(), m_Sprite->GetHeightRectSprite());
 	m_pos = D3DXVECTOR3(posX - m_Size.x/2, posY + m_Size.y/2, DEPTH_MOTION);
 	m_posOrg = m_pos;
