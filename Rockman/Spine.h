@@ -4,6 +4,7 @@
 class CSpine : public CEnemy
 {
 private:
+	RECT m_rectCollide;
 protected:
 public:
 	CSpine(int objID, int typeID, double posX, double posY, int width, int height, double posXCollide, double posYCollide, int widthCollide, int heightCollide);
