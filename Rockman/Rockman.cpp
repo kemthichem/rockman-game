@@ -119,15 +119,15 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 
 	if (_input) {
 		bool reval = false;
-		if (_input->KeyDown(DIK_L)) {
+		if (_input->KeyDown(DIK_RIGHT)) {
 			TurnRight();
 			reval = true;
-		} else if (_input->KeyDown(DIK_J)) {
+		} else if (_input->KeyDown(DIK_LEFT)) {
 			TurnLeft();
 			reval = true;
-		} else if (_input->KeyDown(DIK_I)) {
+		} else if (_input->KeyDown(DIK_UP)) {
 			reval = Climb(true);
-		} else if (_input->KeyDown(DIK_K)) {
+		} else if (_input->KeyDown(DIK_DOWN)) {
 			reval = Climb(false);
 		} 
 		if (!reval) {
@@ -175,10 +175,10 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	if (_input) {
 		switch (m_KeyDown)
 		{
-		case DIK_W:
+		case DIK_SPACE:
 			Jump();
 			break;
-		case DIK_D:
+		case DIK_A:
 			Shot();
 		default:
 			break;

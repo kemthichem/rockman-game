@@ -16,6 +16,7 @@ CBulletBombomb::CBulletBombomb(D3DXVECTOR3 _pos)
 	m_IsActive = false;
 
 	m_timeExplosive = CConfig::ValueOf(KEY_EN_TIMEEXPLOSIVE);
+	m_isExplosive = false;
 }
 
 
@@ -31,11 +32,11 @@ void CBulletBombomb::UpdateCollison(CEntity* _other,float _time)
 		switch (_other->GetType())
 		{		
 		case BLOCK:
-			m_IsActive = false;
+			m_isExplosive = true;
 			break;
 		case ROCKMAN:
 			(dynamic_cast<CRockman*>(_other))->SetInjured(this, -15);
-			//m_IsActive = false;
+			m_isExplosive = true;
 			break;
 		default:
 			break;
@@ -47,17 +48,25 @@ void CBulletBombomb::UpdateCollison(CEntity* _other,float _time)
 void CBulletBombomb::Update(float _time, CCamera *_camera, CInput *_input, vector<CEntity*> _listObjectInViewport)
 {
 	if (m_IsActive) {
-		CEntity::Update(_time,_camera,_input,_listObjectInViewport);
 
-		if(m_Rect.left < _camera->m_viewPort.left || m_Rect.right > _camera->m_viewPort.right 
-			|| m_Rect.top > _camera->m_viewPort.top || m_Rect.bottom < _camera->m_viewPort.bottom)
+		if (!m_isExplosive) {
+			CEntity::Update(_time,_camera,_input,_listObjectInViewport);
+
+			if(m_Rect.left < _camera->m_viewPort.left || m_Rect.right > _camera->m_viewPort.right 
+				|| m_Rect.top > _camera->m_viewPort.top || m_Rect.bottom < _camera->m_viewPort.bottom)
+			{
+				m_IsActive = false;
+			}
+		} else
 		{
-			m_IsActive = false;
-		}
-	} else {
-		if (m_timeExplosive > 0) {
-			m_spriteExplosive->Next(_time);
-			m_timeExplosive -= _time;
+			if (m_timeExplosive > 0) {
+				m_spriteExplosive->Next(_time);
+				m_timeExplosive -= _time;
+			}  else
+			{
+				m_isExplosive = false;
+				m_IsActive = false;
+			}
 		}
 	} 
 }
@@ -65,11 +74,14 @@ void CBulletBombomb::Update(float _time, CCamera *_camera, CInput *_input, vecto
 void CBulletBombomb::Render(LPD3DXSPRITE _spriteHandle, CCamera* _camera)
 {
 	if (m_IsActive) {
-		CEntity::Render(_spriteHandle, _camera);
-	} else
-	{
-		if (m_timeExplosive > 0) {
-			CEntity::RenderEachSprite(_spriteHandle, _camera, m_spriteExplosive, m_pos);
+		if (!m_isExplosive) {
+			CEntity::Render(_spriteHandle, _camera);
+		} 
+		else
+		{
+			if (m_timeExplosive > 0) {
+				CEntity::RenderEachSprite(_spriteHandle, _camera, m_spriteExplosive, m_pos);
+			}
 		}
 	}
 }
@@ -78,8 +90,10 @@ void CBulletBombomb::SetPos(D3DXVECTOR3 _pos)
 {
 	m_pos = _pos;
 
+	m_isExplosive = false;
 	m_timeExplosive = CConfig::ValueOf(KEY_EN_TIMEEXPLOSIVE);
 	m_velloc = m_vellocInit;
+	UpdateRect();
 }
 bool CBulletBombomb::IsObtainCollision(CEntity* _other)
 {

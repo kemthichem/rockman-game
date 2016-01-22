@@ -32,19 +32,19 @@ CBombomb::CBombomb(int objID, int typeID, double posX, double posY, int width, i
 		switch (i)
 		{
 		case 0:
-			vx = -V_BULLET * 0.7 * dir;
+			vx = -V_BULLET * 0.6 * dir;
 			vy = V_BULLET * dir;
 			break;
 		case 1:
-			vx = -V_BULLET * 1.1 * dir;
+			vx = -V_BULLET * 1.4 * dir;
 			vy =  V_BULLET * dir;
 			break;
 		case 2:
-			vx = V_BULLET * 0.7 *dir;
+			vx = V_BULLET * 0.6 *dir;
 			vy = V_BULLET *dir;
 			break;
 		case 3:
-			vx = V_BULLET * 1.1 *dir;
+			vx = V_BULLET * 1.4 *dir;
 			vy = V_BULLET *dir;
 			break;
 		default:

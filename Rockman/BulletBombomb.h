@@ -7,6 +7,7 @@ class CBulletBombomb : public CBullet
 {
 private:
 	long m_timeExplosive;
+	bool m_isExplosive;
 	D3DXVECTOR2 m_vellocInit;
 protected:
 	virtual void UpdateCollison(CEntity* ,float);
