@@ -7,7 +7,8 @@ enum Type {
 	BONUS = 1,
 	MANA,
 	BLOOD_SMALL,
-	BLOOD_BIG
+	BLOOD_BIG,
+	ITEM_COUNT
 };
 
 //Item for enemies

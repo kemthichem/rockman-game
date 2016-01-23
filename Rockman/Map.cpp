@@ -190,6 +190,7 @@ void CMap::AddObjectGame(int objID, int typeID, double posX, double posY, int wi
 		object = new CMet(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_ENEMY_ROBOT_BLUE:
+		object = new CBigEye(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);
 		break;
 	case ID_ENEMY_WORKER:
 		object = new CPicketMan(objID, typeID, posX, posY, width, height, posXCollide, posYCollide, widthCollide, heightCollide);

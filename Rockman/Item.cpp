@@ -6,6 +6,7 @@
 
 CItem::CItem(D3DXVECTOR3 _pos, Type _type)
 {
+	m_Id = -1;
 	m_Type = ITEM;
 	m_typeItem = _type;
 

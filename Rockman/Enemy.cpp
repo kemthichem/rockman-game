@@ -87,8 +87,8 @@ void CEnemy::CreateItem()
 	}
 
 	srand (time(NULL));
-	int iType = (rand() % m_rangeItem + 1);
-	if (iType != 0) {
+	int iType = (rand() % (m_rangeItem + 1));
+	if (iType != 0/* && iType <= ITEM_COUNT && iType != (int)BLOOD_BIG*/){
 		m_item = new CItem(m_pos, Type(iType));
 	} else
 	{

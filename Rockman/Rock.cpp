@@ -23,7 +23,7 @@ CRock::CRock(int objID, int typeID, double posX, double posY, int width, int hei
 	m_Type = BLOCK;
 	m_Size = D3DXVECTOR2(widthCollide, heightCollide);
 	m_pos = D3DXVECTOR3(posXCollide, posYCollide, DEPTH_BLOCK);
-	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES), D3DXVECTOR2(428,239), 2, 2, D3DXVECTOR2(394,205), D3DXVECTOR2(1,1), D3DXVECTOR2(1,1));
+	m_Sprite = new CSprite(CResourceManager::GetInstance()->GetSprite(IMAGE_TILES), D3DXVECTOR2(429,240), 2, 2, D3DXVECTOR2(394,205), D3DXVECTOR2(1,1), D3DXVECTOR2(1,1));
 	UpdateRect();
 }
 

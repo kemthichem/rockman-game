@@ -175,10 +175,10 @@ void CRockman::Update(float _time, CCamera *_camera, CInput *_input, vector<CEnt
 	if (_input) {
 		switch (m_KeyDown)
 		{
-		case DIK_SPACE:
+		case DIK_W:
 			Jump();
 			break;
-		case DIK_A:
+		case DIK_D:
 			Shot();
 		default:
 			break;
